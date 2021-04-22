@@ -1,0 +1,65 @@
+<article class="post fewo-item {{ listitemcss }}">
+    <div itemscope itemtype="http://schema.org/Product">
+        {% if id %}
+            <div class="fewo-id">{{ id }}</div>
+        {% endif %}
+        {% if titel %}
+            <div class="fewo-titel">{{ titel|raw }}</span></div>
+        {% endif %}
+        {% if image %}
+            <div class="fewo-image">
+                <img itemprop="image"  src="{{ image.thumb(image_width,image_height) }}" alt="{{ image.title }}" title="{{ image.title }}"/>
+            </div>
+        {% endif %}
+        {% if beschreibung %}
+        <div class="fewo_beschreibung">{{ beschreibung|raw}}</div>
+        {% endif %}
+        {% if kurztext %}
+        <div class="fewo_kurztext">{{ kurztext|raw}}</div>
+        {% endif %}
+        {% if adresse %}
+            <div class="fewo-address">
+                {{ Strasse|raw }}, {{ Land|raw }} {{ PLZ|raw }} {{ Ort|raw }}
+            </div>
+        {% endif %}
+        {% if ifmap %}
+        <!-- Map -->
+        <div id="mapid" class="fewo-hausmap " style="height:500px;">
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                var mymap = L.map('mapid',{
+                {% if fullscreen %}
+                fullscreenControl: true,
+                    fullscreenControlOptions: { // optional
+                    title:"Vollbildansicht",
+                        titleCancel:"Normalansicht"
+                },
+                {% endif %}
+                center: [{{ centerlat }}, {{ centerlong }}],
+                zoom: 16,
+                    scrollWheelZoom: false,
+            });
+                //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+                //https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png
+                //https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+                //https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png
+                var OpenStreetMap_DE = L.tileLayer('{{ map }}', {
+                    maxZoom: 18,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'}).addTo(mymap);
+                L.marker([{{ latitude }},{{ longitude }}]).addTo(mymap);
+                mymap.on('click', function() {
+                    if (mymap.scrollWheelZoom.enabled())
+                        mymap.scrollWheelZoom.disable();
+                    else
+                        mymap.scrollWheelZoom.enable();
+                });
+                L.control.scale().addTo(mymap);
+                //mymap.on('blur', function() { mymap.scrollWheelZoom.disable(); });
+                mymap.on('mouseout',function() { mymap.scrollWheelZoom.disable();});
+
+            });
+        </script>
+        {% endif %}
+    </div>
+</article>

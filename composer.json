@@ -1,0 +1,8 @@
+{
+    "name": "xsigns/fewo-plugin",
+    "type": "october-plugin",
+    "description": "Fewo-Verwalter Webmodule for October CMS",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

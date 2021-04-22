@@ -1,0 +1,37 @@
+<div id="multisearch-container">
+    <input type="text" id="multisearch" placeholder="{{ suchenLabel }}" />
+    <div id="multiResult">
+        <div class="objHeadline">{{ objekteLabel }}</div>
+        <div class="objList"></div>
+        <div class="regionHeadline">{{ regionenLabel }}</div>
+        <div class="regionList"></div>
+        <div class="orteHeadline">{{ orteLabel }}</div>
+        <div class="ortList"></div>
+        <div class="noSearchResults"></div>
+
+        <div class="letzteSuche">
+            <div class="letzteSucheHead">{{ letzteSucheLabel }}</div>
+            {% if letzteSuche|length > 0 %}
+                {% for suche in letzteSuche %}
+                    <div class="multisearch-item"><a class="letztesuche-item" data-type="{{ suche.dataType }}" data-element="{{ suche.data }}" href="{{ suche.url }}">{{ suche.title }}</a></div>
+                {% endfor %}
+            {% else %}
+                <div>{{ noSearch }}</div>
+            {% endif %}
+        </div>
+        {% if letzteSuche|length > 0 %}
+            <div><button data-request="onDeleteLetzteSuche">{{ btnDeleteSearch }}</button></div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    var noResultsText = '{{ noResult }}';
+    var maxObjkete = {{ maxObjekte }};
+    var maxRegionen = {{ maxRegionen }};
+    var maxOrte = {{ maxOrte }};
+    var listPage = '{{ listPage }}';
+
+    $(document).ready(function() {
+        Search.initSearch();
+    });
+</script>

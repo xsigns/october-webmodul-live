@@ -1,0 +1,17 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: Nummer
+
+    objektid:
+        label: ObjektNummer
+
+    vorname:
+        label: Vorname
+
+    zuname:
+        label: Zuname
+

@@ -1,0 +1,40 @@
+<!-- Map -->
+{% if mapDienst == 'leafletMap' %}
+    <div id="mapid" class="fewo-objektmap" style="height:500px;"></div>
+    <script type="text/javascript">
+        var fullscreen = false;
+        {% if fullscreen %}
+            fullscreen = true;
+        {% endif %}
+
+        var showcircle = false;
+        {% if showcircle %}
+            showcircle = true;
+        {% endif %}
+
+        var centerlat = {{ centerlat }};
+        var centerlong = {{ centerlong }};
+        var leafletMap = '{{ map }}';
+        var latitude = {{ latitude }};
+        var longitude = {{ longitude }};
+        var color = '{{ color }}';
+        var isInTab = false;
+        var selectedTab = '';
+    </script>
+{% else %}
+    <div style="height: {{ mapHeight }}px;" id="map"></div>
+    <script type="text/javascript">
+        var fullscreen = {{ googleFullscreen ? 'true' : 'false' }};
+        var googleMapType = '{{ googleMapType }}';
+        var mapZoom = {{ mapZoom }};
+        var googleCenterlat = {{ centerlat }};
+        var googleCenterlong = {{ centerlong }};
+        // var marker_img = {{ marker_img }};
+        var marker_img = '{{ marker_img }}';
+
+        var use_marker = false;
+        {% if use_marker %}
+            use_marker = true;
+        {% endif %}
+    </script>
+{% endif %}

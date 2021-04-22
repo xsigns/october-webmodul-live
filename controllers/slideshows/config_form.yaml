@@ -1,0 +1,10 @@
+name: SlideShows
+modelClass: Xsigns\fewo\Models\SlideShows
+form: $/xsigns/fewo/models/slideshows/fields.yaml
+defaultRedirect: xsigns/fewo/slideshows
+create:
+    redirect: 'xsigns/fewo/slideshows/update/:id'
+    redirectClose: xsigns/fewo/slideshows
+update:
+    redirect: xsigns/fewo/slideshows
+    redirectClose: xsigns/fewo/slideshows

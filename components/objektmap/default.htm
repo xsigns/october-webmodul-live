@@ -1,0 +1,54 @@
+<div id="fewo-liste" class="col-lg-12 float-left">
+    <div id="fewo-listmap">
+        <div id="map" class="fewo-listmap" style="height:600px;"></div>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                let tiles = L.tileLayer('{{maptype}}', {
+                    maxZoom: 18,
+                    scrollWheelZoom: false,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+                });
+                let latlng = L.latLng({{mapcenterlat}}, {{mapcenterlng}})
+                let map = L.map('map', {
+                    center: latlng,
+                    zoom: 14,
+                    layers: [tiles],
+                {% if fullscreen %}
+                    fullscreenControl: true,
+                    fullscreenControlOptions: {
+                        title: "Vollbildansicht",
+                        titleCancel: "Normalansicht"
+                    },
+                {% endif %}
+                })
+                let markers = L.markerClusterGroup({ chunkedLoading: true });
+                let markerList = [];
+                {% for marker in maps %}
+                    var title = '<div class="map_marker"><img src="{{ marker.image.thumb(200,200) }}"><div class="title">{{ marker.titel|raw }}</div><div class="title">{{ marker.strasse|raw }}</div><div class="title">{{ marker.plz }} {{ marker.ort|raw }}</div><div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ marker.href }}">{{ btnDetail|raw }}</a></div></div>';
+                    var marker = L.marker(L.latLng({{ marker.lat}}, {{marker.long}}), { title: '{{ marker.titel|raw }}' });
+                    marker.bindPopup(title).on('click', clickZoom);
+                    markerList.push(marker);
+                {% endfor %}
+                markers.addLayers(markerList);
+                map.addLayer(markers);
+                try {
+                    var bounds = markers.getBounds();
+                    if (bounds) {
+                        map.fitBounds(bounds);
+                    }
+                } catch(err) {
+                    // pass
+                }
+
+                map.on('mouseout',function() {
+                    map.scrollWheelZoom.disable();
+                });
+
+                function clickZoom(e) {
+                    map.setView(e.target.getLatLng());
+                }
+            });
+        </script>
+    </div>
+</div>
+

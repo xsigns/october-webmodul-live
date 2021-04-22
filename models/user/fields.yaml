@@ -1,0 +1,81 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.name
+        span: auto
+
+    surname:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.surname
+        span: auto
+
+tabs:
+    fields:
+
+        email:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.email
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            span: full
+
+        send_invite:
+            type: checkbox
+            label: xsigns.fewo::lang.eigentuemerlogin.user.send_invite
+            comment: xsigns.fewo::lang.eigentuemerlogin.user.send_invite_comment
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            default: true
+            context: create
+
+        block_mail:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.block_mail
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            type: checkbox
+            span: full
+            cssClass: field-align-above
+            context: update
+
+        password@create:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.create_password
+            comment: xsigns.fewo::lang.eigentuemerlogin.user.create_password_comment
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            type: password
+            span: left
+
+        password@update:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.reset_password
+            comment: xsigns.fewo::lang.eigentuemerlogin.user.reset_password_comment
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            type: password
+            span: left
+
+        password_confirmation:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.confirm_password
+            comment: xsigns.fewo::lang.eigentuemerlogin.user.confirm_password_comment
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            type: password
+            span: right
+            context: [create, update]
+
+        username:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.username
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            hidden: true
+            span: left
+
+        groups:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.groups
+            tab: xsigns.fewo::lang.eigentuemerlogin.user.account
+            type: relation
+            emptyOption: xsigns.fewo::lang.eigentuemerlogin.user.empty_groups
+
+secondaryTabs:
+    fields:
+
+        avatar:
+            label: xsigns.fewo::lang.eigentuemerlogin.user.avatar
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260

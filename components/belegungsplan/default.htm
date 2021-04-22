@@ -1,0 +1,56 @@
+
+<div id="BelPlan" class="fewo_detail_buchungsplan {% if isClickable == 1 %} isClickable {% endif %}">
+    {% if selectbox %}
+    <div class="selector">
+        {% if isClickable == 1 %}
+            <select class="ctrlSaisonSelect" name="calSelector">
+                <!--<select class="ctrlSaisonSelect" name="calSelector" data-request-data="calid: {{ calobjid }}, caloffset: {{ caloffset }}" data-request="{{ __SELF__ }}::onSelectorChange">-->
+                {% set i=0 %}}
+                {% for monat in monate %}
+                    <option value="{{i}}">{{ monat }}</option>
+                    {% set i = i +1 %}
+                {% endfor %}
+            </select>
+        {% else %}
+            <select class="ctrlSaisonSelect" name="calSelector" data-request-data="calid: {{ calobjid }}, caloffset: {{ caloffset }}" data-request="{{ __SELF__ }}::onSelectorChange">
+                {% set i=0 %}}
+                {% for monat in monate %}
+                    <option value="{{i}}">{{ monat }}</option>
+                    {% set i = i +1 %}
+                {% endfor %}
+            </select>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if isClickable == 1 %}
+        <div id="calbtnleft_{{ calobjid }}"><button class="btn-left ctrlCalPrev">{{ btnleft }}</button></div>
+    {% else %}
+        <div id="calbtnleft_{{ calobjid }}"><button class="btn-left ctrlCalPrev" data-request-data="calid: {{ calobjid }}, caloffset: {{ caloffset }}" data-request="{{ __SELF__ }}::onBtnLeft">{{ btnleft }}</button></div>
+    {% endif %}
+<div id="ctrlBookingPlans_{{ calobjid }}" class="fewo_buchungsplan">
+{{ belplan|raw }}
+</div>
+    {% if legendeshow %}
+        <div class="belplan-legende"> {{ legende|raw }}</div>
+    {% endif %}
+
+    {% if isClickable %}
+        <div id="calbtnright_{{ calobjid }}"><button class="btn-right ctrlCalNext">{{ btnright }}</button></div>
+    {% else %}
+        <div id="calbtnright_{{ calobjid }}"><button class="btn-right ctrlCalNext" data-request-data="calid: {{ calobjid }}, caloffset: {{ caloffset }}" data-request="{{ __SELF__ }}::onBtnRight">{{ btnright }}</button></div>
+    {% endif %}
+</div>
+
+{% if isClickable == 1 %}
+    {{ zeitleiste|raw }}
+    <button class="delete-belplan-selection" onclick="Belplan.loescheAuswahl();">{{ btndelete }}</button>
+    <script>
+        var calid = '{{ calid }}';
+        var caloffset = '{{ caloffset }}';
+
+        $(document).ready(function () {
+            Belplan.initForm();
+        });
+    </script>
+{% endif %}

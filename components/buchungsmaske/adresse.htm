@@ -1,0 +1,133 @@
+<div id="error-gastdaten"></div>
+{% if showanrede %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label">{{ labels.anrede }}</div>
+    <select class="select frm_anrede form-control" name="anrede" id="ctrl_anrede" class="select frm_anrede">
+        {% for anrede in anreden %}
+            <option value="{{ anrede }}" {% if data.anrede == anrede %} selected {% endif %}>{{ anrede }}</option>
+        {% endfor %}
+    </select>
+</div>
+{% endif %}
+{% if showtitel %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.titel %}is-required{% endif %}">{{ labels.titel }}</div>
+    <input type="text" name="titel" id="ctrl_titel" class="text frm_titel" value="{{ data.titel }}" placeholder="{{ labels.titel }}">
+</div>
+{% endif %}
+{% if showfirma %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.firma %}is-required{% endif %}">{{ labels.firma }}</div>
+    <input type="text" name="firma" id="ctrl_firma" class="text frm_firma" value="{{ data.firma }}" placeholder="{{ labels.firma }}">
+    <span id="error-firma" class="validate"></span>
+</div>
+{% endif %}
+{% if showvorname %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.vorname %}is-required{% endif %}">{{ labels.vorname }}</div>
+    <input type="text" name="vorname" id="ctrl_vorname" class="text frm_vorname" value="{{ data.vorname }}" placeholder="{{ labels.vorname }}">
+    <span id="error-vorname" class="validate"></span>
+</div>
+{% endif %}
+
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label is-required">{{ labels.name }}</div>
+    <input type="text" name="name" id="ctrl_name" class="text frm_name" value="{{ data.name }}" required placeholder="{{ labels.name }}">
+    <span id="error-name" class="validate"></span>
+
+</div>
+
+{% if showstrasse %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.strasse %}is-required{% endif %}">{{ labels.strasse }}</div>
+    <input type="text" name="strasse" id="ctrl_strasse" class="text frm_strasse" value="{{ data.strasse }}" placeholder="{{ labels.strasse }}">
+    <span id="error-strasse" class="validate"></span>
+</div>
+{% endif %}
+{% if showplz %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.plz %}is-required{% endif %}">{{ labels.plz }}</div>
+    <input type="text" name="plz" id="ctrl_plz" class="text frm_plz" value="{{ data.plz }}" maxlength="10" placeholder="{{ labels.plz }}">
+    <span id="error-plz" class="validate"></span>
+</div>
+{% endif %}
+{% if showort %}
+<div class="form-group text-field span-left col-sm-5">
+    <div class="label {% if required.ort %}is-required{% endif %}">{{ labels.ort }}</div>
+    <input type="text" name="ort" id="ctrl_ort" class="text frm_ort" value="{{ data.ort }}" placeholder="{{ labels.ort }}">
+    <span id="error-ort" class="valid-tooltip"></span>
+</div>
+{% endif %}
+{% if showland %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label label_land">{{ labels.land }}</div>
+    <div class="formselect land">
+        <select class="select" name="land" id="ctrl_land"  class="select frm_land">
+            {% for land in frmlaender %}
+            <option value="{{ land.id }}" {% if land.id == 'de' %} selected="true" {% endif %}>{{ land.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+{% endif %}
+{% if showgeb %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.geb %}is-required{% endif %}">{{ labels.geb }}</div>
+    <input type="text" name="geb" id="ctrl_geb" class="text frm_geb" value="{{ data.geb }}" required placeholder="{{ labels.geb }}">
+    <span id="error-geb" class="validate"></span>
+
+    <script>
+        jQuery(document).ready(function() {
+        jQuery('#ctrl_geb').val('{{ data.geb }}');});
+    </script>
+</div>
+{% endif %}
+{% if showtel %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.tel %}is-required{% endif %}">{{ labels.tel }}</div>
+    <input type="text" name="tel" id="ctrl_tel" class="text frm_tel" maxlength="25" value="{{ data.tel }}"  placeholder="{{ labels.tel }}">
+    <span id="error-tel" class="validate"></span>
+</div>
+{% endif %}
+{% if showmobil %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.mobil %}is-required{% endif %}">{{ labels.mobil }}</div>
+    <input type="text" name="mobil" id="ctrl_mobil" class="text frm_mobil" maxlength="25" value="{{ data.mobil }}" placeholder="{{ labels.mobil }}">
+    <span id="error-mobil" class="validate"></span>
+</div>
+{% endif %}
+{% if showiban %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.iban %}is-required{% endif %}">{{ labels.iban }}</div>
+    <input type="text" name="iban" id="ctrl_iban" class="text frm_iban" value="{{ data.iban }}" placeholder="{{ labels.iban }}">
+    <span id="error-iban" class="validate"></span>
+</div>
+{% endif %}
+{% if showperso %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.perso %}is-required{% endif %}">{{ labels.perso }}</div>
+    <input type="text" name="perso" id="ctrl_perso" class="text frm_perso" value="{{ data.perso }}" placeholder="{{ labels.perso }}">
+    <span id="error-perso" class="validate"></span>
+
+</div>
+{% endif %}
+{% if showkennzeichen %}
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label {% if required.kennzeichen %}is-required{% endif %}">{{ labels.kennzeichen }}</div>
+    <input type="text" name="kennzeichen" id="ctrl_kennzeichen" class="text frm_perso" value="{{ data.kennzeichen }}" placeholder="{{ labels.kennzeichen }}">
+    <span id="error-kennzeichen" class="validate"></span>
+
+</div>
+{% endif %}
+{% if showgutschein %}
+<div class="adressdaten gutschein">
+    <div class="label label_gutschein">{{ labels.gutschein }}</div>
+    <input type="text" name="gutschein" id="ctrl_gutschein" class="text frm_gutschein" value="{{ data.gutschein }}" placeholder="{{ labels.gutschein }}">
+</div>
+{% endif %}
+
+<div class="form-group text-field span-left col-sm-10">
+    <div class="label is-required">{{ labels.mail }}</div>
+    <input type="email" name="mail" id="ctrl_mail" class="text frm_mail" value="{{ data.mail }}" required placeholder="{{ labels.mail }}">
+    {{ errors.first('mail') }}
+</div>

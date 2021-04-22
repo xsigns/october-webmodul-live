@@ -1,0 +1,16 @@
+{% if payment == false %}
+    <button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:2">{{ labels.btnzurueck }}</button>
+    <button id="btnweiter6" class="fewo-btnweiter" onclick="$('#btnweiter6').hide();" data-request="{{ __SELF__ }}::onBtnBuchen">{{ btnbuchen }}</button>
+{% else %}
+    {% for pay in payments %}
+        <div class="payment_container">
+            <label>
+                <div class="{{ pay.class }}"></div>
+                <input type="radio" value="{{pay.name}}" name="paytype">
+            </label>
+        </div>
+    {% endfor %}
+
+    <button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:2">{{ labels.btnzurueck }}</button>
+    <button id="btnweiter7" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnZahlen">{{ btnbuchen }}</button>
+{% endif %}

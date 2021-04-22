@@ -1,0 +1,24 @@
+<form
+        data-request="onSignin">
+    <div class="form-group">
+        <label for="userSigninLogin">{{ lblusername|raw }}</label>
+        <input
+                name="login"
+                type="text"
+                class="form-control"
+                id="userSigninLogin"
+                placeholder="" />
+    </div>
+
+    <div class="form-group">
+        <label for="userSigninPassword">{{ lblpassword|raw }}</label>
+        <input
+                name="password"
+                type="password"
+                class="form-control"
+                id="userSigninPassword"
+                placeholder="" />
+    </div>
+
+    <button type="submit" class="btn btn-default">{{ btnlogin }}</button>
+</form>

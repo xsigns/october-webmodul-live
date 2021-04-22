@@ -1,0 +1,60 @@
+
+<span class="label_buchungsmaske summen_beschreibung">{{ summen.summe}}</span>
+<div class="zeile zeile_objektpreis">
+    <div class="zeilensummentitel">
+        {% if preisalt > 0%}
+        <div class="header_preisalt" style="text-decoration: line-through">{{ summen.objpreisalt }}</div>
+        <div class="header_anzahl"  style="text-decoration: line-through">{{ preisalt }}</div>
+        {% endif %}
+        <div class="header_titel">{{ summen.objpreistitel }}</div>
+        <div class="header_anzahl">{{ tage }}</div>
+    </div>
+
+    <div class="zeilensumme header_objsum">{{ objektpreis }}</div>
+</div>
+<!-- An- und Abreise-->
+<div class="zeile zeile_preise datum">
+    <div class="zeilensummentitel datum">{{ summen.zeitraum }} {{ anreise }} - {{ abreise }}</div>
+</div>
+<!-- Summe feste Leistungen-->
+<div class="zeile zeile_preise sumleist">
+    <div class="zeilensummentitel sumneben_titel">{{ summen.nebenkosten }}</div>
+    <div class="zeilensumme sumneben_wert">{{ nebenkosten }}</div>
+    <div class="sumneben_items">{{ nebenkostenItems|raw }}</div>
+</div>
+<!-- Summe optionale Leistungen-->
+<div class="zeile zeile_preise sumleist">
+    <div class="zeilensummentitel sumleist_titel">{{ summen.leistungen }}</div>
+    <div class="zeilensumme sumleist_wert">{{ leistungen }}</div>
+</div>
+{% if gebeuhr > 0 %}
+<div class="zeile zeile_preise sumzuschlag">
+    <div class="zeilensummentitel sum_titel">{{ summen.gebuehr }}</div>
+    <div class="zeile zeile_zuschlag">{{ gebuehrtext }}</div>
+    <div class="zeilensumme sum_wert">{{ gebuehr }}</div>
+</div>
+{% endif %}
+{% if zuschlag > 0 %}
+<div class="zeile zeile_preise sumzuschlag">
+    <div class="zeilensummentitel sum_titel">{{ summen.zuschlag }}</div>
+    <div class="zeile zeile_zuschlag">{{ zuschlagtext }}</div>
+    <div class="zeilensumme sum_wert">{{ zuschlag }}</div>
+</div>
+{% endif %}
+{% if rabatt > 0 %}
+    <div class="zeile zeile_preise sumrabatt">
+        <div class="zeilensummentitel sum_titel">{{ summen.rabatt }}</div>
+        <div class="zeilensumme sum_wert">{{ rabatt }}</div>
+    </div>
+{% endif %}
+{% if kaution > 0 %}
+    <div class="zeile zeile_preise kaution">
+        <div class="zeilensummentitel sum_titel">{{ summen.kaution }}</div>
+        <div class="zeilensumme kaution">{{ kaution }}</div>
+    </div>
+{% endif %}
+<!-- Gesamtsumme -->
+<div class="zeile zeile_preise gesamtsumme">
+    <div class="zeilensummentitel sum_titel">{{ summen.gesamt }}</div>
+    <div class="zeilensumme sum_wert">{{ summe }}</div>
+</div>

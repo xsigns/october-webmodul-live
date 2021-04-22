@@ -1,0 +1,43 @@
+columns:
+    id:
+        label: Nummer
+        type: number
+        searchable: true
+        sortable: true
+        width: 60px
+    objekt_bew:
+        label: Objekt
+        type: objekt_bew
+        searchable: false
+        sortable: false
+    betreff:
+        label: Betreff
+        type: text
+        searchable: true
+        sortable: true
+    datum:
+        label: Datum
+        type: date
+        searchable: true
+        sortable: true
+        format: d.m.Y
+    gastname:
+        label: Gast
+        type: text
+        searchable: true
+        sortable: true
+    punkte:
+        label: Punkte
+        type: bew_punkte
+        searchable: true
+        sortable: true
+    antwort:
+        label: Antwort
+        type: bew_antwort
+        searchable: true
+        sortable: true
+    aktiv:
+        label: Aktiv
+        type: switch
+        searchable: true
+        sortable: true

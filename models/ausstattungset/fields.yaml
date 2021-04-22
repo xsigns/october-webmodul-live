@@ -1,0 +1,12 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        span: left
+        type: text
+    ausstattung:
+        type: partial
+        path: $/xsigns/fewo/controllers/ausstattungset/ausstattung.htm

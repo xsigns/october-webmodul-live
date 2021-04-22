@@ -1,0 +1,100 @@
+<div id="error-gastdaten"></div>
+
+<button id="edaten" class="fewo-edaten btn btn-secondary mb-3" data-request="{{ __SELF__ }}::onBtnEDaten">{{ labels.edaten }}</button>
+<div class="form-group text-field col-12 col-lg-3 p-0 ">
+    <div class="label">{{ labels.anrede }}</div>
+    <select class="select frm_anrede form-control" name="anrede" id="ctrl_anrede" class="select frm_anrede form-control">
+        {% for anrede in anreden %}
+            <option value="{{ anrede }}" {% if data.anrede == anrede %} selected {% endif %}>{{ anrede }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="form-group text-field col-12 col-lg-3 p-0 ">
+    <div class="label {% if required.titel %}is-required{% endif %}">{{ labels.titel }}</div>
+    <input type="text" name="titel" id="ctrl_titel" class="text frm_titel form-control" value="{{ data.titel }}" placeholder="{{ labels.titel }}">
+</div>
+
+<div class="form-group text-field col-12 col-lg-12 p-0">
+    <div class="label {% if required.firma %}is-required{% endif %}">{{ labels.firma }}</div>
+    <input type="text" name="firma" id="ctrl_firma" class="text frm_firma form-control" value="{{ data.firma }}" placeholder="{{ labels.firma }}">
+    <span id="error_firma" class="validate"></span>
+</div>
+
+<div class="form-group text-field col-12 col-lg-6 float-left p-0 pr-lg-6 float-left">
+    <div class="label is-required">{{ labels.vorname }}</div>
+    <input type="text" name="vorname" id="ctrl_vorname" class="text frm_vorname form-control" value="{{ data.vorname }}" placeholder="{{ labels.vorname }}">
+    <span id="error_vorname" class="validate"></span>
+</div>
+
+
+<div class="form-group text-field col-12 col-lg-6 float-left p-0 float-left">
+    <div class="label is-required">{{ labels.name }}</div>
+    <input type="text" name="name" id="ctrl_name" class="text frm_name form-control" value="{{ data.name }}" required placeholder="{{ labels.name }}">
+    <span id="error_name" class="validate"></span>
+</div>
+
+<div class="form-group text-field col-12 p-0 clear-left">
+    <div class="label is-required">{{ labels.strasse }}</div>
+    <input type="text" name="strasse" id="ctrl_strasse" class="text frm_strasse form-control" value="{{ data.strasse }}" placeholder="{{ labels.strasse }}">
+    <span id="error_strasse" class="validate"></span>
+</div>
+
+<div class="form-group text-field col-12 col-lg-3 p-0 pr-lg-3 float-left">
+    <div class="label is-required">{{ labels.plz }}</div>
+    <input type="text" name="plz" id="ctrl_plz" class="text frm_plz form-control" value="{{ data.plz }}"  placeholder="{{ labels.plz }}">
+    <span id="error_plz" class="validate"></span>
+</div>
+
+<div class="form-group text-field col-12 col-lg-9 p-0 float-left">
+    <div class="label is-required">{{ labels.ort }}</div>
+    <input type="text" name="ort" id="ctrl_ort" class="text frm_ort form-control" value="{{ data.ort }}" placeholder="{{ labels.ort }}">
+    <span id="error_ort" class="valid-tooltip"></span>
+</div>
+
+<div class="form-group text-field col-12 p-0 clear-left">
+    <div class="label label_land">{{ labels.land }}</div>
+    <div class="formselect land">
+        <select class="select frm_land form-control" name="land" id="ctrl_land">
+            {% for land in frmlaender %}
+            <option value="{{ land.id }}" {% if land.id == 'de' %} selected="true" {% endif %}>{{ land.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="form-group text-field col-12 p-0 col-lg-3 clear-left">
+    <div class="label">{{ labels.geb }}</div>
+    <input type="text" name="geb" id="ctrl_geb" class="text frm_geb form-control" value="{{ data.geb }}" required placeholder="{{ labels.geb }}">
+    <span id="error_geb" class="validate"></span>
+    <script type="text/javascript">jQuery(function (){jQuery('#ctrl_geb').dateEntry({dateFormat: 'dmy.', spinnerImage: ''});});</script>
+    <script>jQuery(document).ready(function() {jQuery('#ctrl_geb').val('{{ data.geb }}');});</script>
+</div>
+
+<div class="form-group text-field col-12 col-lg-6 p-0 pr-lg-3 float-left">
+    <div class="label">{{ labels.tel }}</div>
+    <input type="text" name="tel" id="ctrl_tel" class="text frm_tel form-control" value="{{ data.tel }}"  placeholder="{{ labels.tel }}">
+    <span id="error_tel" class="validate"></span>
+</div>
+
+<div class="form-group text-field col-12 col-lg-6 p-0 float-left">
+    <div class="label">{{ labels.mobil }}</div>
+    <input type="text" name="mobil" id="ctrl_mobil" class="text frm_mobil form-control" value="{{ data.mobil }}" placeholder="{{ labels.mobil }}">
+    <span id="error_mobil" class="validate"></span>
+</div>
+<div class="form-group text-field col-12 p-0 clear-left">
+    <div class="label is-required">{{ labels.mail }}</div>
+    <input type="text" name="mail" id="ctrl_mail" class="text frm_mail form-control" value="{{ data.mail }}" placeholder="{{ labels.mail }}">
+    <span id="error_mail" class="validate"></span>
+
+</div>
+<div class="form-group text-field col-12 p-0 clear-left">
+    <div class="label">{{ labels.perso }}</div>
+    <input type="text" name="perso" id="ctrl_perso" class="text frm_perso form-control" value="{{ data.perso }}" placeholder="{{ labels.perso }}">
+    <span id="error_perso" class="validate"></span>
+
+</div>
+<div class="form-group text-field col-12 p-0 clear-left">
+    <div class="label">{{ labels.nachricht }}</div>
+    <textarea name="nachricht" id="ctrl_nachricht" class="text frm_nachricht form-control" rows="4" cols="50" placeholder="{{ labels.nachricht }}">{{ data.nachricht }}</textarea>
+</div>

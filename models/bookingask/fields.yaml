@@ -1,0 +1,20 @@
+fields:
+    ask_name:
+        label: xsigns.fewo::lang.bookingask.ask_name
+        placeholder: xsigns.fewo::lang.bookingask.ask_name_placeholder
+        type: text
+        size: tiny
+        span: left
+        cssClass: col-sm-4
+    ask_from:
+        label: xsigns.fewo::lang.bookingask.ask_from
+        type: datepicker
+        mode: date
+        span: left
+        cssClass: col-sm-4
+    ask_to:
+        label: xsigns.fewo::lang.bookingask.ask_to
+        type: datepicker
+        mode: date
+        span: right
+        cssClass: col-sm-4

@@ -1,0 +1,15 @@
+ {% for ausst, aus in ausstattung %}
+    <div  class="fewo-ausst-group group-{{ ausst }}">
+        {% if ul %}
+        <ul>
+            {% for attr in aus %}
+            <li>{{ attr|raw }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        {% for attr in aus %}
+            <div class="fewo-ausst-attr">{{ attr|raw }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+{% endfor %}

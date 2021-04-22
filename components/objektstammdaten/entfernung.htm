@@ -1,0 +1,14 @@
+<div class="fewo-objektentf">
+    {{ header|raw }}
+    <ul class="entfernungen">
+        {% for entf in entfernungen %}
+            <li>{{ entf.titel }}<span class="entfernung_km">{{ entf.km }}</span>
+                {% if showToolTip %}<span class="fewo-tooltip" data-toggle="tooltip" data-placement="right" title="{{ entf.tooltip|raw }}"></span>{% endif %}
+                <!--
+                Mögliche Daten
+                entf.url,entf.lat,entf.lng
+                -->
+            </li>
+        {% endfor %}
+    </ul>
+</div>

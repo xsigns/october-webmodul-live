@@ -1,0 +1,65 @@
+{{ pagination|raw }}
+{% for objekt in objekte %}
+<article class="post fewo-item {{ listitemcss }}">
+    <div itemscope itemtype="http://schema.org/Product">
+        {% if objekt.Titel %}
+        <div class="fewo-titel"><a href="{{ objekt.href }}"><span itemprop="name">{{ objekt.Titel|raw }}</span></a></div>
+        {% endif %}
+
+        {% if objekt.slider == false %}
+        <div class="fewo-image">
+            <a href="{{ objekt.href }}"><img itemprop="image"  src="{{ objekt.image.thumb(objekt.image_width,objekt.image_height) }}" alt="{{ objekt.image.title }}" title="{{ objekt.image.title }}"/></a>
+        </div>
+        {% else %}
+        <div class="fewo_list_image">
+            <div class="fewo_listnavileft fewo_slidernav" onclick="javascript:bildZurueck('fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}');"></div>
+            <a href="{{ objekt.href }}"><img id="fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}" data-posid="0" data-images='{{ objekt.images|raw}}' class="fewo_listimage" src="{{ objekt.img_bild}}" alt="{{ objekt.title }}" title="{{ objekt.title }}"/></a>
+            <div class="fewo_listnaviright fewo_slidernav" onclick="javascript:bildWeiter('fewolistslider_{{ objekt.itemid}}_{{ objekt.id }}');"></div>
+        </div>
+        {% endif %}
+        {% if objekt.Bewertung %}
+        <div class="fewo-rating">
+            {{ objekt.Bewertung|raw }}
+            <div class="clearfix"></div>
+            <div class="fewo-rating-text">{{ objekt.BewertungText|raw }}</div>
+        </div>
+        {% endif %}
+        {% if objekt.Art %}<div class="fewo-art">{{ objekt.Art|raw }}</div>{% endif %}
+        {% if objekt.Typ %}<div class="fewo-typ">{{ objekt.Typ|raw }}</div>{% endif %}
+        {% if objekt.Region %}<div class="fewo-region">{{ objekt.Region|raw }}</div>{% endif %}
+        {% if objekt.Sterne %}<div class="fewo-sterne">{{ objekt.Sterne|raw }}</div><div class="clearfix"></div>{% endif %}
+        {% if objekt.Kurztext %}<div class="fewo-text">{{ objekt.Kurztext|raw }}</div>{% endif %}
+        {% if objekt.ID %}<div class="fewo-number">{{ objekt.ID }}</div>{% endif %}
+        {% if objekt.Zimmer %}<div class="fewo-room">{{ objekt.Zimmer|raw }}</div>{% endif %}
+        {% if objekt.Schlafzimmer %}<div class="fewo-bed">{{ objekt.Schlafzimmer|raw }}</div>{% endif %}
+        {% if objekt.Badezimmer %}<div class="fewo-bath">{{ objekt.Badezimmer|raw }}</div>{% endif %}
+        {% if objekt.Groesse %}<div class="fewo-groesse">{{ objekt.Groesse|raw }}</div>{% endif %}
+        {% if objekt.Betten %}<div class="fewo-betten">{{ objekt.Betten|raw }}</div>{% endif %}
+        {% if objekt.Ausstattung %}<div class="fewo-ausstattung">{{ objekt.Ausstattung|raw }}</div>{% endif %}
+        {% if objekt.LetzteBuchung %}<div class="fewo-letzte">{{ objekt.LetzteBuchung|raw }}</div>{% endif %}
+        {% if objekt.Personen %}<div class="fewo-personen">{{ objekt.Personen|raw }}</div>{% endif %}
+        {% if objekt.Erwachsene %}<div class="fewo-adults">{{ objekt.Erwachsene|raw }}</div>{% endif %}
+        {% if objekt.Kinder %}<div class="fewo-childreen">{{ objekt.Kinder|raw }}</div>{% endif %}
+        {% if objekt.KleinKinder %}<div class="fewo-childreen">{{ objekt.KleinKinder|raw }}</div>{% endif %}
+        {% if objekt.OptBelegung %}<div class="fewo-optperson">{{ objekt.OptBelegung|raw }}</div>{% endif %}
+        {% if objekt.Etage %}<div class="fewo-floor">{{ objekt.Etage|raw }}</div>{% endif %}
+        {% if objekt.Adresse %}
+        <div class="fewo-address">
+            {{ objekt.Strasse|raw }}, {{ objekt.Land|raw }} {{ objekt.PLZ|raw }} {{ objekt.Ort|raw }}
+        </div>
+        {% endif %}
+        {% if objekt.VerArt %}<div class="fewo-verart">{{ objekt.VerArt|raw }}</div>{% endif %}
+        {% if objekt.btnDetail %}
+        <div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ objekt.href }}" {% if targetblank == 1 %}target="_blank"{% endif %}>{{ objekt.btnDetail }}</a></div>
+        {% endif %}
+        {% if objekt.btnBuchung %}
+        <div class="btn btn-success btn-sm fewo-btndetail"><a href="#" data-request="{{ __SELF__ }}::onBtnBuchen" data-request-data="offerid:{{ offerid }},objectid: {{ objekt.id }}">{{ objekt.btnBuchung }}</a></div>
+        {% endif %}
+        {% if objekt.btnAngebot %}
+        <input type="hidden" name="offerid{{ id }}" value="{{ id }}">
+        <div class="btn btn-success btn-sm fewo-btndetail"><a href="#" data-request="{{ __SELF__ }}::onBtnAngebot" data-request-data="offerid:{{ offerid }},objectid: {{ objekt.id }}">{{ objekt.btnAngebot }}</a></div>
+        {% endif %}
+    </div>
+</article>
+{% endfor %}
+{{ pagination|raw }}

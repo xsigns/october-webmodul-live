@@ -1,0 +1,20 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: xsigns.fewo::lang.ausstattungset.name
+
+# Model Form Field configuration
+form: ~/plugins/xsigns/fewo/models/ausstattungset/fields.yaml
+
+# Model Class name
+modelClass: xsigns\fewo\Models\AusstattungSet
+
+# Default redirect location
+defaultRedirect: xsigns/fewo/ausstattungset
+
+#update:
+#    title: xsigns.fewo::lang.booking.update_booking
+#    redirect: xsigns/fewo/bookinglist
+#    redirectClose: xsigns/fewo/bookinglist

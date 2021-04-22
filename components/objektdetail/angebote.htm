@@ -1,0 +1,15 @@
+<div class="fewo-angebote">
+    <div class="ang-header">{{ angHeader|raw }}</div>
+    {% for angebot in angebote %}
+    <div class="ang-titel">{{ angebot.titel|raw }}</div>
+    <div class="ang-untertitel">{{ angebot.untertitel|raw }}</div>
+    <div class="ang-beschreibung">{{ angebot.beschreibung|raw }}</div>
+    <div class="ang-von">{{ angebot.vonbis }}</div>
+    <div class="ang-art">{{ angebot.art}}</div>
+    <!-- {{ angebot.tagebuchen }}
+    {{ angebot.tagezahlen }}
+    {{ angebot.preis }}
+    {{ angebot.prozent }} -->
+    <div class="btn btn-success btn-sm fewo-angbtndetail"><a href="{{ angebot.anghref }}" rel="nofollow">{{ btnAngDetail }}</a></div>
+    {% endfor %}
+</div>

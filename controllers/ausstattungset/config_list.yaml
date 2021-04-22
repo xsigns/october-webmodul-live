@@ -1,0 +1,16 @@
+title: Ausstattungen
+modelClass: xsigns\fewo\Models\AusstattungSet
+list: $/xsigns/fewo/models/ausstattungset/columns.yaml
+recordUrl: 'xsigns/fewo/ausstattungset/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: '20'
+showSetup: true
+showCheckboxes: true
+showSorting: 1
+defaultSort:
+    column: id
+    direction: desc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

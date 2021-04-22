@@ -1,0 +1,13 @@
+<li class="nav-item {{ class_tab1 }}" id="tab1"><a class="nav-link" href="#1" data-request="{{ __SELF__ }}::onTabChange" data-tab="tab1" data-request-data="tabid:1" data-toggle="tab" role="tab">{{ tab_zeitraum }}</a></li>
+<li class="nav-item {{ class_tab2 }}" id="tab2"><a class="nav-link" href="#2" data-request="{{ __SELF__ }}::onTabChange" data-tab="tab2" data-request-data="tabid:2" data-toggle="tab" role="tab">{{ tab_gastdaten }}</a></li>
+{% if showmitreisende %}
+    <li class="nav-item {{ class_tab3 }}" id="tab3"><a class="nav-link" href="#3" data-request="{{ __SELF__ }}::onTabChange" data-tab="tab3" data-request-data="tabid:3" data-toggle="tab" role="tab">{{ tab_mitreisende }}</a></li>
+{% endif %}
+{% if showleistungen %}
+    <li class="nav-item {{ class_tab4 }}" id="tab4"><a class="nav-link" href="#4" data-request="{{ __SELF__ }}::onTabChange" data-tab="tab4" data-request-data="tabid:4" data-toggle="tab" role="tab">{{ tab_leistungen }}</a></li>
+{% endif %}
+<li class="nav-item {{ class_tab5 }}" id="tab5"><a class="nav-link" href="#5" data-request="{{ __SELF__ }}::onTabChange" data-tab="tab5" data-request-data="tabid:5" data-toggle="tab" role="tab">{{ tab_hinweise }}</a></li>
+<li class="nav-item {{ class_tab6 }}" id="tab6"><a class="nav-link" href="#6" data-request="{{ __SELF__ }}::onTabChange" data-tab="tab6" data-request-data="tabid:6" data-toggle="tab" role="tab">{{ tab_zusammen }}</a></li>
+{% if zahltab %}
+    <li class="nav-item {{ class_tab7 }}" id="tab7"><a class="nav-link" href="#7" data-request="{{ __SELF__ }}::onTabChange" data-tab="tab7" data-request-data="tabid:7" data-toggle="tab" role="tab">{{ tab_zahlen }}</a></li>
+{% endif %}

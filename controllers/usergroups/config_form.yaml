@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: xsigns.fewo::lang.eigentuemerlogin.group.label
+
+# Model Form Field configuration
+form: $/xsigns/fewo/models/usergroup/fields.yaml
+
+# Model Class name
+modelClass: Xsigns\Fewo\Models\UserGroup
+
+# Default redirect location
+defaultRedirect: xsigns/fewo/usergroups
+
+# Create page
+create:
+    title: xsigns.fewo::lang.eigentuemerlogin.groups.create_title
+    redirect: xsigns/fewo/usergroups/update/:id
+    redirectClose: xsigns/fewo/usergroups
+
+# Update page
+update:
+    title: xsigns.fewo::lang.eigentuemerlogin.groups.update_title
+    redirect: xsigns/fewo/usergroups
+    redirectClose: xsigns/fewo/usergroups
+
+# Preview page
+preview:
+    title: xsigns.fewo::lang.eigentuemerlogin.groups.update_title

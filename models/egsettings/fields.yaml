@@ -1,0 +1,22 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+tabs:
+    fields:
+        # Throttle Sign In
+        use_throttle:
+            span: left
+            label: xsigns.fewo::lang.eigentuemerlogin.settings.use_throttle
+            comment: xsigns.fewo::lang.eigentuemerlogin.settings.use_throttle_comment
+            type: switch
+            tab: xsigns.fewo::lang.eigentuemerlogin.settings.signin_tab
+
+        # Login Attribute
+        login_attribute:
+            span: right
+            label: xsigns.fewo::lang.eigentuemerlogin.settings.login_attribute
+            commentAbove: xsigns.fewo::lang.eigentuemerlogin.settings.login_attribute_comment
+            type: radio
+            default: attribue_username
+            tab: xsigns.fewo::lang.eigentuemerlogin.settings.signin_tab

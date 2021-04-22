@@ -1,0 +1,191 @@
+<div class="fewo-saisonzeiten {{ saisoncss }}">
+    {{ titel|raw }}
+    {% if summen == 1 %}
+    <table class="fewo_details_saison">
+        <thead>
+        <tr>
+            <td class="fewo_saisonhead_titel">{{ saisonL.name }}</td>
+            <td class="fewo_saisonhead_preis preis_1">{{ saisonL.day1 }}</td>
+            <td class="fewo_saisonhead_preis preis_2">{{ saisonL.day2 }}</td>
+            <td class="fewo_saisonhead_preis preis_3">{{ saisonL.day3 }}</td>
+            <td class="fewo_saisonhead_preis preis_4">{{ saisonL.day4 }}</td>
+            <td class="fewo_saisonhead_preis preis_5">{{ saisonL.day5 }}</td>
+            <td class="fewo_saisonhead_preis preis_6">{{ saisonL.day6 }}</td>
+            <td class="fewo_saisonhead_preis preis_7">{{ saisonL.day7 }}</td>
+            <td class="fewo-head-bpers">{{ saisonL.persons }}</td>
+            {% if __SELF__.getProperty('weitere') == 1 %}
+            <td class="fewo_saisonhead_preis preis_weitere">{{ saisonL.price_more }}</td>
+            {% endif %}
+            {% if __SELF__.getProperty('neben') == 1 %}
+            <td class="fewo-head-neben">{{ saisonL.nebenkosten }}</td>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% set types = '_even' %}
+        {% for saison in saisonzeiten %}
+        {% if types == '_even' %}
+        {% set types='_odd' %}
+        {% else  %}
+        {% set types = '_even' %}
+        {% endif %}
+        <tr class="fewo_saison_line{{ types }}">
+            <td class="fewo_saison_titel" ><span class="fewo_saison_zeitraum">{{ saison.von }} - {{ saison.bis }}</span> {{ saison.titel }}</td>
+            <td class="fewo_saison_preis preis_1">{{ saison.preis1 }}</td>
+            <td class="fewo_saison_preis preis_2">{{ saison.preis2 }}</td>
+            <td class="fewo_saison_preis preis_3">{{ saison.preis3 }}</td>
+            <td class="fewo_saison_preis preis_4">{{ saison.preis4 }}</td>
+            <td class="fewo_saison_preis preis_5">{{ saison.preis5 }}</td>
+            <td class="fewo_saison_preis preis_6">{{ saison.preis6 }}</td>
+            <td class="fewo_saison_preis preis_7">{{ saison.preis7 }}</td>
+            <td class="fewo-saison-bpers">{{ saison.personen }}</td>
+            {% if __SELF__.getProperty('weitere') == 1 %}
+            <td class="fewo_saison_preis preis_weitere">{{ saison.weitere }}</td>
+            {% endif %}
+            {% if __SELF__.getProperty('neben') == 1 %}
+            <td class="fewo-saison-neben">{{ saison.nebenkosten }}</td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <table class="fewo-saison">
+        {% if mobile %}
+            <tbody>
+            {% set types = '_even' %}
+            {% for saison in saisonzeiten %}
+            {% if types == '_even' %}
+            {% set types='_odd' %}
+            {% else  %}
+            {% set types = '_even' %}
+            {% endif %}
+            <tr class="fewo-saison-line{{ types }}">
+                <td class="fewo-saison-titel" >{{ saison.titel}}</td>
+                <td class="fewo-saison-zeitraum">{{ saison.von }} - {{ saison.bis }}</td>
+                {% if mintage == 1 %}
+                <td class="fewo-saison-mintage"><span class="mobile_price_label">{{ saisonlabels.mintage|raw }}</span>{{ saison.mintage }}</td>
+                {% endif %}
+                {% if erstertag == 1 %}
+                <td class="fewo-saison-preis"><span class="mobile_price_label">{{ saisonlabels.wochenpreis|raw }}</span>{{ saison.preis1 }}</td>
+                {% endif %}
+                {% if mintagepreis == 1 %}
+                <td class="fewo-saison-preis"><span class="mobile_price_label">{{ saisonlabels.mintagepreis|raw }}</span>{{ saison.mintagepreis|raw }}</td>
+                {% endif %}
+                <td class="fewo-saison-preis"><span class="mobile_price_label">{{ saisonlabels.tagespreis|raw }}</span>{{ saison.preis }}</td>
+                {% if wochenpreise == 1 %}
+                <td class="fewo-head-preis"><span class="mobile_price_label">{{ saisonlabels.wochenpreis|raw }}</span>{{ saison.woche }}</td>
+                {% endif %}
+                <td class="fewo-saison-bpers"><span class="mobile_price_label">{{ saisonlabels.bpersonen|raw }}</span>{{ saison.personen }}</td>
+                {% if weitere == 1 %}
+                <td class="fewo-saison-wpers"><span class="mobile_price_label">{{ saisonlabels.wpersone|raw }}</span>{{ saison.weitere }}</td>
+                {% endif %}
+                {% if anreise == 1 %}
+                <td class="fewo-saison-wpers"><span class="mobile_price_label">{{ saisonlabels.wpersone|raw }}</span>{{ saison.weitere }}</td>
+                {% endif %}
+                {% if kaution == 1 %}
+                <td class="fewo-saison-anreise"><span class="mobile_price_label">{{ saisonlabels.kaution|raw }}</span>{{ saison.kaution }}</td>
+                {% endif %}
+                {% if anzahlung == 1 %}
+                <td class="fewo-saison-anreise"><span class="mobile_price_label">{{ saisonlabels.anzahlung|raw }}</span>{{ saison.anzahlung }}</td>
+                {% endif %}
+                {% if neben == 1 %}
+                <td class="fewo-saison-neben"><span class="mobile_price_label">{{ saisonlabels.nebenkosten|raw }}</span>{{ saison.nebenkosten }}</td>
+                {% endif %}
+                {% if luecke == 1 %}
+                <td class="fewo-saison-luecke"><span class="mobile_price_label">{{ saisonlabels.luecke|raw }}</span>{{ saison.luecke }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        {% else %}
+            <thead>
+            <tr>
+                <td class="fewo-head-titel">{{ saisonlabels.saisonzeit|raw }}</td>
+                <td class="fewo-head-zeitraum">{{ saisonlabels.zeitraum|raw }}</td>
+                {% if mintage == 1 %}
+                <td class="fewo-head-mintage">{{ saisonlabels.mintage|raw }}</td>
+                {% endif %}
+                {% if erstertag == 1 %}
+                <td class="fewo-head-preis">{{ saisonlabels.erstertag|raw }}</td>
+                {% endif %}
+                {% if mintagepreis == 1 %}
+                <td class="fewo-head-mintagepreis">{{ saisonlabels.mintagepreis|raw }}</td>
+                {% endif %}
+                <td class="fewo-head-preis">{{ saisonlabels.tagespreis|raw }}</td>
+                {% if wochenpreise == 1 %}
+                <td class="fewo-head-preis">{{ saisonlabels.wochenpreis|raw }}</td>
+                {% endif %}
+                <td class="fewo-head-bpers">{{ saisonlabels.bpersonen|raw }}</td>
+                {% if weitere == 1 %}
+                <td class="fewo-head-wpers">{{ saisonlabels.wpersonen|raw }}</td>
+                {% endif %}
+                {% if anreise == 1 %}
+                <td class="fewo-head-anreise">{{ saisonlabels.anreisetag|raw }}</td>
+                {% endif %}
+                {% if kaution == 1 %}
+                <td class="fewo-head-kaution">{{ saisonlabels.kaution|raw }}</td>
+                {% endif %}
+                {% if anzahlung == 1 %}
+                <td class="fewo-saison-anzahlung">{{ saisonlabels.anzahlung|raw }}</td>
+                {% endif %}
+                {% if neben == 1 %}
+                <td class="fewo-head-neben">{{ saisonlabels.nebenkosten|raw }}</td>
+                {% endif %}
+                {% if luecke == 1 %}
+                <td class="fewo-head-luecke">{{ saisonlabels.luecke|raw }}</td>
+                {% endif %}
+
+            </tr>
+            </thead>
+            <tbody>
+            {% set types = '_even' %}
+            {% for saison in saisonzeiten %}
+            {% if types == '_even' %}
+            {% set types='_odd' %}
+            {% else  %}
+            {% set types = '_even' %}
+            {% endif %}
+            <tr class="fewo-saison-line{{ types }}">
+                <td class="fewo-saison-titel" >{{ saison.titel}}</td>
+                <td class="fewo-saison-zeitraum">{{ saison.von }} - {{ saison.bis }}</td>
+                {% if mintage == 1 %}
+                <td class="fewo-saison-mintage">{{ saison.mintage }}</td>
+                {% endif %}
+                {% if erstertag == 1 %}
+                <td class="fewo-saison-preis">{{ saison.preis1 }}</td>
+                {% endif %}
+                {% if mintagepreis == 1 %}
+                <td class="fewo-saison-preis">{{ saison.mintagepreis|raw }}</td>
+                {% endif %}
+                <td class="fewo-saison-preis">{{ saison.preis }}</td>
+                {% if wochenpreise == 1 %}
+                <td class="fewo-head-preis">{{ saison.woche }}</td>
+                {% endif %}
+                <td class="fewo-saison-bpers">{{ saison.personen }}</td>
+                {% if weitere == 1 %}
+                <td class="fewo-saison-wpers">{{ saison.weitere }}</td>
+                {% endif %}
+                {% if anreise == 1 %}
+                <td class="fewo-saison-anreise">{{ saison.anreisetag }}</td>
+                {% endif %}
+                {% if kaution == 1 %}
+                <td class="fewo-saison-anreise">{{ saison.kaution }}</td>
+                {% endif %}
+                {% if anzahlung == 1 %}
+                <td class="fewo-saison-anreise">{{ saison.anzahlung }}</td>
+                {% endif %}
+                {% if neben == 1 %}
+                <td class="fewo-saison-neben">{{ saison.nebenkosten }}</td>
+                {% endif %}
+                {% if luecke == 1 %}
+                <td class="fewo-saison-luecke">{{ saison.luecke }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        {% endif %}
+    </table>
+    {% endif %}
+</div>

@@ -1,0 +1,14 @@
+title: SlideShows
+modelClass: Xsigns\fewo\Models\SlideShows
+list: $/xsigns/fewo/models/slideshows/columns.yaml
+recordUrl: 'xsigns/fewo/slideshows/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+# Displays the list column set up button
+recordsPerPage: 20
+
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

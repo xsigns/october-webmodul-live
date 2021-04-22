@@ -1,0 +1,40 @@
+<section class="bg-farbe">
+    <div class="container">
+        <div class="col-12 float-left">
+            <div class="col-12 bg-primary float-left objekt_titel"><h1 class="text-white float-left">{{ Obj_Titel }}</h1><a class="btn btn-info btn-sm float-right link-back" href="javascript:history.go(-1)">zurück</a>
+            </div>
+        </div>
+        
+        <div class="abstand2-bottom col-12 col-lg-4 pl-0 detail_container float-left ">
+            <div class="col-12 bg-white pb-3 detail_minheight">
+                <div class="col-12 bg-secondary text-right p-3 mt-3 box_right preise_detail">
+                    {{ Obj_AbPreis|raw }}
+                </div>
+                <div class="col-12 bg-secondary text-right p-3 mt-3 d-inline-block"  >
+                    <div class="col-12 p-0 col-sm-7 text-center font-weight-bold float-left"><i class="fa fa-user"></i>
+                        {{ Obj_Personen|raw }}<br>
+                    </div>
+                    <div class="col-12 p-0 col-sm-5 text-center font-weight-bold float-left"><i class="fa fa-home"></i>
+                        {{ Obj_Groesse|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="obj_inline col-12 mt-4 clear-left">
+            <h2 class="detailseite_title  bg-primary text-white"> Objektbeschreibung </h2>
+            <div class="obj_bg">
+                {{ Obj_Preis1Text|raw }}
+                {{ Obj_Beschreibung|raw }}
+                <br>{{ Obj_Anreise }}
+                <br>{{ Obj_Abreise }}
+            </div>
+
+
+            <h2 class="detailseite_title bg-primary text-white"> Lage </h2>
+            <div class="obj_bg">
+                {{ Obj_Lage|raw }}
+            </div>
+        </div>
+    </div>
+</section>

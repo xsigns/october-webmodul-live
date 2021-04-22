@@ -1,0 +1,28 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: xsigns.fewo::lang.galerie.name
+
+# Model Form Field configuration
+form: ~/plugins/xsigns/fewo/models/gallery/fields.yaml
+
+# Model Class name
+modelClass: xsigns\fewo\Models\Gallery
+
+# Default redirect location
+defaultRedirect: xsigns/fewo/galleries
+
+create:
+    title: xsigns.fewo::lang.galleries.create_galleries
+    redirect: xsigns/fewo/galleries/update/:id
+    redirectClose: xsigns/fewo/galleries
+
+update:
+    title: xsigns.fewo::lang.galleries.update_galleries
+    redirect: xsigns/fewo/galleries
+    redirectClose: xsigns/fewo/galleries
+
+preview:
+    title: xsigns.fewo::lang.galleries.preview_galleries

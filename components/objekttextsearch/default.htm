@@ -1,0 +1,26 @@
+<div class="textsuche">
+    <div class="ui search category ">
+            <input class="prompt" type="text" placeholder="{{ placeholder }}">
+            <i class="search icon blue"></i>
+        <div class="results"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var search = $(".ui.search.category").search({
+            // Set source property to get categories data.
+            source: {{ searchOptions|raw }},
+            type: "category",
+            duration: 100,
+            maxResults: 5,
+            showNoResults: false,
+            fields: {
+                title : 'title',
+                description: ''
+            },
+            searchFields: [
+                'description',
+            ],
+        });
+    });
+</script>

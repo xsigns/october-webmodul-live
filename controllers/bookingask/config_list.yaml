@@ -1,0 +1,16 @@
+title: Gesperrte Zeiträume
+modelClass: xsigns\fewo\Models\BookingAsk
+list: $/xsigns/fewo/models/bookingask/columns.yaml
+recordUrl: 'xsigns/fewo/bookingask/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: '20'
+showSetup: true
+showCheckboxes: true
+showSorting: 1
+defaultSort:
+    column: id
+    direction: desc
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

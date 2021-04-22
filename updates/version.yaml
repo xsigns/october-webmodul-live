@@ -1,0 +1,515 @@
+1.0.0:
+    - 'Initialize plugin.'
+    - create_tables.php
+    - create_slider.php
+    - create_galleries_table.php
+1.0.1:
+    - Update database insert fellows.
+    - create_update01.php
+1.0.2:
+    - Insert selectboxes in listfilter
+1.0.3:
+    - Change objectlist
+1.0.4:
+    - Plugin for MYSQL 5.7 adjusted
+1.0.5:
+    - Change directory query if october installed in a subdirectory
+1.0.6:
+    - Change calculation of surcharges
+1.0.7:
+    - Change functions deinstaller
+1.0.8:
+    - Change MySql function getMinPersonen
+1.0.9:
+    - change bookingmask (default.html) and delete MySql functions
+    - create_update02.php
+1.1.0:
+    - Bug fix in get ratings
+1.1.1:
+    - Bug fix in offers
+1.1.2:
+    - Bug fix in offers2
+1.1.3:
+    - Update02 fix
+1.1.4:
+    - Bug fix objectlist search and sorting
+1.1.5:
+    - Insert sync to feondi channelmanager and add gound plan default image
+    - create_update03.php
+1.1.6:
+    - show ratings on a separate page
+1.1.7:
+    - Image sorting in objects by number
+1.1.8:
+    - Chang marker buttons in details and listings
+1.1.9:
+    - Upadte fields in prices and add map in object-list
+1.2.0:
+    - Bookingplan add selectbox to change month, add region filter in objectlist
+1.3.1:
+    - Add back buttons to bookingmask, change image loader for objects and houses
+1.3.2:
+    - Add delete button in calendar control (bookingmask).
+1.3.3:
+    - Bug fixes mindays in calendar control (bookingmask) and show cancellations in the occupancy plan.
+1.3.4:
+    - Change listfilter partial (see upgrade info).
+1.3.5:
+    - Add component Object-Map, Change partials bookingmask, searchmask, calculator and listfilter
+    - Add onle line claendar-control in settings (see upgrade info).
+1.3.6:
+    - Change calculator and object listsearch
+1.3.7:
+    - Change component objektmap(LeafLet)
+1.3.8:
+    - Update global settings (not today, target option)
+1.3.9:
+    - Upgrade leaflet and openstreetmap
+1.4.0:
+    - Upgrade offers
+1.4.1:
+    - Add endDate to datepicker
+1.4.2:
+    - Add round (decimal or int) in rating list and ratings
+1.4.3:
+    - Change pagination in objectlist, change zoom in leaflet
+1.4.4:
+    - Change pagination menue
+1.4.5:
+    - FIX Bug in DOM XML
+1.4.6:
+    - FIX Bug in services
+1.4.7:
+    - Update database field sort in objects to integer
+    - create_update04.php
+1.4.8:
+    - Update Database
+1.4.9:
+    - Update bookingmask, equipments in listfilter, details and objectlists
+    - check the equipment in objectdetails and objectlists before updating
+1.5.0:
+    - Create table settings
+    - create_update05.php
+1.5.1:
+    - Change bookingmask
+1.5.2:
+    - Bugfix in the object list and the equipment, Bugfix in objektlist filter (yes,or,not)
+
+1.5.3:
+    - FIX user permissions
+1.5.4:
+    - Add sorting to houselist
+    - create_update06.php
+1.5.5:
+    - Older installations require a new license file
+1.5.6:
+    - Remove required modul Currency
+1.5.7:
+    - Add external booking number to fewoverwalter
+    - create_update07.php
+1.5.8:
+    - Add multi price calculator on one page
+1.5.9:
+    - API Payment Bug
+1.6.0:
+    - Add calculated price in the object lists
+1.6.1:
+    - Add offers to bookingmask
+1.6.2:
+    - Add voting import/sync from FewoVerwalter
+1.6.3:
+    - Add guest login
+1.6.4:
+    - Fix error in booking date fields
+1.6.5:
+    - Fix error in offers date fields
+1.6.6:
+    - Add messenger component
+    - create_update08.php
+1.6.7:
+    - Add Translate Plugin in all sites
+1.6.8:
+    - Fix Bug in leaflet fullscreen
+    - Create multilanguage field in sortings
+1.6.9:
+    - Add calculated price in object list
+1.7.0:
+    - Add language in bookingmask
+1.7.1:
+    - Add index on field haus_land
+    - create_update09.php
+1.7.2:
+    - change plugin permissions for admins
+1.7.3:
+    - Change special characters ú,é,á,í,ó,ù,è,à,ì,ò in aliases to u,e,a,i,o.
+1.7.4:
+    - Several arrival days in calendar possible
+    - create_update10.php
+1.7.5:
+    - Add alterntive css selection in globalsettings for calendars
+1.7.6:
+    - Add day prices seasons
+1.7.7:
+    - Fix bug in calendar
+1.7.8:
+    - Fix bug mindays in calendar
+1.7.9:
+    - Add multi arrival days in serachmask and filtermask
+1.8.0:
+    - Check upgrade 1.7.9. After the upgrade the user has to send all data.
+1.8.1:
+    - Add index in objects table to increase the performance and adjustment of equipment to avoid duplication of expenditure
+1.8.2:
+    - Add placeholder in calender input (bookingmask, search, listfilter)
+1.8.3:
+    - Add new listfiler and searchbox
+1.8.4:
+    - Fix display errors in upgrade guide
+1.8.5:
+    - Fix HOBEX login
+1.8.6:
+    - Insert HOBEX Log in event-log. Change Voting-Slider.
+1.8.7:
+    - Change HOBEX Log event
+1.8.8:
+    - Add hobex result code 000.200.100
+1.8.9:
+    - Insert HOBEX Port-Check
+1.9.0:
+    - Add sum mindaysprice in objectlist and object base data
+1.9.1:
+    - Change function getBokkings from FewoVerwalter
+1.9.2:
+    - Change listfilter and objectlist (only for side speed)
+1.9.3:
+    - Remove tooltip in services and change objekttextsearch
+1.9.4:
+    - Change HOBEX Request, Change listfilter
+1.9.5:
+    - Insert HOBEX Log in events
+1.9.6:
+    - Add license plate on booking mask
+    - create_update11.php
+1.9.7:
+    - Add Hobex-Status Pending
+    - create_update12.php
+1.9.8:
+    - Update fancybox in image slider
+1.9.9:
+    - FIX error blocking
+2.0.0:
+    - Insert House list and details
+2.0.1:
+    - Insert button 'more objects' in objectbuttons
+2.0.2:
+    - Percent offers can now be booked over the entire period if set longer
+2.0.3:
+    - Fix bug in votings
+2.0.4:
+    - Fix Bug in IMPORT/API booking canceled, cancellation
+2.0.5:
+    - FIX Bug in caldendar component (IE only). Change HOBEX payment mask
+2.0.6:
+    - Add more than 4 accounting files in owner login. Fix Bug in calendar-update
+    - create_update13.php
+2.0.7:
+    - Add manage blocking and set it only to inquire
+    - create_update14.php
+2.0.8:
+    - Change field birthdate in bookking to varchar
+    - create_update15.php
+2.0.9:
+    - Fix bug in leaflet markercluster
+2.1.0:
+    - Fix bug in leaflet fullscreen
+2.1.1:
+    - Fix alert in bookingmask date-fields
+2.1.2:
+    - FIX bug in mail documents
+2.1.3:
+    - Add blocking dates, change booking infos and postpages in booking-component
+    - create_update16.php
+2.1.4:
+    - Change booking-type and date on blocked dates
+2.1.5:
+    - Insert option-bookings in blocked listings
+2.1.6:
+    - PHP code has been changed. In the Partials and Views are no changes.
+2.1.7:
+    - FIX Bug in price calculator. In the Partials and Views are no changes.
+2.1.8:
+    - Checkbox für Werbung (z.B. Bewertungsmail) in der Buchungsmaske hinzugefügt.
+    - create_update17.php
+2.1.9:
+    - Platzhalter für eMail-Templates erweitert {{ LANDLANG }}.
+2.2.0:
+    - Rundungsfehler bei Bewertungen in der Listenseite gefixt.
+2.2.1:
+    - Anpassung Werbemail bei HOBEX-Zahlungen und Übergabe an Fewo-Verwalter.
+2.2.2:
+    - Zahlungen für Gastzugang hinzugefügt.
+    - create_update18.php
+2.2.3:
+    - Mitreisende, Anpassung Partial
+2.2.4:
+    - Bug in menuetab.htm in Buchungsmaske. Tab 7 wurde nicht disabled.
+2.2.5:
+    - Bug in Datumsfeld bei Mitreisenden gefixt.
+    - Erweiterung der Panoramabilder um den Bootstrap-Slider
+2.2.6:
+    - Update der Objekteliste in den Angeboten
+2.2.7:
+    - Stornierungen werden nicht mehr in der Vorgangstabelle gespeichert.
+2.2.8:
+    - Abfrage bei Min-Preis ob Preis > 0€. Gibt keinen Min-Preis mit 0 € mehr aus.
+2.2.9:
+    - Interne Anpassung der Belegungsdaten. Schnelleres Laden der Belegungsdaten.
+2.3.0:
+    - KFZ-Kennzeichen als Feld hinzugefügt
+2.4.0:
+    - Anpassung der Schema.org-Daten. Erfassung der Koordinaten und Öffnungszeit nach dem Update.
+2.5.0:
+    - Zuschlag in Angeboten an und abschalten
+    - create_update19.php
+2.5.1:
+    - Leistungen Sortierung
+2.5.2:
+    - Interne Optimierungen
+    - Prüfung auf Alias-Mailadressen bei Gästen (Airbnb, Booking)
+2.5.3:
+    - Bug in Saisonzeiten Anreisen am
+    - Neues Modul, Alle Bewertungen mit Pagination
+2.5.4:
+    - Bug in Bewertungen Pagination falsch
+2.5.5:
+    - Bug in Angebot-Detail wenn keine Angebote vorhanden Variable treffer
+2.5.6:
+    - Anpassung schema.org und Listen-Partials (default.htm)
+2.5.7:
+    - Bug im Buchungskalender, wenn mehrere Anreisetage übergeben wurden, behoben
+2.5.8:
+    - Umstellung der Tages- und Monatsnamen auf PHP(locale) je Sprache
+2.5.9:
+    - Ausgabe von Fehler-Log-Einträgen im Event-Log
+2.6.0:
+    - Anpassungen an PHP Version 7.3, Bug im Kalender behoben
+2.6.1:
+    -Bug im Import-Modul bei Bildern
+2.6.2:
+    - NEU Ausgabe von 2 Bildern in der Listenansicht (Bild 1 und Bild 2)
+2.6.3:
+    - Erweiterung der Bildausgabe in den Listenansichten auf max 3 Bilder
+2.6.4:
+    - Erweiterung des Sprachen-Modules.
+2.6.5:
+    - Erweiterung Canonical für Mutli-Websites
+    - create_update20.php
+2.6.6:
+    - Anpassung der CRON-Steuerung. Jetzt zusätzlich als URL ansteuerbar.
+    - Umstellung auf PHP 7.2 oder höher und MySQL 5.7
+2.6.7:
+    - Optimierung Listenfilter und Objektliste.
+2.6.8:
+    - Mehrfaches Anlegen von Bade- und Schlafzimmern( Fewo-Verwalter)
+    - create_update21.php
+    - create_update22.php
+2.6.9:
+    - Anpassung bei Anzahlungen wenn nur Min-Preis übergeben wurde und Prozent = 0 war
+2.7.0:
+    - Datenbankanpassungen auf die verschiedenen MySQL-Versionen.
+    - update23.php
+    -
+2.7.1:
+    - Datenbankanpassungen auf die verschiedenen MySQL-Versionen.
+    - update23.php
+2.7.2:
+    - Datenbankanpassungen auf die verschiedenen MySQL-Versionen.
+    - update23.php
+2.7.3:
+    - Bug in den Objektlisten Feld Beschreibung wenn Daten geändert wurden
+2.7.4:
+    - Erweiterung der Angebotsausgaben und der Sprachmodule
+2.7.5:
+    - FIX Darstellungsfehler im Belegungskalender für das Jahr 2020
+2.7.6:
+    - Darstellung -Keine Preise- im Belegungsplan bei letzter Saison geändert.
+2.7.7:
+    - Bug im Kalender, wenn eine Saisonzeit ohne Preis vorhanden ist.
+2.7.8:
+    - Bug in der Hausliste. Pagination wurde falsch berechnet.
+2.7.9:
+    - Umstellung der Datenbank auf MyISAM für schnellere Verarbeitung
+    - update24.php
+2.8.0:
+    - Umstellung Datenbank auf MyISAM
+    - update24.php
+2.8.1:
+    - Umstellung Datenbank auf MyISAM
+    - update24.php
+2.8.2:
+    - Eigentümer-Daten geändert
+2.8.3:
+    - Vorbereitung neue Image-Verwaltung
+    - update25.php
+2.8.4:
+    - Kurze Umstellung auf PHP 7.1
+2.8.5:
+    - Zurück auf PHP 7.2
+2.8.6:
+    - Fehler in der Berechnung des Tagesnamen in PHP
+2.8.7:
+   - Tagesdarstellung (Wenn Buchung nur 1 Nacht) im Kalender und Preisrechner-Labels angepasst
+   - Fehler im Tab der Buchungsform behoben.
+2.8.8:
+    - Anpassung Suchmasken für verschiedenen Sprachen, Auswahl WerbeMail-Checkbox gefixt.
+2.8.9:
+    - Anpassung Belegungsplan, Startmonat bei Suchangabe nur den Offset geändert
+2.9.0:
+    - Anapssung der Bewertungsmaske. Erweiterung um Platzhalter im INPUT für verschiedene Sprachen.
+    - Anpassung der Suche bei Tage in Zeitraum, wenn im Fewo-Ferwalter unlogische Werte erfasst wurden.
+2.9.1:
+    - Erweiterung Schema.org um Postionsdaten und Preise des Betriebes
+2.9.2:
+    - Löschen von Bewertungen und Buchungen als SuperUser zulassen
+2.9.3:
+    - Update der Buchungsmaske und dem Preisrechner (Wichtig siehe Upgrade Guide)
+2.9.4:
+    - Bug im Preisrechner, aktivierung der Buttons
+2.9.5:
+    - Interne Anpassung der Fewo-KLassen
+2.9.6:
+    - Bug in der Objektliste Interne-Nr
+2.9.7:
+    - Update im Preisrechner default.htm
+2.9.8:
+    - Update leaflet auf die neuste Version
+2.9.9:
+    - Update leaflet-marker
+3.0.0:
+    - MySQL änderungen in DATE_ADD und DATE_SUB
+3.0.1:
+    - Feldnamen (String) in Objekt-Tabelle verkürzt. Cron von Minute auf 5 Minuten gestellt
+3.0.2:
+    - Anschreiben vor Anreise aus WerbeMail-Check entfernt.
+3.0.3:
+    - Bug in PHP bei SetLOCALE und Monatsausgabe als Text (aus Februar wurde März)
+3.0.4:
+    - Objekt-Indexe neu aufgebaut
+3.0.5:
+    - Sprachen-Dateien angepasst und fehlende Texte des Backends eingefügt
+3.0.6:
+    - Hausliste angepasst, keine Ausgabe wenn Objekte gleich 0
+3.0.7:
+    - Erweiterung der DB-Felder gast_tel (50) und gast_mobil (30)
+    - update26.php
+3.0.8:
+    - Anpassung Felder in Buchungsmaske
+3.0.9:
+    - Erweiterung Preisrechner und errechneter Preis
+    - update27.php
+3.1.0:
+    - Ausgabe der Bewertungen als Liste über Komponente
+3.1.1:
+    - Anpassung Buchungsmaske auf Mobilen Gräten
+3.1.2:
+    - Buchungs- und Preiskalender Legende hinzugefügt.
+3.1.3:
+    - Automatisches löschen von temporären Buchngen im Zahlungsmodul und neue Abschluss-Komponente
+    - update28.php
+3.1.4:
+    - Berechnungsfehler im TimeStamp PHP/Mysql angepasst.
+3.1.5:
+    - Bug in Zuschlägen
+    - update29.php
+3.1.6:
+    - Prüfung ob Haus-Titel und Objekt-Titel identisch sind und dann Alias ändern
+3.1.7:
+    - Änderung des Image-Slider. Erweiterung der Komponente um Häuser
+3.1.8:
+    - Anpassung an Hobex-Version2
+3.1.9:
+    - Mindestalter in Objektstammdaten für Buchungsmaske
+    - update30.php
+3.2.0:
+    - Erweiterung der Stammdaten um Ausgabe der Kaution
+3.2.1:
+    - Fehler in Objekttextsuche bei mehrsprachigen Seiten behoben
+3.2.2:
+    - Anpassung der Angebote. Buchbar bei Tage vor Angebotsbeginn
+    - update31.php
+3.2.3:
+    - Verbesserung bei der Übergabe von Zahlbeträgen zu Hobex (es werden immer zwei Dezimalstellen übergeben). Keine Anpassung von Partials notwendig. EN Changed format for decimal places for the sum in Hobes requests. No changes in partials necessary.
+    - Fehler Lückenbuchung behoben
+    - Überprüfe ob Datei existiert
+3.2.4:
+    - Bug im Eigentümerbereich, Eigentümerbuchungen wurden nicht als Online-Vorgänge übertragen
+3.2.5:
+    - Bug in Objektlisten, Sortierung hat Filter zurückgesetzt
+3.2.6:
+    - Bug im Zahlungsmodul, Datenbankabfrage war fehlerhaft
+3.2.7:
+    - Bug im Zahlungsmodul, Fehlerhafte Zuordnung einer Tabelle
+3.2.8:
+    - Google Maps für Listenseiten, Lage und Detailseite
+    - Verbesserung der Performance durch schnellers Laden der Objektbilder
+    - Erweiterung Objekttextsuche. Suche nach weiteren Feldern möglich. Partialanpassungen erforderlich! Siehe Upgrade-Guide
+    - Auslagerung des JavaScript-Codes vom Map-Partial. Partialanpassungen erforderlich! Siehe Upgrade-Guide
+    - Fehlerbehebungen
+3.2.9:
+    - Fehlerbehebungen
+    - Performance Verbesserungen
+3.3.0:
+    - !!! Problem im Datepicker, wenn heute nicht wählbar, funktionierte Lückenbuchung nicht mehr, Partialanpassung notwendig! Problem in Sortierung, konnte nicht nach FewoVerwalter-Sortierung sortieren. Objekt-Sortierung Reihenfolgen angepasst.
+3.3.1:
+    - !!! Belegungsplan wählweise klickbar, Partialanpassung notwendig! Fehler in der Mehrsprachigkeit behoben. Es wurde eine Multisuche, welche die Ergebnisse nach Objekt, Ort, Region und Letzte Suche auflistet, hinzugefügt. Die Anzahl der Objekte in Ort und Region kann ausgegeben werden. Auslagerung von JavaScript-Code, Partialanpassung notwendig! Weitere allgemeine Fehlerbehebungen.
+3.3.2:
+    - "!!! Schemaorg mit abfrage nach Bewertungen, Partialanpassung notwendig! Preisrechner- und Buchungsmaskekalender mit custom arrow's, Partialanpassung notwendig!"
+    - "Direkte Integration des Eigentümerlogins im Webmodul. Nur mit entsprechender Lizenz nutzbar. Wenn Sie den Eigentümerlogin bereits besitzen, folgen Sie bitte den Anweisungen im Upgrade Guide."
+    - "Performance Verbesserungen."
+    - "Bewertungsoptions mehrsprachig"
+    - "Bildtitel- und Beschreibung mehrsprachig"
+    - "Möglichkeit Ausgabe der Grundstücksfläche"
+    - update33.php
+    - create_group.php
+3.3.3:
+    - "Bug im Update 3.3.2, Benutzergruppe wurde nicht richtig angelegt"
+    - create_group.php
+3.3.4:
+    - "!!! Fehlermeldung im Preisrechner, Partialanpassung notwendig!"
+    - "Bugfix Objektliste Objekte ohne Preise"
+    - "Erweiterung der Buchungsmaske. Hier können Sie jetzt zwischen zwei Varianten wählen."
+    - "Verbesserung des klickbaren Belegungsplans."
+    - update34.php
+3.3.5:
+    - "!!! Bugfix Buchungsmaske, Partialanpassung notwendig!"
+    - "Anfrage und/oder Buchung kann pro Objekt aus dem Fewo-Verwalter bestimmt werden."
+    - update35.php
+3.3.6:
+    - "!!! Bugfix Buchungsmaske und Preisrechner, Partialanpassung notwendig!"
+3.3.7:
+    - 'Bugfix'
+3.3.8:
+    - "!!! Optimiertes Laden der Objektbilder, Partialanpassung notwendig!"
+    - "Bugfix im klickbaren Belegungsplan"
+3.4.0:
+    - "!!! Integration von GoogleMaps in die Objektliste, Partialanpassung notwendig!"
+    - "Optimiertes Laden der Bewertungen"
+    - "Optimiertes Laden der Objektliste"
+    - "Optimiertes Laden der Objektbilder"
+    - "Strukturverbesserung Objektausstattungen"
+    - "Strukturverbesserung Bilder Objektausstattungen"
+    - "Strukturverbesserung Objektarten, -typen und Regionen"
+    - "Strukturverbesserung Objektpreise"
+    - "Strukturverbesserung Filter"
+    - "Strukturverbesserung Objektbilder Sprachen"
+    - update36.php
+    - update38.php
+    - update39.php
+    - update40.php
+    - update41.php
+    - update42.php
+    - update43.php
+    - update44.php
+    - update46.php
+    - update47.php
+    - update48.php

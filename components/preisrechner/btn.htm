@@ -1,0 +1,9 @@
+
+{% if showbuttons == 'all' %}
+<button id="pbuchung" class="btn btn-success btn-sm fewo-btnbuchung" disabled data-request-redirect="{{ purlbuchung }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnBuchung">{{ pbuchunglabel }}</button>
+<button id="panfrage" class="btn btn-primary btn-sm fewo-btnanfrage" disabled data-request-redirect="{{ purlanfrage }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnAnfrage">{{ panfragelabel }}</button>
+{% elseif showbuttons == 'buchung' %}
+<button id="pbuchung" class="btn btn-success btn-sm fewo-btnbuchung" disabled data-request-redirect="{{ purlbuchung }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnBuchung">{{ pbuchunglabel }}</button>
+{% elseif showbuttons == 'anfrage' %}
+<button id="panfrage" class="btn btn-primary btn-sm fewo-btnanfrage" disabled data-request-redirect="{{ purlanfrage }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnAnfrage">{{ panfragelabel }}</button>
+{% endif %}

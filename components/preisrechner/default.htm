@@ -1,0 +1,98 @@
+<div class="{{ ppreiscss }} fewo-preisrechner">
+    {% if ptitel %}
+        {{ ptitel|raw }}
+    {% endif %}
+    <form name="fewo-preisrechner">
+        <input type="hidden" name="objid" value="{{ objid }}">
+        <input type="hidden" name="objartid" value="{{ objartid }}">
+        <input type="hidden" name="lang" value="{{ lang }}">
+        {% if datecompact == 1 %}
+            <div class="form-inputs">
+                <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ ppzeitraum }}" readonly value="{{ pperiod }}"/>
+                <input id="ctrl_panreise" name="panreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ ppanreise }}" />
+                <input id="ctrl_pabreise" name="pabreise" class="search-abreise" autocomplete="off" type="hidden" readonly value="{{ ppabreise }}" />
+            </div>
+        {% else %}
+        <div class="fewo_anreise">
+            <div class="label_anreise">{{ panreiselabel }}</div>
+            <div class="ctrl_anreisecontainer" style="position: relative; float: left;">
+                <input type="text" id="ctrl_panreise" name="panreise" autocomplete="off" class="text frm_anreise" required readonly="readonly" value="{{ ppanreise }}">
+            </div>
+        </div>
+        <div class="fewo_abreise">
+            <div class="label_abreise">{{ pabreiselabel }}</div>
+            <div class="ctrl_abreisecontainer" style="position: relative; float: left;">
+                <input type="text" id="ctrl_pabreise" name="pabreise" autocomplete="off" class="text frm_abreise" required readonly="readonly" value="{{ ppabreise }}">
+            </div>
+        </div>
+        {% endif %}
+        <div id="error-anreise"></div>
+        <div class="anz_personen select_anzahl">
+            <div class="label_personen">{{ ppersonenlabel }}</div>
+            <select name="ppersonen" id="ctrl_ppersonen" class="select frm_personen" required data-request="{{ __SELF__ }}::onCalPersonChange">
+                {% for i in 1..objpers %}
+                    <option value="{{ i }}" {% if i == ppersonen %} selected {% endif %}>{{ i }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="fewo_summe" class="fewo_summe">
+            <div class="label">{{ pobjektpreislabel }}</div><div id="objektpreis">{{ objektpreis }}</div>
+            <div class="label">{{ pnebenkostenlabel }}</div><div id="nebenkosten"></div>
+            <div class="label">{{ psummelabel }}</div><div id="summe">{{ summe }}</div><div id="error"></div>
+            <div class="label">{{ pkautionlabel }}</div><div id="kaution">{{ kaution }}</div>
+            <div class="label">{{ pohnekautionlabel }}</div><div id="ohnekaution">{{ ohnekaution }}</div>
+            <div id="btn">
+                {% if showbuttons == 'all' %}
+                <button id="pbuchung" class="btn btn-success btn-sm fewo-btnbuchung" disabled data-request-redirect="{{ purlbuchung }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnBuchung">{{ pbuchunglabel }}</button>
+                <button id="panfrage" class="btn btn-primary btn-sm fewo-btnanfrage" disabled data-request-redirect="{{ purlanfrage }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnAnfrage">{{ panfragelabel }}</button>
+                {% elseif showbuttons == 'buchung' %}
+                <button id="pbuchung" class="btn btn-success btn-sm fewo-btnbuchung" disabled data-request-redirect="{{ purlbuchung }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnBuchung">{{ pbuchunglabel }}</button>
+                {% elseif showbuttons == 'anfrage' %}
+                <button id="panfrage" class="btn btn-primary btn-sm fewo-btnanfrage" disabled data-request-redirect="{{ purlanfrage }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnAnfrage">{{ panfragelabel }}</button>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    {% if script1 %}
+        var script1 = true;
+    {% else %}
+        var script1 = false;
+    {% endif %}
+
+    var datecompact = {{ datecompact }};
+
+    {% if felder.tagein %}
+        var tagein = true;
+    {% else %}
+        var tagein = false;
+    {% endif %}
+
+    var anreise = '{{ ppanreise }}';
+    var abreise = '{{ ppabreise }}';
+    var zeitraum = '{{ ppzeitraum }}';
+    var calClick = {{ calClick }};
+
+    // Datepicker settings
+    var separator = ' bis ';
+    var selectForward = true;
+    var autoClose = true;
+    var showArrow = {% if datecompact == 1 %} false {% else %} true {% endif %};
+    var format = 'DD.MM.YYYY';
+    var startOfWeek = 'monday';
+    var startDate = '{{ mindate|raw}}';
+    var minDays = 2;
+    var endDate = '{{ lastday }}';
+    var showShortcuts = true;
+    var shortcuts = {'delete':true};
+    var showLegend = true;
+    var saisons = {{ saisons|raw }};
+    var blocked = {{ blockeddates|raw }};
+    var posright = false;
+    var language = '{{ callang }}';
+    var showTopbar = true;
+    var todayInvalid = {{ todayno }};
+    var customArrowPrev = ' ';
+    var customArrowNext = ' ';
+</script>

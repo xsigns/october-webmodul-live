@@ -1,0 +1,100 @@
+<div class="fewo-gastdaten">
+    {% if treffer == true %}
+    <h2>Gastdaten</h2>
+       <div class="g-name">{{ gast.anrede }}</div>
+        <div class="g-name">{{ gast.vorname }}</div>
+        <div class="g-vorname">{{ gast.name }}</div>
+        <div class="g-strasse">{{ gast.strasse }}</div>
+        <div class="g-plz-ort">{{ gast.land }} {{ gast.plz }} {{ gast.ort }}</div>
+        <div class="g-mail">{{ gast.mail }}</div>
+        <div class="g-tel">{{ gast.tel }}</div>
+    <h2>Deine Buchungen</h2>
+    <div id="buchungen" class="gast-buchung">
+        {% for booking in bookings %}
+            <h3>Buchung {{ booking.id }} im Objekt {{ booking.objekt}}</h3>
+            <div>
+                <div class="col-sm-6">
+                    <div class="label">{{ labels.vorgid}}</div><div class="b-id">{{ booking.id }}</div>
+                     <div class="label">{{ labels.datum}}</div><div class="b-datum">{{ booking.datum }}</div>
+                     <div class="label">{{ labels.anreise}}</div><div class="b-anreise">{{ booking.anreise }}</div>
+                     <div class="label">{{ labels.abreise}}</div><div class="b-dabreise">{{ booking.abreise }}</div>
+                     <div class="label">{{ labels.erwachsene}}</div><div class="b-erw">{{ booking.erw }}</div>
+                     <div class="label">{{ labels.kinder}}</div><div class="b-kinder">{{ booking.kinder }}</div>
+                     <div class="label">{{ labels.kleinkinder}}</div><div class="b-kkinder">{{ booking.kkinder }}</div>
+                </div>
+                <div class="col-sm-6">
+                     <div class="label">{{ labels.objpreis}}</div><div class="b-objpreis">{{ booking.objpreis }}</div>
+                     <div class="label">{{ labels.lpreis}}</div><div class="b-sleistsum">{{ booking.leistsum }}</div>
+                     <div class="label">{{ labels.gebuehr}}</div><div class="b-gebuehr">{{ booking.gebuehr }}</div>
+                     <div class="label">{{ labels.zuschlag}}</div><div class="b-zuschlag">{{ booking.zuschlag }}</div>
+                     <div class="label">{{ labels.kaution}}</div><div class="b-kaution">{{ booking.kaution }}</div>
+                     <div class="label">{{ labels.summe}}</div><div class="b-summe">{{ booking.summe }}</div>
+                     <div class="label">{{ labels.anzahlung}}</div><div class="b-danzahlung">{{ booking.anzahlung }}</div>
+                </div>
+                <div class="mitreisende">
+                    <h4>Mitreisende</h4>
+                    {% for mit in booking.mitreisende %}
+                        {% set i = i+1 %}
+                        <div class="mit">
+                            <div class="zaehler">{{ i }}</div>
+                            <label for="mvorname">{{ labels.vorname}}</label><input type="text" name="mvorname{{ booking.id }}_{{i}}" value="{{ mit.vorname }}">
+                            <label for="mname">{{ labels.name}}</label><input type="text" name="mname{{ booking.id }}_{{i}}" value="{{ mit.name }}">
+                            <label for="mgeb">{{ labels.geb}}</label><input type="text" id="mgeb{{ booking.id }}_{{i}}" name="mgeb{{ booking.id }}_{{ i}}" value="{{ mit.geb }}">
+                            <script type="text/javascript">jQuery(function (){jQuery('#mgeb{{ booking.id }}_{{i}}').dateEntry({dateFormat: 'dmy.', spinnerImage: ''});});</script>
+                            <script>jQuery(document).ready(function() {jQuery('#mgeb{{ booking.id }}_{{i}}').val('{{ mit.geb }}');});</script>
+                        </div>
+                    {% endfor %}
+                </div>
+                 <div class="services">
+                    <h4>gebuchte Leistungen</h4>
+                     {% for service in booking.services %}
+                     <div class="label">{{ labels.leist}}</div><div class="b-lname"> {{ service.name }}</div>
+                     <div class="label">{{ labels.leistanz}}</div><div class="b-lname"> {{ service.anz }}</div>
+                      <div class="label">{{ labels.leistpreis}}</div><div class="b-lname"> {{ service.epreis }}</div>
+                     <div class="label">{{ labels.leistsumme}}</div><div class="b-lname"> {{ service.summe }}</div>
+                     {% endfor %}
+                </div>
+                <div class="services">
+                    <h4>optionale Leistungen</h4>
+                     {% for leist in booking.optleistungen %}
+                        <div class="zeile_leistung">
+                            <div class="leistung_titel">{{ leist.titel }} {% if showToolTip %}<span class="fewo-tooltip" data-toggle="tooltip" data-placement="right" title="{{ leist.tooltip|raw }}"></span>{% endif %}</div>
+                            <div class="leistung_preis"><span class="fewo_preistype">{{ leist.priceprn }}</span></div>
+                            {% if leist.max > 1 %}
+                            <div class="leistung_anzahl">
+                                <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
+                                <select class="select" name="fewo_leistung[{{ leist.lid }}]" data-request="{{ __SELF__ }}::onLeistungChange">
+                                    {% for i in 0..leist.max %}
+                                    <option value="{{ i }}" {% if leist.selected == i %} selected {% endif %}>{{ i }}x</option>
+                                    {% endfor %}
+                                </select>
+                                {% if leist.countval > 1 %}
+                                    <span class="countval">{{ leist.countval }}</span>
+                                {% endif %}
+                            </div>
+                            {% else %}
+                            <div class="leistung_anzahl">
+                                <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
+                                <input type="hidden" name="fewo_leistung[{{ leist.lid }}]" value="off">
+                                <input class="select" value="on" data-request="{{ __SELF__ }}::onLeistungChange" type="checkbox"{% if leist.selected %} checked {% endif %} name="fewo_leistung[{{ leist.lid }}]"/>
+                                {% if leist.countval > 1 %}
+                                <span class="countval">(x{{ leist.countval }})</span>
+                                {% endif %}
+                            </div>
+
+                            {% endif %}
+                            <div class="leistung_summe" id="leistsumme_{{ leist.lid }}"></div>
+                        </div>
+                     {% endfor %}
+                </div>
+                <button class="btn btn-success btn-sm fewo-btnbuchung" data-request-data="vorgid: {{ booking.id }}" data-request="{{ __SELF__ }}::onBtnSave">speichern</button>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+<script>
+  $( function() {
+    $( "#buchungen" ).accordion();
+  } );
+  </script>

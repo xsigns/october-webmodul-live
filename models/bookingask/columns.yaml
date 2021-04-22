@@ -1,0 +1,16 @@
+columns:
+  id:
+      label: xsigns.fewo::lang.bookingask.id
+      width: 80px
+  ask_name:
+      label: xsigns.fewo::lang.bookingask.ask_name
+  ask_from:
+      label: xsigns.fewo::lang.bookingask.ask_from
+      format: d.m.Y
+      type: date
+      ignoreTimezone: true
+  ask_to:
+      label: xsigns.fewo::lang.bookingask.ask_to
+      format: d.m.Y
+      type: date
+      ignoreTimezone: true

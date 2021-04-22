@@ -1,0 +1,36 @@
+<div class="fewo-leistungen">
+    {{ header|raw }}
+        {% if type == 1 %}
+            {% set types = '_even' %}
+            {% for leistung in leistungen %}
+            {% if types == '_even' %}
+            {% set types='_odd' %}
+            {% else  %}
+            {% set types = '_even' %}
+            {% endif %}
+            <div class="zeile_leistung{{ types }}">
+                <div class="leistung_titel">{{ leistung.titel }}</div>
+                <div class="leistung_titel">{{ leistung.titel2 }}</div>
+                <div class="leistung_preis"><span class="fewo_preistype">{{ leistung.preis }}</span></div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="fewo_details_leistung">
+
+            {% set types = '_even' %}
+            {% for leistung in leistungen %}
+            {% if types == '_even' %}
+            {% set types='_odd' %}
+            {% else  %}
+            {% set types = '_even' %}
+            {% endif %}
+            <div class="zeile_leistung{{ types }}">
+                <div class="leistung_titel">{{ leistung.titel }}</div>
+                <div class="leistung_titel">{{ leistung.titel2 }}</div>
+                <div class="leistung_art">{{ leistung.art }}</div>
+                <div class="leistung_preis"><span class="fewo_preistype">{{ leistung.preis }}</span></div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+</div>

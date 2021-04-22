@@ -1,0 +1,40 @@
+
+<span class="label_buchungsmaske summen_beschreibung">{{ labels.summe}}</span>
+<div class="zeile zeile_objektpreis">
+    
+    <div class="header_titel">{{ labels.objektpreistitel }}</div>
+    <div class="zeilensummentitel datum">{{ labels.zeitraum }} {{ anreise }} - {{ abreise }}</div>
+    <div class="header_anzahl">{{ tage }} {{labels.tage}}</div>   
+    <div class="zeilensumme header_objsum">{{ objektpreis }}</div>
+</div>
+<!-- Summe feste Leistungen-->
+<div class="zeile zeile_preise sumleist">
+    <div class="zeilensummentitel sumneben_titel">{{ labels.nebenkosten }}</div>
+    <div class="zeilensumme sumneben_wert">{{ nebenkosten }}</div>
+</div>
+<div class="zeile zeile_preise sumleist">
+    <div class="zeilensummentitel sumleist_titel">{{ labels.leistungen }}</div>
+    <div class="zeilensumme sumleist_wert">{{ leistungen }}</div>
+</div>
+{% if zuschlag > 0 %}
+<div class="zeile zeile_preise sumzuschlag">
+    <div class="zeilensummentitel sum_titel">{{ labels.zuschlag }}</div>
+    <div class="zeile zeile_zuschlag">{{ zuschlagtext }}</div>
+    <div class="zeilensumme sum_wert">{{ zuschlag }}</div>
+</div>
+{% endif %}
+{% if rabatt > 0 %}
+    <div class="zeile zeile_preise sumrabatt">
+        <div class="zeilensummentitel sum_titel">{{ labels.rabatt }}</div>
+        <div class="zeilensumme sum_wert">{{ rabatt }}</div>
+    </div>
+{% endif %}
+    <div class="zeile zeile_preise kaution">
+        <div class="zeilensummentitel sum_titel">{{ labels.kaution }}</div>
+        <div class="zeilensumme kaution">{{ kaution }}</div>
+    </div>
+<!-- Gesamtsumme -->
+<div class="zeile zeile_preise gesamtsumme">
+    <div class="zeilensummentitel sum_titel">{{ labels.gesamt }}</div>
+    <div class="zeilensumme sum_wert">{{ summe }}</div>
+</div>

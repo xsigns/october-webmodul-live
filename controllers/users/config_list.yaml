@@ -1,0 +1,37 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+# List Title
+title: xsigns.fewo::lang.eigentuemerlogin.users.list_title
+
+# Model List Column configuration
+list: $/xsigns/fewo/models/user/columns.yaml
+
+# Model Class name
+modelClass: Xsigns\Fewo\Models\User
+
+# Link URL for each record
+recordUrl: xsigns/fewo/users/preview/:id
+
+# Message to display if the list is empty
+noRecordsMessage: backend::lang.list.no_records
+
+# Records to display per page
+recordsPerPage: 20
+
+# Display checkboxes next to each record
+showCheckboxes: false
+
+# Displays the list column set up button
+showSetup: true
+
+# Filter widget configuration
+# filter: config_filter.yaml
+
+# Toolbar widget configuration
+toolbar:
+
+    # Search widget configuration
+    search:
+        prompt: backend::lang.list.search_prompt

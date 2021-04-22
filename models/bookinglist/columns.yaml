@@ -1,0 +1,62 @@
+columns:
+    id:
+        label: Nummer
+        type: number
+        searchable: true
+        sortable: true
+        width: 60px
+    erfasst:
+        label: Datum
+        type: date
+        ignoreTimezone: true
+        searchable: true
+        sortable: true
+        format: d.m.Y
+    vtyp:
+        label: Art
+        type: text
+        searchable: true
+        sortable: true
+    receiptnumber:
+        label: Extern-ID
+        type: text
+        searchable: true
+        sortable: true
+    objektid:
+        label: Objekt-Nr
+        type: text
+        searchable: true
+        sortable: true
+    objekt_name:
+        label: Objekt
+        type: objekt_name
+        searchable: false
+        sortable: false
+    vorname:
+        label: Vorname
+        type: text
+        searchable: true
+        sortable: true
+    zuname:
+        label: Zuname
+        type: text
+        searchable: true
+        sortable: true
+    anreise:
+        label: Anreise
+        type: date
+        ignoreTimezone: true
+        searchable: true
+        sortable: true
+        format: d.m.Y
+    abreise:
+        label: Abreise
+        type: date
+        searchable: true
+        sortable: true
+        format: d.m.Y
+    sync:
+        label: Sync
+        type: switch
+        searchable: true
+        sortable: true

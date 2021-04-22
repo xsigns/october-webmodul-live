@@ -1,0 +1,26 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.id
+        invisible: true
+
+    name:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.name
+        searchable: true
+
+    code:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.code
+
+    created_at:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.created_at
+
+    users_count:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.users_count
+        relation: users_count
+        valueFrom: count
+        default: 0
+        sortable: false

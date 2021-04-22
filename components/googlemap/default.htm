@@ -1,0 +1,244 @@
+<style>
+    .mark {
+        animation: fade 1s infinite alternate;
+    }
+</style>
+{% if ladeskript %}
+    <div id="fewo-liste">
+{% endif %}
+
+{% if showmap == true %}
+    <div style="height: {{ gesmapheight }}px;" id="map"></div>
+    <script>
+        var markerlist = [];
+        var markers = [];
+        var mapTypeId = '{{ mapType }}';
+        var mapcenterlat = {{ mapcenterlat }};
+        var mapcenterlng = {{ mapcenterlng }};
+        var marker_img = '{{ marker_img }}';
+
+        var use_marker = false;
+        {% if use_marker %}
+            use_marker = true;
+        {% endif %}
+
+        {% for marker in maps %}
+            var elem = [{{ marker.lat }}, {{ marker.long }}, {{ marker.id }}];
+            markerlist.push(elem);
+        {% endfor %}
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {lat: mapcenterlat, lng: mapcenterlng},
+                mapTypeId: mapTypeId,
+                gestureHandling: 'greedy'
+            });
+
+            var marker, i;
+            var bounds = new google.maps.LatLngBounds();
+
+            for (i = 0; i < markerlist.length; i++) {
+                var data = markerlist[i];
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(markerlist[i][0], markerlist[i][1]),
+                    map: map,
+                    draggable: false,
+                    objektId: markerlist[i][2],
+                    icon: (use_marker ? marker_img : '/plugins/xsigns/fewo/assets/images/pin.png'),
+                });
+                markers.push(marker);
+
+                (function (marker) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        $('.mapObjekt').removeClass('on-map-selected');
+                        $('#obj' + marker.objektId).addClass('on-map-selected');
+                        $('.fewo-map-liste').scrollTop($('.fewo-map-liste').scrollTop() + $('#obj' + marker.objektId).offset().top - ($('#obj' + marker.objektId).height() * 2));
+                    });
+                })(marker);
+
+                bounds.extend(marker.position);
+            }
+
+            google.maps.event.addListener(map, 'idle', function() {
+                showVisibleMarkers();
+            });
+
+            map.fitBounds(bounds);
+
+            var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'plugins/xsigns/fewo/assets/images/kreis'});
+
+            const styles = markerCluster.getStyles();
+            for (let i = 0; i < styles.length; i++) {
+                styles[i].textColor = "#fff";
+                styles[i].textSize = 14;
+                styles[i].height = 34;
+                styles[i].width = 34;
+            }
+
+            function showVisibleMarkers() {
+                var bounds = map.getBounds();
+                var objekte = [];
+
+                for (var i = 0; i < markers.length; i++) {
+                    var marker = markers[i];
+
+                    if (bounds.contains(marker.getPosition()) === true) {
+                        objekte.push(marker.objektId);
+                    }
+                }
+
+                var ladeurl = (document.location.href.indexOf('?') > -1 ? document.location.href.substring(0, document.location.href.indexOf('?')) : document.location.href).trim();
+                var ladedata = 'objekte=' + (objekte ? objekte.join() : "");
+
+                jQuery.ajax({
+                    url: ladeurl,
+                    data: ladedata,
+                    dataType: "html",
+                    success: function (resp) {
+                        if (objekte.length !== 0) {
+                            $('.fewo-map-liste').html($('.fewo-map-liste', resp).html());
+                        } else {
+                            $('.fewo-map-liste').html('<div class="fewo-map-liste-container"></div>');
+                        }
+                    }, error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('error occurred: ' + textStatus + ', ' + errorThrown);
+                    }
+                });
+            }
+        }
+
+        function onListSelected(objektId) {
+            var i;
+
+            for (i = 0; i < markerlist.length; i++) {
+                if (objektId === markerlist[i][2]) {
+                    map.setZoom(19);
+                    map.setCenter({lat: markerlist[i][0], lng: markerlist[i][1]});
+                }
+            }
+
+            $('.mapObjekt').removeClass('on-map-selected');
+            $('#obj' + objektId).addClass('on-map-selected');
+        }
+
+    </script>
+{% endif %}
+
+<div class="fewo-map-liste">
+    <div class="fewo-map-liste-container">
+        {% if map_variant == 'obj_map' %}
+            {{ pagination|raw }}
+        {% endif %}
+        {% for objekt in objekte %}
+            <article class="post fewo-item {{ listitemcss }} d-inline-block mb-3" {% if map_variant == 'ges_map' %}onclick="onListSelected({{ objekt.id }})"{% endif %}>
+                <div class="mapObjekt" id="obj{{ objekt.id }}">
+                    {% if objekt.Titel %}
+                        <div class="fewo-titel"><a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}><span>{{ objekt.Titel|raw }}</span></a></div>
+                    {% endif %}
+                    {% if objekt.slider == false %}
+                        <div class="fewo_image col-12 col-md-4 p-0 float-left">
+                            <a href="{{ objekt.href }}"><img src="{{ objekt.image.thumb(objekt.image_width,objekt.image_height, {mode:'crop', quality:'35'}) }}" alt="{{ objekt.image.title }}" title="{{ objekt.image.title }}"/></a>
+                        </div>
+                    {% else %}
+                        <div class="fewo_list_image">
+                            <div class="fewo_listnavileft fewo_slidernav" onclick="javascript:bildZurueck('fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}');"></div>
+                            <a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}><img id="fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}" data-posid="0" data-images='{{ objekt.images|raw}}' class="fewo_listimage" src="{{ objekt.img_bild}}" alt="{{ objekt.title }}" title="{{ objekt.title }}"/></a>
+                            <div class="fewo_listnaviright fewo_slidernav" onclick="javascript:bildWeiter('fewolistslider_{{ objekt.itemid}}_{{ objekt.id }}');"></div>
+                        </div>
+                    {% endif %}
+                    {% if objekt.Bewertung %}
+                        <div class="fewo-rating">
+                            {{ objekt.Bewertung|raw }}
+                            <div class="clearfix"></div>
+                            <div class="fewo-rating-text">{{ objekt.BewertungText|raw }}</div>
+                        </div>
+                    {% endif %}
+                    {% if objekt.Angebote %}<div class="fewo-angebote">{{ objekt.Angebote|raw }}</div>{% endif %}
+                    {% if objekt.Art %}<div class="fewo-art">{{ objekt.Art|raw }}</div>{% endif %}
+                    {% if objekt.Typ %}<div class="fewo-typ">{{ objekt.Typ|raw }}</div>{% endif %}
+                    {% if objekt.Region %}<div class="fewo-region">{{ objekt.Region|raw }}</div>{% endif %}
+                    {% if objekt.Sterne %}<div class="fewo-sterne">{{ objekt.Sterne|raw }}</div><div class="clearfix"></div>{% endif %}
+                    {% if objekt.Kurztext %}<div class="fewo-text">{{ objekt.Kurztext|raw }}</div>{% endif %}
+                    {% if objekt.ID %}<div class="fewo-number">{{ objekt.ID }}</div>{% endif %}
+                    {% if objekt.Zimmer %}<div class="fewo-room">{{ objekt.Zimmer|raw }}</div>{% endif %}
+                    {% if objekt.Schlafzimmer %}<div class="fewo-bed">{{ objekt.Schlafzimmer|raw }}</div>{% endif %}
+                    {% if objekt.Badezimmer %}<div class="fewo-bath">{{ objekt.Badezimmer|raw }}</div>{% endif %}
+                    {% if objekt.Groesse %}<div class="fewo-groesse">{{ objekt.Groesse|raw }}</div>{% endif %}
+                    {% if objekt.Betten %}<div class="fewo-betten">{{ objekt.Betten|raw }}</div>{% endif %}
+                    {% if objekt.AbPreis %}<div class="fewo-preisab">{{ objekt.AbPreis|raw }}</div>{% endif %}
+                    {% if objekt.Errechnet %}<div class="fewo-preiser">{{ objekt.Errechnet|raw }}</div>{% endif %}
+                    {% if objekt.PreiseBis %}<div class="fewo-preisbis">{{ objekt.PreiseBis|raw }}</div>{% endif %}
+                    {% if objekt.Ausstattung %}<div class="fewo-ausstattung">{{ objekt.Ausstattung|raw }}</div>{% endif %}
+                    {% if objekt.LetzteBuchung %}<div class="fewo-letzte">{{ objekt.LetzteBuchung|raw }}</div>{% endif %}
+                    {% if objekt.Personen %}<div class="fewo-personen">{{ objekt.Personen|raw }}</div>{% endif %}
+                    {% if objekt.Erwachsene %}<div class="fewo-adults">{{ objekt.Erwachsene|raw }}</div>{% endif %}
+                    {% if objekt.Kinder %}<div class="fewo-childreen">{{ objekt.Kinder|raw }}</div>{% endif %}
+                    {% if objekt.KleinKinder %}<div class="fewo-childreen">{{ objekt.KleinKinder|raw }}</div>{% endif %}
+                    {% if objekt.OptBelegung %}<div class="fewo-optperson">{{ objekt.OptBelegung|raw }}</div>{% endif %}
+                    {% if objekt.Etage %}<div class="fewo-floor">{{ objekt.Etage|raw }}</div>{% endif %}
+                    {% if objekt.Leistungen %}
+                        <div class="fewo-leistungen">
+                            {% for leistung in objekt.Leistungen %}
+                                <div class="l1">{{ leistung.titel|raw}}</div>
+                                <div class="l2">{{ leistung.preis}}</div>
+                                <div class="l3">{{ leistung.mwst }}</div>
+                                <div class="l3">{% if leistung.person > 0 %} pro Person {% endif %}</div>
+                                <div class="l3">{% if leistung.tag > 0 %} pro Tag {% endif %}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if objekt.Adresse %}
+                        <div class="fewo-address">
+                            {{ objekt.Strasse|raw }}, {{ objekt.Land|raw }} {{ objekt.PLZ|raw }} {{ objekt.Ort|raw }}
+                        </div>
+                    {% endif %}
+                    {% if modul == 2 %}
+                        <div class="merkerdelete">
+                            <button id="btnmerken{{ objekt.id }}" class="btn btn-success btn-sm fewo-btnmerken" data-request-data="merkerid: {{ objekt.id }}" data-request="{{ __SELF__ }}::onBtnDelete">{{ btndelete }} </button>
+                        </div>
+                    {% else %}
+                        {% if btn_merken == true %}
+                            <div id="btnmerker{{ objekt.id}}">
+                                <button id="btnmerken{{ objekt.id }}" class="btn btn-success btn-sm fewo-btnmerken {{objekt.merkerclass}}" data-request-data="merkerid: {{ objekt.id }}" data-request="{{ __SELF__ }}::onBtnMerken">{{ objekt.merkerlabel }}</button>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    {% if objekt.VerArt %}<div class="fewo-verart">{{ objekt.VerArt|raw }}</div>{% endif %}
+                    {% if map_variant == 'obj_map' %}
+                        <div class="fewo-map">
+                            <div id="mapid{{ objekt.id }}" class="fewo-objektmap" style="height:{{ mapheight }}px;"></div>
+                        </div>
+                    {% endif %}
+                    <div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}>{{ objekt.btnDetail }}</a></div>
+                </div>
+            </article>
+        {% endfor %}
+        {% if map_variant == 'obj_map' %}
+            <script type="text/javascript">
+                console.log('Test');
+
+                function initMap() {
+                    var myOptions = {
+                        zoom: 14,
+                        fullscreenControl: true,
+                        controlSize: 25,
+                    }
+
+                    {% for objekt in objekte %}
+                        myOptions.center = new google.maps.LatLng({{ objekt.lat }}, {{ objekt.lng }});
+                        map{{ objekt.id }} = new google.maps.Map(document.getElementById("mapid{{ objekt.id }}"), myOptions);
+
+                        var marker = new google.maps.Marker({
+                            position: {lat: {{ objekt.lat }}, lng: {{ objekt.lng }}},
+                            map: map{{ objekt.id }}
+                        });
+                    {% endfor %}
+                }
+            </script>
+            {{ pagination|raw }}
+        {% endif %}
+    </div>
+</div>
+{% if ladeskript %}
+    </div>
+{% endif %}

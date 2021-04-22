@@ -1,0 +1,24 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: xsigns.fewo::lang.bookingask.name
+
+# Model Form Field configuration
+form: ~/plugins/xsigns/fewo/models/bookingask/fields.yaml
+
+# Model Class name
+modelClass: xsigns\fewo\Models\BookingAsk
+
+# Default redirect location
+defaultRedirect: xsigns/fewo/bookingask
+
+# Create page
+create:
+    redirect: xsigns/fewo/bookingask/preview/:id
+    redirectClose: xsigns/fewo/bookingask
+
+# Update page
+update:
+    redirectClose: xsigns/fewo/bookingask/preview/:id

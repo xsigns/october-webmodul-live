@@ -1,0 +1,369 @@
+fields:
+    settings1:
+        label: 'xsigns.fewo::lang.slickslider.toggle_options'
+        span: full
+        type: section
+    autoplay:
+        label: 'xsigns.fewo::lang.slickslider.autoplay'
+        span: auto
+        default: 0
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.autoplay_desc'
+    accessibility:
+        label: 'xsigns.fewo::lang.slickslider.accessibility'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.accessibility_desc'
+    arrows:
+        label: 'xsigns.fewo::lang.slickslider.arrows'
+        span: auto
+        default: 1
+        type: switch
+        comment: ' '
+    adaptive_height:
+        label: 'xsigns.fewo::lang.slickslider.adaptive_height'
+        span: auto
+        default: 0
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.adaptive_height_desc'
+    center_mode:
+        label: 'xsigns.fewo::lang.slickslider.center_mode'
+        span: auto
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.center_mode_desc'
+    dots:
+        label: 'xsigns.fewo::lang.slickslider.dots'
+        span: auto
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.dots_desc'
+    draggable:
+        label: 'xsigns.fewo::lang.slickslider.draggable'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.enables_draggable'
+    fade:
+        label: 'xsigns.fewo::lang.slickslider.fade'
+        span: auto
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.fade_desc'
+    focus_on_select:
+        label: 'xsigns.fewo::lang.slickslider.focus_on_select'
+        span: auto
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.focus_on_select_desc'
+    pause_on_focus:
+        label: 'xsigns.fewo::lang.slickslider.pause_on_focus'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.pause_on_focus_desc'
+    pause_on_dots_hover:
+        label: 'xsigns.fewo::lang.slickslider.pause_on_dots_hover'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.pause_on_dots_hover_desc'
+    pause_on_hover:
+        label: 'xsigns.fewo::lang.slickslider.pause_on_hover'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.pause_on_hover_desc'
+    infinite:
+        label: 'xsigns.fewo::lang.slickslider.infinite'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.infinite_desc'
+    swipe:
+        label: 'xsigns.fewo::lang.slickslider.swipe'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.swipe_desc'
+    touch_move:
+        label: 'xsigns.fewo::lang.slickslider.touch_move'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.touch_move_desc'
+    use_transform:
+        label: 'xsigns.fewo::lang.slickslider.use_transform'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.use_transform_desc'
+    use_css:
+        label: 'xsigns.fewo::lang.slickslider.use_css'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.use_css_desc'
+    vertical:
+        label: 'xsigns.fewo::lang.slickslider.vertical'
+        span: auto
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.vertical_desc'
+    vertical_swiping:
+        label: 'xsigns.fewo::lang.slickslider.vertical_swiping'
+        span: auto
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.vertical_swiping_desc'
+    rtl:
+        label: 'xsigns.fewo::lang.slickslider.rtl'
+        span: auto
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.rtl_desc'
+    wait_for_animate:
+        label: 'xsigns.fewo::lang.slickslider.wait_for_animage'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.wait_for_animate_desc'
+    include_jquery:
+        label: 'xsigns.fewo::lang.slickslider.include_jquery'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.include_jquery_desc'
+    show_title:
+        label: 'xsigns.fewo::lang.slickslider.show_title'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.show_title_desc'
+    show_desc:
+        label: 'xsigns.fewo::lang.slickslider.show_desc'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.show_desc_desc'
+    show_asimages:
+        label: 'xsigns.fewo::lang.slickslider.show_asimage'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.show_asimage_desc'
+    asimages_height:
+        label: 'xsigns.fewo::lang.slickslider.asimages_height'
+        span: auto
+        placeholder: 200px
+        default: 200px
+        type: text
+        comment: 'xsigns.fewo::lang.slickslider.asimages_height_desc'
+    include_thumb:
+        label: 'xsigns.fewo::lang.slickslider.include_thumb'
+        span: auto
+        default: 1
+        type: switch
+        comment: 'xsigns.fewo::lang.slickslider.include_thumb_desc'
+    thumb_height:
+        label: 'xsigns.fewo::lang.slickslider.thumb_height'
+        span: auto
+        placeholder: 200px
+        default: 200px
+        type: text
+        comment: 'xsigns.fewo::lang.slickslider.thumb_height_desc'
+    thumb_top:
+        label: 'xsigns.fewo::lang.slickslider.thumb_top'
+        span: auto
+        placeholder: 20px
+        default: 20px
+        type: number
+        comment: 'xsigns.fewo::lang.slickslider.thumb_top_desc'
+    thumb_images:
+        label: 'xsigns.fewo::lang.slickslider.thumb_images'
+        span: auto
+        default: 3
+        type: dropdown
+        options:
+            1: 'xsigns.fewo::lang.slickslider.thumb_images_1'
+            2: 'xsigns.fewo::lang.slickslider.thumb_images_2'
+            3: 'xsigns.fewo::lang.slickslider.thumb_images_3'
+            4: 'xsigns.fewo::lang.slickslider.thumb_images_4'
+            5: 'xsigns.fewo::lang.slickslider.thumb_images_5'
+            6: 'xsigns.fewo::lang.slickslider.thumb_images_6'
+            7: 'xsigns.fewo::lang.slickslider.thumb_images_7'
+            8: 'xsigns.fewo::lang.slickslider.thumb_images_8'
+            9: 'xsigns.fewo::lang.slickslider.thumb_images_9'
+            10: 'xsigns.fewo::lang.slickslider.thumb_images_10'
+        comment: 'xsigns.fewo::lang.slickslider.thumb_images_desc'
+    settings2:
+        label: 'xsigns.fewo::lang.slickslider.options'
+        span: full
+        type: section
+    autoplay_speed:
+        label: 'xsigns.fewo::lang.slickslider.autoplay_speed'
+        span: auto
+        placeholder: '3000'
+        default: '3000'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.autoplay_speed_desc'
+    slide_show_height:
+        label: 'xsigns.fewo::lang.slickslider.slide_show_height'
+        span: auto
+        placeholder: 500px
+        default: 500px
+        type: text
+        commentAbove: 'xsigns.fewo::lang.slickslider.slide_show_height_desc'
+    prev_arrow:
+        label: 'xsigns.fewo::lang.slickslider.prev_arrow'
+        size: small
+        span: auto
+        placeholder: '<button type="button" class="slick-prev">Previous</button>'
+        default: '<button type="button" class="slick-prev">Previous</button>'
+        type: textarea
+        commentAbove: 'xsigns.fewo::lang.slickslider.prev_arrow_desc'
+    next_arrow:
+        label: 'xsigns.fewo::lang.slickslider.next_arrow'
+        size: small
+        span: auto
+        placeholder: '<button type="button" class="slick-next">Next</button>'
+        default: '<button type="button" class="slick-next">Next</button>'
+        type: textarea
+        commentAbove: 'xsigns.fewo::lang.slickslider.next_arrow_desc'
+    center_padding:
+        label: 'xsigns.fewo::lang.slickslider.center_padding'
+        span: left
+        placeholder: 50px
+        default: 50px
+        type: text
+        commentAbove: 'xsigns.fewo::lang.slickslider.center_padding_desc'
+    css_ease:
+        label: 'xsigns.fewo::lang.slickslider.css_ease'
+        span: auto
+        placeholder: ease
+        default: ease
+        type: text
+        commentAbove: 'xsigns.fewo::lang.slickslider.css_ease_desc'
+    easing:
+        label: 'xsigns.fewo::lang.slickslider.easing'
+        span: auto
+        placeholder: linear
+        default: linear
+        type: text
+        commentAbove: 'xsigns.fewo::lang.slickslider.easing_desc'
+    edge_friction:
+        label: 'xsigns.fewo::lang.slickslider.edge_friction'
+        span: auto
+        placeholder: '0.15'
+        default: '0.15'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.edge_friction_desc'
+    initial_slide:
+        label: 'xsigns.fewo::lang.slickslider.initial_slide'
+        span: auto
+        placeholder: '0'
+        default: '0'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.initial_slide_desc'
+    lazy_load:
+        label: 'xsigns.fewo::lang.slickslider.lazy_load'
+        span: auto
+        placeholder: ondemand
+        default: ondemand
+        type: text
+        commentAbove: 'xsigns.fewo::lang.slickslider.lazy_load_desc'
+    rows:
+        label: 'xsigns.fewo::lang.slickslider.rows'
+        span: auto
+        placeholder: '1'
+        default: '1'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.rows_desc'
+    slides_per_row:
+        label: 'xsigns.fewo::lang.slickslider.slides_per_row'
+        span: auto
+        placeholder: '1'
+        default: '1'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.slides_per_row_desc'
+    slides_to_show:
+        label: 'xsigns.fewo::lang.slickslider.slides_to_show'
+        span: auto
+        placeholder: '1'
+        default: '1'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.slides_to_show_desc'
+    slides_to_scroll:
+        label: 'xsigns.fewo::lang.slickslider.slides_to_scroll'
+        span: auto
+        placeholder: '1'
+        default: '1'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.slides_to_scroll_desc'
+    speed:
+        label: 'xsigns.fewo::lang.slickslider.speed'
+        span: auto
+        placeholder: '300'
+        default: '300'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.speed_desc'
+    touch_threshold:
+        label: 'xsigns.fewo::lang.slickslider.touch_threshold'
+        span: auto
+        placeholder: '5'
+        default: '5'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.touch_threshold_desc'
+    z_index:
+        label: 'xsigns.fewo::lang.slickslider.z_index'
+        span: auto
+        placeholder: '1000'
+        default: '1000'
+        type: number
+        commentAbove: 'xsigns.fewo::lang.slickslider.z_index_desc'
+    settings3:
+        label: 'xsigns.fewo::lang.slickslider.responsive'
+        span: full
+        type: section
+    responsive:
+        label: 'xsigns.fewo::lang.slickslider.breakpoints'
+        prompt: 'Add Break Point'
+        span: full
+        type: repeater
+        form:
+            fields:
+                breakpoint:
+                    label: 'xsigns.fewo::lang.slickslider.breakpoint'
+                    span: left
+                    required: 1
+                    type: number
+                    commentAbove: 'xsigns.fewo::lang.slickslider.breakpoint_desc'
+                responsive_slide_show_height:
+                    label: 'xsigns.fewo::lang.slickslider.slide_show_height'
+                    span: right
+                    placeholder: 500px
+                    default: 500px
+                    type: text
+                    commentAbove: 'xsigns.fewo::lang.slickslider.slide_show_height_desc'
+                responsive_rows:
+                    label: 'xsigns.fewo::lang.slickslider.rows'
+                    span: left
+                    placeholder: '1'
+                    default: '1'
+                    type: number
+                    commentAbove: 'xsigns.fewo::lang.slickslider.rows_desc'
+                responsive_slides_per_row:
+                    label: 'xsigns.fewo::lang.slickslider.slides_per_row'
+                    span: right
+                    placeholder: '1'
+                    default: '1'
+                    type: number
+                    commentAbove: 'xsigns.fewo::lang.slickslider.slides_per_row_desc'
+                responsive_slides_to_show:
+                    label: 'xsigns.fewo::lang.slickslider.slides_to_show'
+                    span: left
+                    placeholder: '1'
+                    default: '1'
+                    type: number
+                    commentAbove: 'xsigns.fewo::lang.slickslider.slides_to_show_desc'
+                responsive_slides_to_scroll:
+                    label: 'xsigns.fewo::lang.slickslider.slides_to_scroll'
+                    span: right
+                    placeholder: '1'
+                    default: '1'
+                    type: number
+                    commentAbove: 'xsigns.fewo::lang.slickslider.slides_to_scroll_desc'

@@ -1,0 +1,11 @@
+columns:
+    slide_show_title:
+        label: 'xsigns.fewo::lang.slickslider.title'
+        type: text
+        searchable: true
+        sortable: true
+    id:
+        label: 'xsigns.fewo::lang.slickslider.id'
+        type: number
+        searchable: true
+        sortable: true

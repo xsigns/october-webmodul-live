@@ -1,0 +1,29 @@
+<?php
+$fieldOptions = $model->getAusstattung(); // See here we are fetching values
+$ausSelected = json_decode($model->ausstattung, true)  ?: [];
+?>
+<!-- Switch -->
+<?php $merke =""; ?>
+<?php foreach( $fieldOptions as $key=>$label) { ?>
+    <?php if ($merke != $label[1]){ ?>
+    <div class="float-left  col-sm-10" id="Form-field-ausstattung-groups"><h2>
+        <?= $label[1]; ?></h2>
+    </div>
+    <?php $merke = $label[1]; ?>
+    <?php } ?>
+<div class="float-none"></div>
+    <div class="form-group switch-field float-left  col-sm-6" data-field-name="debug" id="Form-field-ausstattung-group">
+        <div class="field-switch">
+            <label><?= $label[0]; ?> </label>
+        </div>
+        <input type="hidden" name="ausst[<?=$key;?>]" value="0">
+        <label class="custom-switch">
+            <input type="checkbox" id="Form-field-GlobalSettings-debug" name="ausstattung[<?=$key;?>]" value="<?=$key;?>" <?=(in_array($key,$ausSelected) ? 'checked="checked"': ""); ?>>
+            <span><span>An</span><span>Aus</span></span>
+            <a class="slide-button"></a>
+        </label>
+        </div>
+<?php } ?>
+
+
+

@@ -1,0 +1,20 @@
+<div id="fewo-angliste" class="fewo-container {{ listcss }}">
+    <div class="ang-header">{{ titel|raw }}</div>
+    {% if offerCount > 0 %}
+    <div id="angebot-liste">
+    {% for angebot in angebote %}
+        <div class="fewo-item">
+            {% if angebot.titel %}<div>{{angebot.titel}}</div>{% endif %}
+            {% if angebot.image %}<div><img itemprop="image"  src="{{ angebot.image.thumb(image_width,image_height) }}" alt="{{ angebot.image.title }}" title="{{ angebot.image.title }}"/></div>{% endif %}
+            {% if angebot.beschreibung %}<div>{{angebot.beschreibung|raw}}</div>{% endif %}
+            {% if angebot.vonbis %}<div class="ang-von">{{ angebot.vonbis }}</div>{% endif %}
+            {% if angebot.art %}<div class="ang-art">{{ angebot.art}}</div>{% endif %}
+            {% if angebot.objcount %}<div class="ang-objcount">Objekte : {{ angebot.objcount}}</div>{% endif %}
+            <div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ angebot.href }}">{{ labels.angbtndetail }}</a></div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        {{ noOffers }}
+    {% endif %}
+    </div>

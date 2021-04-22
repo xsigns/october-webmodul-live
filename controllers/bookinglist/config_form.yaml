@@ -1,0 +1,23 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: xsigns.fewo::lang.booking.name
+
+# Model Form Field configuration
+form: ~/plugins/xsigns/fewo/models/bookinglist/fields.yaml
+
+# Model Class name
+modelClass: xsigns\fewo\Models\BookingList
+
+# Default redirect location
+defaultRedirect: xsigns/fewo/bookinglist
+
+#update:
+#    title: xsigns.fewo::lang.booking.update_booking
+#    redirect: xsigns/fewo/bookinglist
+#    redirectClose: xsigns/fewo/bookinglist
+
+preview:
+    title

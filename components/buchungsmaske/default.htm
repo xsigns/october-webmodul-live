@@ -1,0 +1,236 @@
+<style>
+	.nav-tabs li.disabled {pointer-events: none;}
+</style>
+<div class="clearfix"></div>
+
+{% if angebote %}
+	<div class="fewo-angebote">{{ angebote|raw }}</div>
+{% endif %}
+
+{% if offerid > 0 %}
+	<div class="fewo-offer">
+		<div class="offer_title">{{ ang_titel }}</div>
+		<div class="offer_desc">{{ ang_beschreibung }}</div>
+		<div class="offer_art">{{ ang_art }}</div>
+		<div class="offer_date">{{ ang_vonbis }}</div>
+		<div class="offer_img"><img src="{{ ang_image.thumb(200,200) }}"></div>
+	</div>
+{% endif %}
+
+<div class="clearfix"></div>
+<div class="col-md-8 float-left">
+	<div id="form1">
+		<form name="fewo-buchung"  data-request-validate data-request-flash>
+			<input type="hidden" name="objid" value="{{ objid }}">
+			<input type="hidden" name="objartid" value="{{ objartid }}">
+			<input type="hidden" name="maxpersonen" value="{{ maxpersonen }}">
+			<input type="hidden" name="maxerwachsene" value="{{ erwachsene }}">
+			<input type="hidden" name="maxkinder" value="{{ kinder }}">
+			<input type="hidden" name = "language" value="{{ language }}">
+			<div id="exTab2" class="container ">
+				<ul class="nav nav-tabs d-xl-flex flex-xl-row" role="tablist" id="buchungTab">
+					<li class="nav-item active " id="tab1"><a class="nav-link" href="#1"  data-tab="tab1" data-toggle="tab" role="tab">{{ labels.tab1 }}</a></li>
+					<li class="nav-item disabled" id="tab2"><a class="nav-link" href="#2"  data-tab="tab2" data-toggle="tab" role="tab">{{ labels.tab2 }}</a></li>
+					{% if showmitreisende %}
+						<li class="nav-item disabled" id="tab3"><a class="nav-link" href="#3"  data-tab="tab3" data-toggle="tab" role="tab">{{ labels.tab3 }}</a></li>
+					{% endif %}
+					{% if showleistungen %}
+						<li class="nav-item disabled" id="tab4"><a class="nav-link" href="#4"  data-tab="tab4" data-toggle="tab" role="tab">{{ labels.tab4 }}</a></li>
+					{% endif %}
+					<li class="nav-item disabled" id="tab5"><a class="nav-link" href="#5"  data-tab="tab5" data-toggle="tab" role="tab">{{ labels.tab5 }}</a></li>
+					<li class="nav-item disabled" id="tab6"><a class="nav-link" href="#6"  data-tab="tab6" data-toggle="tab" role="tab">{{ labels.tab6 }}</a></li>
+					{% if payment == true %}
+						<li class="nav-item disabled" id="tab7"><a class="nav-link" href="#7"  data-tab="tab7" data-toggle="tab" role="tab">{{ labels.tab7 }}</a></li>
+					{% endif %}
+				</ul>
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="1">
+						{% if infotexte.zeitraum %}{{ infotexte.zeitraum|raw }}{% endif %}
+						<div class="book-22">
+							{% if datecompact == 1 %}
+								<div class="fewo-buchung-date">
+									<input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly/>
+									<input type="hidden" id="ctrl_anreise" name="anreise"  required class="s-anreise datepicker" value="{{ anreise }}">
+									<input type="hidden" id="ctrl_abreise" name="abreise" required class="s-abreise datepicker" value="{{ abreise }}">
+								</div>
+							{% else %}
+								<div class="form-inputs">
+									<div class="label">{{ labels.anreise }}</div>
+									<input id="ctrl_anreise" name="anreise" required class="s-anreise datepicker" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
+								</div>
+								<div class="form-inputs">
+									<div class="label">{{ labels.abreise }}</div>
+									<input id="ctrl_abreise" name="abreise" required class="s-abreise datepicker"  autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
+								</div>
+							{% endif %}
+							<div id="error-anreise"></div>
+						</div>
+						<div class="fewo_buchung_personen">
+							<div class="anz_erwachsene">
+								<div class="label label_erwachsene">{{ labels.erwachsene }}</div>
+								<select name="erwachsene" id="ctrl_erwachsene" class="select frm_erwachsene" data-request="{{ __SELF__ }}::onErwachseneChange">
+									{% for i in 1..erwachsene %}
+										<option value="{{ i }}">{{ i }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="anz_kinder">
+								<div class="label label_kinder">{{ labels.kinder }}</div>
+								<select name="kinder" id="ctrl_kinder" class="select frm_kinder" data-request="{{ __SELF__ }}::onKinderChange">
+									{% for i in 0..kinder %}
+										<option value="{{ i }}" >{{ i }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							{% if showkleinkinder %}
+							<div class="anz_kleinkinder">
+								<div class="label label_kleinkinder">{{ labels.kleinkinder }}</div>
+								<select name="kleinkinder" id="ctrl_kleinkinder" class="select frm_kleinkinder">
+									{% for i in 0..kleinkinder %}
+										<option value="{{ i }}">{{ i }}</option>
+									{% endfor %}
+								</select>
+							</div>
+							{% endif %}
+							<div id="error-personen"></div>
+						</div>
+						<div id="preisliste" class="fewo-preisliste"></div>
+						<button id="btnweiter1" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnGoAdresse">{{ labels.btnweiter }}</button>
+						<div id="#adresse" class="fewo_buchung_adresse"></div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="2">
+						{% if infotexte.gastdaten %}{{ infotexte.gastdaten|raw }}{% endif %}
+						<div id="gastdaten"></div>
+						<button id="btnback" class="fewo-btnzurueck" data-request="Buchungsmaske::onTabChange" data-request-data="tabid:1">{{ labels.btnzurueck }}</button>
+						<button id="btnweiter1" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnAdresse">{{ labels.btnweiter }}</button>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="3">
+						{% if infotexte.mitreisende %}{{ infotexte.mitreisende|raw }}{% endif %}
+						<div id="mitreisende"></div>
+						<button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:2">{{ labels.btnzurueck }}</button>
+						<button id="btnweiter3" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnMitreisende">{{ labels.btnweiter }}</button>
+					</div>
+
+					{% if showleistungen %}
+						<div role="tabpanel" class="tab-pane" id="4">
+							{% if infotexte.leistungen %}{{ infotexte.leistungen|raw }}{% endif %}
+							<div id="leistungen">
+							</div>
+							<button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:2">{{ labels.btnzurueck }}</button>
+							<button id="btnweiter4" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnLeistungen">{{ labels.btnweiter }}</button>
+						</div>
+					{% endif %}
+
+					<div role="tabpanel" class="tab-pane" id="5">
+						{% if infotexte.info %}{{ infotexte.infov }}{% endif %}
+						<div class="fewo_textarea">
+							<div id="hinweistext"></div>
+							{% if showleistungen %}
+								<button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:4">{{ labels.btnzurueck }}</button>
+							{% else %}
+								<button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onBtnGoAdresse">{{ labels.btnzurueck }}</button>
+							{% endif %}
+							<button id="btnweiter5" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnSonstiges">{{ labels.btnweiter }}</button>
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="6">
+						<div id="booking-end"></div>
+						<div id="btnend"></div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="container">
+		<div id="payment"></div>
+	</div>
+</div>
+<div class="col-md-4 float-left bg-white p-3 rounded-3 preis_uebersicht">
+	<div id="summen" class="book_preise">
+		<span class="label_buchungsmaske summen_beschreibung">{{ summen.summe }}</span>
+		<div class="zeile zeile_objektpreis">
+			<div class="zeile zeile_objektpreis">
+				<div class="header_titel">{{ summen.objpreistitel }}</div>
+				<div class="header_anzahl">{{ tage }}</div>
+				<div class="zeilensumme header_objsum">{{ objektpreis }}</div>
+			</div>
+		</div>
+		<div class="zeile zeile_preise datum">
+			<div class="zeilensummentitel datum">{{ summen.zeitraum }} {{ anreise }} - {{ abreise }}</div>
+		</div>
+		<!-- Summe feste Leistungen-->
+		<div class="zeile zeile_preise sumleist">
+			<div class="zeilensummentitel sumneben_titel">{{ summen.nebenkosten }}</div>
+			<div class="zeilensumme sumneben_wert">{{ nebenkosten }}</div>
+		</div>
+		<!-- Summe optionale Leistungen-->
+		<div class="zeile zeile_preise sumleist">
+			<div class="zeilensummentitel sumleist_titel">{{ summen.leistungen }}</div>
+			<div class="zeilensumme sumleist_wert">{{ leistungen }}</div>
+		</div>
+		{% if zuschlag > 0 %}
+			<div class="zeile zeile_preise sumzuschlag">
+				<div class="zeilensummentitel sum_titel">{{ summen.zuschlag }}</div>
+				<div class="zeilensumme sum_wert">{{ zuschlag }}</div>
+			</div>
+		{% endif %}
+		{% if rabatt > 0 %}
+			<div class="zeile zeile_preise sumrabatt">
+				<div class="zeilensummentitel sum_titel">{{ summen.rabatt }}</div>
+				<div class="zeilensumme sum_wert">{{ rabatt }}</div>
+			</div>
+		{% endif %}
+		{% if kaution > 0 %}
+			<div class="zeile zeile_preise kaution">
+				<div class="zeilensummentitel sum_titel">{{ summen.kaution }}</div>
+				<div class="zeilensumme kaution">{{ kaution }}</div>
+			</div>
+		{% endif %}
+		<!-- Gesamtsumme -->
+		<div class="zeile zeile_preise gesamtsumme">
+			<div class="zeilensummentitel sum_titel">{{ summen.gesamt }}</div>
+			<div class="zeilensumme sum_wert">{{ summe }}</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<script type="text/javascript">
+	var datecompact = {{ datecompact }};
+	var anreise = '{{ anreise }}';
+	var abreise = '{{ abreise }}';
+	var dateplaceholder = '{{ dateplaceholder }}';
+	var calClick = {{ calClick }};
+
+	{% if anreise and abreise %}
+		var perwachsene = '{{ perwachsene }}';
+		var pkinder = '{{ pkinder }}';
+	{% else %}
+		var perwachsene = 0;
+		var pkinder = 0;
+	{% endif %}
+
+	// Datepicker settings
+	var separator = '';
+	var selectForward = true;
+	var autoClose = true;
+	var format = 'DD.MM.YYYY';
+	var alwaysOpen = false;
+	var showShortcuts = true;
+	var showLegend = true;
+	var shortcuts = {'delete':true};
+	var startOfWeek = 'monday';
+	var startDate = '{{ mindate|raw}}';
+	var minDays = {{ mindays|raw}};
+	var endDate = '{{ lastday }}';
+	var saisons = {{ saisons|raw }};
+	var blocked = {{ blockeddates|raw }};
+	var language = '{{ lang }}';
+	var showTopbar = true;
+	var todayInvalid = {{ todayno }};
+	var customArrowPrev = ' ';
+	var customArrowNext = ' ';
+</script>

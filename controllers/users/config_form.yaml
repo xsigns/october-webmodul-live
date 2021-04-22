@@ -1,0 +1,25 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: xsigns.fewo::lang.eigentuemerlogin.user.label
+
+# Model Form Field configuration
+form: $/xsigns/fewo/models/user/fields.yaml
+
+# Model Class name
+modelClass: Xsigns\Fewo\Models\User
+
+# Default redirect location
+defaultRedirect: xsigns/fewo/users
+
+# Create page
+create:
+    redirect: xsigns/fewo/users/preview/:id
+    redirectClose: xsigns/fewo/users
+
+# Update page
+update:
+    # redirect: xsigns/eigentuemer/users/update/:id
+    redirectClose: xsigns/fewo/users/preview/:id

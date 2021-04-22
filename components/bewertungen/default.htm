@@ -1,0 +1,39 @@
+<div id="bew-liste">
+    {{ pagination|raw }}
+    <div id="fewo-bewliste" class="fewo-container {{ listcss }}">
+    {% for bewertung in bewertungen %}
+    <div id="bew-item" class="bew-item">
+        <div class="bew_titel"><h2>{{ bewertung.titel|raw }}</h2></div>
+        <select id="rating_{{ bewertung.id }}">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        {{ bewertung.script|raw }}
+        <div class="bew-text">{{ bewertung.ratingtext }}</div>
+
+        <div class="bew_objtitel"><a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}>{{ bewertung.objtitel|raw}}</a></div>
+        {% if showimage %}
+        <div class="bew_image">
+            <a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}><img src="{{ bewertung.image.thumb( img_width, img_height) }}" alt="{{ bewertung.image.title }}" title="{{ bewertung.image.title }}"></a></div>
+        {% endif %}
+        <div class="bew_nachricht">{{ bewertung.nachricht|raw }}</div>
+        <div class="bew_datum">{{ bewertung.date }}</div>
+        <div class="bew_gastname">{{ bewertung.author|raw }}</div>
+        {% if bewertung.catshow == 1 %}
+        <div class="{{ csscat }} fewo-cat">
+            {% set i=0 %}
+            {% for key, category in bewertung.categories %}
+            {% set i = i +1 %}
+            <div class="cat-name category{{ i }}">{{ key }}<span class="cat-number">({{category }})</span></div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    </div>
+    {{ pagination|raw }}
+</div>

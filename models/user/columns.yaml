@@ -1,0 +1,37 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.id
+
+    eid:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.eid
+
+    username:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.username
+        searchable: true
+    company:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.company
+        searchable: true
+    name:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.name
+        searchable: true
+
+    surname:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.surname
+        searchable: true
+
+    email:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.email
+        searchable: true
+
+    created_at:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.created_at
+        type: timetense
+
+    last_seen:
+        label: xsigns.fewo::lang.eigentuemerlogin.user.last_seen
+        type: timetense

@@ -1,0 +1,19 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.name
+        span: left
+
+    code:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.code
+        comment: xsigns.fewo::lang.eigentuemerlogin.group.code_comment
+        span: right
+        preset: name
+
+    description:
+        label: xsigns.fewo::lang.eigentuemerlogin.group.description_field
+        type: textarea
+        size: tiny

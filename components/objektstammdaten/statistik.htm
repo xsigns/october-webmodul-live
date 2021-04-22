@@ -1,0 +1,25 @@
+<div class="fewo-objektstatistik">
+    {% if titel %}
+    {{ titel|raw }}
+    {% endif %}
+    {% if check1 %}
+    <div class="label_geklickt">{{ geklicktlabel }}</div>
+    <div class="fewo-statistik">{{ geklickt }}</div>
+    {% endif %}
+    {% if check2 %}
+    <div class="label_angefragt">{{ angefragtlabel }}</div>
+    <div class="fewo-statistik">{{ angefragt }}</div>
+    {% endif %}
+    {% if check3 %}
+    <div class="label_gebucht">{{ gebuchtlabel }}</div>
+    <div class="fewo-statistik">{{ gebucht }}</div>
+    {% endif %}
+    {% if check4 %}
+    <div class="label_angefragt">{{ gemerktlabel }}</div>
+    <div class="fewo-statistik">{{ gemerkt }}</div>
+    {% endif %}
+    {% if check5 %}
+    <div class="label_letzte">{{ letztelabel }}</div>
+    <div class="fewo-statistik">{{ letzte }} </div>
+    {% endif %}
+</div>

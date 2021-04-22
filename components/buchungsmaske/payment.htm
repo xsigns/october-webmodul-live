@@ -1,0 +1,37 @@
+<div class="clearfix"></div>
+<div id="payh"></div>
+<script>
+    var host = "{{ host }}";
+    var checkoutId;
+
+    var stageAuthentication = {
+        "authentication.entityId": "{{ entityId }}",
+        "authentication.password": "{{ password }}",
+        "authentication.userId": "{{ userid }}",
+    }
+    var createCheckout = {
+        "amount": "{{ sum }}",
+        "currency": "{{ currency }}",
+        "paymentType": "DB",
+        "descriptor": "{{ buid }}",
+        "merchantTransactionId": "{{ transactionid }}",
+        "customParameters[SHOPPER_customerId]": "{{ buid }}",
+    }
+    for(var p in stageAuthentication)
+        createCheckout[p]=stageAuthentication[p];
+
+    $.support.cors = true;
+    $.ajaxSetup({cache: true});
+    $.post(host + "/v1/checkouts", createCheckout )
+        .then(function(response) {
+            checkoutId = response.id;
+            var Respi ="{{ ResultUrl|raw }}" + checkoutId;
+            $("#payh").append("<div class=\"container\" style=\"display:block\"><form class=\"paymentWidgets\" action=\"" + Respi +"\">{{ brands }}</form></div>");
+            $.getScript(host + "/v1/paymentWidgets.js?minified=false&checkoutId=" + checkoutId);
+        });
+
+    var wpwlOptions = {
+        style: "plain",
+        locale:"de",
+    };
+</script>

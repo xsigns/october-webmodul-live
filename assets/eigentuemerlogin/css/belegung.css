@@ -1,0 +1,14 @@
+.eigenbelegung_form {padding: 15px;}
+.fewo-buchung-cal .buchung_anreise:before, .fewo-buchung-cal .buchung_abreise:before {display: inline-block !important; content: "\f073"; font-family: 'FontAwesome'; font-size: 20px; color: #4e8bcf; position: absolute; bottom: 5px; right: 10px;}
+#belegung .form-group {margin-bottom: 1rem !important;}
+
+#summen {background-color: #f2f2f2; padding: 10px 15px !important; border-radius: 10px;}
+#summen .header_titel {font-weight: bold;}
+#summen .header_objsum, .sumneben_wert, .sum_wert, .sumleist_wert, .zeilensumme.kaution {float: right;}
+#summen .header_anzahl, #summen .sumneben_titel, .sum_titel, .sumleist_titel {display: inline-block;}
+#summen .sumleist, .sumzuschlag, .sumrabatt, .gesamtsumme, .sumoptleist {margin-top: 5px;}
+#summen .sumleist {padding-top: 5px; border-top: 1px solid #f2f2f2;display: inline-block; width: 100%;}
+#summen .zeile_zuschlag {display: none;}
+.gesamtsumme {font-weight: bold; border-top: 1px #ccc solid; padding-top: 5px;}
+
+#belegung .leistung_anzahl {text-align: center;}

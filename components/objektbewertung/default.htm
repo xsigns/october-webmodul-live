@@ -1,0 +1,47 @@
+<div class="{{ cssslider }} fewo-rating">
+    <!--
+    rating = Durchschnitt
+    ratingall = Anzahl Bewertungen;
+    ratingcount = Anzahl Bewertungsoptionen
+    -->
+    <select id="rating">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <div class="fewo-rating-text">{{ ratingtext|raw }}</div>
+    <script type="text/javascript">
+        $(function() {
+            $('#rating').barrating({
+                theme: 'fontawesome-stars-o',
+                readonly:true,
+                initialRating: {{ rating }},
+            allowEmpty: true,
+        });
+        });
+    </script>
+</div>
+
+{% if catshow == 1 %}
+    <div class="{{ csscat }} fewo-cat">
+        {% set i=0 %}
+        {% for key, category in cat %}
+        {% set i = i +1 %}
+        <div class="cat-name category{{ i }}">{{ key }}
+            <span class="cat-stars">
+                {% for x in 1..5 %}
+                    {% if x <= category %}
+                        <span class="fewo_star_active"></span>
+                    {% else %}
+                        <span class="fewo_star_inactive"></span>
+                    {% endif %}
+                {% endfor %}
+            </span>
+            <div class="fewo_bew_number">{{ category }}</div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}

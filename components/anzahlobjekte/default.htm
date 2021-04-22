@@ -1,0 +1,30 @@
+<div class="container">
+    {% if ausgabeAuswahl == 'ortreg' %}
+        {% for ort in orteList %}
+            <div class="obj_anzahl_orte d-inline-block w-25 mb-3">
+                <p class="m-0 font-weight-bold">{{ ort.ort_name }} {{ ort.ort_plz }}</p>
+                <span>{{ ort.ort_obj_anzahl }} {% if ort.ort_obj_anzahl == 1 %} {{ objektLabel }} {% else %} {{ objekteLabel }} {% endif %}</span>
+            </div>
+        {% endfor %}
+        {% for region in regionenList %}
+            <div class="obj_anzahl_regionen d-inline-block w-25 mb-3">
+                <p class="m-0 font-weight-bold">{{ region.name }}</p>
+                <span>{{ region.region_obj_anzahl }} {% if ort.ort_obj_anzahl == 1 %} {{ objektLabel }} {% else %} {{ objekteLabel }} {% endif %}</span>
+            </div>
+        {% endfor %}
+    {% elseif ausgabeAuswahl == 'ort' %}
+        {% for ort in orteList %}
+            <div class="obj_anzahl_orte d-inline-block w-25 mb-3">
+                <p class="m-0 font-weight-bold">{{ ort.ort_name }} {{ ort.ort_plz }}</p>
+                <span>{{ ort.ort_obj_anzahl }} {% if ort.ort_obj_anzahl == 1 %} {{ objektLabel }} {% else %} {{ objekteLabel }} {% endif %}</span>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for region in regionenList %}
+            <div class="obj_anzahl_regionen d-inline-block w-25 mb-3">
+                <p class="m-0 font-weight-bold">{{ region.name }}</p>
+                <span>{{ region.region_obj_anzahl }} {% if ort.ort_obj_anzahl == 1 %} {{ objektLabel }} {% else %} {{ objekteLabel }} {% endif %}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

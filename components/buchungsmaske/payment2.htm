@@ -1,0 +1,21 @@
+<div class="clearfix"></div>
+<div id="payh"></div>
+<script>
+    var host = '{{ host }}';
+    var checkoutId = '{{ checkoutId }}';
+
+    var script = document.createElement('script');
+    script.src = host + '/v1/paymentWidgets.js?checkoutId=' + checkoutId;
+    script.defer = true;
+
+    document.head.appendChild(script);
+
+    var Respi = "{{ ResultUrl|raw }}" + checkoutId;
+
+    $("#payh").append('<div class="container" style="display: block"><form class="paymentWidgets" action="' + Respi + '">' + '{{ brands }}' + '</form></div>');
+
+    var wpwlOptions = {
+        style: "plain",
+        locale:"de",
+    };
+</script>

@@ -1,0 +1,43 @@
+{% if noimage == 0 %}
+    {% if imagetype == 5 %}
+        <header>
+        <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="6000">
+            <ol class="carousel-indicators">
+                {% for image in images %}
+                    <li data-target="#carouselIndicators" data-slide-to="{{ image.id }}" class="{{ image.active }}"></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                {% for image in images %}
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item {{ image.active }}" style="background-image: url('{{ image.image }}')">
+                    {% if showtitle %}<h2 class="display-4">{{ image.title }}</h2>{% endif %}
+                    {% if showdesc %}<p class="lead">{{ image.description|raw }}</p>{% endif %}
+                </div>
+
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">{{ prev }}</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">{{ next }}</span>
+            </a>
+        </div>
+        </header>
+    {% else %}
+        <div class="{{ imgcss }} fewo-image-{{ type }} {{ type }}">
+            {% if imagecrop %}
+                <img src="{{ image|raw }}" alt="{{ image.title }}" title="{{ image.title }}">
+            {% else %}
+                {% if type == 'panorama' %}
+                    <img src="{{ image.thumb(auto,auto) }}" alt="{{image.title}}">
+                {% else %}
+                    <img src="{{ image|raw }}" alt="{{ image.title }}" title="{{ image.title }}">
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endif %}

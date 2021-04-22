@@ -1,0 +1,466 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+tabs:
+  fields:
+    login_section:
+      label: xsigns.fewo::lang.globalsettings.login_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    username:
+      label: xsigns.fewo::lang.globalsettings.username
+      type: text
+      span: auto
+      required: true
+      cssClass: col-sm-4
+      placeholder: xsigns.fewo::lang.globalsettings.username
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    password:
+      label: xsigns.fewo::lang.globalsettings.password
+      span: auto
+      type: text
+      required: true
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    log_section:
+      label: xsigns.fewo::lang.globalsettings.log_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    debug:
+      label: xsigns.fewo::lang.globalsettings.debugmodus
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.debugmodus_desc
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    logimport:
+      label: xsigns.fewo::lang.globalsettings.logimport
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.logimport_desc
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    logHobex:
+      label: xsigns.fewo::lang.globalsettings.logHobex
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.logHobex_desc
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    debugtime:
+      label: xsigns.fewo::lang.globalsettings.debugtime
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.debugtime_desc
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    alias_section:
+      label: xsigns.fewo::lang.globalsettings.alias_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    aliasart:
+      label: xsigns.fewo::lang.globalsettings.aliasart
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    aliastyp:
+      label: xsigns.fewo::lang.globalsettings.aliastyp
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    aliasort:
+      label: xsigns.fewo::lang.globalsettings.aliasort
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    syncfeondi_section:
+      label: xsigns.fewo::lang.globalsettings.syncfeondi_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab1
+      hidden: true # TODO: Muss wieder aktiviert werden
+    syncfeondiForm:
+      type: syncfeondi
+      cssClass: col-sm-12
+      tab: xsigns.fewo::lang.globalsettings.tab1
+      hidden: true # TODO: Muss wieder aktiviert werden
+    syncfeondi:
+      type: switch
+      tab: xsigns.fewo::lang.globalsettings.tab1
+      hidden: true
+    allgemein_section:
+      label: xsigns.fewo::lang.globalsettings.allgemein_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    titleheader:
+      label: xsigns.fewo::lang.globalsettings.titleheader
+      type: text
+      span: full
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.titleheader_desc
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    blockieren:
+      label: xsigns.fewo::lang.globalsettings.blockieren
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      commentAbove: xsigns.fewo::lang.globalsettings.blockieren_desc
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    mformat:
+      label: xsigns.fewo::lang.globalsettings.mformat
+      comment: xsigns.fewo::lang.globalsettings.mformat_desc
+      default: ',2€'
+      type: text
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    mformatlist:
+      label: xsigns.fewo::lang.globalsettings.mformatlist
+      comment: xsigns.fewo::lang.globalsettings.mformatlist_desc
+      default: ',2€'
+      type: text
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    noObjektImage:
+      label: xsigns.fewo::lang.globalsettings.noobjektimage
+      type: fileupload
+      mode: image
+      imageWidth: 400
+      fileTypes: jpg,png
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    noHausImage:
+      label: xsigns.fewo::lang.globalsettings.nohausimage
+      type: fileupload
+      mode: image
+      imageWidth: 400
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    noGrundrissImage:
+      label: xsigns.fewo::lang.globalsettings.nogrundrissimage
+      type: fileupload
+      mode: image
+      imageWidth: 400
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    noAngebotImage:
+      label: xsigns.fewo::lang.globalsettings.noangebotimage
+      type: fileupload
+      mode: image
+      imageWidth: 400
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    mailuser:
+      label: xsigns.fewo::lang.globalsettings.mailuser
+      comment: xsigns.fewo::lang.globalsettings.mailuser_desc
+      type: text
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    mailaddress:
+      label: xsigns.fewo::lang.globalsettings.mailaddr
+      comment: xsigns.fewo::lang.globalsettings.mailaddr_desc
+      type: text
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    mailcc:
+      label: xsigns.fewo::lang.globalsettings.mailcc
+      comment: xsigns.fewo::lang.globalsettings.mailcc_desc
+      type: text
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    mailcccron:
+      label: xsigns.fewo::lang.globalsettings.mailcccron
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      commentHtml: true
+      comment: xsigns.fewo::lang.globalsettings.mailcccron_desc
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    cronbefore:
+      label: xsigns.fewo::lang.globalsettings.cronbefore
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      commentHtml: true
+      comment: xsigns.fewo::lang.globalsettings.croninfo
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    cronafter:
+      label: xsigns.fewo::lang.globalsettings.cronafter
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    beforedays:
+      label: xsigns.fewo::lang.globalsettings.beforedays
+      type: number
+      span: left
+      default: 5
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    afterdays:
+      label: xsigns.fewo::lang.globalsettings.afterdays
+      type: number
+      span: right
+      default: 5
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    cronlog:
+      label: xsigns.fewo::lang.globalsettings.cronlog
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.cronlog_desc
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    objektpath:
+      label: xsigns.fewo::lang.globalsettings.objektpath
+      type: dropdown
+      span: left
+      cssClass: col-sm-4
+      options: getSitePath
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    linktext:
+      label: xsigns.fewo::lang.globalsettings.linktext
+      type: text
+      span: right
+      required: false
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    datecompact:
+      label: xsigns.fewo::lang.globalsettings.datecompact
+      type: switch
+      span: left
+      comment: xsigns.fewo::lang.globalsettings.datecompact_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    tagein:
+      label: xsigns.fewo::lang.globalsettings.tagein
+      type: switch
+      span: right
+      comment: xsigns.fewo::lang.globalsettings.tagein_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    todayno:
+      label: xsigns.fewo::lang.globalsettings.todayno
+      type: switch
+      span: left
+      comment: xsigns.fewo::lang.globalsettings.todayno_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    calstart:
+      label: xsigns.fewo::lang.globalsettings.calstart
+      type: switch
+      span: right
+      comment: xsigns.fewo::lang.globalsettings.calstart_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    calClick:
+      label: xsigns.fewo::lang.globalsettings.calclick
+      type: switch
+      span: left
+      comment: xsigns.fewo::lang.globalsettings.calclick_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    calcss:
+      label: xsigns.fewo::lang.globalsettings.calcss
+      type: mediafinder
+      mode: file
+      span: left
+      comment: xsigns.fewo::lang.globalsettings.calcss_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    belcss:
+      label: xsigns.fewo::lang.globalsettings.belcss
+      type: mediafinder
+      mode: file
+      span: right
+      comment: xsigns.fewo::lang.globalsettings.belcss_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    detaillink:
+      label: xsigns.fewo::lang.globalsettings.detaillink
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.detaillink_desc
+      tab: xsigns.fewo::lang.globalsettings.tab5
+    seoobjekte:
+      label: xsigns.fewo::lang.globalsettings.seoobjekt
+      type: dropdown
+      options: getSitePath
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab5
+    seohaus:
+      label: xsigns.fewo::lang.globalsettings.seohaus
+      type: dropdown
+      options: getSitePath
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab5
+    guestlogin:
+      label: xsigns.fewo::lang.globalsettings.guestlogin
+      type: dropdown
+      span: left
+      cssClass: col-sm-4
+      options: getSitePath
+      tab: xsigns.fewo::lang.globalsettings.tab5
+    map_circle:
+      label: xsigns.fewo::lang.globalsettings.map_circle
+      type: switch
+      cssClass: col-sm-4
+      span: left
+      comment: xsigns.fewo::lang.globalsettings.map_circle_desc
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_circle_size:
+      label: xsigns.fewo::lang.globalsettings.map_circle_size
+      type: dropdown
+      span: right
+      cssClass: col-sm-4
+      options:
+        50: 50
+        75: 75
+        100: 100
+        125: 125
+        150: 150
+        175: 175
+        200: 200
+      comment: xsigns.fewo::lang.globalsettings.map_circle_size_desc
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_circle_color:
+      label: xsigns.fewo::lang.globalsettings.map_circle_color
+      type: colorpicker
+      span: left
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.map_circle_color_desc
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    gmapMarker:
+      label: xsigns.fewo::lang.globalsettings.gmapMarker
+      type: fileupload
+      mode: image
+      imageWidth: 120
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    googlemapsapi:
+      label: xsigns.fewo::lang.globalsettings.googlemapsapi
+      type: text
+      cssClass: col-sm-4
+      span: left
+      comment: xsigns.fewo::lang.globalsettings.googlemapsapi_desc
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    invoice:
+      label: xsigns.fewo::lang.globalsettings.invoice
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobex_sectionn:
+      label: xsigns.fewo::lang.globalsettings.hobexsection
+      type: section
+      commentHtml: true
+      comment: xsigns.fewo::lang.globalsettings.hobexsection_desc
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexversion:
+      label: xsigns.fewo::lang.globalsettings.hobexversion
+      type: dropdown
+      span: left
+      options:
+        1: Version 1
+        2: Version 2
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.hobexversion_desc
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobextest:
+      label: xsigns.fewo::lang.globalsettings.hobextest
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexuserid:
+      label: xsigns.fewo::lang.globalsettings.hobexuserid
+      type: text
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexpassword:
+      label: xsigns.fewo::lang.globalsettings.hobexpassword
+      type: text
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexentityId:
+      label: xsigns.fewo::lang.globalsettings.hobexentityId
+      type: text
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexaccesstoken:
+      label: xsigns.fewo::lang.globalsettings.hobexaccesstoken
+      type: text
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexrequest:
+      label: xsigns.fewo::lang.globalsettings.hobexrequest
+      type: dropdown
+      options: getSitePath
+      span: full
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexvisa:
+      label: xsigns.fewo::lang.globalsettings.hobexvisa
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexmaster:
+      label: xsigns.fewo::lang.globalsettings.hobexmaster
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexmaestro:
+      label: xsigns.fewo::lang.globalsettings.hobexmaestro
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexvpay:
+      label: xsigns.fewo::lang.globalsettings.hobexvpay
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexsofort:
+      label: xsigns.fewo::lang.globalsettings.hobexsofort
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexgiropay:
+      label: xsigns.fewo::lang.globalsettings.hobexgiropay
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexamex:
+      label: xsigns.fewo::lang.globalsettings.hobexamex
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexpaypal:
+      label: xsigns.fewo::lang.globalsettings.hobexpaypal
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3

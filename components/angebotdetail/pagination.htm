@@ -1,0 +1,66 @@
+{% if pages > 1 %}
+<div id="control-pagination" class="control-pagination">
+    <span class="page-iteration">{{ paginationlabel }}</span>
+        {% if paginationas == 0 %}
+            {% if page > 1 %}
+                <a href="#" class="page-first" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'first'" data-request="{{ __SELF__ }}::onPageChange"> </a>
+                <a href="#" class="page-back" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'prev'" data-request="{{ __SELF__ }}::onPageChange"> </a>
+            {% endif %}
+            <select name="pageselect" id="pageselect" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'select'" data-request="{{ __SELF__ }}::onPageChange"
+                    class="form-control">
+            {% for i in 1..pages %}
+                <option value="{{ i }}" {% if i == page %} selected {% endif %}>{{ i }}</option>
+            {% endfor %}
+            </select>
+            {% if page < pages %}
+                <a href="#" class="page-next" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'next'" data-request="{{ __SELF__ }}::onPageChange"> </a>
+                <a href="#" class="page-last" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'last'" data-request="{{ __SELF__ }}::onPageChange"> </a>
+            {% endif %}
+        {% else %}
+
+        {% if page > 1 %}
+            <button type="button" class="btn" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'first'" data-request="{{ __SELF__ }}::onPageChange"> << </button>
+            <button type="button" class="btn" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'prev'" data-request="{{ __SELF__ }}::onPageChange"> < </button>
+        {% endif %}
+        {% if pages < 8 %}
+             {% for i in 1..pages %}
+                <button type="button" class="{% if i == page %}btn-secondary btn {% else %}btn{% endif %}" data-request-data="aktpage: {{ i }},max: {{ pages }}, stype: 'button'" data-request="{{ __SELF__ }}::onPageChange">{{ i }}</button>
+            {% endfor %}
+
+        {% else %}
+            {% set pagemin = page - 2 %}
+            {% set pagemax = page + 2 %}
+
+            {% if page < 6 %}
+                {% set pagemin = 2 %}
+                {% set pagemax = 7 %}
+            {% elseif page >= pages - 4 %}
+                {% set pagemin = pages - 6 %}
+                {% set pagemax = pages - 1 %}
+            {% endif %}
+
+            {% set dotunten = pagemin / 2|round(0, 'ceil') %}
+            {% set dotoben = (pages - pagemax / 2)|round(0, 'ceil') %}
+
+            <button type="button" class="{% if page == 1 %}btn-secondary btn {% else %}btn{% endif %}" data-request-data="aktpage: 1,max: {{ pages }}, stype: 'button'" data-request="{{ __SELF__ }}::onPageChange">1</button>
+
+            {% if pagemin > 2 %}
+                <button type="button" class="btn" data-request-data="aktpage: {{ dotunten }},max: {{ pages }}, stype: 'button'" data-request="{{ __SELF__ }}::onPageChange">...</button>
+            {% endif %}
+
+            {% for i in pagemin..pagemax %}
+                <button type="button" class="{% if i == page %}btn-secondary btn {% else %}btn{% endif %}" data-request-data="aktpage: {{ i }},max: {{ pages }}, stype: 'button'" data-request="{{ __SELF__ }}::onPageChange">{{ i }}</button>
+            {% endfor %}
+
+            {% if pagemax < pages - 2 %}
+                <button type="button" class="btn" data-request-data="aktpage: {{ dotoben }},max: {{ pages }}, stype: 'button'" data-request="{{ __SELF__ }}::onPageChange">...</button>
+            {% endif %}
+            <button type="button" class="{% if page == pages %}btn-secondary btn {% else %} btn{% endif %}" data-request-data="aktpage: {{ pages }},max: {{ pages }}, stype: 'button'" data-request="{{ __SELF__ }}::onPageChange">{{ pages }}</button>
+        {% endif %}
+        {% if page < pages %}
+            <button type="button" class="btn" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'next'" data-request="{{ __SELF__ }}::onPageChange"> > </button>
+            <button type="button" class="btn" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'last'" data-request="{{ __SELF__ }}::onPageChange"> >> </button>
+        {% endif %}
+    {% endif %}
+</div>
+{% endif %}

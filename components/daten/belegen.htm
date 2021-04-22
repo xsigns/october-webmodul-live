@@ -1,0 +1,113 @@
+<div class="fewo-buchung-cal d-inline-block w-100 mt-3">
+	<div class="buchung_anreise  col-6 col-md-4 col-lg-2 p-0 float-left mr-2 mb-2 mb-md-0">
+     <div class="label label_anreise">{{ labels.anreise }}</div>
+     <input type="text" id="ctrl_anreise" name="anreise" autocomplete="off" required class="s-anreise datepicker form-control" value="{{ anreise }}">
+  </div>
+  <div class="buchung_abreise col-6 col-md-4 col-lg-2 p-0 float-left mr-2">
+     <div class="label label_abreise">{{ labels.abreise }}</div>
+     <input type="text" id="ctrl_abreise" name="abreise" autocomplete="off" required class="s-abreise datepicker form-control" value="{{ abreise }}">
+	</div>
+ </div>
+<div id="error-anreise"></div>
+<input type="hidden" name="objartid" value="{{objartid}}">
+<input type="hidden" name="maxpersonen" value="{{maxpersonen}}">
+<div class="fewo_buchung_personen d-inline-block w-100 mt-4 mb-5">
+    <div class="anz_erwachsene col-12 col-md-3 col-lg-2 p-0 float-left mr-3 mb-3 mb-md-0">
+        <div class="label label_erwachsene">{{ labels.erwachsene }}</div>
+        <select name="erwachsene" id="ctrl_erwachsene" class="select frm_erwachsene form-control" data-request="{{ __SELF__ }}::onErwachseneChange">
+            {% for i in 1..erwachsene %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="anz_kinder col-12 col-md-3 col-lg-2 p-0 float-left mr-3 mb-3 mb-md-0">
+        <div class="label label_kinder">{{ labels.kinder }}</div>
+        <select name="kinder" id="ctrl_kinder" class="select frm_kinder form-control" data-request="{{ __SELF__ }}::onKinderChange">
+            {% for i in 0..kinder %}
+                <option value="{{ i }}" >{{ i }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="anz_kleinkinder col-12 col-md-4 col-lg-2 p-0 float-left mr-3 mb-3 mb-md-0">
+        <div class="label label_kleinkinder">{{ labels.kleinkinder }}</div>
+        <select name="kleinkinder" id="ctrl_kleinkinder" class="select frm_kleinkinder form-control">
+            {% for i in 0..kleinkinder %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<div class="d-inline-block w-100">
+<div id="adresse" class="col-8 pl-0 float-left"></div>
+<div id="summen" class="col-4 pr-0 float-left"></div>
+</div>
+<div class="clearfix"></div>
+{% if showleistungen %}
+<div id="leistungen" class="col-8 pl-0 mb-4"></div>
+{% endif %}
+<button id="buchen" class="fewo-buchen btn btn-success" data-request="{{ __SELF__ }}::onBtnBuchen">{{ labels.buchen }}</button>
+<script>
+    $(document).ready(function() {
+
+        $('#cleardates').click(function(evt)
+        {
+            evt.stopPropagation();
+           $('#ctrl_anreise').data('dateRangePicker').clear();
+			$('#ctrl_anreise').request('onDateReset');
+		$('#ctrl_erwachsene').val(1);
+		$('#ctrl_kinder').val(0);
+		$('#ctrl_kleinkindern').val(0);
+        });
+
+        $('#abreise').click(function(evt){
+            $('#anreise').data('dateRangePicker').open();
+        });
+        var picker = $('#ctrl_anreise').dateRangePicker(
+			    {
+					startDate: new Date(),
+					separator: '',
+					selectForward: true,
+					autoClose:true,
+					format: 'DD.MM.YYYY',
+					//alwaysOpen:true,
+					startOfWeek: 'monday',
+					startDate: '{{ mindate|raw}}',
+					minDays: 2,
+					saisons: {{ saisons|raw }},
+					blocked: {{ blockeddates|raw }},
+					language: '{{ lang }}',
+					// showTopbar:false,
+					beforeShowDay: function(t)
+					{
+					if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
+						valid=false;
+					else
+						valid = true;
+					var _class = '';
+					var _tooltip = valid ? '' : 'belegt';
+					return [valid,_class,_tooltip];
+					},
+					setValue: function(s,from,to)
+						{
+							$('#ctrl_anreise').val(from);
+							$('#ctrl_abreise').val(to);
+							if(to)
+					    $('#ctrl_abreise').request('onAbreiseChange');
+						}
+				})
+
+			picker.bind('datepicker-first-date-selected', function(event, obj)
+			{
+			    $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+				$('#ctrl_anreise').request('onAnreiseChange');
+			});
+
+			picker.bind('datepicker-change', function(event, obj)
+			{
+
+                $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+                $('#ctrl_abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
+				$('#ctrl_abreise').request('onAbreiseChange');
+			});
+    });
+			</script>

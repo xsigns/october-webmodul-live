@@ -1,0 +1,94 @@
+<div id="error-check"></div>
+<div class="zusammenfassung">
+    {% if zusammenfassung %}{{ zusammenfassung|raw }}{% endif %}
+    <div class="daten">
+        <div class="label">{{ labels.objekt }}</div>
+        <div class="zusammenfassung objekt">{{ data.objekt }}</div>
+        <div class="label">{{ labels.anreise }}</div>
+        <div class="zusammenfassung anreise">{{ data.anreise }}</div>
+        <div class="label">{{ labels.abreise }}</div>
+        <div class="zusammenfassung abreise">{{ data.abreise }}</div>
+        <div class="label">{{ labels.anrede }}</div>
+        <div class="zusammenfassung anrede">{{ data.anrede }}</div>
+        <div class="label">{{ labels.vorname }}</div>
+        <div class="zusammenfassung vorname">{{ data.vorname }}</div>
+        <div class="label">{{ labels.name }}</div>
+        <div class="zusammenfassung name">{{ data.name }}</div>
+        <div class="label">{{ labels.strasse }}</div>
+        <div class="zusammenfassung strasse">{{ data.strasse }}</div>
+        <div class="label">{{ labels.plz }}</div>
+        <div class="zusammenfassung plz">{{ data.plz }}</div>
+        <div class="label">{{ labels.ort }}</div>
+        <div class="zusammenfassung ort">{{ data.ort }}</div>
+        <div class="label">{{ labels.mail }}</div>
+        <div class="zusammenfassung mail">{{ data.mail }}</div>
+        <div class="label">{{ labels.erwachsene }}</div>
+        <div class="zusammenfassung erwachsene">{{ data.erwachsene }}</div>
+        <div class="label">{{ labels.kinder }}</div>
+        <div class="zusammenfassung kinder">{{ data.kinder }}</div>
+        <div class="label">{{ labels.kleinkinder }}</div>
+        <div class="zusammenfassung kleinkinder">{{ data.kleinkinder }}</div>
+        <div class="label">{{ labels.tab5 }}</div>
+        <div class="zusammenfassung hinweis">{{ hinweis|raw }}</div>
+        {% if data.mitreisende %}
+            {% for mit in data.mitreisende %}
+        <div class="mitreisende">{{ mit.mitvorname}} {{ mit.mitname}} {{ mit.mitgeb }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="festeLeistung">{{ nebenkosten|raw }}</div>
+        {% if data.leistungen %}
+        <div class="zusammenfassung leistungen">
+            {{ gebuchteleistungen|raw }}
+            <div class="leistungenheader">
+                <div class="leistungheader leistung_titel col-12 col-lg-4 p-0 pr-3 float-left"><b>{{ labels.leist }}</b></div>
+                <div class="leistungheader leistung_anzahl col-12 col-lg-2 p-0 float-left text-center"><b>{{ labels.leistanz }}</b></div>
+                <div class="leistungheader leistung_preis col-12 col-lg-3 p-0 pl-2 float-left text-right"><b>{{ labels.leistpreis }}</b></div>
+                <div class="leistungheader zeilensumme leistung_summe col-12 col-lg-3 p-0 pl-2 float-left text-right"><b>{{ labels.leistsumme }}</b></div>
+            </div>
+            {% for leist in data.leistungen %}
+            <div class="leistung_titel">{{ leist.titel }}</div>
+            <div class="leistung_anz">{{ leist.anz }}
+                {% if leist.countval > 1 %}
+                <span class="count">{{ leist.countval }}</span>
+                {% endif %}
+            </div>
+            <div class="leistung_preis"><span class="fewo_preistype">{{ leist.preis }}</span></div>
+            <div class="leistung_summe">{{ leist.summe }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if data.kaution > 0 %}
+            <div class="label">{{ summen.kaution }}</div>
+            <div class="zusammenfassung kaution">{{ data.kaution }}</div>
+        {% endif %}
+        <div class="label">{{ summen.gesamt }}</div>
+        <div class="zusammenfassung summe">{{ data.summe }}</div>
+        {%if data.zahlung1 > 0 %}
+            <div class="label">{{ summen.anzahlung }}</div>
+            <div class="zusammenfassung zahlung1">{{ data.zahlung1 }}</div>
+        {% endif %}
+        {%if data.zahlung2 > 0 %}
+        <div class="label">{{ summen.restzahlung }}</div>
+        <div class="zusammenfassung zahlung2">{{ data.zahlung2 }}</div>
+        {% endif %}
+    </div>
+    <div class="agbdata">
+        <span id="error-check" class="validate"></span>
+        {% if agbcheck %}
+            <input type="checkbox" name="agb">
+            <div class="label agb">{{ agbcheck|raw }}</div>
+        {% endif %}
+        {% if datacheck %}
+            <input type="checkbox" name="data">
+            <div class="label data">{{ datacheck|raw }}</div>
+        {% endif %}
+        {% if sonstigescheck %}
+            <input type="checkbox" name="sonstiges">
+            <div class="label data">{{ sonstigescheck|raw }}</div>
+        {% endif %}
+        {% if werbemail %}
+        <input type="checkbox" name="werbemail">
+        <div class="label data">{{ werbemail|raw }}</div>
+        {% endif %}
+    </div>
+</div>

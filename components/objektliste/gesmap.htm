@@ -1,0 +1,37 @@
+<div id="map" class="fewo-listmap" style="height:{{gesmapheight}}px;"></div>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                scrollWheelZoom: false,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+            }),
+            latlng = L.latLng({{mapcenterlat}}, {{mapcenterlng}});
+
+        var map = L.map('map', {center: latlng, zoom: 14, layers: [tiles]});
+
+        var markers = L.markerClusterGroup({ chunkedLoading: true });
+        {% for marker in maps %}
+            //var title = '{{ marker.box|raw }}';
+            var marker = L.marker(L.latLng({{ marker.lat}}, {{marker.long}}));
+            //marker.bindPopup(title);
+            markers.addLayer(marker);
+        {% endfor %}
+
+        map.addLayer(markers)
+        try {
+            var bounds = markers.getBounds();
+            if (bounds) {
+                map.fitBounds(bounds);
+            }
+        } catch(err) {
+            // pass
+        }
+        map.on('mouseout',function() {
+            map.scrollWheelZoom.disable();
+        });
+    });
+    function onClicki(e) {
+        alert(this.getLatLng());
+    }
+</script>
