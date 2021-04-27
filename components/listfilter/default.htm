@@ -241,31 +241,31 @@
 
     </form>
     <script type="text/javascript">
-        let lblTag = '{{labels.tag}}';
-        let lblTage = '{{labels.tage}}';
-        let lblWoche = '{{labels.woche}}';
-        let lblWochen = '{{labels.wochen}}';
-        let anreise = '{{ anreise }}';
-        let abreise = '{{ abreise }}';
-        let showtage = {% if showtage %}{{showtage}}{% else %}0{% endif %};
-        let personen = {{ personen }};
-        let zimmer = {{ zimmer }};
-        let schlafzimmer = {{ schlafzimmer }};
-        let badezimmer = {{ badezimmer }};
-        let ort = {{ ort }};
-        let land = '{{ land }}';
-        let region = {{ region }};
-        let objart = {{ objart }};
-        let objtyp = {{ objtyp }};
-        let sterne = 0{{sterne }};
-        let maxpersonen = {{ maxpersonen }};
-        let maxzimmer = {{ maxzimmer }};
-        let maxschlafzimmer = {{ maxschlafzimmer }};
-        let maxbadezimmer = {{ maxbadezimmer }};
-        let minpreis = {{ minpreis }};
-        let maxpreis = {{ maxpreis }};
-        let preis = '{{ preis }}';
-        let selTage = 0;
+        var lblTag = '{{labels.tag}}';
+        var lblTage = '{{labels.tage}}';
+        var lblWoche = '{{labels.woche}}';
+        var lblWochen = '{{labels.wochen}}';
+        var anreise = '{{ anreise }}';
+        var abreise = '{{ abreise }}';
+        var showtage = {% if showtage %}{{showtage}}{% else %}0{% endif %};
+        var personen = {{ personen }};
+        var zimmer = {{ zimmer }};
+        var schlafzimmer = {{ schlafzimmer }};
+        var badezimmer = {{ badezimmer }};
+        var ort = {{ ort }};
+        var land = '{{ land }}';
+        var region = {{ region }};
+        var objart = {{ objart }};
+        var objtyp = {{ objtyp }};
+        var sterne = 0{{sterne }};
+        var maxpersonen = {{ maxpersonen }};
+        var maxzimmer = {{ maxzimmer }};
+        var maxschlafzimmer = {{ maxschlafzimmer }};
+        var maxbadezimmer = {{ maxbadezimmer }};
+        var minpreis = {{ minpreis }};
+        var maxpreis = {{ maxpreis }};
+        var preis = '{{ preis }}';
+        var selTage = 0;
 
         function aenderewert(controlwert, controldarstellung, increment, request)
         {

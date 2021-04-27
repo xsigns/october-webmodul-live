@@ -368,7 +368,7 @@ class Plugin extends PluginBase
     {
         if ($record->id > 0)
         {
-            $resAntwort = Database::select($this->controller, "select antwort from xsigns_fewo_bew where id=" . $record->id, $this->modulename);
+            $resAntwort = Database::select($this->controller, $this->modulename,"select antwort from xsigns_fewo_bew where id=" . $record->id);
             if ($resAntwort[0]->antwort != '')
                 return 'Ja';
             else
@@ -391,7 +391,7 @@ class Plugin extends PluginBase
     {
         if ($record->obj_id > 0)
         {
-            $resObjekt = Database::select($this->controller, "select titel from xsigns_fewo_objlang where objid = " . $record->obj_id, $this->modulename);
+            $resObjekt = Database::select($this->controller, $this->modulename, "select titel from xsigns_fewo_objlang where objid = " . $record->obj_id);
 
             if (count($resObjekt) > 0)
                 return $resObjekt[0]->titel;
@@ -408,7 +408,7 @@ class Plugin extends PluginBase
     {
         if ($record->objektid > 0)
         {
-            $resObjekt = Database::select($this->controller, "select titel from xsigns_fewo_objlang where objid = " . $record->objektid, $this->modulename);
+            $resObjekt = Database::select($this->controller,  $this->modulename, "select titel from xsigns_fewo_objlang where objid = " . $record->objektid);
 
             if (count($resObjekt) > 0)
                 return $resObjekt[0]->titel;
