@@ -10,12 +10,10 @@ class Update49 extends Migration
     public function up()
     {
         Schema::table('xsigns_fewo_vorg', function($table) {
-            $table->dropColumn('vorg_is_b_bl_e');
-            $table->dropColumn('vorg_is_a_b_bl_e_o');
             $table->dropIndex('objid_abbleo');
             $table->dropIndex('objid_bble');
-            $table->integer('vorg_is_b_bl_e');
-            $table->integer('vorg_is_a_b_bl_e_o');
+            $table->integer('vorg_is_b_bl_e')->change();
+            $table->integer('vorg_is_a_b_bl_e_o')->change();
             $table->index(['vorg_objid', 'vorg_is_a_b_bl_e_o'], 'objid_abbleo');
             $table->index(['vorg_objid', 'vorg_is_b_bl_e'], 'objid_bble');
         });
@@ -26,12 +24,10 @@ class Update49 extends Migration
     public function down()
     {
         Schema::table('xsigns_fewo_vorg', function($table) {
-            $table->dropColumn('vorg_is_a_b_bl_e_o');
-            $table->dropColumn('vorg_is_b_bl_e');
             $table->dropIndex('objid_abbleo');
             $table->dropIndex('objid_bble');
-            $table->string('vorg_is_b_bl_e');
-            $table->string('vorg_is_a_b_bl_e_o');
+            $table->string('vorg_is_b_bl_e')->change();
+            $table->string('vorg_is_a_b_bl_e_o')->change();
             $table->index(['vorg_objid', 'vorg_is_a_b_bl_e_o'], 'objid_abbleo');
             $table->index(['vorg_objid', 'vorg_is_b_bl_e'], 'objid_bble');
         });
