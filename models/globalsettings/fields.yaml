@@ -251,6 +251,7 @@ tabs:
       label: xsigns.fewo::lang.globalsettings.tagein
       type: switch
       span: right
+      commentHtml: true
       comment: xsigns.fewo::lang.globalsettings.tagein_desc
       tab: xsigns.fewo::lang.globalsettings.tab4
     todayno:

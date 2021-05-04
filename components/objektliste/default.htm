@@ -228,30 +228,37 @@
                                     <div id="mapid{{ objekt.id }}" class="fewo-objektmap" style="height:{{ mapheight }}px;"></div>
                                     <script>
                                         jQuery(document).ready(function() {
-                                            var mymap{{ objekt.id }} = L.map('mapid{{ objekt.id }}',{
+                                            var mymap{{ objekt.id }} = L.map('mapid{{ objekt.id }}', {
                                                 center: [{{ objekt.lat }}, {{ objekt.lng }}],
-                                            {% if fullscreen %}
-                                            fullscreenControl: true,
-                                            fullscreenControlOptions: { // optional
-                                                title:"Vollbildansicht",
-                                                    titleCancel:"Normalansicht"
-                                            },
-                                            {% endif %}
-                                            zoom: 14,
-                                        });
-                                            var OpenStreetMap_DE = L.tileLayer('{{ objekt.maptypeobj }}', {
+                                                {% if fullscreen %}
+                                                    fullscreenControl: true,
+                                                    fullscreenControlOptions: { // optional
+                                                        title: "Vollbildansicht",
+                                                        titleCancel: "Normalansicht"
+                                                    },
+                                                {% endif %}
+                                                zoom: 14,
+                                            });
+
+                                            L.tileLayer('{{ objekt.maptypeobj }}', {
                                                 maxZoom: 18,
-                                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'}).addTo(mymap{{ objekt.id }});
-                                            L.marker(new L.LatLng({{objekt.lat }}, {{objekt.lng }}), { id: {{ objekt.id }}, alt: '{{ objekt.Titel|raw }}'}).addTo(mymap{{ objekt.id }});
+                                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+                                            }).addTo(mymap{{ objekt.id }});
+
+                                            L.marker(new L.LatLng({{objekt.lat }}, {{objekt.lng }}), {id: {{ objekt.id }}, alt: '{{ objekt.Titel }}'}).addTo(mymap{{ objekt.id }});
+
                                             mymap{{ objekt.id }}.on('click', function() {
                                                 if (mymap{{ objekt.id }}.scrollWheelZoom.enabled())
-                                                mymap{{ objekt.id }}.scrollWheelZoom.disable();
-                                            else
-                                                mymap{{ objekt.id }}.scrollWheelZoom.enable();
+                                                    mymap{{ objekt.id }}.scrollWheelZoom.disable();
+                                                else
+                                                    mymap{{ objekt.id }}.scrollWheelZoom.enable();
                                             });
+
                                             L.control.scale().addTo(mymap{{ objekt.id }});
-                                            //mymap.on('blur', function() { mymap.scrollWheelZoom.disable(); });
-                                            mymap{{ objekt.id }}.on('mouseout',function() { mymap{{ objekt.id }}.scrollWheelZoom.disable();});
+
+                                            mymap{{ objekt.id }}.on('mouseout', function() {
+                                                mymap{{ objekt.id }}.scrollWheelZoom.disable();
+                                            });
                                         });
                                     </script>
                                 </div>
@@ -285,11 +292,8 @@
                     </div>
                 </article>
             {% endfor %}
+            {{ pagination|raw }}
         </div>
-        {% if objekt.map == true and mapOption == false %}
-
-        {% endif %}
-              {{ pagination|raw }}
     </div>
 {% else %}
     <div class="fewo-noitems">{{ noitems|raw }}</div>

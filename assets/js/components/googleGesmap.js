@@ -15,6 +15,7 @@ Maps.createMap = function() {
     let mapFullscreen = gesMapFullscreen;
     let gestureHandling = gesMapGestureHandling;
     let showMarkerBox = gesMapShowMarkerBox;
+    let clickedobjid = -1;
 
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: mapcenterlat, lng: mapcenterlng},
@@ -33,6 +34,7 @@ Maps.createMap = function() {
             map: map,
             draggable: false,
             objektId: markerlist[i][2],
+            page: markerlist[i][3],
             icon: (use_marker ? marker_img : '/plugins/xsigns/fewo/assets/images/pin.png'),
         });
         markers.push(marker);
@@ -48,6 +50,8 @@ Maps.createMap = function() {
             google.maps.event.addListener(marker, "click", function() {
                 stopAnimation();
                 startAnimation(marker);
+
+                clickedobjid = marker.objektId;
 
                 if (showMarkerBox)
                     closeInfoWindow();
@@ -66,7 +70,7 @@ Maps.createMap = function() {
     }
 
     google.maps.event.addListener(map, 'idle', function() {
-        showVisibleMarkers();
+        loadList(clickedobjid);
     });
 
     map.fitBounds(bounds);
@@ -86,6 +90,8 @@ Maps.createMap = function() {
     }
 
     function stopAnimation() {
+        clickedobjid = -1;
+
         for (i = 0; i < markerlist.length; i++) {
             let marker = markers[i];
             marker.setAnimation(null);
@@ -103,7 +109,7 @@ Maps.createMap = function() {
         }
     }
 
-    function showVisibleMarkers() {
+    function loadList(objid = -1) {
         let bounds = map.getBounds();
         let objekte = [];
 
@@ -116,13 +122,14 @@ Maps.createMap = function() {
         }
 
         let ladeurl = (document.location.href.indexOf('?') > -1 ? document.location.href.substring(0, document.location.href.indexOf('?')) : document.location.href).trim();
-        let ladedata = 'objekte=' + (objekte ? objekte.join() : "");
+        let ladedata = 'objekte=' + (objekte ? objekte.join() : "") + (objid > -1 ? "&objid=" + objid : "");
 
         jQuery.ajax({
             url: ladeurl,
             data: ladedata,
             dataType: "html",
             success: function(resp) {
+
                 if (objekte.length !== 0) {
                     $('#fewo-map-liste').html($('#fewo-map-liste', resp).html());
 

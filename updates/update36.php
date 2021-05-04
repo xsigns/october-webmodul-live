@@ -9,9 +9,14 @@ class Update36 extends Migration
 {
     public function up()
     {
-        Schema::table('xsigns_fewo_obj', function($table) {
-            $table->index(['obj_land'], 'land');
-        });
+        try
+        {
+            Schema::table('xsigns_fewo_obj', function($table) {
+                $table->index(['obj_land'], 'land');
+            });
+        }
+        catch (\Illuminate\Database\QueryException $e){}
+
         Schema::table('xsigns_fewo_preise', function($table) {
             $table->index(['objid', 'bis'], 'objid_bis');
             $table->index(['bis'], 'bis');
@@ -24,8 +29,8 @@ class Update36 extends Migration
             $table->index(['aktiv', 'datum'], 'aktiv_datum');
         });
         Schema::table('xsigns_fewo_vorg', function($table) {
-            $table->string('vorg_is_b_bl_e');
-            $table->string('vorg_is_a_b_bl_e_o');
+            $table->integer('vorg_is_b_bl_e');
+            $table->integer('vorg_is_a_b_bl_e_o');
             $table->index(['vorg_objid', 'vorg_is_a_b_bl_e_o'], 'objid_abbleo');
             $table->index(['vorg_objid', 'vorg_is_b_bl_e'], 'objid_bble');
         });
@@ -35,9 +40,14 @@ class Update36 extends Migration
 
     public function down()
     {
-        Schema::table('xsigns_fewo_obj', function($table) {
-            $table->dropIndex('land');
-        });
+        try
+        {
+            Schema::table('xsigns_fewo_obj', function($table) {
+                $table->dropIndex('land');
+            });
+        }
+        catch (\Illuminate\Database\QueryException $e){}
+
         Schema::table('xsigns_fewo_preise', function($table) {
             $table->dropIndex('objid_bis');
             $table->dropIndex('bis');

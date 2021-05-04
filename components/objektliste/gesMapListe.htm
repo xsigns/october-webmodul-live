@@ -1,0 +1,142 @@
+<div id="fewo-map-liste">
+    {% for objekt in objekte %}
+        <article class="post fewo-item {{ listitemcss }} d-inline-block mb-3" {% if showmap == true %}onclick="onListSelected({{ objekt.id }})"{% endif %}>
+            <div class="mapObjekt" id="obj{{ objekt.id }}">
+                {% if objekt.Titel %}
+                    <div class="fewo-titel"><a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}><span>{{ objekt.Titel|raw }}</span></a></div>
+                {% endif %}
+                {% if objekt.slider == false %}
+                    <div class="fewo_image col-12 col-md-4 p-0 float-left">
+                        <a href="{{ objekt.href }}"><img src="{{ objekt.image|raw }}" alt="{{ objekt.image.title }}" title="{{ objekt.image.title }}"/></a>
+                    </div>
+                {% else %}
+                    <div class="fewo_list_image">
+                        <div class="fewo_listnavileft fewo_slidernav" onclick="javascript:bildZurueck('fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}');"></div>
+                        <a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}><img id="fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}" data-posid="0" data-images='{{ objekt.images|raw}}' class="fewo_listimage" src="{{ objekt.img_bild}}" alt="{{ objekt.title }}" title="{{ objekt.title }}"/></a>
+                        <div class="fewo_listnaviright fewo_slidernav" onclick="javascript:bildWeiter('fewolistslider_{{ objekt.itemid}}_{{ objekt.id }}');"></div>
+                    </div>
+                {% endif %}
+
+                {% if objekt.Bewertung %}
+                    <div class="fewo-rating">
+                        {{ objekt.Bewertung|raw }}
+                        <div class="clearfix"></div>
+                        <div class="fewo-rating-text">{{ objekt.BewertungText|raw }}</div>
+                    </div>
+                {% endif %}
+                {% if objekt.Angebote %}<div class="fewo-angebote">{{ objekt.Angebote|raw }}</div>{% endif %}
+                {% if objekt.Art %}<div class="fewo-art">{{ objekt.Art|raw }}</div>{% endif %}
+                {% if objekt.Typ %}<div class="fewo-typ">{{ objekt.Typ|raw }}</div>{% endif %}
+                {% if objekt.Region %}<div class="fewo-region">{{ objekt.Region|raw }}</div>{% endif %}
+                {% if objekt.Sterne %}<div class="fewo-sterne">{{ objekt.Sterne|raw }}</div><div class="clearfix"></div>{% endif %}
+                {% if objekt.Kurztext %}<div class="fewo-text">{{ objekt.Kurztext|raw }}</div>{% endif %}
+                {% if objekt.ID %}<div class="fewo-number">{{ objekt.ID }}</div>{% endif %}
+                {% if objekt.Zimmer %}<div class="fewo-room">{{ objekt.Zimmer|raw }}</div>{% endif %}
+                {% if objekt.Schlafzimmer %}<div class="fewo-bed">{{ objekt.Schlafzimmer|raw }}</div>{% endif %}
+                {% if objekt.Badezimmer %}<div class="fewo-bath">{{ objekt.Badezimmer|raw }}</div>{% endif %}
+                {% if objekt.Groesse %}<div class="fewo-groesse">{{ objekt.Groesse|raw }}</div>{% endif %}
+                {% if objekt.Betten %}<div class="fewo-betten">{{ objekt.Betten|raw }}</div>{% endif %}
+                {% if objekt.AbPreis %}<div class="fewo-preisab">{{ objekt.AbPreis|raw }}</div>{% endif %}
+                {% if objekt.Errechnet %}<div class="fewo-preiser">{{ objekt.Errechnet|raw }}</div>{% endif %}
+                {% if objekt.PreiseBis %}<div class="fewo-preisbis">{{ objekt.PreiseBis|raw }}</div>{% endif %}
+                {% if objekt.Ausstattung %}<div class="fewo-ausstattung">{{ objekt.Ausstattung|raw }}</div>{% endif %}
+                {% if objekt.LetzteBuchung %}<div class="fewo-letzte">{{ objekt.LetzteBuchung|raw }}</div>{% endif %}
+                {% if objekt.Personen %}<div class="fewo-personen">{{ objekt.Personen|raw }}</div>{% endif %}
+                {% if objekt.Erwachsene %}<div class="fewo-adults">{{ objekt.Erwachsene|raw }}</div>{% endif %}
+                {% if objekt.Kinder %}<div class="fewo-childreen">{{ objekt.Kinder|raw }}</div>{% endif %}
+                {% if objekt.KleinKinder %}<div class="fewo-childreen">{{ objekt.KleinKinder|raw }}</div>{% endif %}
+                {% if objekt.OptBelegung %}<div class="fewo-optperson">{{ objekt.OptBelegung|raw }}</div>{% endif %}
+                {% if objekt.Etage %}<div class="fewo-floor">{{ objekt.Etage|raw }}</div>{% endif %}
+                {% if objekt.Leistungen %}
+                    <div class="fewo-leistungen">
+                        {% for leistung in objekt.Leistungen %}
+                            <div class="l1">{{ leistung.titel|raw}}</div>
+                            <div class="l2">{{ leistung.preis}}</div>
+                            <div class="l3">{{ leistung.mwst }}</div>
+                            <div class="l3">{% if leistung.person > 0 %} pro Person {% endif %}</div>
+                            <div class="l3">{% if leistung.tag > 0 %} pro Tag {% endif %}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if objekt.Adresse %}
+                    <div class="fewo-address">
+                        {{ objekt.Strasse|raw }}, {{ objekt.Land|raw }} {{ objekt.PLZ|raw }} {{ objekt.Ort|raw }}
+                    </div>
+                {% endif %}
+                {% if modul == 2 %}
+                    <div class="merkerdelete">
+                        <button id="btnmerken{{ objekt.id }}" class="btn btn-success btn-sm fewo-btnmerken" data-request-data="merkerid: {{ objekt.id }}" data-request="{{ __SELF__ }}::onBtnDelete">{{ btndelete }} </button>
+                    </div>
+                {% else %}
+                    {% if btn_merken == true %}
+                        <div id="btnmerker{{ objekt.id}}">
+                            <button id="btnmerken{{ objekt.id }}" class="btn btn-success btn-sm fewo-btnmerken {{objekt.merkerclass}}" data-request-data="merkerid: {{ objekt.id }}" data-request="{{ __SELF__ }}::onBtnMerken">{{ objekt.merkerlabel }}</button>
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if objekt.VerArt %}<div class="fewo-verart">{{ objekt.VerArt|raw }}</div>{% endif %}
+                {% if objekt.map == true %}
+                    {% if mapOption == true %}
+                        <div class="fewo-map">
+                            <div id="mapid{{ objekt.id }}" class="fewo-objektmap" style="height:{{ mapheight }}px;"></div>
+                            <script>
+                                jQuery(document).ready(function() {
+                                    var mymap{{ objekt.id }} = L.map('mapid{{ objekt.id }}',{
+                                        center: [{{ objekt.lat }}, {{ objekt.lng }}],
+                                        {% if fullscreen %}
+                                        fullscreenControl: true,
+                                        fullscreenControlOptions: { // optional
+                                            title:"Vollbildansicht",
+                                            titleCancel:"Normalansicht"
+                                        },
+                                        {% endif %}
+                                        zoom: 14,
+                                    });
+                                    var OpenStreetMap_DE = L.tileLayer('{{ objekt.maptypeobj }}', {
+                                        maxZoom: 18,
+                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'}).addTo(mymap{{ objekt.id }});
+                                    L.marker(new L.LatLng({{objekt.lat }}, {{objekt.lng }}), { id: {{ objekt.id }}, alt: '{{ objekt.Titel }}'}).addTo(mymap{{ objekt.id }});
+                                    mymap{{ objekt.id }}.on('click', function() {
+                                        if (mymap{{ objekt.id }}.scrollWheelZoom.enabled())
+                                            mymap{{ objekt.id }}.scrollWheelZoom.disable();
+                                        else
+                                            mymap{{ objekt.id }}.scrollWheelZoom.enable();
+                                    });
+                                    L.control.scale().addTo(mymap{{ objekt.id }});
+                                    //mymap.on('blur', function() { mymap.scrollWheelZoom.disable(); });
+                                    mymap{{ objekt.id }}.on('mouseout',function() { mymap{{ objekt.id }}.scrollWheelZoom.disable();});
+                                });
+                            </script>
+                        </div>
+                    {% else %}
+                        <div class="fewo-map">
+                            <div id="mapid{{ objekt.id }}" class="fewo-objektmap" style="height:{{ mapheight }}px;"></div>
+                        </div>
+                        <script>
+                            function initMap() {
+                                $(document).ready(function() {
+                                    let myOptions = {
+                                        zoom: 14,
+                                        fullscreenControl: true,
+                                        controlSize: 25,
+                                    }
+
+                                    myOptions.center = new google.maps.LatLng({{ objekt.lat }}, {{ objekt.lng }});
+                                    let map{{ objekt.id }} = new google.maps.Map(document.getElementById("mapid{{ objekt.id }}"), myOptions);
+
+                                    marker = new google.maps.Marker({
+                                        position: {lat: {{ objekt.lat }}, lng: {{ objekt.lng }}},
+                                        map: map{{ objekt.id }}
+                                    });
+                                });
+                            }
+                            initMap();
+                        </script>
+                    {% endif %}
+                {% endif %}
+                <div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}>{{ objekt.btnDetail }}</a></div>
+            </div>
+        </article>
+    {% endfor %}
+    {{ pagination|raw }}
+</div>
