@@ -530,3 +530,6 @@
 3.4.7:
     - "Fehlerkorrekturen"
     - "Verbesserung der GoogleMaps Listenseite"
+3.4.8:
+    - "!!! Fehlerkorrekturen Preisrechner und Belegungsplan, Partialanpassung notwendig, bitte Upgrade-Guide lesen!"
+    - "weitere Fehlerkorrekturen"

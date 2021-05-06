@@ -616,6 +616,8 @@
             monthSelect: false,
             yearSelect: false,
             todayInvalid: false,
+            wechselleiste: '',
+            wechselleisteStart: null,
         }, opt);
         opt.start = false;
         opt.end = false;
@@ -2229,7 +2231,7 @@
             return false;
         }
 
-       function getGapHTML() {
+        function getGapHTML() {
             var html = ['<div class="gap-top-mask"></div><div class="gap-bottom-mask"></div><div class="gap-lines">'];
             /*for (var i = 0; i < 20; i++) {
                 html.push('<div class="gap-line">' +
@@ -2327,9 +2329,9 @@
             }
             var html = [];
             var no_arrival= false;
+
             for (var week = 0; week < 6; week++) {
                 if (days[week * 7].type == 'nextMonth') break;
-
 
                 for (var day = 0; day < 7; day++) {
                     var _day = (opt.startOfWeek == 'monday') ? day + 1 : day;
@@ -2397,47 +2399,17 @@
 
         function checkNext(time)
         {
-            var weekday = moment(time).weekday();
-            var returns = true;
-            var minDays = 0;
-            var luecke = 0;
-            var preis = 0;
-            var lueckemintage = 0;
-            if(opt.saisons.length < 1)
-                returns = false;
-            for (var i = 0; i <= opt.saisons.length -1; i++) {
-                var fromDate = moment(opt.saisons[i][0]);
-                var toDate = moment(opt.saisons[i][1] + " 23:59:59", "YYYY-MM-DD hh:mm:ss");
-                if(time >= fromDate && time <= toDate) //treffer in Saisonzeit
-                {
-                    let anreise = invertAnreise(opt.saisons[i][4]);
-                    minDays = opt.saisons[i][2];
-                    luecke = opt.saisons[i][3];
-                    lueckemintage = opt.saisons[i][6];
-                    preis = Number(opt.saisons[i][5].replace("€","").replace(",","."));
-                    if (preis == 0) {
-                        opt.blocked.push(moment(time).format("YYYY-MM-DD") )
-                    }
-                    if (anreise.indexOf(9) > -1)
-                        returns = true;
-                    else if (anreise.indexOf(weekday) > -1) {
-                        returns = false;
-                    }
-                    break;
-                }
+            let returns = true;
+            let wechselleiste = opt.wechselleiste;
+            let wlStart = opt.wechselleisteStart;
+            let timeMoment = moment(time).unix();
+            let diff = Math.floor((timeMoment - wlStart) / 86400);
+
+            if (diff >= 0) {
+                let state = wechselleiste.charAt(diff);
+                returns = !(state === "O" || state === "X");
             }
-            for(var u =0; u < opt.blocked.length -1;u++)
-            {
-                var blocked = moment(opt.blocked[u]);
-                var dbw = blocked.diff(time,'days');
-                if (dbw < minDays && dbw > 0 && luecke < 1) {
-                    returns = false;
-                    break;
-                }else if(dbw ==0)
-                {
-                    return false;
-                }
-            }
+
             return returns;
         }
         function showDayHTML(time, date) {

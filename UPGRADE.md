@@ -1,4 +1,15 @@
 # Updatehinweise / upgrade guide
+
+## Upgrade 3.4.8
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Buchungsmaske default.htm und variant1.htm: Folgenden Code im Script-Teil unterhalb von ``var customArrowNext = ' ';`` einfügen und  
+Preisrechner default.htm: Folgenden Code im Script-Teil unterhalb von ``var customArrowNext = ' ';`` einfügen.
+````
+var wechselleiste = '{{ wechselleiste }}';
+var wechselleisteStart = {{ wechselleisteStart }};
+````
+HINWEIS: Nach Durchführung des Updates und der Anpassungen muss gegebenenfalls der Browser-Cache geleert werden.
+
 ## Upgrade 3.4.0
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Im Falle der Verwendung einer Karte auf der Listenseite, muss das komplette default.htm Partial der 

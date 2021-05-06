@@ -16,10 +16,7 @@ class SendCron
 
     protected static $modulename = 'sendcron';
 
-    public static function NewsLetter()
-    {
-
-    }
+    public static function NewsLetter() {}
 
     /**
      * @param $strString
@@ -28,6 +25,7 @@ class SendCron
     public static function strip_insert_tags($strString)
     {
         $count = 0;
+
         do
         {
             $strString = preg_replace('/{{[^{}]*}}/', '', $strString, -1, $count);
@@ -135,8 +133,8 @@ class SendCron
             $bewzaehler = 0;
             $Date = date("Y-m-d", time());
             $datemax = date('Y-m-d', strtotime($Date . ' - ' . GlobalSettings::get('afterdays') . ' days'));
-            $sql = "select * from xsigns_fewo_vorg where DATE_ADD(vorg_abreise,INTERVAL " . GlobalSettings::get('afterdays') . " DAY) <= '" . $datum . "' and vorg_abreise >= '" . $datemax . "' and vorg_art='B'";
-            $res = DB::select($sql);
+            $sql = "select * from xsigns_fewo_vorg where date_add(vorg_abreise, interval " . GlobalSettings::get('afterdays') . " day) <= '" . $datum . "' and vorg_abreise >= '" . $datemax . "' and vorg_art = 'B'";
+            $res = Database::select(null, self::$modulename, $sql);
             $gesendet = 0;
 
             if (count($res) > 0)
@@ -144,15 +142,15 @@ class SendCron
                 foreach ($res as $item)
                 {
                     $mSenden = false;
-                    $resMail = DB::select("select * from xsigns_fewo_vorggesendet where vorgid=" . $item->vorg_id);
+                    $resMail = Database::select(null, self::$modulename,"select * from xsigns_fewo_vorggesendet where vorgid=" . $item->vorg_id);
 
                     if (count($resMail) > 0 && $resMail[0]->bewertung < 1)
                         $mSenden = true;
                     if (count($resMail) < 1)
                         $mSenden = true;
 
-                    $resObjekt = DB::select("select t1.*, t2.* from xsigns_fewo_obj as t1 left join xsigns_fewo_objlang as t2 on (t2.objid=t1.id) and t2.lang='DE' where t1.id=" . $item->vorg_objid);
-                    $resGast = DB::select("select gast_titel,gast_anrede,gast_name,gast_vorname,gast_gesperrt,gast_mail from xsigns_fewo_gast where gast_id=" . $item->vorg_gastid . " and gast_werbemail=1");
+                    $resObjekt = Database::select(null, self::$modulename, "select t1.*, t2.* from xsigns_fewo_obj as t1 left join xsigns_fewo_objlang as t2 on (t2.objid=t1.id) and t2.lang = 'DE' where t1.id = " . $item->vorg_objid);
+                    $resGast = Database::select(null, self::$modulename, "select gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_mail from xsigns_fewo_gast where gast_id = " . $item->vorg_gastid . " and gast_werbemail = 1");
 
                     if (count($resGast) > 0)
                     {
@@ -174,6 +172,7 @@ class SendCron
                             }
 
                             $bewLink = '<a href="' . Config::get('app.url') . $href . '">' . GlobalSettings::get('linktext') . '</a>';
+
                             $vars = [
                                 'OBJEKT' => $resObjekt[0]->titel,
                                 'OBJEKT_ALIAS' => $resObjekt[0]->obj_alias,
@@ -245,7 +244,7 @@ class SendCron
                 Models\EventLog::add('Cron Anreise gestartet ' . date("d.m.Y h:i:s", time()));
 
             $datumberechnet = strtotime(date("Y-m-d", time()) . "+" . GlobalSettings::get('beforedays') . " days");
-            $resHinweis = DB::select("select * from xsigns_fewo_vorg where vorg_anreise = '" . date("Y-m-d", $datumberechnet) . "' and vorg_art='B'");
+            $resHinweis = Database::select(null, self::$modulename, "select * from xsigns_fewo_vorg where vorg_anreise = '" . date("Y-m-d", $datumberechnet) . "' and vorg_art = 'B'");
 
             if (count($resHinweis) > 0)
             {
@@ -254,15 +253,15 @@ class SendCron
                 foreach ($resHinweis as $item)
                 {
                     $mSenden = false;
-                    $resMail = DB::select("select * from xsigns_fewo_vorggesendet where vorgid=" . $item->vorg_id);
+                    $resMail = Database::select(null, self::$modulename, "select * from xsigns_fewo_vorggesendet where vorgid = " . $item->vorg_id);
 
                     if (count($resMail) > 0 && $resMail[0]->anschreiben < 1) // Ist ein Treffer
                         $mSenden = true;
                     if (count($resMail) < 1)
                         $mSenden = true;
 
-                    $resObjekt = DB::select("select t1.*, t2.* from xsigns_fewo_obj as t1 left join xsigns_fewo_objlang as t2 on (t2.objid=t1.id) where t1.id=" . $item->vorg_objid . " and t2.lang='DE'");
-                    $resGast = DB::select("select gast_titel,gast_anrede,gast_name,gast_vorname,gast_gesperrt,gast_mail from xsigns_fewo_gast where gast_id=" . $item->vorg_gastid);
+                    $resObjekt = Database::select(null, self::$modulename, "select t1.*, t2.* from xsigns_fewo_obj as t1 left join xsigns_fewo_objlang as t2 on (t2.objid = t1.id) where t1.id = " . $item->vorg_objid . " and t2.lang = 'DE'");
+                    $resGast = Database::select(null, self::$modulename, "select gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_mail from xsigns_fewo_gast where gast_id = " . $item->vorg_gastid . " and gast_werbemail = 1");
 
                     if (count($resGast) > 0)
                     {

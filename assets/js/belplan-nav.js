@@ -174,6 +174,7 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             mintage = mintageTimeline.charAt(dayId);
             anreisedatum = new Date(jahr + '-' + monat + '-' + tag);
             anreiseId = dayId;
+            dayEleme.removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
             dayEleme.slice(0, dayId).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
             $(elem).addClass('gewaehlt');
             $('#period').val(tag + '.' + monat + '.' + jahr + ' - ');

@@ -44,6 +44,8 @@ $(document).ready(function() {
         todayInvalid: todayInvalid,
         customArrowPrevSymbol: customArrowPrev,
         customArrowNextSymbol: customArrowNext,
+        wechselleiste: wechselleiste,
+        wechselleisteStart: wechselleisteStart,
         beforeShowDay: function(t)
         {
             valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
