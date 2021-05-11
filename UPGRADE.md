@@ -2,7 +2,7 @@
 
 ## Upgrade 3.4.8
 ### Folgende Partialanpassungen sind für dieses Update notwendig
-Buchungsmaske default.htm und variant1.htm: Folgenden Code im Script-Teil unterhalb von ``var customArrowNext = ' ';`` einfügen und  
+Buchungsmaske default.htm und variant2.htm: Folgenden Code im Script-Teil unterhalb von ``var customArrowNext = ' ';`` einfügen und  
 Preisrechner default.htm: Folgenden Code im Script-Teil unterhalb von ``var customArrowNext = ' ';`` einfügen.
 ````
 var wechselleiste = '{{ wechselleiste }}';

@@ -533,3 +533,8 @@
 3.4.8:
     - "!!! Fehlerkorrekturen Preisrechner und Belegungsplan, Partialanpassung notwendig, bitte Upgrade-Guide lesen!"
     - "weitere Fehlerkorrekturen"
+3.4.9:
+    - "Fehlerkorrekturen"
+    - update50.php
+3.4.10:
+    - "Fehlerkorrekturen"
