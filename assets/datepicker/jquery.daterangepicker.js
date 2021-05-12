@@ -2328,7 +2328,7 @@
                 });
             }
             var html = [];
-            var no_arrival= false;
+            var no_arrival = false;
 
             for (var week = 0; week < 6; week++) {
                 if (days[week * 7].type == 'nextMonth') break;
