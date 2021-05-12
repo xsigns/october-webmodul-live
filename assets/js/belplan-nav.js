@@ -12,6 +12,8 @@ $(document).ready(function() {
     InitialisiereKalender();
 });
 
+console.log(wechselTimeline);
+
 function InitialisiereKalender() {
     $('.ctrlSaisonSelect').on('change', Belplan.calSelect);
     $('.ctrlCalNext').on('click', Belplan.calRight);
