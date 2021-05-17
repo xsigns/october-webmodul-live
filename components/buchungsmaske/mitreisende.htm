@@ -21,7 +21,7 @@
             jQuery(document).ready(function() {
                 {% for mitreisender in mitreisende %}
                     jQuery('#ctrl_mitgeb_{{ mitreisender.id }}').dateEntry({dateFormat: 'dmy.',spinnerImage: ''});
-                    jQuery('#ctrl_mitgeb_{{ mitreisender.id }}').val('{{ mitreisender.mitgeb2 }}');
+                    jQuery('#ctrl_mitgeb_{{ mitreisender.id }}').val('{{ mitreisender.mitgeb }}');
                 {% endfor %}
             });
         </script>

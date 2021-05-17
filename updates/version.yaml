@@ -542,3 +542,9 @@
     - "Fehlerkorrekturen Zeitleiste"
 3.4.12:
     - "Fehlerkorrekturen Zeitleiste Lückenbuchungen"
+3.4.13:
+    - "!!! Fehlerkorrekturen Geburtsdatum, Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
+    - "WICHTIG! Bitte lösen Sie nach dem Update 'alle Belegungen senden' im Fewo-Verwalter aus."
+    - "Fehlerkorrekturen"
+    - "Optimiertes Laden der Objektliste"
+    - update51.php

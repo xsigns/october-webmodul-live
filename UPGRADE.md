@@ -1,5 +1,14 @@
 # Updatehinweise / upgrade guide
 
+## Upgrade 3.4.13
+### WICHTIG! Bitte lösen Sie nach dem Update "alle Belegungen senden" im Fewo-Verwalter aus.
+### Folgende Partialanpassungen sind für dieses Update notwendig
+
+Buchungsmaske mitreisende-variant2.htm und mitreisende.htm: Im Script ``{{ mitreisender.mitgeb2 }}`` ändern zu:
+````
+{{ mitreisender.mitgeb }}
+````
+
 ## Upgrade 3.4.8
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Buchungsmaske default.htm und variant2.htm: Folgenden Code im Script-Teil unterhalb von ``var customArrowNext = ' ';`` einfügen und  

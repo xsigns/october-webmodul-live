@@ -1437,12 +1437,37 @@
                     var offset = $(self).width() +40;
                     box.find('.cal-arrow').css({left: offset});
                 }
+
+                let wechselleiste = opt.wechselleiste;
+                let wechselleisteStart = opt.wechselleisteStart;
+                let selectedDate = moment(moment(opt.start)).unix();
+                let diff = Math.floor((selectedDate - wechselleisteStart) / 86400);
+                let charList = "";
+
                 box.find('.day.toMonth.valid').each(function() {
                     var time = parseInt($(this).attr('time'), 10);
-                    if (!isValidTime(time))
+
+                    if (opt.start < time) {
+                        let current = moment(moment(time)).unix();
+                        let curDiff = Math.floor((current - selectedDate) / 86400);
+                        let index = diff + curDiff;
+                        let char = wechselleiste.charAt(index);
+
+                        charList += char.toString();
+
+                        if (charList.includes('OX') || charList.includes('OI')) {
+                            $(this).addClass('invalid tmp').removeClass('valid');
+                        } else {
+                            $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');
+                        }
+                    }
+
+                    //alte logik
+                    /*if (!isValidTime(time))
                         $(this).addClass('invalid tmp').removeClass('valid');
                     else
-                        $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');
+                        $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');*/
+
                     if(!checkDay(time))
                       	$(this).addClass('invalid nodeparture tmp').removeClass('valid');
 
