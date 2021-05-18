@@ -19,6 +19,7 @@ use Auth;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\Notify\Classes\Notifier;
 use System\Behaviours\SettingsModel;
+use Illuminate\Support\Facades\DB;
 
 class Plugin extends PluginBase
 {
@@ -32,6 +33,8 @@ class Plugin extends PluginBase
     {
         ini_set('session.cookie_lifetime', 3600 * 24 * 3);
         ini_set('session.gc_maxlifetime', 3600 * 24 * 3);
+
+        DB::statement("SET SESSION group_concat_max_len = 20480");
 
         //check if we need to delete demo license file
         $licFile = 'fewo.lic';
