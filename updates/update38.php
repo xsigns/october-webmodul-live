@@ -28,7 +28,7 @@ class Update38 extends Migration
             $table->index(['obild_objid', 'obild_reihenfolge'], 'objid_reihenfolge');
         });
 
-        Database::select(null, $this->modulename, "insert into xsigns_fewo_objektbilder (obild_objid, obild_reihenfolge, obild_systemfileid, obild_hash, obild_titel, obild_diskname, obild_filename) select attachment_id, sort_order, id, '', '', disk_name, file_name from system_files where attachment_type = 'objekt'");
+        \DB::insert("insert into xsigns_fewo_objektbilder (obild_objid, obild_reihenfolge, obild_systemfileid, obild_hash, obild_titel, obild_diskname, obild_filename) select attachment_id, sort_order, id, '', '', disk_name, file_name from system_files where attachment_type = 'objekt'");
     }
 
     public function down()

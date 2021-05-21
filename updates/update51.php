@@ -10,7 +10,7 @@ class Update51 extends Migration
 {
     public function up()
     {
-        Database::select(null, 'update51', "delete from xsigns_fewo_gast");
+        \DB::delete("delete from xsigns_fewo_gast");
     }
 
     public function down(){}

@@ -19,7 +19,7 @@ class Update43 extends Migration
             $table->string('aus_filename', 191);
         });
 
-        Database::select(null, $this->modulename, "update xsigns_fewo_aus inner join system_files on attachment_id = ausid and attachment_type = 'ausstattung' set aus_systemfileid = attachment_id, aus_diskname = disk_name, aus_filename = file_name");
+        \DB::update("update xsigns_fewo_aus inner join system_files on attachment_id = ausid and attachment_type = 'ausstattung' set aus_systemfileid = attachment_id, aus_diskname = disk_name, aus_filename = file_name");
     }
 
     public function down()

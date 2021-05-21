@@ -35,7 +35,7 @@ class Update36 extends Migration
             $table->index(['vorg_objid', 'vorg_is_b_bl_e'], 'objid_bble');
         });
 
-        \Xsigns\Fewo\Classes\Database::select(null, 'update36', "update xsigns_fewo_vorg set vorg_is_a_b_bl_e_o = 1, vorg_is_b_bl_e = IF(vorg_art = 'A' or vorg_art = 'O', 0, 1)");
+        \DB::update("update xsigns_fewo_vorg set vorg_is_a_b_bl_e_o = 1, vorg_is_b_bl_e = IF(vorg_art = 'A' or vorg_art = 'O', 0, 1)");
     }
 
     public function down()
