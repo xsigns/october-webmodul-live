@@ -94,7 +94,6 @@
     - Change bookingmask
 1.5.2:
     - Bugfix in the object list and the equipment, Bugfix in objektlist filter (yes,or,not)
-
 1.5.3:
     - FIX user permissions
 1.5.4:
@@ -318,7 +317,6 @@
 2.7.0:
     - Datenbankanpassungen auf die verschiedenen MySQL-Versionen.
     - update23.php
-    -
 2.7.1:
     - Datenbankanpassungen auf die verschiedenen MySQL-Versionen.
     - update23.php
@@ -358,8 +356,8 @@
 2.8.6:
     - Fehler in der Berechnung des Tagesnamen in PHP
 2.8.7:
-   - Tagesdarstellung (Wenn Buchung nur 1 Nacht) im Kalender und Preisrechner-Labels angepasst
-   - Fehler im Tab der Buchungsform behoben.
+    - Tagesdarstellung (Wenn Buchung nur 1 Nacht) im Kalender und Preisrechner-Labels angepasst
+    - Fehler im Tab der Buchungsform behoben.
 2.8.8:
     - Anpassung Suchmasken für verschiedenen Sprachen, Auswahl WerbeMail-Checkbox gefixt.
 2.8.9:
@@ -556,3 +554,6 @@
     - "Fehlerkorrekturen in Update-Dateien"
 3.4.17:
     - "Fehlerkorrekturen für Datenbankabfragen"
+3.4.18:
+    - "!!! Synchronisation mit Feondi. Neu senden der Daten vom Fewo-Verwalter an Feondi notwendig, bitte Upgrade-Guide lesen!"
+    - update52.php

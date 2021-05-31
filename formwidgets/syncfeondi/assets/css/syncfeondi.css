@@ -1,31 +1,23 @@
 .sync-deactivated {color: #e50000; display: inline-block; float: left; line-height: 40px; margin-bottom: 20px;}
 .sync-activated {color: #1c7430; display: inline-block; float: left; line-height: 40px; margin-bottom: 20px;}
 
-.loader {
-    border: 8px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 8px solid #3498db;
-    width: 50px;
-    height: 50px;
-    -webkit-animation: spin .5s linear infinite;
-    position: relative;
-    top: 21px;
-    left: 15px;
-    display: inline-block;
-    animation: spin .5s linear infinite;
-}
+.loader {border: 8px solid #f3f3f3; border-radius: 50%; border-top: 8px solid #3498db; width: 50px; height: 50px; -webkit-animation: spin .5s linear infinite; position: relative; top: 21px; left: 15px; display: inline-block; animation: spin .5s linear infinite;}
 
 .plug-icons {font-size: 40px !important; float: left;}
 
 .btn-container {clear: both;}
+.btn-container .wrapper {display: inline-block;}
+.btn-container .wrapper.btnOff {cursor: not-allowed;}
+.btn-container .wrapper.btnOff a {pointer-events: none; color: rgba(255,255,255,0.6); background: #999EA6; box-shadow: none;}
+.statusMessage {margin-top: 10px; color: #e50000;}
 
 /* Safari */
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }

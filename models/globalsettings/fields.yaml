@@ -85,16 +85,23 @@ tabs:
       type: section
       commentHtml: true
       tab: xsigns.fewo::lang.globalsettings.tab1
-      hidden: true # TODO: Muss wieder aktiviert werden
     syncfeondiForm:
       type: syncfeondi
-      cssClass: col-sm-12
+      cssClass: col-sm-4
+      span: left
       tab: xsigns.fewo::lang.globalsettings.tab1
-      hidden: true # TODO: Muss wieder aktiviert werden
+    logFeondiSync:
+      label: xsigns.fewo::lang.globalsettings.logFeondiSync
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.logFeondiSync_desc
+      tab: xsigns.fewo::lang.globalsettings.tab1
     syncfeondi:
       type: switch
       tab: xsigns.fewo::lang.globalsettings.tab1
       hidden: true
+      default: false
     allgemein_section:
       label: xsigns.fewo::lang.globalsettings.allgemein_section
       type: section
@@ -163,6 +170,11 @@ tabs:
       span: right
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab1
+    mailSettingsSection:
+      label: xsigns.fewo::lang.globalsettings.mailSettingsSection
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab2
     mailuser:
       label: xsigns.fewo::lang.globalsettings.mailuser
       comment: xsigns.fewo::lang.globalsettings.mailuser_desc
@@ -183,6 +195,11 @@ tabs:
       type: text
       span: right
       cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    cronSettingsSection:
+      label: xsigns.fewo::lang.globalsettings.cronSettingsSection
+      type: section
+      commentHtml: true
       tab: xsigns.fewo::lang.globalsettings.tab2
     mailcccron:
       label: xsigns.fewo::lang.globalsettings.mailcccron

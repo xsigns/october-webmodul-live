@@ -8,8 +8,7 @@
 use Xsigns\Fewo\classes\FewoSitemaps;
 Route::any('cron','xsigns\fewo\classes\SendCron@Mails');
 Route::any('api', 'xsigns\fewo\classes\Api@import');
-Route::any('feondi', 'xsigns\fewo\classes\Api@import');
-Route::any('feondit','xsigns\fewo\classes\Feondi@data');
+Route::any('api/versions', 'xsigns\fewo\classes\Api@getModuleVersions');
 Route::any('hobex/{id}','xsigns\fewo\classes\HobexRequest@Request');
 Route::any('guestbooking/{id}','xsigns\fewo\classes\Guest@Login');
 Route::get('sitemap1.xml', function()

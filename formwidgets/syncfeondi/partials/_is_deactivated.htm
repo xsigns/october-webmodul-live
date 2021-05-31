@@ -6,7 +6,10 @@
     <?php endif; ?>
     <span class="material-icons plug-icons">power_off</span>
     <p class="sync-deactivated"><?= $syncStatusLabel ?></p>
-    <div class="btn-container"><a class="btn btn-success" id="actionButton">Aktivieren</a></div>
+    <div class="btn-container"><div class="wrapper <?= $btnStatus ?>"><a class="btn btn-success" id="actionButton">Aktivieren</a></div></div>
+    <?php if ($btnStatus == 'btnOff'): ?>
+        <p class="statusMessage"><?= $statusMsg ?></p>
+    <?php endif; ?>
 </div>
 <script>
     $(document).ready(function() {

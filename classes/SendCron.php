@@ -62,28 +62,28 @@ class SendCron
      * @param $gastname
      * @return bool|mixed
      */
-    public static function checkMail($mailaddr, $vorgid, $gastid, $gastname)
+    public static function checkMail($mailaddr, $vorgid, $gastid, $gastname, $mailTyp)
     {
         $return = false;
         $hinweis = "";
 
         if (@preg_match('/\b\S+?\@\S+\.\S+?\b/i', $mailaddr))
         {
-            if (strpos($mailaddr, "@guest.booking.com") !== false)
-                $hinweis = "Cron : Vorgang " . $vorgid . ". Mail-Adresse vom Gast fehlerhaft! Alias von booking.com enthalten";
+            if (strpos($mailaddr, '@guest.booking.com') !== false)
+                $hinweis = 'Mail-Adresse vom Gast fehlerhaft! Alias von booking.com enthalten';
 
-            if (strpos($mailaddr, "@guest.airbnb.com") !== false)
-                $hinweis = "Cron : Vorgang " . $vorgid . ". Mail-Adresse vom Gast fehlerhaft! Alias von Airbnb vorhanden";
+            if (strpos($mailaddr, '@guest.airbnb.com') !== false)
+                $hinweis = 'Mail-Adresse vom Gast fehlerhaft! Alias von Airbnb vorhanden';
 
             $host = preg_replace('/^.+\@/i', '', $mailaddr);
 
             if (checkdnsrr($host) === false)
-                $hinweis = " Cron : Vorgang " . $vorgid . ". Mail-Adresse vom Gast Host nicht gefunden!";
+                $hinweis = 'Mail-Adresse vom Gast Host (' . $host . ') nicht gefunden!';
             else
             {
                 if (checkdnsrr($host, 'MX') === false)
                 {
-                    $hinweis = "Cron : Vorgang " . $vorgid . ". Mail-Adresse vom Gast MX nicht vorhanden!";
+                    $hinweis = 'Mail-Adresse vom Gast MX (' . $host . ') nicht vorhanden!';
                     $return = false;
                 }
                 else
@@ -92,7 +92,7 @@ class SendCron
         }
         else
         {
-            $hinweis = "Keine gültige Mail-Adresse";
+            $hinweis = 'Keine gültige Mail-Adresse';
             $return = false;
         }
 
@@ -103,7 +103,9 @@ class SendCron
             $vars = [
                 'gastnr' => $gastid,
                 'gastname' => $gastname,
-                'gastmail' => $mailaddr,
+                'gastmail' => '<' . $mailaddr . '>',
+                'mailTyp' => $mailTyp,
+                'vorgid' => $vorgid,
                 'hinweis' => $hinweis
             ];
 
@@ -115,7 +117,8 @@ class SendCron
 
             $arrInsert = array();
             $arrInsert['vorgid'] = $vorgid;
-            $arrInsert['bewertung'] = '1';
+            $arrInsert['bewertung'] = 1;
+            $arrInsert['anschreiben'] = 1;
             DB::table('xsigns_fewo_vorggesendet')->insert($arrInsert);
         }
 
@@ -130,7 +133,6 @@ class SendCron
                 Models\EventLog::add('Cron Bewertung gestartet ' . date("d.m.Y h:i:s", time()));
 
             $datum = date("Y-m-d", time());
-            $bewzaehler = 0;
             $Date = date("Y-m-d", time());
             $datemax = date('Y-m-d', strtotime($Date . ' - ' . GlobalSettings::get('afterdays') . ' days'));
             $sql = "select * from xsigns_fewo_vorg where date_add(vorg_abreise, interval " . GlobalSettings::get('afterdays') . " day) <= '" . $datum . "' and vorg_abreise >= '" . $datemax . "' and vorg_art = 'B'";
@@ -154,7 +156,7 @@ class SendCron
 
                     if (count($resGast) > 0)
                     {
-                        if ($resGast[0]->gast_mail && $mSenden == true && date("Y", strtotime($item->vorg_anreise)) > 2017 && SendCron::checkMail($resGast[0]->gast_mail, $item->vorg_id, $item->vorg_gastid, $resGast[0]->gast_name) == true)
+                        if ($resGast[0]->gast_mail && $mSenden == true && date("Y", strtotime($item->vorg_anreise)) > 2017 && SendCron::checkMail($resGast[0]->gast_mail, $item->vorg_id, $item->vorg_gastid, $resGast[0]->gast_name, 'Bewertung') == true)
                         {
                             $mailview = 'xsigns.fewo::mail.voting_de';
                             $myBase = dirname($_SERVER['PHP_SELF']);
@@ -265,7 +267,7 @@ class SendCron
 
                     if (count($resGast) > 0)
                     {
-                        if ($resGast[0]->gast_mail && $mSenden == true && date("Y", strtotime($item->vorg_anreise)) > 2017 && SendCron::checkMail($resGast[0]->gast_mail, $item->vorg_id, $item->vorg_gastid, $resGast[0]->gast_name) == true)
+                        if ($resGast[0]->gast_mail && $mSenden == true && date("Y", strtotime($item->vorg_anreise)) > 2017 && SendCron::checkMail($resGast[0]->gast_mail, $item->vorg_id, $item->vorg_gastid, $resGast[0]->gast_name, 'Anreise') == true)
                         {
                             self::$gastmail = $resGast[0]->gast_mail;
 

@@ -78,6 +78,8 @@ return [
         'logimport_desc' => 'Switches on the event log for the import (only data sent). Must be deactivated in production mode.',
         'logHobex' =>'Log Hobex remporary bookings',
         'logHobex_desc' => 'Activates logging for temporary bookings if hobex is used. Must be deactivated in production mode.',
+        'logFeondiSync' => 'Log sync to Feondi',
+        'logFeondiSync_desc' => 'Turn on the log mode for sync to Feondi',
         'debugmodus' => 'Debug',
         'debugmodus_desc' => 'Turns on debug mode and stores all messages in the event log. Must be deactivated in production mode.',
         'debugtime' => 'Log timestamps',

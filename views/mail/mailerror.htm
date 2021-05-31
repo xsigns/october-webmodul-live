@@ -1,13 +1,14 @@
-subject = "Mail-fehler beim Versand an einen Gast"
-description = "Mail-Fehler bei folgenden Gast"
+subject = "Mail-Fehler beim Versand an einen Gast"
+description = "Mail-Fehler bei folgendem Gast"
 ==
 Bei dem Versand einer Mail an den Gast ist folgender Fehler aufgetreten:
 ---
 
-Gast-Nr.: {{ gastnr }}
-Gastname  : {{ gastname }}
-GastMail  : {{ gastmail }}
-
-Hinweis  :
-{{ hinweis }}
+Gast-Nr.: {{ gastnr }}<br>
+Gastname: {{ gastname }}<br>
+GastMail: {{ gastmail }}<br>
+Art der Mail: {{ mailTyp }}<br>
+Vorgangs-ID: {{ vorgid }}<br>
+<br>
+Hinweis: {{ hinweis }}
 ---
