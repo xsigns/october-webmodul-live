@@ -1,5 +1,13 @@
 # Updatehinweise / Upgrade Guide
 
+## Upgrade 3.4.20
+### Optionale Anpassung: Nur notwendig, wenn Ausgabe des Youtube-Links auf der Listenseite erwünscht ist
+Objektliste default.htm: Folgende Codezeile innerhalb des ``<article>``-Elemets an der gewünschten Stelle einfügen:
+````
+{% if objekt.YoutubeLink %}<div class="fewo-youtubeLink">{{ objekt.YoutubeLink|raw }}</div>{% endif %}
+````
+- - -
+
 ## Upgrade 3.4.18
 **WICHTIG!**  
 Damit die Funktion _Sync Feondi_ benutz werden kann, ist ein erneutes Daten senden vom Fewo-Verwalter an Feondi notwendig.  

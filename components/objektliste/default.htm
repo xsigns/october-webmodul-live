@@ -194,6 +194,7 @@
                         {% if objekt.KleinKinder %}<div class="fewo-childreen">{{ objekt.KleinKinder|raw }}</div>{% endif %}
                         {% if objekt.OptBelegung %}<div class="fewo-optperson">{{ objekt.OptBelegung|raw }}</div>{% endif %}
                         {% if objekt.Etage %}<div class="fewo-floor">{{ objekt.Etage|raw }}</div>{% endif %}
+                        {% if objekt.YoutubeLink %}<div class="fewo-youtubeLink">{{ objekt.YoutubeLink|raw }}</div>{% endif %}
                         {% if objekt.Leistungen %}
                         <div class="fewo-leistungen">
                             {% for leistung in objekt.Leistungen %}

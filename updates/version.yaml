@@ -559,3 +559,5 @@
     - update52.php
 3.4.19:
     - "Fehlerkorrekturen für Sync zu Feondi, Angebote und Ausstattungslisten"
+3.4.20:
+    - "Ausgabe des Youtube-Links auf der Listenseite. Wenn Ausgabe erwünscht dann Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
