@@ -557,3 +557,5 @@
 3.4.18:
     - "!!! Synchronisation mit Feondi. Neu senden der Daten vom Fewo-Verwalter an Feondi notwendig, bitte Upgrade-Guide lesen!"
     - update52.php
+3.4.19:
+    - "Fehlerkorrekturen für Sync zu Feondi, Angebote und Ausstattungslisten"

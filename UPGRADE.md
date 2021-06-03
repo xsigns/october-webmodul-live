@@ -1,4 +1,4 @@
-# Updatehinweise / upgrade guide
+# Updatehinweise / Upgrade Guide
 
 ## Upgrade 3.4.18
 **WICHTIG!**  
@@ -16,6 +16,7 @@ Buchungsmaske mitreisende-variant2.htm und mitreisende.htm: Im Script ``{{ mitre
 {{ mitreisender.mitgeb }}
 ````
 - - -
+
 ## Upgrade 3.4.8
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Buchungsmaske default.htm und variant2.htm: Folgenden Code im Script-Teil unterhalb von ``var customArrowNext = ' ';`` einfügen und  
@@ -26,6 +27,7 @@ var wechselleisteStart = {{ wechselleisteStart }};
 ````
 HINWEIS: Nach Durchführung des Updates und der Anpassungen muss gegebenenfalls der Browser-Cache geleert werden.
 - - -
+
 ## Upgrade 3.4.0
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Im Falle der Verwendung einer Karte auf der Listenseite, muss das komplette default.htm Partial der 
@@ -44,6 +46,7 @@ Bild aus Stammdaten default.htm: Das letzte und das drittletzte ``<img>``-Tag er
 <img src="{{ image|raw }}" alt="{{ image.title }}" title="{{ image.title }}">
 ````
 - - -
+
 ## Upgrade 3.3.8
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Objekliste default.htm: img-Tag im div-Container mit der Klasse ``fewo_image`` durch folgenden Code ersetzen:
@@ -57,6 +60,7 @@ var isInTab = false;
 var selectedTab = '';
 ````
 - - -
+
 ## Upgrade 3.3.6
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Buchungsmaske default.htm: Folgenden Code unter die Zeile ``var dateplaceholder = '{{ dateplaceholder }}';`` einfügen und  
@@ -65,6 +69,7 @@ Preisrechner default.htm: Folgenden Code unter die Zeile ``var zeitraum = '{{ pp
 var calClick = {{ calClick }};
 ````
 - - -
+
 ## Upgrade 3.3.4
 ### Folgende Partialanpassungen sind für dieses Update notwendig  
 
@@ -75,6 +80,7 @@ var abreise = '{{ ppabreise }}';
 var zeitraum = '{{ ppzeitraum }}';
 ````
 - - -
+
 ## Upgrade 3.3.2
 
 > ###Anpassungen Eigentümerlogin
@@ -106,6 +112,7 @@ var customArrowPrev = ' ';
 var customArrowNext = ' ';
 ````
 - - -
+
 ## Upgrade 3.3.1
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 
@@ -303,6 +310,7 @@ Objektbewerten default.htm: Folgenden Code unter der Zeile ``$(document).ready(f
 {% endif %}
 ````
 - - -
+
 ## Upgrade 3.3.0
 - Objekt-Sortierung Reihenfolgen angepasst
 - Problem in Sortierung, konnte nicht nach FewoVerwalter-Sortierung sortieren
@@ -355,6 +363,7 @@ var picker = $(dateComponent).dateRangePicker(
 });
 ````
 - - -
+
 ##Upgrade 3.2.9
 - Fehlerbehebungen
 - Performance Verbesserungen
@@ -416,6 +425,7 @@ searchFields: [
 ],
 ````
 - - -
+
 ##Upgrade 3.2.7
 - Bug im Zahlungsmodul, Fehlerhafte Zuordnung einer Tabelle
 - - -

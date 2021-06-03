@@ -10,6 +10,7 @@
 .btn-container .wrapper.btnOff {cursor: not-allowed;}
 .btn-container .wrapper.btnOff a {pointer-events: none; color: rgba(255,255,255,0.6); background: #999EA6; box-shadow: none;}
 .statusMessage {margin-top: 10px; color: #e50000;}
+.info-text {margin-top: 20px;}
 
 /* Safari */
 @-webkit-keyframes spin {
