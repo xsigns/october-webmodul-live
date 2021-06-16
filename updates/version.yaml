@@ -566,3 +566,5 @@
 3.4.22:
     - "Fehlerkorrekturen für Gäste und Sync zu Feondi"
     - "Strukturverbesserung Objektstatistik"
+3.4.23:
+    - "Fehlerkorrekturen für Sync Feondi bei Zahlung"
