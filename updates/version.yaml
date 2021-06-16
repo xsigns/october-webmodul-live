@@ -563,3 +563,6 @@
     - "Ausgabe des Youtube-Links auf der Listenseite. Wenn Ausgabe erwünscht dann Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
 3.4.21:
     - "Fehlerkorrekturen für October V2"
+3.4.22:
+    - "Fehlerkorrekturen für Gäste und Sync zu Feondi"
+    - "Strukturverbesserung Objektstatistik"
