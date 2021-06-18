@@ -568,3 +568,5 @@
     - "Strukturverbesserung Objektstatistik"
 3.4.23:
     - "Fehlerkorrekturen für Sync Feondi bei Zahlung"
+3.4.24:
+    - "Fehlerkorrekturen im Listenfilter"
