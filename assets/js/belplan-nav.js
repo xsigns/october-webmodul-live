@@ -191,9 +191,12 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             var mintageRange = wechselTimeline.substr(dayId, parseInt(mintage) + 1);
 
             if (mintageRange.includes('X')) {
-                for (var i = 0; i < mintage; i++) {
+                var lastOut = mintageRange.lastIndexOf('O');
+
+                for (var i = 0; i < mintage + 1; i++) {
                     var mintageStatus = wechselTimeline.charAt(dayId + i);
-                    if (mintageStatus !== 'O') {
+
+                    if (mintageStatus !== 'O' || i < lastOut) {
                         dayEleme.eq(dayId + i).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
                     }
                 }
