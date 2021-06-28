@@ -1,0 +1,34 @@
+subject = "Statusbericht für An- und Abreise-E-Mails"
+layout = "Statusbericht"
+==
+{% for STATUSBERICHT in STATUSBERICHTE %}
+<h1>Statusbericht für {{ STATUSBERICHT.BEREICH }}:</h1>
+{{ STATUSBERICHT.STATUS }}
+<table style="width: 100%">
+    <tr>
+        <td>Gast</td>
+        <td style="width: 200px">Objekt</td>
+        <td>Vorgang-ID</td>
+        <td>Anreise</td>
+        <td>Abreise</td>
+        <td>E-Mail</td>
+        <td>gesperrt</td>
+        <td>Werbemail</td>
+        <td>Status</td>
+    </tr>
+    {% for VORGANG in STATUSBERICHT.VORGAENGE %}
+    <tr>
+        <td>{{ VORGANG.NAME }}</td>
+        <td>{{ VORGANG.OBJEKT }}</td>
+        <td>{{ VORGANG.VORGANG_ID }}</td>
+        <td>{{ VORGANG.ANREISE }}</td>
+        <td>{{ VORGANG.ABREISE }}</td>
+        <td>{{ VORGANG.EMAIL }}</td>
+        <td>{{ VORGANG.GESPERRT }}</td>
+        <td>{{ VORGANG.WERBEMAIL }}</td>
+        <td>{{ VORGANG.HINWEIS }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br/><br/>
+{% endfor %}

@@ -1,10 +1,15 @@
-<?php namespace Xsigns\Fewo\Classes;
+<?php
+
+namespace Xsigns\Fewo\Classes;
 
 use DB;
 use Config;
 use Xsigns\Fewo\Models\GlobalSettings;
 use Mail;
 use System\Models;
+
+define ('MAILART_ANREISE', 0);
+define ('MAILART_ABREISE', 1);
 
 /**
  * Class SendCron
@@ -15,8 +20,6 @@ class SendCron
     public static $gastmail;
 
     protected static $modulename = 'sendcron';
-
-    public static function NewsLetter() {}
 
     /**
      * @param $strString
@@ -40,7 +43,7 @@ class SendCron
      * @param false $blnPreserveUppercase
      * @return string
      */
-    public static function standardize($strString, $blnPreserveUppercase = false)
+    public static function standardize($strString, bool $blnPreserveUppercase = false): string
     {
         $strString = str_replace(array("ü", "ä", "ö", "Ü", "Ä", "Ö", "ú", "é", "á", "í", "ó", "ù", "è", "à", "ì", "ò", "ß"), array('ue', 'ae', 'oe', 'ue', 'ae', 'oe', 'u', 'e', 'a', 'i', 'o', 'u', 'e', 'a', 'i', 'o', 'ss'), $strString);
         $arrSearch = array('/[^a-zA-Z0-9 \.\&\/_-]+/', '/[ \.\&\/-]+/');
@@ -60,278 +63,270 @@ class SendCron
      * @param $vorgid
      * @param $gastid
      * @param $gastname
+     * @param $mailTyp
      * @return bool|mixed
      */
-    public static function checkMail($mailaddr, $vorgid, $gastid, $gastname, $mailTyp)
+    public static function checkMail($mailaddr/*, $vorgid, $gastid, $gastname, $mailTyp*/)
     {
-        $return = false;
+        $ergebnis = false;
         $hinweis = "";
 
         if (@preg_match('/\b\S+?\@\S+\.\S+?\b/i', $mailaddr))
         {
             if (strpos($mailaddr, '@guest.booking.com') !== false)
-                $hinweis = 'Mail-Adresse vom Gast fehlerhaft! Alias von booking.com enthalten';
+                $hinweis = 'Die E-Mail-Adresse vom Gast ist fehlerhaft: Alias von booking.com enthalten';
 
             if (strpos($mailaddr, '@guest.airbnb.com') !== false)
-                $hinweis = 'Mail-Adresse vom Gast fehlerhaft! Alias von Airbnb vorhanden';
+                $hinweis = 'Die E-Mail-Adresse vom Gast ist fehlerhaft: Alias von Airbnb enthalten';
 
             $host = preg_replace('/^.+\@/i', '', $mailaddr);
 
             if (checkdnsrr($host) === false)
-                $hinweis = 'Mail-Adresse vom Gast Host (' . $host . ') nicht gefunden!';
+                $hinweis = 'Die E-Mail-Adresse vom Gast ist fehlerhaft: Host "' . $host . '" nicht gefunden';
             else
             {
                 if (checkdnsrr($host, 'MX') === false)
                 {
-                    $hinweis = 'Mail-Adresse vom Gast MX (' . $host . ') nicht vorhanden!';
-                    $return = false;
+                    $hinweis = 'Die E-Mail-Adresse vom Gast ist fehlerhaft: MX-Record "' . $host . '" nicht vorhanden';
+                    $ergebnis = false;
                 }
                 else
-                    $return = true;
+                    $ergebnis = true;
             }
         }
         else
         {
-            $hinweis = 'Keine gültige Mail-Adresse';
-            $return = false;
+            $hinweis = '"' . $mailaddr . '" ist keine gültige E-Mail-Adresse, bitte korrigieren';
+            $ergebnis = false;
         }
 
-        if ($return === false)
-        {
-            $mailview = 'xsigns.fewo::mail.mailerror';
-
-            $vars = [
-                'gastnr' => $gastid,
-                'gastname' => $gastname,
-                'gastmail' => '<' . $mailaddr . '>',
-                'mailTyp' => $mailTyp,
-                'vorgid' => $vorgid,
-                'hinweis' => $hinweis
-            ];
-
-            Mail::send($mailview, $vars, function($message)
-            {
-                $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
-                $message->to(GlobalSettings::get('mailaddress'));
-            });
-
-            $arrInsert = array();
-            $arrInsert['vorgid'] = $vorgid;
-            $arrInsert['bewertung'] = 1;
-            $arrInsert['anschreiben'] = 1;
-            DB::table('xsigns_fewo_vorggesendet')->insert($arrInsert);
-        }
-
-        return $return;
+        return new CheckMailReturn($ergebnis, $hinweis);
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function Mails()
     {
-        if (GlobalSettings::get('cronafter') == true && GlobalSettings::get('afterdays') > 0)
-        {
-            if (GlobalSettings::get('cronlog'))
-                Models\EventLog::add('Cron Bewertung gestartet ' . date("d.m.Y h:i:s", time()));
+        self::debug('Cron-Jobs', 'gestartet, Einstellungen: cronafter ' . GlobalSettings::get('cronafter') . ', afterdays: ' . GlobalSettings::get('afterdays') . ', cronbefore ' . GlobalSettings::get('cronbefore') . ', beforedays: ' . GlobalSettings::get('beforedays'));
 
-            $datum = date("Y-m-d", time());
-            $Date = date("Y-m-d", time());
-            $datemax = date('Y-m-d', strtotime($Date . ' - ' . GlobalSettings::get('afterdays') . ' days'));
-            $sql = "select * from xsigns_fewo_vorg where date_add(vorg_abreise, interval " . GlobalSettings::get('afterdays') . " day) <= '" . $datum . "' and vorg_abreise >= '" . $datemax . "' and vorg_art = 'B'";
-            $res = Database::select(null, self::$modulename, $sql);
-            $gesendet = 0;
-
-            if (count($res) > 0)
-            {
-                foreach ($res as $item)
-                {
-                    $mSenden = false;
-                    $resMail = Database::select(null, self::$modulename,"select * from xsigns_fewo_vorggesendet where vorgid=" . $item->vorg_id);
-
-                    if (count($resMail) > 0 && $resMail[0]->bewertung < 1)
-                        $mSenden = true;
-                    if (count($resMail) < 1)
-                        $mSenden = true;
-
-                    $resObjekt = Database::select(null, self::$modulename, "select t1.*, t2.* from xsigns_fewo_obj as t1 left join xsigns_fewo_objlang as t2 on (t2.objid=t1.id) and t2.lang = 'DE' where t1.id = " . $item->vorg_objid);
-                    $resGast = Database::select(null, self::$modulename, "select gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_mail from xsigns_fewo_gast where gast_id = " . $item->vorg_gastid . " and gast_werbemail = 1");
-
-                    if (count($resGast) > 0)
-                    {
-                        if ($resGast[0]->gast_mail && $mSenden == true && date("Y", strtotime($item->vorg_anreise)) > 2017 && SendCron::checkMail($resGast[0]->gast_mail, $item->vorg_id, $item->vorg_gastid, $resGast[0]->gast_name, 'Bewertung') == true)
-                        {
-                            $mailview = 'xsigns.fewo::mail.voting_de';
-                            $myBase = dirname($_SERVER['PHP_SELF']);
-
-                            if ($myBase == '/')
-                                $myBase = "";
-
-                            $href = str_replace(':alias', $resObjekt[0]->obj_alias, GlobalSettings::get('objektpath'));
-                            $href = str_replace(':ort', SendCron::standardize($resObjekt[0]->obj_ort), $href);
-
-                            if (strpos($href, ':region') > 0)
-                            {
-                                $region = Region::bildeRegionstext(null, self::$modulename, $resObjekt[0]->obj_regionid, 'DE');
-                                $href = str_replace(':region', SendCron::standardize($region), $href);
-                            }
-
-                            $bewLink = '<a href="' . Config::get('app.url') . $href . '">' . GlobalSettings::get('linktext') . '</a>';
-
-                            $vars = [
-                                'OBJEKT' => $resObjekt[0]->titel,
-                                'OBJEKT_ALIAS' => $resObjekt[0]->obj_alias,
-                                'OBJEKT_NR' => $resObjekt[0]->id,
-                                'OBJEKT_STRASSE' => $resObjekt[0]->obj_strasse,
-                                'OBJEKT_PLZ' => $resObjekt[0]->obj_plz,
-                                'OBJEKT_ORT' => $resObjekt[0]->obj_ort,
-                                'OBEKT_BESCHREIBUNG' => $resObjekt[0]->beschreibung,
-                                'OBJEKT_LAND' => $resObjekt[0]->obj_land,
-                                'BEWLINK' => $bewLink,
-                                'ANREISE' => date("d.m.Y", strtotime($item->vorg_anreise)),
-                                'ABREISE' => date("d.m.Y", strtotime($item->vorg_abreise)),
-                                'TITEL' => $resGast[0]->gast_titel,
-                                'ANREDE' => $resGast[0]->gast_anrede,
-                                'VORNAME' => $resGast[0]->gast_vorname,
-                                'NAME' => $resGast[0]->gast_name,
-                                'KINDER' => $item->vorg_kinder,
-                                'ERWACHSENE' => $item->vorg_erw,
-                                'KLEINKINDER' => $item->vorg_kleinkind,
-                                'TAGE' => Fewo::DaysBetween($item->vorg_anreise, $item->vorg_abreise)
-                            ];
-
-                            self::$gastmail = $resGast[0]->gast_mail;
-
-                            if ($resGast[0]->gast_gesperrt < 1)
-                            {
-                                if (GlobalSettings::get('mailcccron'))
-                                {
-                                    Mail::send($mailview, $vars, function($message)
-                                    {
-                                        $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
-                                        $message->to(self::$gastmail)->cc(explode(";", GlobalSettings::get('mailcc')));
-                                    });
-                                }
-                                else
-                                {
-                                    Mail::send($mailview, $vars, function($message)
-                                    {
-                                        $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
-                                        $message->to(self::$gastmail);
-                                    });
-                                }
-                                $gesendet += 1;
-                            }
-
-                            if (count($resMail) > 0)
-                                DB::table('xsigns_fewo_vorggesendet')->where('vorgid', '=', $item->vorg_id)->update(['bewertung' => 1]);
-                            //DB::select("update xsigns_fewo_vorggesendet set bewertung=1 where vorgid=" . $item->vorg_id);
-                            else
-                            {
-                                $arrInsert = array();
-                                $arrInsert['vorgid'] = $item->vorg_id;
-                                $arrInsert['bewertung'] = '1';
-                                DB::table('xsigns_fewo_vorggesendet')->insert($arrInsert);
-                                //DB::select("insert into xsigns_fewo_vorggesendet (vorgid,bewertung) values('" . $item->vorg_id . "','1')");
-                            }
-                        }
-                    }
-                }
-
-                if (GlobalSettings::get('cronlog'))
-                    Models\EventLog::add("Cron-After : " . $gesendet . " send");
-            }
-        }
+        $status = array();
 
         if (GlobalSettings::get('cronbefore') == true && GlobalSettings::get('beforedays') > 0)
         {
-            if (GlobalSettings::get('cronlog'))
-                Models\EventLog::add('Cron Anreise gestartet ' . date("d.m.Y h:i:s", time()));
+            $abreisemails = self::BearbeiteBereich(MAILART_ANREISE);
+            $status[] = [
+                'BEREICH' => 'Anreise-E-Mails',
+                'STATUS' => $abreisemails->message,
+                'VORGAENGE' => $abreisemails->ergebnisse
+            ];
+        }
 
-            $datumberechnet = strtotime(date("Y-m-d", time()) . "+" . GlobalSettings::get('beforedays') . " days");
-            $resHinweis = Database::select(null, self::$modulename, "select * from xsigns_fewo_vorg where vorg_anreise = '" . date("Y-m-d", $datumberechnet) . "' and vorg_art = 'B'");
+        if (GlobalSettings::get('cronafter') && GlobalSettings::get('afterdays') > 0)
+        {
+            $abreisemails = self::BearbeiteBereich(MAILART_ABREISE);
+            $status[] = [
+                'BEREICH' => 'Abreise-E-Mails',
+                'STATUS' => $abreisemails->message,
+                'VORGAENGE' => $abreisemails->ergebnisse
+            ];
+        }
 
-            if (count($resHinweis) > 0)
+        $statusberichte = [
+            'STATUSBERICHTE' => $status
+        ];
+
+        if (GlobalSettings::get('cronstatus'))
+        {
+            Mail::send('xsigns.fewo::mail.cronstatus', $statusberichte, function ($message)
             {
-                $gesendet = 0;
+                $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
+                $message->to(explode(';', GlobalSettings::get('mailcc')));
+            });
+        }
 
-                foreach ($resHinweis as $item)
+        self::debug('Cron-Jobs', Fewo::var_dump_ret($statusberichte));
+    }
+
+    private static function BearbeiteBereich(int $mailart): BearbeiteBereichReturn
+    {
+        $start = time();
+        $datum = date("Y-m-d", $start);
+
+        if ($mailart == MAILART_ANREISE)
+        {
+            $bereich = 'Cron Anreise-E-Mail';
+            $dayvariable = 'beforedays';
+            $activevariable = 'cronbefore';
+            $datumberechnet = date('Y-m-d', strtotime($datum . ' + ' . GlobalSettings::get($dayvariable) . ' days'));
+            $wherepart = " and vorg_anreise = '" . $datumberechnet . "'";
+            $mailview = 'xsigns.fewo::mail.before_de';
+        }
+        elseif ($mailart == MAILART_ABREISE)
+        {
+            $bereich = 'Cron Abreise-E-Mail';
+            $dayvariable = 'afterdays';
+            $activevariable = 'cronafter';
+            $datumberechnet = date('Y-m-d', strtotime($datum . ' - ' . GlobalSettings::get($dayvariable) . ' days'));
+            $wherepart = " and vorg_abreise = '" . $datumberechnet . "'";
+            $mailview = 'xsigns.fewo::mail.voting_de';
+        }
+        else
+            return new BearbeiteBereichReturn('keine gültige Mailart', []);
+
+        $message = 'gestartet am ' . date("d.m.Y", $start) . ' um ' . date("H:i:s (P)", $start) . ' Uhr mit folgenden Einstellungen: aktiv -> ' . GlobalSettings::get($activevariable) . ', Tage -> ' . GlobalSettings::get($dayvariable) . ', Datum berechnet -> ' . $datumberechnet;
+
+        self::debug($bereich, $message);
+
+        $sql = "select vorg_id, vorg_objid, vorg_gastid, vorg_anreise, vorg_abreise, vorg_kinder, vorg_erw, vorg_kleinkind, xsigns_fewo_vorggesendet.id as vorgges_id, anschreiben, bewertung, xsigns_fewo_obj.id as obj_id, obj_alias, obj_strasse, obj_plz, obj_ort, obj_land, obj_regionid, titel, beschreibung, gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_werbemail, gast_mail from xsigns_fewo_vorg left join xsigns_fewo_vorggesendet on vorgid = vorg_id left join xsigns_fewo_obj on xsigns_fewo_obj.id = vorg_objid left join xsigns_fewo_objlang on xsigns_fewo_objlang.objid = xsigns_fewo_obj.id and lang = 'DE' left join xsigns_fewo_gast on gast_id = vorg_gastid where vorg_art = 'B'" . $wherepart;
+
+        $vorgaenge = Database::select(null, self::$modulename, $sql);
+
+        self::debug($bereich, 'SQL: ' . $sql);
+        self::debug($bereich, 'Anzahl: ' . count($vorgaenge));
+
+        $ergebnisse = array();
+
+        foreach ($vorgaenge as $vorgang)
+        {
+            if ($vorgang->vorgges_id === null)
+                Database::insert(null, self::$modulename,"xsigns_fewo_vorggesendet", ['vorgid' => $vorgang->vorg_id, 'anschreiben' => 0, 'bewertung' => 0]);
+
+            $mailBereitsGesendet = $vorgang->bewertung == 1;
+            if ($mailart == MAILART_ANREISE)
+                $mailBereitsGesendet = $vorgang->anschreiben == 1;
+
+            $href = str_replace(':alias', $vorgang->obj_alias, GlobalSettings::get('objektpath'));
+            $href = str_replace(':ort', SendCron::standardize($vorgang->obj_ort), $href);
+
+            if (strpos($href, ':region') > 0)
+            {
+                $region = Region::bildeRegionstext(null, self::$modulename, $vorgang->obj_regionid, 'DE');
+                $href = str_replace(':region', SendCron::standardize($region), $href);
+            }
+
+            $href = substr($href, 1);
+
+            $bewLink = '<a href="' . Config::get('app.url') . $href . '">' . GlobalSettings::get('linktext') . '</a>';
+
+            $vars = [
+                'VORGANG_ID' => $vorgang->vorg_id,
+                'OBJEKT_ID' => $vorgang->vorg_objid,
+                'OBJEKT' => $vorgang->titel,
+                'OBJEKT_ALIAS' => $vorgang->obj_alias,
+                'OBJEKT_NR' => $vorgang->obj_id,
+                'OBJEKT_STRASSE' => $vorgang->obj_strasse,
+                'OBJEKT_PLZ' => $vorgang->obj_plz,
+                'OBJEKT_ORT' => $vorgang->obj_ort,
+                'OBEKT_BESCHREIBUNG' => $vorgang->beschreibung,
+                'OBJEKT_LAND' => $vorgang->obj_land,
+                'BEWLINK' => $bewLink,
+                'ANREISE' => date("d.m.Y", strtotime($vorgang->vorg_anreise)),
+                'ABREISE' => date("d.m.Y", strtotime($vorgang->vorg_abreise)),
+                'TITEL' => $vorgang->gast_titel,
+                'ANREDE' => $vorgang->gast_anrede,
+                'VORNAME' => $vorgang->gast_vorname,
+                'NAME' => $vorgang->gast_name,
+                'EMAIL' => $vorgang->gast_mail,
+                'GESPERRT' => $vorgang->gast_gesperrt,
+                'WERBEMAIL' => $vorgang->gast_werbemail,
+                'KINDER' => $vorgang->vorg_kinder,
+                'ERWACHSENE' => $vorgang->vorg_erw,
+                'KLEINKINDER' => $vorgang->vorg_kleinkind,
+                'TAGE' => Fewo::DaysBetween($vorgang->vorg_anreise, $vorgang->vorg_abreise),
+            ];
+
+            if (!$mailBereitsGesendet && date("Y", strtotime($vorgang->vorg_anreise)) > 2020)
+            {
+                $values = [];
+
+                if ($vorgang->gast_mail === '')
+                    $hinweis = 'Gast-E-Mailadresse ist leer';
+                else if ($vorgang->gast_gesperrt == 1)
+                    $hinweis = 'Gast ist gesperrt, keine E-Mail gesendet';
+                else if ($vorgang->gast_werbemail == 0)
+                    $hinweis = 'Gast möchte keine Werbemail, keine E-Mail gesendet';
+                else
                 {
-                    $mSenden = false;
-                    $resMail = Database::select(null, self::$modulename, "select * from xsigns_fewo_vorggesendet where vorgid = " . $item->vorg_id);
-
-                    if (count($resMail) > 0 && $resMail[0]->anschreiben < 1) // Ist ein Treffer
-                        $mSenden = true;
-                    if (count($resMail) < 1)
-                        $mSenden = true;
-
-                    $resObjekt = Database::select(null, self::$modulename, "select t1.*, t2.* from xsigns_fewo_obj as t1 left join xsigns_fewo_objlang as t2 on (t2.objid = t1.id) where t1.id = " . $item->vorg_objid . " and t2.lang = 'DE'");
-                    $resGast = Database::select(null, self::$modulename, "select gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_mail from xsigns_fewo_gast where gast_id = " . $item->vorg_gastid . " and gast_werbemail = 1");
-
-                    if (count($resGast) > 0)
+                    $checkmailSuccessful = SendCron::checkMail($vorgang->gast_mail);
+                    if ($checkmailSuccessful->ergebnis)
                     {
-                        if ($resGast[0]->gast_mail && $mSenden == true && date("Y", strtotime($item->vorg_anreise)) > 2017 && SendCron::checkMail($resGast[0]->gast_mail, $item->vorg_id, $item->vorg_gastid, $resGast[0]->gast_name, 'Anreise') == true)
+                        try
                         {
-                            self::$gastmail = $resGast[0]->gast_mail;
-
-                            $mailview = 'xsigns.fewo::mail.before_de';
-                            $vars = [
-                                'OBJEKT' => $resObjekt[0]->titel,
-                                'OBJEKT_ALIAS' => $resObjekt[0]->obj_alias,
-                                'OBJEKT_NR' => $resObjekt[0]->id,
-                                'OBJEKT_STRASSE' => $resObjekt[0]->obj_strasse,
-                                'OBJEKT_PLZ' => $resObjekt[0]->obj_plz,
-                                'OBJEKT_ORT' => $resObjekt[0]->obj_ort,
-                                'OBEKT_BESCHREIBUNG' => $resObjekt[0]->beschreibung,
-                                'OBJEKT_LAND' => $resObjekt[0]->obj_land,
-                                'ANREISE' => date("d.m.Y", strtotime($item->vorg_anreise)),
-                                'ABREISE' => date("d.m.Y", strtotime($item->vorg_abreise)),
-                                'TITEL' => $resGast[0]->gast_titel,
-                                'ANREDE' => $resGast[0]->gast_anrede,
-                                'VORNAME' => $resGast[0]->gast_vorname,
-                                'NAME' => $resGast[0]->gast_name,
-                                'KINDER' => $item->vorg_kinder,
-                                'ERWACHSENE' => $item->vorg_erw,
-                                'KLEINKINDER' => $item->vorg_kleinkind,
-                                'TAGE' => Fewo::DaysBetween($item->vorg_anreise, $item->vorg_abreise)
-                            ];
-
-                            if ($resGast[0]->gast_gesperrt < 1)
+                            self::$gastmail = $vorgang->gast_mail;
+                            Mail::send($mailview, $vars, function ($message)
                             {
+                                $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
+
                                 if (GlobalSettings::get('mailcccron'))
-                                {
-                                    Mail::send($mailview, $vars, function($message)
-                                    {
-                                        $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
-                                        $message->to(self::$gastmail)->cc(explode(";", GlobalSettings::get('mailcc')));
-                                    });
-                                }
+                                    $message->to(self::$gastmail)->cc(explode(';', GlobalSettings::get('mailcc')));
                                 else
-                                {
-                                    Mail::send($mailview, $vars, function($message)
-                                    {
-                                        $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
-                                        $message->to(self::$gastmail);
-                                    });
-                                }
+                                    $message->to(self::$gastmail);
+                            });
+                            $hinweis = 'E-Mail erfolgreich gesendet';
 
-                                $gesendet += 1;
-                            }
-
-                            if (count($resMail) > 0)
-                                DB::table('xsigns_fewo_vorggesendet')->where('vorgid', '=', $item->vorg_id)->update(['anschreiben' => 1]);
-                            //DB::select("update xsigns_fewo_vorggesendet set anschreiben=1 where vorgid=" .$item->vorg_id);
+                            if ($mailart == MAILART_ANREISE)
+                                $values['anschreiben'] = 1;
                             else
-                            {
-                                $arrInsert = array();
-                                $arrInsert['vorgid'] = $item->vorg_id;
-                                $arrInsert['anschreiben'] = '1';
-                                DB::table('xsigns_fewo_vorggesendet')->insert($arrInsert);
-                                //DB::select("insert into xsigns_fewo_vorggesendet (vorgid,anschreiben) values('" . $item->vorg_id . "','1')");
-                            }
+                                $values['bewertung'] = 1;
+                        }
+                        catch (\Exception $exception)
+                        {
+                            $hinweis = $exception->getMessage();
                         }
                     }
+                    else
+                        $hinweis = $checkmailSuccessful->hinweis;
                 }
-                if (GlobalSettings::get('cronlog'))
-                    Models\EventLog::add("Cron-Before : " . $gesendet . " send");
+
+                if ($mailart == MAILART_ANREISE)
+                    $values['vorgges_grundanschr'] = $hinweis;
+                else
+                    $values['vorgges_grundbew'] = $hinweis;
+
+                //Database::update(null, self::$modulename, 'xsigns_fewo_vorggesendet', $values, 'where vorgid = ' . $vorgang->vorg_id);
+
+                $vars['HINWEIS'] = $hinweis;
             }
+            else
+                $vars['HINWEIS'] = 'Vorgang bereits zuvor geprüft';
+
+            $ergebnisse[] = $vars;
         }
+
+        return new BearbeiteBereichReturn($message, $ergebnisse);
+    }
+
+    private static function debug($bereich, $message, $brAtEnd = true)
+    {
+        if (isset($_GET['debug']) && $_GET['debug'] === 'Xsigns27356R0W')
+            echo $bereich . ': ' . $message . ($brAtEnd ? '<br>' : '');
+
+        if (GlobalSettings::get('cronlog'))
+            Models\EventLog::add($bereich . ': ' . $message);
+    }
+}
+
+class CheckMailReturn
+{
+    public $hinweis = '';
+    public $ergebnis = false;
+
+    public function __construct($ergebnis, $hinweis = '')
+    {
+        $this->ergebnis = $ergebnis;
+        $this->hinweis = $hinweis;
+    }
+}
+
+class BearbeiteBereichReturn
+{
+    public $message = '';
+    public $ergebnisse = [];
+
+    public function __construct($message, $ergebnisse)
+    {
+        $this->ergebnisse = $ergebnisse;
+        $this->message = $message;
     }
 }

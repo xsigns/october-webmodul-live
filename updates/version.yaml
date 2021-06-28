@@ -562,7 +562,7 @@
 3.4.20:
     - "Ausgabe des Youtube-Links auf der Listenseite. Wenn Ausgabe erwünscht dann Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
 3.4.21:
-    - "Fehlerkorrekturen für October V2"
+    - "Kompatibilität für October V2"
 3.4.22:
     - "Fehlerkorrekturen für Gäste und Sync zu Feondi"
     - "Strukturverbesserung Objektstatistik"
@@ -572,3 +572,6 @@
     - "Fehlerkorrekturen im Listenfilter"
 3.4.25:
     - "Fehlerkorrekturen Mintage und Lückenbuchung"
+3.4.26:
+    - "Strukturverbesserung An- und Abreiseemails: Grund Nichtsendung hinzugefügt"
+    - update53.php
