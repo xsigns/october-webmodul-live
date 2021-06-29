@@ -575,3 +575,5 @@
 3.4.26:
     - "Strukturverbesserung An- und Abreiseemails: Grund Nichtsendung hinzugefügt"
     - update53.php
+3.4.27:
+    - "Fehlerkorrekturen Konfigurationsdatei für Sync Feondi"
