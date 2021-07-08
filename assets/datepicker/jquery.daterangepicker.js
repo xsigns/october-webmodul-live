@@ -1455,7 +1455,7 @@
 
                         charList += char.toString();
 
-                        if (charList.includes('OX') || charList.includes('OI')) {
+                        if (charList.includes('OX') || charList.includes('OI') || charList.includes('XI')) {
                             $(this).addClass('invalid tmp').removeClass('valid');
                         } else {
                             $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');

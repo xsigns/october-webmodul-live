@@ -35,7 +35,7 @@
                 {% if type == 'panorama' %}
                     <img src="{{ image.thumb(auto,auto) }}" alt="{{image.title}}">
                 {% else %}
-                    <img src="{{ image|raw }}" alt="{{ image.title }}" title="{{ image.title }}">
+                    <img src="{{ image.path|raw }}" alt="{{ image.title }}" title="{{ image.title }}">
                 {% endif %}
             {% endif %}
         </div>

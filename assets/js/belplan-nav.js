@@ -96,7 +96,7 @@ Belplan.calSelect = function () {
 
             wechselTimeline = resp['wechselleiste'];
             verfuegbarTimeline = resp['verfuegbarleiste'];
-            mintageTimeline = resp['mintageleiste']
+            mintageTimeline = resp['mintageleiste'];
             Belplan.updateCal();
         }
     });
@@ -176,6 +176,7 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             anreiseId = dayId;
             dayEleme.removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
             dayEleme.slice(0, dayId).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
+            dayEleme.slice(dayId).css('pointer-events', '').removeClass('nichtwaehlbar').removeClass('nichtselektierbar').removeClass('keineanabreise').removeClass('fehleranreisetag').addClass('waehlbar');
             $(elem).addClass('gewaehlt');
             $('#period').val(tag + '.' + monat + '.' + jahr + ' - ');
             $('#ctrl_panreise').val(tag + '.' + monat + '.' + jahr);
@@ -190,7 +191,20 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
 
             var mintageRange = wechselTimeline.substr(dayId, parseInt(mintage) + 1);
 
-            if (mintageRange.includes('X')) {
+            if (mintageRange.includes('O')) {
+                mintage = mintageRange.lastIndexOf('O');
+            }
+
+            for (var i = 0; i < mintage; i++) {
+                var mintageStatus = wechselTimeline.charAt(dayId + i);
+
+                if (i < mintage) {
+                    dayEleme.eq(dayId + i).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
+                }
+            }
+
+            // alte Logik Mintage
+            /*if (mintageRange.includes('X')) {
                 var lastOut = mintageRange.lastIndexOf('O');
 
                 for (var i = 0; i < mintage + 1; i++) {
@@ -204,7 +218,7 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
                 for (var j = 0; j < mintage; j++) {
                     dayEleme.eq(dayId + j).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
                 }
-            }
+            }*/
 
             waehleAnreise = !1;
             Belplan.clickEvent();
@@ -274,7 +288,7 @@ Belplan.waehleDatum = function (elem) {
         Belplan.loescheAuswahl();
         anreiseClicked(elem, wechselStatus, verfuegbarStatus);
     } else {
-        if (wechselStatus === 'C' || wechselStatus === 'O' && wechselStatus !== 'I' && wechselStatus !== 'X') {
+        if (wechselStatus === 'C' || wechselStatus === 'O' && wechselStatus !== 'I' && wechselStatus !== 'X' || $(elem).hasClass('waehlbar')) {
             var dateId, tag, monat, jahr;
             $(elem).addClass('gewaehlt');
             $('.nichtwaehlbar').css('pointer-events', 'auto').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
