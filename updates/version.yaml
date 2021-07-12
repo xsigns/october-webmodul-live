@@ -579,3 +579,5 @@
     - "Fehlerkorrekturen Konfigurationsdatei für Sync Feondi"
 3.4.28:
     - "Fehlerkorrekturen Leaflet-Map Marker, Klickbarer Belegungskalender und Ausstattungskategorien"
+3.4.29:
+    - "Fehlerkorrekturen beim speichern der bereits gesendeten An- und Abreisemails"
