@@ -583,3 +583,5 @@
     - "Fehlerkorrekturen beim speichern der bereits gesendeten An- und Abreisemails"
 3.4.30:
     - "Fehlerkorrekturen der SQL-Abfrage für den Listenfilter"
+3.4.31:
+    - "Fehlerkorrekturen Objektliste Map-Marker"
