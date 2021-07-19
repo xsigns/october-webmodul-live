@@ -581,3 +581,5 @@
     - "Fehlerkorrekturen Leaflet-Map Marker, Klickbarer Belegungskalender und Ausstattungskategorien"
 3.4.29:
     - "Fehlerkorrekturen beim speichern der bereits gesendeten An- und Abreisemails"
+3.4.30:
+    - "Fehlerkorrekturen der SQL-Abfrage für den Listenfilter"
