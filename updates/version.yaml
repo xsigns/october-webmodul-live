@@ -585,3 +585,5 @@
     - "Fehlerkorrekturen der SQL-Abfrage für den Listenfilter"
 3.4.31:
     - "Fehlerkorrekturen Objektliste Map-Marker"
+3.4.32:
+    - "!!! Fehlerkorrekturen Objektlistenfilter, Objektbewertungen und Preisrechner. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"

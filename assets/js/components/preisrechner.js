@@ -86,5 +86,7 @@ $(function(){
     picker.bind('datepicker-clear', function() {
         if (calClick === 1)
             Belplan.resetBelplan();
+
+        $.request('onDeleteDate');
     });
 });

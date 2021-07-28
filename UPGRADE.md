@@ -1,5 +1,15 @@
 # Updatehinweise / Upgrade Guide
 
+## Upgrade 3.4.32
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Listenfilter default.htm: Im Script innerhalb der Funktion ``$(document).ready(function() {});`` unten folgenden Code einfügen:
+````
+picker.bind('datepicker-clear', function() {
+    $.request('onDeleteDate');
+});
+````
+- - -
+
 ## Upgrade 3.4.20
 ### Optionale Anpassung: Nur notwendig, wenn Ausgabe des Youtube-Links auf der Listenseite erwünscht ist
 Objektliste default.htm: Folgende Codezeile innerhalb des ``<article>``-Elemets an der gewünschten Stelle einfügen:

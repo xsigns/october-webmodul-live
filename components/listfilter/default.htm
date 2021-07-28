@@ -318,7 +318,6 @@
         }
 
         function filterChanged(elem) {
-
             /*if ($container !== undefined)
                 $container.infiniteScroll('destroy');*/
             resetpage = true;
@@ -326,7 +325,6 @@
         }
 
         $(document).ready(function() {
-
             if (personen > 1 && $('#perswert') !== undefined) {
                 if(personen > maxpersonen)
                     personen = maxpersonen;
@@ -387,6 +385,7 @@
                     callback: function( value ){
                         jQuery('#preis').request('onDataChange');
                     }});
+
             $('#cleardates').click(function(evt)
             {
                 evt.stopPropagation();
@@ -404,30 +403,31 @@
                 jQuery('#anreise-wrapper').remove();
 
             {% if datecompact == 1 %}
-            let dateComponent = '#period';
+                let dateComponent = '#period';
             {% else %}
-            let dateComponent = '#anreise';
+                let dateComponent = '#anreise';
             {% endif %}
-            let picker = $(dateComponent).dateRangePicker(
-                {
-                    startDate: '{{ mindate|raw}}',
-                    separator: ' bis ',
-                    selectForward: true,
-                    autoClose: true,
-                    showShortcuts: true,
-                    shortcuts: {'delete':true},
-                    format: 'DD.MM.YYYY',
-                    startOfWeek: 'monday',
-                    minDays: 2,
-                    language: '{{ lang }}',
-                    // showTopbar:false,
-                    beforeShowDay: function (t) {
-                        valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
-                        let _class = '';
-                        let _tooltip = valid ? '' : 'belegt';
-                        return [valid, _class, _tooltip];
-                    }
-                });
+
+            let picker = $(dateComponent).dateRangePicker({
+                startDate: '{{ mindate|raw}}',
+                separator: ' bis ',
+                selectForward: true,
+                autoClose: true,
+                showShortcuts: true,
+                shortcuts: {'delete':true},
+                format: 'DD.MM.YYYY',
+                startOfWeek: 'monday',
+                minDays: 2,
+                language: '{{ lang }}',
+                // showTopbar:false,
+                beforeShowDay: function (t) {
+                    valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
+                    let _class = '';
+                    let _tooltip = valid ? '' : 'belegt';
+                    return [valid, _class, _tooltip];
+                }
+            });
+
             $(dateComponent).data('dateRangePicker').setDateRange(anreise, abreise);
 
             if(anreise !='' && abreise != '') {
@@ -435,9 +435,11 @@
                 $('#period').val(anreise + ' - ' + abreise);
                 {% endif %}
             }
+
             {% if datecompact == 1 %}
-            $('#period').attr("placeholder", '{{dateplaceholder}}');
+                $('#period').attr("placeholder", '{{dateplaceholder}}');
             {% endif %}
+
             picker.bind('datepicker-change', function (event, obj) {
                 $('#anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
                 $('#abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
@@ -448,6 +450,9 @@
                 $('#abreise').request('onDataChange');
             });
 
+            picker.bind('datepicker-clear', function() {
+                $.request('onDeleteDate');
+            });
         });
 
     </script>
