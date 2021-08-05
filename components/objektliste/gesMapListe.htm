@@ -7,7 +7,7 @@
                 {% endif %}
                 {% if objekt.slider == false %}
                     <div class="fewo_image col-12 col-md-4 p-0 float-left">
-                        <a href="{{ objekt.href }}"><img src="{{ objekt.image|raw }}" alt="{{ objekt.image.title }}" title="{{ objekt.image.title }}"/></a>
+                        <a href="{{ objekt.href }}"><img src="{{ objekt.image|raw }}" alt="{% if objekt.image.title %}{{ objekt.image.title }}{% else %}{{ objekt.Titel|raw }}{% endif %}"{% if objekt.image.title %} title="{{ objekt.image.title }}"{% endif %}/></a>
                     </div>
                 {% else %}
                     <div class="fewo_list_image">

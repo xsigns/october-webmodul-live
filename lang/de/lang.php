@@ -137,7 +137,7 @@ return [
         'calclick' => 'Belegungsplan klickbar machen',
         'calclick_desc' => 'Die Datumsauswahl für An- und Abreise erfolgt über den Belegungsplan',
         'titleheader' => 'META-Titel',
-        'titleheader_desc' =>'Platzhalter : [ART],[TITEL],[ORT],[REGION],[TYP] (Wenn leer dann Objekt-Titel)',
+        'titleheader_desc' =>'Platzhalter : [ART], [ART_X_TITEL], [TITEL], [ORT], [ORT_X_TITEL], [REGION], [REGION_X_TITEL], [TYP], |KÜRZEN (wenn leer dann Objekt-Titel)',
         'paysection' => 'Zahlungseinstellungen',
         'paysection_desc' => 'Alle hier dargestellten Einstellungen funktionieren nur mit einer gültigen Lizenz.',
         'paytype' => 'Zahlungsmodul',

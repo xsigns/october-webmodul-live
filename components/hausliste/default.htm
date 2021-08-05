@@ -16,7 +16,7 @@
                     {% endif %}
                     {% if haus.image %}
                         <div class="fewo-image">
-                            <a href="{{ haus.href }}"><img itemprop="image"  src="{{ haus.image.thumb(haus.image_width,haus.image_height) }}" alt="{{ haus.image.title }}" title="{{ haus.image.title }}"/></a>
+                            <a href="{{ haus.href }}"><img itemprop="image" src="{{ haus.image.thumb(haus.image_width,haus.image_height) }}" alt="{% if haus.image.title %}{{ haus.image.title }}{% else %}{{ haus.TitelFuerTags|raw }}{% endif %}"{% if haus.image.title %} title="{{ haus.image.title }}"{% endif %}/></a>
                         </div>
                     {% endif %}
                     {% if haus.beschreibung %}

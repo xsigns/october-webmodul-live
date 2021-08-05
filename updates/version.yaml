@@ -587,3 +587,8 @@
     - "Fehlerkorrekturen Objektliste Map-Marker"
 3.4.32:
     - "!!! Fehlerkorrekturen Objektlistenfilter, Objektbewertungen und Preisrechner. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
+3.4.33:
+    - "Verbesserungen für SEO"
+    - "Fehlerkorrekturen Listenfilter bei Navigation"
+    - "Fehlerkorrekturen Objekte Sitemap"
+    - "Fehlerkorrekturen Eigentümerlogin Objekt buchen"

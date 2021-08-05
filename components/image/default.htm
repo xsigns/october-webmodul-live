@@ -30,12 +30,12 @@
     {% else %}
         <div class="{{ imgcss }} fewo-image-{{ type }} {{ type }}">
             {% if imagecrop %}
-                <img src="{{ image|raw }}" alt="{{ image.title }}" title="{{ image.title }}">
+                <img src="{{ image|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
             {% else %}
                 {% if type == 'panorama' %}
-                    <img src="{{ image.thumb(auto,auto) }}" alt="{{image.title}}">
+                    <img src="{{ image.thumb(auto,auto) }}" alt="{{ title|raw }}">
                 {% else %}
-                    <img src="{{ image.path|raw }}" alt="{{ image.title }}" title="{{ image.title }}">
+                    <img src="{{ image.path|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
                 {% endif %}
             {% endif %}
         </div>

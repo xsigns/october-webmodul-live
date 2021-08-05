@@ -6,12 +6,10 @@
         {% if fullscreen %}
             fullscreen = true;
         {% endif %}
-
         var showcircle = false;
         {% if showcircle %}
             showcircle = true;
         {% endif %}
-
         var centerlat = {{ centerlat }};
         var centerlong = {{ centerlong }};
         var leafletMap = '{{ map }}';
@@ -29,9 +27,7 @@
         var mapZoom = {{ mapZoom }};
         var googleCenterlat = {{ centerlat }};
         var googleCenterlong = {{ centerlong }};
-        // var marker_img = {{ marker_img }};
         var marker_img = '{{ marker_img }}';
-
         var use_marker = false;
         {% if use_marker %}
             use_marker = true;
