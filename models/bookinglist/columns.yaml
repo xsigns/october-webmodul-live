@@ -1,6 +1,6 @@
 columns:
     id:
-        label: Nummer
+        label: ID
         type: number
         searchable: true
         sortable: true
@@ -58,5 +58,10 @@ columns:
     sync:
         label: Sync
         type: switch
+        searchable: true
+        sortable: true
+    synctofeondi:
+        label: Sync Feondi
+        type: number
         searchable: true
         sortable: true

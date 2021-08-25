@@ -7,7 +7,7 @@ fields:
         label: Nummer
 
     objektid:
-        label: ObjektNummer
+        label: Objekt-ID
 
     vorname:
         label: Vorname

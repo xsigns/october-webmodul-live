@@ -7,6 +7,7 @@
     <span class="material-icons plug-icons">power_off</span>
     <p class="sync-deactivated"><?= $syncStatusLabel ?></p>
     <div class="btn-container"><div class="wrapper <?= $btnStatus ?>"><a class="btn btn-success" id="actionButton">Aktivieren</a></div></div>
+    <div class="info-text"><b>WICHTIG:</b> Bitte wenden Sie sich <b>VOR</b> der Aktivierung an unseren Support, damit er diesen Kanal für Sie aktivieren kann!</div>
     <?php if ($btnStatus == 'btnOff'): ?>
         <p class="statusMessage"><?= $statusMsg ?></p>
     <?php endif; ?>

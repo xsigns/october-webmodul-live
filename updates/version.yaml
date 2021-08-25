@@ -592,3 +592,7 @@
     - "Fehlerkorrekturen Listenfilter bei Navigation"
     - "Fehlerkorrekturen Objekte Sitemap"
     - "Fehlerkorrekturen Eigentümerlogin Objekt buchen"
+3.4.34:
+    - "Fehlerkorrekturen Listenfilter bei Navigation"
+    - "Fehlerkorrekturen Zuschlagsberechnung"
+    - "Strukturverbesserung Session handling"
