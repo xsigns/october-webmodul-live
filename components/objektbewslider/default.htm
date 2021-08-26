@@ -2,15 +2,15 @@
     <div class="{{ cssslider }} bew-slider">
         {% if liste == true %}
             <div id="btn-bewleft">
-            <button class="btn-left btn-info" data-request-data="bewid: {{ bewid }}, bewoffset: {{ bewoffset }},bewmax: {{ bewmax }}" data-request="{{ __SELF__ }}::onBewLeft">{{ btnleft }}</button>
+                <button class="btn-left btn-info" data-request-data="bewid: {{ bewid }}, bewoffset: {{ bewoffset }},bewmax: {{ bewmax }}" data-request="{{ __SELF__ }}::onBewLeft">{{ btnleft }}</button>
             </div>
         {% endif %}
-                {% for bew in bewertungen %}
-                    {% partial __SELF__ ~ "::item" bewertung = bew %}
-                {% endfor %}
+        {% for bew in bewertungen %}
+            {% partial __SELF__ ~ "::item" bewertung = bew %}
+        {% endfor %}
         {% if liste == true %}
             <div id="btn-bewright">
-            <button class="btn-right btn-info" data-request-data="bewid: {{ bewid }}, bewoffset: {{ bewoffset }},bewmax: {{ bewmax }}" data-request="{{ __SELF__ }}::onBewRight">{{ btnright }}</button>
+                <button class="btn-right btn-info" data-request-data="bewid: {{ bewid }}, bewoffset: {{ bewoffset }},bewmax: {{ bewmax }}" data-request="{{ __SELF__ }}::onBewRight">{{ btnright }}</button>
             </div>
         {% endif %}
     </div>

@@ -16,7 +16,6 @@
                         <div class="fewo_listnaviright fewo_slidernav" onclick="javascript:bildWeiter('fewolistslider_{{ objekt.itemid}}_{{ objekt.id }}');"></div>
                     </div>
                 {% endif %}
-
                 {% if objekt.Bewertung %}
                     <div class="fewo-rating">
                         {{ objekt.Bewertung|raw }}
@@ -120,10 +119,8 @@
                                         fullscreenControl: true,
                                         controlSize: 25,
                                     }
-
                                     myOptions.center = new google.maps.LatLng({{ objekt.lat }}, {{ objekt.lng }});
                                     let map{{ objekt.id }} = new google.maps.Map(document.getElementById("mapid{{ objekt.id }}"), myOptions);
-
                                     marker = new google.maps.Marker({
                                         position: {lat: {{ objekt.lat }}, lng: {{ objekt.lng }}},
                                         map: map{{ objekt.id }}

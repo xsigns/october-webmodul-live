@@ -1,18 +1,12 @@
 {% if not user %}
-
     <div class="row">
-
         <div class="col-md-6">
             {{ lblsignin|raw }}
             {% partial __SELF__ ~ '::signin' %}
         </div>
     </div>
-
 {% else %}
-
-
     <div class="row">
-
         <div class="col-md-6">
             {{ lbllogout|raw }}
             {% partial __SELF__ ~ '::logout' %}

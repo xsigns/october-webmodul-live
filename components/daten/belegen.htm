@@ -1,12 +1,12 @@
 <div class="fewo-buchung-cal d-inline-block w-100 mt-3">
-	<div class="buchung_anreise  col-6 col-md-4 col-lg-2 p-0 float-left mr-2 mb-2 mb-md-0">
-     <div class="label label_anreise">{{ labels.anreise }}</div>
-     <input type="text" id="ctrl_anreise" name="anreise" autocomplete="off" required class="s-anreise datepicker form-control" value="{{ anreise }}">
-  </div>
-  <div class="buchung_abreise col-6 col-md-4 col-lg-2 p-0 float-left mr-2">
-     <div class="label label_abreise">{{ labels.abreise }}</div>
-     <input type="text" id="ctrl_abreise" name="abreise" autocomplete="off" required class="s-abreise datepicker form-control" value="{{ abreise }}">
-	</div>
+    <div class="buchung_anreise  col-6 col-md-4 col-lg-2 p-0 float-left mr-2 mb-2 mb-md-0">
+         <div class="label label_anreise">{{ labels.anreise }}</div>
+         <input type="text" id="ctrl_anreise" name="anreise" autocomplete="off" required class="s-anreise datepicker form-control" value="{{ anreise }}">
+    </div>
+    <div class="buchung_abreise col-6 col-md-4 col-lg-2 p-0 float-left mr-2">
+        <div class="label label_abreise">{{ labels.abreise }}</div>
+        <input type="text" id="ctrl_abreise" name="abreise" autocomplete="off" required class="s-abreise datepicker form-control" value="{{ abreise }}">
+    </div>
  </div>
 <div id="error-anreise"></div>
 <input type="hidden" name="objartid" value="{{objartid}}">
@@ -48,66 +48,55 @@
 <button id="buchen" class="fewo-buchen btn btn-success" data-request="{{ __SELF__ }}::onBtnBuchen">{{ labels.buchen }}</button>
 <script>
     $(document).ready(function() {
-
-        $('#cleardates').click(function(evt)
-        {
+        $('#cleardates').click(function(evt){
             evt.stopPropagation();
-           $('#ctrl_anreise').data('dateRangePicker').clear();
+            $('#ctrl_anreise').data('dateRangePicker').clear();
 			$('#ctrl_anreise').request('onDateReset');
-		$('#ctrl_erwachsene').val(1);
-		$('#ctrl_kinder').val(0);
-		$('#ctrl_kleinkindern').val(0);
+            $('#ctrl_erwachsene').val(1);
+            $('#ctrl_kinder').val(0);
+            $('#ctrl_kleinkindern').val(0);
         });
-
         $('#abreise').click(function(evt){
             $('#anreise').data('dateRangePicker').open();
         });
-        var picker = $('#ctrl_anreise').dateRangePicker(
-			    {
-					startDate: new Date(),
-					separator: '',
-					selectForward: true,
-					autoClose:true,
-					format: 'DD.MM.YYYY',
-					//alwaysOpen:true,
-					startOfWeek: 'monday',
-					startDate: '{{ mindate|raw}}',
-					minDays: 2,
-					saisons: {{ saisons|raw }},
-					blocked: {{ blockeddates|raw }},
-					language: '{{ lang }}',
-					// showTopbar:false,
-					beforeShowDay: function(t)
-					{
-					if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
-						valid=false;
-					else
-						valid = true;
-					var _class = '';
-					var _tooltip = valid ? '' : 'belegt';
-					return [valid,_class,_tooltip];
-					},
-					setValue: function(s,from,to)
-						{
-							$('#ctrl_anreise').val(from);
-							$('#ctrl_abreise').val(to);
-							if(to)
-					    $('#ctrl_abreise').request('onAbreiseChange');
-						}
-				})
-
-			picker.bind('datepicker-first-date-selected', function(event, obj)
-			{
-			    $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
-				$('#ctrl_anreise').request('onAnreiseChange');
-			});
-
-			picker.bind('datepicker-change', function(event, obj)
-			{
-
-                $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
-                $('#ctrl_abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
-				$('#ctrl_abreise').request('onAbreiseChange');
-			});
+        var picker = $('#ctrl_anreise').dateRangePicker({
+            startDate: new Date(),
+            separator: '',
+            selectForward: true,
+            autoClose:true,
+            format: 'DD.MM.YYYY',
+            //alwaysOpen:true,
+            startOfWeek: 'monday',
+            startDate: '{{ mindate|raw}}',
+            minDays: 2,
+            saisons: {{ saisons|raw }},
+            blocked: {{ blockeddates|raw }},
+            language: '{{ lang }}',
+            // showTopbar:false,
+            beforeShowDay: function(t) {
+                if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
+                    valid=false;
+                else
+                    valid = true;
+                var _class = '';
+                var _tooltip = valid ? '' : 'belegt';
+                return [valid,_class,_tooltip];
+            },
+            setValue: function(s,from,to) {
+                $('#ctrl_anreise').val(from);
+                $('#ctrl_abreise').val(to);
+                if(to)
+                    $('#ctrl_abreise').request('onAbreiseChange');
+            }
+        });
+        picker.bind('datepicker-first-date-selected', function(event, obj) {
+            $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+            $('#ctrl_anreise').request('onAnreiseChange');
+        });
+        picker.bind('datepicker-change', function(event, obj) {
+            $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+            $('#ctrl_abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
+            $('#ctrl_abreise').request('onAbreiseChange');
+        });
     });
-			</script>
+</script>

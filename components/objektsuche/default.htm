@@ -1,46 +1,45 @@
 <form name="searchmask" class="objektsuche form">
     {% if datecompact == 1 %}
-            <div class="form-inputs">
-
-                <input type="text" id="period" name="period" class="search-anreise"  autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly/>
-                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ anreise }}" />
-                <input id="abreise" name="abreise" class="search-abreise" data-request="{{ __SELF__ }}::onDataChange" autocomplete="off" type="hidden" readonly value="{{ abreise }}" />
-            </div>
+        <div class="form-inputs">
+            <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly/>
+            <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ anreise }}"/>
+            <input id="abreise" name="abreise" class="search-abreise" data-request="{{ __SELF__ }}::onDataChange" autocomplete="off" type="hidden" readonly value="{{ abreise }}"/>
+        </div>
     {% else %}
         <div class="form-inputs">
             <div class="label">{{ labels.anreise }}</div>
-                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
+            <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}"/>
         </div>
         <div class="form-inputs">
             <div class="label">{{ labels.abreise }}</div>
-                <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
+            <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}"/>
         </div>
     {% endif %}
     {% if showtage == 1 %}
-    <div class="form-days">
-        <select id="tagein" name="tagein" class="search-days" data-width="auto" placeholder="Tage">
-            {% for sday in countdays %}
-            <option value="{{sday.id}}" {% if sday.selected %}{{ sday.selected }}{% endif %}>{{sday.name}}</option>
-            {% endfor %}
-        </select>
-    </div>
+        <div class="form-days">
+            <select id="tagein" name="tagein" class="search-days" data-width="auto" placeholder="Tage">
+                {% for sday in countdays %}
+                    <option value="{{ sday.id }}" {% if sday.selected %}{{ sday.selected }}{% endif %}>{{ sday.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
     {% endif %}
     {% if ort ==1 %}
         <div class="form-ort">
-                <select id="ort" name="ort" class="search-ort" data-width="auto" placeholder="Ort">
-                    <option value="0">{{lblort}}</option>
-                    {% for ort in orte %}
-                        <option value="{{ort.id}}">{{ort.name}}</option>
-                    {% endfor %}
-                </select>
+            <select id="ort" name="ort" class="search-ort" data-width="auto" placeholder="Ort">
+                <option value="0">{{ lblort }}</option>
+                {% for ort in orte %}
+                    <option value="{{ ort.id }}">{{ ort.name }}</option>
+                {% endfor %}
+            </select>
         </div>
     {% endif %}
     {% if land ==1 %}
         <div class="form-land">
             <select id="land" name="land" class="search-land" data-width="auto" placeholder="Land">
-                <option value="0">{{lblland}}</option>
+                <option value="0">{{ lblland }}</option>
                 {% for land in laender %}
-                    <option value="{{land.id}}">{{land.name}}</option>
+                    <option value="{{ land.id }}">{{ land.name }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -48,75 +47,75 @@
     {% if region ==1 %}
         <div class="form-region">
             <select id="region" name="region" class="search-region" data-width="auto" placeholder="Region">
-                <option value="0">{{lblregion}}</option>
+                <option value="0">{{ lblregion }}</option>
                 {% for region in regionen %}
-                    <option value="{{region.id}}">{{region.name}}</option>
+                    <option value="{{ region.id }}">{{ region.name }}</option>
                 {% endfor %}
             </select>
         </div>
     {% endif %}
     {% if objart ==1 %}
         <div class="form-objart">
-                <select id="objart" name="objart" class="search-objart" data-width="auto" placeholder="Art">
-                    <option value="0">{{lblobjart}}</option>
-                    {% for objart in objarten %}
-                        <option value="{{ objart.id }}">{{ objart.name }}</option>
-                    {% endfor %}
-                </select>
+            <select id="objart" name="objart" class="search-objart" data-width="auto" placeholder="Art">
+                <option value="0">{{ lblobjart }}</option>
+                {% for objart in objarten %}
+                    <option value="{{ objart.id }}">{{ objart.name }}</option>
+                {% endfor %}
+            </select>
         </div>
     {% endif %}
     {% if objtyp ==1 %}
         <div class="form-objtyp">
-                <select id="objtyp" name="objtyp" class="search-objtyp" data-width="auto" placeholder="Typ">
-                    <option value="0">{{lblobjtyp}}</option>
-                    {% for objtyp in objtypen %}
-                        <option value="{{ objtyp.id }}">{{ objtyp.name }}</option>
-                    {% endfor %}
-                </select>
+            <select id="objtyp" name="objtyp" class="search-objtyp" data-width="auto" placeholder="Typ">
+                <option value="0">{{ lblobjtyp }}</option>
+                {% for objtyp in objtypen %}
+                    <option value="{{ objtyp.id }}">{{ objtyp.name }}</option>
+                {% endfor %}
+            </select>
         </div>
     {% endif %}
     {% if zimmer == 1 %}
-    <div class="form-rooms">
+        <div class="form-rooms">
             <select id="zimmer" name="zimmer" class="search-rooms" data-width="auto" placeholder="Zimmer">
-                <option value="0">{{lblzimmer}}</option>
+                <option value="0">{{ lblzimmer }}</option>
                 {% for i in 1..maxzimmer %}
-                <option value="{{ i }}">{{ i }} {{lblzimmer}}</option>
+                    <option value="{{ i }}">{{ i }} {{ lblzimmer }}</option>
                 {% endfor %}
             </select>
-    </div>
+        </div>
     {% endif %}
     {% if schlafzimmer == 1 %}
-    <div class="form-schlafzimmer">
+        <div class="form-schlafzimmer">
             <select id="schlafzimmer" name="schlafzimmer" class="search-schlafzimmer" data-width="auto" placeholder="Schlafzimmer">
-                <option value="0">{{lblschlafzimmer}}</option>
+                <option value="0">{{ lblschlafzimmer }}</option>
                 {% for i in 1..maxschlafzimmer %}
-                <option value="{{ i }}">{{ i }} {{lblschlafzimmer}}</option>
+                    <option value="{{ i }}">{{ i }} {{ lblschlafzimmer }}</option>
                 {% endfor %}
             </select>
-    </div>
+        </div>
     {% endif %}
     {% if badezimmer == 1 %}
-    <div class="form-badezimmer">
+        <div class="form-badezimmer">
             <select id="badezimmer" name="badezimmer" class="search-badezimmer" data-width="auto" placeholder="Badezimer">
-                <option value="0">{{lblbadezimmer}}</option>
+                <option value="0">{{ lblbadezimmer }}</option>
                 {% for i in 1..maxbadezimmer %}
-                <option value="{{ i }}">{{ i }} {{lblbadezimmer}}</option>
+                    <option value="{{ i }}">{{ i }} {{ lblbadezimmer }}</option>
                 {% endfor %}
             </select>
-    </div>
+        </div>
     {% endif %}
     {% if personen == 1 %}
         <div class="form-personen">
-                <select id="personen" name="personen" class="search-personen" data-width="auto" placeholder="Personen">
-                    <option value="0">{{lblpersonen}}</option>
-                    {% for i in 1..maxpersonen %}
+            <select id="personen" name="personen" class="search-personen" data-width="auto" placeholder="Personen">
+                <option value="0">{{ lblpersonen }}</option>
+                {% for i in 1..maxpersonen %}
                     {% if i == 1 %}
-                        <option value="{{ i }}">{{ i }} {{lblperson}}</option>
+                        <option value="{{ i }}">{{ i }} {{ lblperson }}</option>
                     {% else %}
-                        <option value="{{ i }}">{{ i }} {{lblpersonen}}</option>
+                        <option value="{{ i }}">{{ i }} {{ lblpersonen }}</option>
                     {% endif %}
-                    {% endfor %}
-                </select>
+                {% endfor %}
+            </select>
         </div>
     {% endif %}
     {% if elemdrop %}
@@ -135,91 +134,84 @@
         </div>
         <div class="clearfix"></div>
     {% endif %}
-
     <button type="submit" class="btn btn-success" data-request="{{ __SELF__ }}::onDataSearch" value="" id="searchbtn">{{ objektsuchesubmit }}</button>
-
 </form>
-<script type="text/javascript">
-    var lblTag = '{{labels.tag}}';
-    var lblTage = '{{labels.tage}}';
-    var lblWoche = '{{labels.woche}}';
-    var lblWochen = '{{labels.wochen}}';
-    function startCal()
-    {
-        if( $('#anreise').val() == '' || $('#abreise').val() =='')
+<script>
+    var lblTag = '{{ labels.tag }}';
+    var lblTage = '{{ labels.tage }}';
+    var lblWoche = '{{ labels.woche }}';
+    var lblWochen = '{{ labels.wochen }}';
+    function startCal() {
+        if ($('#anreise').val() == '' || $('#abreise').val() == '')
             $('#anreise').data('dateRangePicker').clear();
     }
-    $(function()
-    {
+    $(function () {
         {% if datecompact == 1 %}
         var dateComponent = '#period';
         {% else %}
         var dateComponent = '#anreise';
         {% endif %}
-        var picker = $(dateComponent).dateRangePicker(
-            {
-                startDate: '{{ mindate|raw}}',
-                separator: ' bis ',
-                selectForward: true,
-                showArrow: {% if datecompact == 1 %}false{% else %}true{% endif %},
-        customArrowPrevSymbol:' ',
+        var picker = $(dateComponent).dateRangePicker({
+            startDate: '{{ mindate|raw }}',
+            separator: ' bis ',
+            selectForward: true,
+            showArrow: {% if datecompact == 1 %}false{% else %}true{% endif %},
+            customArrowPrevSymbol: ' ',
             customArrowNextSymbol: ' ',
-        autoClose:true,
-        showShortcuts: true,
-        shortcuts: {'delete':true},
-        format: 'DD.MM.YYYY',
+            autoClose: true,
+            showShortcuts: true,
+            shortcuts: {'delete': true},
+            format: 'DD.MM.YYYY',
             startOfWeek: 'monday',
-        minDays: 2,
-        language: '{{ callang }}',
-        showTopbar: false,
-        setValue: function(s,from,to)
-    {
-        $('#anreise').val(from);
-        $('#abreise').val(to);
-        /*if( from != '' && to  !='') {
-            var data = "anreise :" + moment(from, 'DD.MM.YYYY') + ", abreise:" + moment(to, 'DD.MM.YYYY');
-            $('#searchbtn').attr('data-request-data', data);
+            minDays: 2,
+            language: '{{ callang }}',
+            showTopbar: false,
+            setValue: function (s, from, to) {
+                $('#anreise').val(from);
+                $('#abreise').val(to);
+                /*if( from != '' && to  !='') {
+                    var data = "anreise :" + moment(from, 'DD.MM.YYYY') + ", abreise:" + moment(to, 'DD.MM.YYYY');
+                    $('#searchbtn').attr('data-request-data', data);
 
-        }*/
-    }
-    });
+                }*/
+            }
+        });
         {% if showtage %}
-        $('#tagein').append($('<option>', {
-            value: 0,
-            text: '{{ labels.tagein }}'
-        }));
+            $('#tagein').append($('<option>', {
+                value: 0,
+                text: '{{ labels.tagein }}'
+            }));
         {% endif %}
         picker.bind('datepicker-change', function (event, obj) {
             $('#anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
             $('#abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
             {% if datecompact == 1 %}
-            $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
+                $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
             {% endif %}
             {% if showtage %}
-            var a = moment(obj.date2,"DD.MM.YYYY");
-            var b = moment(obj.date1,"DD.MM.YYYY");
-            var selectText ='';
-            var tage = a.diff(b, 'days');   // =1
-            $('#tagein').find('option').remove().end();
-            for (i=0; i < tage; i++ ) {
-                if ((i+1) % 7 == 0){
-                    if((i+1) == 7)
-                        selectText = '1 ' + lblWoche;
-                    else
-                        selectText = ((i+1)/7) + ' ' + lblWochen;
-                }else
-                {
-                    if(i+1 > 1)
-                        selectText = (i+1) + ' ' + lblTage
-                    else
-                        selectText =(i+1) + ' ' + lblTag;
+                var a = moment(obj.date2, "DD.MM.YYYY");
+                var b = moment(obj.date1, "DD.MM.YYYY");
+                var selectText = '';
+                var tage = a.diff(b, 'days');   // =1
+                $('#tagein').find('option').remove().end();
+                for (i = 0; i < tage; i++) {
+                    if ((i + 1) % 7 == 0) {
+                        if ((i + 1) == 7)
+                            selectText = '1 ' + lblWoche;
+                        else
+                            selectText = ((i + 1) / 7) + ' ' + lblWochen;
+                    } else {
+                        if (i + 1 > 1)
+                            selectText = (i + 1) + ' ' + lblTage
+                        else
+                            selectText = (i + 1) + ' ' + lblTag;
+                    }
+                    $('#tagein').append($('<option>', {
+                        value: i + 1,
+                        text: selectText
+                    }));
                 }
-                $('#tagein').append($('<option>', {
-                    value: i+1,
-                    text: selectText
-                }));
-            }
-            $('select[name="tagein"]').val(tage);
+                $('select[name="tagein"]').val(tage);
             {% endif %}
         });
     });

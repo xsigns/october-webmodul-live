@@ -1,10 +1,10 @@
 {% if anzahl > 0 %}
-<div class="fewo-badezimmer">
-    {{ header|raw }}
-    <ul class="badezimmer">
-        {% for bad in badezimmer %}
-        <li>{{ bad.fromto }}</li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="fewo-badezimmer">
+        {{ header|raw }}
+        <ul class="badezimmer">
+            {% for bad in badezimmer %}
+                <li>{{ bad.fromto }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endif %}

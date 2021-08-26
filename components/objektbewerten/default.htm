@@ -1,74 +1,67 @@
 {% if fancy == 0 %}
-<a id="inlinebewertung" class="{{ bewlinkcss }} btn btn-success btn-sm fewo-bewerten" href="#rating_data">{{ bewlink|raw }}</a>
+    <a id="inlinebewertung" class="{{ bewlinkcss }} btn btn-success btn-sm fewo-bewerten" href="#rating_data">{{ bewlink|raw }}</a>
 {% endif %}
 <div id="rating_data" style="{% if fancy == 0 %}display:none;{% endif %}width:380px;max-width:380px;">
-        <div id="ratingid">
-    <div class="rating_title">{{ boxtitle|raw }}</div>
-    <form id="elem-dialog" class="rating-dialog" data-request="{{ __SELF__ }}::onRatingSave" method="post" data-handle_submit="true" enctype="multipart/form-data" name="rating-dialog">
-    <input name="objid" type="hidden" value="{{ objid }}">
-    <fieldset class="has-separator form-fieldset-rating">
-        <div class="rating-picker">
-            {% for opt in options %}
-                <div class="rating-item" style="width: 50%;float: left;margin-bottom: 10px;">
-                    <span class="label_picker">{{ opt.titel }}</span>
-                    <select id="rating_picker_{{ opt.id }}" name="rating_picker[{{ opt.id }}]">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                    </select>
+    <div id="ratingid">
+        <div class="rating_title">{{ boxtitle|raw }}</div>
+        <form id="elem-dialog" class="rating-dialog" data-request="{{ __SELF__ }}::onRatingSave" method="post" data-handle_submit="true" enctype="multipart/form-data" name="rating-dialog">
+            <input name="objid" type="hidden" value="{{ objid }}">
+            <fieldset class="has-separator form-fieldset-rating">
+                <div class="rating-picker">
+                    {% for opt in options %}
+                        <div class="rating-item" style="width: 50%;float: left;margin-bottom: 10px;">
+                            <span class="label_picker">{{ opt.titel }}</span>
+                            <select id="rating_picker_{{ opt.id }}" name="rating_picker[{{ opt.id }}]">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected>5</option>
+                            </select>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-        <div class="form-field-row full">
-            <label class="rating_subject w-100"  for="rating_subject">{{ title }}*</label>
-            <div class="input_ratingsubject"><input class="form-control" name="rating_subject" type="text" placeholder="{{plh.titel}}" id="rating_subject"></div>
-        </div>
-        <div class="form-field-row full">
-            <label class="rating_message" for="rating_message">{{ messagetitle }}*</label>
-            <div class="input_ratingtext"><textarea class="form-control" name="rating_message" placeholder="{{plh.message}}" rows="3" cols="80" required="required" id="rating_message"></textarea></div>
-        </div>
-    </fieldset>
-
-    <fieldset class="form-fieldset-personal_details">
-        <span class="form-field field-title">{{ datentitle }}</span>
-
-        <div class="form-field-row">
-            <label class="rating_anrede" for="rating_anrede">{{ anrede }}*</label>
-            <div class="input_rating_anrede"><select class="form-control" name="rating_anrede" size="1" id="rating_anrede"><option selected="selected" value="0">keine Auswahl</option><option value="2">Herr</option><option value="3">Frau</option><option value="4">Familie</option></select><div class="required" ></div></div>
-        </div>
-
-        <div class="form-field-row full">
-            <label class="rating_vorname" for="rating_vorname">{{ vorname }}</label>
-            <div class="input_ratingvorname"><input class="form-control" name="rating_vorname" type="text" placeholder="{{plh.vorname}}" id="rating_vorname"></div>
-            <label class="rating_name" for="rating_name">{{ name }}*</label>
-            <div class="input_ratingname"><input class="form-control" name="rating_name" type="text" required="required" placeholder="{{plh.name}}" id="rating_name"></div>
-        </div>
-
-        <div class="form-field-row full">
-            <label class="rating_ort" for="rating_ort">{{ ort }}*</label>
-            <div class="input_ratingort"><input class="form-control" name="rating_ort" type="text" required="required" placeholder="{{plh.ort}}" id="rating_ort"></div>
-        </div>
-
-        <div class="form-field-row full">
-            <label class="rating_mail" for="rating_mail">{{ mail }}* <small>{{ mailhinweis }}</small></label>
-            <div class="input_ratingmail"><input class="form-control" name="rating_mail" type="email" placeholder="{{plh.mail}}" required="required" id="rating_mail"></div>
-        </div>
-    </fieldset>
-
-	<div class="submit-container" style="margin-top:10px;">
-    	<input name="submit" type="submit" class="btn_submit" id="rating_submit" value="{{ button }}" >
-	</div>
-</form>
-        </div>
+                <div class="form-field-row full">
+                    <label class="rating_subject w-100"  for="rating_subject">{{ title }}*</label>
+                    <div class="input_ratingsubject"><input class="form-control" name="rating_subject" type="text" placeholder="{{plh.titel}}" id="rating_subject"></div>
+                </div>
+                <div class="form-field-row full">
+                    <label class="rating_message" for="rating_message">{{ messagetitle }}*</label>
+                    <div class="input_ratingtext"><textarea class="form-control" name="rating_message" placeholder="{{plh.message}}" rows="3" cols="80" required="required" id="rating_message"></textarea></div>
+                </div>
+            </fieldset>
+            <fieldset class="form-fieldset-personal_details">
+                <span class="form-field field-title">{{ datentitle }}</span>
+                <div class="form-field-row">
+                    <label class="rating_anrede" for="rating_anrede">{{ anrede }}*</label>
+                    <div class="input_rating_anrede"><select class="form-control" name="rating_anrede" size="1" id="rating_anrede"><option selected="selected" value="0">keine Auswahl</option><option value="2">Herr</option><option value="3">Frau</option><option value="4">Familie</option></select><div class="required" ></div></div>
+                </div>
+                <div class="form-field-row full">
+                    <label class="rating_vorname" for="rating_vorname">{{ vorname }}</label>
+                    <div class="input_ratingvorname"><input class="form-control" name="rating_vorname" type="text" placeholder="{{plh.vorname}}" id="rating_vorname"></div>
+                    <label class="rating_name" for="rating_name">{{ name }}*</label>
+                    <div class="input_ratingname"><input class="form-control" name="rating_name" type="text" required="required" placeholder="{{plh.name}}" id="rating_name"></div>
+                </div>
+                <div class="form-field-row full">
+                    <label class="rating_ort" for="rating_ort">{{ ort }}*</label>
+                    <div class="input_ratingort"><input class="form-control" name="rating_ort" type="text" required="required" placeholder="{{plh.ort}}" id="rating_ort"></div>
+                </div>
+                <div class="form-field-row full">
+                    <label class="rating_mail" for="rating_mail">{{ mail }}* <small>{{ mailhinweis }}</small></label>
+                    <div class="input_ratingmail"><input class="form-control" name="rating_mail" type="email" placeholder="{{plh.mail}}" required="required" id="rating_mail"></div>
+                </div>
+            </fieldset>
+            <div class="submit-container" style="margin-top:10px;">
+                <input name="submit" type="submit" class="btn_submit" id="rating_submit" value="{{ button }}" >
+            </div>
+        </form>
+    </div>
 </div>
 <script>
     function removeEmojis (string) {
         var regex = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g;
         return string.replace(regex, '');
     }
-
     $(document).ready(function() {
         {% if hasNoOptions %}
             $('#inlinebewertung').on('click', function(e) {
@@ -85,25 +78,25 @@
               $('#rating_subject').val(str);
         });
         {% if fancy == 0 %}
-        $("#ratingclose").bind("submit", function() {
-            $.fancybox.close();
-        });
-        jQuery("a#inlinebewertung").fancybox({
-            'transitionIn'	:	'elastic',
-            'transitionOut'	:	'elastic',
-            'speedIn'		:	800,
-            'speedOut'		:	500,
-            'overlayShow'	:	false
-        });
+            $("#ratingclose").bind("submit", function() {
+                $.fancybox.close();
+            });
+            jQuery("a#inlinebewertung").fancybox({
+                'transitionIn'	:	'elastic',
+                'transitionOut'	:	'elastic',
+                'speedIn'		:	800,
+                'speedOut'		:	500,
+                'overlayShow'	:	false
+            });
         {% endif %}
         {% for opt in options %}
-        $(function() {
-            $('#rating_picker_{{ opt.id }}').barrating({
-                theme: 'fontawesome-stars-o',
-                initialRating: 5,
-                allowEmpty: false,
+            $(function() {
+                $('#rating_picker_{{ opt.id }}').barrating({
+                    theme: 'fontawesome-stars-o',
+                    initialRating: 5,
+                    allowEmpty: false,
+                });
             });
-        });
         {% endfor %}
     });
 </script>

@@ -1,20 +1,20 @@
 <div class="fewo-ausst">
     {% for ausst, aus in ausstattung %}
-    <div  class="fewo-ausst-group group-{{ ausst }}">
-        <div class="ausst-border">
-        <div class="fewo-ausst-title">{{ ausstattungheader[ausst]|raw }}</div>
-            {% if ul %}
-            <ul>
-                {% for attr in aus %}
-                <li>{{ attr|raw }}</li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                {% for attr in aus %}
-                <div class="fewo-ausst-attr">{{ attr|raw }}</div>
-                {% endfor %}
-            {% endif %}
+        <div  class="fewo-ausst-group group-{{ ausst }}">
+            <div class="ausst-border">
+            <div class="fewo-ausst-title">{{ ausstattungheader[ausst]|raw }}</div>
+                {% if ul %}
+                    <ul>
+                        {% for attr in aus %}
+                            <li>{{ attr|raw }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {% for attr in aus %}
+                        <div class="fewo-ausst-attr">{{ attr|raw }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
-    </div>
     {% endfor %}
 </div>

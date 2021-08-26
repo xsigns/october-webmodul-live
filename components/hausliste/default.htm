@@ -1,80 +1,76 @@
-
 <div id="fewo-liste">
     {% if hits > 0 %}
-
         <div class="fewo_listhdeader">
             <div class="fewo_list_count">{{ hitslabel }}</div>
             <div class="fewo_list_count">{{ pages }} Seiten</div>
         </div>
-    <div id="fewo-hausliste" class="fewo-container {{ listcss }}">
-      {{ pagination|raw }}
-        {% for haus in haeuser %}
+        <div id="fewo-hausliste" class="fewo-container {{ listcss }}">
+            {{ pagination|raw }}
+            {% for haus in haeuser %}
                 <article class="post fewo-item {{ listitemcss }}">
-                <div itemscope itemtype="http://schema.org/Product">
-                    {% if haus.titel %}
-                        <div class="fewo-titel"><a href="{{ haus.href }}"><span itemprop="name">{{ haus.titel|raw }}</span></a></div>
-                    {% endif %}
-                    {% if haus.image %}
-                        <div class="fewo-image">
-                            <a href="{{ haus.href }}"><img itemprop="image" src="{{ haus.image.thumb(haus.image_width,haus.image_height) }}" alt="{% if haus.image.title %}{{ haus.image.title }}{% else %}{{ haus.TitelFuerTags|raw }}{% endif %}"{% if haus.image.title %} title="{{ haus.image.title }}"{% endif %}/></a>
-                        </div>
-                    {% endif %}
-                    {% if haus.beschreibung %}
-                    <div class="fewo_beschreibung">{{ haus.beschreibung|raw}}</div>
-                    {% endif %}
-                    {% if haus.kurztext %}
-                    <div class="fewo_kurztext">{{ haus.kurztext|raw}}</div>
-                    {% endif %}
-                    {% if haus.angebote %}<div class="fewo-angebote">{{ objekt.Angebote|raw }}</div>{% endif %}
-                    {% if haus.adresse %}
-                        <div class="fewo-address">
-                            {{ haus.Strasse|raw }}, {{ haus.Land|raw }} {{ haus.PLZ|raw }} {{ haus.Ort|raw }}
-                        </div>
-                    {% endif %}
-                    {% if haus.map %}
-                        <div class="fewo-map">
-                        <div id="mapid{{ haus.id }}" class="fewo-hausmap" style="height:{{ mapheight }}px;"></div>
-                            <script type="text/javascript">
-                                jQuery(document).ready(function() {
-                                    var mymap{{ haus.id }} = L.map('mapid{{ haus.id }}',{
-                                        center: [{{ haus.lat }}, {{ haus.lng }}],
-                                    zoom: 14,
-                                });
-
-                                    //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
-                                    //http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png
-                                    //http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
-                                    //http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png
-                                    var OpenStreetMap_DE = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                                        maxZoom: 18,
-                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'}).addTo(mymap{{ haus.id }});
-
-                                    L.marker(new L.LatLng({{haus.lat }}, {{haus.lng }}), { id: {{ haus.id }}, alt: '{{ haus.titel|raw }}'}).addTo(mymap{{ haus.id }});
-                                    mymap{{ haus.id }}.on('click', function() {
-                                        if (mymap{{ haus.id }}.scrollWheelZoom.enabled())
-                                        mymap{{ haus.id }}.scrollWheelZoom.disable();
-                                    else
-                                        mymap{{ haus.id }}.scrollWheelZoom.enable();
+                    <div itemscope itemtype="http://schema.org/Product">
+                        {% if haus.titel %}
+                            <div class="fewo-titel"><a href="{{ haus.href }}"><span itemprop="name">{{ haus.titel|raw }}</span></a></div>
+                        {% endif %}
+                        {% if haus.image %}
+                            <div class="fewo-image">
+                                <a href="{{ haus.href }}"><img itemprop="image" src="{{ haus.image.thumb(haus.image_width,haus.image_height) }}" alt="{% if haus.image.title %}{{ haus.image.title }}{% else %}{{ haus.TitelFuerTags|raw }}{% endif %}"{% if haus.image.title %} title="{{ haus.image.title }}"{% endif %}/></a>
+                            </div>
+                        {% endif %}
+                        {% if haus.beschreibung %}
+                            <div class="fewo_beschreibung">{{ haus.beschreibung|raw}}</div>
+                        {% endif %}
+                        {% if haus.kurztext %}
+                            <div class="fewo_kurztext">{{ haus.kurztext|raw}}</div>
+                        {% endif %}
+                        {% if haus.angebote %}<div class="fewo-angebote">{{ objekt.Angebote|raw }}</div>{% endif %}
+                        {% if haus.adresse %}
+                            <div class="fewo-address">
+                                {{ haus.Strasse|raw }}, {{ haus.Land|raw }} {{ haus.PLZ|raw }} {{ haus.Ort|raw }}
+                            </div>
+                        {% endif %}
+                        {% if haus.map %}
+                            <div class="fewo-map">
+                            <div id="mapid{{ haus.id }}" class="fewo-hausmap" style="height:{{ mapheight }}px;"></div>
+                                <script>
+                                    jQuery(document).ready(function() {
+                                        var mymap{{ haus.id }} = L.map('mapid{{ haus.id }}',{
+                                            center: [{{ haus.lat }}, {{ haus.lng }}],
+                                            zoom: 14,
+                                        });
+                                        //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+                                        //http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png
+                                        //http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+                                        //http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png
+                                        var OpenStreetMap_DE = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                                            maxZoom: 18,
+                                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+                                        }).addTo(mymap{{ haus.id }});
+                                        L.marker(new L.LatLng({{haus.lat }}, {{haus.lng }}), { id: {{ haus.id }}, alt: '{{ haus.titel|raw }}'}).addTo(mymap{{ haus.id }});
+                                        mymap{{ haus.id }}.on('click', function() {
+                                            if (mymap{{ haus.id }}.scrollWheelZoom.enabled())
+                                                mymap{{ haus.id }}.scrollWheelZoom.disable();
+                                            else
+                                                mymap{{ haus.id }}.scrollWheelZoom.enable();
+                                        });
+                                        L.control.scale().addTo(mymap{{ haus.id }});
+                                        //mymap.on('blur', function() { mymap.scrollWheelZoom.disable(); });
+                                        mymap{{ haus.id }}.on('mouseout',function() { mymap{{ haus.id }}.scrollWheelZoom.disable();});
                                     });
-                                    L.control.scale().addTo(mymap{{ haus.id }});
-                                    //mymap.on('blur', function() { mymap.scrollWheelZoom.disable(); });
-                                    mymap{{ haus.id }}.on('mouseout',function() { mymap{{ haus.id }}.scrollWheelZoom.disable();});
-                                });
-                            </script>
-                        </div>
-                    {% endif %}
-                    {% if haus.objekte %}
-                    <div class="fewo-objekte">{{ haus.objekte }}</div>
-                    {% endif %}
-                    <div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ haus.href }}">{{ haus.btnDetail }}</a></div>
-                </div>
-            </article>
-        {% endfor %}
-              {{ pagination|raw }}
-    </div>
-
-{% else %}
-    <div class="fewo-noitems">{{ noitems|raw }}</div>
-{% endif %}
+                                </script>
+                            </div>
+                        {% endif %}
+                        {% if haus.objekte %}
+                            <div class="fewo-objekte">{{ haus.objekte }}</div>
+                        {% endif %}
+                        <div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ haus.href }}">{{ haus.btnDetail }}</a></div>
+                    </div>
+                </article>
+            {% endfor %}
+            {{ pagination|raw }}
+        </div>
+    {% else %}
+        <div class="fewo-noitems">{{ noitems|raw }}</div>
+    {% endif %}
     {{ ladeskript2|raw }}
 </div>

@@ -11,24 +11,23 @@
 </div>
 <div class="edaten">
     <div id="exTab2" class="container col-md-12 p-0 float-left"> 
-			<ul class="nav nav-tabs" role="tablist" id="edatenTab">
-                {% if showabrechnung == 1 %}
-				<li class="nav-item disabled" id="tab1"><a class="nav-link active" href="#1" data-toggle="tab" role="tab">{{ labels.tab1 }}</a></li>
-				{% endif %}
-                {% if showvorgaenge == 1 %}
+        <ul class="nav nav-tabs" role="tablist" id="edatenTab">
+            {% if showabrechnung == 1 %}
+                <li class="nav-item disabled" id="tab1"><a class="nav-link active" href="#1" data-toggle="tab" role="tab">{{ labels.tab1 }}</a></li>
+            {% endif %}
+            {% if showvorgaenge == 1 %}
                 <li class="nav-item disabled" id="tab2"><a class="nav-link" href="#2" data-toggle="tab" role="tab">{{ labels.tab2 }}</a></li>
-				{% endif %}
-                {% if showobjekte %}
+            {% endif %}
+            {% if showobjekte %}
                 <li class="nav-item disabled" id="tab3"><a class="nav-link" href="#3" data-toggle="tab" role="tab">{{ labels.tab3 }}</a></li>
-                {% endif %}
-                {% if showbelegen %}
-				    <li class="nav-item disabled" id="tab4"><a class="nav-link" href="#4" data-toggle="tab" role="tab">{{ labels.tab4 }}</a></li>
-                {% endif %}
-			</ul>
-
-			<div class="tab-content" >
-                {% if showabrechnung ==1 %}
-			    <div role="tabpanel" class="tab-pane active" id="1">
+            {% endif %}
+            {% if showbelegen %}
+                <li class="nav-item disabled" id="tab4"><a class="nav-link" href="#4" data-toggle="tab" role="tab">{{ labels.tab4 }}</a></li>
+            {% endif %}
+        </ul>
+        <div class="tab-content" >
+            {% if showabrechnung ==1 %}
+                <div role="tabpanel" class="tab-pane active" id="1">
                     <table id="abrechnungen" class="display" style="width:100%">
                         <thead>
                             <tr>
@@ -36,9 +35,9 @@
                                 <th>{{ labels.monat }}</th>
                                 <th>{{ labels.abrechnung }}</th>
                                 <th>{{ labels.provision }}</th>
-                                    {% for i in 1..4 %}
-                                        <th>{{labels.wartung}} {{i}}</th>
-                                    {% endfor %}
+                                {% for i in 1..4 %}
+                                    <th>{{labels.wartung}} {{i}}</th>
+                                {% endfor %}
                             </tr>
                         </thead>
                         <tbody>
@@ -53,38 +52,37 @@
                                 {% endfor %}
                                 {% if abrechnung.wartung|length < 4 %}
                                     {% for u in abrechnung.wartung|length..3 %}
-                                    <td class="dt-left"></td>
+                                        <td class="dt-left"></td>
                                     {% endfor %}
                                 {% endif %}
                             </tr>
                         {% endfor %}
                         </tbody>
-
                     </table>
                 </div>
-                {% endif %}
-                {% if showvorgaenge == 1 %}
+            {% endif %}
+            {% if showvorgaenge == 1 %}
                 <div role="tabpanel" class="tab-pane" id="2">
                     <table id="vorgaenge" class="display" style="width:100%">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th>{{ labels.vorgjahr }}</th>
-                            <th>{{ labels.vorgdatum }}</th>
-                            <th>{{ labels.vorgart }}</th>
-                            <th>{{ labels.vorganreise }}</th>
-                            <th>{{ labels.vorgabreise }}</th>
-                            <th>{{ labels.vorgtage }}</th>
-                            <th>{{ labels.vorgobjekt }}</th>
-                            <th>{{ labels.vorgerwachsene }}</th>
-                            <th>{{ labels.vorgkinder }}</th>
-                            <th>{{ labels.vorgobjpreis }}</th>
-                        </tr>
+                            <tr>
+                                <th></th>
+                                <th>{{ labels.vorgjahr }}</th>
+                                <th>{{ labels.vorgdatum }}</th>
+                                <th>{{ labels.vorgart }}</th>
+                                <th>{{ labels.vorganreise }}</th>
+                                <th>{{ labels.vorgabreise }}</th>
+                                <th>{{ labels.vorgtage }}</th>
+                                <th>{{ labels.vorgobjekt }}</th>
+                                <th>{{ labels.vorgerwachsene }}</th>
+                                <th>{{ labels.vorgkinder }}</th>
+                                <th>{{ labels.vorgobjpreis }}</th>
+                            </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th></th>
-                            <th>{{ labels.vorgjahr }}</th>
+                                <th>{{ labels.vorgjahr }}</th>
                                 <th>{{ labels.vorgdatum }}</th>
                                 <th>{{ labels.vorgart }}</th>
                                 <th>{{ labels.vorganreise }}</th>
@@ -97,26 +95,26 @@
                             </tr>
                         </tfoot>
                     </table>
-				</div>
-                {% endif %}
-                {% if showobjekte %}
+                </div>
+            {% endif %}
+            {% if showobjekte %}
                 <div role="tabpanel" class="tab-pane" id="3">
                     <table id="objekte" class="display" style="width:100%">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th>{{ labels.objnr }}</th>
-                            <th>{{ labels.objtitel }}</th>
-                            <th>{{ labels.objart }}</th>
-                            <th>{{ labels.objpers }}</th>
-                            <th>{{ labels.objqm }}</th>
-                            <th>{{ labels.objint }}</th>
-                        </tr>
+                            <tr>
+                                <th></th>
+                                <th>{{ labels.objnr }}</th>
+                                <th>{{ labels.objtitel }}</th>
+                                <th>{{ labels.objart }}</th>
+                                <th>{{ labels.objpers }}</th>
+                                <th>{{ labels.objqm }}</th>
+                                <th>{{ labels.objint }}</th>
+                            </tr>
                         </thead>
                     </table>
                 </div>
-                {% endif %}
-                {% if showbelegen %}
+            {% endif %}
+            {% if showbelegen %}
                 <div role="tabpanel" class="tab-pane" id="4">
                     <form class="eigenbelegung_form" method="post" data-request="{{ __SELF__ }}::onBelegung">
                         <div class="bel_objekt">
@@ -127,14 +125,12 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div id="belegung">
-
-                        </div>
+                        <div id="belegung"></div>
                     </form>
                 </div>
-                {% endif %}
-			</div>
-		</div>
+            {% endif %}
+        </div>
+    </div>
 </div>
 <script>
     function format ( d ) {

@@ -1,10 +1,10 @@
 {% if anzahl > 0 %}
-<div class="fewo-sperren">
-    {{ header|raw }}
-    <ul class="sperrungen">
-        {% for sperre in sperrungen %}
-        <li>{{ sperre.fromto }}</li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="fewo-sperren">
+        {{ header|raw }}
+        <ul class="sperrungen">
+            {% for sperre in sperrungen %}
+                <li>{{ sperre.fromto }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endif %}

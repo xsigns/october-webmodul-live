@@ -1,7 +1,7 @@
 <!-- Map -->
 {% if mapDienst == 'leafletMap' %}
     <div id="mapid" class="fewo-objektmap" style="height:500px;"></div>
-    <script type="text/javascript">
+    <script>
         var fullscreen = false;
         {% if fullscreen %}
             fullscreen = true;
@@ -21,7 +21,7 @@
     </script>
 {% else %}
     <div style="height: {{ mapHeight }}px;" id="map"></div>
-    <script type="text/javascript">
+    <script>
         var fullscreen = {{ googleFullscreen ? 'true' : 'false' }};
         var googleMapType = '{{ googleMapType }}';
         var mapZoom = {{ mapZoom }};

@@ -1,7 +1,7 @@
 <div id="fewo-liste" class="col-lg-12 float-left">
     <div id="fewo-listmap">
         <div id="map" class="fewo-listmap" style="height:600px;"></div>
-        <script type="text/javascript">
+        <script>
             jQuery(document).ready(function() {
                 let tiles = L.tileLayer('{{maptype}}', {
                     maxZoom: 18,
@@ -13,14 +13,14 @@
                     center: latlng,
                     zoom: 14,
                     layers: [tiles],
-                {% if fullscreen %}
-                    fullscreenControl: true,
-                    fullscreenControlOptions: {
-                        title: "Vollbildansicht",
-                        titleCancel: "Normalansicht"
-                    },
-                {% endif %}
-                })
+                    {% if fullscreen %}
+                        fullscreenControl: true,
+                        fullscreenControlOptions: {
+                            title: "Vollbildansicht",
+                            titleCancel: "Normalansicht"
+                        },
+                    {% endif %}
+                });
                 let markers = L.markerClusterGroup({ chunkedLoading: true });
                 let markerList = [];
                 {% for marker in maps %}
@@ -39,11 +39,9 @@
                 } catch(err) {
                     // pass
                 }
-
                 map.on('mouseout',function() {
                     map.scrollWheelZoom.disable();
                 });
-
                 function clickZoom(e) {
                     map.setView(e.target.getLatLng());
                 }

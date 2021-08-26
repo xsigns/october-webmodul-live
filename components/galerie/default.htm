@@ -1,46 +1,42 @@
 {% if bootcarousel == 1 %}
-  <div id="{{ sliderid }}" class="carousel slide" data-ride="carousel" data-interval="{{ interval }}">
-
-    <!-- Indicators -->
-    <ul class="carousel-indicators">
-      {% set a = 0 %}
-      {% for image in images %}
-        <li data-target="#{{ sliderid }}" data-slide-to="{{ a }}" class="{% if a == 0 %}active{% endif %}"></li>
-        {% set a=a+1 %}
-      {% endfor %}
-    </ul>
-
-    <!-- The slideshow -->
-    <div class="carousel-inner">
-      {% set i = 0 %}
-      {% for image in images %}
-        <div class="carousel-item {% if i == 0 %}active {% endif %}">
-          <img src="{{ image.path }}" alt="{{ image.title }}">
+    <div id="{{ sliderid }}" class="carousel slide" data-ride="carousel" data-interval="{{ interval }}">
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            {% set a = 0 %}
+                {% for image in images %}
+                    <li data-target="#{{ sliderid }}" data-slide-to="{{ a }}" class="{% if a == 0 %}active{% endif %}"></li>
+                {% set a=a+1 %}
+            {% endfor %}
+        </ul>
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            {% set i = 0 %}
+            {% for image in images %}
+                <div class="carousel-item {% if i == 0 %}active {% endif %}">
+                    <img src="{{ image.path }}" alt="{{ image.title }}">
+                </div>
+                {% set i=i+1 %}
+            {% endfor %}
         </div>
-        {% set i=i+1 %}
-      {% endfor %}
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#{{ sliderid }}" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#{{ sliderid }}" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
     </div>
-
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#{{ sliderid }}" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#{{ sliderid }}" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
-
-  </div>
-  <script>
-  	$(document).ready(function(){
-	  	$("#{{ sliderid }}").carousel({
-			  swipe: 30 // percent-per-second, default is 50. Pass false to disable swipe
-			});
-		});
-  </script>
+    <script>
+        $(document).ready(function(){
+            $("#{{ sliderid }}").carousel({
+              swipe: 30 // percent-per-second, default is 50. Pass false to disable swipe
+            });
+        });
+    </script>
 {% else %}
-  <div id="{{ __SELF__ }}" class="magnific">
-    {% for image in images %}
-    <a href="{{ image.path }}"><img title="{{ image.title }}" alt="{{ image.description }}" src="{{ image.thumb( gal_width , gal_height ) }}" width="{{ gal_width }}" height="{{ gal_height }}"></a>
-    {% endfor %}
-  </div>
+    <div id="{{ __SELF__ }}" class="magnific">
+        {% for image in images %}
+            <a href="{{ image.path }}"><img title="{{ image.title }}" alt="{{ image.description }}" src="{{ image.thumb( gal_width , gal_height ) }}" width="{{ gal_width }}" height="{{ gal_height }}"></a>
+        {% endfor %}
+    </div>
 {% endif %}

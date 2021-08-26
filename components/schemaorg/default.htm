@@ -1,81 +1,81 @@
 {% if showcanonical %}
-	<link rel="canonical" href="{{canonical_url}}">
+    <link rel="canonical" href="{{ canonical_url }}">
 {% endif %}
 {% if show == 1 %}
-	<script type="application/ld+json">
-    {
-      	"@context": "http://schema.org",
-      	"@type": "Store",
-	  	"@id" : "{{ url|raw }}",
-		"name": "{{ art|raw }}",
-      	"address": {
-        	"@type": "PostalAddress",
-        	"addressLocality": "{{ name|raw }}",
-        	"addressRegion": "{{ ort }}",
-        	"streetAddress": "{{ str }}",
-			"addressCountry" : " {{ country }}"
-      	},
-      	"description": "{{ beschreibung|raw }}",
-		"url": "{{ url|raw }}",
-      	"telephone": "{{ tel }}",
-		{% if latitude != '' %}
-			"geo" : {
-				"@type" : "GeoCoordinates",
-				"latitude" : {{ latitude }},
-				"longitude" : {{ longitude }}
-			},
-		{% endif %}
-		"openingHoursSpecification":
-			[{
-				"@type": "OpeningHoursSpecification",
-				"dayOfWeek": [
-					"Monday",
-					"Tuesday",
-					"Wednesday",
-					"Thursday",
-					"Friday",
-					"Saturday",
-					"Sunday"
-				],
-				"opens": "{{ openingfrom }}",
-				"closes": "{{ openingto}} "
-			}],
-      {% if image != '' %}"image": "{{ image|raw}}", {% endif %}
-      "priceRange": "{{ priceRange|raw}}"
-    }
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Store",
+            "@id" : "{{ url|raw }}",
+            "name": "{{ art|raw }}",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "{{ name|raw }}",
+                "addressRegion": "{{ ort }}",
+                "streetAddress": "{{ str }}",
+                "addressCountry" : " {{ country }}"
+            },
+            "description": "{{ beschreibung|raw }}",
+            "url": "{{ url|raw }}",
+            "telephone": "{{ tel }}",
+            {% if latitude != '' %}
+                "geo" : {
+                    "@type" : "GeoCoordinates",
+                    "latitude" : {{ latitude }},
+                    "longitude" : {{ longitude }}
+                },
+            {% endif %}
+            "openingHoursSpecification":
+                [{
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                    ],
+                    "opens": "{{ openingfrom }}",
+                    "closes": "{{ openingto }} "
+                }],
+          {% if image != '' %}"image": "{{ image|raw }}", {% endif %}
+          "priceRange": "{{ priceRange|raw }}"
+        }
     </script>
-{% if objenabled %}
-	<script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Hotel",
-      "name": "{{ nameobjekt }}",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "{{ ortobjekt|raw }}",
-        "postalCode": "{{ plzobjekt }}",
-        "streetAddress": "{{ strobjekt|raw }}"
-      },
-		"geo" : {
-		"@type" : "GeoCoordinates",
-		"latitude" : {{ objlatitude }},
-		"longitude" : {{ objlongitude }}
-      },
-      {% if ratingcount > 0 %}
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "bestRating": 5,
-          "ratingValue": "{{ ratingvalue }}",
-          "reviewCount": "{{ ratingcount }}",
-          "worstRating": 1
-        },
-      {% endif %}
-		"telephone": "{{ tel }}",
-		"priceRange": "{{ priceRange|raw}}",
-      "url": "{{ url }}"
-      {% if schemamap %},"hasMap" : {{ schemamap }}{% endif %}
-      {% if schemaimage %},"image" : "{{ schemaimage|raw }}"{% endif %}
-    }
-	</script>
-{% endif %}
+    {% if objenabled %}
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Hotel",
+                "name": "{{ nameobjekt }}",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "{{ ortobjekt|raw }}",
+                    "postalCode": "{{ plzobjekt }}",
+                    "streetAddress": "{{ strobjekt|raw }}"
+                },
+                "geo" : {
+                    "@type" : "GeoCoordinates",
+                    "latitude" : {{ objlatitude }},
+                    "longitude" : {{ objlongitude }}
+                },
+                {% if ratingcount > 0 %}
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "bestRating": 5,
+                        "ratingValue": "{{ ratingvalue }}",
+                        "reviewCount": "{{ ratingcount }}",
+                        "worstRating": 1
+                    },
+                {% endif %}
+                "telephone": "{{ tel }}",
+                "priceRange": "{{ priceRange|raw }}",
+                "url": "{{ url }}"
+                {% if schemamap %},"hasMap" : {{ schemamap }}{% endif %}
+                {% if schemaimage %},"image" : "{{ schemaimage|raw }}"{% endif %}
+            }
+        </script>
+    {% endif %}
 {% endif %}

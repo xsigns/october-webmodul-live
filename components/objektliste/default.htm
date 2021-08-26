@@ -4,9 +4,9 @@
     }
 </style>
 {% if ladeskript %}
-<div id="fewo-liste">
+    <div id="fewo-liste">
 {% endif %}
-    {% if hits > 0 %}
+{% if hits > 0 %}
     {% if modul != 1 %}
         <div class="fewo_listhdeader">
             <div class="fewo_list_count">{{ hitslabel }}</div>
@@ -14,12 +14,12 @@
             {% if sorting %}
                 <div class="fewo_sort">
                     <select id="listsort" name="listsort" data-request="{{ __SELF__ }}::onSorting">
-                    {% for sort in sorting %}
-                    <option value="{{ sort.value }}" {{ sort.selected }}>{{ sort.name }}</option>
-                    {% endfor %}
-                </select>
+                        {% for sort in sorting %}
+                            <option value="{{ sort.value }}" {{ sort.selected }}>{{ sort.name }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                {% endif %}
+            {% endif %}
         </div>
     {% endif %}
     <div id="fewo-objektliste" class="fewo-container {{ listcss }}">
@@ -27,30 +27,31 @@
             {% if mapOption == true %}
                 <div id="fewo-listmap">
                     <div id="map" class="fewo-listmap" style="height:{{gesmapheight}}px;"></div>
-                    <script type="text/javascript">
+                    <script>
                         var gesmap;
                         var markerList = [];
                         jQuery(document).ready(function() {
                             var tiles = L.tileLayer('{{maptype}}', {
-                                    maxZoom: 18,
-                                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
-                                }),
-                                latlng = L.latLng({{mapcenterlat}}, {{mapcenterlng}});
-                             gesmap = L.map('map', {zoom: 14,
-                            {% if fullscreen %}
-                            fullscreenControl: true,
-                            fullscreenControlOptions: { // optional
-                                title:"Vollbildansicht",
-                                    titleCancel:"Normalansicht"
-                            },
-                            {% endif %}
-                                layers: [tiles]});
+                                maxZoom: 18,
+                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+                            });
+                            latlng = L.latLng({{mapcenterlat}}, {{mapcenterlng}});
+                            gesmap = L.map('map', {
+                                zoom: 14,
+                                {% if fullscreen %}
+                                    fullscreenControl: true,
+                                    fullscreenControlOptions: { // optional
+                                        title:"Vollbildansicht",
+                                        titleCancel:"Normalansicht"
+                                    },
+                                {% endif %}
+                                layers: [tiles]
+                            });
                             if (gesmap.scrollWheelZoom.enabled())
                                 gesmap.scrollWheelZoom.disable();
                             else
                                 gesmap.scrollWheelZoom.enable();
                             var markers = L.markerClusterGroup({ chunkedLoading: true });
-
                             {% for marker in maps %}
                                 var title = '{{ marker.box|raw }}';
                                 var icon = L.icon({
@@ -67,13 +68,11 @@
                                 marker.bindPopup(title).on('click', clickZoom);
                                 markerList.push(marker);
                             {% endfor %}
-
                             markers.addLayers(markerList);
                             markers.on('click',function(e){
                                 var searchid=  e.sourceTarget.options.searchid;
                                 let i;
                                 for ( i=0; i<markerList.length; i++ ) {
-
                                     $("#obj" + markerList[i].options.searchid).removeClass("mark");
                                     //$("#obj" + markerList[i].options.searchid).css("background-color","#F7F5F4");
                                 }
@@ -91,7 +90,7 @@
 
                             }
                             gesmap.on('mouseout',function() {
-                                gesmap.scrollWheelZoom.disable(); });
+                            gesmap.scrollWheelZoom.disable(); });
                             function clickZoom(e) {
                                 gesmap.setView(e.target.getLatLng());
                             }
@@ -112,25 +111,21 @@
                     var gesMapMapcenterlng = {{ mapcenterlng }};
                     var gesMapmarker_img = '{{ marker_img }}';
                     var gesMapGestureHandling = 'greedy';
-
                     {% if showMarkerBox %}
                         var gesMapShowMarkerBox = true;
                     {% else %}
                         var gesMapShowMarkerBox = false;
                     {% endif %}
-
                     {% if use_marker %}
                         var gesMapuse_marker = true;
                     {% else %}
                         var gesMapuse_marker = false;
                     {% endif %}
-
                     {% if fullscreen %}
                         var gesMapFullscreen = true;
                     {% else %}
                         var gesMapFullscreen = false;
                     {% endif %}
-
                     function initMap() {
                         $(document).ready(function() {
                             Maps.createMap();
@@ -234,23 +229,18 @@
                                                 {% endif %}
                                                 zoom: 14,
                                             });
-
                                             L.tileLayer('{{ objekt.maptypeobj }}', {
                                                 maxZoom: 18,
                                                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
                                             }).addTo(mymap{{ objekt.id }});
-
                                             L.marker(new L.LatLng({{objekt.lat }}, {{objekt.lng }}), {id: {{ objekt.id }}, alt: '{{ objekt.Titel }}'}).addTo(mymap{{ objekt.id }});
-
                                             mymap{{ objekt.id }}.on('click', function() {
                                                 if (mymap{{ objekt.id }}.scrollWheelZoom.enabled())
                                                     mymap{{ objekt.id }}.scrollWheelZoom.disable();
                                                 else
                                                     mymap{{ objekt.id }}.scrollWheelZoom.enable();
                                             });
-
                                             L.control.scale().addTo(mymap{{ objekt.id }});
-
                                             mymap{{ objekt.id }}.on('mouseout', function() {
                                                 mymap{{ objekt.id }}.scrollWheelZoom.disable();
                                             });
@@ -269,10 +259,8 @@
                                                 fullscreenControl: true,
                                                 controlSize: 25,
                                             }
-
                                             myOptions.center = new google.maps.LatLng({{ objekt.lat }}, {{ objekt.lng }});
                                             let map{{ objekt.id }} = new google.maps.Map(document.getElementById("mapid{{ objekt.id }}"), myOptions);
-
                                             marker = new google.maps.Marker({
                                                 position: {lat: {{ objekt.lat }}, lng: {{ objekt.lng }}},
                                                 map: map{{ objekt.id }}
@@ -294,7 +282,6 @@
     <div class="fewo-noitems">{{ noitems|raw }}</div>
 {% endif %}
 {{ ladeskript2|raw }}
-
 {% if ladeskript %}
-</div>
+    </div>
 {% endif %}

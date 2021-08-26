@@ -1,7 +1,7 @@
 <div class="btn-button">
     {% if btn_buchung == true %}
         <button class="btn btn-success btn-sm fewo-btnbuchung" data-request-redirect="{{ urlbuchung }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnBuchung">{{ buchunglabel }}</button>
-        {% endif %}
+    {% endif %}
     {% if btn_anfrage == true %}
         <button class="btn btn-success btn-sm fewo-btnanfrage" data-request-redirect="{{ urlanfrage }}/{{ alias }}" data-request="{{ __SELF__ }}::onBtnAnfrage">{{ anfragelabel }}</button>
     {% endif %}
@@ -9,8 +9,8 @@
         <button class="btn btn-success btn-sm fewo-btnweitere" data-request-redirect="{{ urlweitere }}/{{ hausalias }}" data-request="{{ __SELF__ }}::onBtnWeitere">{{ weiterelabel }}</button>
     {% endif %}
     {% if btn_merken == true %}
-            <div id="btnmerker{{ merkerid }}">
-                <button id="btnmerken{{ merkerid }}" class="btn btn-success btn-sm fewo-btnmerken {{ merkerclass }}" data-request="{{ __SELF__ }}::onBtnMerken">{{ merkerlabel }}</button>
-            </div>
+        <div id="btnmerker{{ merkerid }}">
+            <button id="btnmerken{{ merkerid }}" class="btn btn-success btn-sm fewo-btnmerken {{ merkerclass }}" data-request="{{ __SELF__ }}::onBtnMerken">{{ merkerlabel }}</button>
+        </div>
     {% endif %}
 </div>

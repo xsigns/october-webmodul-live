@@ -18,7 +18,7 @@
 {% endfor %}
 <span id="error-mitreisende" class="validate"></span>
 {% if showmitreisendegeb %}
-    <script type="text/javascript">
+    <script>
         jQuery(document).ready(function() {
             {% for mitreisender in mitreisende %}
                 jQuery('#ctrl_mitgeb_{{ mitreisender.id }}').dateEntry({dateFormat: 'dmy.', spinnerImage: ''});
