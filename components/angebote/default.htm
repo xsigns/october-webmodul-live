@@ -3,7 +3,7 @@
     {% if offerCount > 0 %}
         <div id="angebot-liste">
             {% for angebot in angebote %}
-                <div class="fewo-item">
+                <div class="fewo-item {{ listitemcss }}">
                     {% if angebot.titel %}<div>{{angebot.titel}}</div>{% endif %}
                     {% if angebot.image %}<div><img itemprop="image" src="{{ angebot.image.thumb(image_width,image_height) }}" alt="{% if angebot.image.title %}{{ angebot.image.title }}{% else %}{{ angebot.titel }}{% endif %}"{% if angebot.image.title %} title="{{ angebot.image.title }}"{% endif %}/></div>{% endif %}
                     {% if angebot.beschreibung %}<div>{{angebot.beschreibung|raw}}</div>{% endif %}

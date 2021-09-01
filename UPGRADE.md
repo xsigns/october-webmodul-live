@@ -1,5 +1,12 @@
 # Updatehinweise / Upgrade Guide
 
+## Upgarde 3.4.36
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Angebote default.htm: Code ``{{ listitemcss }}`` hinter der Klasse _fewo-item_ einfügen:
+````
+<div class="fewo-item {{ listitemcss }}">
+````
+
 ## Upgrade 3.4.32
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Listenfilter default.htm: Im Script innerhalb der Funktion ``$(document).ready(function() {});`` unten folgenden Code einfügen:

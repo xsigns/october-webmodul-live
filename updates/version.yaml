@@ -598,3 +598,5 @@
     - "Strukturverbesserung Session handling"
 3.4.35:
     - "Verbesserungen für SEO"
+3.4.36:
+    - "Fehlerkorrekturen speichern des Timestamps in Bewertungen"
