@@ -600,3 +600,6 @@
     - "Verbesserungen für SEO"
 3.4.36:
     - "Fehlerkorrekturen speichern des Timestamps in Bewertungen"
+3.4.37:
+    - "Fehlerkorrekturen speichern des Timestamps in Bewertungen"
+    - "CSS-Feld für Angebotsitem in Angebotsliste hinzugefügt. Partialanpassungen sind optional!"
