@@ -603,3 +603,6 @@
 3.4.37:
     - "Fehlerkorrekturen speichern des Timestamps in Bewertungen"
     - "CSS-Feld für Angebotsitem in Angebotsliste hinzugefügt. Partialanpassungen sind optional!"
+3.4.38:
+    - "!!! Fehlerkorrekturen Objektmap. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
+    - "Fehlerkorrekturen Eigentümerlogin Vorgänge nach Datum sortieren"

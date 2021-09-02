@@ -1,11 +1,79 @@
 # Updatehinweise / Upgrade Guide
+> **HINWEIS!**  
+> Die Bearbeitung eines Partials ist nur dann notwendig, wenn das entsprechende Partial einer Komponente im Backend angepasst wurde.  
+> Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
+- - -
 
-## Upgarde 3.4.36
+## Upgrade 3.4.38
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente Objekt OpenStreetMap (ObjektMap) default.htm: Kompletten Code ersetzen durch:
+````
+<div id="fewo-liste" class="col-lg-12 float-left">
+    <div id="fewo-listmap">
+        {% if keineObjekte %}
+            <div><p>{{ keineTrefferLabel }}</p></div>
+        {% else %}
+            <div id="map" class="fewo-listmap" style="height:600px;"></div>
+            <script>
+                jQuery(document).ready(function() {
+                    let tiles = L.tileLayer('{{maptype}}', {
+                        maxZoom: 18,
+                        scrollWheelZoom: false,
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+                    });
+                    let latlng = L.latLng({{mapcenterlat}}, {{mapcenterlng}})
+                    let map = L.map('map', {
+                        center: latlng,
+                        zoom: 14,
+                        layers: [tiles],
+                        {% if fullscreen %}
+                            fullscreenControl: true,
+                            fullscreenControlOptions: {
+                                title: "Vollbildansicht",
+                                titleCancel: "Normalansicht"
+                            },
+                        {% endif %}
+                    });
+                    let markers = L.markerClusterGroup({ chunkedLoading: true });
+                    let markerList = [];
+                    {% for marker in maps %}
+                        var title = '<div class="map_marker"><img src="{{ marker.image|raw }}"><div class="title">{{ marker.titel }}</div><div class="title">{{ marker.strasse|raw }}</div><div class="title">{{ marker.plz }} {{ marker.ort|raw }}</div><div class="btn btn-success btn-sm fewo-btndetail"><a href="{{ marker.href }}">{{ btnDetail|raw }}</a></div></div>';
+                        var marker = L.marker(L.latLng({{ marker.lat}}, {{marker.long}}), { title: '{{ marker.titel }}' });
+                        marker.bindPopup(title).on('click', clickZoom);
+                        markerList.push(marker);
+                    {% endfor %}
+                    markers.addLayers(markerList);
+                    map.addLayer(markers);
+                    try {
+                        var bounds = markers.getBounds();
+                        if (bounds) {
+                            map.fitBounds(bounds);
+                        }
+                    } catch(err) {
+                        // pass
+                    }
+                    map.on('mouseout',function() {
+                        map.scrollWheelZoom.disable();
+                    });
+                    function clickZoom(e) {
+                        map.setView(e.target.getLatLng());
+                    }
+                });
+            </script>
+        {% endif %}
+    </div>
+</div>
+````
+> **WICHTIG:** Gegebenenfalls muss bereits individuell angepasster Code in den obenstehenden Code erneut integriert werden.  
+- - -
+
+## Upgrade 3.4.36
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Angebote default.htm: Code ``{{ listitemcss }}`` hinter der Klasse _fewo-item_ einfügen:
 ````
 <div class="fewo-item {{ listitemcss }}">
 ````
+- - -
 
 ## Upgrade 3.4.32
 ### Folgende Partialanpassungen sind für dieses Update notwendig
