@@ -606,3 +606,6 @@
 3.4.38:
     - "!!! Fehlerkorrekturen Objektmap. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - "Fehlerkorrekturen Eigentümerlogin Vorgänge nach Datum sortieren"
+3.4.39:
+    - "Fehlerkorrekturen Objektpreise speichern"
+    - update54.php
