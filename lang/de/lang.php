@@ -143,6 +143,8 @@ return [
         'paytype' => 'Zahlungsmodul',
         'paytype_desc' => 'Zahlungsmodul festlegen',
         'invoice' => 'Auf Rechnung',
+        'hobex_anz_rest' => 'An- und Restzahlung',
+        'hobex_anz_rest_desc' => '<b>WICHTIG:</b> Bitte stellen Sie im Fewo-Verwalter unter <i>Stammdaten</i> > <i>Objekte</i> > <i>Finanzen</i> > Bereich <i>Anzahlung und 1. Zahlung</i> den Zeitpunkt für die Anzahlung auf <i><b>sofort</b></i>.',
         'hobexsection' => 'HOBEX',
         'hobexsection_desc' => 'Einstellungen für HOBEX<br><b>Diese Schnittstelle funktioniert nur mit HOBEX COPYandPAY.</b>',
         'hobexuserid' => 'Hobex user ID (Nur Version 1)',

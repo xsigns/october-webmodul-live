@@ -65,6 +65,8 @@ return [
         'tab2'  => 'Mail settings',
         'tab3'  => 'Payments',
         'hobexuserid' => 'Hobex User ID',
+        'hobex_anz_rest' => 'Deposit and final payment',
+        'hobex_anz_rest_desc' => '<b>WICHTIG:</b> Bitte stellen Sie im Fewo-Verwalter unter <i>Stammdaten</i> > <i>Objekte</i> > <i>Finanzen</i> > Bereich <i>Anzahlung und 1. Zahlung</i> den Zeitpunkt für die Anzahlung auf <i><b>sofort</b></i>.',
         'hobexpassword' => 'Hobex password',
 		'hobexentityId' => 'Hobex entity id',
         'hobextest'  => 'Hobex test payment',

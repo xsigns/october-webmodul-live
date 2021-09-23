@@ -1,0 +1,36 @@
+subject = "Statusbericht für Restzahlungen"
+layout = "Statusbericht"
+==
+<h1>Statusbericht für Restzahlungen:</h1>
+<p>{{ MESSAGE }}</p>
+<table style="width: 100%">
+    <tr>
+        <td>Vorgang-ID</td>
+        <td>Objekt-ID</td>
+        <td>Anzahlung am</td>
+        <td>Anzahlung gezahlt am</td>
+        <td>Status Anzahlung</td>
+        <td>Anzahlung Betrag</td>
+        <td>Restzahlung am</td>
+        <td>Restzahlung gezahlt am</td>
+        <td>Status Restzahlung</td>
+        <td>Restzahlung Betrag</td>
+        <td>Hinweis</td>
+    </tr>
+    {% for ZAHLUNG in ZAHLUNGEN %}
+        <tr>
+            <td>{{ ZAHLUNG.VORGANG_ID }}</td>
+            <td>{{ ZAHLUNG.OBJEKT_ID }}</td>
+            <td>{{ ZAHLUNG.ANZAHL_AM }}</td>
+            <td>{{ ZAHLUNG.ANZAHL_GEZAHLT_AM }}</td>
+            <td>{{ ZAHLUNG.ANZAHL_STATUS }}</td>
+            <td>{{ ZAHLUNG.ANZHAL_BETRAG }}</td>
+            <td>{{ ZAHLUNG.RESTZAHL_AM }}</td>
+            <td>{{ ZAHLUNG.RESTZAHL_GEZAHLT_AM }}</td>
+            <td>{{ ZAHLUNG.RESTZAHL_STATUS }}</td>
+            <td>{{ ZAHLUNG.RESTZAHL_BETRAG }}</td>
+            <td>{{ ZAHLUNG.HINWEIS }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<br/><br/>

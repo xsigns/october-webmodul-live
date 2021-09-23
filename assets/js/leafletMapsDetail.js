@@ -25,13 +25,13 @@ $(document).ready(function () {
         });
     }
 
-    var OpenStreetMap_DE = L.tileLayer(leafletMap, {
+    L.tileLayer(leafletMap, {
         maxZoom: 18,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
     }).addTo(mymap);
 
     if (showcircle) {
-        var circle = L.circle([latitude, longitude], {
+        L.circle([latitude, longitude], {
             color: color,
             fillColor: color,
             fillOpacity: 0.5,
@@ -42,6 +42,7 @@ $(document).ready(function () {
     }
 
     L.control.layers(baseLayers).addTo(mymap);
+
     mymap.on('click', function() {
         if (mymap.scrollWheelZoom.enabled()) {
             mymap.scrollWheelZoom.disable();
@@ -51,8 +52,10 @@ $(document).ready(function () {
     });
 
     L.control.scale().addTo(mymap);
-    //mymap.on('blur', function() { mymap.scrollWheelZoom.disable(); });
-    mymap.on('mouseout',function() { mymap.scrollWheelZoom.disable();});
+
+    mymap.on('mouseout', function() {
+        mymap.scrollWheelZoom.disable();
+    });
 
     if (isInTab) {
         $(selectedTab).on('shown.bs.tab', function (e) {

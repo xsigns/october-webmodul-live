@@ -300,7 +300,7 @@ class SendCron
     private static function debug($bereich, $message, $brAtEnd = true)
     {
         if (isset($_GET['debug']) && $_GET['debug'] === 'Xsigns27356R0W')
-            echo $bereich . ': ' . $message . ($brAtEnd ? '<br>' : '');
+            echo $bereich . ': ' . $message . ($brAtEnd ? '<br><br>' : '');
 
         if (GlobalSettings::get('cronlog'))
             Models\EventLog::add($bereich . ': ' . $message);

@@ -382,6 +382,14 @@ tabs:
       span: left
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab3
+    hobex_anz_rest:
+      label: xsigns.fewo::lang.globalsettings.hobex_anz_rest
+      commentHtml: true
+      comment: xsigns.fewo::lang.globalsettings.hobex_anz_rest_desc
+      type: switch
+      span: right
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
     hobex_sectionn:
       label: xsigns.fewo::lang.globalsettings.hobexsection
       type: section

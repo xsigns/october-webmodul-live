@@ -179,6 +179,7 @@ class Plugin extends PluginBase
         $return = [
             'xsigns.fewo::mail.rating' => 'Bewertungsmail an Seitenbetreiber',
             'xsigns.fewo::mail.cronstatus' => 'Status-E-Mail an Seitenbetreiber',
+            'xsigns.fewo::mail.zahlungsStatus' => 'Status-E-Mail für Restzahlungen an Seitenbetreiber',
             'xsigns.fewo::mail.buchung_de' => 'DE Buchungsbestätigung an Gast',
             'xsigns.fewo::mail.anfrage_de' => 'DE Anfragebestätigung an Gast',
             'xsigns.fewo::mail.zahlung_de' => 'DE Zahlungsbestätigung an Gast',
