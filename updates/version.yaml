@@ -609,6 +609,6 @@
 3.4.39:
     - "Fehlerkorrekturen Objektpreise speichern"
     - update54.php
-3.4.40:
+3.5.0:
     - "An- und Restzahlung mit Hobex möglich"
     - update55.php
