@@ -1,6 +1,6 @@
-var wechselTimeline = wechselleiste;
-var verfuegbarTimeline = verfuegbarleiste;
-var mintageTimeline = mintageleiste;
+var wechselTimeline = wechselleisteBelplan;
+var verfuegbarTimeline = verfuegbarleisteBelplan;
+var mintageTimeline = mintageleisteBelplan;
 var waehleAnreise = !0;
 var anreisedatum, abreisedatum;
 var anreiseId, abreiseId;
@@ -146,16 +146,19 @@ Belplan.clickEvent = function() {
 
 Belplan.addNichtWaehlbarClass = function() {
     if (!anreisedatum  && !abreisedatum) {
-        for (var i = 0; i < wechselTimeline.length; i++) {
-            var wechselstatus = wechselTimeline.charAt(i);
-            var verfuegbarStatus = verfuegbarTimeline.charAt(i);
+        const tage = $('.tag');
+
+        for (let i = 0; i < wechselTimeline.length; i++) {
+
+            const wechselstatus = wechselTimeline.charAt(i);
+            const verfuegbarStatus = verfuegbarTimeline.charAt(i);
 
             if (wechselstatus === 'O') {
-                $('.tag').eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
+                tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
             } else if (wechselstatus === 'X' && verfuegbarStatus === 'Y') {
-                $('.tag').eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
+                tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
             } else if (wechselstatus === 'X' && verfuegbarStatus === 'N' && wechselTimeline.charAt(i - 1) === 'X' && verfuegbarTimeline.charAt(i - 1) === 'Y') {
-                $('.tag').eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
+                tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
             }
         }
     }
@@ -244,15 +247,15 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             var mintageRange2 = wechselTimeline.substr(dayId2, parseInt(mintage2) + 1);
 
             if (mintageRange2.includes('X')) {
-                for (var i2 = 0; i2 < mintage2; i2++) {
-                    var mintageStatus2 = wechselTimeline.charAt(dayId2 + i2);
+                for (let i2 = 0; i2 < mintage2; i2++) {
+                    const mintageStatus2 = wechselTimeline.charAt(dayId2 + i2);
 
                     if (mintageStatus2 !== 'O') {
                         dayEleme2.eq(dayId2 + i2).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
                     }
                 }
             } else {
-                for (var j2 = 0; j2 < mintage2; j2++) {
+                for (let j2 = 0; j2 < mintage2; j2++) {
                     dayEleme2.eq(dayId2 + j2).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
                 }
             }

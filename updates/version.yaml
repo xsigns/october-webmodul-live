@@ -612,3 +612,5 @@
 3.5.0:
     - "An- und Restzahlung mit Hobex möglich"
     - update55.php
+3.5.1:
+    - "Fehlerkorrekturen Belegungsplan für Angebote"
