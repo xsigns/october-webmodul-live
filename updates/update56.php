@@ -403,14 +403,6 @@ class Update56 extends Migration
             $table->string('preislng_lang', 3)->default(' ')->change();
         });
 
-        Schema::table('xsigns_fewo_preisstatistik', function ($table) {
-            $table->integer('pstat_objid')->unsigned()->default(0)->change();
-            $table->decimal('pstat_preismax', 12, 4)->default(0.00)->change();
-            $table->decimal('pstat_preismin', 12, 4)->default(0.00)->change();
-            $table->date('pstat_preisbis')->default('1001-01-01')->change();
-            $table->integer('pstat_anzahl')->default(0)->change();
-        });
-
         Schema::table('xsigns_fewo_ralang', function ($table) {
             $table->integer('objid')->unsigned()->default(0)->change();
             $table->string('raumid', 4)->default(' ')->change();
