@@ -614,3 +614,8 @@
     - update55.php
 3.5.1:
     - "Fehlerkorrekturen Belegungsplan für Angebote"
+3.5.2:
+    - "Verbesserungen der Datenbank"
+    - "Fehlerkorrekturen Belegungsplan für Angebote"
+    - "Fehlerkorrekturen Geburtstag für Mitreisende"
+    - update56.php
