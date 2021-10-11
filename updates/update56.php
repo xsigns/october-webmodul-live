@@ -25,9 +25,6 @@ class Update56 extends Migration
             $table->text('abr_wartung')->default('[]')->change();
             $table->date('abr_datefrom')->default('1001-01-01')->change();
             $table->date('abr_dateto')->default('1001-01-01')->change();
-            $table->string('abr_rechnr')->default(' ')->change();
-            $table->decimal('abr_betrag', 5, 2)->default(0.00)->change();
-            $table->decimal('abr_provbetrag', 5, 2)->default(0.00)->change();
         });
 
         Schema::table('xsigns_fewo_ang', function ($table) {
