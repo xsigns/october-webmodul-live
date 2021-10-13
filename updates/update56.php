@@ -133,7 +133,7 @@ class Update56 extends Migration
             $table->integer('erwachsene')->unsigned()->default(1)->change();
             $table->integer('kinder')->unsigned()->default(0)->change();
             $table->integer('kleinkinder')->unsigned()->default(0)->change();
-            $table->string('nachricht', 250)->default(' ')->change();
+            $table->text('nachricht')->change();
             $table->integer('sync')->default(0)->change();
             $table->integer('userid')->unsigned()->default(0)->change();
             $table->integer('angebotid')->unsigned()->default(0)->change();
