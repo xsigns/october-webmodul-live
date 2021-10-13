@@ -21,8 +21,6 @@ class Update56 extends Migration
             $table->integer('abr_download')->unsigned()->default(0)->change();
             $table->string('abr_art', 120)->default('G')->change();
             $table->date('abr_datum')->default('1001-01-01')->change();
-            $table->text('abr_memo')->default(' ')->change();
-            $table->text('abr_wartung')->default('[]')->change();
             $table->date('abr_datefrom')->default('1001-01-01')->change();
             $table->date('abr_dateto')->default('1001-01-01')->change();
         });
@@ -47,7 +45,6 @@ class Update56 extends Migration
             $table->integer('angid')->unsigned()->default(0)->change();
             $table->string('lang', 3)->default(' ')->change();
             $table->string('titel', 200)->default(' ')->change();
-            $table->text('beschreibung')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_angobj', function ($table) {
@@ -101,8 +98,6 @@ class Update56 extends Migration
             $table->integer('obj_id')->unsigned()->default(0)->change();
             $table->integer('aktiv')->unsigned()->default(0)->change();
             $table->string('betreff', 250)->default(' ')->change();
-            $table->text('nachricht')->default(' ')->change();
-            $table->text('antwort')->default(' ')->change();
             $table->date('datum')->default('1001-01-01')->change();
             $table->string('mail', 250)->default(' ')->change();
             $table->string('gastname', 250)->default(' ')->change();
@@ -138,15 +133,10 @@ class Update56 extends Migration
             $table->integer('erwachsene')->unsigned()->default(1)->change();
             $table->integer('kinder')->unsigned()->default(0)->change();
             $table->integer('kleinkinder')->unsigned()->default(0)->change();
-            $table->text('leistungen')->default(' ')->change();
-            $table->text('mitreisende')->default(' ')->change();
-            $table->text('nachricht')->default(' ')->change();
             $table->string('nachricht', 250)->default(' ')->change();
             $table->integer('sync')->default(0)->change();
             $table->integer('userid')->unsigned()->default(0)->change();
             $table->integer('angebotid')->unsigned()->default(0)->change();
-            $table->text('zuschlaege')->default(' ')->change();
-            $table->text('versicherung')->default(' ')->change();
             $table->integer('gebuehr_ausanz')->unsigned()->default(0)->change();
             $table->date('pay_date')->default('1001-01-01')->change();
             $table->string('pay_id', 200)->default(' ')->change();
@@ -173,7 +163,6 @@ class Update56 extends Migration
             $table->integer('entfid')->unsigned()->default(0)->change();
             $table->string('lang', 3)->default(' ')->change();
             $table->string('name', 250)->default(' ')->change();
-            $table->text('beschreibung')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_galleries', function ($table) {
@@ -210,16 +199,12 @@ class Update56 extends Migration
             $table->integer('hausid')->unsigned()->default(0)->change();
             $table->string('lang', 3)->default(' ')->change();
             $table->string('name', 250)->default(' ')->change();
-            $table->text('beschreibung')->default(' ')->change();
-            $table->text('kurz')->default(' ')->change();
-            $table->text('seo')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_imagelang', function ($table) {
             $table->string('imglang_objid', 4)->default(' ')->change();
             $table->string('imglang_lang', 3)->default(' ')->change();
             $table->string('imglang_titel', 160)->default(' ')->change();
-            $table->text('imglang_html')->default(' ')->change();
             $table->string('imglang_html', 191)->default(' ')->change();
         });
 
@@ -229,7 +214,6 @@ class Update56 extends Migration
             $table->integer('no')->unsigned()->default(0)->change();
             $table->string('image', 250)->default(' ')->change();
             $table->string('title', 250)->default(' ')->change();
-            $table->text('description')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_kunde', function ($table) {
@@ -277,7 +261,6 @@ class Update56 extends Migration
         Schema::table('xsigns_fewo_lelang', function ($table) {
             $table->integer('leistid')->unsigned()->default(0)->change();
             $table->string('lang', 3)->default(' ')->change();
-            $table->text('beschreibung')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_messages', function ($table) {
@@ -286,7 +269,6 @@ class Update56 extends Migration
             $table->date('fromdate')->default('1001-01-01')->change();
             $table->date('todate')->default('1001-01-01')->change();
             $table->integer('active')->unsigned()->default(0)->change();
-            $table->text('message')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_obj', function ($table) {
@@ -346,20 +328,6 @@ class Update56 extends Migration
             $table->string('titel', 200)->default(' ')->change();
             $table->string('titel2', 200)->default(' ')->change();
             $table->string('lang', 3)->default(' ')->change();
-            $table->text('beschreibung')->default(' ')->change();
-            $table->text('kurz')->default(' ')->change();
-            $table->text('seo')->default(' ')->change();
-            $table->text('lage')->default(' ')->change();
-            $table->text('anfrage')->default(' ')->change();
-            $table->text('preis1')->default(' ')->change();
-            $table->text('preis2')->default(' ')->change();
-            $table->text('baeder')->default(' ')->change();
-            $table->text('schlafzimmer')->default(' ')->change();
-            $table->text('html1')->default(' ')->change();
-            $table->text('html2')->default(' ')->change();
-            $table->text('html3')->default(' ')->change();
-            $table->text('innen')->default(' ')->change();
-            $table->text('aussen')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_objleist', function ($table) {
@@ -408,14 +376,12 @@ class Update56 extends Migration
             $table->string('raumid', 4)->default(' ')->change();
             $table->string('lang', 3)->default(' ')->change();
             $table->string('titel', 160)->default(' ')->change();
-            $table->text('beschreibung')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_raum', function ($table) {
             $table->integer('objid')->unsigned()->default(0)->change();
             $table->string('raumid', 4)->default(' ')->change();
             $table->string('art', 1)->default(' ')->change();
-            $table->text('ausst')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_reg', function ($table) {
@@ -429,9 +395,6 @@ class Update56 extends Migration
             $table->integer('reglang_regionid')->unsigned()->default(0)->change();
             $table->string('reglang_lang', 3)->default(' ')->change();
             $table->string('reglang_name', 200)->default(' ')->change();
-            $table->text('reglang_beschreibung')->default(' ')->change();
-            $table->text('reglang_kurz')->default(' ')->change();
-            $table->text('reglang_seo')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_reinfirma', function ($table) {
@@ -448,8 +411,6 @@ class Update56 extends Migration
 
         Schema::table('xsigns_fewo_slide_shows', function ($table) {
             $table->string('slide_show_title', 191)->default(' ')->change();
-            $table->text('slide_show_content')->default(' ')->change();
-            $table->text('responsive')->default(' ')->change();
             $table->string('asimages_height', 10)->default(' ')->change();
         });
 
@@ -479,8 +440,6 @@ class Update56 extends Migration
             $table->integer('vorg_erw')->unsigned()->default(1)->change();
             $table->integer('vorg_kinder')->unsigned()->default(0)->change();
             $table->integer('vorg_kleinkind')->unsigned()->default(0)->change();
-            $table->text('vorg_memo')->default(' ')->change();
-            $table->text('vorg_ehinweis')->default(' ')->change();
             $table->integer('vorg_eigenid')->unsigned()->default(0)->change();
             $table->integer('vorg_reinigungid')->unsigned()->default(0)->change();
             $table->string('vorg_fremdart', 120)->default(' ')->change();
@@ -501,7 +460,6 @@ class Update56 extends Migration
             $table->integer('vorgid')->unsigned()->default(0)->change();
             $table->integer('leistid')->unsigned()->default(0)->change();
             $table->integer('objid')->unsigned()->default(0)->change();
-            $table->text('text')->default(' ')->change();
         });
 
         Schema::table('xsigns_fewo_vorgmit', function ($table) {
@@ -581,7 +539,6 @@ class Update56 extends Migration
                 $table->date('from')->default('1001-01-01')->change();
                 $table->date('to')->default('1001-01-01')->change();
                 $table->string('title', 250)->default(' ')->change();
-                $table->text('short')->default(' ')->change();
                 $table->string('alias', 250)->default(' ')->change();
             });
         }
@@ -592,7 +549,6 @@ class Update56 extends Migration
                 $table->date('day')->default('1001-01-01')->change();
                 $table->decimal('night', 7, 2)->unsigned()->default(0.00)->change();
                 $table->string('deg', 50)->default(' ')->change();
-                $table->text('description')->default(' ')->change();
             });
         }
     }
