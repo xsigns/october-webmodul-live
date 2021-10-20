@@ -9,9 +9,11 @@ $(document).ready(function() {
         alert("hallo");
     });
 
-    if (calClick === 1)
+    if (calClick === 1 && typeof Belplan === 'function')
+    {
         if (anreise !== '')
             Belplan.selectDatesFromDatepicker(anreise, abreise);
+    }
 
     if (datecompact === 1)
     {
@@ -79,7 +81,7 @@ $(document).ready(function() {
         $('#ctrl_anreise').val('');
         $('#ctrl_abreise').val('');
 
-        if (calClick === 1)
+        if (calClick === 1 && typeof Belplan === 'function')
             Belplan.resetBelplan();
     });
 

@@ -4,10 +4,41 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.5.4
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente Buchungsmaske default.htm: Folgende Code-Zeile muss innerhalb des div-Elements mit der Klasse ``class="book-22"``
+ganz unten (unterhalb von ``id="error-anreise"``) eingefügt werden:
+````
+<div id="belplanScript"></div>
+````
+
+###Optionale Anpassungen
+Diese Anpassungen sind **Optional**.  
+Folgende Felder können in der Zusammenfassung der Buchungsmaske (Partials > Buchungsmaske/zusammen.htm) ausgegeben werden:
+
+Ausgabe Gast-Titel. Label Platzhalter kann in der Komponenete gesetzt werden.
+````
+<div class="label">{{ labels.titel }}</div>
+<div class="zusammenfassung titel">{{ data.titel }}</div>
+````
+
+Ausgabe Anzahl der gewählten Nächte. Label Platzhalter kann in der Komponenete gesetzt werden.
+````
+<div class="label">{{ labels.naechte }}</div>
+<div class="zusammenfassung naechte">{{ data.naechte }}</div>
+````
+
+Ausgabe Objektpreis. Label Platzhalter kann in der Komponenete gesetzt werden.
+````
+<div class="label">{{ summen.objektpreis }}</div>
+<div class="zusammenfassung objektpreis">{{ data.objektpreis }}</div>
+````
+- - -
+
 ## Upgrade 3.4.38
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente Objekt OpenStreetMap (ObjektMap) default.htm: Kompletten Code ersetzen durch:
-````
+````(Twig)
 <div id="fewo-liste" class="col-lg-12 float-left">
     <div id="fewo-listmap">
         {% if keineObjekte %}

@@ -621,3 +621,7 @@
     - update56.php
 3.5.3:
     - "Fehlerkorrekturen Belegungsplan"
+3.5.4:
+    - "!!! Fehlerkorrekturen Buchungsmaske. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
+    - "Fehlerkorrekturen Angebot-Objektliste"
+    - "Erweiterung Zusammenfassung Buchungsmaske um Objektpreis, Gast Titel und Anzahl der Übernachtungstage"

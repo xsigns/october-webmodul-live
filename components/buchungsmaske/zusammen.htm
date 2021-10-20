@@ -8,8 +8,12 @@
         <div class="zusammenfassung anreise">{{ data.anreise }}</div>
         <div class="label">{{ labels.abreise }}</div>
         <div class="zusammenfassung abreise">{{ data.abreise }}</div>
+        <div class="label">{{ labels.naechte }}</div>
+        <div class="zusammenfassung naechte">{{ data.naechte }}</div>
         <div class="label">{{ labels.anrede }}</div>
         <div class="zusammenfassung anrede">{{ data.anrede }}</div>
+        <div class="label">{{ labels.titel }}</div>
+        <div class="zusammenfassung titel">{{ data.titel }}</div>
         <div class="label">{{ labels.vorname }}</div>
         <div class="zusammenfassung vorname">{{ data.vorname }}</div>
         <div class="label">{{ labels.name }}</div>
@@ -35,6 +39,8 @@
         <div class="mitreisende">{{ mit.mitvorname}} {{ mit.mitname}} {{ mit.mitgeb }}</div>
             {% endfor %}
         {% endif %}
+        <div class="label">{{ summen.objektpreis }}</div>
+        <div class="zusammenfassung objektpreis">{{ data.objektpreis }}</div>
         <div class="festeLeistung">{{ nebenkosten|raw }}</div>
         {% if data.leistungen %}
         <div class="zusammenfassung leistungen">
@@ -68,8 +74,8 @@
             <div class="zusammenfassung zahlung1">{{ data.zahlung1 }}</div>
         {% endif %}
         {%if data.zahlung2 > 0 %}
-        <div class="label">{{ summen.restzahlung }}</div>
-        <div class="zusammenfassung zahlung2">{{ data.zahlung2 }}</div>
+            <div class="label">{{ summen.restzahlung }}</div>
+            <div class="zusammenfassung zahlung2">{{ data.zahlung2 }}</div>
         {% endif %}
     </div>
     <div class="agbdata">
