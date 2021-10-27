@@ -31,33 +31,13 @@
                     <table id="abrechnungen" class="display" style="width:100%">
                         <thead>
                             <tr>
+                                <th></th>
+                                <th>{{ labels.rechnungsnr }}</th>
                                 <th>{{ labels.jahr }}</th>
                                 <th>{{ labels.monat }}</th>
-                                <th>{{ labels.abrechnung }}</th>
-                                <th>{{ labels.provision }}</th>
-                                {% for i in 1..4 %}
-                                    <th>{{labels.wartung}} {{i}}</th>
-                                {% endfor %}
+                                <th>{{ labels.datum }}</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        {% for abrechnung in abrechnungen %}
-                            <tr>
-                                <td class="dt-left">{{ abrechnung.jahr }}</td>
-                                <td class="dt-left">{{ abrechnung.monat}}</td>
-                                <td class="dt-left"><button data-attach-loading data-request-data="file: '{{ abrechnung.abr }}',fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>
-                                <td class="dt-left"><button data-attach-loading data-request-data="file: '{{ abrechnung.prov }}',fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>
-                                {% for wart in abrechnung.wartung %}
-                                    <td class="dt-left"><button data-attach-loading data-request-data="file: '{{ wart }}',fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>
-                                {% endfor %}
-                                {% if abrechnung.wartung|length < 4 %}
-                                    {% for u in abrechnung.wartung|length..3 %}
-                                        <td class="dt-left"></td>
-                                    {% endfor %}
-                                {% endif %}
-                            </tr>
-                        {% endfor %}
-                        </tbody>
                     </table>
                 </div>
             {% endif %}
@@ -133,136 +113,201 @@
     </div>
 </div>
 <script>
-    function format ( d ) {
-    // `d` is the original data object for the row
-    var subtable = '<table class="display" cellspacing="2" border="0" style="margin-left:50px;width:90%;">'+
+    function format (d) {
+        // `d` is the original data object for the row
+        var subtable = '<table class="display" cellspacing="2" border="0" style="margin-left:50px;width:90%;">'+
             '<thead>' +
             '<tr>';
         {% if showgastdaten %}
             subtable += '<th style="padding-left:20px;">{{ labels.vorgvorname }}</th>'+
-            '<th style="padding-left:20px;">{{ labels.vorgname }}</th>'+
-            '<th style="padding-left:20px;">{{ labels.vorgmail }}</th>';
+                '<th style="padding-left:20px;">{{ labels.vorgname }}</th>'+
+                '<th style="padding-left:20px;">{{ labels.vorgmail }}</th>';
         {% endif %}
-            subtable += '<th style="padding-left:20px;">{{ labels.memo }}</th>' +
+        subtable += '<th style="padding-left:20px;">{{ labels.memo }}</th>' +
             '<th style="padding-left:20px;">{{ labels.ehinweis }}</th>' +
-        '</tr>' +
-
+            '</tr>' +
             '</thead>' +
-        '<tr>';
+            '<tr>';
         {% if showgastdaten %}
             subtable += '<td style="padding-left:20px;">'+d.vorname+'</td>'+
-            '<td style="padding-left:20px;">'+d.name+'</td>'+
-            '<td style="padding-left:20px;">' + d.mail + '</td>';
+                '<td style="padding-left:20px;">'+d.name+'</td>'+
+                '<td style="padding-left:20px;">' + d.mail + '</td>';
         {% endif %}
-            subtable += '<td style="padding-left:20px;">' + d.memo + '</td>' +
+        subtable += '<td style="padding-left:20px;">' + d.memo + '</td>' +
             '<td style="padding-left:20px;">' + d.ehinweis + '</td>' +
-        '</tr>';
-     {% if showleistung %}
+            '</tr>';
+        {% if showleistung %}
             var length = JSON.parse(d.leistungen).length;
-         if(length > 0) {
-
-
-             subtable += '<tr>';
-             {% if showgastdaten %}
-                 subtable += '<td colspan="5">';
-             {% else %}
-                subtable += '<td colspan="2">';
-             {% endif %}
-                 subtable += '<table id="leistungen" class="display" style="width:100%; margin-top:10px;">' +
-                 '<thead>' +
-                 '<tr>' +
-                 '<th>{{ labels.lnr }}</th>' +
-                 '<th>{{ labels.ltitel }}</th>' +
-                 '<th class="dt-center">{{ labels.lanz }}</th>' +
-                 '<th class="dt-right">{{ labels.lepreis }}</th>' +
-                 '<th class="dt-right">{{ labels.lsumme }}</th>' +
-                 '</tr>' +
-                 '</thead>' +
-                 '<tbody>';
-             $.each(JSON.parse(d.leistungen), function (index, value) {
-                 subtable += '<tr>';
-                 subtable += '<td>' + value.nr + '</td>';
-                 subtable += '<td>' + value.text + '</td>';
-                 subtable += '<td class="dt-center">' + value.anz + '</td>';
-                 subtable += '<td class="dt-right">' + value.epreis + '</td>';
-                 subtable += '<td class="dt-right">' + value.summe + '</td>';
-                 subtable += '</tr>';
-             });
-             subtable += '</tbody></table>' +
-                 '</td>' +
-                 '</tr>';
-         }
+            if(length > 0) {
+                subtable += '<tr>';
+                {% if showgastdaten %}
+                    subtable += '<td colspan="5">';
+                {% else %}
+                    subtable += '<td colspan="2">';
+                {% endif %}
+                subtable += '<table id="leistungen" class="display" style="width:100%; margin-top:10px;">' +
+                    '<thead>' +
+                    '<tr>' +
+                    '<th>{{ labels.lnr }}</th>' +
+                    '<th>{{ labels.ltitel }}</th>' +
+                    '<th class="dt-center">{{ labels.lanz }}</th>' +
+                    '<th class="dt-right">{{ labels.lepreis }}</th>' +
+                    '<th class="dt-right">{{ labels.lsumme }}</th>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>';
+                $.each(JSON.parse(d.leistungen), function (index, value) {
+                    subtable += '<tr>';
+                    subtable += '<td>' + value.nr + '</td>';
+                    subtable += '<td>' + value.text + '</td>';
+                    subtable += '<td class="dt-center">' + value.anz + '</td>';
+                    subtable += '<td class="dt-right">' + value.epreis + '</td>';
+                    subtable += '<td class="dt-right">' + value.summe + '</td>';
+                    subtable += '</tr>';
+                });
+                subtable += '</tbody></table>' +
+                '</td>' +
+                '</tr>';
+            }
         {% endif %}
-    subtable += '</table>';
-            return subtable;
+        subtable += '</table>';
+        return subtable;
     }
 
+    function formatAbr(d)
+    {
+        var subtable = '<table class="display" cellspacing="2" border="0" style="margin-left: 50px; width: 90%;">' +
+            '<thead>' +
+            '<tr>' +
+            '<th>{{ labels.abrechnung }}</th>' +
+            '<th>{{ labels.provision }}</th>' +
+            '<th>{{ labels.wartung }} 1</th>' +
+            '<th>{{ labels.wartung }} 2</th>' +
+            '<th>{{ labels.wartung }} 3</th>' +
+            '<th>{{ labels.wartung }} 4</th>' +
+            '</tr>' +
+            '</thead>' +
+            '<tbody>' +
+            '<tr>' +
+            '<td><button data-attach-loading data-request-data="file: \'' + d.abr + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>' +
+            '<td><button data-attach-loading data-request-data="file: \'' + d.prov + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>';
+        $.each(d.wartung, function (index, value) {
+            subtable += '<td>' + value.wart + '</td>';
+        });
+
+        subtable += '</tr>' +
+            '</tbody>' +
+            '</table>';
+
+        return subtable;
+    }
 
 	$(document).ready(function() {
-	     $("#ctrl_objekt").select2({
+        $('#ctrl_objekt').select2({});
 
-        });
-    var table = $('#abrechnungen').DataTable({
-        "bFilter": false,
-        "language": {
-        {{ scriptlang|raw}}
-        },
-        "order": [[ 0, 'asc' ]],
-        "displayLength": 15,
-        "drawCallback": function ( settings ) {
-            var api = this.api();
-            var rows = api.rows( {page:'current'} ).nodes();
-            var last=null;
+        {% if showabrechnung ==1 %}
+            var abrData = {{ abrechnungen|raw }};
 
-            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
-                if ( last !== group ) {
-                    $(rows).eq( i ).before(
-                        '<tr class="group"><td colspan="8">'+group+'</td></tr>'
-                    );
-
-                    last = group;
-                }
-            } );
-        }
-    } );
-
-// Order by the grouping
-    $('#abrechnungen tbody').on( 'click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if ( currentOrder[0] === 0 && currentOrder[1] === 'asc' ) {
-            table.order( [ 0, 'desc' ],[1, 'desc'] ).draw();
-        }
-        else {
-            table.order( [ 0, 'asc' ],[1, 'desc'] ).draw();
-        }
-    } );
-    {% if showvorgaenge == 1 %}
-    var vorgData = {{vorgaenge|raw}};
-
-        // Vorgaenge ***********************************
-        var table = $('#vorgaenge').DataTable({
-            rowReorder: true,
-            language: { {{ scriptlang|raw}} },
-            data: vorgData,
-            columns: [
-                {
-                    className:      'details-control',
-                    orderable:      false,
-                    data:           null,
-                    defaultContent: ''
+            var abrTable = $('#abrechnungen').DataTable({
+                bFilter: true,
+                language: { {{ scriptlang|raw}} },
+                order: [[2, 'asc']],
+                displayLength: 15,
+                data: abrData,
+                columns: [
+                    {
+                        className: 'details-control',
+                        orderable: false,
+                        data: null,
+                        defaultContent: ''
+                    },
+                    {'data': 'rechnr'},
+                    {'data': 'jahr'},
+                    {'data': 'monat'},
+                    {'data': 'datum'},
+                ],
+                columnDefs: [
+                    {
+                        targets: 0,
+                        width: '30px',
+                        serachable: false,
+                        sortable: false,
+                    },
+                    {
+                        targets: 1,
+                        width: "10px",
+                    },
+                ],
+                drawCallback: function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({page: 'current'}).nodes();
+                    var last = null;
+                    api.column(0, {page: 'current'}).data().each(function(group, i) {
+                        if (last !== group) {
+                            if (i['jahr'] == group) {
+                                $(rows).eq(i).before(
+                                    '<tr class="group"><td colspan="9">' + group + '</td></tr>'
+                                );
+                                last = group;
+                            }
+                        }
+                    });
                 },
-                { "data": "jahr" },
-                { "data": "datum" },
-                { "data": "art" },
-                { "data": "anreise" },
-                { "data": "abreise" },
-                { "data": "tage" },
-                { "data": "objekt" },
-                { "data": "erwachsene" },
-                { "data": "kinder" },
-                { "data": "objpreis" ,render: $.fn.dataTable.render.number( '.', ',', 2,'', ' €' ) },
-            ],
-            columnDefs: [
+            });
+
+            // Order by the grouping
+            $('#abrechnungen tbody').on('click', 'tr.group', function() {
+                var currentOrder = abrTable.order()[0];
+                if (currentOrder[0] === 0 && currentOrder[1] === 'asc') {
+                    abrTable.order([0, 'desc'], [1, 'desc']).draw();
+                } else {
+                    abrTable.order([0, 'asc'], [1, 'desc']).draw();
+                }
+            });
+
+            $('#abrechnungen tbody').on('click', 'td.details-control', function() {
+                var tr = $(this).closest('tr');
+                var row = abrTable.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Open this row
+                    row.child(formatAbr(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+        {% endif %}
+
+        {% if showvorgaenge == 1 %}
+            var vorgData = {{vorgaenge|raw}};
+
+            // Vorgaenge ***********************************
+            var table = $('#vorgaenge').DataTable({
+                rowReorder: true,
+                language: { {{ scriptlang|raw}} },
+                data: vorgData,
+                columns: [
+                    {
+                        className:      'details-control',
+                        orderable:      false,
+                        data:           null,
+                        defaultContent: ''
+                    },
+                    { "data": "jahr" },
+                    { "data": "datum" },
+                    { "data": "art" },
+                    { "data": "anreise" },
+                    { "data": "abreise" },
+                    { "data": "tage" },
+                    { "data": "objekt" },
+                    { "data": "erwachsene" },
+                    { "data": "kinder" },
+                    { "data": "objpreis" ,render: $.fn.dataTable.render.number( '.', ',', 2,'', ' €' ) },
+                ],
+                columnDefs: [
                     {
                         targets: 1,
                         width:"30px",
@@ -323,157 +368,152 @@
                         className: "dt-right"
                     },
                 ],
-            order: [[1, 'desc'], [4, 'desc']],
-            displayLength: 15,
-            dom: 'Bfrtip',
-            buttons: [
-                'csv', 'print'
-            ],
-            drawCallback: function ( settings ) {
+                order: [[1, 'desc'], [4, 'desc']],
+                displayLength: 15,
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'print'
+                ],
+                drawCallback: function ( settings ) {
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+                    var last = null;
+                    var cols = api.row(0).data().length;
+                    var totale = new Array();
+                    totale['Totale'] = new Array();
+                    var groupid = -1;
+                    var subtotale = new Array();
+                    var columns = [1];
+                    var columns1 = 9 , s=0 ;
+                    var colNo = [10];
+                    var count= 0, svalue= [];
 
-                var api = this.api();
-                var rows = api.rows({ page: 'current' }).nodes();
-                var last = null;
-                var cols = api.row(0).data().length;
-                var totale = new Array();
-                totale['Totale'] = new Array();
-                var groupid = -1;
-                var subtotale = new Array();
-                var columns = [1];
-                var columns1 = 9 , s=0 ;
-                var colNo = [10];
-
-                var count= 0, svalue= [];
-
-                for (var c = 0; c < columns.length; c++) {
-                    colNo = columns[c];
-                    api.column(colNo, { page: 'current' }).data().each(function(group, i) {
-                        if (last !== group) {
-                            groupid++;
-                            $.each(api.data(), function(index, row) {
-                                if (row['jahr'] == group) {
-                                    var addSum = false;
-                                    $.each(row, function (index2, val2) {
-                                        if(index2 == 'art' && val2 === 'B')
-                                            addSum = true;
-                                        if (index2 == 'objpreis' || index2 == 'tage' || index2 == 'erwachsene' || index2 == 'kinder') {
-                                            if (typeof subtotale[groupid] == 'undefined') {
-                                                subtotale[groupid] = new Array();
+                    for (var c = 0; c < columns.length; c++) {
+                        colNo = columns[c];
+                        api.column(colNo, { page: 'current' }).data().each(function(group, i) {
+                            if (last !== group) {
+                                groupid++;
+                                $.each(api.data(), function(index, row) {
+                                    if (row['jahr'] == group) {
+                                        var addSum = false;
+                                        $.each(row, function (index2, val2) {
+                                            if(index2 == 'art' && val2 === 'B')
+                                                addSum = true;
+                                            if (index2 == 'objpreis' || index2 == 'tage' || index2 == 'erwachsene' || index2 == 'kinder') {
+                                                if (typeof subtotale[groupid] == 'undefined') {
+                                                    subtotale[groupid] = new Array();
+                                                }
+                                                if (typeof subtotale[groupid][index2] == 'undefined') {
+                                                    subtotale[groupid][index2] = 0;
+                                                    if (index2 == 'kinder')
+                                                        subtotale[groupid]['kkinder'] = 0;
+                                                }
+                                                var valCol = 0;//Number(val2); //.replace(/[^\d]/g, '')*1);
+                                                if (index2 == 'kinder') {
+                                                    var kinder = val2.split("/");
+                                                    subtotale[groupid][index2] = +parseFloat(subtotale[groupid][index2] + parseFloat(kinder[0])).toFixed(2);
+                                                    subtotale[groupid]['kkinder'] = +parseFloat(subtotale[groupid]['kkinder'] + parseFloat(kinder[1])).toFixed(2);
+                                                } else {
+                                                    valCol = Number(val2); //.replace(/[^\d]/g, '')*1);
+                                                    if(addSum == true)
+                                                        subtotale[groupid][index2] =+parseFloat(subtotale[groupid][index2] + valCol).toFixed(2);
+                                                }
                                             }
-                                            if (typeof subtotale[groupid][index2] == 'undefined') {
-                                                subtotale[groupid][index2] = 0;
-                                                if (index2 == 'kinder')
-                                                    subtotale[groupid]['kkinder'] = 0;
-                                            }
-                                            var valCol = 0;//Number(val2); //.replace(/[^\d]/g, '')*1);
-                                            if (index2 == 'kinder') {
-                                                var kinder = val2.split("/");
-                                                subtotale[groupid][index2] = +parseFloat(subtotale[groupid][index2] + parseFloat(kinder[0])).toFixed(2);
-                                                subtotale[groupid]['kkinder'] = +parseFloat(subtotale[groupid]['kkinder'] + parseFloat(kinder[1])).toFixed(2);
-                                            } else {
-                                                valCol = Number(val2); //.replace(/[^\d]/g, '')*1);
-                                                if(addSum == true)
-                                                    subtotale[groupid][index2] =+parseFloat(subtotale[groupid][index2] + valCol).toFixed(2);
-                                            }
-                                        }
-                                    });
-                                }
-                            });
-                            svalue.push(count);
-                            last = group;
-                            count = i;
-                        }
-                        else {
-                            count = count + 1;
-                        }
-                    });
-                }
-                if (svalue.length>groupid) {
-                    svalue.push(count);
-                    groupid++;
-                }
-                for (var c = 0; c < svalue.length-1;) {
-                    var colNo2 = columns[c];
-                    api.column(colNo2, { page: 'current' }).data().each(function(group, i) {
-                        var  subtd = '';
-                        subtd = "Summen "+group+" : "+ $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']) ;
-                        var objsumme = $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']) ;
-                        var tage = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['tage']) ;
-                        var erw = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['erwachsene']) ;
-                        var kind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kinder']) ;
-                        var kkind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kkinder']) ;
-                    if(i == svalue[c+1])
-                    {
-                        $(rows).eq(i).after(
-                        '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">'+tage+'</td><td></td><td class="dt-center">' + erw +'</td><td class="dt-center">' + kind + '/' + kkind +'</td><td class="dt-right">' + objsumme + '</td></tr>');
-                        s++;
-                        c++;
+                                        });
+                                    }
+                                });
+                                svalue.push(count);
+                                last = group;
+                                count = i;
+                            } else {
+                                count = count + 1;
+                            }
+                        });
                     }
-                    });
+                    if (svalue.length>groupid) {
+                        svalue.push(count);
+                        groupid++;
+                    }
+                    for (var c = 0; c < svalue.length-1;) {
+                        var colNo2 = columns[c];
+                        api.column(colNo2, { page: 'current' }).data().each(function(group, i) {
+                            var  subtd = '';
+                            subtd = "Summen "+group+" : "+ $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']) ;
+                            var objsumme = $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']) ;
+                            var tage = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['tage']) ;
+                            var erw = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['erwachsene']) ;
+                            var kind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kinder']) ;
+                            var kkind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kkinder']) ;
+                        if(i == svalue[c+1])
+                        {
+                            $(rows).eq(i).after(
+                            '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">'+tage+'</td><td></td><td class="dt-center">' + erw +'</td><td class="dt-center">' + kind + '/' + kkind +'</td><td class="dt-right">' + objsumme + '</td></tr>');
+                            s++;
+                            c++;
+                        }
+                        });
+                    }
                 }
+            });
 
-        }
-    });
+            $('#vorgaenge tfoot th').each( function (group,i) {
+                var title = $(this).text();
+                if(group > 0 && group != 3 && group !=8 && group !=9  && group !=6)
+                    $(this).html( '<input type="text" size="8" placeholder="'+title+'" />' );
+                else
+                    $(this).html('&nbsp;');
+            });
 
-    $('#vorgaenge tfoot th').each( function (group,i) {
-        var title = $(this).text();
-        if(group > 0 && group != 3 && group !=8 && group !=9  && group !=6)
-            $(this).html( '<input type="text" size="8" placeholder="'+title+'" />' );
-        else
-            $(this).html('&nbsp;');
-    } );
+            // Apply the search
+            table.columns().every( function () {
+                var that = this;
+                $( 'input', this.footer() ).on( 'keyup change', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                });
+            });
 
-    // Apply the search
-    table.columns().every( function () {
-        var that = this;
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );
-
-
-    // Add event listener for opening and closing details
-    $('#vorgaenge tbody').on('click', 'td.details-control', function () {
-        var tr = $(this).closest('tr');
-        var row = table.row( tr );
-
-        if ( row.child.isShown() ) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        }
-        else {
-            // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
-        }
-    } );
+            // Add event listener for opening and closing details
+            $('#vorgaenge tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row( tr );
+                if ( row.child.isShown() ) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child( format(row.data()) ).show();
+                    tr.addClass('shown');
+                }
+            });
         {% endif %}
-{% if showobjekte %}
-     var objData = {{ objekte|raw}};
-     var tableObjekte = $('#objekte').DataTable({
-         rowReorder: true,
-         language: { {{scriptlang | raw}}},
-         data:objData,
-         columns:[
-         {
-            className: 'details-objekte',
-            orderable: false,
-            data: null,
-            defaultContent: ''
-        },
-        {"data": "id"},
-        {"data": "titel"},
-        {"data": "art"},
-        {"data": "pers"},
-            {"data": "qm",render: $.fn.dataTable.render.number( '.', ',', 2,'',' qm' )},
-        {"data": "intern"},
-        ],
-            columnDefs: [
+
+        {% if showobjekte %}
+            var objData = {{ objekte|raw}};
+            var tableObjekte = $('#objekte').DataTable({
+                rowReorder: true,
+                language: { {{scriptlang | raw}}},
+                data:objData,
+                columns:[
+                     {
+                        className: 'details-objekte',
+                        orderable: false,
+                        data: null,
+                        defaultContent: ''
+                    },
+                    {"data": "id"},
+                    {"data": "titel"},
+                    {"data": "art"},
+                    {"data": "pers"},
+                    {"data": "qm",render: $.fn.dataTable.render.number( '.', ',', 2,'',' qm' )},
+                    {"data": "intern"},
+                ],
+                columnDefs: [
                     {
                         targets: 1,
                         visible: true,
@@ -491,14 +531,11 @@
                         className: "dt-center"
                     },
                 ],
-        order:[[1, 'asc']],
-        displayLength:15,
-        dom:'Bfrtip',
-        buttons:['csv', 'print']
+                order:[[1, 'asc']],
+                displayLength:15,
+                dom:'Bfrtip',
+                buttons:['csv', 'print']
+            });
+        {% endif %}
     });
-    {% endif %}
-
-
-} );
-
 </script>

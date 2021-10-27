@@ -1,7 +1,7 @@
 {% if noimage == 0 %}
     {% if imagetype == 5 %}
         <header>
-        <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="6000">
+        <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="{{ speed }}">
             <ol class="carousel-indicators">
                 {% for image in images %}
                     <li data-target="#carouselIndicators" data-slide-to="{{ image.id }}" class="{{ image.active }}"></li>
@@ -10,7 +10,7 @@
             <div class="carousel-inner" role="listbox">
                 {% for image in images %}
                 <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item {{ image.active }}" style="background-image: url('{{ image.image }}')">
+                <div class="carousel-item {{ image.active }}" style="background-image: url('{{ image.image }}'); height: 300px;">
                     {% if showtitle %}<h2 class="display-4">{{ image.title }}</h2>{% endif %}
                     {% if showdesc %}<p class="lead">{{ image.description|raw }}</p>{% endif %}
                 </div>
@@ -33,9 +33,9 @@
                 <img src="{{ image|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
             {% else %}
                 {% if type == 'panorama' %}
-                    <img src="{{ image.thumb(auto,auto) }}" alt="{{ title|raw }}">
+                    <img src="{{ image|raw }}" alt="{{ title|raw }}">
                 {% else %}
-                    <img src="{{ image.path|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
+                    <img src="{{ image|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
                 {% endif %}
             {% endif %}
         </div>

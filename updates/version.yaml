@@ -625,3 +625,8 @@
     - "!!! Fehlerkorrekturen Buchungsmaske. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - "Fehlerkorrekturen Angebot-Objektliste"
     - "Erweiterung Zusammenfassung Buchungsmaske um Objektpreis, Gast Titel und Anzahl der Übernachtungstage"
+3.5.5:
+    - "!!! Bitte Upgrade-Guide lesen! Erweiterung Eigentümerlogin hochladen mehrerer Abrechnungen für einen Monat möglich."
+    - "Verbesserungen und Fehlerkorrekturen der Image-Komponente"
+    - "Verbesserungen Versand der Info Mail für neue Bewertung"
+    - update57.php

@@ -4,6 +4,18 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.5.5
+### Achtung: Im Falle der Verwendung unseres Eigentümerlogins, müssen alle notwendigen Abrechnungen erneut vom Fewo-Verwalter für den Eigentümerlogin bereitgestellt werden.
+Gehen Sie im Fewo-Verwalter in den Bereich _Finanzen_. Klicken Sie nun auf den Button _Abrechnungsliste_. 
+Markieren Sie alle Abrechnungen, die für den Eigentümerlogin bereitgestellt werden sollen. Anschließend klicken Sie auf den Button _in Eigentümerlogin bereitstellen_.
+
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente Bild aus Stammdaten (Image) default.htm: Das ``src``-Attribut aller ``img``-Tags muss wie folgt definiert werden:
+````
+src="{{ image|raw }}"
+````
+- - -
+
 ## Upgrade 3.5.4
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente Buchungsmaske default.htm: Folgende Code-Zeile muss innerhalb des div-Elements mit der Klasse ``class="book-22"``
@@ -1278,7 +1290,7 @@ Values der Felder geändert und Val  Geburtstagsfeld im jQuery-Teil
 
 ## Upgrade 2.1.8
 - Umstellung der Upgrade Sprache auf deutsch (Eine Bitte vieler Kunden).
-- Checkbox für Werbemails (z.B. Bewertungserrinnerung) in der Buchungsmaske hinzugefügt. 
+- Checkbox für Werbemails (z.B. Bewertungserinnerung) in der Buchungsmaske hinzugefügt. 
 - Kundenbefragung per E-Mail nur bedingt zulässig! BGH Urteil IV ZR 225/17
 
 Partial buchungsmaske/zusammen.htm muss angepasst werden. Bitte folgenden Code nach sonstigesCheck einfügen.
