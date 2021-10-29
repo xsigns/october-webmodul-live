@@ -3,11 +3,16 @@
 > Die Bearbeitung eines Partials ist nur dann notwendig, wenn das entsprechende Partial einer Komponente im Backend angepasst wurde.  
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
+## Upgrade 3.5.7
+Behebung einer Sicherheitslücke im Bereich Listensortierung (credits @Daniel Blumhagen für die Meldung der Lücke)
+
+**Zur kurzfristigen Installation des Updates wird dringend geraten!**
+- - -
 
 ## Upgrade 3.5.5
-### Achtung: Im Falle der Verwendung unseres Eigentümerlogins, müssen alle notwendigen Abrechnungen erneut vom Fewo-Verwalter für den Eigentümerlogin bereitgestellt werden.
+### Achtung: Im Falle der Verwendung unseres Eigentümerlogins, müssen alle notwendigen Abrechnungen erneut vom Fewo-Verwalter für den Eigentümerlogin bereitgestellt werden. Dies kann wie folgt erfolgen:
 Gehen Sie im Fewo-Verwalter in den Bereich _Finanzen_. Klicken Sie nun auf den Button _Abrechnungsliste_. 
-Markieren Sie alle Abrechnungen, die für den Eigentümerlogin bereitgestellt werden sollen. Anschließend klicken Sie auf den Button _in Eigentümerlogin bereitstellen_.
+Markieren Sie alle Abrechnungen, die für den Eigentümerlogin bereitgestellt werden sollen. Dies können Sie entweder mit gedrückter Strg-Taste und anklicken der jeweiligen Abrechnung machen oder indem Sie die oberste zu sendende Abrechnung anklicken, die Umschalt-Taste (Großschreib-Taste) drücken und gedrückt halten und dann die unterste Abrechnung mit der Maus anklicken (beides Windows-Standard für die Mehrfach-Auswahl in Listen wenn zulässig). Anschließend klicken Sie auf den Button _in Eigentümerlogin bereitstellen_.
 
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente Bild aus Stammdaten (Image) default.htm: Das ``src``-Attribut aller ``img``-Tags muss wie folgt definiert werden:
@@ -25,7 +30,7 @@ ganz unten (unterhalb von ``id="error-anreise"``) eingefügt werden:
 ````
 
 ###Optionale Anpassungen
-Diese Anpassungen sind **Optional**.  
+Diese Anpassungen sind **optional**.  
 Folgende Felder können in der Zusammenfassung der Buchungsmaske (Partials > Buchungsmaske/zusammen.htm) ausgegeben werden:
 
 Ausgabe Gast-Titel. Label Platzhalter kann in der Komponenete gesetzt werden.

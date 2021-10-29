@@ -631,4 +631,6 @@
     - "Verbesserungen Versand der Info Mail für neue Bewertung"
     - update57.php
 3.5.6:
-    "Fehlerkorrekturen der Image-Komponente"
+    - "Fehlerkorrekturen der Image-Komponente"
+3.5.7:
+    - "!!! Behebung einer Sicherheitslücke im Bereich Listensortierung (credits @Daniel Blumhagen für die Meldung der Lücke). Die Installation des Updates wird dringend empfohlen!"
