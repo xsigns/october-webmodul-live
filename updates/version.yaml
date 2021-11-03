@@ -634,3 +634,7 @@
     - "Fehlerkorrekturen der Image-Komponente"
 3.5.7:
     - "!!! Behebung einer Sicherheitslücke im Bereich Listensortierung (credits @Daniel Blumhagen für die Meldung der Lücke). Die Installation des Updates wird dringend empfohlen!"
+3.5.8:
+    - "Verbesserungen der Datenbank"
+    - "Fehlerkorrekturen Objekte ohne Preise"
+    - update58.php
