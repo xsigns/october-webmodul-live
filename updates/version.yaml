@@ -638,3 +638,5 @@
     - "Verbesserungen der Datenbank"
     - "Fehlerkorrekturen Objekte ohne Preise"
     - update58.php
+3.5.9:
+    - "Fehlerkorrekturen Grundrisse löschen"

@@ -4,10 +4,10 @@
         {% if isClickable == 1 %}
             <select class="ctrlSaisonSelect" name="calSelector">
                 <!--<select class="ctrlSaisonSelect" name="calSelector" data-request-data="calid: {{ calobjid }}, caloffset: {{ caloffset }}" data-request="{{ __SELF__ }}::onSelectorChange">-->
-                {% set i=0 %}}
+                {% set i = 0 %}
                 {% for monat in monate %}
-                    <option value="{{i}}">{{ monat }}</option>
-                    {% set i = i +1 %}
+                    <option value="{{ i }}">{{ monat }}</option>
+                    {% set i = i + 1 %}
                 {% endfor %}
             </select>
         {% else %}
@@ -15,7 +15,7 @@
                 {% set i=0 %}}
                 {% for monat in monate %}
                     <option value="{{i}}">{{ monat }}</option>
-                    {% set i = i +1 %}
+                    {% set i = i + 1 %}
                 {% endfor %}
             </select>
         {% endif %}
