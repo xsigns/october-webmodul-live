@@ -192,7 +192,7 @@
             '<td><button data-attach-loading data-request-data="file: \'' + d.abr + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>' +
             '<td><button data-attach-loading data-request-data="file: \'' + d.prov + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>';
         $.each(d.wartung, function (index, value) {
-            subtable += '<td>' + value.wart + '</td>';
+            subtable += '<td><button data-attach-loading data-request-data="file: \'' + value + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>';
         });
 
         subtable += '</tr>' +

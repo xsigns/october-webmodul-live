@@ -640,3 +640,6 @@
     - update58.php
 3.5.9:
     - "Fehlerkorrekturen Grundrisse löschen"
+3.5.10:
+    - "Fehlerkorrekturen Zufallsobjekte"
+    - "Fehlerkorrekturen Wartungsrechnungen im Eigentumerlogin"
