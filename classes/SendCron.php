@@ -153,6 +153,9 @@ class SendCron
         $start = time();
         $datum = date("Y-m-d", $start);
 
+        $isTranslate = DB::select("select code from system_plugin_versions where code = 'RainLab.Translate'");
+        $mailTemps = Models\MailTemplate::listAllTemplates();
+
         if ($mailart == MAILART_ANREISE)
         {
             $bereich = 'Cron Anreise-E-Mail';
@@ -160,7 +163,7 @@ class SendCron
             $activevariable = 'cronbefore';
             $datumberechnet = date('Y-m-d', strtotime($datum . ' + ' . GlobalSettings::get($dayvariable) . ' days'));
             $wherepart = " and vorg_anreise = '" . $datumberechnet . "'";
-            $mailview = 'xsigns.fewo::mail.before_de';
+            $mailview = 'xsigns.fewo::mail.before_';
         }
         elseif ($mailart == MAILART_ABREISE)
         {
@@ -169,7 +172,7 @@ class SendCron
             $activevariable = 'cronafter';
             $datumberechnet = date('Y-m-d', strtotime($datum . ' - ' . GlobalSettings::get($dayvariable) . ' days'));
             $wherepart = " and vorg_abreise = '" . $datumberechnet . "'";
-            $mailview = 'xsigns.fewo::mail.voting_de';
+            $mailview = 'xsigns.fewo::mail.voting_';
         }
         else
             return new BearbeiteBereichReturn('keine gültige Mailart', []);
@@ -192,6 +195,12 @@ class SendCron
             if ($vorgang->vorgges_id === null)
                 Database::insert(null, self::$modulename,"xsigns_fewo_vorggesendet", ['vorgid' => $vorgang->vorg_id, 'anschreiben' => 0, 'bewertung' => 0]);
 
+            $gastLand = 'de';
+            $gast =  Database::select(null, self::$modulename, "select * from xsigns_fewo_gast where gast_id = " . $vorgang->vorg_gastid);
+
+            if (count($gast) > 0)
+                $gastLand = $gast[0]->gast_land;
+
             $mailBereitsGesendet = $vorgang->bewertung == 1;
             if ($mailart == MAILART_ANREISE)
                 $mailBereitsGesendet = $vorgang->anschreiben == 1;
@@ -207,7 +216,15 @@ class SendCron
 
             $href = substr($href, 1);
 
-            $bewLink = '<a href="' . Config::get('app.url') . $href . '">' . GlobalSettings::get('linktext') . '</a>';
+            if (count($isTranslate) > 0)
+            {
+                $settings = GlobalSettings::first();
+                $linkText = $settings->getAttributeTranslated('linktext', strtolower($gastLand));
+            }
+            else
+                $linkText = GlobalSettings::get('linktext');
+
+            $bewLink = '<a href="' . Config::get('app.url') . $href . '">' . $linkText . '</a>';
 
             $vars = [
                 'VORGANG_ID' => $vorgang->vorg_id,
@@ -253,6 +270,11 @@ class SendCron
                     {
                         try
                         {
+                            if (count($isTranslate) > 0 && array_key_exists($mailview . strtolower($gastLand), $mailTemps))
+                                $mailview = $mailview . strtolower($gastLand);
+                            else
+                                $mailview = $mailview . 'de';
+
                             self::$gastmail = $vorgang->gast_mail;
                             Mail::send($mailview, $vars, function ($message)
                             {

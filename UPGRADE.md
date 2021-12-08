@@ -145,9 +145,11 @@ Objektliste default.htm: Folgende Codezeile innerhalb des ``<article>``-Elemets 
 
 ## Upgrade 3.4.18
 **WICHTIG!**  
-Damit die Funktion _Sync Feondi_ benutz werden kann, ist ein erneutes Daten senden vom Fewo-Verwalter an Feondi notwendig.  
+Bitte wenden Sie sich VOR der Aktivierung von _Sync Feondi_ an unseren Support, damit er diesen Kanal für Sie aktivieren kann!  
+Danach aktivieren Sie die Funktion _Sync Feondi_ im Backend unter _Einstellungen_ > _FEWO Einstellungen_.  
+Damit die Funktion _Sync Feondi_ benutzt werden kann, ist ein erneutes Daten senden vom Fewo-Verwalter an Feondi notwendig.  
 Gehen Sie dazu im Fewo-Verwalter auf _Programm_ > _Internetschnittstellen_ > _Fewo-Verwalter Proxy (Feondi)_ > _alle Daten senden_.
-Warten Sie, bis die Übertragung abgeschlossen ist. Danach kann die Funktion _Sync Feondi_ aktiviert werden.
+Warten Sie, bis die Übertragung abgeschlossen ist.
 - - -
 
 ## Upgrade 3.4.13
@@ -268,7 +270,7 @@ Preisrechner default.htm: Kompletten script-Part ersetzen
         var script1 = false;
     {% endif %}
 
-    var datecompact = '{{ datecompact }}';
+    var datecompact = {{ datecompact }};
 
     {% if felder.tagein %}
         var tagein = true;

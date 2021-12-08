@@ -646,3 +646,8 @@
 3.5.11:
     - "Verbesserungen der Datenbank"
     - update59.php
+3.5.12:
+    - "Fehlerkorrekturen Import Bewertungen"
+    - "Fehlerkorrekturen Zeitleiste Angebote"
+    - "Verbesserungen Vorgänge Import"
+    - "Mehrsprachigkeit für Cronmails"
