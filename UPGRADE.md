@@ -5,6 +5,14 @@
 
 - - -
 
+## Upgrade 3.5.13
+**WICHTIG! Durchführung nur notwendig, wenn _Sync Feondi_ in den Fewo-Einstllungen aktiviert ist.**  
+Dieses Update enthält Verbesserungen für die Benutzung von _Sync Feondi_ im Backend. Wenn Sie den Sync für Feondi 
+in den Fewo-Einstellungen aktiviert haben, müssen alle Belegungen im Fewo-Verwalter zu Feondi erneut gesendet werden.  
+Gehen Sie dazu im Fewo-Verwalter auf _Programm_ > _Internetschnittstellen_ > _Fewo-Verwalter Proxy (Feondi)_ > _alle Belegungen senden_.
+Warten Sie, bis die Übertragung abgeschlossen ist.
+- - -
+
 ## Upgrade 3.5.7
 Behebung einer Sicherheitslücke im Bereich Listensortierung (credits @Daniel Blumhagen für die Meldung der Lücke)
 

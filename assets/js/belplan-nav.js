@@ -107,7 +107,12 @@ Belplan.updateCal = function () {
 
     if (anreisedatum && !abreisedatum) {
         var anreiseElem, arrAnreise, dayEleme, day, wechselStatus, verfuegbarStatus;
-        anreiseElem = $('#ctrl_panreise').val();
+
+        if ($('#ctrl_panreise').val() != undefined)
+            anreiseElem = $('#ctrl_panreise').val();
+        else
+            anreiseElem = $('#ctrl_anreise').val();
+
         arrAnreise = anreiseElem.split('.');
         tag = arrAnreise[0];
         monat = arrAnreise[1];
@@ -118,7 +123,12 @@ Belplan.updateCal = function () {
         anreiseClicked(elem, 'C', 'Y', true);
     } else if (anreisedatum && abreisedatum) {
         var abreiseElem, arrAbreise;
-        abreiseElem = $('#ctrl_pabreise').val();
+
+        if ($('#ctrl_pabreise').val() != undefined)
+            abreiseElem = $('#ctrl_pabreise').val();
+        else
+            abreiseElem = $('#ctrl_abreise').val();
+
         arrAbreise = abreiseElem.split('.');
         tag = arrAbreise[0];
         monat = arrAbreise[1];
@@ -378,6 +388,8 @@ Belplan.selectDatesFromDatepicker = function(anreise, abreise) {
     tagid = $('#tag_' + jahrAb + monatAb + tagAb);
     clickedAnreise = new Date(jahrAn, monatAn - 1, tagAn);
     clickedAbreise = new Date(jahrAb, monatAb - 1, tagAb);
+    anreisedatum = clickedAnreise;
+    abreisedatum = clickedAbreise;
     abreiseIndex = dayEleme.index(tagid);
     diff = Belplan.dateDiff(clickedAnreise, clickedAbreise);
 

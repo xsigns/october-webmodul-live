@@ -651,3 +651,9 @@
     - "Fehlerkorrekturen Zeitleiste Angebote"
     - "Verbesserungen Vorgänge Import"
     - "Mehrsprachigkeit für Cronmails"
+3.5.13:
+    - "!!! Fehlerkorrekturen Vorgänge Erfassungsdatum speichern. Belegungen für Feondi müssen neu gesendet werden (Nur notwendig, wenn Sync Feondi in den Fewo-Einstellungen aktiviert ist), bitte Upgrade-Guide lesen!"
+    - "Verbesserungen der Datenbank"
+    - "Fehlerkorrekturen Zahlungsmodul"
+    - "Fehlerkorrekturen Belegungsplan"
+    - update60.php
