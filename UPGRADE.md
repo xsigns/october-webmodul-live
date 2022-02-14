@@ -5,6 +5,447 @@
 
 - - -
 
+## Upgrade 3.5.14
+### Folgende Partialanpassungen für dieses Update
+**WICHTIG! Anpassung nur notwendig, wenn das default.htm Partial für _Eigentümerdaten_ angepasst wurde!**  
+Komponente Eigentümerdaten default.html: Das komplette ``<script>...</script>``-Element muss ersetzt werden durch:
+````
+<script>
+    function format(d) {
+        // `d` is the original data object for the row
+        var subtable = '<table class="display" cellspacing="2" border="0" style="margin-left:50px;width:90%;">'+
+            '<thead>' +
+            '<tr>';
+        {% if showgastdaten %}
+            {% if showGastVorname %}subtable += '<th style="padding-left:20px;">{{ labels.vorgvorname }}</th>';{% endif %}
+            {% if showGastName %}subtable += '<th style="padding-left:20px;">{{ labels.vorgname }}</th>';{% endif %}
+            {% if showGastEmail %}subtable += '<th style="padding-left:20px;">{{ labels.vorgmail }}</th>';{% endif %}
+        {% endif %}
+        {% if showGastHinweis %}subtable += '<th style="padding-left:20px;">{{ labels.memo }}</th>';{% endif %}
+        {% if showGastEigentuemerhinweis %}subtable += '<th style="padding-left:20px;">{{ labels.ehinweis }}</th>';{% endif %}
+        subtable += '</tr>' +
+            '</thead>' +
+            '<tr>';
+        {% if showgastdaten %}
+            {% if showGastVorname %}subtable += '<td style="padding-left:20px;">'+d.vorname+'</td>';{% endif %}
+            {% if showGastName %}subtable += '<td style="padding-left:20px;">'+d.name+'</td>';{% endif %}
+            {% if showGastEmail %}subtable += '<td style="padding-left:20px;">' + d.mail + '</td>';{% endif %}
+        {% endif %}
+        {% if showGastHinweis %}subtable += '<td style="padding-left:20px;">' + d.memo + '</td>';{% endif %}
+        {% if showGastEigentuemerhinweis %}subtable += '<td style="padding-left:20px;">' + d.ehinweis + '</td>';{% endif %}
+        subtable += '</tr>';
+        {% if showleistung %}
+            var length = JSON.parse(d.leistungen).length;
+            if(length > 0) {
+                subtable += '<tr>';
+                {% if showgastdaten %}
+                    subtable += '<td colspan="5">';
+                {% else %}
+                    subtable += '<td colspan="2">';
+                {% endif %}
+                subtable += '<table id="leistungen" class="display" style="width:100%; margin-top:10px;">' +
+                    '<thead>' +
+                    '<tr>' +
+                    '<th>{{ labels.lnr }}</th>' +
+                    '<th>{{ labels.ltitel }}</th>' +
+                    '<th class="dt-center">{{ labels.lanz }}</th>' +
+                    '<th class="dt-right">{{ labels.lepreis }}</th>' +
+                    '<th class="dt-right">{{ labels.lsumme }}</th>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>';
+                $.each(JSON.parse(d.leistungen), function (index, value) {
+                    subtable += '<tr>';
+                    subtable += '<td>' + value.nr + '</td>';
+                    subtable += '<td>' + value.text + '</td>';
+                    subtable += '<td class="dt-center">' + value.anz + '</td>';
+                    subtable += '<td class="dt-right">' + value.epreis + '</td>';
+                    subtable += '<td class="dt-right">' + value.summe + '</td>';
+                    subtable += '</tr>';
+                });
+                subtable += '</tbody></table>' +
+                '</td>' +
+                '</tr>';
+            }
+        {% endif %}
+        subtable += '</table>';
+        return subtable;
+    }
+
+    function formatAbr(d) {
+        var subtable = '<table class="display" cellspacing="2" border="0" style="margin-left: 50px; width: 90%;">' +
+            '<thead>' +
+            '<tr>' +
+            '<th>{{ labels.abrechnung }}</th>' +
+            '<th>{{ labels.provision }}</th>' +
+            '<th>{{ labels.wartung }} 1</th>' +
+            '<th>{{ labels.wartung }} 2</th>' +
+            '<th>{{ labels.wartung }} 3</th>' +
+            '<th>{{ labels.wartung }} 4</th>' +
+            '</tr>' +
+            '</thead>' +
+            '<tbody>' +
+            '<tr>' +
+            '<td><button data-attach-loading data-request-data="file: \'' + d.abr + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>' +
+            '<td><button data-attach-loading data-request-data="file: \'' + d.prov + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>';
+        $.each(d.wartung, function (index, value) {
+            subtable += '<td><button data-attach-loading data-request-data="file: \'' + value + '\', fileid: {{ nummer}}" data-request="{{ __SELF__ }}::onDownload">Download</button></td>';
+        });
+
+        subtable += '</tr>' +
+            '</tbody>' +
+            '</table>';
+
+        return subtable;
+    }
+
+	$(document).ready(function() {
+        $('#ctrl_objekt').select2({});
+
+        {% if showabrechnung ==1 %}
+            var abrData = {{ abrechnungen|raw }};
+
+            var abrTable = $('#abrechnungen').DataTable({
+                bFilter: true,
+                language: { {{ scriptlang|raw}} },
+                order: [[2, 'asc']],
+                displayLength: 15,
+                data: abrData,
+                columns: [
+                    {
+                        className: 'details-control',
+                        orderable: false,
+                        data: null,
+                        defaultContent: ''
+                    },
+                    {'data': 'rechnr'},
+                    {'data': 'jahr'},
+                    {'data': 'monat'},
+                    {'data': 'datum'},
+                ],
+                columnDefs: [
+                    {
+                        targets: 0,
+                        width: '30px',
+                        serachable: false,
+                        sortable: false,
+                    },
+                    {
+                        targets: 1,
+                        width: "10px",
+                    },
+                ],
+                drawCallback: function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({page: 'current'}).nodes();
+                    var last = null;
+                    api.column(0, {page: 'current'}).data().each(function(group, i) {
+                        if (last !== group) {
+                            if (i['jahr'] == group) {
+                                $(rows).eq(i).before(
+                                    '<tr class="group"><td colspan="9">' + group + '</td></tr>'
+                                );
+                                last = group;
+                            }
+                        }
+                    });
+                },
+            });
+
+            // Order by the grouping
+            $('#abrechnungen tbody').on('click', 'tr.group', function() {
+                var currentOrder = abrTable.order()[0];
+                if (currentOrder[0] === 0 && currentOrder[1] === 'asc') {
+                    abrTable.order([0, 'desc'], [1, 'desc']).draw();
+                } else {
+                    abrTable.order([0, 'asc'], [1, 'desc']).draw();
+                }
+            });
+
+            $('#abrechnungen tbody').on('click', 'td.details-control', function() {
+                var tr = $(this).closest('tr');
+                var row = abrTable.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Open this row
+                    row.child(formatAbr(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+        {% endif %}
+
+        {% if showvorgaenge == 1 %}
+            var vorgData = {{vorgaenge|raw}};
+
+            $('#vorgaenge thead tr').clone(true).addClass('filters').appendTo('#vorgaenge thead');
+
+            // Vorgaenge ***********************************
+            var table = $('#vorgaenge').DataTable({
+                rowReorder: true,
+                language: { {{ scriptlang|raw}} },
+                data: vorgData,
+                columns: [
+                    {
+                        className:      'details-control',
+                        orderable:      false,
+                        data:           null,
+                        defaultContent: ''
+                    },
+                    {"data": "jahr"},
+                    {"data": "datum"},
+                    {"data": "art"},
+                    {"data": "anreise"},
+                    {"data": "abreise"},
+                    {"data": "tage"},
+                    {"data": "objekt"},
+                    {"data": "erwachsene"},
+                    {"data": "kinder"},
+                    {"data": "objpreis", render: $.fn.dataTable.render.number( '.', ',', 2,'', ' €' )},
+                ],
+                columnDefs: [
+                    {
+                        targets: 1,
+                        width:"30px",
+                        visible: true,
+                        searchable: true,
+                        sortable: true,
+                    },
+                    {
+                        targets: 3,
+                        sortable: false,
+                        searchable: false,
+                        className: "dt-center",
+                        render: function(data,type,row)
+                        {
+                            var color= '#000';
+                            if(data == 'B')
+                                color = 'red';
+                            if(data == 'A')
+                                color = '#e6e600';
+                            if(data == 'BL')
+                                color = '#00b300';
+                            return '<span style="font-weight:bold;color:' + color +'">' + data +'</span>';
+                        }
+                    },
+                    {
+                        targets: 4,
+                        sortable: true,
+                        searchable: true,
+                        type: 'de_date',
+                    },
+                    {
+                        targets: 5,
+                        sortable: true,
+                        searchable: true,
+                        type: 'de_date',
+                    },
+                    {
+                        targets: 6,
+                        width: "30px",
+                        sortable: false,
+                        searchable: false,
+                        className: "dt-center"
+                    },
+                    {
+                        targets: 8,
+                        sortable: false,
+                        searchable: false,
+                        className: "dt-center"
+                    },
+                    {
+                        targets: 9 ,
+                        sortable: false,
+                        searchable: false,
+                        className: "dt-center"
+                    },
+                    {
+                        targets: 10 ,
+                        className: "dt-right"
+                    },
+                ],
+                order: [[1, 'desc'], [4, 'desc']],
+                displayLength: {{ itemsProSeite }},
+                dom: 'lfrtip',
+                buttons: [
+                    'csv', 'print'
+                ],
+                orderCellsTop: true,
+                initComplete: function () {
+                    var api = this.api();
+                    api.columns().eq(0).each(function (colIdx) {
+                        var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+                        var title = $(cell).text();
+                        if(colIdx > 0 && colIdx !== 3 && colIdx !== 8 && colIdx !== 9  && colIdx !== 6)
+                            $(cell).html('<input type="text" size="8" placeholder="' + title + '" />');
+                        else
+                            $(cell).html('&nbsp;');
+                        $('input', $('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('keyup change', function (e) {
+                            e.stopPropagation();
+                            $(this).attr('title', $(this).val());
+                            var regexr = '({search})';
+                            var cursorPosition = this.selectionStart;
+                            api.column(colIdx).search(
+                                this.value !== ''
+                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                    : '',
+                                this.value !== '',
+                                this.value === ''
+                            ).draw();
+                            $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                    });
+                },
+                drawCallback: function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+                    var last = null;
+                    var totale = [];
+                    totale['Totale'] = [];
+                    var groupid = -1;
+                    var subtotale = [];
+                    var columns = [1];
+                    var columns1 = 9, s = 0;
+                    var colNo = [10];
+                    var count = 0, svalue = [];
+                    for (var c = 0; c < columns.length; c++) {
+                        colNo = columns[c];
+                        api.column(colNo, { page: 'current' }).data().each(function(group, i) {
+                            if (last !== group) {
+                                groupid++;
+                                $.each(api.rows({ page: 'current' }).data(), function(index, row) {
+                                    if (row['jahr'] === group) {
+                                        var addSum = false;
+                                        $.each(row, function (index2, val2) {
+                                            if(index2 === 'art' && val2 === 'B')
+                                                addSum = true;
+                                            if (index2 === 'objpreis' || index2 === 'tage' || index2 === 'erwachsene' || index2 === 'kinder') {
+                                                if (typeof subtotale[groupid] == 'undefined')
+                                                    subtotale[groupid] = [];
+                                                if (typeof subtotale[groupid][index2] == 'undefined') {
+                                                    subtotale[groupid][index2] = 0;
+                                                    if (index2 === 'kinder')
+                                                        subtotale[groupid]['kkinder'] = 0;
+                                                }
+                                                var valCol = 0;
+                                                if (index2 === 'kinder') {
+                                                    var kinder = val2.split("/");
+                                                    subtotale[groupid][index2] = +parseFloat(subtotale[groupid][index2] + parseFloat(kinder[0])).toFixed(2);
+                                                    subtotale[groupid]['kkinder'] = +parseFloat(subtotale[groupid]['kkinder'] + parseFloat(kinder[1])).toFixed(2);
+                                                } else {
+                                                    valCol = Number(val2);
+                                                    if(addSum === true)
+                                                        subtotale[groupid][index2] = +parseFloat(subtotale[groupid][index2] + valCol).toFixed(2);
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                                svalue.push(count);
+                                last = group;
+                                count = i;
+                            } else {
+                                count = count + 1;
+                            }
+                        });
+                    }
+                    if (svalue.length > groupid) {
+                        svalue.push(count);
+                        groupid++;
+                    }
+                    for (var c = 0; c < svalue.length-1;) {
+                        var colNo2 = columns[c];
+                        api.column(colNo2, {page: 'current'}).data().each(function(group, i) {
+                            var  subtd = '';
+                            subtd = "Summen " + group + " : "+ $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']);
+                            var objsumme = $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']);
+                            var tage = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['tage']);
+                            var erw = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['erwachsene']);
+                            var kind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kinder']);
+                            var kkind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kkinder']);
+                            if (i == svalue[c + 1]) {
+                                $(rows).eq(i).after(
+                                    '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">' + tage + '</td><td></td><td class="dt-center">' + erw + '</td><td class="dt-center">' + kind + '/' + kkind + '</td><td class="dt-right">' + objsumme + '</td></tr>'
+                                );
+                                s++;
+                                c++;
+                            }
+                        });
+                    }
+                }
+            });
+            // Add event listener for opening and closing details
+            $('#vorgaenge tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row( tr );
+                if ( row.child.isShown() ) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child( format(row.data()) ).show();
+                    tr.addClass('shown');
+                }
+            });
+        {% endif %}
+
+        {% if showobjekte %}
+            var objData = {{ objekte|raw}};
+            var tableObjekte = $('#objekte').DataTable({
+                rowReorder: true,
+                language: { {{scriptlang | raw}}},
+                data:objData,
+                columns:[
+                     {
+                        className: 'details-objekte',
+                        orderable: false,
+                        data: null,
+                        defaultContent: ''
+                    },
+                    {"data": "id"},
+                    {"data": "titel"},
+                    {"data": "art"},
+                    {"data": "pers"},
+                    {"data": "qm",render: $.fn.dataTable.render.number( '.', ',', 2,'',' qm' )},
+                    {"data": "intern"},
+                ],
+                columnDefs: [
+                    {
+                        targets: 1,
+                        visible: true,
+                        searchable: true,
+                    },
+                    {
+                        targets: 4,
+                        sortable: false,
+                        searchable: false,
+                        className: "dt-center"
+                    },
+
+                    {
+                        targets: 6 ,
+                        className: "dt-center"
+                    },
+                ],
+                order:[[1, 'asc']],
+                displayLength:15,
+                dom:'Bfrtip',
+                buttons:['csv', 'print']
+            });
+        {% endif %}
+    });
+</script>
+````
+####**In der Eigentümer-Komponente können nun weitere Einstellungen für die Anzeige der Daten für die Vorgangsliste festgelegt werden.**
+
+
+- - -
+
 ## Upgrade 3.5.13
 **WICHTIG! Durchführung nur notwendig, wenn _Sync Feondi_ in den Fewo-Einstllungen aktiviert ist.**  
 Dieses Update enthält Verbesserungen für die Benutzung von _Sync Feondi_ im Backend. Wenn Sie den Sync für Feondi 

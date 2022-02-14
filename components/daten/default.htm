@@ -113,29 +113,29 @@
     </div>
 </div>
 <script>
-    function format (d) {
+    function format(d) {
         // `d` is the original data object for the row
         var subtable = '<table class="display" cellspacing="2" border="0" style="margin-left:50px;width:90%;">'+
             '<thead>' +
             '<tr>';
         {% if showgastdaten %}
-            subtable += '<th style="padding-left:20px;">{{ labels.vorgvorname }}</th>'+
-                '<th style="padding-left:20px;">{{ labels.vorgname }}</th>'+
-                '<th style="padding-left:20px;">{{ labels.vorgmail }}</th>';
+            {% if showGastVorname %}subtable += '<th style="padding-left:20px;">{{ labels.vorgvorname }}</th>';{% endif %}
+            {% if showGastName %}subtable += '<th style="padding-left:20px;">{{ labels.vorgname }}</th>';{% endif %}
+            {% if showGastEmail %}subtable += '<th style="padding-left:20px;">{{ labels.vorgmail }}</th>';{% endif %}
         {% endif %}
-        subtable += '<th style="padding-left:20px;">{{ labels.memo }}</th>' +
-            '<th style="padding-left:20px;">{{ labels.ehinweis }}</th>' +
-            '</tr>' +
+        {% if showGastHinweis %}subtable += '<th style="padding-left:20px;">{{ labels.memo }}</th>';{% endif %}
+        {% if showGastEigentuemerhinweis %}subtable += '<th style="padding-left:20px;">{{ labels.ehinweis }}</th>';{% endif %}
+        subtable += '</tr>' +
             '</thead>' +
             '<tr>';
         {% if showgastdaten %}
-            subtable += '<td style="padding-left:20px;">'+d.vorname+'</td>'+
-                '<td style="padding-left:20px;">'+d.name+'</td>'+
-                '<td style="padding-left:20px;">' + d.mail + '</td>';
+            {% if showGastVorname %}subtable += '<td style="padding-left:20px;">'+d.vorname+'</td>';{% endif %}
+            {% if showGastName %}subtable += '<td style="padding-left:20px;">'+d.name+'</td>';{% endif %}
+            {% if showGastEmail %}subtable += '<td style="padding-left:20px;">' + d.mail + '</td>';{% endif %}
         {% endif %}
-        subtable += '<td style="padding-left:20px;">' + d.memo + '</td>' +
-            '<td style="padding-left:20px;">' + d.ehinweis + '</td>' +
-            '</tr>';
+        {% if showGastHinweis %}subtable += '<td style="padding-left:20px;">' + d.memo + '</td>';{% endif %}
+        {% if showGastEigentuemerhinweis %}subtable += '<td style="padding-left:20px;">' + d.ehinweis + '</td>';{% endif %}
+        subtable += '</tr>';
         {% if showleistung %}
             var length = JSON.parse(d.leistungen).length;
             if(length > 0) {
@@ -174,8 +174,7 @@
         return subtable;
     }
 
-    function formatAbr(d)
-    {
+    function formatAbr(d) {
         var subtable = '<table class="display" cellspacing="2" border="0" style="margin-left: 50px; width: 90%;">' +
             '<thead>' +
             '<tr>' +
@@ -284,6 +283,8 @@
         {% if showvorgaenge == 1 %}
             var vorgData = {{vorgaenge|raw}};
 
+            $('#vorgaenge thead tr').clone(true).addClass('filters').appendTo('#vorgaenge thead');
+
             // Vorgaenge ***********************************
             var table = $('#vorgaenge').DataTable({
                 rowReorder: true,
@@ -296,16 +297,16 @@
                         data:           null,
                         defaultContent: ''
                     },
-                    { "data": "jahr" },
-                    { "data": "datum" },
-                    { "data": "art" },
-                    { "data": "anreise" },
-                    { "data": "abreise" },
-                    { "data": "tage" },
-                    { "data": "objekt" },
-                    { "data": "erwachsene" },
-                    { "data": "kinder" },
-                    { "data": "objpreis" ,render: $.fn.dataTable.render.number( '.', ',', 2,'', ' €' ) },
+                    {"data": "jahr"},
+                    {"data": "datum"},
+                    {"data": "art"},
+                    {"data": "anreise"},
+                    {"data": "abreise"},
+                    {"data": "tage"},
+                    {"data": "objekt"},
+                    {"data": "erwachsene"},
+                    {"data": "kinder"},
+                    {"data": "objpreis", render: $.fn.dataTable.render.number( '.', ',', 2,'', ' €' )},
                 ],
                 columnDefs: [
                     {
@@ -329,7 +330,7 @@
                                 color = '#e6e600';
                             if(data == 'BL')
                                 color = '#00b300';
-                            return '<span style="font-weight:bold;color:' + color +'">' +data +'</span>';
+                            return '<span style="font-weight:bold;color:' + color +'">' + data +'</span>';
                         }
                     },
                     {
@@ -369,53 +370,77 @@
                     },
                 ],
                 order: [[1, 'desc'], [4, 'desc']],
-                displayLength: 15,
-                dom: 'Bfrtip',
+                displayLength: {{ itemsProSeite }},
+                dom: 'lfrtip',
                 buttons: [
                     'csv', 'print'
                 ],
-                drawCallback: function ( settings ) {
+                orderCellsTop: true,
+                initComplete: function () {
+                    var api = this.api();
+                    api.columns().eq(0).each(function (colIdx) {
+                        var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
+                        var title = $(cell).text();
+                        if(colIdx > 0 && colIdx !== 3 && colIdx !== 8 && colIdx !== 9  && colIdx !== 6)
+                            $(cell).html('<input type="text" size="8" placeholder="' + title + '" />');
+                        else
+                            $(cell).html('&nbsp;');
+                        $('input', $('.filters th').eq($(api.column(colIdx).header()).index())).off('keyup change').on('keyup change', function (e) {
+                            e.stopPropagation();
+                            $(this).attr('title', $(this).val());
+                            var regexr = '({search})';
+                            var cursorPosition = this.selectionStart;
+                            api.column(colIdx).search(
+                                this.value !== ''
+                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                    : '',
+                                this.value !== '',
+                                this.value === ''
+                            ).draw();
+                            $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                    });
+                },
+                drawCallback: function (settings) {
                     var api = this.api();
                     var rows = api.rows({ page: 'current' }).nodes();
                     var last = null;
-                    var totale = new Array();
-                    totale['Totale'] = new Array();
+                    var totale = [];
+                    totale['Totale'] = [];
                     var groupid = -1;
-                    var subtotale = new Array();
+                    var subtotale = [];
                     var columns = [1];
-                    var columns1 = 9 , s=0 ;
+                    var columns1 = 9, s = 0;
                     var colNo = [10];
-                    var count= 0, svalue= [];
-
+                    var count = 0, svalue = [];
                     for (var c = 0; c < columns.length; c++) {
                         colNo = columns[c];
                         api.column(colNo, { page: 'current' }).data().each(function(group, i) {
                             if (last !== group) {
                                 groupid++;
-                                $.each(api.data(), function(index, row) {
-                                    if (row['jahr'] == group) {
+                                $.each(api.rows({ page: 'current' }).data(), function(index, row) {
+                                    if (row['jahr'] === group) {
                                         var addSum = false;
                                         $.each(row, function (index2, val2) {
-                                            if(index2 == 'art' && val2 === 'B')
+                                            if(index2 === 'art' && val2 === 'B')
                                                 addSum = true;
-                                            if (index2 == 'objpreis' || index2 == 'tage' || index2 == 'erwachsene' || index2 == 'kinder') {
-                                                if (typeof subtotale[groupid] == 'undefined') {
-                                                    subtotale[groupid] = new Array();
-                                                }
+                                            if (index2 === 'objpreis' || index2 === 'tage' || index2 === 'erwachsene' || index2 === 'kinder') {
+                                                if (typeof subtotale[groupid] == 'undefined')
+                                                    subtotale[groupid] = [];
                                                 if (typeof subtotale[groupid][index2] == 'undefined') {
                                                     subtotale[groupid][index2] = 0;
-                                                    if (index2 == 'kinder')
+                                                    if (index2 === 'kinder')
                                                         subtotale[groupid]['kkinder'] = 0;
                                                 }
-                                                var valCol = 0;//Number(val2); //.replace(/[^\d]/g, '')*1);
-                                                if (index2 == 'kinder') {
+                                                var valCol = 0;
+                                                if (index2 === 'kinder') {
                                                     var kinder = val2.split("/");
                                                     subtotale[groupid][index2] = +parseFloat(subtotale[groupid][index2] + parseFloat(kinder[0])).toFixed(2);
                                                     subtotale[groupid]['kkinder'] = +parseFloat(subtotale[groupid]['kkinder'] + parseFloat(kinder[1])).toFixed(2);
                                                 } else {
-                                                    valCol = Number(val2); //.replace(/[^\d]/g, '')*1);
-                                                    if(addSum == true)
-                                                        subtotale[groupid][index2] =+parseFloat(subtotale[groupid][index2] + valCol).toFixed(2);
+                                                    valCol = Number(val2);
+                                                    if(addSum === true)
+                                                        subtotale[groupid][index2] = +parseFloat(subtotale[groupid][index2] + valCol).toFixed(2);
                                                 }
                                             }
                                         });
@@ -429,52 +454,31 @@
                             }
                         });
                     }
-                    if (svalue.length>groupid) {
+                    if (svalue.length > groupid) {
                         svalue.push(count);
                         groupid++;
                     }
                     for (var c = 0; c < svalue.length-1;) {
                         var colNo2 = columns[c];
-                        api.column(colNo2, { page: 'current' }).data().each(function(group, i) {
+                        api.column(colNo2, {page: 'current'}).data().each(function(group, i) {
                             var  subtd = '';
-                            subtd = "Summen "+group+" : "+ $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']) ;
-                            var objsumme = $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']) ;
-                            var tage = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['tage']) ;
-                            var erw = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['erwachsene']) ;
-                            var kind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kinder']) ;
-                            var kkind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kkinder']) ;
-                        if(i == svalue[c+1])
-                        {
-                            $(rows).eq(i).after(
-                            '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">'+tage+'</td><td></td><td class="dt-center">' + erw +'</td><td class="dt-center">' + kind + '/' + kkind +'</td><td class="dt-right">' + objsumme + '</td></tr>');
-                            s++;
-                            c++;
-                        }
+                            subtd = "Summen " + group + " : "+ $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']);
+                            var objsumme = $.fn.dataTable.render.number('.', ',', 2,'',' €').display(subtotale[s]['objpreis']);
+                            var tage = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['tage']);
+                            var erw = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['erwachsene']);
+                            var kind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kinder']);
+                            var kkind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kkinder']);
+                            if (i == svalue[c + 1]) {
+                                $(rows).eq(i).after(
+                                    '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">' + tage + '</td><td></td><td class="dt-center">' + erw + '</td><td class="dt-center">' + kind + '/' + kkind + '</td><td class="dt-right">' + objsumme + '</td></tr>'
+                                );
+                                s++;
+                                c++;
+                            }
                         });
                     }
                 }
             });
-
-            $('#vorgaenge tfoot th').each( function (group,i) {
-                var title = $(this).text();
-                if(group > 0 && group != 3 && group !=8 && group !=9  && group !=6)
-                    $(this).html( '<input type="text" size="8" placeholder="'+title+'" />' );
-                else
-                    $(this).html('&nbsp;');
-            });
-
-            // Apply the search
-            table.columns().every( function () {
-                var that = this;
-                $( 'input', this.footer() ).on( 'keyup change', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                });
-            });
-
             // Add event listener for opening and closing details
             $('#vorgaenge tbody').on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');

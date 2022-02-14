@@ -657,3 +657,7 @@
     - "Fehlerkorrekturen Zahlungsmodul"
     - "Fehlerkorrekturen Belegungsplan"
     - update60.php
+3.5.14:
+    - '!!! Verbesserungen im Eigentümerlogin. Eventuelle Partialanpassungen notwendig, bitte Upgrade-Guide lesen!'
+    - 'Verbesserung Sync Feondi Logging'
+    - 'Verbesserung für Mehrsprachigkeit'
