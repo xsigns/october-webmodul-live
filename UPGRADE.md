@@ -4,11 +4,18 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 
 - - -
+## Upgrade 3.5.15
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente Listenfilter default.htm: Die Code-Zeile ``$('#abreise').request('onDataChange');`` im Script-Bereich, muss durch folgenden Code ersetzt werden:
+````
+$('#abreise').request('onDataChange', {data: {dateChange: 1}});
+````
+- - -
 
 ## Upgrade 3.5.14
-### Folgende Partialanpassungen für dieses Update
-**WICHTIG! Anpassung nur notwendig, wenn das default.htm Partial für _Eigentümerdaten_ angepasst wurde!**  
-Komponente Eigentümerdaten default.html: Das komplette ``<script>...</script>``-Element muss ersetzt werden durch:
+### Folgende Partialanpassungen für dieses Update 
+Komponente Eigentümerdaten default.htm: Das komplette ``<script>...</script>``-Element muss ersetzt werden durch:  
+**WICHTIG! Anpassung nur notwendig, wenn das default.htm Partial für _Eigentümerdaten_ angepasst wurde!**
 ````
 <script>
     function format(d) {

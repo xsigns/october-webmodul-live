@@ -451,7 +451,7 @@
             $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + ' - ' + moment(obj.date2).format('DD.MM.YYYY'));
             {% endif %}
             resetpage = true;
-            $('#abreise').request('onDataChange');
+            $('#abreise').request('onDataChange', {data: {dateChange: 1}});
         });
 
         picker.bind('datepicker-clear', function() {

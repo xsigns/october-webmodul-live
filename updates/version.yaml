@@ -661,3 +661,6 @@
     - '!!! Verbesserungen im Eigentümerlogin. Eventuelle Partialanpassungen notwendig, bitte Upgrade-Guide lesen!'
     - 'Verbesserung Sync Feondi Logging'
     - 'Verbesserung für Mehrsprachigkeit'
+3.5.15:
+    - '!!! Verbesserungen im Listenfilter. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!'
+    - 'Erweiterung Belegungsplan. Aktivierung der Klick-Funktion individuell einstellbar.'
