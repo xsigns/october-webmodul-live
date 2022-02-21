@@ -14,9 +14,125 @@ $('#abreise').request('onDataChange', {data: {dateChange: 1}});
 
 ## Upgrade 3.5.14
 ### Folgende Partialanpassungen für dieses Update 
-Komponente Eigentümerdaten default.htm: Das komplette ``<script>...</script>``-Element muss ersetzt werden durch:  
+Komponente Eigentümerdaten default.htm: Der komplette Code muss ersetzt werden durch:  
 **WICHTIG! Anpassung nur notwendig, wenn das default.htm Partial für _Eigentümerdaten_ angepasst wurde!**
 ````
+<div class="clearfix"></div>
+<div class="eheader">
+    <div class="enummer">{{ labels.enummer }} {{ nummer }}</div>
+    {% if firma %}
+    <div class="efirma">{{ labels.efirma }} {{ firma }}</div>
+    {% endif %}
+    <div class="ename">{{ labels.ename }} {{ vorname }} {{ name }}</div>
+    <div class="float-right">
+        <a href="#" data-request="onLogout">{{ btnlogout }}</a>
+    </div>
+</div>
+<div class="edaten">
+    <div id="exTab2" class="container col-md-12 p-0 float-left"> 
+        <ul class="nav nav-tabs" role="tablist" id="edatenTab">
+            {% if showabrechnung == 1 %}
+                <li class="nav-item disabled" id="tab1"><a class="nav-link active" href="#1" data-toggle="tab" role="tab">{{ labels.tab1 }}</a></li>
+            {% endif %}
+            {% if showvorgaenge == 1 %}
+                <li class="nav-item disabled" id="tab2"><a class="nav-link" href="#2" data-toggle="tab" role="tab">{{ labels.tab2 }}</a></li>
+            {% endif %}
+            {% if showobjekte %}
+                <li class="nav-item disabled" id="tab3"><a class="nav-link" href="#3" data-toggle="tab" role="tab">{{ labels.tab3 }}</a></li>
+            {% endif %}
+            {% if showbelegen %}
+                <li class="nav-item disabled" id="tab4"><a class="nav-link" href="#4" data-toggle="tab" role="tab">{{ labels.tab4 }}</a></li>
+            {% endif %}
+        </ul>
+        <div class="tab-content" >
+            {% if showabrechnung ==1 %}
+                <div role="tabpanel" class="tab-pane active" id="1">
+                    <table id="abrechnungen" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>{{ labels.rechnungsnr }}</th>
+                                <th>{{ labels.jahr }}</th>
+                                <th>{{ labels.monat }}</th>
+                                <th>{{ labels.datum }}</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            {% endif %}
+            {% if showvorgaenge == 1 %}
+                <div role="tabpanel" class="tab-pane" id="2">
+                    <table id="vorgaenge" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>{{ labels.vorgjahr }}</th>
+                                <th>{{ labels.vorgdatum }}</th>
+                                <th>{{ labels.vorgart }}</th>
+                                <th>{{ labels.vorganreise }}</th>
+                                <th>{{ labels.vorgabreise }}</th>
+                                <th>{{ labels.vorgtage }}</th>
+                                <th>{{ labels.vorgobjekt }}</th>
+                                <th>{{ labels.vorgobjid }}</th>
+                                <th>{{ labels.vorgerwachsene }}</th>
+                                <th>{{ labels.vorgkinder }}</th>
+                                <th>{{ labels.vorgobjpreis }}</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th>{{ labels.vorgjahr }}</th>
+                                <th>{{ labels.vorgdatum }}</th>
+                                <th>{{ labels.vorgart }}</th>
+                                <th>{{ labels.vorganreise }}</th>
+                                <th>{{ labels.vorgabreise }}</th>
+                                <th>{{ labels.vorgtage }}</th>
+                                <th>{{ labels.vorgobjekt }}</th>
+                                <th>{{ labels.vorgobjid }}</th>
+                                <th>{{ labels.vorgerwachsene }}</th>
+                                <th>{{ labels.vorgkinder }}</th>
+                                <th>{{ labels.vorgobjpreis }}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            {% endif %}
+            {% if showobjekte %}
+                <div role="tabpanel" class="tab-pane" id="3">
+                    <table id="objekte" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>{{ labels.objnr }}</th>
+                                <th>{{ labels.objtitel }}</th>
+                                <th>{{ labels.objart }}</th>
+                                <th>{{ labels.objpers }}</th>
+                                <th>{{ labels.objqm }}</th>
+                                <th>{{ labels.objint }}</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            {% endif %}
+            {% if showbelegen %}
+                <div role="tabpanel" class="tab-pane" id="4">
+                    <form class="eigenbelegung_form" method="post" data-request="{{ __SELF__ }}::onBelegung">
+                        <div class="bel_objekt">
+                            <div class="label label_objektauswahl">{{ labels.belobjekt }}</div>
+                            <select id="ctrl_objekt" class="select frm_objekt" name="objekt" data-request="{{ __SELF__ }}::onObjektChange" style="width:300px;">
+                                {% for key, obj in belobjekte %}
+                                    <option value="{{ key }}">{{ obj|raw }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div id="belegung"></div>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 <script>
     function format(d) {
         // `d` is the original data object for the row
@@ -209,6 +325,7 @@ Komponente Eigentümerdaten default.htm: Das komplette ``<script>...</script>``-
                     {"data": "abreise"},
                     {"data": "tage"},
                     {"data": "objekt"},
+                    {"data": "objid"},
                     {"data": "erwachsene"},
                     {"data": "kinder"},
                     {"data": "objpreis", render: $.fn.dataTable.render.number( '.', ',', 2,'', ' €' )},
@@ -259,18 +376,25 @@ Komponente Eigentümerdaten default.htm: Das komplette ``<script>...</script>``-
                     },
                     {
                         targets: 8,
+                        width: "30px",
+                        sortable: false,
+                        searchable: true,
+                        className: "dt-center",
+                    },
+                    {
+                        targets: 9,
                         sortable: false,
                         searchable: false,
                         className: "dt-center"
                     },
                     {
-                        targets: 9 ,
+                        targets: 10,
                         sortable: false,
                         searchable: false,
                         className: "dt-center"
                     },
                     {
-                        targets: 10 ,
+                        targets: 11 ,
                         className: "dt-right"
                     },
                 ],
@@ -286,7 +410,7 @@ Komponente Eigentümerdaten default.htm: Das komplette ``<script>...</script>``-
                     api.columns().eq(0).each(function (colIdx) {
                         var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
                         var title = $(cell).text();
-                        if(colIdx > 0 && colIdx !== 3 && colIdx !== 8 && colIdx !== 9  && colIdx !== 6)
+                        if(colIdx > 0 && colIdx !== 3 && colIdx !== 9  && colIdx !== 6)
                             $(cell).html('<input type="text" size="8" placeholder="' + title + '" />');
                         else
                             $(cell).html('&nbsp;');
@@ -295,13 +419,23 @@ Komponente Eigentümerdaten default.htm: Das komplette ``<script>...</script>``-
                             $(this).attr('title', $(this).val());
                             var regexr = '({search})';
                             var cursorPosition = this.selectionStart;
-                            api.column(colIdx).search(
-                                this.value !== ''
-                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                    : '',
-                                this.value !== '',
-                                this.value === ''
-                            ).draw();
+                            if (colIdx !== 8) {
+                                api.column(colIdx).search(
+                                    this.value !== ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value !== '',
+                                    this.value === ''
+                                ).draw();
+                            } else {
+                                api.column(colIdx).search(
+                                    this.value !== ''
+                                        ? '\\b' + $(this).val() + '\\b'
+                                        : '',
+                                    this.value !== '',
+                                    this.value === ''
+                                ).draw();
+                            }
                             $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
                         });
                     });
@@ -375,7 +509,7 @@ Komponente Eigentümerdaten default.htm: Das komplette ``<script>...</script>``-
                             var kkind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kkinder']);
                             if (i == svalue[c + 1]) {
                                 $(rows).eq(i).after(
-                                    '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">' + tage + '</td><td></td><td class="dt-center">' + erw + '</td><td class="dt-center">' + kind + '/' + kkind + '</td><td class="dt-right">' + objsumme + '</td></tr>'
+                                    '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">' + tage + '</td><td></td><td></td><td class="dt-center">' + erw + '</td><td class="dt-center">' + kind + '/' + kkind + '</td><td class="dt-right">' + objsumme + '</td></tr>'
                                 );
                                 s++;
                                 c++;

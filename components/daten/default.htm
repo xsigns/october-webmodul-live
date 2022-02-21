@@ -54,6 +54,7 @@
                                 <th>{{ labels.vorgabreise }}</th>
                                 <th>{{ labels.vorgtage }}</th>
                                 <th>{{ labels.vorgobjekt }}</th>
+                                <th>{{ labels.vorgobjid }}</th>
                                 <th>{{ labels.vorgerwachsene }}</th>
                                 <th>{{ labels.vorgkinder }}</th>
                                 <th>{{ labels.vorgobjpreis }}</th>
@@ -69,6 +70,7 @@
                                 <th>{{ labels.vorgabreise }}</th>
                                 <th>{{ labels.vorgtage }}</th>
                                 <th>{{ labels.vorgobjekt }}</th>
+                                <th>{{ labels.vorgobjid }}</th>
                                 <th>{{ labels.vorgerwachsene }}</th>
                                 <th>{{ labels.vorgkinder }}</th>
                                 <th>{{ labels.vorgobjpreis }}</th>
@@ -304,6 +306,7 @@
                     {"data": "abreise"},
                     {"data": "tage"},
                     {"data": "objekt"},
+                    {"data": "objid"},
                     {"data": "erwachsene"},
                     {"data": "kinder"},
                     {"data": "objpreis", render: $.fn.dataTable.render.number( '.', ',', 2,'', ' €' )},
@@ -354,18 +357,25 @@
                     },
                     {
                         targets: 8,
+                        width: "30px",
+                        sortable: false,
+                        searchable: true,
+                        className: "dt-center",
+                    },
+                    {
+                        targets: 9,
                         sortable: false,
                         searchable: false,
                         className: "dt-center"
                     },
                     {
-                        targets: 9 ,
+                        targets: 10,
                         sortable: false,
                         searchable: false,
                         className: "dt-center"
                     },
                     {
-                        targets: 10 ,
+                        targets: 11 ,
                         className: "dt-right"
                     },
                 ],
@@ -381,7 +391,7 @@
                     api.columns().eq(0).each(function (colIdx) {
                         var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
                         var title = $(cell).text();
-                        if(colIdx > 0 && colIdx !== 3 && colIdx !== 8 && colIdx !== 9  && colIdx !== 6)
+                        if(colIdx > 0 && colIdx !== 3 && colIdx !== 9  && colIdx !== 6)
                             $(cell).html('<input type="text" size="8" placeholder="' + title + '" />');
                         else
                             $(cell).html('&nbsp;');
@@ -390,13 +400,23 @@
                             $(this).attr('title', $(this).val());
                             var regexr = '({search})';
                             var cursorPosition = this.selectionStart;
-                            api.column(colIdx).search(
-                                this.value !== ''
-                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                    : '',
-                                this.value !== '',
-                                this.value === ''
-                            ).draw();
+                            if (colIdx !== 8) {
+                                api.column(colIdx).search(
+                                    this.value !== ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value !== '',
+                                    this.value === ''
+                                ).draw();
+                            } else {
+                                api.column(colIdx).search(
+                                    this.value !== ''
+                                        ? '\\b' + $(this).val() + '\\b'
+                                        : '',
+                                    this.value !== '',
+                                    this.value === ''
+                                ).draw();
+                            }
                             $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
                         });
                     });
@@ -470,7 +490,7 @@
                             var kkind = $.fn.dataTable.render.number('.', ',', 0).display(subtotale[s]['kkinder']);
                             if (i == svalue[c + 1]) {
                                 $(rows).eq(i).after(
-                                    '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">' + tage + '</td><td></td><td class="dt-center">' + erw + '</td><td class="dt-center">' + kind + '/' + kkind + '</td><td class="dt-right">' + objsumme + '</td></tr>'
+                                    '<tr class="group group-end"><td colspan="6">Summen (B) ' + group + '</td><td class="dt-center">' + tage + '</td><td></td><td></td><td class="dt-center">' + erw + '</td><td class="dt-center">' + kind + '/' + kkind + '</td><td class="dt-right">' + objsumme + '</td></tr>'
                                 );
                                 s++;
                                 c++;
