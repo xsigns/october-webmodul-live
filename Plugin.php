@@ -128,6 +128,7 @@ class Plugin extends PluginBase
         $components = [
             '\xsigns\fewo\Components\schemaorg' => 'SchemaOrg',
             '\xsigns\fewo\Components\objektliste' => 'Objektliste',
+            '\xsigns\fewo\Components\objektlisteteilen' => 'ObjektisteTeilen',
             '\xsigns\fewo\Components\hausliste' => 'Hausliste',
             '\xsigns\fewo\Components\hausdetail' => 'HausDetail',
             '\xsigns\fewo\Components\objektsuche' => 'ObjektSuche',

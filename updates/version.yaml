@@ -659,10 +659,13 @@
     - update60.php
 3.5.14:
     - "!!! Verbesserungen im Eigentümerlogin. Eventuelle Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
-    - "Verbesserung Sync Feondi Logging"
-    - "Verbesserung für Mehrsprachigkeit"
+    - "Verbesserungen Sync Feondi Logging"
+    - "Verbesserungen für Mehrsprachigkeit"
 3.5.15:
     - "!!! Verbesserungen im Listenfilter. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - "Erweiterung Belegungsplan. Aktivierung der Klick-Funktion individuell einstellbar."
 3.5.16:
     - "Verbesserungen Eigentümerlogin"
+3.5.17:
+    - "Teilen einer gefilterten Liste als Link"
+    - "Verbesserungen Preisrechner Auswahl löschen"

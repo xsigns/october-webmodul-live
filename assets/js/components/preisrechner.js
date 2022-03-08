@@ -82,8 +82,13 @@ $(function(){
         $('#ctrl_pabreise').request('onCalAbreiseChange');
     }
 
-
     picker.bind('datepicker-clear', function() {
+        if (datecompact === 1)
+            $('#period').val('');
+
+        $('#ctrl_panreise').val('');
+        $('#ctrl_pabreise').val('');
+
         if (calClick === 1)
             Belplan.resetBelplan();
 
