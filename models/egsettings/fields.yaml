@@ -20,3 +20,11 @@ tabs:
             type: radio
             default: attribue_username
             tab: xsigns.fewo::lang.eigentuemerlogin.settings.signin_tab
+
+        # Send mail to user
+        send_mail_to_user:
+            span: left
+            label: xsigns.fewo::lang.eigentuemerlogin.settings.send_mail_to_user
+            comment: xsigns.fewo::lang.eigentuemerlogin.settings.send_mail_to_user_comment
+            type: switch
+            tab: xsigns.fewo::lang.eigentuemerlogin.settings.signin_tab

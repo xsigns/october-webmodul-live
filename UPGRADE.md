@@ -4,6 +4,12 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 
 - - -
+
+## Upgrade 3.5.18
+#### Dieses Update enthält eine neue Funktion für die Eigentümerlogin-Erweiterung.
+Ab sofort ist es möglich, automatisierte Emails an den Eigentümer zu senden, sobald dieser über den Fewo-Verwalter für den Eigentümerlogin freigeschlatet oder die Login-Daten geändern wurden. Diese Funktion kann im Backend unter _Einstellungen -> Eigentümer-Einstellungen_ aktiviert werden. Die entsprechenden Mail-Vorlagen, können im Bereich der Mail-Vorlagen angepasst werden. Mehrsprachige Mail-Vorlagen sind möglich.
+- - -
+
 ## Upgrade 3.5.15
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente Listenfilter default.htm: Die Code-Zeile ``$('#abreise').request('onDataChange');`` im Script-Bereich, muss durch folgenden Code ersetzt werden:

@@ -15,8 +15,8 @@ class Update25 extends Migration
             $table->integer('fewoid')->unsigned()->index();
             $table->string('typ',1)->index(); // O = Objekt, H= Haus, A = Ausstattung, G = Grundrisse
             $table->integer('no')->unsigned()->index();
-            $table->string('image',255);
-            $table->string('title',255);
+            $table->string('image',250);
+            $table->string('title',250);
             $table->text('description');
             $table->index(['fewoid', 'typ']);
         });

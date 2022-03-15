@@ -669,3 +669,7 @@
 3.5.17:
     - "Teilen einer gefilterten Liste als Link"
     - "Verbesserungen Preisrechner Auswahl löschen"
+3.5.18:
+    - "Es gibt nun die Möglichkeit den Eigentümer über die Freischaltung oder Änderung der Eigentümerlogin-Daten automatisch per Email zu informieren. Weitere informationen befinden sich im UPGRADE-Guide."
+    - "Verbesserungen der Datenbank"
+    - update61.php

@@ -25,7 +25,7 @@ class CreateTables extends Migration
             $table->integer('ang_mehrfach')->unsigned();
             $table->integer('ang_laenger')->unsigned();
             $table->string('ang_sort', 30)->index();
-            $table->string('ang_alias',250)->nullable();
+            $table->string('ang_alias', 250)->nullable();
         });
         Schema::create('xsigns_fewo_anglang',function($table){
             $table->engine = 'InnoDB';
@@ -102,12 +102,12 @@ class CreateTables extends Migration
             $table->timestamp('tstamp');
             $table->integer('obj_id')->unsigned()->index();
             $table->integer('aktiv')->unsigned()->index();
-            $table->string('betreff', 255)->index();
+            $table->string('betreff', 250)->index();
             $table->text('nachricht');
             $table->text('antwort');
             $table->date('datum');
-            $table->string('mail',255);
-            $table->string('gastname',255);
+            $table->string('mail',250);
+            $table->string('gastname',250);
             $table->integer('pid');
             $table->string('ort',200);
         });
@@ -154,13 +154,13 @@ class CreateTables extends Migration
             $table->text('leistungen');
             $table->text('mitreisende');
             $table->text('artikel');
-            $table->string('orderHash',255)->nullable();
+            $table->string('orderHash',250)->nullable();
             $table->text('nachricht');
-            $table->string('typeof',255);
+            $table->string('typeof',250);
             $table->integer('sync');
             $table->integer('userid')->unsigned();
             $table->integer('angebotid')->unsigned();
-            $table->string('rueckruf',255)->nullable();
+            $table->string('rueckruf',250)->nullable();
             $table->string('register',1)->nullable();
             $table->decimal('objektpreis',9,2)->default(0.00);
             $table->decimal('angebotpreis',9,2)->default(0.00);
@@ -205,9 +205,9 @@ class CreateTables extends Migration
             $table->string('entf_land', 3);
             $table->string('entf_lat', 60);
             $table->string('entf_lng', 60);
-            $table->string('entf_url', 255);
+            $table->string('entf_url', 250);
             $table->string('entf_sort', 20);
-            $table->string('entf_address', 255);
+            $table->string('entf_address', 250);
             $table->string('entf_countrycode', 10);
             $table->index(['entf_lat', 'entf_lng']);
         });
@@ -215,7 +215,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->integer('entfid')->unsigned()->index();
             $table->string('lang', 3);
-            $table->string('name', 255);
+            $table->string('name', 250);
             $table->text('beschreibung');
             $table->index(['entfid', 'lang']);
         });
@@ -234,7 +234,7 @@ class CreateTables extends Migration
             $table->string('gast_land', 3)->nullable();
             $table->string('gast_tel', 25);
             $table->string('gast_mobil', 25);
-            $table->string('gast_mail', 255);
+            $table->string('gast_mail', 250);
             $table->string('gast_hashcode', 120)->nullable();
             $table->integer('gast_gesperrt')->unsigned();
         });
@@ -249,13 +249,13 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_ha', function($table) {
             $table->engine = 'InnoDB';
             $table->integer('id')->unsigned()->index();
-            $table->string('haus_titel', 255);
-            $table->string('haus_name', 255)->index();
-            $table->string('haus_alias', 255)->index();
-            $table->string('haus_strasse', 255);
+            $table->string('haus_titel', 250);
+            $table->string('haus_name', 250)->index();
+            $table->string('haus_alias', 250)->index();
+            $table->string('haus_strasse', 250);
             $table->string('haus_plz', 10);
             $table->string('haus_land', 3);
-            $table->string('haus_ort', 255);
+            $table->string('haus_ort', 250);
             $table->string('haus_tel', 25);
             $table->string('haus_fax', 25);
             $table->string('haus_mail', 25);
@@ -267,7 +267,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->integer('hausid')->unsigned()->index();
             $table->string('lang', 3)->index();
-            $table->string('name',255);
+            $table->string('name',250);
             $table->text('beschreibung');
             $table->text('kurz');
             $table->text('seo');
@@ -304,7 +304,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->integer('lageid')->unsigned()->index();
             $table->string('lang', 3);
-            $table->string('name', 255);
+            $table->string('name', 250);
             $table->index(['lageid', 'lang']);
         });
         Schema::create('xsigns_fewo_le', function ($table) {
@@ -322,7 +322,7 @@ class CreateTables extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('leistart_id')->unsigned()->index();
-            $table->string('leistart_titel', 255);
+            $table->string('leistart_titel', 250);
             $table->integer('leistart_aktiv')->unsigned();
         });
         Schema::create('xsigns_fewo_lelang', function ($table) {
@@ -338,7 +338,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_obj', function ($table) {
             $table->engine = 'InnoDB';
             $table->integer('id')->unsigned()->index();
-            $table->string('obj_alias', 255)->index();
+            $table->string('obj_alias', 250)->index();
             $table->string('obj_name', 200);
             $table->string('obj_intnr', 60)->nullable();
             $table->integer('obj_artid')->unsigned()->default(0)->index();
@@ -469,7 +469,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_orte', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('ort_name', 255)->index();
+            $table->string('ort_name', 250)->index();
             $table->string('ort_plz', 10);
             $table->string('ort_land', 3)->index();
             $table->index(['ort_name', 'ort_land']);
@@ -496,7 +496,7 @@ class CreateTables extends Migration
             $table->increments('id');
             $table->integer('preislng_preisid')->unsigned()->index();
             $table->integer('preislng_objid')->unsigned()->index();
-            $table->string('preislng_titel', 255);
+            $table->string('preislng_titel', 250);
             $table->string('preislng_lang', 3);
             //$table->index(['preislng_preisid', 'preislng_lang']);
         });
@@ -644,21 +644,21 @@ class CreateTables extends Migration
             $table->integer('adaptive_height')->nullable();
             $table->integer('autoplay_speed')->nullable();
             $table->integer('arrows')->nullable();
-            $table->string('prev_arrow',255)->nullable();
-            $table->string('next_arrow',255)->nullable();
+            $table->string('prev_arrow',250)->nullable();
+            $table->string('next_arrow',250)->nullable();
             $table->integer('center_mode')->nullable();
             $table->string('center_padding',10)->nullable();
-            $table->string('css_ease',255)->nullable();
+            $table->string('css_ease',250)->nullable();
             $table->integer('dots')->nullable();
-            $table->string('dots_class',255)->nullable();
+            $table->string('dots_class',250)->nullable();
             $table->integer('draggable')->nullable();
             $table->integer('fade')->nullable();
             $table->integer('focus_on_select')->nullable();
-            $table->string('easing',255)->nullable();
+            $table->string('easing',250)->nullable();
             $table->double('edge_friction',9,2)->nullable();
             $table->integer('infinite')->nullable();
             $table->integer('initial_slide')->nullable();
-            $table->string('lazy_load',255)->nullable();
+            $table->string('lazy_load',250)->nullable();
             $table->integer('pause_on_focus')->nullable();
             $table->integer('pause_on_hover')->nullable();
             $table->integer('pause_on_dots_hover')->nullable();

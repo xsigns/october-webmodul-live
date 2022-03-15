@@ -44,6 +44,7 @@ class Update60 extends Migration
                 "modify column mitreisende text COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, " .
                 "modify column nachricht text COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, " .
                 "modify column zuschlaege text COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, " .
+                "modify column typeof text COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, " .
                 "modify column versicherung text COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL");
         }
 

@@ -114,13 +114,6 @@ tabs:
       cssClass: col-sm-4
       comment: xsigns.fewo::lang.globalsettings.titleheader_desc
       tab: xsigns.fewo::lang.globalsettings.tab1
-    blockieren:
-      label: xsigns.fewo::lang.globalsettings.blockieren
-      type: switch
-      span: right
-      cssClass: col-sm-4
-      commentAbove: xsigns.fewo::lang.globalsettings.blockieren_desc
-      tab: xsigns.fewo::lang.globalsettings.tab1
     mformat:
       label: xsigns.fewo::lang.globalsettings.mformat
       comment: xsigns.fewo::lang.globalsettings.mformat_desc
@@ -296,6 +289,15 @@ tabs:
       type: switch
       span: left
       comment: xsigns.fewo::lang.globalsettings.calclick_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    blockieren:
+      label: xsigns.fewo::lang.globalsettings.blockieren
+      type: switch
+      span: right
+      comment: xsigns.fewo::lang.globalsettings.blockieren_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    calcsssection:
+      type: section
       tab: xsigns.fewo::lang.globalsettings.tab4
     calcss:
       label: xsigns.fewo::lang.globalsettings.calcss

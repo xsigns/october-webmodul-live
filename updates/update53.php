@@ -13,8 +13,8 @@ class Update53 extends Migration
     public function up()
     {
         Schema::table('xsigns_fewo_vorggesendet', function ($table) {
-            $table->string('vorgges_grundbew', 255);
-            $table->string('vorgges_grundanschr', 255);
+            $table->string('vorgges_grundbew', 250);
+            $table->string('vorgges_grundanschr', 250);
         });
     }
 

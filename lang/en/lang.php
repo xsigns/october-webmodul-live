@@ -421,6 +421,8 @@ return [
             'notifications_tab' => 'Benachrichtigungen',
             'allow_registration' => 'Benutzerregistrierung erlauben',
             'allow_registration_comment' => 'Falls dies deaktivert ist, können Benutzer nur von Administratoren erstellt werden.',
+            'send_mail_to_user' => 'E-Mail an Eigentümer senden',
+            'send_mail_to_user_comment' => 'Sendet eine E-Mail mit den Login-Informationen an die E-Mail-Adresse des Eigentümers, sobald dieser im Fewo-Verwalter freigeschlatet oder die Login-Daten geändert wurden.',
         ],
         'state' => [
             'label' => 'Provinz',
