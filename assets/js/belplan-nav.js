@@ -355,6 +355,10 @@ Belplan.updateBuchung = function (clickedAnreise, clickedAbreise) {
         $('#period').data('dateRangePicker').setDateRange(clickedAnreise, clickedAbreise, true);
     else if ($('#ctrl_anreise').length !== 0)
         $('#ctrl_anreise').data('dateRangePicker').setDateRange(clickedAnreise, clickedAbreise, true);
+
+    if (typeof datePickerChanged === "function") {
+        datePickerChanged();
+    }
 };
 
 Belplan.selectAbreise = function (elem, tag, monat, jahr) {

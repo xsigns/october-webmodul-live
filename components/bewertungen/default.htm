@@ -17,7 +17,7 @@
                 <div class="bew_objtitel"><a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}>{{ bewertung.objtitel|raw}}</a></div>
                 {% if showimage %}
                     <div class="bew_image">
-                        <a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}><img src="{{ bewertung.image.thumb( img_width, img_height) }}" alt="{{ bewertung.image.title }}" title="{{ bewertung.image.title }}"></a>
+                        <a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}><img src="{{ bewertung.image|raw }}" alt="{{ bewertung.image.title }}" title="{{ bewertung.image.title }}"></a>
                     </div>
                 {% endif %}
                 <div class="bew_nachricht">{{ bewertung.nachricht|raw }}</div>

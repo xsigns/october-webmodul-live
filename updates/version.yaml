@@ -673,3 +673,8 @@
     - "Es gibt nun die Möglichkeit den Eigentümer über die Freischaltung oder Änderung der Eigentümerlogin-Daten automatisch per Email zu informieren. Weitere informationen befinden sich im UPGRADE-Guide."
     - "Verbesserungen der Datenbank"
     - update61.php
+3.5.19:
+    - "Verbesserungen"
+    - "Verbesserung der Performance"
+    - "Fehlerkorrekturen Gastdaten speichern"
+    - update62.php

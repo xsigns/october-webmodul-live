@@ -36,7 +36,7 @@
 {% else %}
     <div id="{{ __SELF__ }}" class="magnific">
         {% for image in images %}
-            <a href="{{ image.path }}"><img title="{{ image.title }}" alt="{{ image.description }}" src="{{ image.thumb( gal_width , gal_height ) }}" width="{{ gal_width }}" height="{{ gal_height }}"></a>
+            <a href="{{ image.path }}"><img title="{{ image.title }}" alt="{{ image.description }}" src="{{ image.thumb|raw }}" width="{{ gal_width }}" height="{{ gal_height }}"></a>
         {% endfor %}
     </div>
 {% endif %}

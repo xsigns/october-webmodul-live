@@ -576,6 +576,7 @@
             placeholder: 'placeholder',
             showShortcuts: false,
             showLegend:false,
+            legendHtml: '',
             shortcuts: {
                 //'delete': true,
                 //'prev-days': [1,3,5,7],
@@ -2189,7 +2190,10 @@
 
                 html += '</div>';
                 if(opt.showLegend){
-                    html += translate('legende');
+                    if (opt.legendHtml === '')
+                        html += translate('legende');
+                    else
+                        html += opt.legendHtml;
                 }
             }
 
@@ -2365,15 +2369,19 @@
                     today.extraClass = '';
                     today.tooltip = '';
                     var is_noarrival = false;
+
                     if (today.valid && opt.beforeShowDay && typeof opt.beforeShowDay == 'function') {
                         var _isday = moment(today.time).toDate();
-
                         var _r = opt.beforeShowDay(moment(today.time).toDate());
+
                         today.valid = _r[0];
                         today.extraClass = _r[1] || '';
-                            today.tooltip = _r[2] || '';
-                        if (today.tooltip !== '') today.extraClass += ' has-tooltip ';
+                        today.tooltip = _r[2] || '';
+
+                        if (today.tooltip !== '')
+                            today.extraClass += ' has-tooltip ';
                     }
+
                     var weekday = moment(_isday).weekday();
                     for (var i = 0; i <= opt.saisons.length - 1; i++) {
                         var fromDate = moment(opt.saisons[i][0]);

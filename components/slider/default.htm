@@ -126,11 +126,11 @@
 		{% if slide.slide_link != '' %}
 		        {% if slideShows.show_asimages %}
 					<div class="slide-images" >
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
-						<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;"  src="{{slide.slide_image}}">
+						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+						<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;" title="{{ slide.slide_title|raw }}" alt="{{ slide.slide_title|raw }}" src="{{slide.slide_image}}">
 						{% if fancybox %}</a>{% endif %}
 						{% else %}
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
 		        		<div class="slide-image" style="background-image: url( '{{slide.slide_image}}' ); background-position: {{slide.image_horizontal_position}}% {{slide.image_position}}%;">
 				{% endif %}
 						{% if (slideShows.show_title or slideShows.show_desc) %}
@@ -153,12 +153,12 @@
 
 				{% if slideShows.show_asimages %}
 					<div class="slide-images" >
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
-							<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;" src="{{slide.slide_image}}"  alt="{{slide.slide_title|raw}}">
+						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+							<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;" src="{{slide.slide_image}}" title="{{ slide.slide_title|raw }}" alt="{{slide.slide_title|raw}}">
 						{% if fancybox %}</a>{% endif %}
 				{% else %}
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
-		        	<div class="slide-image" style="background-image: url( '{{slide.slide_image}}' ); background-position: {{slide.image_horizontal_position}}% {{slide.image_position}}%;">
+						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+		        	<div class="slide-image lazyload" data-bg="{{slide.slide_image}}" style="background-position: {{slide.image_horizontal_position}}% {{slide.image_position}}%;">
 				{% endif %}
 					{% if (slideShows.show_title or slideShows.show_desc) %}
 						{% if (slide.slide_title or slide.slide_description) %}
@@ -183,7 +183,7 @@
 	<div class="slick-slider-nav-{{slideShows.id}}" role="toolbar" style="margin-top:{{ slideShows.thumb_top }}px ;">
 		{% for slide in slider %}
 		<div class="slide">
-			<div class="slide-thumb" ><img style="height:{{ slideShows.thumb_height }}; margin-left:10px;margin-right:10px;" src="{{ slide.slide_thumb }}" alt="{{slide.slide_title|raw}}"></div>
+			<div class="slide-thumb" ><img style="height:{{ slideShows.thumb_height }}; width: auto; margin-left:10px;margin-right:10px;" src="{{ slide.slide_thumb }}" alt="{{slide.slide_title|raw}}"></div>
 		</div>
 		{% endfor %}
 	</div>

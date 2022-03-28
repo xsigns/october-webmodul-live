@@ -7176,6 +7176,7 @@
             return (this.options.imagePath || IconDefault.imagePath) + Icon.prototype._getIconUrl.call(this, name);
         },
 
+        // Xsigns
         _detectIconPath: function () {
             var el = create$1('div',  'leaflet-default-icon-path', document.body);
             var path = getStyle(el, 'background-image') ||
@@ -7184,7 +7185,7 @@
             document.body.removeChild(el);
 
             if (path === null || path.indexOf('url') !== 0) {
-                path = '';
+                path = '/plugins/xsigns/fewo/assets/leaflet/images/';
             } else {
                 path = path.replace(/^url\(["']?/, '');
                 path = path.substring(0, path.lastIndexOf('/')) + '/';

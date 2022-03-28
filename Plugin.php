@@ -11,6 +11,7 @@ use Xsigns\Fewo\Classes\DatabaseCache;
 use Xsigns\Fewo\Classes\Language;
 use Xsigns\Fewo\classes\Objektbewertung;
 use Xsigns\Fewo\Classes\OwnerHelper;
+use Xsigns\Fewo\Classes\Preislevel;
 use Xsigns\Fewo\classes\SendCron;
 use System\Models;
 use Xsigns\Fewo\Models\GlobalSettings;
@@ -298,6 +299,10 @@ class Plugin extends PluginBase
                 'label' => 'Sync Feondi',
                 'code' => 'syncfeondi',
             ],
+            'Xsigns\Fewo\FormWidgets\ReloadPricelevel' => [
+                'label' => 'Preislevel neu berechnen',
+                'code' => 'reloadPricelevel',
+            ]
         ];
     }
 
@@ -381,7 +386,9 @@ class Plugin extends PluginBase
     {
         if ($record->id > 0)
         {
-            $resAntwort = Database::select($this->controller, $this->modulename,"select antwort from xsigns_fewo_bew where id=" . $record->id);
+            $resAntwort = Database::select($this->controller, $this->modulename, "select antwort from xsigns_fewo_bew where id = :bewid", false, [
+                'bewid' => $record->id
+            ]);
             if ($resAntwort[0]->antwort != '')
                 return 'Ja';
             else
@@ -421,7 +428,9 @@ class Plugin extends PluginBase
     {
         if ($record->objektid > 0)
         {
-            $resObjekt = Database::select($this->controller,  $this->modulename, "select titel from xsigns_fewo_objlang where objid = " . $record->objektid);
+            $resObjekt = Database::select($this->controller, $this->modulename, "select titel from xsigns_fewo_objlang where objid = :objid", false, [
+                'objid' => $record->objektid
+            ]);
 
             if (count($resObjekt) > 0)
                 return $resObjekt[0]->titel;

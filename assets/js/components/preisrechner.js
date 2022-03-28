@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
     if (script1)
     {
         jQuery("#pbuchung").prop("disabled", false);
@@ -16,7 +16,8 @@ $(function(){
 
     if (datecompact === 1)
     {
-        var dateComponent = '#period';
+        var elemId = $('.fewo-preisrechner .search-anreise').attr('id');
+        var dateComponent = '#' + elemId;
 
         if (!anreise && !abreise)
             $(dateComponent).val(zeitraum);
@@ -60,7 +61,10 @@ $(function(){
         $('#ctrl_pabreise').val(moment(obj.date2).format('DD.MM.YYYY'));
 
         if (datecompact === 1)
-            $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
+        {
+            var elemId = $('.fewo-preisrechner .search-anreise').attr('id');
+            $('#' + elemId).val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
+        }
 
         if (tagein)
         {
@@ -73,8 +77,9 @@ $(function(){
             $('select[name="tagein"]').val(tage);
         }
 
-        resetpage = true;
         $('#ctrl_pabreise').request('onCalAbreiseChange');
+
+        resetpage = true;
     });
 
     if (anreise && abreise) {

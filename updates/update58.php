@@ -807,6 +807,6 @@ class Update58 extends Migration
 
     public function down()
     {
-        
+
     }
 }

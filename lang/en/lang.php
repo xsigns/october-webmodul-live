@@ -101,6 +101,8 @@ return [
         'mailuser_desc' => 'Sender name of the status messages',
         'mailaddr' => 'Recipient mail',
         'mailaddr_desc' => 'Mail of the recipient for status messages such as valuation receipts, booking and inquiry confirmations',
+        'buchungAnCc' => 'Buchungs- und Anfragebestätigungen an CC E-Mailadresse senden',
+        'buchungAnCc_desc' => 'Wenn aktiviert wird nach einer Anfrage oder Buchungs die Bestätigungsmail zusätzlich auch an die oben angegebene CC-E-Mailadresse gesendet.',
         'cronbefore' => 'Arrival mailing',
         'beforedays' => 'Days before arrval',
         'cronafter' => 'Departure mailing',
@@ -377,6 +379,10 @@ return [
     'permissions' => [
         'manage_galleries' => 'Manage the galleries',
     ],
+    'reloadPricelevel' => [
+        'preislevel_success' => 'Preislevel für Objekte erfolgreich neu berechnet.',
+        'preislevel_fail' => 'Berechnen des Preislevels für Objekte nicht möglich. Es müssen mindestens drei Objekte aktiv und drei verschiedene min. Preise vorhanden sein.',
+    ],
     'eigentuemerlogin' => [
         'plugin' => [
             'name' => 'Fewo Owner',
@@ -503,7 +509,6 @@ return [
         'daten' => [
             'daten' => 'Owner data',
             'daten_desc' => 'Represents calculations, operations and services',
-
-        ]
+        ],
     ]
-    ];
+];

@@ -1,7 +1,8 @@
 title: SlideShows
 modelClass: Xsigns\fewo\Models\SlideShows
 list: $/xsigns/fewo/models/slideshows/columns.yaml
-recordUrl: 'xsigns/fewo/slideshows/update/:id'
+# recordUrl: 'xsigns/fewo/slideshows/update/:id'
+recordOnClick: "$.request('onLoadTest', {data: {value: :id}})"
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
 showCheckboxes: true

@@ -1,0 +1,20 @@
+<div id="realodPreislevel">
+    <?php if ($msg != ''): ?>
+        <p data-control="flash-message" data-interval="5" class="<?php if ($msgType == 'error'): ?>error<?php else: ?>success<?php endif; ?>">
+            <?= $msg ?>
+        </p>
+    <?php endif; ?>
+    <p>Preislevel der Objekte neu berechnen</p>
+    <a class="btn btn-success" id="reloadButton">Preislevel neu berechnen</a>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#reloadButton').click(function() {
+            setTimeout(function() {
+                $(this).request('onBerechnePreislevel');
+            }, 1000);
+
+            $('#reloadButton').after('<div class="loader"></div>');
+        });
+    });
+</script>

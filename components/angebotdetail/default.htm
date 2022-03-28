@@ -1,6 +1,6 @@
 <div id="fewo-angebot" class="fewo-container">
     {% if titel %}<div class="ang-title">{{titel}}</div>{% endif %}
-    {% if image %}<div class="ang-image"><img itemprop="image"  src="{{ image.thumb(image_width,image_height) }}" alt="{{ image.title }}" title="{{ image.title }}"/></div>{% endif %}
+    {% if image %}<div class="ang-image"><img itemprop="image"  src="{{ image|raw }}" alt="{{ image.title }}" title="{{ image.title }}"/></div>{% endif %}
     {% if beschreibung %}<div class="ang-desc">{{beschreibung|raw}}</div>{% endif %}
     {% if vonbis %}<div class="ang-von">{{ vonbis }}</div>{% endif %}
     {% if art %}<div class="ang-art">{{ art}}</div>{% endif %}

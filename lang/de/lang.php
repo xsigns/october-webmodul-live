@@ -204,6 +204,8 @@ return [
         'mailuser_desc' => 'Absendername für E-Mails',
         'mailaddr' => 'Absender-E-Mailadresse',
         'mailaddr_desc' => 'Absender-E-Mailadresse für den E-Mail-Header. Wichtig: Im Admin-Bereich die E-Mail-Einstellungen erfassen oder kontrollieren.',
+        'buchungAnCc' => 'Buchungs- und Anfragebestätigungen an CC E-Mailadresse senden',
+        'buchungAnCc_desc' => 'Wenn aktiviert wird nach einer Anfrage oder Buchungs die Bestätigungsmail zusätzlich auch an die oben angegebene CC-E-Mailadresse gesendet.',
         'cronSettingsSection' => 'Einstellungen für An- und Abreise-E-Mails',
         'mailcc' => 'E-Mail Kopie an (CC)',
         'mailcc_desc' => 'E-Mail-Adresse(n) der Empfänger für Statusmeldungen wie Bewertungseingänge, Buchungs- und Anfragebestätigungen (mehrere durch ; getrennt angeben)',
@@ -522,6 +524,10 @@ return [
     'permissions' => [
         'manage_galleries' => 'Verwalten der Galerien',
     ],
+    'reloadPricelevel' => [
+        'preislevel_success' => 'Preislevel für Objekte erfolgreich neu berechnet.',
+        'preislevel_fail' => 'Berechnen des Preislevels für Objekte nicht möglich. Es müssen mindestens drei Objekte aktiv und drei verschiedene min. Preise vorhanden sein.',
+    ],
     'eigentuemerlogin' => [
         'plugin' => [
             'name' => 'Fewo Eigentümer',
@@ -712,7 +718,6 @@ return [
         'daten' => [
             'daten' => 'Eigenümerdaten',
             'daten_desc' => 'Stellt Abbrechnungen, Vorgänge und Leistungen dar',
-
-        ]
+        ],
     ]
-    ];
+];

@@ -1,10 +1,4 @@
-function startCal()
-{
-    if( $('#ctrl_anreise').val() == '' || $('#ctrl_abreise').val() =='')
-        $('#ctrl_anreise').data('dateRangePicker').clear();
-}
-
-$(document).ready(function() {
+$(function() {
     $(".wpwl-button").click(function() {
         alert("hallo");
     });
@@ -48,6 +42,7 @@ $(document).ready(function() {
         customArrowNextSymbol: customArrowNext,
         wechselleiste: wechselleiste,
         wechselleisteStart: wechselleisteStart,
+        legendHtml: (typeof legendHtml === 'undefined' ? '' : legendHtml),
         beforeShowDay: function(t)
         {
             valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
@@ -93,6 +88,10 @@ $(document).ready(function() {
 
         if (datecompact === 1)
             $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
+
+        if (typeof datePickerChanged === "function") {
+            datePickerChanged();
+        }
     });
 
     if (anreise && abreise)

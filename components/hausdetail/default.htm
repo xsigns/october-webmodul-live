@@ -8,7 +8,7 @@
         {% endif %}
         {% if image %}
             <div class="fewo-image">
-                <img itemprop="image"  src="{{ image.thumb(image_width,image_height) }}" alt="{{ image.title }}" title="{{ image.title }}"/>
+                <img itemprop="image"  src="{{ image|raw }}" alt="{{ image.title }}" title="{{ image.title }}"/>
             </div>
         {% endif %}
         {% if beschreibung %}

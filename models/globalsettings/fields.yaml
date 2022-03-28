@@ -107,6 +107,11 @@ tabs:
       type: section
       commentHtml: true
       tab: xsigns.fewo::lang.globalsettings.tab1
+    reloadPricelevelForm:
+      type: reloadPricelevel
+      cssClass: col-sm-4
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab1
     titleheader:
       label: xsigns.fewo::lang.globalsettings.titleheader
       type: text
@@ -188,6 +193,15 @@ tabs:
       type: text
       span: right
       cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    buchungAnCc:
+      label: xsigns.fewo::lang.globalsettings.buchungAnCc
+      comment: xsigns.fewo::lang.globalsettings.buchungAnCc_desc
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      commentHtml: true
+      default: true
       tab: xsigns.fewo::lang.globalsettings.tab2
     cronSettingsSection:
       label: xsigns.fewo::lang.globalsettings.cronSettingsSection

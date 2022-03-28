@@ -16,12 +16,16 @@ $(document).ready(function () {
             center: [centerlat, centerlong],
             zoom: 13,
             scrollWheelZoom: false,
+            dragging: !L.Browser.mobile,
+            tap: !L.Browser.mobile
         });
     } else {
         var mymap = L.map('mapid', {
             center: [centerlat, centerlong],
             zoom: 13,
             scrollWheelZoom: false,
+            dragging: !L.Browser.mobile,
+            tap: !L.Browser.mobile
         });
     }
 

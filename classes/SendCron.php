@@ -306,7 +306,7 @@ class SendCron
                 else
                     $values['vorgges_grundbew'] = $hinweis;
 
-                Database::update(null, self::$modulename, 'xsigns_fewo_vorggesendet', $values, 'where vorgid = ' . $vorgang->vorg_id);
+                Database::update(null, self::$modulename, "xsigns_fewo_vorggesendet", $values, "where vorgid = '" . $vorgang->vorg_id . "'");
 
                 $vars['HINWEIS'] = $hinweis;
             }

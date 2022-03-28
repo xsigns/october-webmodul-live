@@ -7,7 +7,7 @@
             {% endif %}
             {% if objekt.slider == false %}
                 <div class="fewo-image">
-                    <a href="{{ objekt.href }}"><img itemprop="image"  src="{{ objekt.image.thumb(objekt.image_width,objekt.image_height) }}" alt="{{ objekt.image.title }}" title="{{ objekt.image.title }}"/></a>
+                    <a href="{{ objekt.href }}"><img itemprop="image"  src="{{ objekt.image|raw }}" alt="{{ objekt.image.title }}" title="{{ objekt.image.title }}"/></a>
                 </div>
             {% else %}
                 <div class="fewo_list_image">

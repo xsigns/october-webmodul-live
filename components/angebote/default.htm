@@ -5,7 +5,7 @@
             {% for angebot in angebote %}
                 <div class="fewo-item {{ listitemcss }}">
                     {% if angebot.titel %}<div>{{angebot.titel}}</div>{% endif %}
-                    {% if angebot.image %}<div><img itemprop="image" src="{{ angebot.image.thumb(image_width,image_height) }}" alt="{% if angebot.image.title %}{{ angebot.image.title }}{% else %}{{ angebot.titel }}{% endif %}"{% if angebot.image.title %} title="{{ angebot.image.title }}"{% endif %}/></div>{% endif %}
+                    {% if angebot.image %}<div><img itemprop="image" src="{{ angebot.image|raw }}" alt="{% if angebot.image.title %}{{ angebot.image.title }}{% else %}{{ angebot.titel }}{% endif %}"{% if angebot.image.title %} title="{{ angebot.image.title }}"{% endif %}/></div>{% endif %}
                     {% if angebot.beschreibung %}<div>{{angebot.beschreibung|raw}}</div>{% endif %}
                     {% if angebot.vonbis %}<div class="ang-von">{{ angebot.vonbis }}</div>{% endif %}
                     {% if angebot.art %}<div class="ang-art">{{ angebot.art}}</div>{% endif %}
