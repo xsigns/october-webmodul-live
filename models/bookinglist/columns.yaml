@@ -60,8 +60,3 @@ columns:
         type: switch
         searchable: true
         sortable: true
-    synctofeondi:
-        label: Sync Feondi
-        type: number
-        searchable: true
-        sortable: true

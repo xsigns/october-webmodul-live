@@ -678,3 +678,6 @@
     - "Verbesserung der Performance"
     - "Fehlerkorrekturen Gastdaten speichern"
     - update62.php
+3.5.20:
+    - "Verbesserungen Sync zu Feondi"
+    - "Fehlerkorrekturen Angebote Zeitraumauswahl"

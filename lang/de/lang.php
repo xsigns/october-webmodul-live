@@ -62,6 +62,15 @@ return [
         'name' => 'Buchungen/Anfragen',
         'description' => 'Eingegangene Buchungen und Anfragen',
     ],
+    'syncActivation' => [
+        'errorConnect' => 'Verbindung zu Feondi konnte nicht hergestellt werden.',
+        'successConnect' => 'Verbindung zu Feondi wurde erfolgreich hergestellt.',
+        'channelNotActivated' => 'Der Kanal für das Webmodul in Feondi ist deaktiviert. Bitte wenden Sie sich an unseren Support, damit dieser den Kanal für Sie aktivieren kann. Tel. +49 4261 81 83 4-0',
+        'errorDisconnect' => 'Verbindung zu Feondi könnte nicht getrennt werden.',
+        'successDisconnect' => 'Verbindung zu Feondi wurde erfolgreich getrennt.',
+        'openBookings' => 'Bitte holen Sie alle offenen Vorgänge der Internetseite im Fewo-Verwalter ab, um Sync zu Feondi aktivieren zu können.',
+        'modalHeader' => 'Feondi Kanal ist deaktiviert.'
+    ],
     'votings' => [
         'name' => 'Bewertungen',
         'description' => 'Bewertungen bearbeiten',

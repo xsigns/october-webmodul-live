@@ -1,8 +1,28 @@
 <div id="syncFeondi">
     <?php if ($msg != ''): ?>
-        <p data-control="flash-message" data-interval="5" class="<?php if ($msgType == 'error'): ?>error<?php else: ?>success<?php endif; ?>">
-            <?= $msg ?>
-        </p>
+        <?php if ($errorType == 'fade'): ?>
+            <p data-control="flash-message" data-interval="5" class="<?php if ($msgType == 'error'): ?>error<?php else: ?>success<?php endif; ?>">
+                <?= $msg ?>
+            </p>
+        <?php endif; ?>
+        <?php if ($errorType == 'state'): ?>
+            <div class="control-popup modal fade" id="content-confirmation" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"><?= e(trans('xsigns.fewo::lang.syncActivation.modalHeader')) ?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <?= $msg ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
     <span class="material-icons plug-icons">power_off</span>
     <p class="sync-deactivated"><?= $syncStatusLabel ?></p>
@@ -21,5 +41,7 @@
 
             $('#actionButton').after('<div class="loader"></div>');
         });
+
+        $('#content-confirmation').modal('show');
     });
 </script>
