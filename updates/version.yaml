@@ -674,7 +674,7 @@
     - "Verbesserungen der Datenbank"
     - update61.php
 3.5.19:
-    - "Verbesserungen"
+    - "!!! Verbesserungen laden der Bilder. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - "Verbesserung der Performance"
     - "Fehlerkorrekturen Gastdaten speichern"
     - update62.php
