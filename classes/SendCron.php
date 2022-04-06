@@ -271,12 +271,12 @@ class SendCron
                         try
                         {
                             if (count($isTranslate) > 0 && array_key_exists($mailview . strtolower($gastLand), $mailTemps))
-                                $mailview = $mailview . strtolower($gastLand);
+                                $mailviewSend = $mailview . strtolower($gastLand);
                             else
-                                $mailview = $mailview . 'de';
+                                $mailviewSend = $mailview . 'de';
 
                             self::$gastmail = $vorgang->gast_mail;
-                            Mail::send($mailview, $vars, function ($message)
+                            Mail::send($mailviewSend, $vars, function ($message)
                             {
                                 $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
 

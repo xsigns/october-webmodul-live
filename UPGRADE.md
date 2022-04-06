@@ -5,6 +5,55 @@
 
 - - -
 
+## Upgrade 3.5.19
+### Folgende Partialanpassungen sind für dieses Update notwendig
+
+Komponente **_Angebot-Detail_** _default.htm_: Die Code-Zeile ``src="{{ image.thumb(image_width,image_height) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ image|raw }}"
+````
+
+Komponente **_Angebot-Detail_** _objlist.htm_: Die Code-Zeile ``src="{{ objekt.image.thumb(objekt.image_width,objekt.image_height) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ objekt.image|raw }}"
+````
+
+Komponente **_Angebote_** _default.htm_: Die Code-Zeile ``src="{{ angebot.image.thumb(image_width,image_height) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ angebot.image|raw }}"
+````
+
+Komponente **_Buchungsmaske_** _default.htm_ und _variant2.htm_: Die Code-Zeile ``src="{{ ang_image.thumb(200,200) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ ang_image|raw }}"
+````
+
+Komponente **_Galerie_** _default.htm_: Die Code-Zeile ``src="{{ image.thumb( gal_width , gal_height ) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ image.thumb|raw }}"
+````
+
+Komponente **_Bewertungen_** _default.htm_: Die Code-Zeile ``src="{{ bewertung.image.thumb( img_width, img_height) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ bewertung.image|raw }}"
+````
+
+Komponente **_Hausdetail_** _default.htm_: Die Code-Zeile ``src="{{ image.thumb(image_width,image_height) }}"`` muss druch folgenden Code ersetzt werden:
+````
+src="{{ image|raw }}"
+````
+
+Komponente **_Hausliste_** _default.htm_: Die Code-Zeile ``src="{{ haus.image.thumb(haus.image_width,haus.image_height) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ haus.image|raw }}"
+````
+
+Komponente **_Obj-Bewertungen_** _item.htm_: Die Code-Zeile ``src="{{ bewertung.image.thumb( img_width, img_height) }}"`` muss durch folgenden Code ersetzt werden:
+````
+src="{{ bewertung.image.thumb|raw }}"
+````
+- - -
+
 ## Upgrade 3.5.18
 #### Dieses Update enthält eine neue Funktion für die Eigentümerlogin-Erweiterung.
 Ab sofort ist es möglich, automatisierte Emails an den Eigentümer zu senden, sobald dieser über den Fewo-Verwalter für den Eigentümerlogin freigeschlatet oder die Login-Daten geändern wurden. Diese Funktion kann im Backend unter _Einstellungen -> Eigentümer-Einstellungen_ aktiviert werden. Die entsprechenden Mail-Vorlagen, können im Bereich der Mail-Vorlagen angepasst werden. Mehrsprachige Mail-Vorlagen sind möglich.

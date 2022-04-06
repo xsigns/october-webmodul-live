@@ -13,7 +13,7 @@
         <div class="offer_desc">{{ ang_beschreibung }}</div>
         <div class="offer_art">{{ ang_art }}</div>
         <div class="offer_date">{{ ang_vonbis }}</div>
-        <div class="offer_img"><img src="{{ ang_image.thumb(200,200) }}"></div>
+        <div class="offer_img"><img src="{{ ang_image|raw }}"></div>
     </div>
 {% endif %}
 

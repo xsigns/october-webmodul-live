@@ -681,3 +681,5 @@
 3.5.20:
     - "Verbesserungen Sync zu Feondi"
     - "Fehlerkorrekturen Angebote Zeitraumauswahl"
+3.5.21:
+    - "Fehlerkorrekturen Bewertungen"
