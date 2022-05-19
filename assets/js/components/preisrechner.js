@@ -48,6 +48,7 @@ $(function() {
         customArrowNextSymbol: customArrowNext,
         wechselleiste: wechselleiste,
         wechselleisteStart: wechselleisteStart,
+        legendHtml: (typeof legendHtml === 'undefined' ? '' : legendHtml),
         beforeShowDay: function(t) {
             valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
             var _class = '';

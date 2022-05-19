@@ -1221,7 +1221,7 @@
                 clearSelection();
                 return;
             }
-            if (day.hasClass('invalid')) return;
+            if (day.hasClass('invalid') || day.hasClass('lastMonth')) return;
             var time = day.attr('time');
             day.addClass('checked');
             if (opt.singleDate) {
@@ -1483,7 +1483,7 @@
 
             if (day.hasClass('has-tooltip') && day.attr('data-tooltip')) {
                 tooltip = '<span class="tooltip-content">' + day.attr('data-tooltip') + '</span>';
-            } else if (!day.hasClass('invalid')) {
+            } else if (!day.hasClass('invalid') && !day.hasClass('lastMonth')) {
                 if (opt.singleDate) {
                     box.find('.day.hovering').removeClass('hovering');
                     day.addClass('hovering');

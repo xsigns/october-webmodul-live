@@ -5,6 +5,25 @@
 
 - - -
 
+## Upgrade 3.5.23
+### Folgende Partialanpassungen sind für dieses Update notwendig
+
+Komponente **_Buchungsmaske_** _variant2.htm_ und _leistungen.htm_: Der folgende Code muss oberhalb der Zeile ``{% for leist in optleistungen %}`` eingefügt werden:
+````
+{% if showTooltip %}
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endif %}
+````
+
+Komponente **_Buchungsmaske_** _variant2.htm_ und _leistungen.htm_: Der folgende Code muss hinter ``{{ leist.titel }}`` eingefügt werden:
+````
+{% if showTooltip %}<span class="fewo-tooltip" data-toggle="tooltip" data-placement="right" title="{{ leist.tooltip|raw }}"></span>{% endif %}
+````
+
 ## Upgrade 3.5.19
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 

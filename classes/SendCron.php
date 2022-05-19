@@ -261,7 +261,7 @@ class SendCron
                     $hinweis = 'Gast-E-Mailadresse ist leer';
                 else if ($vorgang->gast_gesperrt == 1)
                     $hinweis = 'Gast ist gesperrt, keine E-Mail gesendet';
-                else if ($vorgang->gast_werbemail == 0)
+                else if ($vorgang->gast_werbemail == 0 && (($mailart == MAILART_ANREISE && GlobalSettings::get('cronBeforeDefaultOn') == 0) || ($mailart == MAILART_ABREISE && GlobalSettings::get('cronAfterDefaultOn') == 0)))
                     $hinweis = 'Gast möchte keine Werbemail, keine E-Mail gesendet';
                 else
                 {

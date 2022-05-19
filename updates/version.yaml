@@ -626,7 +626,7 @@
     - "Fehlerkorrekturen Angebot-Objektliste"
     - "Erweiterung Zusammenfassung Buchungsmaske um Objektpreis, Gast Titel und Anzahl der Übernachtungstage"
 3.5.5:
-    - "!!! Bitte Upgrade-Guide lesen! Erweiterung Eigentümerlogin hochladen mehrerer Abrechnungen für einen Monat möglich."
+    - "!!! Bitte Upgrade-Guide lesen! Erweiterung Eigentümerlogin hochladen mehrere Abrechnungen für einen Monat möglich."
     - "Verbesserungen und Fehlerkorrekturen der Image-Komponente"
     - "Verbesserungen Versand der Info Mail für neue Bewertung"
     - update57.php
@@ -686,3 +686,11 @@
 3.5.22:
     - "Verbesserungen Import Vorgänge"
     - "Fehlerkorrekturen Anzeige Angebote"
+3.5.23:
+    - "!!! Fehlerkorrekturen Tooltip für Leistungen. Eventuell Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
+    - "Verbesserungen Validierung der Gastdaten"
+    - "Fehlerkorrekturen und Verbesserungen Leistungen Tooltip"
+    - "Fehlerkorrekturen Listenfilter Ausstattungen Übersetzung"
+    - "Verbesserungen Zahlungsmodul"
+    - "Übergabe der Zahlungsart im Nachrichten-Bereich der Buchung"
+    - update63.php

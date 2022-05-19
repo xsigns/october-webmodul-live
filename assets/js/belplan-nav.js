@@ -204,8 +204,10 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
 
             var mintageRange = wechselTimeline.substr(dayId, parseInt(mintage) + 1);
 
-            if (mintageRange.includes('O')) {
-                mintage = mintageRange.lastIndexOf('O');
+            if ($(elem).hasClass('lbok')) {
+                if (mintageRange.includes('O')) {
+                    mintage = mintageRange.lastIndexOf('O');
+                }
             }
 
             for (var i = 0; i < mintage; i++) {

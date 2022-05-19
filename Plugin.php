@@ -4,11 +4,13 @@ namespace Xsigns\Fewo;
 
 use Backend\Facades\Backend;
 use Backend\Facades\BackendMenu;
+use DateTime;
 use Event;
 use System\Classes\PluginBase;
 use Xsigns\Fewo\Classes\Database;
 use Xsigns\Fewo\Classes\DatabaseCache;
 use Xsigns\Fewo\Classes\Language;
+use Xsigns\Fewo\Classes\Logger;
 use Xsigns\Fewo\classes\Objektbewertung;
 use Xsigns\Fewo\Classes\OwnerHelper;
 use Xsigns\Fewo\Classes\Preislevel;
@@ -54,6 +56,11 @@ class Plugin extends PluginBase
         {
             $this->beforeDisplay($controller, $url, $page);
         });
+
+        if (empty(ini_get('date.timezone')))
+            date_default_timezone_set('Europe/Berlin');
+        else
+            date_default_timezone_set(ini_get('date.timezone'));
     }
 
     private function beforeDisplay($controller, $url, $page)
@@ -295,9 +302,9 @@ class Plugin extends PluginBase
     public function registerFormWidgets()
     {
         return [
-            'Xsigns\Fewo\FormWidgets\SyncFeondi' => [
-                'label' => 'Sync Feondi',
-                'code' => 'syncfeondi',
+            'Xsigns\Fewo\FormWidgets\SyncFeondiActivation' => [
+                'label' => 'Sync Feondi activation',
+                'code' => 'syncfeondiactivation',
             ],
             'Xsigns\Fewo\FormWidgets\ReloadPricelevel' => [
                 'label' => 'Preislevel neu berechnen',

@@ -106,8 +106,14 @@ return [
         'cronbefore' => 'Arrival mailing',
         'beforedays' => 'Days before arrval',
         'cronafter' => 'Departure mailing',
+        'cronBeforeSection' => 'Anreise-E-Mail',
+        'cronAfterSection' => 'Abreise-E-Mail',
         'afterdays' => 'Days after departure',
         'objektpath' => 'Detail page for valuation link',
+        'cronBeforeDefault' => 'Arrival mailing for every booking regardless of advertising mail consent',
+        'cronBeforeDefault_desc' => 'If activated, every guest of a booking will get an arrival mail regardless of advertising mail consent.',
+        'cronAfterDefault' => 'Departure mailing for every booking regardless of advertising mail consent',
+        'cronAfterDefault_desc' => 'If activated, every guest of a booking will get a departure mail regardless of advertising mail consent.',
         'linktext' => 'Text of the evaluation link',
         'croninfo' =>'<h4>Cron information for arrival and departure mailings</h4>Cron jobs only work if a system-cron is created on your server.<br>' .
                 'E. g.: php/7.1/bin/php /var/www/vhosts/ihredomain.de/artisan schedule:run >> /dev/null 2>&1<br>execution time cron : * * * * * <br>' .
