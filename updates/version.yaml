@@ -694,3 +694,8 @@
     - "Verbesserungen Zahlungsmodul"
     - "Übergabe der Zahlungsart im Nachrichten-Bereich der Buchung"
     - update63.php
+3.5.24:
+    - "Verbesserungen Datepicker"
+    - "Verbesserungen Slider Bilder"
+    - "Fehlerkorrekturen Angebote"
+    - update64.php

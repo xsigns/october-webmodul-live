@@ -50,15 +50,6 @@ $(function() {
             var _tooltip = valid ? '' : 'belegt';
             return [valid, _class, _tooltip];
         },
-
-        setValue: function(s, from, to)
-        {
-            $('#ctrl_anreise').val(from);
-            $('#ctrl_abreise').val(to);
-
-            if(to)
-                $('#ctrl_abreise').request('onAbreiseChange');
-        }
     });
 
     if (datecompact === 1)
