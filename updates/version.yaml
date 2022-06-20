@@ -699,3 +699,9 @@
     - "Verbesserungen Slider Bilder"
     - "Fehlerkorrekturen Angebote"
     - update64.php
+3.5.25:
+    - "Fehlerkorrekturen Merkerliste"
+3.5.26:
+    - "Verbesserungen Laden der Angebote"
+    - "Fehlerkorrekturen Angebote anzeigen"
+    - update65.php
