@@ -705,3 +705,7 @@
     - "Verbesserungen Laden der Angebote"
     - "Fehlerkorrekturen Angebote anzeigen"
     - update65.php
+3.5.27:
+    - "Verbesserungen Datenbank"
+    - "Verbesserungen Mehrsprachigkeit für Bewertungsmails"
+    - update66.php

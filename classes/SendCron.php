@@ -4,6 +4,7 @@ namespace Xsigns\Fewo\Classes;
 
 use DB;
 use Config;
+use RainLab\Translate\Classes\Translator;
 use Xsigns\Fewo\Models\GlobalSettings;
 use Mail;
 use System\Models;
@@ -190,6 +191,15 @@ class SendCron
 
         $ergebnisse = array();
 
+        if (count($isTranslate) > 0)
+        {
+            $arrLocales = array();
+            $resLocales = Database::select(null, self::$modulename, "select code from rainlab_translate_locales");
+
+            foreach ($resLocales as $item)
+                $arrLocales[] = $item->code;
+        }
+
         foreach ($vorgaenge as $vorgang)
         {
             if ($vorgang->vorgges_id === null)
@@ -201,11 +211,22 @@ class SendCron
             if (count($gast) > 0)
                 $gastLand = $gast[0]->gast_land;
 
+            if ($gastLand == 'GB' || $gastLand == 'gb')
+                $gastLand = 'en';
+
             $mailBereitsGesendet = $vorgang->bewertung == 1;
             if ($mailart == MAILART_ANREISE)
                 $mailBereitsGesendet = $vorgang->anschreiben == 1;
 
-            $href = str_replace(':alias', $vorgang->obj_alias, GlobalSettings::get('objektpath'));
+            $url = GlobalSettings::get('objektpath');
+
+            if (count($isTranslate) > 0 && $gastLand != 'DE' && $gastLand != 'de')
+            {
+                if(in_array(strtolower($gastLand), $arrLocales) && array_key_exists($mailview . strtolower($gastLand), $mailTemps))
+                    $url = Fewo::getTranslate(strtolower($gastLand), $url);
+            }
+
+            $href = str_replace(':alias', $vorgang->obj_alias, $url);
             $href = str_replace(':ort', SendCron::standardize($vorgang->obj_ort), $href);
 
             if (strpos($href, ':region') > 0)
