@@ -164,6 +164,7 @@ return [
         'hobexaccesstoken' => 'Hobex Access Token (Nur Version 2)',
         'hobextest'  => 'Hobex test payment',
         'hobexrequest' => 'Zielseite Abgeschlossen',
+        'hobexfehler' => 'Zielseite Zahlung Fehlerhaft',
         'hobexvisa'=> 'Visa',
         'hobexmaster' => 'Master',
         'hobexmaestro' => 'Maestro',

@@ -488,6 +488,13 @@ tabs:
       span: full
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexfehler:
+      label: xsigns.fewo::lang.globalsettings.hobexfehler
+      type: dropdown
+      options: getSitePath
+      span: full
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
     hobexvisa:
       label: xsigns.fewo::lang.globalsettings.hobexvisa
       type: switch

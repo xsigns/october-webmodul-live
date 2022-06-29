@@ -404,6 +404,27 @@ Belplan.selectDatesFromDatepicker = function(anreise, abreise) {
     }
 };
 
+Belplan.setBelplanOffset = function (calid, offset) {
+    $.request('onSelectorChange', {
+        method: 'post',
+        data: {'calSelector' : offset, 'calid' : calid},
+        success: function(resp) {
+            var belPlan = resp['#ctrlBookingPlans_' + calid];
+            $('.fewo_buchungsplan').html(belPlan);
+            caloffset = offset;
+
+            if (anreisedatum)
+                if (verfuegbarleistePrevMonth === null)
+                    verfuegbarleistePrevMonth = verfuegbarTimeline;
+
+            wechselTimeline = resp['wechselleiste'];
+            verfuegbarTimeline = resp['verfuegbarleiste'];
+            mintageTimeline = resp['mintageleiste'];
+            Belplan.updateCal();
+        }
+    });
+};
+
 Belplan.loescheAuswahl = function() {
     $('.nichtwaehlbar').css('pointer-events', 'auto').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
     $('.gewaehlt').removeClass('gewaehlt');

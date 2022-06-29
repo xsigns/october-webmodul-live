@@ -709,3 +709,9 @@
     - "Verbesserungen Datenbank"
     - "Verbesserungen Mehrsprachigkeit für Bewertungsmails"
     - update66.php
+3.5.28:
+    - "Verbesserungen Datenbank"
+    - "Verbesserungen Zahlungsmodul"
+    - "Belegungsplan springt nun automatisch auf den Monat des Anreisedatums"
+    - "Fehlerkorrekturen Buchungsmaske Preis- und Nächteberechnung"
+    - update67.php
