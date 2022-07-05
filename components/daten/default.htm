@@ -381,10 +381,14 @@
                 ],
                 order: [[1, 'desc'], [4, 'desc']],
                 displayLength: {{ itemsProSeite }},
-                dom: 'lfrtip',
-                buttons: [
-                    'csv', 'print'
-                ],
+                {% if showButtons == 1 %}
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'csv', 'print'
+                    ],
+                {% else %}
+                    dom: 'lfrtip',
+                {% endif %}
                 orderCellsTop: true,
                 initComplete: function () {
                     var api = this.api();

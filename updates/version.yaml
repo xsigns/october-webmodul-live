@@ -715,3 +715,8 @@
     - "Belegungsplan springt nun automatisch auf den Monat des Anreisedatums"
     - "Fehlerkorrekturen Buchungsmaske Preis- und Nächteberechnung"
     - update67.php
+3.5.29:
+    - "Verbesserungen Mehrsparchigkeit"
+    - "Erweiterung des Eigentümerlogins"
+    - "Verbesserungen für Restzahlungen mit Zahlungsmodul"
+    - update68.php
