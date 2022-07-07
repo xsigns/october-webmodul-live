@@ -29,8 +29,8 @@ columns:
     punkte:
         label: Punkte
         type: bew_punkte
-        searchable: true
-        sortable: true
+        searchable: false
+        sortable: false
     antwort:
         label: Antwort
         type: bew_antwort

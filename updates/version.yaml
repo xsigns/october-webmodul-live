@@ -720,3 +720,7 @@
     - "Erweiterung des Eigentümerlogins"
     - "Verbesserungen für Restzahlungen mit Zahlungsmodul"
     - update68.php
+3.5.30:
+    - "Verbesserungen Datenbank"
+    - "Fehlerkorrekturen Bewertungsliste"
+    - update69.php
