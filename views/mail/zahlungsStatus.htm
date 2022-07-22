@@ -5,7 +5,8 @@ layout = "Statusbericht"
 <p>{{ MESSAGE }}</p>
 <table style="width: 100%">
     <tr>
-        <td>Vorgang-ID</td>
+        <td>Buchung-ID</td>
+        <td>Gastname</td>
         <td>Objekt-ID</td>
         <td>Anzahlung am</td>
         <td>Anzahlung gezahlt am</td>
@@ -19,7 +20,8 @@ layout = "Statusbericht"
     </tr>
     {% for ZAHLUNG in ZAHLUNGEN %}
         <tr>
-            <td>{{ ZAHLUNG.VORGANG_ID }}</td>
+            <td>{{ ZAHLUNG.BUCHUNG_ID }}</td>
+            <td>{{ ZAHLUNG.GAST_NAME }}</td>
             <td>{{ ZAHLUNG.OBJEKT_ID }}</td>
             <td>{{ ZAHLUNG.ANZAHL_AM }}</td>
             <td>{{ ZAHLUNG.ANZAHL_GEZAHLT_AM }}</td>

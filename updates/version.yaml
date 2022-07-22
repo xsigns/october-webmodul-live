@@ -716,7 +716,7 @@
     - "Fehlerkorrekturen Buchungsmaske Preis- und Nächteberechnung"
     - update67.php
 3.5.29:
-    - "Verbesserungen Mehrsparchigkeit"
+    - "Verbesserungen Mehrsprachigkeit"
     - "Erweiterung des Eigentümerlogins"
     - "Verbesserungen für Restzahlungen mit Zahlungsmodul"
     - update68.php
@@ -724,3 +724,8 @@
     - "Verbesserungen Datenbank"
     - "Fehlerkorrekturen Bewertungsliste"
     - update69.php
+3.5.31:
+    - "Es steht eine Statusliste aller An- und Restzahlungen über Hobex im Backend zur verfügung."
+    - "Fehlerkorrekturen Lückenbuchung"
+    - "Verbesserungen Sync zu Feondi"
+    - update70.php

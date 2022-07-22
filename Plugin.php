@@ -250,6 +250,14 @@ class Plugin extends PluginBase
                 'permissions' => ['xsigns.fewo.*'],
                 'order' => 12,
             ],
+            'restzahlungenlist' => [
+                'label' => 'Restzahlungen',
+                'description' => 'Übersicht aller An- und Restzahlungen',
+                'category' => 'xsigns.fewo::lang.globalsettings.category',
+                'icon' => 'icon-credit-card',
+                'url' => Backend::url('xsigns/fewo/restzahlungenlist'),
+                'order' => 13
+            ],
             'votings' => [
                 'label' => 'xsigns.fewo::lang.votings.name',
                 'description' => 'xsigns.fewo::lang.votings.description',
@@ -257,7 +265,7 @@ class Plugin extends PluginBase
                 'icon' => 'oc-icon-star-o',
                 'url' => Backend::url('xsigns/fewo/votings'),
                 'permissions' => ['xsigns.fewo.*'],
-                'order' => 13,
+                'order' => 14,
             ],
             'settings' => [
                 'label' => 'xsigns.fewo::lang.slickslider.name',
@@ -337,6 +345,10 @@ class Plugin extends PluginBase
                 'tab' => 'xsigns.fewo::lang.plugin.name',
             ],
             'xsigns.fewo.access_bookinglist' => [
+                'label' => 'xsigns.fewo::lang.plugin.manage_bookinglist',
+                'tab' => 'xsigns.fewo::lang.plugin.name',
+            ],
+            'xsigns.fewo.access_restzahlungenlist' => [
                 'label' => 'xsigns.fewo::lang.plugin.manage_bookinglist',
                 'tab' => 'xsigns.fewo::lang.plugin.name',
             ],

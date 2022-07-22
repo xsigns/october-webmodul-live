@@ -1,0 +1,24 @@
+columns:
+    za_buid:
+        label: Buchungs-ID
+        type: number
+        searchable: true
+        sortable: true
+        width: 60px
+    za_gast_name:
+        label: Gastname
+        type: text
+    za_restz_am:
+        label: Fällig am
+        type: date
+        sortable: true
+        searchable: true
+    za_restz_gezahlt_am:
+        label: Gezahlt am
+        type: date
+        sortable: true
+        searchable: true
+    za_status:
+        label: Status
+        type: text
+        searchable: true

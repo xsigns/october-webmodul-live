@@ -1,0 +1,13 @@
+title: Bookings
+modelClass: xsigns\fewo\Models\RestzahlungenList
+list: $/xsigns/fewo/models/restzahlungenlist/columns.yaml
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: '20'
+showSetup: true
+showSorting: 1
+defaultSort:
+    column: za_restz_am
+    direction: desc
+toolbar:
+    search:
+        prompt: 'backend::lang.list.search_prompt'
