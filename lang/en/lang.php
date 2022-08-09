@@ -118,6 +118,8 @@ return [
         'croninfo' =>'<h4>Cron information for arrival and departure mailings</h4>Cron jobs only work if a system-cron is created on your server.<br>' .
                 'E. g.: php/7.1/bin/php /var/www/vhosts/ihredomain.de/artisan schedule:run >> /dev/null 2>&1<br>execution time cron : * * * * * <br>' .
                 'Please ask your administrator to set this up for you.',
+        'restzahlliste_label' => 'Restzahlungen',
+        'restzahlliste_desc' => 'Übersicht aller An- und Restzahlungen',
     ],
     'components' => [
         'listfilter' => 'List filter',

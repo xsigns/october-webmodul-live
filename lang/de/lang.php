@@ -241,7 +241,9 @@ return [
                 'Z. B.: php/7.2/bin/php /var/www/vhosts/ihredomain.de/artisan schedule:run >> /dev/null 2>&1<br>Ausführungzeit des Jobs zum Beispiel: 0 10,18 * * * <br>' .
                 'Der Cron-Job kann auch auf die URL https://www.ihreDomain.de/cron eingestellt werden. Fragen Sie zu Details bitte Ihren Anbieter oder Administrator.</p>',
         'googlemapsapi' => 'Google Maps Api Key',
-        'googlemapsapi_desc' => 'Google Maps Api Key ist notwendig, sobald Google Maps Karten zum Einsatz kommen sollen'
+        'googlemapsapi_desc' => 'Google Maps Api Key ist notwendig, sobald Google Maps Karten zum Einsatz kommen sollen',
+        'restzahlliste_label' => 'Restzahlungen',
+        'restzahlliste_desc' => 'Übersicht aller An- und Restzahlungen',
     ],
     'components' => [
         'messages' => 'Nachrichten',

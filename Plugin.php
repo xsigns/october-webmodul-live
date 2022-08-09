@@ -251,8 +251,8 @@ class Plugin extends PluginBase
                 'order' => 12,
             ],
             'restzahlungenlist' => [
-                'label' => 'Restzahlungen',
-                'description' => 'Übersicht aller An- und Restzahlungen',
+                'label' => 'xsigns.fewo::lang.globalsettings.restzahlliste_label',
+                'description' => 'xsigns.fewo::lang.globalsettings.restzahlliste_desc',
                 'category' => 'xsigns.fewo::lang.globalsettings.category',
                 'icon' => 'icon-credit-card',
                 'url' => Backend::url('xsigns/fewo/restzahlungenlist'),
