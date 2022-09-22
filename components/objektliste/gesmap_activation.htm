@@ -1,0 +1,13 @@
+<div id="mapContainer">
+    <div class="mapHintContainer w-100 text-center d-inline-block">
+        <div class="mapHintContent">
+            <div class="hintText">{{ hintText|raw }}</div>
+            <form>
+                <button class="btn btn-success btn-sm" data-request="{{ __SELF__ }}::onBtnActiveGesMap">{{ buttonText }}</button>
+                <div class="cookieBox">
+                    <input type="checkbox" name="keepMap"><label>{{ cookieText }}</label>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

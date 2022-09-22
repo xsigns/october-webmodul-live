@@ -5,6 +5,58 @@
 
 - - -
 
+## Upgrade 3.5.33
+### Folgende Partialanpassungen sind für dieses Update notwendig
+
+Komponente **_Objektliste_** _default.htm_:  
+
+**Schritt 1:**  
+Der JavaScript-Codeblock für das Laden der Gesamtkarte muss entfernt und durch ``<div id="objGesMapContainer">{{ objgesmap|raw }}</div>`` ersetzt werden. Der Code befindet sich nun in dem Partial _objgesmap.htm_.
+
+Dieser Code...
+````
+{% if showmap == true %}
+    {% if mapOption == true %}
+        <div id="fewo-listmap">
+            <div id="map" class="fewo-listmap" style="height:{{gesmapheight}}px;"></div>
+            <script>
+            ...
+            ### Hier steht der restliche Code ###
+            ...
+        </script>
+    {% endif %}
+{% endif %}
+````
+...muss gelöscht und durch...
+````
+<div id="objGesMapContainer">{{ objgesmap|raw }}</div>
+````
+... ersetzt werden.
+
+**Schritt 2:**  
+Der JavaScript-Codeblock für das Laden der einzelnen Objektkarten muss entfernt und durch ``<div id="objMapContainer-{{ objekt.id }}">{{ objekt.objmap|raw }}</div>`` ersetzt werden. Der Code befindet sich nun in dem Partial _objmap.htm_.
+
+Dieser Code...
+````
+{% if objekt.map == true %}
+    {% if mapOption == true %}
+        <div class="fewo-map">
+            <div id="mapid{{ objekt.id }}" class="fewo-objektmap" style="height:{{ mapheight }}px;"></div>
+            <script>
+            ...
+            ### Hier steht der restliche Code ###
+            ...
+        </script>
+    {% endif %}
+{% endif %}
+````
+...muss gelöscht und durch...
+````
+<div id="objMapContainer-{{ objekt.id }}">{{ objekt.objmap|raw }}</div>
+````
+... ersetzt werden.
+- - -
+
 ## Upgrade 3.5.23
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 
@@ -2074,7 +2126,7 @@ Booking paid (Buchung abgeschlossen) / URL booking-paid/:id
 
 ## Upgrade 1.9.3
 - Remove tooltip in services,
-Tooltip and popper dont work on mobile devices
+Tooltip and popper doesn't work on mobile devices
 - change objekttextsearch
 
 Change partial objekttextsearch/default.htm
@@ -2106,7 +2158,7 @@ Change partial objekttextsearch/default.htm
 - - -
 
 ## Upgrade 1.9.0
-- If needed Add sum 'mindaysprice' in objectlist and object base data
+- If needed, ddd sum 'mindaysprice' in objectlist and object base data
 
 Change Partial stammdaten/saisonzeit.htm, add in thead and tbody
 ````

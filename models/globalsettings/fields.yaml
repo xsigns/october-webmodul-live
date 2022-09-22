@@ -377,6 +377,52 @@ tabs:
       span: right
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab5
+    map_set_section:
+      label: xsigns.fewo::lang.globalsettings.map_set_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_activation:
+      label: xsigns.fewo::lang.globalsettings.map_activation
+      type: switch
+      comment: xsigns.fewo::lang.globalsettings.map_activation_desc
+      commentHtml: true
+      cssClass: col-sm-4
+      default: false
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_hint_text:
+      label: xsigns.fewo::lang.globalsettings.map_hint_text
+      type: richeditor
+      toolbarButtons: insertLink
+      cssClass: col-sm-8
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_hint_btn_text:
+      label: xsigns.fewo::lang.globalsettings.map_hint_btn_text
+      type: text
+      cssClass: col-sm-4
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_hint_cookie_text:
+      label: xsigns.fewo::lang.globalsettings.map_hint_cookie_text
+      type: text
+      cssClass: col-sm-4
+      span: right
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_hint_cookie_time:
+      label: xsigns.fewo::lang.globalsettings.map_hint_cookie_time
+      type: number
+      default: 0
+      min: 0
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.map_hint_cookie_time_desc
+      commentHtml: true
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_allg_section:
+      label: xsigns.fewo::lang.globalsettings.map_allg_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab5a
     map_circle:
       label: xsigns.fewo::lang.globalsettings.map_circle
       type: switch
@@ -413,6 +459,11 @@ tabs:
       imageWidth: 120
       span: left
       cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab5a
+    map_google_section:
+      label: xsigns.fewo::lang.globalsettings.map_google_section
+      type: section
+      commentHtml: true
       tab: xsigns.fewo::lang.globalsettings.tab5a
     googlemapsapi:
       label: xsigns.fewo::lang.globalsettings.googlemapsapi

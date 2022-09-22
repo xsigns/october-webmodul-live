@@ -3,7 +3,7 @@
     <div id="fewo-bewliste" class="fewo-container {{ listcss }}">
         {% for bewertung in bewertungen %}
             <div id="bew-item" class="bew-item">
-                <div class="bew_titel"><h2>{{ bewertung.titel|raw }}</h2></div>
+                <div class="bew_titel"><p>{{ bewertung.titel|raw }}</p></div>
                 <select id="rating_{{ bewertung.id }}">
                     <option value=""></option>
                     <option value="1">1</option>

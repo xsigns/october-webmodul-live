@@ -1,0 +1,59 @@
+{% if objekt.map == true %}
+    {% if mapOption == true %}
+        <div class="fewo-map">
+            <div id="mapid{{ objekt.id }}" class="fewo-objektmap" style="height:{{ mapheight }}px;"></div>
+            <script>
+                jQuery(document).ready(function() {
+                    var mymap{{ objekt.id }} = L.map('mapid{{ objekt.id }}', {
+                        center: [{{ objekt.lat }}, {{ objekt.lng }}],
+                        {% if fullscreen %}
+                        fullscreenControl: true,
+                        fullscreenControlOptions: { // optional
+                            title: "Vollbildansicht",
+                            titleCancel: "Normalansicht"
+                        },
+                        {% endif %}
+                        zoom: 14,
+                    });
+                    L.tileLayer('{{ objekt.maptypeobj }}', {
+                        maxZoom: 18,
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+                    }).addTo(mymap{{ objekt.id }});
+                    L.marker(new L.LatLng({{objekt.lat }}, {{objekt.lng }}), {id: {{ objekt.id }}, alt: '{{ objekt.Titel }}'}).addTo(mymap{{ objekt.id }});
+                    mymap{{ objekt.id }}.on('click', function() {
+                        if (mymap{{ objekt.id }}.scrollWheelZoom.enabled())
+                            mymap{{ objekt.id }}.scrollWheelZoom.disable();
+                        else
+                            mymap{{ objekt.id }}.scrollWheelZoom.enable();
+                    });
+                    L.control.scale().addTo(mymap{{ objekt.id }});
+                    mymap{{ objekt.id }}.on('mouseout', function() {
+                        mymap{{ objekt.id }}.scrollWheelZoom.disable();
+                    });
+                });
+            </script>
+        </div>
+    {% else %}
+        <div class="fewo-map">
+            <div id="mapid{{ objekt.id }}" class="fewo-objektmap" style="height:{{ mapheight }}px;"></div>
+        </div>
+        <script>
+            function initMap() {
+                $(document).ready(function() {
+                    let myOptions = {
+                        zoom: 14,
+                        fullscreenControl: true,
+                        controlSize: 25,
+                    }
+                    myOptions.center = new google.maps.LatLng({{ objekt.lat }}, {{ objekt.lng }});
+                    let map{{ objekt.id }} = new google.maps.Map(document.getElementById("mapid{{ objekt.id }}"), myOptions);
+                    marker = new google.maps.Marker({
+                        position: {lat: {{ objekt.lat }}, lng: {{ objekt.lng }}},
+                        map: map{{ objekt.id }}
+                    });
+                });
+            }
+            {% if initMap == 1 %}initMap();{% endif %}
+        </script>
+    {% endif %}
+{% endif %}

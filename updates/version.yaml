@@ -732,3 +732,7 @@
 3.5.32:
     - "Verbesserungen Preisrechner Nebenkosten berechnen"
     - "Verbesserungen Restzahlungsliste"
+3.5.33:
+    - "!!! Datenschutzabfrage für GoogleMaps und OpenStreetMap hinzugefügt. Partial Objektliste muss angepasst werden. Bitte Upgrade-Guide lesen!"
+    - "Verbesserung alt-Text Bilder"
+    - "Fehlerkorrekturen Zuschläge"

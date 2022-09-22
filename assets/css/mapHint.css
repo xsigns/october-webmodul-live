@@ -1,0 +1,25 @@
+.mapHintContainer {
+    background: url(/plugins/xsigns/fewo/assets/images/map-placeholder.jpg) no-repeat center;
+}
+
+.mapHintContent {
+    padding: 20px;
+    background-color: rgb(255 255 255 / 65%);
+    margin: 15px;
+}
+
+.hintText p {
+    color: #000;
+}
+
+.cookieBox {
+    margin-top: 10px;
+}
+
+.cookieBox input {
+    margin-right: 5px;
+}
+
+.cookieBox label {
+    color: #000;
+}
