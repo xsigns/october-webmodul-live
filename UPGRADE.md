@@ -5,12 +5,40 @@
 
 - - -
 
+## Upgrade 3.5.34
+### Folgende Partialanpassungen sind für dieses Update notwendig
+
+Komponente **_Buchungsmaske_** _preise.htm_:  
+Der folgende Code ist für die Ausgabe der Kurtaxe in der Buchungsmaske zuständig und muss oberhalb von ``<!-- Gesamtsumme -->`` oder an anderer beliebiger Stelle in diesem Partial eingefügt werden:
+````
+{% if kurtaxe > 0 %}
+    <div class="zeile zeile_preise kurtaxe">
+        <div class="zeilensummentitel sum_titel">{{ summen.kurtaxe }}</div>
+        <div class="zeilesumme kurtaxe">{{ kurtaxe }}</div>
+    </div>
+{% endif %}
+````
+
+Komponente **_Preisrechner_** _default.htm:
+Der folgende für die Ausgabe der Kurtaxe im Preisrechner zuständig und muss unterhalb von ``<div id="kaution">{{ kaution }}</div>`` oder an anderer beliebiger Stelle in diesem Partial eingefügt werden:
+````
+<div class="label">{{ pkurtaxelabel }}</div>
+<div id="kurtaxe">{{ kurtaxe }}</div>
+````
+
+Komponente **_Bewertungen_** _default.htm_:  
+Die Code-Zeile ``src="{{ bewertung.image|raw }}"`` für das img-Tag muss durch folgenden Code ersetzt werden:
+````
+src="{{ bewertung.image.path }}"
+````
+- - -
+
 ## Upgrade 3.5.33
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 
 Komponente **_Objektliste_** _default.htm_:  
 
-**Schritt 1:**  
+**Schritt 1 (Gesamt Map):**  
 Der JavaScript-Codeblock für das Laden der Gesamtkarte muss entfernt und durch ``<div id="objGesMapContainer">{{ objgesmap|raw }}</div>`` ersetzt werden. Der Code befindet sich nun in dem Partial _objgesmap.htm_.
 
 Dieser Code...
@@ -33,7 +61,7 @@ Dieser Code...
 ````
 ... ersetzt werden.
 
-**Schritt 2:**  
+**Schritt 2 (Map pro Objekt):**  
 Der JavaScript-Codeblock für das Laden der einzelnen Objektkarten muss entfernt und durch ``<div id="objMapContainer-{{ objekt.id }}">{{ objekt.objmap|raw }}</div>`` ersetzt werden. Der Code befindet sich nun in dem Partial _objmap.htm_.
 
 Dieser Code...
@@ -55,6 +83,14 @@ Dieser Code...
 <div id="objMapContainer-{{ objekt.id }}">{{ objekt.objmap|raw }}</div>
 ````
 ... ersetzt werden.
+
+
+Komponente **_ObjektBewertungen_** _item.htm_:
+
+Der Bewertungstitel wird nun in einem ``<p>``-Tag geladen. Dafür einfach folgende Zeile in diesem Partial wie folgt anpassen:
+````
+<div class="bew_titel"><p>{{ bewertung.titel|raw }}</p></div>
+````
 - - -
 
 ## Upgrade 3.5.23

@@ -1,4 +1,3 @@
-
 <span class="label_buchungsmaske summen_beschreibung">{{ summen.summe}}</span>
 <div class="zeile zeile_objektpreis">
     <div class="zeilensummentitel">
@@ -51,6 +50,12 @@
     <div class="zeile zeile_preise kaution">
         <div class="zeilensummentitel sum_titel">{{ summen.kaution }}</div>
         <div class="zeilensumme kaution">{{ kaution }}</div>
+    </div>
+{% endif %}
+{% if kurtaxe > 0 %}
+    <div class="zeile zeile_preise kurtaxe">
+        <div class="zeilensummentitel sum_titel">{{ summen.kurtaxe }}</div>
+        <div class="zeilesumme kurtaxe">{{ kurtaxe }}</div>
     </div>
 {% endif %}
 <!-- Gesamtsumme -->

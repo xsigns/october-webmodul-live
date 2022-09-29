@@ -733,6 +733,10 @@
     - "Verbesserungen Preisrechner Nebenkosten berechnen"
     - "Verbesserungen Restzahlungsliste"
 3.5.33:
-    - "!!! Datenschutzabfrage für GoogleMaps und OpenStreetMap hinzugefügt. Partial Objektliste muss angepasst werden. Bitte Upgrade-Guide lesen!"
+    - "!!! Datenschutzabfrage für GoogleMaps und OpenStreetMap hinzugefügt. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!"
     - "Verbesserung alt-Text Bilder"
     - "Fehlerkorrekturen Zuschläge"
+3.5.34:
+    - "!!! Ausgabe der berechneten Kurtaxe in der Buchungsmaske und Preisrechner. Partialanpassungen sind notwendig, bitte Upgrade-Guide lesen!"
+    - "Verbesserung alt-Text Bilder Bewertungen"
+    - update71.php
