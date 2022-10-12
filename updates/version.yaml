@@ -740,3 +740,7 @@
     - "!!! Ausgabe der berechneten Kurtaxe in der Buchungsmaske und Preisrechner. Partialanpassungen sind notwendig, bitte Upgrade-Guide lesen!"
     - "Verbesserung alt-Text Bilder Bewertungen"
     - update71.php
+3.5.35:
+    - "!!! Datenschutzabfrage für Hausliste Map und ObjektMap hinzugefügt. Partial Hausliste und ObjektMap müssen angepasst werden, bitte Upgrade-Guide lesen!"
+    - "Fehlerkorrekturen Belegungsplan mit Angebot"
+    - update72.php

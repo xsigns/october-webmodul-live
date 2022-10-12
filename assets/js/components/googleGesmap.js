@@ -129,7 +129,6 @@ Maps.createMap = function() {
             data: ladedata,
             dataType: "html",
             success: function(resp) {
-
                 if (objekte.length !== 0) {
                     $('#fewo-map-liste').html($('#fewo-map-liste', resp).html());
 

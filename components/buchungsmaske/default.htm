@@ -10,7 +10,7 @@
 {% if offerid > 0 %}
 	<div class="fewo-offer">
 		<div class="offer_title">{{ ang_titel }}</div>
-		<div class="offer_desc">{{ ang_beschreibung }}</div>
+		<div class="offer_desc">{{ ang_beschreibung|raw }}</div>
 		<div class="offer_art">{{ ang_art }}</div>
 		<div class="offer_date">{{ ang_vonbis }}</div>
 		<div class="offer_img"><img src="{{ ang_image|raw }}"></div>

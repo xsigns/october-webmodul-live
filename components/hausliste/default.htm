@@ -29,37 +29,9 @@
                                 {{ haus.Strasse|raw }}, {{ haus.Land|raw }} {{ haus.PLZ|raw }} {{ haus.Ort|raw }}
                             </div>
                         {% endif %}
-                        {% if haus.map %}
-                            <div class="fewo-map">
-                            <div id="mapid{{ haus.id }}" class="fewo-hausmap" style="height:{{ mapheight }}px;"></div>
-                                <script>
-                                    jQuery(document).ready(function() {
-                                        var mymap{{ haus.id }} = L.map('mapid{{ haus.id }}',{
-                                            center: [{{ haus.lat }}, {{ haus.lng }}],
-                                            zoom: 14,
-                                        });
-                                        //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
-                                        //http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png
-                                        //http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
-                                        //http://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png
-                                        var OpenStreetMap_DE = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                                            maxZoom: 18,
-                                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
-                                        }).addTo(mymap{{ haus.id }});
-                                        L.marker(new L.LatLng({{haus.lat }}, {{haus.lng }}), { id: {{ haus.id }}, alt: '{{ haus.titel|raw }}'}).addTo(mymap{{ haus.id }});
-                                        mymap{{ haus.id }}.on('click', function() {
-                                            if (mymap{{ haus.id }}.scrollWheelZoom.enabled())
-                                                mymap{{ haus.id }}.scrollWheelZoom.disable();
-                                            else
-                                                mymap{{ haus.id }}.scrollWheelZoom.enable();
-                                        });
-                                        L.control.scale().addTo(mymap{{ haus.id }});
-                                        //mymap.on('blur', function() { mymap.scrollWheelZoom.disable(); });
-                                        mymap{{ haus.id }}.on('mouseout',function() { mymap{{ haus.id }}.scrollWheelZoom.disable();});
-                                    });
-                                </script>
-                            </div>
-                        {% endif %}
+
+                        <div id="hausmap-{{ haus.id }}">{{ haus.hausmap|raw }}</div>
+
                         {% if haus.objekte %}
                             <div class="fewo-objekte">{{ haus.objekte }}</div>
                         {% endif %}

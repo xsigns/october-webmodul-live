@@ -4,6 +4,55 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 
 - - -
+## Upgrade 3.5.35
+### Folgende Partialanpassungen sind für dieses Update notwendig
+
+Komponente **_Hausliste_** _default.htm_:  
+Der JavaScript-Codeblock für das Laden der Hauskarte muss entfernt und durch ``<div id="hausmap-{{ haus.id }}">{{ haus.hausmap|raw }}</div>`` ersetzt werden. Der Code befindet sich nun in dem Partial _hausmap.htm_.
+
+Dieser Code...
+````
+{% if haus.map %}
+    <div class="fewo-map">
+    <div id="mapid{{ haus.id }}" class="fewo-hausmap" style="height:{{ mapheight }}px;"></div>
+        <script>
+            jQuery(document).ready(function() {
+                ...
+                ### Hier steht der restliche Code ###
+                ...
+            });
+        </script>
+    </div>
+{% endif %}
+````
+...muss gelöscht und durch...
+````
+<div id="hausmap-{{ haus.id }}">{{ haus.hausmap|raw }}</div>
+````
+...ersetzt werden.
+
+&nbsp;
+
+Komponente **_Objektmap_** _default.htm_:  
+Der Div-Container mit der ID _map_ und der JavaScript-Codeblock für das Laden der Karte muss entfernt und durch ``<div id="objmap">{{ objmap|raw }}</div>`` ersetzt werden. Der Code befindet sich nun in dem Partial _map.htm_.
+
+Dieser Code...
+````
+<div id="map" class="fewo-listmap" style="height:600px;"></div>
+<script>
+    jQuery(document).ready(function() {
+        ...
+        ### Hier steht der restliche Code ###
+        ...
+    });
+</script>
+````
+...muss entfernt und durch...
+````
+<div id="objmap">{{ objmap|raw }}</div>
+````
+...ersetzt werden.
+- - -
 
 ## Upgrade 3.5.34
 ### Folgende Partialanpassungen sind für dieses Update notwendig
@@ -59,7 +108,7 @@ Dieser Code...
 ````
 <div id="objGesMapContainer">{{ objgesmap|raw }}</div>
 ````
-... ersetzt werden.
+...ersetzt werden.
 
 **Schritt 2 (Map pro Objekt):**  
 Der JavaScript-Codeblock für das Laden der einzelnen Objektkarten muss entfernt und durch ``<div id="objMapContainer-{{ objekt.id }}">{{ objekt.objmap|raw }}</div>`` ersetzt werden. Der Code befindet sich nun in dem Partial _objmap.htm_.
@@ -82,7 +131,7 @@ Dieser Code...
 ````
 <div id="objMapContainer-{{ objekt.id }}">{{ objekt.objmap|raw }}</div>
 ````
-... ersetzt werden.
+...ersetzt werden.
 
 
 Komponente **_ObjektBewertungen_** _item.htm_:
