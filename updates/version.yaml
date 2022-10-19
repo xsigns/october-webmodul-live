@@ -744,3 +744,6 @@
     - "!!! Datenschutzabfrage für Hausliste Map und ObjektMap hinzugefügt. Partial Hausliste und ObjektMap müssen angepasst werden, bitte Upgrade-Guide lesen!"
     - "Fehlerkorrekturen Belegungsplan mit Angebot"
     - update72.php
+3.5.36:
+    - "Fehlerkorrekturen Berechnung der Zuschläge im errechneten Preis"
+    - update73.php

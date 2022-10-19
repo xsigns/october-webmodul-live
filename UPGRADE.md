@@ -68,7 +68,7 @@ Der folgende Code ist für die Ausgabe der Kurtaxe in der Buchungsmaske zuständ
 {% endif %}
 ````
 
-Komponente **_Preisrechner_** _default.htm:
+Komponente **_Preisrechner_** _default.htm_:
 Der folgende für die Ausgabe der Kurtaxe im Preisrechner zuständig und muss unterhalb von ``<div id="kaution">{{ kaution }}</div>`` oder an anderer beliebiger Stelle in diesem Partial eingefügt werden:
 ````
 <div class="label">{{ pkurtaxelabel }}</div>
