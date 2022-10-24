@@ -57,7 +57,7 @@ class Update73 extends Migration
         {
             Schema::table('xsigns_fewo_vorgleist', function (Blueprint $table)
             {
-                $table->decimal('anzahl', 5, 2)->default(0)->change();
+                $table->decimal('anzahl', 9, 2)->default(0)->change();
                 $table->decimal('epreis', 9, 2)->default(0)->change();
                 $table->decimal('summe', 9, 2)->default(0)->change();
                 $table->decimal('mwst', 9, 2)->default(0)->change();
