@@ -747,3 +747,5 @@
 3.5.36:
     - "Fehlerkorrekturen Berechnung der Zuschläge im errechneten Preis"
     - update73.php
+3.5.37:
+    - "Fehlerkorrekturen Kurtaxe Berechnung"
