@@ -386,7 +386,7 @@
             $('#sterne option[value=' + sterne + ']').attr('selected', 'selected');
 
         if($('#preis') !== undefined)
-            jQuery('#preis').slider({ from: 20, to: 500, heterogeneity: ['20/100', '75/250'], step: 10, dimension: '&nbsp;€', skin: "blue" ,
+            jQuery('#preis').slider({ from: minpreis, to: maxpreis, heterogeneity: ['20/100', '75/250'], step: 10, dimension: '&nbsp;€', skin: "blue" ,
                 callback: function( value ){
                     jQuery('#preis').request('onDataChange');
                 }});

@@ -69,7 +69,7 @@ class Update73 extends Migration
         {
             Schema::table('xsigns_fewo_objza', function (Blueprint $table)
             {
-                $table->decimal('kaut', 5, 2)->default(0)->change();
+                $table->decimal('kaut', 9, 2)->default(0)->change();
                 $table->decimal('anzproz', 9, 2)->default(0)->change();
                 $table->decimal('anzmin', 9, 2)->default(0)->change();
             });

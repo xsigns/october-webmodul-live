@@ -749,3 +749,6 @@
     - update73.php
 3.5.37:
     - "Fehlerkorrekturen Kurtaxe Berechnung"
+3.5.38:
+    - "Verbesserung Datenbank"
+    - update74.php
