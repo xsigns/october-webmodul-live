@@ -457,9 +457,9 @@
     - Fehlerbehebungen
     - Performance Verbesserungen
 3.3.0:
-    - !!! Problem im Datepicker, wenn heute nicht wählbar, funktionierte Lückenbuchung nicht mehr, Partialanpassung notwendig! Problem in Sortierung, konnte nicht nach FewoVerwalter-Sortierung sortieren. Objekt-Sortierung Reihenfolgen angepasst.
+    - "!!! Problem im Datepicker, wenn heute nicht wählbar, funktionierte Lückenbuchung nicht mehr, Partialanpassung notwendig! Problem in Sortierung, konnte nicht nach FewoVerwalter-Sortierung sortieren. Objekt-Sortierung Reihenfolgen angepasst."
 3.3.1:
-    - !!! Belegungsplan wählweise klickbar, Partialanpassung notwendig! Fehler in der Mehrsprachigkeit behoben. Es wurde eine Multisuche, welche die Ergebnisse nach Objekt, Ort, Region und Letzte Suche auflistet, hinzugefügt. Die Anzahl der Objekte in Ort und Region kann ausgegeben werden. Auslagerung von JavaScript-Code, Partialanpassung notwendig! Weitere allgemeine Fehlerbehebungen.
+    - "!!! Belegungsplan wählweise klickbar, Partialanpassung notwendig! Fehler in der Mehrsprachigkeit behoben. Es wurde eine Multisuche, welche die Ergebnisse nach Objekt, Ort, Region und Letzte Suche auflistet, hinzugefügt. Die Anzahl der Objekte in Ort und Region kann ausgegeben werden. Auslagerung von JavaScript-Code, Partialanpassung notwendig! Weitere allgemeine Fehlerbehebungen."
 3.3.2:
     - "!!! Schemaorg mit abfrage nach Bewertungen, Partialanpassung notwendig! Preisrechner- und Buchungsmaskekalender mit custom arrow's, Partialanpassung notwendig!"
     - "Direkte Integration des Eigentümerlogins im Webmodul. Nur mit entsprechender Lizenz nutzbar. Wenn Sie den Eigentümerlogin bereits besitzen, folgen Sie bitte den Anweisungen im Upgrade Guide."
