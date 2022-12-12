@@ -15,6 +15,20 @@ Das alt-Attribut und das title-Attribut beider img-Tags (einfaches Bild und Slid
 ````
 alt="{% if objekt.image_title %}{{ objekt.image_title }}{% else %}{{ objekt.TitelFuerTags|raw }}{% endif %}"{% if objekt.image_title %} title="{{ objekt.image_title }}"{% endif %}
 ````
+
+&nbsp;
+
+Komponente **_Buchungsmaske_** _btnend.htm_ und _btnend-variant2.htm_:  
+Die Code-Zeile für den Button mit der class ``fewo-btnweiter`` muss durch folgende Code-Zeilen ersetzt werden.
+````
+{% if btnbuchen != '' %}
+    <button id="btnweiter6" class="fewo-btnweiter fewo-btnend" onclick="$('.fewo-btnend').hide();" data-request="{{ __SELF__ }}::onBtnBuchen" data-request-data="btype: 'B'">{{ btnbuchen }}</button>
+{% endif %}
+
+{% if btnanfragen != '' %}
+    <button id="btnweiter6" class="fewo-btnweiter fewo-btnend" onclick="$('.fewo-btnend').hide();" data-request="{{ __SELF__ }}::onBtnBuchen" data-request-data="btype: 'A'">{{ btnanfragen }}</button>
+{% endif %}
+````
 - - -
 
 ## Upgrade 3.5.35
