@@ -752,3 +752,9 @@
 3.5.38:
     - "Verbesserung Datenbank"
     - update74.php
+3.6.0:
+    - "!!! Verbesserungen Ausgabe des Alt-Tags für Bilder in der Objekliste. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!"
+    - "Ausgabe der Räume in Objektstammdaten"
+    - "Anfrage- und/oder Buchungsbutton können nun in einer Buchungsmaske gleichzeitig oder weiterhin einzeln angezeigt werden. Die Einstellung erfolgt global für alle Objekte oder pro Objekt je nach Einstellung des Objektes im Fewo-Verwalter."
+    - "Verbesserungen Fehlermeldungen Buchungsmaske"
+    - update75.php

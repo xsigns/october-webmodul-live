@@ -155,21 +155,20 @@ Belplan.clickEvent = function() {
 };
 
 Belplan.addNichtWaehlbarClass = function() {
-    if (!anreisedatum  && !abreisedatum) {
-        const tage = $('.tag');
+    // if(!anreisedatum  && !abreisedatum)
+    const tage = $('.tag');
 
-        for (let i = 0; i < wechselTimeline.length; i++) {
+    for (let i = 0; i < wechselTimeline.length; i++) {
 
-            const wechselstatus = wechselTimeline.charAt(i);
-            const verfuegbarStatus = verfuegbarTimeline.charAt(i);
+        const wechselstatus = wechselTimeline.charAt(i);
+        const verfuegbarStatus = verfuegbarTimeline.charAt(i);
 
-            if (wechselstatus === 'O') {
-                tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
-            } else if (wechselstatus === 'X' && verfuegbarStatus === 'Y') {
-                tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
-            } else if (wechselstatus === 'X' && verfuegbarStatus === 'N' && wechselTimeline.charAt(i - 1) === 'X' && verfuegbarTimeline.charAt(i - 1) === 'Y') {
-                tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
-            }
+        if (wechselstatus === 'O') {
+            tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
+        } else if (wechselstatus === 'X' && verfuegbarStatus === 'Y') {
+            tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
+        } else if (wechselstatus === 'X' && verfuegbarStatus === 'N' && wechselTimeline.charAt(i - 1) === 'X' && verfuegbarTimeline.charAt(i - 1) === 'Y') {
+            tage.eq(i).addClass('nichtwaehlbar').addClass('nichtselektierbar');
         }
     }
 };

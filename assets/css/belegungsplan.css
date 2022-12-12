@@ -115,11 +115,11 @@ background-image: linear-gradient(to bottom right, #f4c00b 0%, #f4c00b 48%, #FFF
 .belkal .cal {width:22px;height:22px;float:left;margin:2px;text-align: center;}
 td.vergangenheit, td.keine_preise {text-decoration: line-through; background-color: #FAFAFA;}
 td.tag_leer {background-color: #FAFAFA;}
-.frei.gewaehlt,.start_A.gewaehlt,.ende_A.gewaehlt,.start_B.gewaehlt,.ende_B.gewaehlt,.start_BL.gewaehlt,.ende_BL.gewaehlt{color:#fff;background-color: #45719a !important; background-image: none !important;}
-.frei.gewaehlt,.tag_abreise.gewaehlt,.tag_anreise.gewaehlt,.ce_fewo_buchungsmaske .waehlbar:hover{color:#fff;cursor:pointer;background-color: #45719a !important; background-image: none !important;}
+.frei.gewaehlt,.start_A.gewaehlt,.ende_A.gewaehlt,.start_B.gewaehlt,.ende_B.gewaehlt,.start_BL.gewaehlt,.ende_BL.gewaehlt{color:#fff;background-color: #45719a !important; background-image: none !important; opacity: 1 !important;}
+.frei.gewaehlt,.tag_abreise.gewaehlt,.tag_anreise.gewaehlt,.ce_fewo_buchungsmaske .waehlbar:hover{color:#fff;cursor:pointer;background-color: #45719a !important; background-image: none !important; opacity: 1 !important;}
 .isClickable .nichtselektierbar, .nichtwaehlbar, .keineanabreise {opacity: 0.6;}
 .isClickable .fewo_buchungsplan .waehlbar:not(.nichtselektierbar) {cursor: pointer;}
-.isClickable .fewo_buchungsplan .waehlbar:not(.nichtselektierbar):hover {background-color: #45719a !important; color: #fff !important; background-image: none;}
+.isClickable .fewo_buchungsplan .waehlbar:not(.nichtselektierbar):hover {background-color: #45719a !important; color: #fff !important; background-image: none; opacity: 1 !important;}
 .isClickable .fewo_buchungsplan .waehlbar.nichtselektierbar, .fewo_buchungsplan .belegt {cursor: not-allowed;}
 
 

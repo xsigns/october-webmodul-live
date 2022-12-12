@@ -1,0 +1,19 @@
+{% if anzahl > 0 %}
+    <div class="fewo-schlafzimmer">
+        {{ header|raw }}
+        {% for bedroom in rooms %}
+            <div class="schlafzimmer">
+                <div>{{ bedroom.titel }}</div>
+                {% if bedroom.desc != '' %}<div>{{ bedroom.desc|raw }}</div>{% endif %}
+                {% if bedroom.info == 1 %}<div>{{ bedroom.infoText|raw }}</div>{% endif %}
+                {% if bedroom.ausst|length > 0 %}
+                    <ul>
+                        {% for ausst in bedroom.ausst %}
+                            <li>{{ ausst.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

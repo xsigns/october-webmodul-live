@@ -1007,7 +1007,10 @@
                         var offsetLeft = (offset.left + $(self).width()) - box.width();
                         box.css({
                             "top": offset.top + $(self).outerHeight() + parseInt($('body').css('border-top') || 0, 10),
-                            "left": offsetLeft
+                            "left": offsetLeft,
+                            /*"display": "flex",
+                            "flex-direction" : "column",
+                            "justify-content" : "space-between"*/
                         });
                     }else {
                         box.css({
@@ -1201,6 +1204,9 @@
         }
 
         function dayClicked(day) {
+            if(day.hasClass('day-header'))
+                return;
+
             if(day.hasClass('noarrival') && $('.date-picker-wrapper').find('.last-date-selected').length === 1){
                 clearSelection();
                 return;

@@ -4,6 +4,19 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 
 - - -
+
+## Upgrade 3.6.0
+### Folgende Partialanpassungen sind für dieses Update notwendig
+
+Komponente **_Objektliste_** _default.htm_:  
+Bild und Bild-Slider  
+Das alt-Attribut und das title-Attribut beider img-Tags (einfaches Bild und Slider) müssen durch folgenden Code ersetzt werden:
+
+````
+alt="{% if objekt.image_title %}{{ objekt.image_title }}{% else %}{{ objekt.TitelFuerTags|raw }}{% endif %}"{% if objekt.image_title %} title="{{ objekt.image_title }}"{% endif %}
+````
+- - -
+
 ## Upgrade 3.5.35
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 

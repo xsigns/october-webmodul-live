@@ -1,6 +1,13 @@
 {% if payment == false %}
     <button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:2">{{ labels.btnzurueck }}</button>
-    <button id="btnweiter6" class="fewo-btnweiter" onclick="$('#btnweiter6').hide();" data-request="{{ __SELF__ }}::onBtnBuchen">{{ btnbuchen }}</button>
+
+    {% if btnbuchen != '' %}
+        <button id="btnweiter6" class="fewo-btnweiter fewo-btnend" onclick="$('.fewo-btnend').hide();" data-request="{{ __SELF__ }}::onBtnBuchen" data-request-data="btype: 'B'">{{ btnbuchen }}</button>
+    {% endif %}
+
+    {% if btnanfragen != '' %}
+        <button id="btnweiter6" class="fewo-btnweiter fewo-btnend" onclick="$('.fewo-btnend').hide();" data-request="{{ __SELF__ }}::onBtnBuchen" data-request-data="btype: 'A'">{{ btnanfragen }}</button>
+    {% endif %}
 {% else %}
     {% for pay in payments %}
         <div class="payment_container">

@@ -33,12 +33,12 @@
                         {% endif %}
                         {% if objekt.slider == false %}
                             <div class="fewo_image col-12 col-md-4 p-0 float-left">
-                                <a href="{{ objekt.href }}"><img src="{{ objekt.image|raw }}" alt="{% if objekt.image.title %}{{ objekt.image.title }}{% else %}{{ objekt.TitelFuerTags|raw }}{% endif %}"{% if objekt.image.title %} title="{{ objekt.image.title }}"{% endif %}/></a>
+                                <a href="{{ objekt.href }}"><img src="{{ objekt.image|raw }}" alt="{% if objekt.image_title %}{{ objekt.image_title }}{% else %}{{ objekt.TitelFuerTags|raw }}{% endif %}"{% if objekt.image_title %} title="{{ objekt.image_title }}"{% endif %}/></a>
                             </div>
                         {% else %}
                             <div class="fewo_list_image">
                                 <div class="fewo_listnavileft fewo_slidernav" onclick="javascript:bildZurueck('fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}');"></div>
-                                <a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}><img id="fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}" data-posid="0" data-images='{{ objekt.images|raw}}' class="fewo_listimage" src="{{ objekt.img_bild}}" alt="{{ objekt.Titel }}" title="{{ objekt.title }}"/></a>
+                                <a href="{{ objekt.href }}" {% if targetblank %}target="_blank" {% endif %}><img id="fewolistslider_{{ objekt.itemid }}_{{ objekt.id }}" data-posid="0" data-images='{{ objekt.images|raw}}' class="fewo_listimage" src="{{ objekt.img_bild}}" alt="{% if objekt.image_title %}{{ objekt.image_title }}{% else %}{{ objekt.TitelFuerTags|raw }}{% endif %}"{% if objekt.image_title %} title="{{ objekt.image_title }}"{% endif %}/></a>
                                 <div class="fewo_listnaviright fewo_slidernav" onclick="javascript:bildWeiter('fewolistslider_{{ objekt.itemid}}_{{ objekt.id }}');"></div>
                             </div>
                         {% endif %}
