@@ -694,11 +694,14 @@
                 return this;
             },
             setDateRange: function(d1, d2, silent) {
+                let todayDate = new Date();
+                let time = todayDate.getHours() + ":" + todayDate.getMinutes() + ":" + todayDate.getSeconds();
+                d1 = d1 + ' ' + time;
+                d2 = d2 + ' ' + time;
                 if (typeof d1 == 'string' && typeof d2 == 'string') {
                     d1 = moment(d1, opt.format).toDate();
                     d2 = moment(d2, opt.format).toDate();
                 }
-
                 setDateRange(d1, d2, silent);
             },
             clear: clearSelection,

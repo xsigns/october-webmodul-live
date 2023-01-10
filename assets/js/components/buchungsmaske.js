@@ -24,7 +24,7 @@ $(function() {
         separator: separator,
         selectForward: selectForward,
         autoClose: autoClose,
-        format: format,
+        format: format + ' HH:mm:ss',
         alwaysOpen: alwaysOpen,
         showShortcuts: showShortcuts,
         showLegend: showLegend,

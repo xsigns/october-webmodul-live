@@ -30,7 +30,7 @@ $(function() {
         selectForward: selectForward,
         autoClose: autoClose,
         showArrow: showArrow,
-        format: format,
+        format: format + ' HH:mm:ss',
         startOfWeek: startOfWeek,
         startDate: startDate,
         minDays: minDays,
