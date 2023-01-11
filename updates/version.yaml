@@ -457,11 +457,11 @@
     - Fehlerbehebungen
     - Performance Verbesserungen
 3.3.0:
-    - !!! Problem im Datepicker, wenn heute nicht wählbar, funktionierte Lückenbuchung nicht mehr, Partialanpassung notwendig! Problem in Sortierung, konnte nicht nach FewoVerwalter-Sortierung sortieren. Objekt-Sortierung Reihenfolgen angepasst.
+    - "!!! Problem im Datepicker, wenn heute nicht wählbar, funktionierte Lückenbuchung nicht mehr, Partialanpassung notwendig! Problem in Sortierung, konnte nicht nach FewoVerwalter-Sortierung sortieren. Objekt-Sortierung Reihenfolgen angepasst."
 3.3.1:
-    - !!! Belegungsplan wählweise klickbar, Partialanpassung notwendig! Fehler in der Mehrsprachigkeit behoben. Es wurde eine Multisuche, welche die Ergebnisse nach Objekt, Ort, Region und Letzte Suche auflistet, hinzugefügt. Die Anzahl der Objekte in Ort und Region kann ausgegeben werden. Auslagerung von JavaScript-Code, Partialanpassung notwendig! Weitere allgemeine Fehlerbehebungen.
+    - "!!! Belegungsplan wählweise klickbar, Partialanpassung notwendig! Fehler in der Mehrsprachigkeit behoben. Es wurde eine Multisuche, welche die Ergebnisse nach Objekt, Ort, Region und Letzte Suche auflistet, hinzugefügt. Die Anzahl der Objekte in Ort und Region kann ausgegeben werden. Auslagerung von JavaScript-Code, Partialanpassung notwendig! Weitere allgemeine Fehlerbehebungen."
 3.3.2:
-    - !!! Schemaorg mit abfrage nach Bewertungen, Partialanpassung notwendig! Preisrechner- und Buchungsmaskekalender mit custom arrow's, Partialanpassung notwendig!
+    - "!!! Schemaorg mit abfrage nach Bewertungen, Partialanpassung notwendig! Preisrechner- und Buchungsmaskekalender mit custom arrow's, Partialanpassung notwendig!"
     - Direkte Integration des Eigentümerlogins im Webmodul. Nur mit entsprechender Lizenz nutzbar. Wenn Sie den Eigentümerlogin bereits besitzen, folgen Sie bitte den Anweisungen im Upgrade Guide.
     - Performance Verbesserungen.
     - Bewertungsoptions mehrsprachig
@@ -473,24 +473,24 @@
     - Bug im Update 3.3.2, Benutzergruppe wurde nicht richtig angelegt
     - create_group.php
 3.3.4:
-    - !!! Fehlermeldung im Preisrechner, Partialanpassung notwendig!
+    - "!!! Fehlermeldung im Preisrechner, Partialanpassung notwendig!"
     - Bugfix Objektliste Objekte ohne Preise
     - Erweiterung der Buchungsmaske. Hier können Sie jetzt zwischen zwei Varianten wählen.
     - Verbesserung des klickbaren Belegungsplans.
     - update34.php
 3.3.5:
-    - !!! Bugfix Buchungsmaske, Partialanpassung notwendig!
+    - "!!! Bugfix Buchungsmaske, Partialanpassung notwendig!"
     - Anfrage und/oder Buchung kann pro Objekt aus dem Fewo-Verwalter bestimmt werden.
     - update35.php
 3.3.6:
-    - !!! Bugfix Buchungsmaske und Preisrechner, Partialanpassung notwendig!
+    - "!!! Bugfix Buchungsmaske und Preisrechner, Partialanpassung notwendig!"
 3.3.7:
     - Bugfix
 3.3.8:
-    - !!! Optimiertes Laden der Objektbilder, Partialanpassung notwendig!
+    - "!!! Optimiertes Laden der Objektbilder, Partialanpassung notwendig!"
     - Bugfix im klickbaren Belegungsplan
 3.4.0:
-    - !!! Integration von GoogleMaps in die Objektliste, Partialanpassung notwendig!
+    - "!!! Integration von GoogleMaps in die Objektliste, Partialanpassung notwendig!"
     - Optimiertes Laden der Bewertungen
     - Optimiertes Laden der Objektliste
     - Optimiertes Laden der Objektbilder
@@ -529,7 +529,7 @@
     - Fehlerkorrekturen
     - Verbesserung der GoogleMaps Listenseite
 3.4.8:
-    - !!! Fehlerkorrekturen Preisrechner und Belegungsplan, Partialanpassung notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Fehlerkorrekturen Preisrechner und Belegungsplan, Partialanpassung notwendig, bitte Upgrade-Guide lesen!"
     - weitere Fehlerkorrekturen
 3.4.9:
     - Fehlerkorrekturen
@@ -541,7 +541,7 @@
 3.4.12:
     - Fehlerkorrekturen Zeitleiste Lückenbuchungen
 3.4.13:
-    - !!! Fehlerkorrekturen Geburtsdatum, Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Fehlerkorrekturen Geburtsdatum, Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - WICHTIG! Bitte lösen Sie nach dem Update 'alle Belegungen senden' im Fewo-Verwalter aus.
     - Fehlerkorrekturen
     - Optimiertes Laden der Objektliste
@@ -555,7 +555,7 @@
 3.4.17:
     - Fehlerkorrekturen für Datenbankabfragen
 3.4.18:
-    - !!! Synchronisation mit Feondi. Neu senden der Daten vom Fewo-Verwalter an Feondi notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Synchronisation mit Feondi. Neu senden der Daten vom Fewo-Verwalter an Feondi notwendig, bitte Upgrade-Guide lesen!"
     - update52.php
 3.4.19:
     - Fehlerkorrekturen für Sync zu Feondi, Angebote und Ausstattungslisten
@@ -586,7 +586,7 @@
 3.4.31:
     - Fehlerkorrekturen Objektliste Map-Marker
 3.4.32:
-    - !!! Fehlerkorrekturen Objektlistenfilter, Objektbewertungen und Preisrechner. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Fehlerkorrekturen Objektlistenfilter, Objektbewertungen und Preisrechner. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
 3.4.33:
     - Verbesserungen für SEO
     - Fehlerkorrekturen Listenfilter bei Navigation
@@ -604,7 +604,7 @@
     - Fehlerkorrekturen speichern des Timestamps in Bewertungen
     - CSS-Feld für Angebotsitem in Angebotsliste hinzugefügt. Partialanpassungen sind optional!
 3.4.38:
-    - !!! Fehlerkorrekturen Objektmap. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Fehlerkorrekturen Objektmap. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - Fehlerkorrekturen Eigentümerlogin Vorgänge nach Datum sortieren
 3.4.39:
     - Fehlerkorrekturen Objektpreise speichern
@@ -622,18 +622,18 @@
 3.5.3:
     - Fehlerkorrekturen Belegungsplan
 3.5.4:
-    - !!! Fehlerkorrekturen Buchungsmaske. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Fehlerkorrekturen Buchungsmaske. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - Fehlerkorrekturen Angebot-Objektliste
     - Erweiterung Zusammenfassung Buchungsmaske um Objektpreis, Gast Titel und Anzahl der Übernachtungstage
 3.5.5:
-    - !!! Bitte Upgrade-Guide lesen! Erweiterung Eigentümerlogin hochladen mehrere Abrechnungen für einen Monat möglich.
+    - "!!! Bitte Upgrade-Guide lesen! Erweiterung Eigentümerlogin hochladen mehrere Abrechnungen für einen Monat möglich."
     - Verbesserungen und Fehlerkorrekturen der Image-Komponente
     - Verbesserungen Versand der Info Mail für neue Bewertung
     - update57.php
 3.5.6:
     - Fehlerkorrekturen der Image-Komponente
 3.5.7:
-    - !!! Behebung einer Sicherheitslücke im Bereich Listensortierung (credits @Daniel Blumhagen für die Meldung der Lücke). Die Installation des Updates wird dringend empfohlen!
+    - "!!! Behebung einer Sicherheitslücke im Bereich Listensortierung (credits @Daniel Blumhagen für die Meldung der Lücke). Die Installation des Updates wird dringend empfohlen!"
 3.5.8:
     - Verbesserungen der Datenbank
     - Fehlerkorrekturen Objekte ohne Preise
@@ -652,17 +652,17 @@
     - Verbesserungen Vorgänge Import
     - Mehrsprachigkeit für Cronmails
 3.5.13:
-    - !!! Fehlerkorrekturen Vorgänge Erfassungsdatum speichern. Belegungen für Feondi müssen neu gesendet werden (Nur notwendig, wenn Sync Feondi in den Fewo-Einstellungen aktiviert ist), bitte Upgrade-Guide lesen!
+    - "!!! Fehlerkorrekturen Vorgänge Erfassungsdatum speichern. Belegungen für Feondi müssen neu gesendet werden (Nur notwendig, wenn Sync Feondi in den Fewo-Einstellungen aktiviert ist), bitte Upgrade-Guide lesen!"
     - Verbesserungen der Datenbank
     - Fehlerkorrekturen Zahlungsmodul
     - Fehlerkorrekturen Belegungsplan
     - update60.php
 3.5.14:
-    - !!! Verbesserungen im Eigentümerlogin. Eventuelle Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Verbesserungen im Eigentümerlogin. Eventuelle Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - Verbesserungen Sync Feondi Logging
     - Verbesserungen für Mehrsprachigkeit
 3.5.15:
-    - !!! Verbesserungen im Listenfilter. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Verbesserungen im Listenfilter. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - Erweiterung Belegungsplan. Aktivierung der Klick-Funktion individuell einstellbar.
 3.5.16:
     - Verbesserungen Eigentümerlogin
@@ -674,7 +674,7 @@
     - Verbesserungen der Datenbank
     - update61.php
 3.5.19:
-    - !!! Verbesserungen laden der Bilder. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Verbesserungen laden der Bilder. Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - Verbesserung der Performance
     - Fehlerkorrekturen Gastdaten speichern
     - update62.php
@@ -687,7 +687,7 @@
     - Verbesserungen Import Vorgänge
     - Fehlerkorrekturen Anzeige Angebote
 3.5.23:
-    - !!! Fehlerkorrekturen Tooltip für Leistungen. Eventuell Partialanpassungen notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Fehlerkorrekturen Tooltip für Leistungen. Eventuell Partialanpassungen notwendig, bitte Upgrade-Guide lesen!"
     - Verbesserungen Validierung der Gastdaten
     - Fehlerkorrekturen und Verbesserungen Leistungen Tooltip
     - Fehlerkorrekturen Listenfilter Ausstattungen Übersetzung
@@ -733,15 +733,15 @@
     - Verbesserungen Preisrechner Nebenkosten berechnen
     - Verbesserungen Restzahlungsliste
 3.5.33:
-    - !!! Datenschutzabfrage für GoogleMaps und OpenStreetMap hinzugefügt. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!
+    - "!!! Datenschutzabfrage für GoogleMaps und OpenStreetMap hinzugefügt. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!"
     - Verbesserung alt-Text Bilder
     - Fehlerkorrekturen Zuschläge
 3.5.34:
-    - !!! Ausgabe der berechneten Kurtaxe in der Buchungsmaske und Preisrechner. Partialanpassungen sind notwendig, bitte Upgrade-Guide lesen!
+    - "!!! Ausgabe der berechneten Kurtaxe in der Buchungsmaske und Preisrechner. Partialanpassungen sind notwendig, bitte Upgrade-Guide lesen!"
     - Verbesserung alt-Text Bilder Bewertungen
     - update71.php
 3.5.35:
-    - !!! Datenschutzabfrage für Hausliste Map und ObjektMap hinzugefügt. Partial Hausliste und ObjektMap müssen angepasst werden, bitte Upgrade-Guide lesen!
+    - "!!! Datenschutzabfrage für Hausliste Map und ObjektMap hinzugefügt. Partial Hausliste und ObjektMap müssen angepasst werden, bitte Upgrade-Guide lesen!"
     - Fehlerkorrekturen Belegungsplan mit Angebot
     - update72.php
 3.5.36:
@@ -753,7 +753,7 @@
     - Verbesserung Datenbank
     - update74.php
 3.6.0:
-    - !!! Verbesserungen Ausgabe des Alt-Tags für Bilder in der Objekliste. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!
+    - "!!! Verbesserungen Ausgabe des Alt-Tags für Bilder in der Objekliste. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!"
     - Ausgabe der Räume in Objektstammdaten
     - Anfrage- und/oder Buchungsbutton können nun in einer Buchungsmaske gleichzeitig oder weiterhin einzeln angezeigt werden. Die Einstellung erfolgt global für alle Objekte oder pro Objekt je nach Einstellung des Objektes im Fewo-Verwalter.
     - Verbesserungen Fehlermeldungen Buchungsmaske
