@@ -222,6 +222,7 @@ class Plugin extends PluginBase
                 'icon' => 'icon-home',
                 'order' => 10,
                 'class' => 'xsigns\fewo\Models\GlobalSettings',
+                'size' => 'adaptive'
             ],
             'AusstattungSet' => [
                 'label' => 'xsigns.fewo::lang.ausstattungset.name',
@@ -276,6 +277,7 @@ class Plugin extends PluginBase
                 'order' => 500,
                 'keywords' => 'slide show settings',
                 'permissions' => ['xsigns.fewo.*'],
+                'size' => 'adaptive'
             ],
             'slideshows' => [
                 'label' => 'xsigns.fewo::lang.slideshows.name',

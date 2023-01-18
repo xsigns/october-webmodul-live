@@ -636,8 +636,16 @@
 
         if (!opt.showTopbar) opt.autoClose = true;
 
-        if (opt.startDate && typeof opt.startDate == 'string') opt.startDate = moment(opt.startDate, opt.format).toDate();
-        if (opt.endDate && typeof opt.endDate == 'string') opt.endDate = moment(opt.endDate, opt.format).toDate();
+        let todayDate = new Date();
+        let time = todayDate.getHours() + ":" + todayDate.getMinutes() + ":" + todayDate.getSeconds();
+        opt.startDate = opt.startDate + ' ' + time;
+        opt.endDate = opt.endDate + ' ' + time;
+
+        if (opt.startDate && typeof opt.startDate == 'string')
+            opt.startDate = moment(opt.startDate, opt.format).toDate();
+
+        if (opt.endDate && typeof opt.endDate == 'string')
+            opt.endDate = moment(opt.endDate, opt.format).toDate();
 
         if (opt.yearSelect && typeof opt.yearSelect === 'boolean') {
             opt.yearSelect = function(current) { return [current - 5, current + 5]; }

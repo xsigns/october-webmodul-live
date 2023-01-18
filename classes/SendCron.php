@@ -8,6 +8,7 @@ use RainLab\Translate\Classes\Translator;
 use Xsigns\Fewo\Models\GlobalSettings;
 use Mail;
 use System\Models;
+use Schema;
 
 define ('MAILART_ANREISE', 0);
 define ('MAILART_ABREISE', 1);
@@ -194,10 +195,14 @@ class SendCron
         if (count($isTranslate) > 0)
         {
             $arrLocales = array();
-            $resLocales = Database::select(null, self::$modulename, "select code from rainlab_translate_locales");
+
+            if (Schema::hasTable('rainlab_translate_locales'))
+                $resLocales = Database::select(null,  self::$modulename, "select code as locale from rainlab_translate_locales");
+            else
+                $resLocales = Database::select(null, self::$modulename, 'select locale from system_site_definitions');
 
             foreach ($resLocales as $item)
-                $arrLocales[] = $item->code;
+                $arrLocales[] = $item->locale;
         }
 
         foreach ($vorgaenge as $vorgang)
@@ -215,6 +220,7 @@ class SendCron
                 $gastLand = 'en';
 
             $mailBereitsGesendet = $vorgang->bewertung == 1;
+
             if ($mailart == MAILART_ANREISE)
                 $mailBereitsGesendet = $vorgang->anschreiben == 1;
 
@@ -297,6 +303,7 @@ class SendCron
                                 $mailviewSend = $mailview . 'de';
 
                             self::$gastmail = $vorgang->gast_mail;
+
                             Mail::send($mailviewSend, $vars, function ($message)
                             {
                                 $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
@@ -306,6 +313,7 @@ class SendCron
                                 else
                                     $message->to(self::$gastmail);
                             });
+
                             $hinweis = 'E-Mail erfolgreich gesendet';
 
                             if ($mailart == MAILART_ANREISE)

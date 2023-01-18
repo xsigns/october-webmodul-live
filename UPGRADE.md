@@ -2,7 +2,17 @@
 > **HINWEIS!**  
 > Die Bearbeitung eines Partials ist nur dann notwendig, wenn das entsprechende Partial einer Komponente im Backend angepasst wurde.  
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
+- - -
 
+## Upgrade 3.6.3
+### Umstellung der PHP-Version für October 1 (PHP 7.4) und October 3 (PHP 8.1)
+> **WICHTIG! Bitte lesen**  
+>  
+> Informationen zu October 1:  
+> Bitte stellen Sie Ihre PHP-Version auf **PHP 7.4** um, sollten Sie weiterhin **October 1** benutzen.
+> 
+> Informationen zu October 3:  
+> Ab sofort ist die Verwendung des neuen October 3 möglich. Bitte stellen Sie Ihre Version auf **PHP 8.1** um, sollten Sie die neue **October 3** Version benutzen.
 - - -
 
 ## Upgrade 3.6.0
