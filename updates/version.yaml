@@ -766,3 +766,5 @@
     - "!!! Optimierung für October 2.0/3.0 - Möglicherweise Umstellung der PHP-Verion notwendig, bitte Upgrade-Guide lesen!"
 3.6.4:
     - Fehlerkorrekturen Bilder
+3.6.5:
+    - Update korrekturen
