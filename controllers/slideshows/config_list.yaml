@@ -1,15 +1,36 @@
-title: SlideShows
-modelClass: Xsigns\fewo\Models\SlideShows
+# ===================================
+#  List Behavior Config
+# ===================================
+
+# Model List Column configuration
 list: $/xsigns/fewo/models/slideshows/columns.yaml
-# recordUrl: 'xsigns/fewo/slideshows/update/:id'
-recordOnClick: "$.request('onLoadTest', {data: {value: :id}})"
-noRecordsMessage: 'backend::lang.list.no_records'
-showSetup: true
-showCheckboxes: true
+
+# Model Class name
+modelClass: Xsigns\fewo\Models\SlideShows
+
+# List Title
+title: SlideShows
+
+# Link URL for each record
+recordUrl: xsigns/fewo/slideshows/update/:id
+
+# Message to display if the list is empty
+noRecordsMessage: backend::lang.list.no_records
+
 # Displays the list column set up button
+showSetup: true
+
+# Display checkboxes next to each record
+showCheckboxes: true
+
+# Records to display per page
 recordsPerPage: 20
 
+# Toolbar widget configuration
 toolbar:
+    # Partial for toolbar buttons
     buttons: list_toolbar
+
+    # Search widget configuration
     search:
-        prompt: 'backend::lang.list.search_prompt'
+        prompt: backend::lang.list.search_prompt
