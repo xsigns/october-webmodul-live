@@ -98,17 +98,19 @@
             {% endif %}
             {% if showbelegen %}
                 <div role="tabpanel" class="tab-pane" id="4">
-                    <form class="eigenbelegung_form" method="post" data-request="{{ __SELF__ }}::onBelegung">
-                        <div class="bel_objekt">
-                            <div class="label label_objektauswahl">{{ labels.belobjekt }}</div>
-                            <select id="ctrl_objekt" class="select frm_objekt" name="objekt" data-request="{{ __SELF__ }}::onObjektChange" style="width:300px;">
-                                {% for key, obj in belobjekte %}
-                                    <option value="{{ key }}">{{ obj|raw }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div id="belegung"></div>
-                    </form>
+                    <div id="bookingMask">
+                        <form class="eigenbelegung_form" method="post" data-request="{{ __SELF__ }}::onBelegung">
+                            <div class="bel_objekt">
+                                <div class="label label_objektauswahl">{{ labels.belobjekt }}</div>
+                                <select id="ctrl_objekt" class="select frm_objekt" name="objekt" data-request="{{ __SELF__ }}::onObjektChange" style="width:300px;">
+                                    {% for key, obj in belobjekte %}
+                                        <option value="{{ key }}">{{ obj|raw }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div id="belegung"></div>
+                        </form>
+                    </div>
                 </div>
             {% endif %}
         </div>
@@ -204,7 +206,7 @@
     }
 
 	$(document).ready(function() {
-        $('#ctrl_objekt').select2({});
+        //$('#ctrl_objekt').select2({});
 
         {% if showabrechnung ==1 %}
             var abrData = {{ abrechnungen|raw }};
@@ -534,7 +536,11 @@
                         defaultContent: ''
                     },
                     {"data": "id"},
-                    {"data": "titel"},
+                    {"data": "titel",
+                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html("<a target='_blank' href='" + oData.href + "'>" + oData.titel + "</a>");
+                        }
+                    },
                     {"data": "art"},
                     {"data": "pers"},
                     {"data": "qm",render: $.fn.dataTable.render.number( '.', ',', 2,'',' qm' )},

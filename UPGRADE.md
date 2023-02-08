@@ -4,6 +4,51 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.7.0
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Eigentümerdaten_** _default.htm_:  
+Der Code-Block für die Eigenbelegungen... 
+````
+{% if showbelegen %}
+    ...
+    ### Hier steht der restliche Code ###
+    ...
+{% endif %}
+````
+... muss durch folgenden Code ersetzt werden:
+````
+{% if showbelegen %}
+    <div role="tabpanel" class="tab-pane" id="4">
+        <div id="bookingMask">
+            <form class="eigenbelegung_form" method="post" data-request="{{ __SELF__ }}::onBelegung">
+                <div class="bel_objekt">
+                    <div class="label label_objektauswahl">{{ labels.belobjekt }}</div>
+                    <select id="ctrl_objekt" class="select frm_objekt" name="objekt" data-request="{{ __SELF__ }}::onObjektChange" style="width:300px;">
+                        {% for key, obj in belobjekte %}
+                            <option value="{{ key }}">{{ obj|raw }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="belegung"></div>
+            </form>
+        </div>
+    </div>
+{% endif %}
+````
+Folgende Code-Zeile muss gelöscht werden:
+````
+$('#ctrl_objekt').select2({});
+````
+Die Code-Zeile ``{"data": "titel"},`` muss durch folgenden Code ersetzt werden:
+````
+{"data": "titel",
+    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+        $(nTd).html("<a target='_blank' href='" + oData.href + "'>" + oData.titel + "</a>");
+    }
+},
+````
+- - -
+
 ## Upgrade 3.6.3
 ### Umstellung der PHP-Version für October 1 (PHP 7.4) und October 3 (PHP 8.1)
 > **WICHTIG! Bitte lesen**  
