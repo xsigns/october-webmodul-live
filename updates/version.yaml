@@ -771,3 +771,5 @@
 3.7.0:
     - Verbesserungen für den Eigentümerlogin. Partial Eigentümerdaten muss angepasst werden, bitte Upgrade-Guide lesen!
     - Allgemeine Fehlerkorrekturen und Verbesserungen
+3.7.1:
+    - Verbesserungen der Preisausgabe in der Buchungsmaske
