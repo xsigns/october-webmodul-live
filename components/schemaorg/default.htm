@@ -4,7 +4,7 @@
 {% if show == 1 %}
     <script type="application/ld+json">
         {
-            "@context": "http://schema.org",
+            "@context": "https://schema.org",
             "@type": "Store",
             "@id" : "{{ url|raw }}",
             "name": "{{ art|raw }}",
@@ -25,8 +25,8 @@
                     "longitude" : {{ longitude }}
                 },
             {% endif %}
-            "openingHoursSpecification":
-                [{
+            "openingHoursSpecification": [
+                {
                     "@type": "OpeningHoursSpecification",
                     "dayOfWeek": [
                         "Monday",
@@ -39,15 +39,16 @@
                     ],
                     "opens": "{{ openingfrom }}",
                     "closes": "{{ openingto }} "
-                }],
-          {% if image != '' %}"image": "{{ image|raw }}", {% endif %}
-          "priceRange": "{{ priceRange|raw }}"
+                }
+            ],
+            {% if image != '' %}"image": "{{ image|raw }}", {% endif %}
+            "priceRange": "{{ priceRange|raw }}"
         }
     </script>
     {% if objenabled %}
         <script type="application/ld+json">
             {
-                "@context": "http://schema.org",
+                "@context": "https://schema.org",
                 "@type": "Hotel",
                 "name": "{{ nameobjekt }}",
                 "address": {
@@ -66,7 +67,7 @@
                         "@type": "AggregateRating",
                         "bestRating": 5,
                         "ratingValue": "{{ ratingvalue }}",
-                        "reviewCount": "{{ ratingcount }}",
+                        "reviewCount": {{ ratingcount }},
                         "worstRating": 1
                     },
                 {% endif %}

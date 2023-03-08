@@ -773,3 +773,6 @@
     - Allgemeine Fehlerkorrekturen und Verbesserungen
 3.7.1:
     - Verbesserungen der Preisausgabe in der Buchungsmaske
+3.7.2:
+    - Ausgabe der höchsten und niedrigsten Bewertung auf der Detailseite möglich
+    - update76.php
