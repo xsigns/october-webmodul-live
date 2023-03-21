@@ -28,6 +28,7 @@
         <div class="tab-content" >
             {% if showabrechnung ==1 %}
                 <div role="tabpanel" class="tab-pane active" id="1">
+                    <div id="abr-error"></div>
                     <table id="abrechnungen" class="display" style="width:100%">
                         <thead>
                             <tr>
@@ -39,6 +40,7 @@
                             </tr>
                         </thead>
                     </table>
+                    <div id="abr-error"></div>
                 </div>
             {% endif %}
             {% if showvorgaenge == 1 %}

@@ -4,6 +4,26 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.7.3
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Eigentümerdaten_** _default.htm_:  
+Folgende Code-Zeile **über** der Zeile ``<table id="abrechnungen" class="display" style="width:100%">`` einfügen:
+````
+<div id="abr-error"></div>
+````
+
+&nbsp;
+
+**Optionale Anpassung** (wenn Ausgabe nicht erwünscht, ist diese Anpassung nicht notwendig)  
+Komponente **_Buchungsmaske_** _zusammen.htm_:  
+Folgender Code-Block muss unter den Code-Block ``{% if data.zahlung2 > 0 %} ... {% endif %}`` eingefügt werden:
+````
+{% if istZahlung and data.kurtaxePreis > 0 %}
+    <div class="kurtaxe_hinweis">{{ zahlungKurtaxeHinweis|raw }}</div>
+{% endif %}
+````
+- - -
+
 ## Upgrade 3.7.0
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente **_Eigentümerdaten_** _default.htm_:  

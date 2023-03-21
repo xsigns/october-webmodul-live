@@ -1,13 +1,29 @@
 $(document).ready(function () {
-    var roadmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{ maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>' });
-    var plain1 = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>' });
-    var plain2 = L.tileLayer('https://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>' });
-    var satellit = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>' });
+    let mymap;
+    let roadmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+    });
 
-    var baseLayers = {"ROADMAP": roadmap, "PLAIN 1": plain1, "PLAIN 2": plain2, "Satellit": satellit};
+    let plain1 = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+    });
+
+    let plain2 = L.tileLayer('https://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+    });
+
+    let satellit = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, Service <a href="https://www.fewo-verwalter.de" target=_blank">Fewo-Verwalter</a>'
+    });
+
+    let baseLayers = {"ROADMAP": roadmap, "PLAIN 1": plain1, "PLAIN 2": plain2, "Satellit": satellit};
 
     if (fullscreen) {
-        var mymap = L.map('mapid', {
+        mymap = L.map('mapid', {
             fullscreenControl: true,
             fullscreenControlOptions: { // optional
                 title: "Vollbildansicht",
@@ -20,7 +36,7 @@ $(document).ready(function () {
             tap: !L.Browser.mobile
         });
     } else {
-        var mymap = L.map('mapid', {
+        mymap = L.map('mapid', {
             center: [centerlat, centerlong],
             zoom: 13,
             scrollWheelZoom: false,

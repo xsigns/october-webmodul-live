@@ -86,7 +86,8 @@ wir danken für Ihre Buchung, die wir am {{ DATUM }} von Ihnen für die Zeit vom
 
 </td><td></td></tr>
 <tr><td>Kaution</td><td style="text-align: right;">{{ KAUTION }}</td></tr>
-<tr><td class="summe">Summe</td><td class="summe" style="text-align: right;">{{SUMME}}</td></tr>
+<tr><td class="summe">Kurtaxe</td><td class="summe" style="text-align: right;">{{ KURTAXEPREIS }}</td></tr>
+<tr><td class="summe">Summe</td><td class="summe" style="text-align: right;">{{ SUMME }}</td></tr>
 </table>
 
 
@@ -94,7 +95,7 @@ wir danken für Ihre Buchung, die wir am {{ DATUM }} von Ihnen für die Zeit vom
 <table>
 <tr style="height: 30px;"><td></td></tr>
 <tr class="t_bold"><td> Ihre Nachricht </td></tr>
-<tr><td>{{NACHRICHT|raw}}</td></tr>
+<tr><td>{{ NACHRICHT|raw }}</td></tr>
 </table>
 {% endif %}
 

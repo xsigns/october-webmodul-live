@@ -73,9 +73,12 @@
             <div class="label">{{ summen.anzahlung }}</div>
             <div class="zusammenfassung zahlung1">{{ data.zahlung1 }}</div>
         {% endif %}
-        {%if data.zahlung2 > 0 %}
+        {% if data.zahlung2 > 0 %}
             <div class="label">{{ summen.restzahlung }}</div>
             <div class="zusammenfassung zahlung2">{{ data.zahlung2 }}</div>
+        {% endif %}
+        {% if istZahlung and data.kurtaxePreis > 0 %}
+            <div class="kurtaxe_hinweis">{{ zahlungKurtaxeHinweis|raw }}</div>
         {% endif %}
     </div>
     <div class="agbdata">
