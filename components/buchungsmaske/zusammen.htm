@@ -36,32 +36,32 @@
         <div class="zusammenfassung hinweis">{{ hinweis|raw }}</div>
         {% if data.mitreisende %}
             {% for mit in data.mitreisende %}
-        <div class="mitreisende">{{ mit.mitvorname}} {{ mit.mitname}} {{ mit.mitgeb }}</div>
+                <div class="mitreisende">{{ mit.mitvorname}} {{ mit.mitname}} {{ mit.mitgeb }}</div>
             {% endfor %}
         {% endif %}
         <div class="label">{{ summen.objektpreis }}</div>
         <div class="zusammenfassung objektpreis">{{ data.objektpreis }}</div>
         <div class="festeLeistung">{{ nebenkosten|raw }}</div>
         {% if data.leistungen %}
-        <div class="zusammenfassung leistungen">
-            {{ gebuchteleistungen|raw }}
-            <div class="leistungenheader">
-                <div class="leistungheader leistung_titel col-12 col-lg-4 p-0 pr-3 float-left"><b>{{ labels.leist }}</b></div>
-                <div class="leistungheader leistung_anzahl col-12 col-lg-2 p-0 float-left text-center"><b>{{ labels.leistanz }}</b></div>
-                <div class="leistungheader leistung_preis col-12 col-lg-3 p-0 pl-2 float-left text-right"><b>{{ labels.leistpreis }}</b></div>
-                <div class="leistungheader zeilensumme leistung_summe col-12 col-lg-3 p-0 pl-2 float-left text-right"><b>{{ labels.leistsumme }}</b></div>
+            <div class="zusammenfassung leistungen">
+                {{ gebuchteleistungen|raw }}
+                <div class="leistungenheader">
+                    <div class="leistungheader leistung_titel col-12 col-lg-4 p-0 pr-3 float-left"><b>{{ labels.leist }}</b></div>
+                    <div class="leistungheader leistung_anzahl col-12 col-lg-2 p-0 float-left text-center"><b>{{ labels.leistanz }}</b></div>
+                    <div class="leistungheader leistung_preis col-12 col-lg-3 p-0 pl-2 float-left text-right"><b>{{ labels.leistpreis }}</b></div>
+                    <div class="leistungheader zeilensumme leistung_summe col-12 col-lg-3 p-0 pl-2 float-left text-right"><b>{{ labels.leistsumme }}</b></div>
+                </div>
+                {% for leist in data.leistungen %}
+                    <div class="leistung_titel">{{ leist.titel }}</div>
+                    <div class="leistung_anz">{{ leist.anz }}
+                        {% if leist.countval > 1 %}
+                        <span class="count">{{ leist.countval }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="leistung_preis"><span class="fewo_preistype">{{ leist.preis }}</span></div>
+                    <div class="leistung_summe">{{ leist.summe }}</div>
+                {% endfor %}
             </div>
-            {% for leist in data.leistungen %}
-            <div class="leistung_titel">{{ leist.titel }}</div>
-            <div class="leistung_anz">{{ leist.anz }}
-                {% if leist.countval > 1 %}
-                <span class="count">{{ leist.countval }}</span>
-                {% endif %}
-            </div>
-            <div class="leistung_preis"><span class="fewo_preistype">{{ leist.preis }}</span></div>
-            <div class="leistung_summe">{{ leist.summe }}</div>
-            {% endfor %}
-        </div>
         {% endif %}
         {% if data.kaution > 0 %}
             <div class="label">{{ summen.kaution }}</div>
@@ -96,8 +96,8 @@
             <div class="label data">{{ sonstigescheck|raw }}</div>
         {% endif %}
         {% if werbemail %}
-        <input type="checkbox" name="werbemail">
-        <div class="label data">{{ werbemail|raw }}</div>
+            <input type="checkbox" name="werbemail">
+            <div class="label data">{{ werbemail|raw }}</div>
         {% endif %}
     </div>
 </div>

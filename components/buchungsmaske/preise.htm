@@ -1,9 +1,9 @@
 <span class="label_buchungsmaske summen_beschreibung">{{ summen.summe}}</span>
 <div class="zeile zeile_objektpreis">
     <div class="zeilensummentitel">
-        {% if preisalt > 0%}
-        <div class="header_preisalt" style="text-decoration: line-through">{{ summen.objpreisalt }}</div>
-        <div class="header_anzahl"  style="text-decoration: line-through">{{ preisalt }}</div>
+        {% if preisalt > 0 %}
+            <div class="header_preisalt" style="text-decoration: line-through">{{ summen.objpreisalt }}</div>
+            <div class="header_anzahl"  style="text-decoration: line-through">{{ preisalt }}</div>
         {% endif %}
         <div class="header_titel">{{ summen.objpreistitel }}</div>
         <div class="header_anzahl">{{ tage }}</div>
