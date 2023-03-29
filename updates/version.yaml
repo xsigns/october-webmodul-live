@@ -785,3 +785,5 @@
     - update77.php
 3.7.4:
     - Verbesserung October V3 Preiausgabe in der Buchungsmaske
+3.7.5:
+    - Verbesserungen Sync Feondi Gast speichern
