@@ -4,6 +4,15 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.7.6
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Belegungsplan_** _default.htm_:  
+Folgende Code-Zeile muss unter der Zeile ``var caloffset = '{{ caloffset }}';`` eingefügt werden:
+````
+var mindaysText = '{{ minnaechte }}';
+````
+- - -
+
 ## Upgrade 3.7.3
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente **_Eigentümerdaten_** _default.htm_:  

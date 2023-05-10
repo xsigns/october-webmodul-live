@@ -787,3 +787,11 @@
     - Verbesserung October V3 Preiausgabe in der Buchungsmaske
 3.7.5:
     - Verbesserungen Sync Feondi Gast speichern
+3.7.6:
+    - "!!! Min. Nächte Tooltip für klickbaren Belegungsplan. Partial Belegungsplan muss angepasst werden, bitte Upgrade-Guide lesen!"
+    - Angebote Tage vor Anreise
+    - Anreise-Mail kann nun auch x Tage nach Anreise gesendet werden. (Tage Wert auf Minus stellen z.B. -2)
+    - Fehlerkorrekturen Preise Objektstammdaten
+    - Sitemaps können Zusammengefasst (alle Seiten inkl. Objkete und Häuser) oder getrennt (Sitemaps für Objekte, Häuser und weitere Seiten) abgerufen werden werden
+    - Verbesserung laden der Google Karte auf Objektdeteilseiten
+    - Fehlerkorrekturen Bewertungslink in Bewertungsmails

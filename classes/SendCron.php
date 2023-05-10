@@ -114,7 +114,7 @@ class SendCron
 
         $status = array();
 
-        if (GlobalSettings::get('cronbefore') == true && GlobalSettings::get('beforedays') > 0)
+        if (GlobalSettings::get('cronbefore'))
         {
             $abreisemails = self::BearbeiteBereich(MAILART_ANREISE);
             $status[] = [
@@ -163,7 +163,12 @@ class SendCron
             $bereich = 'Cron Anreise-E-Mail';
             $dayvariable = 'beforedays';
             $activevariable = 'cronbefore';
-            $datumberechnet = date('Y-m-d', strtotime($datum . ' + ' . GlobalSettings::get($dayvariable) . ' days'));
+
+            if (GlobalSettings::get($dayvariable) > 0)
+                $datumberechnet = date('Y-m-d', strtotime($datum . ' + ' . GlobalSettings::get($dayvariable) . ' days'));
+            else
+                $datumberechnet = date('Y-m-d', strtotime($datum . ' ' . GlobalSettings::get($dayvariable) . ' days'));
+
             $wherepart = " and vorg_anreise = '" . $datumberechnet . "'";
             $mailview = 'xsigns.fewo::mail.before_';
         }
@@ -241,8 +246,6 @@ class SendCron
                 $href = str_replace(':region', SendCron::standardize($region), $href);
             }
 
-            $href = substr($href, 1);
-
             if (count($isTranslate) > 0)
             {
                 $settings = GlobalSettings::first();
@@ -251,7 +254,12 @@ class SendCron
             else
                 $linkText = GlobalSettings::get('linktext');
 
-            $bewLink = '<a href="' . Config::get('app.url') . $href . '">' . $linkText . '</a>';
+            $appUrl = Config::get('app.url');
+
+            if (substr($appUrl, -1) == '/')
+                $appUrl = rtrim(Config::get('app.url', '/'));
+
+            $bewLink = '<a href="' . $appUrl . $href . '">' . $linkText . '</a>';
 
             $vars = [
                 'VORGANG_ID' => $vorgang->vorg_id,

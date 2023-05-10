@@ -121,13 +121,45 @@ td.tag_leer {background-color: #FAFAFA;}
 .isClickable .fewo_buchungsplan .waehlbar:not(.nichtselektierbar) {cursor: pointer;}
 .isClickable .fewo_buchungsplan .waehlbar:not(.nichtselektierbar):hover {background-color: #45719a !important; color: #fff !important; background-image: none; opacity: 1 !important;}
 .isClickable .fewo_buchungsplan .waehlbar.nichtselektierbar, .fewo_buchungsplan .belegt {cursor: not-allowed;}
-
+.gewaehlt{pointer-events: auto !important;}
 
 .legendeneintrag  { position: relative; float: left; line-height: 20px; margin-left: 5px; margin-bottom: 4px; }
 .legendenbild { width: 20px; height:20px; position: relative; float: left; text-align: center; margin-left:10px;}
 .legendenbeschriftung { position: relative; float: left; margin-left: 4px; }
 .clear { clear: both; }
 .fewo_plan_legend_detailliert .legendenbeschriftung { min-width: 55px; }
+
+.belplan-tooltip {position: absolute; top: -28px; background-color: #fff; color: #000; padding: 0 5px; box-shadow: rgb(152 152 152 / 50%) 0 0 9px 2px; font-size: 14px; z-index: 100; width: max-content; transform: translateX(-50%); left: 50%; border-radius: 4px;}
+.belplan-tooltip:after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    bottom: -7px;
+    transform: translateX(-50%);
+    left: 50%;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fff;
+}
+
+.nichtselektierbar.frei.tooltipOpen {
+    position: relative;
+    opacity: 1;
+}
+
+.nichtselektierbar.frei.tooltipOpen:after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    filter: opacity(.4);
+}
+
+
 @media screen and (max-width: 1200px) {
     .fewo_plan_legend_einfach .legendenbeschriftung { min-width: 55px; }
 }

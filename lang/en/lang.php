@@ -58,7 +58,7 @@ return [
         'globalsettings' =>'FEWO settings',
         'description' => 'access data,debug,SEO,...',
         'sidenav' => '>',
-        'category' => 'FewoVerwalter',
+        'category' => 'FewoVerwalter ' . \Xsigns\Fewo\Classes\Fewo::getModuleCurrentVersion(),
         'username' => 'Username',
         'password' => 'Password',
         'tab1'  => 'Settings',

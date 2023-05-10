@@ -112,7 +112,7 @@ return [
         'login_section' => 'Fewo-Verwalter Login',
         'log_section' => 'Log-Einstellungen',
         'alias_section' => 'Objekt-Alias',
-        'category' => 'FewoVerwalter',
+        'category' => 'FewoVerwalter ' . \Xsigns\Fewo\Classes\Fewo::getModuleCurrentVersion(),
         'username' => 'Benutzername',
         'password' => 'Passwort',
         'tab1'  => 'Einstellungen',

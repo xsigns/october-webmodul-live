@@ -1,12 +1,14 @@
-var wechselTimeline = wechselleisteBelplan;
-var verfuegbarTimeline = verfuegbarleisteBelplan;
-var mintageTimeline = mintageleisteBelplan;
-var waehleAnreise = !0;
-var anreisedatum, abreisedatum;
-var anreiseId, abreiseId;
-var gewaehlterMonatID = 0;
-var verfuegbarleistePrevMonth = null;
-var minTageTimelinePrevMonth = null;
+let wechselTimeline = wechselleisteBelplan;
+let verfuegbarTimeline = verfuegbarleisteBelplan;
+let mintageTimeline = mintageleisteBelplan;
+let waehleAnreise = !0;
+let anreisedatum, abreisedatum;
+let anreiseId, abreiseId;
+let gewaehlterMonatID = 0;
+let verfuegbarleistePrevMonth = null;
+let minTageTimelinePrevMonth = null;
+let anreiseIndex = 0;
+let anreiseMinDays = 1;
 
 $(document).ready(function() {
     InitialisiereKalender();
@@ -18,7 +20,7 @@ function InitialisiereKalender() {
     $('.ctrlCalPrev').on('click', Belplan.calLeft);
 }
 
-var Belplan = function() {};
+let Belplan = function() {};
 Belplan.callback = null;
 
 Belplan.initForm = function (callback) {
@@ -31,7 +33,7 @@ Belplan.calRight = function () {
         method: 'post',
         data: {'caloffset' : caloffset, 'calid' : calid},
         success: function(resp) {
-            var belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['#ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             caloffset++;
             $('.ctrlSaisonSelect').val(caloffset);
@@ -57,7 +59,7 @@ Belplan.calLeft = function () {
         method: 'post',
         data: {'caloffset' : caloffset, 'calid' : calid},
         success: function(resp) {
-            var belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['#ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             if (caloffset > 0) {
                 caloffset--;
@@ -86,7 +88,7 @@ Belplan.calSelect = function () {
         method: 'post',
         data: {'calSelector' : gewaehlterMonatID, 'calid' : calid},
         success: function(resp) {
-            var belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['#ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             caloffset = gewaehlterMonatID;
 
@@ -103,10 +105,10 @@ Belplan.calSelect = function () {
 };
 
 Belplan.updateCal = function () {
-    var tag, monat, jahr, elem;
+    let tag, monat, jahr, elem;
 
     if (anreisedatum && !abreisedatum) {
-        var anreiseElem, arrAnreise, dayEleme, day, wechselStatus, verfuegbarStatus;
+        let anreiseElem, arrAnreise, dayEleme, day, wechselStatus, verfuegbarStatus;
 
         if ($('#ctrl_panreise').val() != undefined)
             anreiseElem = $('#ctrl_panreise').val();
@@ -122,7 +124,7 @@ Belplan.updateCal = function () {
         day = dayEleme.index(elem);
         anreiseClicked(elem, 'C', 'Y', true);
     } else if (anreisedatum && abreisedatum) {
-        var abreiseElem, arrAbreise;
+        let abreiseElem, arrAbreise;
 
         if ($('#ctrl_pabreise').val() != undefined)
             abreiseElem = $('#ctrl_pabreise').val();
@@ -143,7 +145,7 @@ Belplan.updateCal = function () {
 };
 
 Belplan.clickEvent = function() {
-    var dayEleme = $('.tag:not(.nichtselektierbar)');
+    let dayEleme = $('.tag:not(.nichtselektierbar)');
     if (waehleAnreise) {
         Belplan.addNichtWaehlbarClass();
     }
@@ -176,13 +178,15 @@ Belplan.addNichtWaehlbarClass = function() {
 function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = false) {
     if (hasClicked === false) {
         if (wechselStatus === 'C' || wechselStatus === 'I' && wechselStatus !== 'O' && verfuegbarStatus === 'Y') {
-            var dayEleme, dateId, tag, monat, jahr, dayId, mintage;
+            let dayEleme, dateId, tag, monat, jahr, dayId, mintage;
+            anreiseMinDays = $(elem).attr('data-xs-mindays');
             dayEleme = $('.tag');
             dateId = $(elem).attr('id');
             tag = dateId.substr(10, 2);
             monat = dateId.substr(8, 2);
             jahr = dateId.substr(4, 4);
             dayId = dayEleme.index(elem);
+            anreiseIndex = dayId;
             mintage = mintageTimeline.charAt(dayId);
             anreisedatum = new Date(jahr + '-' + monat + '-' + tag);
             anreiseId = dayId;
@@ -193,15 +197,15 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             $('#period').val(tag + '.' + monat + '.' + jahr + ' - ');
             $('#ctrl_panreise').val(tag + '.' + monat + '.' + jahr);
             $('#ctrl_anreise').val(tag + '.' + monat + '.' + jahr);
-            var verfuegbarZeitraum = verfuegbarTimeline.substring(anreiseId);
+            let verfuegbarZeitraum = verfuegbarTimeline.substring(anreiseId);
 
             if (verfuegbarZeitraum.includes('N')) {
-                var nextBelId = anreiseId + verfuegbarZeitraum.indexOf('N') + 1;
+                let nextBelId = anreiseId + verfuegbarZeitraum.indexOf('N') + 1;
                 dayEleme.slice(dayId, nextBelId).removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
                 dayEleme.slice(nextBelId).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
             }
 
-            var mintageRange = wechselTimeline.substr(dayId, parseInt(mintage) + 1);
+            let mintageRange = wechselTimeline.substr(dayId, parseInt(mintage) + 1);
 
             if ($(elem).hasClass('lbok')) {
                 if (mintageRange.includes('O')) {
@@ -209,11 +213,11 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
                 }
             }
 
-            for (var i = 0; i < mintage; i++) {
-                var mintageStatus = wechselTimeline.charAt(dayId + i);
+            for (let i = 0; i < mintage; i++) {
+                let mintageStatus = wechselTimeline.charAt(dayId + i);
 
                 if (i < mintage) {
-                    dayEleme.eq(dayId + i).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
+                    dayEleme.eq(dayId + i).addClass('nichtwaehlbar').addClass('nichtselektierbar').css('pointer-events', 'auto');
                 }
             }
 
@@ -236,12 +240,13 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
 
             waehleAnreise = !1;
             Belplan.clickEvent();
+            Belplan.hoverEvent();
         }
     } else {
-        var dayEleme2 = $('.tag');
+        let dayEleme2 = $('.tag');
 
         if ($(elem).length) {
-            var dayId2, mintage2, verfuegbarZeitraum2;
+            let dayId2, mintage2, verfuegbarZeitraum2;
 
             $(elem).addClass('gewaehlt');
             dayId2 = dayEleme2.index(elem);
@@ -250,12 +255,12 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             dayEleme2.slice(0, dayId2).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
 
             if (verfuegbarZeitraum2.includes('N')) {
-                var nextBelId2 = dayId2 + verfuegbarZeitraum2.indexOf('N') + 1;
+                let nextBelId2 = dayId2 + verfuegbarZeitraum2.indexOf('N') + 1;
                 dayEleme2.slice(dayId2, nextBelId2).removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
                 dayEleme2.slice(nextBelId2).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
             }
 
-            var mintageRange2 = wechselTimeline.substr(dayId2, parseInt(mintage2) + 1);
+            let mintageRange2 = wechselTimeline.substr(dayId2, parseInt(mintage2) + 1);
 
             if (mintageRange2.includes('X')) {
                 for (let i2 = 0; i2 < mintage2; i2++) {
@@ -271,7 +276,7 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
                 }
             }
         } else {
-            var preMonthOffset, preMonthTimeline, firstBelId, mintageFromAnreise;
+            let preMonthOffset, preMonthTimeline, firstBelId, mintageFromAnreise;
             preMonthOffset = verfuegbarleistePrevMonth.length - verfuegbarTimeline.length;
             preMonthTimeline = verfuegbarleistePrevMonth.substring(anreiseId, preMonthOffset);
             firstBelId = verfuegbarTimeline.indexOf('N') + 1;
@@ -288,11 +293,12 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
 
         waehleAnreise = !1;
         Belplan.clickEvent();
+        Belplan.hoverEvent();
     }
 };
 
 Belplan.waehleDatum = function (elem) {
-    var dayEleme, day, wechselStatus, verfuegbarStatus;
+    let dayEleme, day, wechselStatus, verfuegbarStatus;
     dayEleme = $('.tag');
     day = dayEleme.index(elem);
     wechselStatus = wechselTimeline.charAt(day);
@@ -302,8 +308,8 @@ Belplan.waehleDatum = function (elem) {
         Belplan.loescheAuswahl();
         anreiseClicked(elem, wechselStatus, verfuegbarStatus);
     } else {
-        if (wechselStatus === 'C' || wechselStatus === 'O' && wechselStatus !== 'I' && wechselStatus !== 'X' || $(elem).hasClass('waehlbar')) {
-            var dateId, tag, monat, jahr;
+        if ((wechselStatus === 'C' || wechselStatus === 'O' ) && $(elem).hasClass('waehlbar') && !$(elem).hasClass('nichtwaehlbar') && wechselStatus !== 'I' && wechselStatus !== 'X') {
+            let dateId, tag, monat, jahr;
             $(elem).addClass('gewaehlt');
             $('.nichtwaehlbar').css('pointer-events', 'auto').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
             dateId = $(elem).attr('id');
@@ -315,7 +321,7 @@ Belplan.waehleDatum = function (elem) {
             // Preisrechner
             if($("#ctrl_pabreise").length !== 0)
             {
-                var panreise = $('#ctrl_panreise').val();
+                let panreise = $('#ctrl_panreise').val();
                 $('#period').val(panreise + ' - ' + tag + '.' + monat + '.' + jahr);
                 $('#ctrl_pabreise').val(tag + '.' + monat + '.' + jahr);
             }
@@ -323,7 +329,7 @@ Belplan.waehleDatum = function (elem) {
             // Buchungsmaske
             if ($("#ctrl_abreise").length !== 0)
             {
-                var buanreise = $('#ctrl_anreise').val();
+                let buanreise = $('#ctrl_anreise').val();
                 $('#period').val(buanreise + ' - ' + tag + '.' + monat + '.' + jahr);
                 $('#ctrl_abreise').val(tag + '.' + monat + '.' + jahr);
             }
@@ -363,10 +369,10 @@ Belplan.updateBuchung = function (clickedAnreise, clickedAbreise) {
 };
 
 Belplan.selectAbreise = function (elem, tag, monat, jahr) {
-    var tagid = $('#tag_' + jahr + monat + tag);
+    let tagid = $('#tag_' + jahr + monat + tag);
 
     if (tagid.length !== 0) {
-        var dayEleme, abreiseIndex, diff;
+        let dayEleme, abreiseIndex, diff;
         dayEleme = $('.tag');
         abreiseIndex = dayEleme.index(tagid);
         diff = Belplan.dateDiff(anreisedatum, abreisedatum);
@@ -379,7 +385,7 @@ Belplan.selectAbreise = function (elem, tag, monat, jahr) {
 };
 
 Belplan.selectDatesFromDatepicker = function(anreise, abreise) {
-    var dayEleme, tagAn, monatAn, jahrAn, tagAb, monatAb, jahrAb, tagid, clickedAnreise, clickedAbreise, abreiseIndex, diff;
+    let dayEleme, tagAn, monatAn, jahrAn, tagAb, monatAb, jahrAb, tagid, clickedAnreise, clickedAbreise, abreiseIndex, diff;
 
     Belplan.resetBelplan();
 
@@ -408,7 +414,7 @@ Belplan.setBelplanOffset = function (calid, offset) {
         method: 'post',
         data: {'calSelector' : offset, 'calid' : calid},
         success: function(resp) {
-            var belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['#ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             caloffset = offset;
 
@@ -450,9 +456,43 @@ Belplan.resetBelplan = function() {
 };
 
 Belplan.dateDiff = function(anreise, abreise) {
-    var datediff, tage;
+    let datediff, tage;
     datediff = abreise.getTime() - anreise.getTime();
     tage = (datediff / (24 * 60 * 60 * 1000));
     tage = Math.round(tage);
     return tage;
 };
+
+Belplan.hoverEvent = function () {
+    $('.gewaehlt').on('mouseenter', function () {
+        $('.belplan-tooltip').remove();
+        $(this).css('position', 'relative').append(getTooltipContainer(anreiseMinDays, $(this).attr('data-xs-title')));
+    }).on('mouseleave', function() {
+        $('.belplan-tooltip').remove();
+        $(this).css('position', '');
+    });
+
+    $('.nichtwaehlbar').on('click', function() {
+        let clickedIndex = $('.tag').index(this);
+
+        if (clickedIndex > anreiseIndex) {
+            $('.belplan-tooltip').remove();
+            $(this).addClass('tooltipOpen').append(getTooltipContainer(anreiseMinDays, $(this).attr('data-xs-title')));
+        }
+    }).on('mouseleave', function() {
+        $('.belplan-tooltip').remove();
+        $(this).removeClass('tooltipOpen');
+    });
+}
+
+function getTooltipContainer(mindays, date) {
+    let toolTipText = 'Minimum [n] Nächte buchen';
+
+    if (typeof mindaysText !== 'undefined')
+        toolTipText = mindaysText;
+
+    toolTipText = toolTipText.replace('[n]', mindays);
+    toolTipText = toolTipText.replace('[date]', date);
+
+    return '<div class="belplan-tooltip">' + toolTipText + '</div>';
+}

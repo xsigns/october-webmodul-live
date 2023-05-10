@@ -4,11 +4,11 @@
 
 **1. Geltung**
 
-**1.1** Diese Lizenzbedingungen gelten zwischen der Xsigns GmbH & Co. KG, Rotenburg, Deutschland (nachfolgend kurz Xsigns) und allen natürlichen oder juristischen Personen, die das Fewo-Verwalter Webmodul (nachfolgend kurz: Webmodul) entgeltlich oder unentgeltlich beziehen und/oder benutzen (nachfolgend kurz: Kunden).
+**1.1** Diese Lizenzbedingungen gelten zwischen der Xsigns GmbH & Co. KG, Rotenburg, Deutschland (nachfolgend kurz Xsigns) und allen natürlichen oder juristischen Personen, die das Xsigns October Webmodul-Plugin (nachfolgend kurz: Software) entgeltlich oder unentgeltlich beziehen und/oder benutzen (nachfolgend kurz: Kunden).
 
-**1.2.** Im Falle des entgeltlichen Bezugs des Fewo-Verwalter Webmoduls nimmt der Kunde diese Lizenzbedingungen gegenüber Xsigns mit Abschluss oder Verlängerung des Mietvertrages an. Ansonsten nimmt der Kunde diese Bedingungen mit dem ersten Download des Fewo-Verwalter Webmoduls, mit dem Starten des Fewo-Verwalter Webmoduls oder mit Registrierung eines Nutzerkontos an. Xsigns verzichtet in jedem Fall auf den Zugang der Annahmeerklärung des Kunden bei sich.
+**1.2.** Im Falle des entgeltlichen Bezugs der Software nimmt der Kunde diese Lizenzbedingungen gegenüber Xsigns mit Abschluss des Nutzungsvertrages an. Ansonsten nimmt der Kunde diese Bedingungen mit dem ersten Download der Software, mit dem Starten der Software oder mit Registrierung eines Nutzerkontos an. Xsigns verzichtet in jedem Fall auf den Zugang der Annahmeerklärung des Kunden bei sich.
 
-**1.3.** Der Fortbestand dieses Lizenzvertrages ist abhängig vom Fortbestehen des ihm zugrunde liegenden Mietvertrages (außer bei unentgeltlicher Nutzung), er teilt insoweit dessen Schicksal, als er gegebenenfalls zum gleichen Zeitpunkt wie dieser unwirksam wird (z.B. bei Widerruf des Verbrauchers gemäß § 312 g BGB).
+**1.3.** Der Fortbestand dieses Lizenzvertrages ist abhängig vom Fortbestehen des ihm zugrunde liegenden Nutzungsvertrages (außer bei unentgeltlicher Nutzung), er teilt insoweit dessen Schicksal, als er gegebenenfalls zum gleichen Zeitpunkt wie dieser unwirksam wird (z.B. bei Widerruf des Verbrauchers gemäß § 312 g BGB).
 
 **1.4.** Die Produktbeschreibung des Fewo-Verwalter Webmoduls, die jeweils lizenziert wird, ist ebenfalls Teil der Lizenzbedingungen.
 
@@ -22,14 +22,14 @@
 
 **2.3.** Dieser Gerichtsstand gilt auch, sofern der Kunde keinen allgemeinen Gerichtsstand (z.B. Wohnsitz) in Deutschland hat und zudem nicht Verbraucher mit allgemeinem Gerichtsstand in der Europäischen Union, Norwegen, Island, dem vereinigten Königreich von England oder der Schweiz ist.
 
-**2.4.** Grundsätzlicher Erfüllungsort für Verpflichtungen aus dieser Vereinbarung ist Rotenburg (Wümme), Deutschland. Gesetzliche Regelungen über Gerichtsstände bleiben hiervon unberührt.
+**2.4.** Grundsätzlicher Erfüllungsort für Verpflichtungen aus dieser Vereinbarung ist der jeweilige Sitz von Xsigns. Gesetzliche Regelungen über Gerichtsstände bleiben hiervon unberührt.
 
 
 **3. Funktionalität**
 
 **3.1.** Das Fewo-Verwalter Webmodul ermöglicht es dem Kunden seine Ferienobjekte über das Internet auf die Computerbildschirme von ihm bestimmbarer Personen (nachfolgend Teilnehmer) zu übermitteln und dort anzuzeigen (nachfolgend Sitzung). Weitere Spezifikationen ergeben sich aus der jeweiligen Produktbeschreibung.
 
-**3.2.** Das Fewo-Verwalter Webmodul besteht aus einem Plugin für das CMS-System October, die von Xsigns bereitgehalten wird, einer Client-Software 'Fewo-Verwalter' zum Einsatz auf dem Computer des sendenden Kunden, die auf das Plugin zugreift (Verbindungsprogramm).
+**3.2.** Die Software besteht aus einem Plugin für das CMS-System October, die von Xsigns bereitgehalten wird, einer Client-Software 'Fewo-Verwalter' zum Einsatz auf dem Computer des sendenden Kunden, die auf das Plugin zugreift (Verbindungsprogramm).
 
 **3.3.** Übergabepunkt der Daten an das Plugin ist das Software-Produkt "Fewo-Verwalter", welches die Daten an das Plugin sendet.
 
@@ -48,7 +48,7 @@
 
 **4.6.** Der Kunde ist nicht berechtigt irgendeinen Teil des Plugin abzuändern, umzuprogrammieren sowie um- oder anderenorts einzuarbeiten.
 
-**4.7.** Technische Informationen, Beschreibungen und Gebrauchsanweisungen werden dem Kunden in elektronischer Form auf der Fewo-Verwalter Homepage (https://fewo-verwalter.de) zur Verfügung gestellt.
+**4.7.** Technische Informationen, Beschreibungen und Gebrauchsanweisungen werden dem Kunden in elektronischer Form auf der Xsigns-Homepage zur Verfügung gestellt.
 
 
 **5. Nutzung**
@@ -69,7 +69,7 @@ Das Recht zur Ersatzvornahme ist ausgeschlossen. Im Übrigen gelten hinsichtlich
 
 **7.3.** Insbesondere haftet Xsigns nicht für Doppelbuchungen, falsche Darstellungen von Daten, Preisen und Berechnungen.
 
-**7.4.** Weiterhin haftet Xsigns im Falle der Nutzung des Fewo-Verwalter Webmoduls für Schäden aufgrund eines Mangels des Fewo-Verwalter Webmoduls nur wenn der Mangel von Xsigns arglistig verschwiegen wurde.
+**7.4.** Weiterhin haftet Xsigns im Falle der Nutzung der Software für Schäden aufgrund eines Mangels der Software nur wenn der Mangel von Xsigns arglistig verschwiegen wurde.
 
 **7.5.** Soweit eine Haftung für Schäden infolge einfacher Fahrlässigkeit, die nicht auf der Verletzung von Leben, Körper oder Gesundheit des Kunden oder von Kardinalpflichten beruhen, nicht ausgeschlossen ist, verjähren derartige Ansprüche innerhalb eines Jahres beginnend mit der Entstehung des Anspruches.
 

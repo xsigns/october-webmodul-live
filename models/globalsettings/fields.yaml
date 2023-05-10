@@ -377,6 +377,15 @@ tabs:
       span: right
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab5
+    pagessitemap:
+      label: Seiten für sitemap.xml hinzufügen
+      type: checkboxlist
+      inlineOptions: true
+      quickselect: true
+      span: left
+      cssClass: col-sm-6
+      options: listLinks
+      tab: xsigns.fewo::lang.globalsettings.tab5
     map_set_section:
       label: xsigns.fewo::lang.globalsettings.map_set_section
       type: section
