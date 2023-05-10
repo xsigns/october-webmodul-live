@@ -217,7 +217,7 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
                 let mintageStatus = wechselTimeline.charAt(dayId + i);
 
                 if (i < mintage) {
-                    dayEleme.eq(dayId + i).addClass('nichtwaehlbar').addClass('nichtselektierbar').css('pointer-events', 'auto');
+                    dayEleme.eq(dayId + i).addClass('nichtwaehlbar').addClass('nichtselektierbar').css('pointer-events', 'none');
                 }
             }
 
@@ -308,10 +308,10 @@ Belplan.waehleDatum = function (elem) {
         Belplan.loescheAuswahl();
         anreiseClicked(elem, wechselStatus, verfuegbarStatus);
     } else {
-        if ((wechselStatus === 'C' || wechselStatus === 'O' ) && $(elem).hasClass('waehlbar') && !$(elem).hasClass('nichtwaehlbar') && wechselStatus !== 'I' && wechselStatus !== 'X') {
+        if (wechselStatus === 'C' || wechselStatus === 'O' && wechselStatus !== 'I' && wechselStatus !== 'X' || ($(elem).hasClass('waehlbar') && !$(elem).hasClass('nichtwaehlbar') && !$(elem).hasClass('gewaehlt'))) {
             let dateId, tag, monat, jahr;
             $(elem).addClass('gewaehlt');
-            $('.nichtwaehlbar').css('pointer-events', 'auto').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
+            $('.nichtwaehlbar').css('pointer-events', 'none').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
             dateId = $(elem).attr('id');
             tag = dateId.substr(10, 2);
             monat = dateId.substr(8, 2);
@@ -431,7 +431,7 @@ Belplan.setBelplanOffset = function (calid, offset) {
 };
 
 Belplan.loescheAuswahl = function() {
-    $('.nichtwaehlbar').css('pointer-events', 'auto').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
+    $('.nichtwaehlbar').css('pointer-events', 'none').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
     $('.gewaehlt').removeClass('gewaehlt');
     $('#period').val(' - ');
 
@@ -451,7 +451,7 @@ Belplan.loescheAuswahl = function() {
 };
 
 Belplan.resetBelplan = function() {
-    $('.nichtwaehlbar').css('pointer-events', 'auto').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
+    $('.nichtwaehlbar').css('pointer-events', 'none').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
     $('.gewaehlt').removeClass('gewaehlt');
 };
 
