@@ -140,11 +140,18 @@ class SendCron
 
         if (GlobalSettings::get('cronstatus'))
         {
-            Mail::send('xsigns.fewo::mail.cronstatus', $statusberichte, function ($message)
+            try
             {
-                $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
-                $message->to(explode(';', GlobalSettings::get('mailcc')));
-            });
+                Mail::send('xsigns.fewo::mail.cronstatus', $statusberichte, function ($message)
+                {
+                    $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
+                    $message->to(explode(';', GlobalSettings::get('mailcc')));
+                });
+            }
+            catch (\Exception $exception)
+            {
+                Logger::quickLog(self::$modulename, 'Status-E-Mail konnte nicht an CC E-Mailadresse versendet werden: ', $exception->getMessage());
+            }
         }
 
         self::debug('Cron-Jobs', Fewo::var_dump_ret($statusberichte));

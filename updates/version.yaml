@@ -799,3 +799,5 @@
     - Fehlerkorrekturen Belegungsplan
 3.7.8:
     - Fehlerkorrekturen Pagination Objektliste
+3.7.9:
+    - Verbesserung Cron-Mails CC E-Mailadresse überprüfen
