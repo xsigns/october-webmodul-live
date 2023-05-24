@@ -801,3 +801,5 @@
     - Fehlerkorrekturen Pagination Objektliste
 3.7.9:
     - Verbesserung Cron-Mails CC E-Mailadresse überprüfen
+3.7.10:
+    - Fehlerkorrekturen Sitemaps
