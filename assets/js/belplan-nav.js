@@ -49,6 +49,7 @@ Belplan.calRight = function () {
             wechselTimeline = resp['wechselleiste'];
             verfuegbarTimeline = resp['verfuegbarleiste'];
             mintageTimeline = resp['mintageleiste'];
+            caloffset = resp['caloffset'];
             Belplan.updateCal();
         }
     });
@@ -77,6 +78,7 @@ Belplan.calLeft = function () {
             wechselTimeline = resp['wechselleiste'];
             verfuegbarTimeline = resp['verfuegbarleiste'];
             mintageTimeline = resp['mintageleiste']
+            caloffset = resp['caloffset'];
             Belplan.updateCal();
         }
     });
