@@ -32,8 +32,7 @@ class CreateUpdate22 extends Migration
 
     public function down()
     {
-
-
+        Schema::dropIfExists('xsigns_fewo_raum');
+        Schema::dropIfExists('xsigns_fewo_ralang');
     }
-
 }

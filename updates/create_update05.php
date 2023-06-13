@@ -18,6 +18,6 @@ class CreateUpdate5 extends Migration
 
     public function down()
     {
-
+        Schema::dropIfExists('xsigns_fewo_setaus');
     }
 }
