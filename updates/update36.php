@@ -43,27 +43,52 @@ class Update36 extends Migration
         try
         {
             Schema::table('xsigns_fewo_obj', function($table) {
-                $table->dropIndex('land');
+                $sm = Schema::getConnection()->getDoctrineSchemaManager();
+                $doctrineTable = $sm->listTableDetails('xsigns_fewo_obj');
+
+                if ($doctrineTable->hasIndex('land'))
+                    $table->dropIndex('land');
             });
         }
         catch (\Illuminate\Database\QueryException $e){}
 
         Schema::table('xsigns_fewo_preise', function($table) {
-            $table->dropIndex('objid_bis');
-            $table->dropIndex('bis');
+            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $doctrineTable = $sm->listTableDetails('xsigns_fewo_preise');
+
+            if ($doctrineTable->hasIndex('objid_bis'))
+                $table->dropIndex('objid_bis');
+            if ($doctrineTable->hasIndex('bis'))
+                $table->dropIndex('bis');
         });
         Schema::table('xsigns_fewo_bewopt', function($table) {
-            $table->dropIndex('id_lang');
+            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $doctrineTable = $sm->listTableDetails('xsigns_fewo_bewopt');
+
+            if ($doctrineTable->hasIndex('id_lang'))
+                $table->dropIndex('id_lang');
         });
         Schema::table('xsigns_fewo_bew', function($table) {
-            $table->dropIndex('objid_aktiv');
-            $table->dropIndex('aktiv_datum');
+            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $doctrineTable = $sm->listTableDetails('xsigns_fewo_bew');
+
+            if ($doctrineTable->hasIndex('objid_aktiv'))
+                $table->dropIndex('objid_aktiv');
+            if ($doctrineTable->hasIndex('aktiv_datum'))
+                $table->dropIndex('aktiv_datum');
         });
         Schema::table('xsigns_fewo_vorg', function($table) {
-            $table->dropColumn('vorg_is_a_b_bl_e_o');
-            $table->dropColumn('vorg_is_b_bl_e');
-            $table->dropIndex('objid_abbleo');
-            $table->dropIndex('objid_bble');
+            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $doctrineTable = $sm->listTableDetails('xsigns_fewo_vorg');
+
+            if ($doctrineTable->hasIndex('vorg_is_a_b_bl_e_o'))
+                $table->dropColumn('vorg_is_a_b_bl_e_o');
+            if ($doctrineTable->hasIndex('vorg_is_b_bl_e'))
+                $table->dropColumn('vorg_is_b_bl_e');
+            if ($doctrineTable->hasIndex('objid_abbleo'))
+                $table->dropIndex('objid_abbleo');
+            if ($doctrineTable->hasIndex('objid_bble'))
+                $table->dropIndex('objid_bble');
         });
     }
 }

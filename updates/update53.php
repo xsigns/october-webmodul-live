@@ -20,7 +20,7 @@ class Update53 extends Migration
 
     public function down()
     {
-        Schema::table('xsigns_fewo_imagelang', function ($table) {
+        Schema::table('xsigns_fewo_vorggesendet', function ($table) {
             $table->dropColumn('vorgges_grundbew');
             $table->dropColumn('vorgges_grundanschr');
         });
