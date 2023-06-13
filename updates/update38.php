@@ -13,7 +13,6 @@ class Update38 extends Migration
     public function up()
     {
         Schema::create('xsigns_fewo_objektbilder', function($table) {
-            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->timestamp('tstamp');
             $table->integer('obild_objid')->unsigned();

@@ -156,13 +156,5 @@ class Update63 extends Migration
                 $table->integer('zu_personen')->unsigned()->change();
             });
         }
-
-        if (Schema::hasTable('xsigns_fewo_buchung'))
-        {
-            Schema::table('xsigns_fewo_buchung', function ($table)
-            {
-                $table->string('', 30);
-            });
-        }
     }
 }

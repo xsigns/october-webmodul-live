@@ -9,7 +9,6 @@ class Update25 extends Migration
     public function up()
     {
         Schema::create('xsigns_fewo_images',function($table){
-            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->timestamp('tstamp');
             $table->integer('fewoid')->unsigned()->index();
