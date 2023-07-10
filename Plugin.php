@@ -377,7 +377,7 @@ class Plugin extends PluginBase
         /*
          * Register the image tag processing callback
          */
-        BackendMenu::registerContextSidenavPartial('xsigns.fewo', 'fewo', '$/xsigns/fewo/partials/_sidenav.htm');
+        //BackendMenu::registerContextSidenavPartial('xsigns.fewo', 'fewo', '$/xsigns/fewo/partials/_sidenav.htm');
 
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'Xsigns\Fewo\Facades\Auth');
