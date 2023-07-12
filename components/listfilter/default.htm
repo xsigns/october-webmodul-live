@@ -1,465 +1,470 @@
 {% if ladeskript %}
-    <div id="listenfilter" class="listenfilter" action="{{ __SELF__ }}">
-{% endif %}
-<form id="listfilter" name="listfilter">
-    {% if datecompact == 1 %}
-        <div class="form-inputs">
-            <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly/>
-            <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ anreise }}" />
-            <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="hidden" readonly value="{{ abreise }}" />
-        </div>
-    {% else %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.anreise }}</div>
-            <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
-        </div>
-        <div class="form-inputs">
-            <div class="label">{{ labels.abreise }}</div>
-            <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
-        </div>
+<div id="listenfilter" class="listenfilter" action="{{ __SELF__ }}">
     {% endif %}
-    {% if showtage %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.tagein }}</div>
-            <select id="tagein" name="tagein" class="search-tagein" data-request="{{ __SELF__ }}::onDataChange" placeholder="{{ labels.tagein }}" >
-                {% for sday in countdays %}
-                    <option value="{{sday.id}}" {% if sday.selected %}{{ sday.selected }}{% endif %}>{{sday.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-    {% endif %}
-    {% if felder.preis %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.preis }}</div>
-            <div class="preis-slider"><input id="preis" type="slider" data-request="{{ __SELF__ }}::onDataChange" name="preis" value="{{ preis }}" /></div>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if felder.ort %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.ort }}</div>
-            <select id="ort" name="ort" class="search-ort" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.ort }}">
-                <option value="0">{{ labels.keineangabe }}</option>
-                {% for ort in orte %}
-                    <option value="{{ort.id}}">{{ort.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if felder.land %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.land }}</div>
-            <select id="land" name="land" class="search-land" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.land }}">
-                <option value="-">{{ labels.keineangabe }}</option>
-                {% for land in laender %}
-                    <option value="{{land.id}}">{{land.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if felder.region %}
-    <div class="form-inputs">
-        <div class="label">{{ labels.region }}</div>
-        <select id="region" name="region" class="search-region" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.region }}">
-            <option value="0">{{ labels.keineangabe }}</option>
-            {% for region in regionen %}
-                <option value="{{region.id}}" {{region.disbled}}>{{region.name}}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div class="clearfix"></div>
-    {% endif %}
-    {% if felder.objart %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.objart }}</div>
-            <select id="objart" name="objart" class="search-objart" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.objart }}">
-                <option value="0">{{ labels.keineangabe }}</option>
-                {% for objart in objarten %}
-                    <option value="{{objart.id}}">{{objart.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if felder.sterne %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.sterne }}</div>
-            <select id="sterne" name="sterne" class="search-sterne" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.sterne }}">
-                <option value="-1">{{ labels.keineangabe }}</option>
-                {% for stern in objsterne %}
-                    <option value="{{stern.id}}">{{stern.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if felder.objtyp %}
-        <div class="form-inputs">
-            <div class="label">{{ labels.objtyp }}</div>
-            <select id="objtyp" name="objtyp" class="search-objtyp" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.objtyp }}">
-                <option value="0">{{ labels.keineangabe }}</option>
-                {% for objtyp in objtypen %}
-                    <option value="{{objtyp.id}}">{{objtyp.name}}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if selecttype > 0 %}
-        {% if felder.personen %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.personen }}</div>
-                <select id="personen" name="personen" class="search-personen" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
-                    <option value="0">{{ labels.keineangabe }}</option>
-                    {% for i in 1..maxpersonen %}
-                        <option value="{{ i }}" {% if personen == i %} selected {% endif %}>{{ i }} {% if i > 1 %} {{ labels.personen }} {% else %} {{ labels.person }}{% endif %}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-        {% if felder.zimmer %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.zimmer }}</div>
-                <select id="zimmer" name="zimmer" class="search-zimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
-                    <option value="0">{{ labels.keineangabe }}</option>
-                    {% for i in 1..maxzimmer %}
-                        <option value="{{ i }}" {% if zimmer == i %} selected {% endif %}>{{ i }} {{ labels.zimmer }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-        {% if felder.schlafzimmer %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.schlafzimmer }}</div>
-                <select id="schlafzimmer" name="schlafzimmer" class="schlafzimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
-                    <option value="0">{{ labels.keineangabe }}</option>
-                    {% for i in 1..maxschlafzimmer %}
-                        <option value="{{ i }}" {% if schlafzimmer == i %} selected {% endif %}>{{ i }} {{ labels.schlafzimmer }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-        {% if felder.badezimmer %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.badezimmer }}</div>
-                <select id="badezimmer" name="badezimmer" class="badezimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
-                    <option value="0">{{ labels.keineangabe }}</option>
-                    {% for i in 1..maxbadezimmer %}
-                        <option value="{{ i }}" {% if badezimmer == i %} selected {% endif %}>{{ i }} {{labels.badezimmer }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-    {% else %}
-        {% if felder.personen %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.personen }}</div>
-                <input id="personen" name="personen" type="hidden" readonly value="{{ personen }}">
-                <div class="intselector" onClick="aenderewert('#personen', '#perswert', false, 'onDataChange');">-</div>
-                <div id="perswert" class="listwert">1+</div>
-                <div class="intselector" onclick="aenderewert('#personen', '#perswert', true, 'onDataChange');">+</div>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-        {% if felder.zimmer %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.zimmer }}</div>
-                <input id="zimmer" name="zimmer" type="hidden" readonly value="{{ zimmer }}">
-                <div class="intselector" onClick="aenderewert('#zimmer', '#zimmerwert', false, 'onDataChange');">-</div>
-                <div id="zimmerwert" class="listwert">0+</div>
-                <div class="intselector" onclick="aenderewert('#zimmer', '#zimmerwert', true, 'onDataChange');">+</div>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-        {% if felder.schlafzimmer %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.schlafzimmer }}</div>
-                <input id="schlafzimmer" name="schlafzimmer" type="hidden" readonly value="{{ schlafzimmer }}">
-                <div class="intselector" onClick="aenderewert('#schlafzimmer', '#schlafzimmerwert', false, 'onDataChange');">-</div>
-                <div id="schlafzimmerwert" class="listwert">0+</div>
-                <div class="intselector" onclick="aenderewert('#schlafzimmer', '#schlafzimmerwert', true, 'onDataChange');">+</div>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-        {% if felder.badezimmer %}
-            <div class="form-inputs">
-                <div class="label">{{ labels.badezimmer }}</div>
-                <input id="badezimmer" name="badezimmer" type="hidden" readonly value="{{ badezimmer }}">
-                <div class="intselector" onClick="aenderewert('#badezimmer', '#badezimmerwert', false, 'onDataChange');">-</div>
-                <div id="badezimmerwert" class="listwert">0+</div>
-                <div class="intselector" onclick="aenderewert('#badezimmer', '#badezimmerwert', true, 'onDataChange');">+</div>
-            </div>
-            <div class="clearfix"></div>
-        {% endif %}
-    {% endif %}
-    {% if elemdrop %}
-        <div class="ui left floated compact segment listfilter">
-            <div class="checkies">
-                {% for ausst, aus in elemdrop %}
-                    {% if ausstattungheader[ausst]|raw != '' %}
-                        <div  class="fewo-ausst-group group-{{ ausst }}">
-                            <div class="fewo-ausst-title">{{ ausstattungheader[ausst]|raw }}</div>
-                        </div>
-                    {% endif %}
-                    {% for elemd in aus %}
-                        <div class="dropelement">{{ elemd|raw }}</div>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if elemcheck %}
-        <div class="ui left floated compact segment listfilter">
-            <div class="checkies">
-                {% for ausst, aus in elemcheck %}
-                    {% if ausstattungheader[ausst]|raw != '' %}
-                        <div  class="fewo-ausst-group group-{{ ausst }}">
-                            <div class="fewo-ausst-title">{{ ausstattungheader[ausst]|raw }}</div>
-                        </div>
-                    {% endif %}
-                    {% for elem in aus %}
-                        <div class="checkelement">{{ elem|raw }}</div>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    {% if elementf %}
-        <div class="ui left floated compact segment listfilter">
-            <div class="checkies">
-                {% for elemd in elementf %}
-                    <div class="checkelement">{{ elemd|raw }}</div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    {% endif %}
-    <button id="filterclear" class="btn btn-primary btn-sm" data-request="{{ __SELF__ }}::onBtnClear">{{ btnclear }}</button>
-</form>
-<script>
-    var lblTag = '{{labels.tag}}';
-    var lblTage = '{{labels.tage}}';
-    var lblWoche = '{{labels.woche}}';
-    var lblWochen = '{{labels.wochen}}';
-    var anreise = '{{ anreise }}';
-    var abreise = '{{ abreise }}';
-    var showtage = {% if showtage %}{{showtage}}{% else %}0{% endif %};
-    var personen = {{ personen }};
-    var zimmer = {{ zimmer }};
-    var schlafzimmer = {{ schlafzimmer }};
-    var badezimmer = {{ badezimmer }};
-    var ort = {{ ort }};
-    var land = '{{ land }}';
-    var region = {{ region }};
-    var objart = {{ objart }};
-    var objtyp = {{ objtyp }};
-    var sterne = 0{{sterne }};
-    var maxpersonen = {{ maxpersonen }};
-    var maxzimmer = {{ maxzimmer }};
-    var maxschlafzimmer = {{ maxschlafzimmer }};
-    var maxbadezimmer = {{ maxbadezimmer }};
-    var minpreis = {{ minpreis }};
-    var maxpreis = {{ maxpreis }};
-    var preis = '{{ preis }}';
-    var selTage = 0;
-
-    function aenderewert(controlwert, controldarstellung, increment, request)
-    {
-        let cwert = $(controlwert);
-        let input1 =  parseInt(cwert.val(), 10);
-
-        if (increment)
-            input1++;
-        else
-            input1 --;
-
-        let addplus = true;
-
-        if (controlwert === '#personen' && input1 > maxpersonen) {
-            input1 = maxpersonen;
-            addplus = false;
-        }
-
-        if (controlwert === '#badezimmer' && input1 > maxbadezimmer){
-            input1 = maxbadezimmer;
-            addplus = false;
-        }
-
-        if (controlwert === '#schlafzimmer' && input1 > maxschlafzimmer){
-            input1 = maxschlafzimmer;
-            addplus = false;
-        }
-
-        if (controlwert === '#zimmer' && input1 > maxzimmer){
-            input1 = maxzimmer;
-            addplus = false;
-        }
-
-        if (input1 < 1) {
-            if (controlwert === '#personen')
-                input1 = 1;
-            else
-                input1 = 0;
-        }
-
-        cwert.val(input1);
-
-        if (addplus)
-            $(controldarstellung).text(input1 + '+');
-        else
-            $(controldarstellung).text(input1);
-
-        resetpage = true;
-
-        cwert.request(request);
-    }
-
-    function filterChanged(elem) {
-        /*if ($container !== undefined)
-            $container.infiniteScroll('destroy');*/
-        resetpage = true;
-        jQuery('#' + elem).request('onDataChange');
-    }
-
-    $(document).ready(function() {
-        if (personen > 1 && $('#perswert') !== undefined) {
-            if(personen > maxpersonen)
-                personen = maxpersonen;
-            if(personen < maxpersonen)
-                $('#perswert').text(personen + '+');
-            else
-                $('#perswert').text(personen);
-        }
-
-        if (schlafzimmer > 0 && $('#schlafzimmerwert') !== undefined) {
-            if(schlafzimmer> maxschlafzimmer)
-                schlafzimmer = maxschlafzimmer;
-            if(schlafzimmer < maxschlafzimmer)
-                $('#schlafzimmerwert').text(schlafzimmer + '+');
-            else
-                $('#schlafzimmerwert').text(schlafzimmer);
-        }
-
-        if (badezimmer > 0 && $('#badezimmerwert') !== undefined)
-        {
-            if(badezimmer > maxbadezimmer)
-                badezimmer = maxbadezimmer;
-            if (badezimmer < maxbadezimmer)
-                $('#badezimmerwert').text(badezimmer + '+');
-            else
-                $('#badezimmerwert').text(badezimmer);
-        }
-
-        if (zimmer > 0 && $('#zimmerwert') !== undefined) {
-            if (zimmer > maxzimmer)
-                zimmer = maxzimmer;
-            if (zimmer < maxzimmer)
-                $('#zimmerwert').text(zimmer + '+');
-            else
-                $('#zimmerwert').text(zimmer);
-        }
-
-        if($('#ort') !== undefined)
-            $('#ort option[value=' + ort + ']').attr('selected', 'selected');
-
-        if($('#region') !== undefined)
-            $('#region option[value=' + region + ']').attr('selected', 'selected');
-
-        if($('#objart') !== undefined)
-            $('#objart option[value=' + objart + ']').attr('selected', 'selected');
-
-        if($('#objtyp') !== undefined)
-            $('#objtyp option[value=' + objtyp + ']').attr('selected', 'selected');
-
-        if($('#land') !== undefined)
-            $('#land option[value=' + land + ']').attr('selected', 'selected');
-
-        if($('#sterne') !== undefined)
-            $('#sterne option[value=' + sterne + ']').attr('selected', 'selected');
-
-        if($('#preis') !== undefined)
-            jQuery('#preis').slider({ from: minpreis, to: maxpreis, heterogeneity: ['20/100', '75/250'], step: 10, dimension: '&nbsp;€', skin: "blue" ,
-                callback: function( value ){
-                    jQuery('#preis').request('onDataChange');
-                }});
-
-        $('#cleardates').click(function(evt) {
-            evt.stopPropagation();
-            {% if datecompact == 1 %}
-                $('#period').data('dateRangePicker').clear();
-            {% else %}
-                $('#anreise').data('dateRangePicker').clear();
-            {% endif %}
-            $('#anreise').val('');
-            $('#abreise').val('');
-            $('#period').val('');
-        });
-
-        if (jQuery('#anreise-wrapper'))
-            jQuery('#anreise-wrapper').remove();
-
+    <form id="listfilter" name="listfilter">
         {% if datecompact == 1 %}
-            let dateComponent = '#period';
+            <div class="form-inputs">
+                <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly/>
+                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ anreise }}" />
+                <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="hidden" readonly value="{{ abreise }}" />
+            </div>
         {% else %}
-            let dateComponent = '#anreise';
+            <div class="form-inputs">
+                <div class="label">{{ labels.anreise }}</div>
+                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
+            </div>
+            <div class="form-inputs">
+                <div class="label">{{ labels.abreise }}</div>
+                <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
+            </div>
         {% endif %}
-
-        let picker = $(dateComponent).dateRangePicker({
-            startDate: '{{ mindate|raw}}',
-            separator: ' bis ',
-            selectForward: true,
-            autoClose: true,
-            showShortcuts: true,
-            shortcuts: {'delete':true},
-            format: 'DD.MM.YYYY',
-            startOfWeek: 'monday',
-            minDays: 2,
-            language: '{{ lang }}',
-            // showTopbar:false,
-            beforeShowDay: function (t) {
-                valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
-                let _class = '';
-                let _tooltip = valid ? '' : 'belegt';
-                return [valid, _class, _tooltip];
-            }
-        });
-
-        $(dateComponent).data('dateRangePicker').setDateRange(anreise, abreise);
-
-        if(anreise !='' && abreise != '') {
-            {% if datecompact == 1 %}
-            $('#period').val(anreise + ' - ' + abreise);
+        {% if showtage %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.tagein }}</div>
+                <select id="tagein" name="tagein" class="search-tagein" data-request="{{ __SELF__ }}::onDataChange" placeholder="{{ labels.tagein }}" >
+                    {% for sday in countdays %}
+                        <option value="{{sday.id}}" {% if sday.selected %}{{ sday.selected }}{% endif %}>{{sday.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+        {% if felder.preis %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.preis }}</div>
+                <div class="preis-slider"><input id="preis" type="slider" data-request="{{ __SELF__ }}::onDataChange" name="preis" value="{{ preis }}" /></div>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if felder.ort %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.ort }}</div>
+                <select id="ort" name="ort" class="search-ort" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.ort }}">
+                    <option value="0">{{ labels.keineangabe }}</option>
+                    {% for ort in orte %}
+                        <option value="{{ort.id}}">{{ort.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if felder.land %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.land }}</div>
+                <select id="land" name="land" class="search-land" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.land }}">
+                    <option value="-">{{ labels.keineangabe }}</option>
+                    {% for land in laender %}
+                        <option value="{{land.id}}">{{land.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if felder.region %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.region }}</div>
+                <select id="region" name="region" class="search-region" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.region }}">
+                    <option value="0">{{ labels.keineangabe }}</option>
+                    {% for region in regionen %}
+                        <option value="{{region.id}}" {{region.disbled}}>{{region.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if felder.objart %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.objart }}</div>
+                <select id="objart" name="objart" class="search-objart" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.objart }}">
+                    <option value="0">{{ labels.keineangabe }}</option>
+                    {% for objart in objarten %}
+                        <option value="{{objart.id}}">{{objart.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if felder.sterne %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.sterne }}</div>
+                <select id="sterne" name="sterne" class="search-sterne" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.sterne }}">
+                    <option value="-1">{{ labels.keineangabe }}</option>
+                    {% for stern in objsterne %}
+                        <option value="{{stern.id}}">{{stern.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if felder.objtyp %}
+            <div class="form-inputs">
+                <div class="label">{{ labels.objtyp }}</div>
+                <select id="objtyp" name="objtyp" class="search-objtyp" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.objtyp }}">
+                    <option value="0">{{ labels.keineangabe }}</option>
+                    {% for objtyp in objtypen %}
+                        <option value="{{objtyp.id}}">{{objtyp.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if selecttype > 0 %}
+            {% if felder.personen %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.personen }}</div>
+                    <select id="personen" name="personen" class="search-personen" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                        <option value="0">{{ labels.keineangabe }}</option>
+                        {% for i in 1..maxpersonen %}
+                            <option value="{{ i }}" {% if personen == i %} selected {% endif %}>{{ i }} {% if i > 1 %} {{ labels.personen }} {% else %} {{ labels.person }}{% endif %}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="clearfix"></div>
             {% endif %}
+            {% if felder.zimmer %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.zimmer }}</div>
+                    <select id="zimmer" name="zimmer" class="search-zimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                        <option value="0">{{ labels.keineangabe }}</option>
+                        {% for i in 1..maxzimmer %}
+                            <option value="{{ i }}" {% if zimmer == i %} selected {% endif %}>{{ i }} {{ labels.zimmer }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+            {% if felder.schlafzimmer %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.schlafzimmer }}</div>
+                    <select id="schlafzimmer" name="schlafzimmer" class="schlafzimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                        <option value="0">{{ labels.keineangabe }}</option>
+                        {% for i in 1..maxschlafzimmer %}
+                            <option value="{{ i }}" {% if schlafzimmer == i %} selected {% endif %}>{{ i }} {{ labels.schlafzimmer }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+            {% if felder.badezimmer %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.badezimmer }}</div>
+                    <select id="badezimmer" name="badezimmer" class="badezimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                        <option value="0">{{ labels.keineangabe }}</option>
+                        {% for i in 1..maxbadezimmer %}
+                            <option value="{{ i }}" {% if badezimmer == i %} selected {% endif %}>{{ i }} {{labels.badezimmer }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+        {% else %}
+            {% if felder.personen %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.personen }}</div>
+                    <input id="personen" name="personen" type="hidden" readonly value="{{ personen }}">
+                    <div class="intselector" onClick="aenderewert('#personen', '#perswert', false, 'onDataChange');">-</div>
+                    <div id="perswert" class="listwert">1+</div>
+                    <div class="intselector" onclick="aenderewert('#personen', '#perswert', true, 'onDataChange');">+</div>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+            {% if felder.zimmer %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.zimmer }}</div>
+                    <input id="zimmer" name="zimmer" type="hidden" readonly value="{{ zimmer }}">
+                    <div class="intselector" onClick="aenderewert('#zimmer', '#zimmerwert', false, 'onDataChange');">-</div>
+                    <div id="zimmerwert" class="listwert">0+</div>
+                    <div class="intselector" onclick="aenderewert('#zimmer', '#zimmerwert', true, 'onDataChange');">+</div>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+            {% if felder.schlafzimmer %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.schlafzimmer }}</div>
+                    <input id="schlafzimmer" name="schlafzimmer" type="hidden" readonly value="{{ schlafzimmer }}">
+                    <div class="intselector" onClick="aenderewert('#schlafzimmer', '#schlafzimmerwert', false, 'onDataChange');">-</div>
+                    <div id="schlafzimmerwert" class="listwert">0+</div>
+                    <div class="intselector" onclick="aenderewert('#schlafzimmer', '#schlafzimmerwert', true, 'onDataChange');">+</div>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+            {% if felder.badezimmer %}
+                <div class="form-inputs">
+                    <div class="label">{{ labels.badezimmer }}</div>
+                    <input id="badezimmer" name="badezimmer" type="hidden" readonly value="{{ badezimmer }}">
+                    <div class="intselector" onClick="aenderewert('#badezimmer', '#badezimmerwert', false, 'onDataChange');">-</div>
+                    <div id="badezimmerwert" class="listwert">0+</div>
+                    <div class="intselector" onclick="aenderewert('#badezimmer', '#badezimmerwert', true, 'onDataChange');">+</div>
+                </div>
+                <div class="clearfix"></div>
+            {% endif %}
+        {% endif %}
+        {% if elemdrop %}
+            <div class="ui left floated compact segment listfilter">
+                <div class="checkies">
+                    {% for ausst, aus in elemdrop %}
+                        {% if ausstattungheader[ausst]|raw != '' %}
+                            <div  class="fewo-ausst-group group-{{ ausst }}">
+                                <div class="fewo-ausst-title">{{ ausstattungheader[ausst]|raw }}</div>
+                            </div>
+                        {% endif %}
+                        {% for elemd in aus %}
+                            <div class="dropelement">{{ elemd|raw }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if elemcheck %}
+            <div class="ui left floated compact segment listfilter">
+                <div class="checkies">
+                    {% for ausst, aus in elemcheck %}
+                        {% if ausstattungheader[ausst]|raw != '' %}
+                            <div  class="fewo-ausst-group group-{{ ausst }}">
+                                <div class="fewo-ausst-title">{{ ausstattungheader[ausst]|raw }}</div>
+                            </div>
+                        {% endif %}
+                        {% for elem in aus %}
+                            <div class="checkelement">{{ elem|raw }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        {% if elementf %}
+            <div class="ui left floated compact segment listfilter">
+                <div class="checkies">
+                    {% for elemd in elementf %}
+                        <div class="checkelement">{{ elemd|raw }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        {% endif %}
+        <button id="filterclear" class="btn btn-primary btn-sm" data-request="{{ __SELF__ }}::onBtnClear">{{ btnclear }}</button>
+    </form>
+    <script>
+        var lblTag = '{{labels.tag}}';
+        var lblTage = '{{labels.tage}}';
+        var lblWoche = '{{labels.woche}}';
+        var lblWochen = '{{labels.wochen}}';
+        var anreise = '{{ anreise }}';
+        var abreise = '{{ abreise }}';
+        var showtage = {% if showtage %}{{showtage}}{% else %}0{% endif %};
+        var personen = {{ personen }};
+        var zimmer = {{ zimmer }};
+        var schlafzimmer = {{ schlafzimmer }};
+        var badezimmer = {{ badezimmer }};
+        var ort = {{ ort }};
+        var land = '{{ land }}';
+        var region = {{ region }};
+        var objart = {{ objart }};
+        var objtyp = {{ objtyp }};
+        var sterne = 0{{sterne }};
+        var maxpersonen = {{ maxpersonen }};
+        var maxzimmer = {{ maxzimmer }};
+        var maxschlafzimmer = {{ maxschlafzimmer }};
+        var maxbadezimmer = {{ maxbadezimmer }};
+        var minpreis = {{ minpreis }};
+        var maxpreis = {{ maxpreis }};
+        var preis = '{{ preis }}';
+        var selTage = 0;
+
+        function aenderewert(controlwert, controldarstellung, increment, request)
+        {
+            let cwert = $(controlwert);
+            let input1 =  parseInt(cwert.val(), 10);
+
+            if (increment)
+                input1++;
+            else
+                input1 --;
+
+            let addplus = true;
+
+            if (controlwert === '#personen' && input1 > maxpersonen) {
+                input1 = maxpersonen;
+                addplus = false;
+            }
+
+            if (controlwert === '#badezimmer' && input1 > maxbadezimmer){
+                input1 = maxbadezimmer;
+                addplus = false;
+            }
+
+            if (controlwert === '#schlafzimmer' && input1 > maxschlafzimmer){
+                input1 = maxschlafzimmer;
+                addplus = false;
+            }
+
+            if (controlwert === '#zimmer' && input1 > maxzimmer){
+                input1 = maxzimmer;
+                addplus = false;
+            }
+
+            if (input1 < 1) {
+                if (controlwert === '#personen')
+                    input1 = 1;
+                else
+                    input1 = 0;
+            }
+
+            cwert.val(input1);
+
+            if (addplus)
+                $(controldarstellung).text(input1 + '+');
+            else
+                $(controldarstellung).text(input1);
+
+            resetpage = true;
+
+            cwert.request(request);
         }
 
-        {% if datecompact == 1 %}
-            $('#period').attr("placeholder", '{{dateplaceholder}}');
-        {% endif %}
-
-        picker.bind('datepicker-change', function (event, obj) {
-            $('#anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
-            $('#abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
-            {% if datecompact == 1 %}
-            $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + ' - ' + moment(obj.date2).format('DD.MM.YYYY'));
-            {% endif %}
+        function filterChanged(elem) {
+            /*if ($container !== undefined)
+                $container.infiniteScroll('destroy');*/
             resetpage = true;
-            $('#abreise').request('onDataChange', {data: {dateChange: 1}});
+            jQuery('#' + elem).request('onDataChange');
+        }
+
+        $(document).ready(function() {
+            if (personen > 1 && $('#perswert') !== undefined) {
+                if(personen > maxpersonen)
+                    personen = maxpersonen;
+                if(personen < maxpersonen)
+                    $('#perswert').text(personen + '+');
+                else
+                    $('#perswert').text(personen);
+            }
+
+            if (schlafzimmer > 0 && $('#schlafzimmerwert') !== undefined) {
+                if(schlafzimmer> maxschlafzimmer)
+                    schlafzimmer = maxschlafzimmer;
+                if(schlafzimmer < maxschlafzimmer)
+                    $('#schlafzimmerwert').text(schlafzimmer + '+');
+                else
+                    $('#schlafzimmerwert').text(schlafzimmer);
+            }
+
+            if (badezimmer > 0 && $('#badezimmerwert') !== undefined)
+            {
+                if(badezimmer > maxbadezimmer)
+                    badezimmer = maxbadezimmer;
+                if (badezimmer < maxbadezimmer)
+                    $('#badezimmerwert').text(badezimmer + '+');
+                else
+                    $('#badezimmerwert').text(badezimmer);
+            }
+
+            if (zimmer > 0 && $('#zimmerwert') !== undefined) {
+                if (zimmer > maxzimmer)
+                    zimmer = maxzimmer;
+                if (zimmer < maxzimmer)
+                    $('#zimmerwert').text(zimmer + '+');
+                else
+                    $('#zimmerwert').text(zimmer);
+            }
+
+            if($('#ort') !== undefined)
+                $('#ort option[value=' + ort + ']').attr('selected', 'selected');
+
+            if($('#region') !== undefined)
+                $('#region option[value=' + region + ']').attr('selected', 'selected');
+
+            if($('#objart') !== undefined)
+                $('#objart option[value=' + objart + ']').attr('selected', 'selected');
+
+            if($('#objtyp') !== undefined)
+                $('#objtyp option[value=' + objtyp + ']').attr('selected', 'selected');
+
+            if($('#land') !== undefined)
+                $('#land option[value=' + land + ']').attr('selected', 'selected');
+
+            if($('#sterne') !== undefined)
+                $('#sterne option[value=' + sterne + ']').attr('selected', 'selected');
+
+            if($('#preis') !== undefined)
+                jQuery('#preis').slider({ from: minpreis, to: maxpreis, heterogeneity: ['20/100', '75/250'], step: 10, dimension: '&nbsp;€', skin: "blue" ,
+                    callback: function( value ){
+                        jQuery('#preis').request('onDataChange');
+                    }});
+
+            $('#cleardates').click(function(evt) {
+                evt.stopPropagation();
+                {% if datecompact == 1 %}
+                $('#period').data('dateRangePicker').clear();
+                {% else %}
+                $('#anreise').data('dateRangePicker').clear();
+                {% endif %}
+                $('#anreise').val('');
+                $('#abreise').val('');
+                $('#period').val('');
+            });
+
+            if (jQuery('#anreise-wrapper'))
+                jQuery('#anreise-wrapper').remove();
+
+            {% if datecompact == 1 %}
+            let dateComponent = '#period';
+            {% else %}
+            let dateComponent = '#anreise';
+            {% endif %}
+
+            let picker = $(dateComponent).dateRangePicker({
+                startDate: '{{ mindate|raw}}',
+                separator: ' bis ',
+                selectForward: true,
+                autoClose: true,
+                showShortcuts: true,
+                shortcuts: {'delete':true},
+                format: 'DD.MM.YYYY',
+                startOfWeek: 'monday',
+                minDays: 2,
+                language: '{{ lang }}',
+                // showTopbar:false,
+                beforeShowDay: function (t) {
+                    valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
+                    let _class = '';
+                    let _tooltip = valid ? '' : 'belegt';
+                    return [valid, _class, _tooltip];
+                }
+            });
+
+            $(dateComponent).data('dateRangePicker').setDateRange(anreise, abreise);
+
+            if(anreise !='' && abreise != '') {
+                {% if datecompact == 1 %}
+                $('#period').val(anreise + ' - ' + abreise);
+                {% endif %}
+            }
+
+            {% if datecompact == 1 %}
+            $('#period').attr("placeholder", '{{dateplaceholder}}');
+            {% endif %}
+
+            picker.bind('datepicker-change', function (event, obj) {
+                $('#anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+                $('#abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
+                {% if datecompact == 1 %}
+                $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + ' - ' + moment(obj.date2).format('DD.MM.YYYY'));
+                {% endif %}
+                resetpage = true;
+                $('#abreise').request('onDataChange', {data: {dateChange: 1}});
+            });
+
+            picker.bind('datepicker-clear', function() {
+                $.request('onDeleteDate');
+            });
         });
 
-        picker.bind('datepicker-clear', function() {
-            $.request('onDeleteDate');
+        $( "#abreise" ).click(function(evt) {
+            evt.stopPropagation();
+            $('#anreise').data('dateRangePicker').open();
         });
-    });
-</script>
-{% if ladeskript %}
-    </div>
+    </script>
+    {% if ladeskript %}
+</div>
     <div class="clearfix"></div>
 {% endif %}

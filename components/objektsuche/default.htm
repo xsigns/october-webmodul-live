@@ -177,42 +177,47 @@
             }
         });
         {% if showtage %}
-            $('#tagein').append($('<option>', {
-                value: 0,
-                text: '{{ labels.tagein }}'
-            }));
+        $('#tagein').append($('<option>', {
+            value: 0,
+            text: '{{ labels.tagein }}'
+        }));
         {% endif %}
         picker.bind('datepicker-change', function (event, obj) {
             $('#anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
             $('#abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
             {% if datecompact == 1 %}
-                $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
+            $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
             {% endif %}
             {% if showtage %}
-                var a = moment(obj.date2, "DD.MM.YYYY");
-                var b = moment(obj.date1, "DD.MM.YYYY");
-                var selectText = '';
-                var tage = a.diff(b, 'days');   // =1
-                $('#tagein').find('option').remove().end();
-                for (i = 0; i < tage; i++) {
-                    if ((i + 1) % 7 == 0) {
-                        if ((i + 1) == 7)
-                            selectText = '1 ' + lblWoche;
-                        else
-                            selectText = ((i + 1) / 7) + ' ' + lblWochen;
-                    } else {
-                        if (i + 1 > 1)
-                            selectText = (i + 1) + ' ' + lblTage
-                        else
-                            selectText = (i + 1) + ' ' + lblTag;
-                    }
-                    $('#tagein').append($('<option>', {
-                        value: i + 1,
-                        text: selectText
-                    }));
+            var a = moment(obj.date2, "DD.MM.YYYY");
+            var b = moment(obj.date1, "DD.MM.YYYY");
+            var selectText = '';
+            var tage = a.diff(b, 'days');   // =1
+            $('#tagein').find('option').remove().end();
+            for (i = 0; i < tage; i++) {
+                if ((i + 1) % 7 == 0) {
+                    if ((i + 1) == 7)
+                        selectText = '1 ' + lblWoche;
+                    else
+                        selectText = ((i + 1) / 7) + ' ' + lblWochen;
+                } else {
+                    if (i + 1 > 1)
+                        selectText = (i + 1) + ' ' + lblTage
+                    else
+                        selectText = (i + 1) + ' ' + lblTag;
                 }
-                $('select[name="tagein"]').val(tage);
+                $('#tagein').append($('<option>', {
+                    value: i + 1,
+                    text: selectText
+                }));
+            }
+            $('select[name="tagein"]').val(tage);
             {% endif %}
         });
+    });
+
+    $( "#abreise" ).click(function(evt) {
+        evt.stopPropagation();
+        $('#anreise').data('dateRangePicker').open();
     });
 </script>

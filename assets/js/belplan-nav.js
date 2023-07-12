@@ -199,12 +199,22 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             $('#period').val(tag + '.' + monat + '.' + jahr + ' - ');
             $('#ctrl_panreise').val(tag + '.' + monat + '.' + jahr);
             $('#ctrl_anreise').val(tag + '.' + monat + '.' + jahr);
-            let verfuegbarZeitraum = verfuegbarTimeline.substring(anreiseId);
 
-            if (verfuegbarZeitraum.includes('N')) {
-                let nextBelId = anreiseId + verfuegbarZeitraum.indexOf('N') + 1;
+            let verfuegbarZeitraumAbSelektierterTag = verfuegbarTimeline.substring(anreiseId, dayEleme.index(dayEleme.last()));
+            let wechselZeitraumAbSelektierterTag = wechselTimeline.substring(anreiseId, dayEleme.index(dayEleme.last()));
+
+            // Suche erste Belegung ab Selektierter Tag und setze alles dahinter auf nichtselektierbar/nichtwaehlbar
+            if (verfuegbarZeitraumAbSelektierterTag.includes('N')) {
+                let nextBelId = anreiseId + verfuegbarZeitraumAbSelektierterTag.indexOf('N') + 1;
                 dayEleme.slice(dayId, nextBelId).removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
                 dayEleme.slice(nextBelId).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
+            }
+
+            // Setze alles was ab Selektierter Tag X oder I ist auf nichtselektierbar/nichtwaehlbar da weder Anreise noch Abreise möglich ist
+            for (let i = 0; i < wechselZeitraumAbSelektierterTag.length; i++) {
+                let currentDayId = anreiseId + i + 1;
+                if (wechselTimeline.charAt(currentDayId) === 'X' || wechselTimeline.charAt(currentDayId) === 'I')
+                    dayEleme.slice(currentDayId, currentDayId + 1).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
             }
 
             let mintageRange = wechselTimeline.substr(dayId, parseInt(mintage) + 1);

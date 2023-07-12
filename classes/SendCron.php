@@ -195,7 +195,7 @@ class SendCron
 
         self::debug($bereich, $message);
 
-        $sql = "select vorg_id, vorg_objid, vorg_gastid, vorg_anreise, vorg_abreise, vorg_kinder, vorg_erw, vorg_kleinkind, xsigns_fewo_vorggesendet.id as vorgges_id, anschreiben, bewertung, xsigns_fewo_obj.id as obj_id, obj_alias, obj_strasse, obj_plz, obj_ort, obj_land, obj_regionid, titel, beschreibung, gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_werbemail, gast_mail from xsigns_fewo_vorg left join xsigns_fewo_vorggesendet on vorgid = vorg_id left join xsigns_fewo_obj on xsigns_fewo_obj.id = vorg_objid left join xsigns_fewo_objlang on xsigns_fewo_objlang.objid = xsigns_fewo_obj.id and lang = 'DE' left join xsigns_fewo_gast on gast_id = vorg_gastid where vorg_art = 'B'" . $wherepart;
+        $sql = "select vorg_id, vorg_objid, vorg_gastid, vorg_anreise, vorg_abreise, vorg_kinder, vorg_erw, vorg_kleinkind, xsigns_fewo_vorggesendet.id as vorgges_id, anschreiben, bewertung, xsigns_fewo_obj.id as obj_id, obj_alias, obj_strasse, obj_plz, obj_ort, obj_land, obj_regionid, titel, beschreibung, gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_werbemail, gast_mail from xsigns_fewo_vorg left join xsigns_fewo_vorggesendet on vorg_id = vorgid right join xsigns_fewo_obj on xsigns_fewo_obj.id = vorg_objid left join xsigns_fewo_objlang on xsigns_fewo_objlang.objid = xsigns_fewo_obj.id and lang = 'DE' left join xsigns_fewo_gast on gast_id = vorg_gastid where vorg_art = 'B'" . $wherepart;
 
         $vorgaenge = Database::select(null, self::$modulename, $sql);
 

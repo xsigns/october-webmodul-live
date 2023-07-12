@@ -1,0 +1,94 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quasar@2.11.6/dist/quasar.umd.prod.js"></script>
+
+<form data-request="onSignin">
+    <div id="q-app">
+        <div class="form-group">
+            <q-input filled bottom-slots v-model="text" label="{{ lblusername|raw }}" :dense="dense" id="userSigninLogin" name="login">
+                <template v-slot:append>
+                    <q-icon name="close" @click="text = ''" class="cursor-pointer"></q-icon>
+                </template>
+            </q-input>
+        </div>
+        <div class="form-group">
+            <q-input v-model="password" filled :type="isPwd ? 'password' : 'text'" label="{{ lblpassword|raw }}" name="password" id="userSigninPassword">
+                <template v-slot:append>
+                    <q-icon
+                        :name="isPwd ? 'visibility_off' : 'visibility'"
+                        class="cursor-pointer"
+                        @click="isPwd = !isPwd"
+                    ></q-icon>
+                </template>
+            </q-input>
+        </div>
+        <q-btn :loading="loading[3]" color="primary" @click="simulateProgress(3)" type="submit" icon="login">
+            {{ btnlogin }}
+            <template v-slot:loading>
+                <q-spinner-hourglass class="on-left"></q-spinner-hourglass>
+                Loading...
+            </template>
+        </q-btn>
+    </div>
+</form>
+<script>
+
+    const { ref } = Vue
+
+    const app = Vue.createApp({
+        setup () {
+
+            const loading = ref([
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+            ])
+
+            const progress = ref(false)
+
+            function simulateProgress (number) {
+                // we set loading state
+                loading.value[ number ] = true
+
+                // simulate a delay
+                setTimeout(() => {
+                    // we're done, we reset loading state
+                    loading.value[ number ] = false
+                }, 3000)
+            }
+            return {
+                text: ref(''),
+                ph: ref(''),
+                dense: ref(false),
+                password: ref(''),
+                isPwd: ref(true),
+                loading,
+                progress,
+                simulateProgress
+            }
+        }
+    })
+
+    app.use(Quasar, { config: {} })
+    app.mount('#q-app')
+</script>
+
+<style>
+    #q-app .q-tab.relative-position.self-stretch.flex.flex-center.text-center.q-tab--active.text-white.q-focusable.q-hoverable.cursor-pointer {opacity: 0.90!important;}
+    #q-app .q-toolbar.row.no-wrap.items-center.bg-primary.text-white.shadow-2.round, .q-tab.relative-position.self-stretch.flex.flex-center.text-center.q-tab--inactive.q-focusable.q-hoverable.cursor-pointer {opacity: 1!important;}
+    #q-app .q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--round.text-primary.q-btn--actionable.q-focusable.q-hoverable.q-btn--dense, #q-app .q-btn.q-btn-item.non-selectable.no-outline.q-btn--flat.q-btn--round.text-primary.disabled.q-btn--dense {background-color: #00000000!important; color: black!important;}
+    #q-app .q-btn i {margin-right: 14px;}
+
+
+    #q-app .q-field__label {left: 15px!important;}
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{-webkit-box-shadow: 0 0 0 30px #eae9e8 inset !important;}
+    .q-field--filled .q-field__control:hover:before {opacity: 0!important;}
+    #q-app .q-field__inner {margin-left: 15px;}
+    #q-app .q-btn__content.text-center.col.items-center.q-anchor--skip.justify-center.row {margin-right: 0px; margin-left: 0px;}
+</style>

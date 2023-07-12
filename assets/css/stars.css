@@ -1,0 +1,8 @@
+.sterne {position: relative; width: max-content;}
+#Layer_1, #Layer_2, #Layer_3, #Layer_4, #Layer_5 {width: 19px; height: auto;}
+.svg {width: 19px; height: auto}
+.cover {height: 100%;overflow: hidden;mix-blend-mode: color;position: absolute;top: 0;right: 0; background-color: #d2d2d2;}
+.fewo-rating {padding-top: 5px;}
+.color-svg, .svg {fill: #fbc118!important;}
+.color-svg-no-star {fill: #d2d2d2!important;}
+.getSterne {cursor: pointer!important;}

@@ -1,0 +1,305 @@
+<div id="q-app4">
+    <div class="q-pa-md q-app-4-einmalig">
+        <div class="q-gutter-y-md column neu">
+            <div><span id="a123e92" style="font-size: 20px;"><span>{{ labels.objLeistungsTitel }}</span> <b>{{ obname }}</b></span></div><br>
+            <div class="container con-p" style="margin-top: 0px!important; padding: 0px!important;">
+                <div class="row">
+                    <div class="col-12 float-left col-md-4">
+                        <label class="q-field row no-wrap items-start q-field--filled q-input q-field--labeled text frm_titel form-control required-frm" style="padding: 6px 15px!important; cursor: pointer!important; margin-bottom: 5px!important;">
+                            <div class="q-field__inner relative-position col self-stretch">
+                                <div class="q-field__control relative-position row no-wrap" tabindex="-1" style="padding: 0px!important;">
+                                    <div class="q-field__control-container col relative-position row no-wrap q-anchor--skip">
+                                        <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" style="cursor: pointer!important; padding: 0px 12px!important; outline: none; background-color: #ff000000;border: none;width: 100%; height: 70%; bottom: 0; position: absolute;" readonly/>
+                                        <div class="q-field__label no-pointer-events absolute ellipsis transition" id="label-select-date" style="padding: 0px 12px!important;">{{ labels.zeitraum }}</div>
+                                        <i class="fa fa-calendar" aria-hidden="true" style="color: black; position: absolute; right: 22px; top: 17px; font-size: 22px;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <input type="hidden" id="ctrl_anreise" name="anreise"  required class="s-anreise datepicker" value="{{ anreise }}">
+                    <input type="hidden" id="ctrl_abreise" name="abreise" required class="s-abreise datepicker" value="{{ abreise }}">
+                </div>
+                <div class="row">
+                    <div class="col-12 float-left col-md-4"><q-select filled @update:model-value="chageValue" v-model="erw" data-request="{{ __SELF__ }}::onErwachseneChange" id="ctrl_erwachsene" name="erwachsene" :options="anredeOptions" label="{{ labels.erwachsene }}" style="padding-left: 15px!important; padding-right: 15px!important;"></q-select></div>
+                    <div class="col-12 float-left col-md-4"><q-select filled @update:model-value="chageValue2" v-model="kind" id="ctrl_kinder" name="kinder" :options="kindOpt" label="{{ labels.kinder }}" style="padding-left: 15px!important; padding-right: 15px!important;"></q-select></div>
+                    <div class="col-12 float-left col-md-4"><q-select filled v-model="kkind" id="ctrl_kleinkinder" :options="kkindOpt" label="{{ labels.kleinkinder }}" style="padding-left: 15px!important; padding-right: 15px!important;"></q-select></div>
+                    <button id="changer" class="display-none" data-request="{{ __SELF__ }}::onErwachseneChange"></button>
+                    <button id="changer2" class="display-none" data-request="{{ __SELF__ }}::onKinderChange"></button>
+                </div>
+            </div>
+
+            <div id="error-anreise" style="margin-top: 0px!important"></div>
+            <input type="hidden" name="objartid" value="{{objartid}}">
+            <input type="hidden" name="maxpersonen" value="{{maxpersonen}}">
+
+            <div class="d-inline-block w-100" style="margin-top: 5px!important;">
+                <div id="adresse" class="col-8 pl-0 float-left"></div>
+                <div id="summen" class="col-4 pr-0 float-left"></div>
+            </div>
+            <div class="clearfix"></div>
+            {% if showleistungen %}
+                <div id="leistungen" class="col-12 col-md-8 pl-0"></div>
+            {% endif %}
+            <q-btn disabled d color="primary" label="{{ labels.buchen }}" class="buchenBTNQuasar" icon="shopping_bag" @click="buchen" style="width: max-content; margin-top: 0px!important; margin-left: -4px!important;"></q-btn>
+            <button id="buchen" class="fewo-buchen btn btn-success ml-4 display-none" data-request="{{ __SELF__ }}::onBtnBuchen" data-request-flash>{{ labels.buchen }}</button>
+        </div>
+        <div class="errow-window display-none transform shadow-2">
+            <div class="f1">
+                <q-icon name="warning" color="warning" size="2rem" color="red"></q-icon>
+            </div>
+            <div class="f2">
+                Alle Felder ausfüllen
+            </div>
+        </div>
+        <div id="4"></div>
+    </div>
+</div>
+<script>erw = []; kind = []; kkind = [];</script>
+{% for i in 1..erwachsene %}
+    <script>
+        var erwachsene = '{{ obj }}'
+        if (erwachsene != 'Objektauswahl')
+            erw.push('{{ i }}');
+    </script>
+{% endfor %}
+
+{% for i in 0..kinder %}
+    <script>
+        var kinder = '{{ obj }}'
+        if (kinder != 'Objektauswahl')
+            kind.push('{{ i }}');
+    </script>
+{% endfor %}
+
+{% for i in 0..kleinkinder %}
+    <script>
+        var kleinkinder = '{{ obj }}'
+        if (kleinkinder != 'Objektauswahl')
+            kkind.push('{{ i }}');
+    </script>
+{% endfor %}
+
+<script>
+    var banDate = [];
+    var test = {{ blockeddates|raw }};
+    function formatDate(date)
+    {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [day, month, year].join('.');
+    }
+
+    function zwei(date)
+    {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    function eins(date)
+    {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('/');
+    }
+
+    var someDate = new Date();
+
+    for (var i = 0; i < test.length; i++) {
+        var numberOfDaysToAdd = 1;
+        var result = someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+
+        if (test.includes(zwei(new Date(result))) == false) {
+            banDate.push(eins(result));
+        }
+    }
+
+    var app4 = Vue.createApp({
+        setup ()
+        {
+            const $q = useQuasar()
+
+            return {
+                anreise: ref(''),
+
+                anreisef() {
+                    $('#ctrl_anreise').click()
+                },
+
+                erw: ref('1'),
+                anredeOptions: erw,
+
+                kind: ref('0'),
+                kindOpt: kind,
+
+                kkind: ref('0'),
+                kkindOpt: kkind,
+
+                chageValue()
+                {
+                    setTimeout(function() {
+                        $('#changer').click();
+                    }, 1);
+                },
+                chageValue2()
+                {
+                    setTimeout(function() {
+                        $('#changer2').click();
+                    }, 1);
+                },
+
+                date: ref({ from: '', to: '' }),
+                options: banDate,
+
+                setDays(value)
+                {
+                    if (value != null)
+                    {
+                        $('#ctrl_anreise2').val(value.from)
+                        $('#ctrl_abreise2').val(value.to)
+                        $('#6').click()
+
+                    }
+                    else
+                    {
+                        $('#ctrl_anreise2').val('')
+                        $('#ctrl_abreise2').val('')
+                    }
+                },
+                buchen()
+                {
+                    if ($('input[name="name"]').val() == '' || $('input[name="vorname"]').val() == '' || $('input[name="strasse"]').val() == '' || $('input[name="ort"]').val() == '' || $('input[name="plz"]').val() == '' || $('input[name="geb"]').val() == '' || $('input[name="mail"]').val() == '')
+                    {
+                        $('.required-frm').click()
+                        $q.notify({
+                            type: 'negative',
+                            message: '{{ labels.errorMessageBelegen|raw }}'
+                        })
+                    }
+                    else
+                        $('#buchen').click()
+                }
+            }
+        }
+    })
+
+    app4.use(Quasar, { config: {} })
+    app4.mount('#q-app4')
+
+    function dateReset() {
+        console.log('f')
+    }
+
+    $(document).ready(function() {
+        $('#cleardates').click(function(evt){
+            evt.stopPropagation();
+            $('#ctrl_anreise').data('dateRangePicker').clear();
+            $('#ctrl_anreise').request('onDateReset');
+            $('#ctrl_erwachsene').val(1);
+            $('#ctrl_kinder').val(0);
+            $('#ctrl_kleinkindern').val(0);
+        });
+        $('#abreise').click(function(evt){
+            $('#anreise').data('dateRangePicker').open();
+        });
+        var picker = $('#period').dateRangePicker({
+            startDate: new Date(),
+            separator: '',
+            selectForward: true,
+            autoClose:true,
+            format: 'DD.MM.YYYY',
+            startOfWeek: 'monday',
+            showShortcuts: true,
+            shortcuts: {'delete':true},
+            showTopbar: true,
+            dateplaceholder: 'na',
+            startDate: '{{ mindate|raw}}',
+            customArrowPrevSymbol: ' ',
+            customArrowNextSymbol: ' ',
+            minDays: 2,
+            saisons: {{ saisons|raw }},
+            blocked: {{ blockeddates|raw }},
+            language: '{{ lang }}',
+            beforeShowDay: function(t) {
+                if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
+                    valid=false;
+                else
+                    valid = true;
+                var _class = '';
+                var _tooltip = valid ? '' : 'belegt';
+                return [valid,_class,_tooltip];
+            },
+            setValue: function(s,from,to) {
+                $('#ctrl_anreise').val(from);
+                $('#ctrl_abreise').val(to);
+                if(to)
+                    $('#ctrl_abreise').request('onAbreiseChange');
+            }
+        });
+        /*picker.bind('datepicker-first-date-selected', function(event, obj) {
+            $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+            $('#ctrl_anreise').request('onAnreiseChange');
+        });*/
+        picker.bind('datepicker-clear', function() {
+            $('#period').val('');
+            $('#ctrl_anreise').val('');
+            $('#ctrl_abreise').val('');
+
+            setTimeout(function() {
+                $('#senderBTN').click();
+            }, 1);
+        });
+        picker.bind('datepicker-change', function(event, obj) {
+            $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+            $('#ctrl_abreise').val(moment(obj.date2).format('DD.MM.YYYY'));
+            $('#period').val(moment(obj.date1).format('DD.MM.YYYY') + " - " + moment(obj.date2).format('DD.MM.YYYY'));
+            $('#label-select-date').addClass('nachOben');
+            $('#ctrl_abreise').request('onAbreiseChange');
+        });
+
+        picker.bind('datepicker-open', function(event, obj) {
+            $('#label-select-date').addClass('nachOben');
+            $('#label-select-date').addClass('farbe');
+        });
+
+        picker.bind('datepicker-close', function(event, obj) {
+            if ($('#period').val() == '' && $('date-picker-wrapper:hidden')) {
+                $('#label-select-date').removeClass('nachOben');
+            }
+            $('#label-select-date').removeClass('farbe');
+        });
+    });
+
+    $(document).mousemove(function(event){
+        if ($('input[name="name"]').val() == '' || $('input[name="vorname"]').val() == '' || $('input[name="strasse"]').val() == '' || $('input[name="ort"]').val() == '' || $('input[name="plz"]').val() == '' || $('input[name="geb"]').val() == '' || $('input[name="mail"]').val() == '' || $('input[name="period"]').val() == '') {
+            $('.buchenBTNQuasar').attr("disabled", true);
+        }else {
+            $('.buchenBTNQuasar').attr("disabled", false);
+        }
+    });
+</script>

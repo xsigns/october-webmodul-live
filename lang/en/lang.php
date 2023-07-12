@@ -2,8 +2,8 @@
 
 return [
     'plugin' =>[
-      'name' => 'Fewoverwalter',
-      'description' => 'Interface to Fewo-Verwalter'
+        'name' => 'Fewoverwalter',
+        'description' => 'Interface to Fewo-Verwalter'
     ],
     'global' =>[
         'stvorgaben' => 'Requirements',
@@ -68,7 +68,7 @@ return [
         'hobex_anz_rest' => 'Deposit and final payment',
         'hobex_anz_rest_desc' => '<b>WICHTIG:</b> Bitte stellen Sie im Fewo-Verwalter unter <i>Stammdaten</i> > <i>Objekte</i> > <i>Finanzen</i> > Bereich <i>Anzahlung und 1. Zahlung</i> den Zeitpunkt für die Anzahlung auf <i><b>sofort</b></i>.<br><br> Die An- und Restzahlung funktioniert nur, wenn auf Ihrem Server ein Cron-Job angelegt ist. Der Cron-Job muss folgende Domain aufrufen und muss täglich ausgeführt werden: https://www.ihreDomain.de/restzahlung<br>Bei weiteren Fragen und Details zu Cron-Jobs, wenden Sie sich bitte an Ihren Anbieter oder Administrator.',
         'hobexpassword' => 'Hobex password',
-		'hobexentityId' => 'Hobex entity id',
+        'hobexentityId' => 'Hobex entity id',
         'hobextest'  => 'Hobex test payment',
         'paypalon'   => 'PayPal payment',
         'paypaltest'   => 'PayPal test (Sandbox)',
@@ -116,8 +116,8 @@ return [
         'cronAfterDefault_desc' => 'If activated, every guest of a booking will get a departure mail regardless of advertising mail consent.',
         'linktext' => 'Text of the evaluation link',
         'croninfo' =>'<h4>Cron information for arrival and departure mailings</h4>Cron jobs only work if a system-cron is created on your server.<br>' .
-                'E. g.: php/7.1/bin/php /var/www/vhosts/ihredomain.de/artisan schedule:run >> /dev/null 2>&1<br>execution time cron : * * * * * <br>' .
-                'Please ask your administrator to set this up for you.',
+            'E. g.: php/7.1/bin/php /var/www/vhosts/ihredomain.de/artisan schedule:run >> /dev/null 2>&1<br>execution time cron : * * * * * <br>' .
+            'Please ask your administrator to set this up for you.',
         'restzahlliste_label' => 'Restzahlungen',
         'restzahlliste_desc' => 'Übersicht aller An- und Restzahlungen',
         'map_set_section' => 'Privacy settings',
@@ -131,6 +131,22 @@ return [
         'map_hint_cookie_time_desc' => 'Specifies the duration for storing the map cookie in days. <br> If 0 days is selected, the cookie will be deleted after the browser session ends.',
         'map_allg_section' => 'Customize maps',
         'map_google_section' => 'Google Maps',
+        'vorname' => 'First name',
+        'nachname' => 'Last name',
+        'strasse' => 'Street',
+        'hausnummer' => 'Hous number',
+        'plz' => 'plz',
+        'ort' => 'location',
+        'mail' => 'E-Mail',
+        'website' => 'Website',
+        'telefon' => 'phon',
+        'mobil' => 'mobil',
+        'selectSVGcommand' => 'Geben sie die Class <b>SVG</b> mit an um alle Styels zu übernehmen  <br>Beispiel: <div style="color: #c3c3c3; border: 1.5px solid #18191a; box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.79); padding: 8px; background-color: #303136; width: min-content;"><pre style="margin-bottom: 0px!important;">&lt;svg class="svg"&gt;&lt;path d="M32,10c12.1"/&gt;&lt;/svg&gt;</pre></div>',
+        'svgSection' => 'Bewertungs Sterne als SVG',
+        'selectSVG' => 'Geben sie ihre SVG an die für die Bewertungssterne verwendet wird.',
+        'SvgColorLabel' => 'Fare der SVG Sterne',
+        'SVGColorComment' => 'Legen sie eine Farbe für ihre SVG Sterne fest',
+        'seoSection' => 'Einstellungen für SEO Links',
     ],
     'components' => [
         'listfilter' => 'List filter',
@@ -221,6 +237,10 @@ return [
         'max_files' => 'Sie haben die maximale Anzahl an Bildern erreicht.',
         'ondelete' => '%s kann nicht gelöscht werden, da noch verknüpft!',
     ],
+    'OpenGraphMetaTags' => [
+        'name' => 'OpenGraphMetaTags',
+        'description' => 'Add Meta Title',
+    ],
     'eigentuemer' => [
         'label_eigentuemer' => 'Eigentümer/Vermittler',
     ],
@@ -237,9 +257,9 @@ return [
         'name' => 'SildeShows',
         'description' => 'SlideShows new and edit',
     ],
-     'slickslider' => [
-         'name' =>'SlideShow settings',
-         'description' => 'defaut settings slideshow',
+    'slickslider' => [
+        'name' =>'SlideShow settings',
+        'description' => 'defaut settings slideshow',
         'title' => 'Slide-Show Titel',
         'slides' => 'Slides',
         'image' => 'Image',

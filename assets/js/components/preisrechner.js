@@ -101,3 +101,8 @@ $(function() {
         $.request('onDeleteDate');
     });
 });
+
+$( "#ctrl_pabreise" ).click(function(evt) {
+    evt.stopPropagation();
+    $('#ctrl_panreise').data('dateRangePicker').open();
+});

@@ -792,7 +792,7 @@
     - Angebote Tage vor Anreise
     - Anreise-Mail kann nun auch x Tage nach Anreise gesendet werden. (Tage Wert auf Minus stellen z.B. -2)
     - Fehlerkorrekturen Preise Objektstammdaten
-    - Sitemaps können Zusammengefasst (alle Seiten inkl. Objkete und Häuser) oder getrennt (Sitemaps für Objekte, Häuser und weitere Seiten) abgerufen werden werden
+    - Sitemaps können Zusammengefasst (alle Seiten inkl. Objekte und Häuser) oder getrennt (Sitemaps für Objekte, Häuser und weitere Seiten) abgerufen werden werden
     - Verbesserung laden der Google Karte auf Objektdeteilseiten
     - Fehlerkorrekturen Bewertungslink in Bewertungsmails
 3.7.7:
@@ -809,4 +809,8 @@
     - Allgemeine Verbesserungen
     - Fehlerkorreturen kompatibilität für OctoberCMS 3.4
 3.7.13:
-    - Test Datenbankkorrekturen
+    - Verbesserungen Belegungsplan
+    - Abreisetage
+    - Minnächte auf Lücke
+    - Verbesserungen Datenbank
+    - update78.php
