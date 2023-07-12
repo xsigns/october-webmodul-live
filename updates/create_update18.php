@@ -23,8 +23,6 @@ class CreateUpdate18 extends Migration
 
     public function down()
     {
-
-
+        Schema::dropIfExists('xsigns_fewo_vorgzahl');
     }
-
 }

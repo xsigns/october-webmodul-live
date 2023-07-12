@@ -31,8 +31,14 @@ class Update46 extends Migration
             $table->dropColumn('obj_preismin');
             $table->dropColumn('obj_preisbis');
             $table->dropColumn('obj_preisanzahl');
-            $table->dropIndex('preisbis');
-            $table->dropIndex('aktiv_preisbis');
+
+            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $doctrineTable = $sm->listTableDetails('xsigns_fewo_obj');
+
+            if ($doctrineTable->hasIndex('obj_preisbis'))
+                $table->dropIndex('obj_preisbis');
+            if ($doctrineTable->hasIndex('aktiv_preisbis'))
+                $table->dropIndex('aktiv_preisbis');
         });
     }
 }

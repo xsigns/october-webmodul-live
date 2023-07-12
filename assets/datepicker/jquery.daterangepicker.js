@@ -53,7 +53,8 @@
             "default-less": "Please select a date range less than %d days",
             "default-range": "Please select a date range between %d and %d days",
             "default-default": "Please select a date range",
-            "noarrival": "arrival on this day not possible",
+            "noarrival": "arrival on this day is not possible",
+            "nodeparture" : "departure on this day is not possible",
             "time": "Time",
             "hour": "Hour",
             "minute": "Minute",
@@ -125,6 +126,7 @@
             "default-range": "Bitte einen Datumsbereich zwischen %d und %d Tagen auswälen",
             "default-default": "Bitte ein Start- und Enddatum auswählen",
             "noarrival": "Anreise an diesem Tag nicht möglich",
+            "nodeparture" : "Abreise an diesem Tag nicht möglich",
             "Time": "Zeit",
             "hour": "Stunde",
             "minute": "Minute",
@@ -600,8 +602,13 @@
             selectBackward: false,
             applyBtnClass: '',
             singleMonth: 'auto',
-            hoveringTooltip: function(days, startTime, hoveringTime) {
-                return days > 1 ? days-1 + ' ' + translate('days') : '';
+            hoveringTooltip: function(days, startTime, hoveringTime, day) {
+                let tooltipContent = days > 1 ? days-1 + ' ' + translate('days') : '';
+
+                if (day.hasClass('nodeparture'))
+                    tooltipContent += ', ' + translate('nodeparture');
+
+                return tooltipContent;
             },
             showTopbar: true,
             swapTime: false,
@@ -1215,29 +1222,33 @@
         }
 
         function dayClicked(day) {
-            if(day.hasClass('day-header'))
+            if (day.hasClass('day-header'))
                 return;
 
-            if(day.hasClass('noarrival') && $('.date-picker-wrapper').find('.last-date-selected').length === 1){
+            if (day.hasClass('noarrival') && $('.date-picker-wrapper').find('.last-date-selected').length === 1){
                 clearSelection();
                 return;
             }
 
-            if(day.hasClass('noarrival') && !isNaN(opt.end)){
+            if (day.hasClass('noarrival') && !isNaN(opt.end)){
                 clearSelection();
                 return;
             }
 
-            if(day.hasClass('noarrival') && opt.end == false)
+            if (day.hasClass('noarrival') && opt.end === false)
             {
                 //alert(translate('noarrival'));
                 clearSelection();
                 return;
             }
-            if(day.hasClass('noarrival') && day.hasClass('checked')){
+            if (day.hasClass('noarrival') && day.hasClass('checked')){
                 clearSelection();
                 return;
             }
+
+            if (day.hasClass('nodeparture') && opt.end !== false)
+                return;
+
             if (day.hasClass('invalid') || day.hasClass('lastMonth')) return;
             var time = day.attr('time');
             day.addClass('checked');
@@ -1476,7 +1487,7 @@
                         if (charList.includes('OX') || charList.includes('OI') || charList.includes('XI')) {
                             $(this).addClass('invalid tmp').removeClass('valid');
                         } else {
-                            $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');
+                            $(this).addClass('valid tmp').removeClass('invalid');
                         }
                     }
 
@@ -1510,7 +1521,7 @@
                             start = opt.start,
                             end = opt.end;
 
-                        if (time == hoverTime) {
+                        if (time === hoverTime) {
                             $(this).addClass('hovering');
                         } else {
                             $(this).removeClass('hovering');
@@ -1533,7 +1544,7 @@
                         var days = countDays(hoverTime, opt.start);
                         if (opt.hoveringTooltip) {
                             if (typeof opt.hoveringTooltip == 'function') {
-                                tooltip = opt.hoveringTooltip(days, opt.start, hoverTime);
+                                tooltip = opt.hoveringTooltip(days, opt.start, hoverTime, day);
                             } else if (opt.hoveringTooltip === true && days > 1) {
                                 tooltip = days-1 + ' ' + translate('days');
                             }
@@ -2385,7 +2396,6 @@
                     var highlightToday = moment(today.time).format('L') == moment(now).format('L');
                     today.extraClass = '';
                     today.tooltip = '';
-                    var is_noarrival = false;
 
                     if (today.valid && opt.beforeShowDay && typeof opt.beforeShowDay == 'function') {
                         var _isday = moment(today.time).toDate();
@@ -2413,14 +2423,13 @@
                     var afterday = days[week * 7 + _day +1];
                     if(beforeday.valid === false && afterday.valid === false)
                         today.valid = false;
-                    if(opt.saisons.length < 1)
-                        is_noarrival = true;
-                    else
-                        is_noarrival = checkNext(today.time); // false; Wenn Frei aber nicht als Anreise wählbar
+
+                    let checkArrivalAndDeparture = checkNext(today.time);
+
                     var todayDivAttr = {
                         time: today.time,
                         'data-tooltip': today.tooltip,
-                        'class': 'day ' + today.type + (today.extraClass ? today.extraClass : '') + (today.valid ? ' valid' : ' invalid') + (highlightToday ? ' real-today' : '') + (is_noarrival === false ? ' noarrival' : '') + (highlightToday && opt.todayInvalid === true ? ' todayInvalid invalid' : '')
+                        'class': 'day ' + today.type + (today.extraClass ? today.extraClass : '') + (today.valid ? ' valid' : ' invalid') + (highlightToday ? ' real-today' : '') + (checkArrivalAndDeparture) + (highlightToday && opt.todayInvalid === true ? ' todayInvalid invalid' : '')
                     };
 
                     if (day === 0 && opt.showWeekNumbers) {
@@ -2449,7 +2458,7 @@
 
         function checkNext(time)
         {
-            let returns = true;
+            let returns = '';
             let wechselleiste = opt.wechselleiste;
             let wlStart = opt.wechselleisteStart;
             let timeMoment = moment(time).unix();
@@ -2457,11 +2466,19 @@
 
             if (diff >= 0) {
                 let state = wechselleiste.charAt(diff);
-                returns = !(state === "O" || state === "X");
+                if (state === 'I')
+                    returns = ' nodeparture ';
+                else if (state === 'O')
+                    returns = ' noarrival  ';
+                else if (state === 'X')
+                    returns = ' noarrival nodeparture ';
+                else
+                    returns = ''
             }
 
             return returns;
         }
+
         function showDayHTML(time, date) {
             if (opt.showDateFilter && typeof opt.showDateFilter == 'function') return opt.showDateFilter(time, date);
             return date;

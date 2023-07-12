@@ -64,39 +64,42 @@
     }
     $(document).ready(function() {
         {% if hasNoOptions %}
-            $('#inlinebewertung').on('click', function(e) {
-                alert('Keine Bewertungsoptonen gefunden!\n\nBitte legen Sie mindestens eine Bewertungsoption im Fewo-Verwalter an.');
-                e.preventDefault();
-            });
-        {% endif %}
-        $('#rating_submit').on('click', function() {
-             var str = $('#rating_message').val();
-              str = removeEmojis(str);
-              $('#rating_message').val(str);
-              str = $('#rating_subject').val();
-              str = removeEmojis(str);
-              $('#rating_subject').val(str);
+        $('#inlinebewertung').on('click', function(e) {
+            alert('Keine Bewertungsoptonen gefunden!\n\nBitte legen Sie mindestens eine Bewertungsoption im Fewo-Verwalter an.');
+            e.preventDefault();
         });
-        {% if fancy == 0 %}
-            $("#ratingclose").bind("submit", function() {
-                $.fancybox.close();
-            });
-            jQuery("a#inlinebewertung").fancybox({
-                'transitionIn'	:	'elastic',
-                'transitionOut'	:	'elastic',
-                'speedIn'		:	800,
-                'speedOut'		:	500,
-                'overlayShow'	:	false
-            });
         {% endif %}
+
+        $('#rating_submit').on('click', function() {
+            var str = $('#rating_message').val();
+            str = removeEmojis(str);
+            $('#rating_message').val(str);
+            str = $('#rating_subject').val();
+            str = removeEmojis(str);
+            $('#rating_subject').val(str);
+        });
+
+        {% if fancy == 0 %}
+        $("#ratingclose").bind("submit", function() {
+            $.fancybox.close();
+        });
+        jQuery("a#inlinebewertung").fancybox({
+            'transitionIn'	:	'elastic',
+            'transitionOut'	:	'elastic',
+            'speedIn'		:	800,
+            'speedOut'		:	500,
+            'overlayShow'	:	false
+        });
+        {% endif %}
+
         {% for opt in options %}
-            $(function() {
-                $('#rating_picker_{{ opt.id }}').barrating({
-                    theme: 'fontawesome-stars-o',
-                    initialRating: 5,
-                    allowEmpty: false,
-                });
+        $(function() {
+            $('#rating_picker_{{ opt.id }}').barrating({
+                theme: 'fontawesome-stars-o',
+                initialRating: 5,
+                allowEmpty: false,
             });
+        });
         {% endfor %}
     });
 </script>

@@ -1,0 +1,92 @@
+<div id="error-gastdaten"></div>
+<div id="q-app2">
+    <div class="q-pa-md" style="padding-left: 0px!important;">
+        <div class="q-gutter-y-md column neu">
+            <div class="container" style="padding-left: 10px!important; padding-right: 0px!important; padding-left: 0px!important;">
+                <div class="row">
+                    <div class="w-100"><q-btn color="primary" class="datenqbtn" icon="person_add" no-caps label="{{ labels.edaten }}" @click="firma = '{{ firma }}'; vorname = '{{ vorname }}'; name = '{{ name }}'; strasse = '{{ strasse }}'; plz = '{{ plz }}'; ort = '{{ ort }}';
+                    tel = '{{ tel }}'; mobil = '{{ mobil }}'; mail = '{{ mail }}';"><q-tooltip>{{ labels.eigDatenTool }}</q-tooltip></q-btn></div>
+                    <div class="col-12 float-left col-md-4 wp" ><q-select filled v-model="anrede" :options="anredeOptions" label="{{ labels.anrede }}" style="padding-left: 12px; padding-right: 15px!important;"></q-select></div>
+                    <div class="col-12 float-left col-md-8 wp" ><q-input filled v-model="title" name="titel" id="ctrl_titel" class="text frm_titel form-control required-frm" {% if required.titel %}ref="inputRef" :rules="[ myRule ]"{% endif %} value="" label="{{ labels.titel }}{% if required.titel %}*{% endif %}" {% if required.titel %}@update:model-value="isRequert"{% endif %}></q-input></div>
+                    <div class="col-12 float-left wp" ><q-input filled v-model="firma" name="firma" id="ctrl_firma" class="text frm_firma form-control required-frm" {% if required.firma %}ref="inputRef" :rules="[ myRule ]"{% endif %} value="{{ data.firma }}" label="{{ labels.firma }}{% if required.firma %}*{% endif %}" {% if required.titel %}@update:model-value="isRequert"{% endif %}></q-input></div>
+                    <div class="col-12 float-left col-md-6 wp" ><q-input filled v-model="vorname" name="vorname" id="ctrl_vorname" ref="inputRef" :rules="[ myRule ]" class="text frm_vorname form-control required-frm" value="hh" label="{{ labels.vorname }}*" @update:model-value="isRequert"></q-input></div>
+                    <div class="col-12 float-left col-md-6 wp" ><q-input filled v-model="name" name="name" id="ctrl_name" ref="inputRef" :rules="[ myRule ]" class="text frm_name form-control required-frm" value="{{ data.name }}" required label="{{ labels.name }}*"></q-input></div>
+                    <div class="col-12 float-left wp" ><q-input filled v-model="strasse" name="strasse" id="ctrl_strasse" ref="inputRef" :rules="[ myRule ]" class="text frm_strasse form-control required-frm" value="{{ data.strasse }}" label="{{ labels.strasse }}*"></q-input></div>
+                    <div class="col-12 float-left col-md-4 wp" ><q-input filled v-model="plz" name="plz" id="ctrl_plz" ref="inputRef" :rules="[ myRule ]" class="text frm_plz form-control required-frm required-frm" value="{{ data.plz }}"  label="{{ labels.plz }}*"></q-input></div>
+                    <div class="col-12 float-left col-md-8 wp" ><q-input filled v-model="ort" name="ort" id="ctrl_ort" ref="inputRef" :rules="[ myRule ]" class="text frm_ort form-control required-frm" value="{{ data.ort }}" label="{{ labels.ort }}*"></q-input></div>
+                    <div class="col-12 float-left col-md-4 wp date" style="padding-top: 6px; padding-right: 13px; padding-left: 13px;"><q-input filled v-model="date" @click="openKalenderDate" class="dateadresse" name="datum" placeholder="{{ labels.geb }}" readonly focus="test"><template v-slot:prepend><q-icon name="event" class="cursor-pointer"><q-popup-proxy cover transition-show="scale" transition-hide="scale"><q-date title="{{ labels.geb|raw }}" subtitle="{{ labels.tab4 }}" v-model="date" first-day-of-week="1" mask="DD.MM.YYYY"><div class="row items-center justify-end"><q-btn v-close-popup label="Close" color="primary" flat></q-btn></div></q-date></q-popup-proxy></q-icon></template></q-input></div>
+                    <div class="col-12 float-left col-md-8 wp" ><q-input filled v-model="tel" name="tel" id="ctrl_tel" class="text frm_tel form-control" value="{{ data.tel }}"  label="{{ labels.tel }}"></q-input></div>
+                    <div class="col-12 float-left col-md-6 wp" ><q-input filled v-model="mobil" name="mobil" id="ctrl_mobil" class="text frm_mobil form-control" value="{{ data.mobil }}" label="{{ labels.mobil }}"></q-input></div>
+                    <div class="col-12 float-left col-md-6 wp" ><q-input filled v-model="mail" name="mail" id="ctrl_mail" ref="inputRef" :rules="[ myRule ]" class="text frm_mail form-control required-frm" value="{{ data.mail }}" label="{{ labels.mail }}*"></q-input></div>
+                    <div class="col-12 float-left wp" ><q-input filled v-model="perso" name="perso" id="ctrl_perso" class="text frm_perso form-control" value="{{ data.perso }}" label="{{ labels.perso }}"></q-input></div>
+                    <div class="col-12 float-left wp textAreaDiv" style="padding-left: 11px; padding-right: 13px"><q-input filled v-model="nachricht" type="textarea" name="nachricht" id="ctrl_nachricht" class="text frm_nachricht" filled label="{{ labels.nachricht }}" style="width: 100%!important; margin-left: 0px!important; margin-right: 0px!important; margin-top: 8px!important;"></q-input></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fewo-edaten {margin-top: 20px;}
+    .label {color: black;}
+    .tel {padding-right: 13px!important;}
+    #belegung .form-group {margin-bottom: 0.5rem!important;}
+    .form-group {padding-right: 0px!important;}
+    #summen {margin-top: 10px;}
+    #q-app2 .dateadresse {margin-left: 0px!important; margin-right: 0px!important;}
+
+
+    @media (max-width: 767px) {
+        #adresse {width: 100%; max-width: 100%;}
+        #summen {width: 100%; max-width: 100%}
+    }
+</style>
+
+<script>
+    var app2 = Vue.createApp({
+        setup ()
+        {
+            const inputRef = ref(null)
+            return {
+                title: ref(''),
+                firma: ref(''),
+                vorname: ref(''),
+                name: ref(''),
+                strasse: ref(''),
+                plz: ref(''),
+                ort: ref(''),
+                geb: ref(''),
+                tel: ref(''),
+                mobil: ref(''),
+                mail: ref(''),
+                perso: ref(''),
+                nachricht: ref(''),
+                date: ref(''),
+                anredeOptions: ['Herr', 'Frau'],
+                anrede: ref(null),
+
+                inputRef,
+                openKalenderDate()
+                {
+                    $('.dateadresse i').click()
+                },
+
+                myRule (val)
+                {
+                    return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve(!!val || '')
+                        }, 500)
+                    })
+                },
+                isRequert(value)
+                {
+                    console.log(value)
+                }
+            }
+        }
+    })
+
+    app2.use(Quasar, { config: {} })
+    app2.mount('#q-app2')
+</script>

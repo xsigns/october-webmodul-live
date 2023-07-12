@@ -166,6 +166,7 @@ class Plugin extends PluginBase
             '\xsigns\fewo\Components\paid' => 'Paid',
             '\xsigns\fewo\Components\multisuche' => 'Multisuche',
             '\xsigns\fewo\Components\anzahlobjekte' => 'AnzahlObjekte',
+            '\xsigns\fewo\Components\OpenGraphMetaTags' => 'OpenGraphMetaTags',
         ];
 
         $owner = OwnerHelper::getOwnerComponents();

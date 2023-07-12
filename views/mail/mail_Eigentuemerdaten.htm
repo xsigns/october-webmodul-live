@@ -1,0 +1,15 @@
+{{ value }}
+
+{{ valueFest }}
+
+<table>
+    <tr>
+        {% for key, i in name %}
+            <tr>{{ key + 1 }}: {{ i }}</tr>
+        {% endfor %}
+        <br><br>
+        {% for key, i in link %}
+            <tr>{{ key + 1 }}: {{ i }}</tr>
+        {% endfor %}
+    </tr>
+</table>

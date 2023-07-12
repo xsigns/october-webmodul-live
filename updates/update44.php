@@ -35,7 +35,7 @@ class Update44 extends Migration
     public function down()
     {
         Schema::table('xsigns_fewo_reglang', function ($table) {
-            $table->renameColumn('reglang_ausid', 'regionid');
+            $table->renameColumn('reglang_regionid', 'regionid');
             $table->renameColumn('reglang_lang', 'lang');
             $table->renameColumn('reglang_name', 'name');
             $table->renameColumn('reglang_beschreibung', 'beschreibung');

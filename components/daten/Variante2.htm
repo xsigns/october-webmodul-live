@@ -1,0 +1,822 @@
+<div id="flashMessage"></div>
+<div id="q-app">
+    <div class="q-pa-md" style="width: 100%; padding: 10px!important; text-align: end;">
+        <q-btn-dropdown
+            color="purple"
+            label="{{ labels.profil }}"
+            class="profile"
+            icon="person"
+        >
+            <div class="row no-wrap q-pa-md">
+                <div class="column items-center">
+                    <q-avatar size="72px" style="background-color: var(--primary); color: var(--primarySchriftColor);">
+                        <span id="profil-bild">{{ FirstLetterName }}</span>
+                    </q-avatar>
+                    <div class="text-subtitle1 q-mt-md q-mb-xs">{{ vorname }} {{ name }}</div>
+                    <q-btn
+                        label="{{ labels.btnlogout }}"
+                        data-request="onLogout"
+                        icon="logout"
+                    ></q-btn>
+                </div>
+            </div>
+        </q-btn-dropdown>
+    </div>
+    <div class="q-pa-md" style="width: 100%; padding: 10px!important">
+        <div class="q-gutter-y-md" style="max-width: 100%;">
+            <q-card>
+                <q-tabs
+                    v-model="tab"
+                    dense
+                    class="bg-blue-8 text-white"
+                    active-color="white"
+                    align="justify"
+                    @update:model-value="ChangeRecords"
+                >
+                    {% if showabrechnung == 1 %}<q-tab name="Abrechnungen" icon="receipt_long">{{ labels.tab1 }}</q-tab>{% endif %}
+                    {% if showvorgaenge == 1 %}<q-tab name="Vorgänge" icon="menu_book" id="t">{{ labels.tab2 }}</q-tab>{% endif %}
+                    {% if showobjekte == 1 %}<q-tab name="Objekte" icon="maps_home_work">{{ labels.tab3 }}</q-tab>{% endif %}
+                    {% if showbelegen == 1 %}<q-tab name="Belegen" icon="rate_review">{{ labels.tab4 }}</q-tab>{% endif %}
+                </q-tabs>
+
+                <q-tab-panels v-model="tab" animated class="bg-white text-black">
+                    {% if showabrechnung == 1 %}
+                        <q-tab-panel name="Abrechnungen">
+                            <div class="q-pa-md">
+                                <q-table
+                                    :grid="$q.screen.lt.md"
+                                    :rows="rowsRechnung"
+                                    :columns="columnsRechnung"
+                                    class="headTabel"
+                                    color="primary"
+                                    row-key="rechnr"
+                                    :visible-columns="visibleColumns"
+                                    :pagination="initialPagination"
+                                    no-data-label="{{ noDataFoeund }}"
+                                    :filter="filter"
+                                    :loading="loadingRech"
+                                    @update="scrolltTop"
+                                    :selected-rows-label="getSelectedString"
+                                    selection="multiple"
+                                    v-model:selected="selected"
+                                    @selection="setSelectValue"
+                                >
+                                    <template v-slot:bottom-row>
+                                        <q-tr>
+                                            <q-td colspan="100%">
+                                                <div class="float-right" id="gesammtVorg">[[ getTotalVorg(this) ]] €</div>
+                                            </q-td>
+                                        </q-tr>
+                                    </template>
+
+                                    <template v-slot:bottom:pagesNumber>
+                                        <q-pagination
+                                            v-model="current"
+                                            input
+                                        ></q-pagination>
+                                    </template>
+
+                                    <template v-slot:top-right>
+                                        <q-btn flat color="primary" class="icon-head-mobil" icon="arrow_forward_ios" @click="openMobilWindow"></q-btn>
+                                        <q-btn color="primary" icon="filter_alt" class="vorgangFilterBTN" @click="dialog = true, closeMobileMenu()">{{ labels.filter }}</q-btn>
+                                        <q-dialog v-model="dialog" class="filterDialog ">
+                                            <q-card>
+                                                <div class="filterheader">
+                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">Filter</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
+                                                </div>
+                                                <div id="asd">
+                                                    <q-card-section class="row items-center q-gutter-sm">
+                                                        <div class="rechId gesammteDivs">
+                                                            <q-select v-model="rechId" behavior="menu" input-debounce="0" clearable filled label="{{ labels.Rechnungsnummer }}" @update:model-value="removeRowRech" style="width: 250px" :options="dataRechID"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                        </div>
+
+                                                        <q-timeline color="secondary">
+                                                            <q-timeline-entry
+                                                                subtitle="{{ labels.zeitstrallHead|raw }}"
+                                                            >
+                                                                <div class="gesammteDivs">
+                                                                    <q-select filled v-model="filterArtAbrModel" :options="filterArtAbr" label="{{ labels.dateArt|raw }}" @update:model-value="removeRowRech"></q-select>
+                                                                </div>
+
+                                                                <div class="rechVomBis gesammteDivs">
+                                                                    <q-input filled v-model="datumVonBis" readonly label="{{ labels.zeitraum|raw }}" @click="openKalenderRechVonBis">
+                                                                        <template v-slot:prepend>
+                                                                            <q-icon name="event" class="cursor-pointer">
+                                                                                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                                                    <q-date v-model="datumVonBisPicker" first-day-of-week="1" range @range-end="VonBisABR" title="{{ labels.zeitraum|raw }}" subtitle="{{ labels.tab1 }}" @update:model-value="removeRowRech" :events="dataRechBis" :event-color="(date) => dataRechVon.includes(date) === true ? 'teal' : 'orange'">
+                                                                                        <div class="row items-center">
+                                                                                            <q-badge color="teal">
+                                                                                                {{ labels.von|raw }}
+                                                                                            </q-badge>
+                                                                                            <q-badge class="ml-1" color="orange">
+                                                                                                {{ labels.bis|raw }}
+                                                                                            </q-badge>
+                                                                                        </div>
+                                                                                        <div class="row items-center justify-end">
+                                                                                            <q-btn v-close-popup label="Close" color="primary" flat></q-btn>
+                                                                                        </div>
+                                                                                    </q-date>
+                                                                                </q-popup-proxy>
+                                                                            </q-icon>
+                                                                        </template>
+                                                                    </q-input>
+                                                                </div>
+                                                            </q-timeline-entry>
+                                                            <q-timeline-entry>
+                                                            </q-timeline-entry>
+                                                        </q-timeline>
+
+                                                        <div class="gesammteDivs">
+                                                            <div class="filterbuttonEins"><q-btn color="white" text-color="black" label="{{ labels.btn_reset }}" icon="restart_alt" class="w-100" id="filterReset2" @click="rechId = '', dateVon = '', dateBis = '', datumVonBis = '', datum = '', abrDatum = '', rechSort = '', filter = '', datumVonBisPicker = '', filterArtAbrModel = '', addDefaultRows4()"></q-btn></div>
+                                                            <div class="filterbuttonZwei"><q-btn color="white" text-color="black" label="{{ labels.filterAnwenden }}" icon="check" class="w-100" v-close-popup></q-btn></div>
+                                                        </div>
+                                                    </q-card-section>
+                                                </div>
+                                            </q-card>
+                                        </q-dialog>
+
+                                        <q-input outlined debounce="300" v-model="filter" placeholder="{{ labels.Suchen }}" :dense="dense"><q-tooltip>{{ labels.seachAllTabel }}</q-tooltip>
+                                            <template v-slot:prepend>
+                                                <q-icon name="search" class="searchIcon">
+                                                </q-icon>
+                                            </template>
+                                        </q-input>
+                                    </template>
+
+                                    <template v-slot:body-cell-art="props">
+                                        <q-td :props="props">
+                                            <div class="downloadQ">
+                                                <q-btn-dropdown round color="primary" icon="list">
+                                                    <q-list>
+                                                        <q-item clickable>
+                                                            <q-item-section>
+                                                                <q-item-label><q-checkbox label="{{ labels.abrechnungaufstellung }}" v-model="downloadSelect" @update:model-value="changeValueSelect" :val="props.row.abr"></q-checkbox></q-item-label>
+                                                            </q-item-section>
+                                                        </q-item>
+                                                        <q-item clickable>
+                                                            <q-item-section>
+                                                                <q-item-label><q-checkbox label="{{ labels.provisionsrechnung }}" v-model="downloadSelect" @update:model-value="changeValueSelect" :val="props.row.prov"></q-checkbox></q-item-label>
+                                                            </q-item-section>
+                                                        </q-item>
+                                                        <q-item clickable v-for="(items, index) in props.row.wartung">
+                                                            <q-item-section>
+                                                                <q-item-label><q-checkbox :label="[[ props.row.V2WartungName[index] ]]" v-model="downloadSelect" @update:model-value="changeValueSelect" :val="items"></q-checkbox></q-item-label>
+                                                            </q-item-section>
+                                                        </q-item>
+                                                        <q-item clickable v-for="(items, index) in props.row.belege">
+                                                            <q-item-section>
+                                                                <q-item-label><q-checkbox :label="[[ props.row.V2BelegeName[index] ]]" v-model="downloadSelect" @update:model-value="changeValueSelect" :val="items"></q-checkbox></q-item-label>
+                                                            </q-item-section>
+                                                        </q-item>
+                                                    </q-list>
+                                                </q-btn-dropdown>
+                                            </div>
+                                        </q-td>
+                                    </template>
+
+                                    <template v-slot:item="props">
+                                        <div class="q-pa-md row items-start q-gutter-md">
+                                            <q-card class="my-card mobilQCard" id="myMainCard" style="width: 100%; margin-left: 0px!important;">
+                                                <q-card-section class="bg-primary text-white">
+                                                    <q-checkbox dense v-model="props.selected" :label="props.row.name" class="mobileCheckbox"><div class="text-h6"><b>{{ labels.Rechnungsnummer }}: [[ props.row.rechnr ]]</b></div></q-checkbox>
+                                                </q-card-section>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.von|raw }}: </div><div class="zwei">[[ props.row.von ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical style="padding-top: 0px!important;">
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.bis|raw }}: </div><div class="zwei">[[ props.row.to ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.datum|raw }}: </div><div class="zwei">[[ props.row.datum ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.betrag|raw }}: </div><div class="zwei">[[ props.row.betrag ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical style="padding-bottom: 16px!important;">
+                                                    <div class="downloadQ float-right">
+                                                        <q-btn-dropdown round color="primary" icon="list">
+                                                            <q-list>
+                                                                <q-item clickable>
+                                                                    <q-item-section>
+                                                                        <q-item-label><q-checkbox label="{{ labels.Abrechnung }}" v-model="downloadSelect" @update:model-value="changeValueSelect" :val="props.row.abr"></q-checkbox></q-item-label>
+                                                                    </q-item-section>
+                                                                </q-item>
+
+                                                                <q-item clickable>
+                                                                    <q-item-section>
+                                                                        <q-item-label><q-checkbox label="Provision" v-model="downloadSelect" @update:model-value="changeValueSelect" :val="props.row.prov"></q-checkbox></q-item-label>
+                                                                    </q-item-section>
+                                                                </q-item>
+
+                                                                <q-item clickable v-for="items in props.row.wartung">
+                                                                    <q-item-section>
+                                                                        <q-item-label><q-checkbox label="Wartung 1" v-model="downloadSelect" @update:model-value="changeValueSelect" :val="items"></q-checkbox></q-item-label>
+                                                                    </q-item-section>
+                                                                </q-item>
+                                                            </q-list>
+                                                        </q-btn-dropdown>
+                                                    </div>
+                                                </q-card-actions>
+                                            </q-card>
+                                        </div>
+                                    </template>
+
+                                    <template v-slot:top-left="props">
+                                        <q-btn :disable="!progess" class="mr-3 downloadAbrButton" icon="download" @click="downloadeRech" label="{{ labels.ButtonDownSelcet }}"><q-tooltip>{{ labels.toolTipFile }}</q-tooltip></q-btn>
+                                        <q-btn icon="forward_to_inbox" :disable="!progess" label="{{ labels.mailButton }}" @click="mailSend = true, closeMobileMenu()"><q-tooltip>{{ labels.toolTipMail }}</q-tooltip></q-btn>
+
+                                        <q-dialog v-model="mailSend">
+                                            <q-card>
+                                                <q-card-section class="titelMailSec">
+                                                    <div class="text-h5">{{ labels.abrHead }}</div><q-btn flat style="background: #00000000!important; color: white!important; position: absolute; right: 10px; top: 10px;" round icon="close" v-close-popup></q-btn>
+                                                </q-card-section>
+
+                                                <q-card-section class="q-pt-none mt-3">
+                                                    <q-input v-model="mailSendInput" placeholder="{{ labels.emMail }}*" filled class="mailSendText" style="margin-bottom: 0px;">
+                                                        <template v-slot:prepend>
+                                                            <q-icon name="mail"></q-icon>
+                                                        </template>
+                                                    </q-input>
+                                                    <div id="selectDivMultiMail">ausgewählt</div>
+
+                                                    <q-input v-model="mailSendInputCC" placeholder="{{ labels.cc }}" filled class="mailSendText" type="email">
+                                                        <template v-slot:prepend>
+                                                            <q-icon name="person_add"></q-icon>
+                                                        </template>
+                                                    </q-input>
+
+                                                    <q-input v-model="mailSendInputBesch" placeholder="{{ labels.betreff }}" counter maxlength="65" filled class="mailSendText" style="margin-bottom: 24px;">
+                                                        <template v-slot:prepend>
+                                                            <q-icon name="draw"></q-icon>
+                                                        </template>
+                                                    </q-input>
+                                                    <q-input v-model="messageValue" label="{{ labels.nachricht }}" filled type="textarea"></q-input>
+                                                </q-card-section>
+
+                                                <q-card-actions align="right">
+                                                    <q-btn v-model="mailSendBTN" v-bind:disabled='!isButtonDisabeld()' color="white" text-color="black" label="{{ labels.senden }}" color="primary" @click="sendAbrMailJs" v-close-popup icon="outgoing_mail"></q-btn>
+                                                </q-card-actions>
+                                            </q-card>
+                                        </q-dialog>
+                                    </template>
+                                </q-table>
+                            </div>
+                        </q-tab-panel>
+                    {% endif %}
+                    {% if showvorgaenge == 1 %}
+                        <q-tab-panel name="Vorgänge">
+                            <div class="q-pa-lg leistTable">
+                                <q-table
+                                    :grid="$q.screen.lt.md"
+                                    :rows="rows"
+                                    :columns="columns"
+                                    color="primary"
+                                    row-key="id"
+                                    class="headTabel"
+                                    :visible-columns="visibleColumns"
+                                    :pagination="initialPagination"
+                                    no-data-label="{{ noDataFoeund }}"
+                                    :filter="filter"
+                                    ref="tableLeist"
+                                    :pagination.sync="pagination"
+                                    :loading="loading"
+                                >
+                                    <template v-slot:top-right>
+                                        <q-btn flat rounded color="primary" class="icon-head-mobil" icon="arrow_forward_ios" @click="openMobilWindow"></q-btn>
+                                        <q-btn label="{{ labels.filter }}" icon="filter_alt" color="primary" class="vorgangFilterBTN" @click="dialog = true, closeMobileMenu()"></q-btn>
+                                        <q-dialog v-model="dialog" class="filterDialog filterVorgang">
+                                            <q-card>
+                                                <div class="filterheader">
+                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">Filter</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
+                                                </div>
+
+                                                <q-card-section class="row items-center q-gutter-sm">
+                                                    <div class="id gesammteDivs id">
+                                                        <q-select clearable filled v-model="id" input-debounce="0" label="{{ labels.VorgangID }}" behavior="menu" @update:model-value="removeRow" :options="dataId"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <div class="art gesammteDivs art">
+                                                        <q-select clearable filled v-model="art" input-debounce="0" label="{{ labels.artLabel }}" behavior="menu" @update:model-value="removeRow" :options="dataArt"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <div class="objid gesammteDivs objid">
+                                                        <q-select clearable filled v-model="objid" input-debounce="0" label="{{ labels.vorgobjid }}" behavior="menu" @update:model-value="removeRow" :options="dataObId">
+                                                            <template v-slot:no-option>
+                                                                <q-item>
+                                                                    <q-item-section class="text-grey">
+                                                                        No results
+                                                                    </q-item-section>
+                                                                </q-item>
+                                                            </template>
+                                                            <q-tooltip>{{ labels.inputNumblock }}</q-tooltip>
+                                                        </q-select>
+                                                    </div>
+
+                                                    <div class="obj gesammteDivs objekt">
+                                                        <q-select clearable filled v-model="obj" input-debounce="0" label="{{ labels.vorgobjekt }}" behavior="menu" @update:model-value="removeRow" :options="dataObjekt"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <q-timeline color="secondary">
+                                                        <q-timeline-entry
+                                                            subtitle="{{ labels.zeitstrallHead|raw }}"
+                                                        >
+                                                            <div>
+                                                                <div class="gesammteDivs">
+                                                                    <q-select filled v-model="filterArtAbrModel" :options="filterArtVorg" label="{{ labels.dateArt|raw }}" @update:model-value="removeRow"></q-select>
+                                                                </div>
+
+                                                                <div class="datumAnAb gesammteDivs">
+                                                                    <q-input filled v-model="datumVonBisVorg" readonly label="{{ labels.vorgZeitraum|raw }}" @click="openKalenderVorgVonBis">
+                                                                        <template v-slot:prepend>
+                                                                            <q-icon name="event" class="cursor-pointer">
+                                                                                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                                                    <q-date first-day-of-week="1" v-model="datumVonBisVorgPicker" range @range-end="VonBisVorg" title="{{ labels.zeitraum|raw }}]" subtitle="{{ labels.tab2 }}" @update:model-value="removeRow" :events="dateAbOption" :event-color="(date) => dateAnOption.includes(date) === true ? 'teal' : 'orange'">
+                                                                                        <div class="row items-center justify-end">
+                                                                                            <div class="row items-center">
+                                                                                                <q-badge color="teal">
+                                                                                                    {{ labels.von|raw }}
+                                                                                                </q-badge>
+                                                                                                <q-badge class="ml-1" color="orange">
+                                                                                                    {{ labels.bis|raw }}
+                                                                                                </q-badge>
+                                                                                            </div>
+                                                                                            <q-btn v-close-popup label="Close" color="primary" flat></q-btn>
+                                                                                        </div>
+                                                                                    </q-date>
+                                                                                </q-popup-proxy>
+                                                                            </q-icon>
+                                                                        </template>
+                                                                    </q-input>
+                                                                </div>
+                                                            </div>
+                                                        </q-timeline-entry>
+                                                        <q-timeline-entry>
+                                                        </q-timeline-entry>
+                                                    </q-timeline>
+
+                                                    <div class="gesammteDivs">
+                                                        <div class="filterbuttonEins"><q-btn color="white" text-color="black" label="{{ labels.btn_reset }}" icon="restart_alt" class="w-100" id="filterReset2" @click="id = '', modelJahr = '', datumVonBisVorgPicker = '', vorgDatum = '', datumVonBisVorg = '', date = '', dateAn = '', dateAb = '', obj = '', filterArtAbrModel = '', objid = '', preis = '', filter = '', art = '', addDefaultRows2()"></q-btn></div>
+                                                        <div class="filterbuttonZwei"><q-btn color="white" text-color="black" label="{{ labels.filterAnwenden }}" icon="check" class="w-100" v-close-popup></q-btn></div>
+                                                    </div>
+                                                </q-card-section>
+                                            </q-card>
+                                        </q-dialog>
+                                        <q-input outlined debounce="300" v-model="filter" placeholder="{{ labels.Suchen }}" :dense="dense"><q-tooltip>{{ labels.seachAllTabel }}</q-tooltip>
+                                            <template v-slot:prepend>
+                                                <q-icon name="search" class="searchIcon">
+                                                </q-icon>
+                                            </template>
+                                        </q-input>
+                                    </template>
+
+                                    {% if showButtons == 1 %}
+                                        <template v-slot:top-left="props">
+                                            <button @click="exportTable(rows, columns, 'Vorgänge')" class="downBTN shadow-2"><i class="fa fa-download" aria-hidden="true"></i><span>{{ labels.CsvDownloaden }}</span></button>
+                                        </template>
+                                    {% endif %}
+
+                                    <template v-slot:item="props">
+                                        <div class="q-pa-md row items-start q-gutter-md">
+                                            <q-card class="my-card mobilQCard" style="width: 100%; padding-bottom: 10px!important; margin-left: 0px!important;" id="myMainCard">
+                                                <q-card-section class="bg-primary text-white">
+                                                    <div class="text-h6"><b>{{ labels.VorgangID }}: [[ props.row.id ]]</b></div>
+                                                </q-card-section>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.jahr|raw }}: </div><div class="zwei">[[ props.row.jahr ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical style="padding-top: 0px!important;">
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.datum|raw }}: </div><div class="zwei">[[ props.row.datum ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.vorgart|raw }}: </div><div class="zwei">[[ props.row.art ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.vorganreise|raw }}: </div><div class="zwei">[[ props.row.anreise ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.vorgabreise|raw }}: </div><div class="zwei">[[ props.row.abreise ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.tage|raw }}: </div><div class="zwei">[[ props.row.tage ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.vorgobjekt|raw }}: </div><div class="zwei">[[ props.row.objekt ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.vorgobjid|raw }}: </div><div class="zwei">[[ props.row.objid ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.vorgerwachsene|raw }}: </div><div class="zwei">[[ props.row.erwachsene ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.vorgkinder|raw }}: </div><div class="zwei">[[ props.row.kinder ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical>
+                                                    <div class="mobilRows"><div class="text-grey-5 eins">{{ labels.lsumme|raw }}: </div><div class="zwei">[[ props.row.objpreis ]]</div></div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical style="padding-bottom: 0px;">
+                                                    {%if showgastdaten == 1 %}<q-btn @click="gastdatebShow([[ props.row.id ]])" class="w-100">{{ labels.btngast }}</q-btn>{% endif %}
+                                                    {% if showleistung == 1 %}<q-btn flat @click="leistung([[ props.row.id ]])" :disabled="props.row.leistung.length === 0" class="shadow-2 w-100" id="leistungBTN">{{ labels.btnleist }}</q-btn>{% endif %}
+                                                </q-card-actions>
+
+                                            </q-card>
+                                        </div>
+                                        <button class="ban display-none" @click="close([[ props.row.id ]])" :name="[[ props.row.id ]]"></button>
+                                        <q-card class="my-card transform display-none fly gastdaten" style="width: 90%;" :id="[[ props.row.id ]]">
+                                            <q-card-section class="bg-primary text-white">
+                                                <div class="text-h4">{{ labels.Gastdaten }}</div>
+                                                <div class="text"><b>{{ labels.VorgangID }}</b>: [[ props.row.id ]]</div>
+                                            </q-card-section>
+                                            <div class="gastdata-inline">
+                                                {% if showGastVorname %}
+                                                    <q-card-actions vertical v-if="props.row.vorname !== ''">
+                                                        <div class="text2 text-grey-5">{{ labels.vorgvorname }}</div>
+                                                        <div class="text3">[[ props.row.vorname ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showGastName %}
+                                                    <q-card-actions vertical>
+                                                        <div class="text2 text-grey-5">{{ labels.vorgname }}</div>
+                                                        <div class="text3">[[ props.row.name ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showGastEmail %}
+                                                    <q-card-actions vertical :class="[[ props.row.mail ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.vorgmail }}</div>
+                                                        <div class="text3">[[ props.row.mail ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showGastHinweis %}
+                                                    <q-card-actions vertical :class="[[ props.row.memo ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.memo }}</div>
+                                                        <div class="text3">[[ props.row.memo ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showGastEigentuemerhinweis %}
+                                                    <q-card-actions vertical :class="[[ props.row.ehinweis ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.ehinweis }}</div>
+                                                        <div class="text3">[[ props.row.ehinweis ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showGastTel %}
+                                                    <q-card-actions vertical :class="[[ props.row.tel ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.telefon }}</div>
+                                                        <div class="text3">[[ props.row.tel ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                <q-card-actions vertical>
+                                                    <q-btn class="closer mainFarbeBTNQuasar" round icon="close" @click="close([[ props.row.id ]])"></q-btn>
+                                                </q-card-actions>
+                                            </div>
+                                        </q-card>
+
+                                        <q-card class="my-card transform display-none fly" :class="[[ props.row.id ]]" style="scrollbar-color: #00000000 #00000000; width: 90%!important; justify-content: center; -webkit-overflow-scrolling: auto !important;">
+                                            <q-card-section class="bg-primary text-white">
+                                                <div class="text-h4">{{ labels.leistungen }}</div>
+                                                <div class="text"><b>{{ labels.VorgangID }}</b>: [[ props.row.id ]]</div>
+                                            </q-card-section>
+
+                                            <q-table
+                                                grid
+                                                :rows='props.row.leistung'
+                                                :columns="columnsLeist"
+                                                row-key="name"
+                                                hide-header
+                                                :pagination="initialPaginationLeist"
+                                                no-data-label="{{ noDataFoeund }}"
+                                                hide-pagination
+                                            ></q-table>
+
+                                            <q-card-actions vertical>
+                                                <q-btn class="closer mainFarbeBTNQuasar" round icon="close" @click="close([[ props.row.id ]])"></q-btn>
+                                            </q-card-actions>
+                                        </q-card>
+                                    </template>
+
+                                    <!-- Ausfahr Menü -->
+                                    <template v-slot:header="props">
+                                        <q-tr :props="props">
+                                            <q-th auto-width></q-th>
+                                            <q-th
+                                                v-for="col in props.cols"
+                                                :key="col.name"
+                                                :props="props"
+                                            >
+                                                <b>[[ col.label ]]</b>
+                                            </q-th>
+                                        </q-tr>
+                                    </template>
+
+                                    <template v-slot:body="props">
+                                        <q-tr :props="props">
+                                            <q-td auto-width>
+                                                <q-btn size="sm" color="black" id="blackbtn" round dense @click="props.expand = !props.expand" :icon="props.expand ? 'expand_less' : 'expand_more'"></q-btn>
+                                            </q-td>
+                                            <q-td
+                                                v-for="col in props.cols"
+                                                :key="col.name"
+                                                :props="props"
+                                                :class="col.name == 'art' ? getArt(props) : ''"
+                                                :id="col.name"
+                                            >
+                                                [[ col.value ]]
+                                            </q-td>
+                                        </q-tr>
+                                        <q-tr v-show="props.expand" :props="props">
+                                            <q-td colspan="100%">
+                                                <!-- --------------------- -->
+                                                {% if showgastdaten %}
+                                                    <q-table
+                                                        title="Gastdaten"
+                                                        :rows="props.row.gastdaten"
+                                                        :columns="columnsGast"
+                                                        color="primary"
+                                                        class="gastdatenTabel"
+                                                        row-key="nr"
+                                                        no-data-label="{{ noDataFoeund }}"
+                                                        hide-pagination
+                                                    ></q-table>
+                                                {% endif %}
+                                                {% if showleistung %}
+                                                    <q-table
+                                                        title="Leistungen"
+                                                        :rows="props.row.leistung"
+                                                        :columns="columnsLeist"
+                                                        color="primary"
+                                                        class="leistungenRow mt-2"
+                                                        row-key="nr"
+                                                        no-data-label="{{ noDataFoeund }}"
+                                                        :pagination="initialPaginationLeist"
+                                                        v-if="props.row.block == false"
+                                                        hide-pagination
+                                                    ></q-table>
+                                                {% endif %}
+                                                <!-- ---------------- -->
+                                            </q-td>
+                                        </q-tr>
+                                    </template>
+                                    <!-- Ende Ausfahr Menü -->
+                                    <template v-slot:bottom-row>
+                                        <q-tr>
+                                            <q-td colspan="100%">
+                                                <div class="float-right" id="gesammt1">[[ getTotal(this) ]] €</div>
+                                            </q-td>
+                                        </q-tr>
+                                    </template>
+                                </q-table>
+                            </q-table>
+                            </div>
+                        </q-tab-panel>
+                    {% endif %}
+
+                    {% if showobjekte == 1 %}
+                        <q-tab-panel name="Objekte">
+                            <div class="q-pa-md">
+                                <q-table
+                                    :grid="$q.screen.lt.md"
+                                    :rows="rowsObjekte"
+                                    :columns="columnsObjekte"
+                                    :visible-columns="visibleColumns"
+                                    no-data-label="{{ noDataFoeund }}"
+                                    row-key="nr"
+                                    class="headTabel"
+                                    :filter="filter"
+                                    :loading="loadingObjekte"
+                                >
+                                    <template v-slot:body-cell-objekt="props">
+                                        <q-td :props="props">
+                                            <div>
+                                                <a :href="[[ props.row.link ]]" target="_blank">[[ props.value ]]</a> <!-- {{"{{ props.row.link }}"}} -->
+                                            </div>
+                                            <div class="my-table-details">
+                                                {{ props.row.details }}
+                                            </div>
+                                        </q-td>
+                                    </template>
+
+                                    {% if showButtons == 1 %}
+                                        <template v-slot:top-left="props">
+                                            <button @click="exportTable(rowsObjekte, columnsObjekte, 'Objekte')" class="downBTN shadow-2"><i class="fa fa-download" aria-hidden="true"></i><span>{{ labels.CsvDownloaden }}</span></button>
+                                        </template>
+                                    {% endif %}
+
+                                    <template v-slot:top-right>
+                                        <q-btn flat rounded color="primary" class="icon-head-mobil" icon="arrow_forward_ios" @click="openMobilWindow"></q-btn>
+                                        <q-btn label="{{ labels.filter }}" color="primary" icon="filter_alt" class="vorgangFilterBTN" @click="openMobilWindow, dialog = true, closeMobileMenu()"></q-btn>
+
+                                        <q-dialog v-model="dialog" class="filterDialog filterObjkte">
+                                            <q-card>
+                                                <div class="filterheader">
+                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">Filter</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
+                                                </div>
+                                                <q-card-section class="row items-center q-gutter-sm">
+                                                    <div class="objNr gesammteDivs">
+                                                        <q-select v-model="objektNr" behavior="menu" input-debounce="0" clearable filled label="{{ labels.objnr }}" @update:model-value="removeRowObjekte" :options="dataNr"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <div class="objName gesammteDivs">
+                                                        <q-select v-model="objektName" behavior="menu" input-debounce="0" clearable filled label="{{ labels.objtitel }}" @update:model-value="removeRowObjekte" :options="dataObjektName"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <div class="objIntern gesammteDivs">
+                                                        <q-select v-model="objektIntern" behavior="menu" input-debounce="0" clearable filled label="{{ labels.objint }}" @update:model-value="removeRowObjekte" :options="dataObjektIntern"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <div class="objPersonen gesammteDivs">
+                                                        <q-select v-model="objektPersonen" behavior="menu" input-debounce="0" clearable filled label="{{ labels.objpers }}" @update:model-value="removeRowObjekte" :options="dataObjektPersonen"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <div class="objGroesse gesammteDivs">
+                                                        <q-select v-model="objektGroesse" behavior="menu" input-debounce="0" clearable filled label="{{ labels.objqm }}" @update:model-value="removeRowObjekte" :options="dataObjektQm"><q-tooltip>{{ labels.inputNumblock }}</q-tooltip></q-select>
+                                                    </div>
+
+                                                    <div class="gesammteDivs">
+                                                        <div class="filterbuttonEins"><q-btn color="white" text-color="black" label="{{ labels.btn_reset }}" class="w-100" id="filterReset2" icon="restart_alt" @click="objektNr = '', objektName = '', objektIntern = '', objektPersonen = '', objektGroesse = '', filter = '', addDefaultRows3()"></q-btn></div>
+                                                        <div class="filterbuttonZwei"><q-btn color="white" text-color="black" label="{{ labels.filterAnwenden }}" class="w-100" v-close-popup icon="check"></q-btn></div>
+                                                    </div>
+                                                </q-card-section>
+                                            </q-card>
+                                        </q-dialog>
+
+                                        <q-input outlined debounce="300" v-model="filter" placeholder="{{ labels.Suchen }}" :dense="dense"><q-tooltip>{{ labels.seachAllTabel }}</q-tooltip>
+                                            <template v-slot:prepend>
+                                                <q-icon name="search" class="searchIcon">
+                                                </q-icon>
+                                            </template>
+                                        </q-input>
+                                    </template>
+                                </q-table>
+                            </div>
+                        </q-tab-panel>
+                    {% endif %}
+
+                    {% if showbelegen == 1 %}
+                        <q-tab-panel name="Belegen" style="padding-top: 16px!important;">
+                            <q-form @submit="onSubmit" class="q-gutter-md werdeMittig">
+                                <input type="text" name="objekt" id="obInput" class="display-none">
+                                <button data-request="{{ __SELF__ }}::onObjektChange" id="senderBTN" class="display-none">test</button>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 belCol" style="padding-left: 0px!important;">
+                                            <q-select
+                                                filled
+                                                v-model="model"
+                                                use-input
+                                                input-debounce="0"
+                                                label="{{ labels.objektauswahl }}"
+                                                :options="options"
+                                                @filter="filterFn"
+                                                style="width: 250px"
+                                                behavior="dialog"
+                                                @update:model-value="belegen"
+                                                id="ctrl_objekt"
+                                            >
+                                                <template v-slot:no-option>
+                                                    <q-item>
+                                                        <q-item-section class="text-grey">
+                                                            No results
+                                                        </q-item-section>
+                                                    </q-item>
+                                                </template>
+                                            </q-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="belegung" style=""></div>
+                            </q-form>
+                        </q-tab-panel>
+                    {% endif %}
+                </q-tab-panels>
+            </q-card>
+        </div>
+    </div>
+    <div class="display-none">Element welches offen ist <span class="isOpen"></span></div>
+    <div class="display-none" id="SelectDownloadInvisaibleDiv"><button data-request-download data-request="daten::onMultiDownload" disabled="" data-request-data="file: ''">Senden</button></div>
+</div>
+
+{% if downABRDesktop != 1 %}
+    <style>
+        @media (max-width: 1023px) {
+            .downloadAbrButton {display: none!important;}
+        }
+    </style>
+{% endif %}
+
+<script>
+    // Tabellen inhalte
+    var vorgaenge = {% if vorgaenge != null %}{{ vorgaenge|raw }}{% else %}[]{% endif %};
+    var objekte = {% if objekte != null %}{{ objekte|raw }}{% else %}[]{% endif %};
+    var abrechnungen = {% if abrechnungen != null %}{{ abrechnungen|raw }}{% else %}[]{% endif %};
+
+    // Tabellen Zeilen anzahl
+    var anzahl = {% if itemsProSeite != null %}{{ itemsProSeite|raw }}{% else %}10{% endif %};
+
+    // Labels Abrechnungen
+    var rechnungsnr = '{{ labels.rechnungsnr|raw }}';
+    var jahr = '{{ labels.jahr|raw }}';
+    var betrag = '{{ labels.betrag|raw }}';
+    var von = '{{ labels.von|raw }}';
+    var bis = '{{ labels.bis|raw }}';
+    var datum = '{{ labels.datum|raw }}';
+    var errorMessage = '{{ labels.errorRechRow|raw }}';
+    var abrZeitraum = '{{ labels.abrZeitraum|raw }}';
+    var anreise = '{{ labels.anreise|raw }}';
+    var abreise = '{{ labels.abreise }}';
+    var abUndAbreise = '{{ labels.anUndAbreise|raw }}';
+    var abrZeitraum = '{{ labels.abrZeitraum|raw }}';
+
+    // Labels Vorgänge
+    var id = 'Id';
+    var art = '{{ labels.vorgart }}';
+    var anreise = '{{ labels.vorganreise }}';
+    var abreise = '{{ labels.vorgabreise }}';
+    var tage = '{{ labels.tage }}';
+    var objekt = '{{ labels.vorgobjekt }}';
+    var objid = '{{ labels.vorgobjid }}';
+    var erwachsene = '{{ labels.vorgerwachsene }}';
+    var kinder = '{{ labels.vorgkinder }}';
+    var buchungsdatum = '{{ labels.buchungsdatum|raw }}';
+
+    // Labels Gastdaten
+    var vorname = '{{ labels.vorgvorname }}';
+    var nachname = '{{ labels.vorgname }}';
+    var mail = '{{ labels.vorgmail }}';
+    var memo = '{{ labels.memo }}';
+    var ehinweis = '{{ labels.ehinweis }}';
+    var telefon = '{{ labels.telefon }}';
+
+    // Labels Leistungen
+    var lnr = '{{ labels.lnr }}';
+    var ltitel = '{{ labels.lanz }}';
+    var lanz = '{{ labels.ltitel }}';
+    var lepreis = '{{ labels.lepreis }}';
+    var lsumme = '{{ labels.lsumme }}';
+
+    // Labels Objekte
+    var objnr = '{{ labels.objnr }}';
+    var objtitel = '{{ labels.objtitel }}';
+    var objpers = '{{ labels.objpers }}';
+    var objqm = '{{ labels.objqm }}';
+    var objint = '{{ labels.objint }}';
+
+    var sortVor = '{{ labels.sortVor }}';
+    var sortBack = '{{ labels.sortBack }}';
+    var sortZwischen = '{{ labels.sortZwischen|raw }}';
+    var mailaddressUser = '{{ mail|raw }}';
+    var keineMailGefunden = '{{ labels.keineMailGefunden|raw }}';
+
+    var gesammtSumme = '{{ labels.gesammtSumme|raw }}';
+    var siteRecords = '{{ labels.siteRecords }}';
+    var sendMailDefaulReferenceValue = '{{ labels.sendMailDefaulReferenceValue }}';
+
+    var self = '{{ __SELF__ }}';
+
+    var r = document.querySelector(':root');
+
+    function myFunction_set() {
+        r.style.setProperty('--primary', '{{ primary }}');
+        r.style.setProperty('--primarySchriftColor', '{{ primarySchriftColor }}');
+        r.style.setProperty('--btnColor', '{{ btnColor }}');
+        r.style.setProperty('--btnSchriftColor', '{{ btnSchriftColor }}');
+    }
+    myFunction_set();
+</script>
+
+<script>
+    objekte2 = [];
+    objekte3 = [];
+
+    {% for key, obj in belobjekte %}
+        var objekteItems = '{{ obj }}'
+        if (objekteItems != '{{ labels.objektauswahl|raw }}') {
+            objekte2.push({label : objekteItems,value : '{{ key }}'});
+        }
+
+        if (objekteItems != '{{ labels.objektauswahl|raw }}') {
+            objekte3.push(objekteItems);
+        }
+    {% endfor %}
+</script>

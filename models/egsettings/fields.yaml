@@ -10,7 +10,7 @@ tabs:
             label: xsigns.fewo::lang.eigentuemerlogin.settings.use_throttle
             comment: xsigns.fewo::lang.eigentuemerlogin.settings.use_throttle_comment
             type: switch
-            tab: xsigns.fewo::lang.eigentuemerlogin.settings.signin_tab
+            tab: Eigentümer-Einstellungen
 
         # Login Attribute
         login_attribute:
@@ -19,7 +19,7 @@ tabs:
             commentAbove: xsigns.fewo::lang.eigentuemerlogin.settings.login_attribute_comment
             type: radio
             default: attribue_username
-            tab: xsigns.fewo::lang.eigentuemerlogin.settings.signin_tab
+            tab: Eigentümer-Einstellungen
 
         # Send mail to user
         send_mail_to_user:
@@ -27,4 +27,54 @@ tabs:
             label: xsigns.fewo::lang.eigentuemerlogin.settings.send_mail_to_user
             comment: xsigns.fewo::lang.eigentuemerlogin.settings.send_mail_to_user_comment
             type: switch
-            tab: xsigns.fewo::lang.eigentuemerlogin.settings.signin_tab
+            tab: Eigentümer-Einstellungen
+
+        login_section:
+            label: Eigentümerdaten
+            type: section
+            commentHtml: true
+            tab: Eigentümer-Einstellungen
+
+        select_maske:
+            span: left
+            label: xsigns.fewo::lang.eigentuemerlogin.settings.select_maske
+            comment: xsigns.fewo::lang.eigentuemerlogin.settings.select_maske_comment
+            type: switch
+            default: false
+            tab: Eigentümer-Einstellungen
+
+        primary:
+            type: colorpicker
+            availableColors: ["#1976d2", "#09207e","#eb7827","#f3a018","#50c735","#7e0917","#434448","#000000","#ffffff"]
+            default: "#1976d2"
+            span: left
+            commentAbove: "<div style='display: grid;'><span style='width: 100%; border-bottom: 1px solid #cfd7e1; font-size: 17px; margin-bottom: 15px;'>Primär Farben anpassen (nur Version 2)</span><span style='width: 100%; font-size: 15px;'>Primär Hintergrundfarben</span></div>"
+            commentHtml: true
+            tab: Eigentümer-Einstellungen
+
+        btnColor:
+            type: colorpicker
+            commentAbove: "<div style='display: grid;'><span style='width: 100%; border-bottom: 1px solid #cfd7e1; font-size: 17px; margin-bottom: 15px;'>Button Farben anpassen (nur Version 2)</span><span style='width: 100%; font-size: 15px;'>Button Hintergrundfarbe</span></div>"
+            commentHtml: true
+            availableColors: ["#1976d2", "#09207e","#eb7827","#f3a018","#50c735","#7e0917","#434448","#000000","#ffffff"]
+            default: "#ffffff"
+            span: right
+            tab: Eigentümer-Einstellungen
+
+        primarySchriftColor:
+            type: colorpicker
+            commentAbove: "<div style='display: grid;'><span style='width: 100%; font-size: 15px;'>Primär Schriftfarbe</span></div>"
+            commentHtml: true
+            availableColors: ["#1976d2", "#09207e","#eb7827","#f3a018","#50c735","#7e0917","#434448","#000000","#ffffff"]
+            default: "#ffffff"
+            span: left
+            tab: Eigentümer-Einstellungen
+
+        btnSchriftColor:
+            type: colorpicker
+            commentAbove: "<div style='display: grid;'><span style='width: 100%; font-size: 15px;'>Button Schriftfarbe</span></div>"
+            commentHtml: true
+            availableColors: ["#1976d2", "#09207e","#eb7827","#f3a018","#50c735","#7e0917","#434448","#000000","#ffffff"]
+            default: "#000000"
+            span: right
+            tab: Eigentümer-Einstellungen

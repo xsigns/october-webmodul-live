@@ -48,7 +48,8 @@ class Update24 extends Migration
             $table->string('obj_registriernr',100)->default('')->change();
             $table->string('obj_sort', 30)->change();
         });
-        $tables = [
+
+        /*$tables = [
             'system_files',
             'xsigns_fewo_abrechnung',
             'xsigns_fewo_ang',
@@ -110,15 +111,12 @@ class Update24 extends Migration
             'system_event_logs',
             'system_settings'
         ];
+
         foreach ($tables as $table) {
             DB::statement('ALTER TABLE ' . $table . ' ENGINE = MyISAM');
-        }
+        }*/
     }
 
     public function down()
-    {
-
-
-    }
-
+    {}
 }

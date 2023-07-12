@@ -12,7 +12,6 @@ class Update55 extends Migration
         if (!Schema::hasTable('xsigns_fewo_zahlungen'))
         {
             Schema::create('xsigns_fewo_zahlungen', function ($table) {
-                $table->engine = 'MyISAM';
                 $table->increments('id');
                 $table->integer('za_vorgid')->nullable();
                 $table->integer('za_buid')->index();

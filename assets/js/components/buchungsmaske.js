@@ -93,3 +93,8 @@ $(function() {
         $('#ctrl_abreise').request('onAbreiseChange');
     }
 });
+
+$( "#ctrl_abreise" ).click(function(evt) {
+    evt.stopPropagation();
+    $('#ctrl_anreise').data('dateRangePicker').open();
+});

@@ -1,0 +1,35 @@
+<div id="bew-item" class="bew-item">
+    <div class="bew_titel"><h2>{{ bewertung.titel|raw }}</h2></div>
+    <div class="{{ cssslider }} fewo-rating" style="padding: 0px!important;">
+        <div class="sterne">
+            {{ svg|raw }}
+            {{ svg|raw }}
+            {{ svg|raw }}
+            {{ svg|raw }}
+            {{ svg|raw }}
+            <div class="cover" id="coverObjektbewertung" style="width: {{ bewertung.bewertungRound }}%"></div>
+        </div>
+    </div>
+    <div class="bew-text">{{ bewertung.ratingtext }}</div>
+    <div class="bew_objtitel"><a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}>{{ bewertung.objtitel|raw}}</a></div>
+    {% if showimage %}
+        <div class="bew_image">
+            <a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}><img src="{{ bewertung.image.thumb|raw }}" alt="{{ bewertung.image.title }}" title="{{ bewertung.image.title }}"></a></div>
+    {% endif %}
+    <div class="bew_nachricht">{{ bewertung.nachricht|raw }}</div>
+    <div class="bew_datum">{{ bewertung.date }}</div>
+    <div class="bew_gastname">{{ bewertung.author|raw }}</div>
+    {% if bewertung.catshow == 1 %}
+        <div class="{{ csscat }} fewo-cat">
+            {% set i=0 %}
+            {% for key, category in bewertung.categories %}
+                {% set i = i +1 %}
+                <div class="cat-name category{{ i }}">{{ key }}<span class="cat-number">({{category }})</span></div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if showResponses %}
+        <div class="bew_antwort">{{ bewertung.antwort|raw }}</div>
+    {% endif %}
+</div>
+

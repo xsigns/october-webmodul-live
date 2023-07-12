@@ -1,0 +1,97 @@
+{% if optleistungen is not empty %}
+    <h5><b>{{ labels.optLeist }}</b></h5>
+    <div id="q-appLeist2">
+        <div class="q-pa-md row items-start q-gutter-md pl-0 pr-0">
+            {% for leist in optleistungen %}
+                <div class="col-xl-4 col-lg-4 col-lg-4 col-sm-6 ml-0" style="margin-bottom: 0px!important; padding-left: 0px!important; padding-right: 15px;">
+                    <q-card class="my-card setShadowForCard{{ leist.lid }}" flat bordered>
+                        <q-card-section>
+                            <div class="text text-bold">{{ leist.titel }}</div>
+                        </q-card-section>
+
+                        <q-separator inset></q-separator>
+
+                        <q-card-section>
+                            <div class="text">{{ labels.leistanz }} {{ leist.countval }}</div>
+                            <div class="text">{{ labels.leistpreis }}: {{ leist.priceprn }}</div>
+                            <div class="text" style="height: 20px;"><span class="gpreisLeist" style="float: left; width: min-content; padding-right: 3px;">Gesammtpeis: </span><span class="gpreisLeist" style="width: min-content; float: right;"><div class="leistung_summe" id="leistsumme_{{ leist.lid }}"></div></span></div>
+                        </q-card-section>
+
+                        <q-separator inset></q-separator>
+
+                        <q-card-section>
+                            {% if leist.max > 1 %}
+                                <div class="leistung_anzahl2">
+                                    <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
+                                    <select class="select dorpdown-----{{ leist.lid }}" id="dropdownLeist" name="fewo_leistung[{{ leist.lid }}]" data-request="{{ __SELF__ }}::onLeistungChange">
+                                        {% for i in 0..leist.max %}
+                                            <option value="{{ i }}" {% if leist.selected == i %} selected {% endif %}>{{ i }}x</option>
+                                        {% endfor %}
+                                    </select>
+                                    {% if leist.countval > 1 %}
+                                        <span class="countval">{{ leist.countval }}</span>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <q-btn @click="addLeist({{ leist.lid }})" icon="add" id="checkLeist{{ leist.lid }}"></q-btn>
+                                <div class="leistung_anzahl">
+                                    <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
+                                    <input type="hidden" name="fewo_leistung[{{ leist.lid }}]" value="off">
+                                    <input class="select" value="on" data-request="{{ __SELF__ }}::onLeistungChange" type="checkbox"{% if leist.selected %} checked {% endif %} id="checkboxLeist2{{ leist.lid }}" name="fewo_leistung[{{ leist.lid }}]"/>
+                                    {% if leist.countval > 1 %}
+                                        <span class="countval">(x{{ leist.countval }})</span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </q-card-section>
+                    </q-card>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+<script>
+    var appLeist2 = Vue.createApp({
+        setup ()
+        {
+            const selectetLeist = [];
+            return {
+                stars: ref(4),
+                selectetLeist,
+
+                addLeist(id) {
+                    if($("#checkboxLeist2" + id).is(':checked'))
+                    {
+                        $("#checkboxLeist2" + id).click()
+                        $("#checkLeist" + id).html('<span class="q-focus-helper" tabindex="-1"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i class="q-icon notranslate material-icons" aria-hidden="true" role="img">add</i></span>')
+                        $('.setShadowForCard' + id).removeClass('shadow')
+
+                        this.selectetLeist = jQuery.grep(this.selectetLeist, function(value)
+                        {
+                            return value != $('.setShadowForCard' + id +' .text-h6').text();
+                        });
+                    }
+                    else
+                    {
+                        $("#checkboxLeist2" + id).click()
+                        $("#checkLeist" + id).html('<span class="q-focus-helper" tabindex="-1"></span><span class="q-btn__content text-center col items-center q-anchor--skip justify-center row"><i class="q-icon notranslate material-icons" aria-hidden="true" role="img">remove</i></span>')
+                        this.selectetLeist.push($('.setShadowForCard' + id +' .text-h6').text())
+                        $('.setShadowForCard' + id).addClass('shadow')
+                    }
+                }
+            }
+        }
+    })
+
+    appLeist2.use(Quasar, { config: {} })
+    appLeist2.mount('#q-appLeist2')
+
+    $('#dropdownLeist').on('change', function()
+    {
+        if ($(this).val() !== '0')
+            $('.setShadowForCard' + $(this).attr("class").split('-----')[1]).addClass('shadow')
+        else
+            $('.setShadowForCard' + $(this).attr("class").split('-----')[1]).removeClass('shadow')
+    });
+</script>

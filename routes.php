@@ -15,7 +15,7 @@ Route::any('hobex/{id}','xsigns\fewo\classes\HobexRequest@Request');
 Route::any('guestbooking/{id}','xsigns\fewo\classes\Guest@Login');
 Route::any('restzahlung', 'xsigns\fewo\classes\RestzahlungsManager@checkRestzahlungen');
 Route::any('objectranking', 'xsigns\fewo\classes\ObjektRanking@setObjRanking');
-
+Route::any('filedownload', 'xsigns\fewo\classes\Fewo@downloadFile');
 
 $sitemapRoutes = FewoSitemaps::defineRoutes();
 array_walk($sitemapRoutes, function (&$value, $key) {$value = $key;});

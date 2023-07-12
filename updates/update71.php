@@ -25,7 +25,6 @@ class Update71 extends Migration
         if (!Schema::hasTable('xsigns_fewo_tarifzonen'))
         {
             Schema::create('xsigns_fewo_tarifzonen', function ($table) {
-                $table->engine = 'MyISAM';
                 $table->increments('id');
                 $table->string('tz_id', 20)->default('');
                 $table->string('tz_name', 150)->default('');

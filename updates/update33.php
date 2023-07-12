@@ -16,7 +16,6 @@ class Update33 extends Migration
         });
 
         Schema::create('xsigns_fewo_imagelang', function($table) {
-            $table->engine = 'MyISAM';
             $table->increments('id');
             $table->timestamp('tstamp');
             $table->string('objid', 4)->index();
@@ -29,7 +28,6 @@ class Update33 extends Migration
         if (!Schema::hasTable('xsigns_owner_users'))
         {
             Schema::create('xsigns_owner_users', function ($table) {
-                $table->engine = 'MyISAM';
                 $table->increments('id');
                 $table->string('name', 250);
                 $table->string('company', 250)->nullable();
@@ -62,7 +60,6 @@ class Update33 extends Migration
         if (!Schema::hasTable('xsigns_owner_user_throttle'))
         {
             Schema::create('xsigns_owner_user_throttle', function ($table) {
-                $table->engine = 'MyISAM';
                 $table->increments('id');
                 $table->integer('user_id')->unsigned()->nullable()->index();
                 $table->string('ip_address')->nullable()->index();
@@ -78,7 +75,6 @@ class Update33 extends Migration
         if (!Schema::hasTable('xsigns_owner_user_groups'))
         {
             Schema::create('xsigns_owner_user_groups', function ($table) {
-                $table->engine = 'MyISAM';
                 $table->increments('id');
                 $table->string('name');
                 $table->string('code')->nullable()->index();
@@ -90,7 +86,6 @@ class Update33 extends Migration
         if (!Schema::hasTable('xsigns_owner_users_groups'))
         {
             Schema::create('xsigns_owner_users_groups', function ($table) {
-                $table->engine = 'MyISAM';
                 $table->integer('user_id')->unsigned();
                 $table->integer('user_group_id')->unsigned();
                 $table->primary(['user_id', 'user_group_id'], 'user_group');

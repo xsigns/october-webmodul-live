@@ -10,19 +10,19 @@
     </div>
 </div>
 <div class="edaten">
-    <div id="exTab2" class="container col-md-12 p-0 float-left"> 
+    <div id="exTab2" class="container col-md-12 p-0 float-left">
         <ul class="nav nav-tabs" role="tablist" id="edatenTab">
             {% if showabrechnung == 1 %}
-                <li class="nav-item disabled" id="tab1"><a class="nav-link active" href="#1" data-toggle="tab" role="tab">{{ labels.tab1 }}</a></li>
+                <li class="nav-item" id="tab1"><a class="nav-link active" href="#1" data-toggle="tab" role="tab">{{ labels.tab1 }}</a></li>
             {% endif %}
             {% if showvorgaenge == 1 %}
-                <li class="nav-item disabled" id="tab2"><a class="nav-link" href="#2" data-toggle="tab" role="tab">{{ labels.tab2 }}</a></li>
+                <li class="nav-item" id="tab2"><a class="nav-link" href="#2" data-toggle="tab" role="tab">{{ labels.tab2 }}</a></li>
             {% endif %}
             {% if showobjekte %}
-                <li class="nav-item disabled" id="tab3"><a class="nav-link" href="#3" data-toggle="tab" role="tab">{{ labels.tab3 }}</a></li>
+                <li class="nav-item" id="tab3"><a class="nav-link" href="#3" data-toggle="tab" role="tab">{{ labels.tab3 }}</a></li>
             {% endif %}
             {% if showbelegen %}
-                <li class="nav-item disabled" id="tab4"><a class="nav-link" href="#4" data-toggle="tab" role="tab">{{ labels.tab4 }}</a></li>
+                <li class="nav-item" id="tab4"><a class="nav-link" href="#4" data-toggle="tab" role="tab">{{ labels.tab4 }}</a></li>
             {% endif %}
         </ul>
         <div class="tab-content" >
@@ -99,7 +99,7 @@
                 </div>
             {% endif %}
             {% if showbelegen %}
-                <div role="tabpanel" class="tab-pane" id="4">
+                <div role="tabpanel" class="tab4 tab-pane" id="4">
                     <div id="bookingMask">
                         <form class="eigenbelegung_form" method="post" data-request="{{ __SELF__ }}::onBelegung">
                             <div class="bel_objekt">
