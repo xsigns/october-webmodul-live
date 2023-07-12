@@ -445,46 +445,47 @@
                                                 <div class="text"><b>{{ labels.VorgangID }}</b>: [[ props.row.id ]]</div>
                                             </q-card-section>
                                             <div class="gastdata-inline">
-                                                {% if showGastVorname == 1 %}
+                                                {% if showGastVorname %}
                                                     <q-card-actions vertical v-if="props.row.vorname !== ''">
                                                         <div class="text2 text-grey-5">{{ labels.vorgvorname }}</div>
                                                         <div class="text3">[[ props.row.vorname ]]</div>
                                                     </q-card-actions>
                                                 {% endif %}
 
-                                                {% if showGastName == 1 %}
+                                                {% if showGastName %}
                                                     <q-card-actions vertical>
                                                         <div class="text2 text-grey-5">{{ labels.vorgname }}</div>
                                                         <div class="text3">[[ props.row.name ]]</div>
                                                     </q-card-actions>
                                                 {% endif %}
 
-                                                {% if showGastEmail == 1 %}
+                                                {% if showGastEmail %}
                                                     <q-card-actions vertical :class="[[ props.row.mail ]] == '' ? 'display-none' : ''">
                                                         <div class="text2 text-grey-5">{{ labels.vorgmail }}</div>
                                                         <div class="text3">[[ props.row.mail ]]</div>
                                                     </q-card-actions>
                                                 {% endif %}
 
-                                                {% if showGastHinweis == 1%}
+                                                {% if showGastHinweis %}
                                                     <q-card-actions vertical :class="[[ props.row.memo ]] == '' ? 'display-none' : ''">
                                                         <div class="text2 text-grey-5">{{ labels.memo }}</div>
                                                         <div class="text3">[[ props.row.memo ]]</div>
                                                     </q-card-actions>
                                                 {% endif %}
 
-                                                {% if showGastEigentuemerhinweis == 1 %}
+                                                {% if showGastEigentuemerhinweis %}
                                                     <q-card-actions vertical :class="[[ props.row.ehinweis ]] == '' ? 'display-none' : ''">
                                                         <div class="text2 text-grey-5">{{ labels.ehinweis }}</div>
                                                         <div class="text3">[[ props.row.ehinweis ]]</div>
                                                     </q-card-actions>
                                                 {% endif %}
 
-
-                                                <q-card-actions vertical :class="[[ props.row.tel ]] == '' ? 'display-none' : ''">
-                                                    <div class="text2 text-grey-5">{{ labels.telefon }}</div>
-                                                    <div class="text3">[[ props.row.tel ]]</div>
-                                                </q-card-actions>
+                                                {% if showGastTel %}
+                                                    <q-card-actions vertical :class="[[ props.row.tel ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.telefon }}</div>
+                                                        <div class="text3">[[ props.row.tel ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
 
                                                 <q-card-actions vertical>
                                                     <q-btn class="closer mainFarbeBTNQuasar" round icon="close" @click="close([[ props.row.id ]])"></q-btn>

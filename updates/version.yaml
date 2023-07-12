@@ -808,9 +808,10 @@
 3.7.12:
     - Allgemeine Verbesserungen
     - Fehlerkorreturen kompatibilität für OctoberCMS 3.4
-3.7.13:
+3.8.0:
+    - Berücksichtigung der Abreisetage im Belegungsplan
+    - Berücksichtigung der Mindestnächte für gültige Lücken im Belegungsplan
+    - Eigentümerlogin Version 2 mit einigen neuen und verbesserten Funktionen u. a. responsive Darstellung möglich.
     - Verbesserungen Belegungsplan
-    - Abreisetage
-    - Minnächte auf Lücke
     - Verbesserungen Datenbank
     - update78.php

@@ -468,6 +468,8 @@ return [
             'allow_registration_comment' => 'Falls dies deaktivert ist, können Benutzer nur von Administratoren erstellt werden.',
             'send_mail_to_user' => 'E-Mail an Eigentümer senden',
             'send_mail_to_user_comment' => 'Sendet eine E-Mail mit den Login-Informationen an die E-Mail-Adresse des Eigentümers, sobald dieser im Fewo-Verwalter freigeschlatet oder die Login-Daten geändert wurden.',
+            'select_maske' => 'Verwende Eigentümerlogin Version 2',
+            'select_maske_comment' => 'Wenn aktiviert, wird Version 2 des Eigentümerlogins verwendet. Dieser bietet einige neue bzw. verbesserte Funktionen und lässt sich nun auch responsive darstellen.',
         ],
         'state' => [
             'label' => 'Provinz',
