@@ -326,7 +326,7 @@
             /*if ($container !== undefined)
                 $container.infiniteScroll('destroy');*/
             resetpage = true;
-            jQuery('#' + elem).request('onDataChange');
+            $('#' + elem).request('onDataChange');
         }
 
         $(document).ready(function() {
@@ -385,11 +385,14 @@
             if($('#sterne') !== undefined)
                 $('#sterne option[value=' + sterne + ']').attr('selected', 'selected');
 
-            if($('#preis') !== undefined)
-                jQuery('#preis').slider({ from: minpreis, to: maxpreis, heterogeneity: ['20/100', '75/250'], step: 10, dimension: '&nbsp;€', skin: "blue" ,
-                    callback: function( value ){
-                        jQuery('#preis').request('onDataChange');
-                    }});
+            if($('#preis') !== undefined) {
+                $('#preis').slider({
+                    from: minpreis, to: maxpreis, heterogeneity: ['20/100', '75/250'], step: 10, dimension: '&nbsp;€', skin: "blue",
+                    callback: function (value) {
+                        $('#preis').request('onDataChange');
+                    }
+                });
+            }
 
             $('#cleardates').click(function(evt) {
                 evt.stopPropagation();
@@ -406,11 +409,7 @@
             if (jQuery('#anreise-wrapper'))
                 jQuery('#anreise-wrapper').remove();
 
-            {% if datecompact == 1 %}
-            let dateComponent = '#period';
-            {% else %}
-            let dateComponent = '#anreise';
-            {% endif %}
+            let dateComponent = {% if datecompact == 1 %}'#period'{% else %}'#anreise'{% endif %};
 
             let picker = $(dateComponent).dateRangePicker({
                 startDate: '{{ mindate|raw}}',
@@ -425,7 +424,7 @@
                 language: '{{ lang }}',
                 // showTopbar:false,
                 beforeShowDay: function (t) {
-                    valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
+                    let valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
                     let _class = '';
                     let _tooltip = valid ? '' : 'belegt';
                     return [valid, _class, _tooltip];
@@ -434,7 +433,7 @@
 
             $(dateComponent).data('dateRangePicker').setDateRange(anreise, abreise);
 
-            if(anreise !='' && abreise != '') {
+            if(anreise !=='' && abreise !== '') {
                 {% if datecompact == 1 %}
                 $('#period').val(anreise + ' - ' + abreise);
                 {% endif %}

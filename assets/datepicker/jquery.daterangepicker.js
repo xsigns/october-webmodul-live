@@ -643,16 +643,16 @@
 
         if (!opt.showTopbar) opt.autoClose = true;
 
-        let todayDate = new Date();
+        /*let todayDate = new Date();
         let time = todayDate.getHours() + ":" + todayDate.getMinutes() + ":" + todayDate.getSeconds();
         opt.startDate = opt.startDate + ' ' + time;
-        opt.endDate = opt.endDate + ' ' + time;
+        opt.endDate = opt.endDate + ' ' + time;*/
 
-        if (opt.startDate && typeof opt.startDate == 'string')
-            opt.startDate = moment(opt.startDate, opt.format).toDate();
+        //if (opt.startDate && typeof opt.startDate == 'string')
+        opt.startDate = moment(opt.startDate, opt.format).toDate();
 
-        if (opt.endDate && typeof opt.endDate == 'string')
-            opt.endDate = moment(opt.endDate, opt.format).toDate();
+        //if (opt.endDate && typeof opt.endDate == 'string')
+        opt.endDate = moment(opt.endDate, opt.format).toDate();
 
         if (opt.yearSelect && typeof opt.yearSelect === 'boolean') {
             opt.yearSelect = function(current) { return [current - 5, current + 5]; }
@@ -709,10 +709,6 @@
                 return this;
             },
             setDateRange: function(d1, d2, silent) {
-                let todayDate = new Date();
-                let time = todayDate.getHours() + ":" + todayDate.getMinutes() + ":" + todayDate.getSeconds();
-                d1 = d1 + ' ' + time;
-                d2 = d2 + ' ' + time;
                 if (typeof d1 == 'string' && typeof d2 == 'string') {
                     d1 = moment(d1, opt.format).toDate();
                     d2 = moment(d2, opt.format).toDate();
@@ -747,7 +743,7 @@
         }
 
         function init_datepicker() {
-            var self = this;
+            let self = this;
 
             if ($(this).data('date-picker-opened')) {
                 closeDatePicker();
@@ -770,7 +766,7 @@
                 box.find('.apply-btn').hide();
             }
 
-            var defaultTime = getDefaultTime();
+            let defaultTime = getDefaultTime();
             resetMonthsView(defaultTime);
 
             if (opt.time.enabled) {
@@ -786,8 +782,8 @@
 
             //showSelectedInfo();
 
+            let defaultTopText = '';
 
-            var defaultTopText = '';
             if (opt.singleDate)
                 defaultTopText = translate('default-single');
             else if (opt.minDays && opt.maxDays)
@@ -805,7 +801,6 @@
             } else {
                 box.addClass('two-months');
             }
-
 
             setTimeout(function() {
                 updateCalendarWidth();
@@ -831,8 +826,8 @@
             });
 
             function gotoNextMonth(self) {
-                var isMonth2 = $(self).parents('div').hasClass('month2');
-                var month = isMonth2 ? opt.month2 : opt.month1;
+                let isMonth2 = $(self).parents('div').hasClass('month2');
+                let month = isMonth2 ? opt.month2 : opt.month1;
                 month = nextMonth(month);
                 if (!opt.singleMonth && !opt.singleDate && !isMonth2 && compare_month(month, opt.month2) >= 0 || isMonthOutOfBounds(month)) return;
                 showMonth(month, isMonth2 ? 'month2' : 'month1');
@@ -911,7 +906,7 @@
                     start = false;
                 var dir;
                 if(shortcut.indexOf('delete') != -1){
-                     $(self).trigger('datepicker-clear', {});
+                    $(self).trigger('datepicker-clear', {});
                     clearSelection();
                 }
                 else if (shortcut.indexOf('day') != -1) {
@@ -979,7 +974,6 @@
                     }
                 }
                 if (start && end) {
-
                     setDateRange(start, end);
                     checkSelectionValid();
                 }
@@ -998,7 +992,6 @@
                     min = target.name == 'minute' ? $(target).val().replace(/^(\d{1})$/, '0$1') : undefined;
                 setTime('time2', hour, min);
             });
-
         }
 
 
@@ -1073,10 +1066,9 @@
             var __default_string = opt.getDateValue.call(selfDom);
             var defaults = __default_string ? __default_string.split(opt.separator) : '';
 
-            if (defaults && ((defaults.length == 1 && opt.singleDate) || defaults.length >= 2)) {
+            if (defaults && ((defaults.length === 1 && opt.singleDate) || defaults.length >= 2)) {
                 var ___format = opt.format;
                 if (___format.match(/Do/)) {
-
                     ___format = ___format.replace(/Do/, 'D');
                     defaults[0] = defaults[0].replace(/(\d+)(th|nd|st)/, '$1');
                     if (defaults.length >= 2) {
@@ -1119,9 +1111,9 @@
         function changeTime(name, date) {
             opt[name] = parseInt(
                 moment(parseInt(date))
-                .startOf('day')
-                .add(moment(opt[name + 'Time']).format('HH'), 'h')
-                .add(moment(opt[name + 'Time']).format('mm'), 'm').valueOf()
+                    .startOf('day')
+                    .add(moment(opt[name + 'Time']).format('HH'), 'h')
+                    .add(moment(opt[name + 'Time']).format('mm'), 'm').valueOf()
             );
         }
 
@@ -1498,7 +1490,7 @@
                         $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');*/
 
                     if(!checkDay(time))
-                      	$(this).addClass('invalid nodeparture tmp').removeClass('valid');
+                        $(this).addClass('invalid nodeparture tmp').removeClass('valid');
 
                 });
             }
@@ -1722,7 +1714,6 @@
         }
 
         function setDateRange(date1, date2, silent) {
-
             if (date1.getTime() > date2.getTime()) {
                 var tmp = date2;
                 date2 = date1;
@@ -1790,16 +1781,17 @@
 
             opt.start = date1.getTime();
 
-
             if (opt.time.enabled) {
                 renderTime('time1', date1);
-
             }
+
             showMonth(date1, 'month1');
+
             if (opt.singleMonth !== true) {
                 var date2 = nextMonth(date1);
                 showMonth(date2, 'month2');
             }
+
             showGap();
             showSelectedInfo();
             autoclose();
@@ -1995,7 +1987,7 @@
             var m1 = parseInt(moment(opt.month1).format('YYYYMM'));
             var m2 = parseInt(moment(opt.month2).format('YYYYMM'));
             var p = Math.abs(m1 - m2);
-            var shouldShow = (p > 1 && p != 89);
+            var shouldShow = (p > 1 && p !== 89);
             if (shouldShow) {
                 box.addClass('has-gap').removeClass('no-gap').find('.gap').css('visibility', 'visible');
             } else {
@@ -2103,13 +2095,11 @@
             var arrowNext = '&gt;';
             if (opt.customArrowNextSymbol) arrowNext = opt.customArrowNextSymbol;
 
-
-
             html += '<div class="month-wrapper">';
-                if(opt.showArrow)
-                    html += '<div class="cal-arrow"></div>';
+            if(opt.showArrow)
+                html += '<div class="cal-arrow"></div>';
 
-                html += '<div class="cal1">' +
+            html += '<div class="cal1">' +
                 '   <div class="month1">' +
                 '       <div class="cal-header">' +
                 '           <div class="caption">' +
@@ -2117,7 +2107,7 @@
                 '                   </span>' +
                 '               <div class="month-name">' +
                 '               </div>' +
-                    '<div class="dp-clearfix"></div>' +
+                '<div class="dp-clearfix"></div>' +
                 '               <div>' +
                 (opt.singleDate || !opt.stickyMonths ? '<span class="next">' + arrowNext + '</span>' : '') +
                 '               </div>' +
@@ -2147,7 +2137,7 @@
                     '<div class="dp-clearfix"></div>' +
                     '   <div class="cal-days"></div>' +
                     '</div>'+
-                '</div>';
+                    '</div>';
             }
             html += '<div class="dp-clearfix"></div>' +
                 '<div class="time">' +
@@ -2439,7 +2429,7 @@
                     //html.push('<div ' + attributesCallbacks({}, opt.dayTdAttrs, today) + '><div ' + attributesCallbacks(todayDivAttr, opt.dayDivAttrs, today) + '>' + showDayHTML(today.time, today.day) + '</div></div>');
                 }
             }
-             return html.join('');
+            return html.join('');
         }
 
         function invertAnreise(anreise)
@@ -2516,14 +2506,21 @@
         }
 
         function getDefaultTime() {
-            var defaultTime = opt.defaultTime ? opt.defaultTime : new Date();
+            let defaultTime = opt.defaultTime ? opt.defaultTime : new Date();
+            defaultTime.setHours(0, 0, 0, 0);
 
             if (opt.lookBehind) {
-                if (opt.startDate && compare_month(defaultTime, opt.startDate) < 0) defaultTime = nextMonth(moment(opt.startDate).toDate());
-                if (opt.endDate && compare_month(defaultTime, opt.endDate) > 0) defaultTime = moment(opt.endDate).toDate();
+                if (opt.startDate && compare_month(defaultTime, opt.startDate) < 0)
+                    defaultTime = nextMonth(moment(opt.startDate).toDate());
+                if (opt.endDate && compare_month(defaultTime, opt.endDate) > 0)
+                    defaultTime = moment(opt.endDate).toDate();
             } else {
-                if (opt.startDate && compare_month(defaultTime, opt.startDate) < 0) defaultTime = moment(opt.startDate).toDate();
-                if (opt.endDate && compare_month(nextMonth(defaultTime), opt.endDate) > 0) defaultTime = prevMonth(moment(opt.endDate).toDate());
+                if (opt.startDate && compare_month(defaultTime, opt.startDate) < 0) {
+                    defaultTime = moment(opt.startDate).toDate();
+                }
+                if (opt.endDate && compare_month(nextMonth(defaultTime), opt.endDate) > 0) {
+                    defaultTime = prevMonth(moment(opt.endDate).toDate());
+                }
             }
 
             if (opt.singleDate) {

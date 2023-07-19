@@ -817,3 +817,6 @@
     - update78.php
 3.8.1:
     - Fehlerkorrekturen Angebote
+3.8.2:
+    - Fehlerkorrekturen im Datepicker
+    - Verbesserungen für den Eigentümerlogin
