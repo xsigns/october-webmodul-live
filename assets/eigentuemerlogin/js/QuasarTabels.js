@@ -35,15 +35,29 @@ const columns = [
     { name: 'objpreis', align: 'right', label: 'Summe', field: 'objpreis', sortable: true,  sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
 ]
 
-const columnsGast = [
-    { name: 'vorname', align: 'left', label: vorname, field: 'vorname'},
-    { name: 'name', align: 'left', label: nachname, field: 'name'},
-    { name: 'mail', align: 'left', label: mail, field: 'mail'},
-    { name: 'memo', align: 'left', label: memo, field: 'memo'},
-    { name: 'ehinweis', align: 'left', label: ehinweis, field: 'ehinweis'},
-    { name: 'tel', align: 'left', label: telefon, field: 'tel'},
-]
+const columnsGastVisableColumns = []
 
+if (showGastVorname == 1)
+    columnsGastVisableColumns.push({ name: 'vorname', align: 'left', label: vorname, field: 'vorname'});
+
+if (showGastName == 1)
+    columnsGastVisableColumns.push({ name: 'name', align: 'left', label: nachname, field: 'name'});
+
+if (showGastMail == 1)
+    columnsGastVisableColumns.push({ name: 'mail', align: 'left', label: mail, field: 'mail'});
+
+if (showGastTel == 1)
+    columnsGastVisableColumns.push({ name: 'tel', align: 'left', label: telefon, field: 'tel'});
+
+if (showGastHinweis == 1)
+    columnsGastVisableColumns.push({ name: 'memo', align: 'left', label: memo, field: 'memo'});
+
+if (showGastEigentuemerhinweis == 1)
+    columnsGastVisableColumns.push({ name: 'ehinweis', align: 'left', label: ehinweis, field: 'ehinweis'});
+
+
+
+const columnsGast = columnsGastVisableColumns;
 const columnsLeist = [
     { name: 'nr', align: 'left', label: lnr, field: 'nr',  sortable: true },
     { name: 'anz', align: 'left', required: true, label: ltitel, field: 'anz', sortable: true},
@@ -240,7 +254,8 @@ for (var i = 0; i < rowsRechnung2.length; i++)
     rowsRechnung2[i]['to'] = day + '.' + monat + '.' + jahr
 }
 var checkName = []
-for (let i = 0; i < rowsRechnung2.length; i++) {
+for (let i = 0; i < rowsRechnung2.length; i++)
+{
     checkName.push(rowsRechnung2[i]['rechnr'])
 }
 /*---------------------------------------------------*/
@@ -281,7 +296,6 @@ const app = Vue.createApp({
         const val = ref([])
         const a64 = ref(false)
 
-
         const datumVonBis = ref('')
         const abrDatum = ref('')
         const datumVonBisVorg = ref('')
@@ -298,7 +312,8 @@ const app = Vue.createApp({
         const messageValue = ref()
 
         return {
-            test() {
+            test()
+            {
                 dialog = true
             },
             Label_ID: 'ID',
@@ -413,7 +428,6 @@ const app = Vue.createApp({
 
                         for (let i = 0; i < rows.length; i++)
                             sum += parseFloat(rows[i]['innerHTML'].replace(',', '.').replace(' €', ''));
-
                     }
 
                     $('#gesammtVorg').html(gesammtSumme + ': ' + sum.toFixed(2).replace('.', ',') + ' €')
@@ -451,7 +465,6 @@ const app = Vue.createApp({
             mailSendInputBesch,
             mailSendInputCC,
             mailSendBTNCheck: true,
-
 
             initialPagination:
             {
@@ -713,15 +726,12 @@ const app = Vue.createApp({
                 for (let i = 0; i < mailSlitt.length; i++)
                     returnString = returnString + '<div style="width: max-content; float: left; margin-right: 8px; margin-bottom: 8px;"> <div style="width: max-content; padding: 0px 5px; border-radius: 5px; background-color: #e6e6e6; box-shadow: 0 1px 5px #0003, 0 2px 2px #00000024, 0 3px 1px -2px #0000001f; margin-bottom: 8px;">' + mailSlitt[i] + '</div></div>'
 
-
                 $('#selectDivMultiMail').html(returnString)
 
                 if (mailSendInputCC.value === '' || emailPattern.test(mailSendInputCC.value))
                     return true
                 else
                     return false
-
-
             },
 
             sendAbrMailJs()
@@ -1002,7 +1012,6 @@ const app = Vue.createApp({
 
                         if (filterArtAbrModel.value == '')
                         {
-
                             back = []
                             for (let i = 0; i < rows.value.length; i++)
                             {
@@ -1194,11 +1203,12 @@ const app = Vue.createApp({
                             if (vonBis !== '')
                             {
                                 vonBis = vonBis.split("  -  ");
+                                console.log(vonBis)
 
                                 back = []
                                 for (let i = 0; i < rowsRechnung.value.length; i++)
                                 {
-                                    if ((rowsRechnung.value[i]['rechnr'] === id || id === '') && (rowsRechnung.value[i]['datum'] === datum || datum === '') && (new Date(rowsRechnung.value[i]['von'].split('.').reverse().join('/')) >= new Date(vonBis[0].split('.').reverse().join('/')) || vonBis === '') && (new Date(rowsRechnung.value[i]['von'].split('.').reverse().join('/')) <= new Date(vonBis[1].split('.').reverse().join('/')) || vonBis === '') )
+                                    if ((rowsRechnung.value[i]['rechnr'] === id || id === '') &&  (new Date(rowsRechnung.value[i]['von'].split('.').reverse().join('/')) >= new Date(vonBis[0].split('.').reverse().join('/')) || vonBis === '') && (new Date(rowsRechnung.value[i]['von'].split('.').reverse().join('/')) <= new Date(vonBis[1].split('.').reverse().join('/')) || vonBis === '') )
                                         back.push(rowsRechnung.value[i])
                                 }
                             }
@@ -1218,7 +1228,7 @@ const app = Vue.createApp({
                                 back = []
                                 for (let i = 0; i < rowsRechnung.value.length; i++)
                                 {
-                                    if ((rowsRechnung.value[i]['rechnr'] === id || id === '') && (rowsRechnung.value[i]['datum'] === datum || datum === '') && (new Date(rowsRechnung.value[i]['to'].split('.').reverse().join('/')) >= new Date(vonBis[0].split('.').reverse().join('/')) || vonBis === '') && (new Date(rowsRechnung.value[i]['to'].split('.').reverse().join('/')) <= new Date(vonBis[1].split('.').reverse().join('/')) || vonBis === '') )
+                                    if ((rowsRechnung.value[i]['rechnr'] === id || id === '') && (new Date(rowsRechnung.value[i]['to'].split('.').reverse().join('/')) >= new Date(vonBis[0].split('.').reverse().join('/')) || vonBis === '') && (new Date(rowsRechnung.value[i]['to'].split('.').reverse().join('/')) <= new Date(vonBis[1].split('.').reverse().join('/')) || vonBis === '') )
                                         back.push(rowsRechnung.value[i])
                                 }
                             }
@@ -1238,7 +1248,7 @@ const app = Vue.createApp({
                                 back = []
                                 for (let i = 0; i < rowsRechnung.value.length; i++)
                                 {
-                                    if ((rowsRechnung.value[i]['rechnr'] === id || id === '') && (rowsRechnung.value[i]['datum'] === datum || datum === '') && (new Date(rowsRechnung.value[i]['von'].split('.').reverse().join('/')) >= new Date(vonBis[0].split('.').reverse().join('/')) || vonBis === '') && (new Date(rowsRechnung.value[i]['to'].split('.').reverse().join('/')) <= new Date(vonBis[1].split('.').reverse().join('/')) || vonBis === '') )
+                                    if ((rowsRechnung.value[i]['rechnr'] === id || id === '') && (new Date(rowsRechnung.value[i]['von'].split('.').reverse().join('/')) >= new Date(vonBis[0].split('.').reverse().join('/')) || vonBis === '') && (new Date(rowsRechnung.value[i]['to'].split('.').reverse().join('/')) <= new Date(vonBis[1].split('.').reverse().join('/')) || vonBis === '') )
                                         back.push(rowsRechnung.value[i])
                                 }
                             }

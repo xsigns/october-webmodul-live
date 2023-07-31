@@ -60,18 +60,18 @@
             $('#anreise').data('dateRangePicker').open();
         });
         var picker = $('#ctrl_anreise').dateRangePicker({
-            startDate: new Date(),
             separator: '',
             selectForward: true,
             autoClose:true,
             format: 'DD.MM.YYYY',
-            //alwaysOpen:true,
             startOfWeek: 'monday',
             startDate: '{{ mindate|raw}}',
             minDays: 2,
             saisons: {{ saisons|raw }},
             blocked: {{ blockeddates|raw }},
             language: '{{ lang }}',
+            //wechselleiste: '{{ wechselleiste }}',
+            //wechselleisteStart: {{ wechselleisteStart }},
             // showTopbar:false,
             beforeShowDay: function(t) {
                 if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)

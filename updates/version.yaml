@@ -815,3 +815,14 @@
     - Verbesserungen Belegungsplan
     - Verbesserungen Datenbank
     - update78.php
+3.8.1:
+    - Fehlerkorrekturen Angebote
+3.8.2:
+    - Fehlerkorrekturen im Datepicker
+    - Verbesserungen für den Eigentümerlogin
+3.8.3:
+    - Erweiterung der Abschlusskomponente für die Buchungsmaske
+    - Fehlerkorrekturen im Belegungsplan
+    - Fehlerkorrekturen im Datepicker für den Preisrechner und der Buchungsmaske
+    - Verbesserungen für den Datepicker
+    - Verbesserungen für den Eigentümerlogin
