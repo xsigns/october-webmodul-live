@@ -1,11 +1,11 @@
 <div class="fewo-buchung-cal d-inline-block w-100 mt-3">
     <div class="buchung_anreise  col-6 col-md-4 col-lg-2 p-0 float-left mr-2 mb-2 mb-md-0">
          <div class="label label_anreise">{{ labels.anreise }}</div>
-         <input type="text" id="ctrl_anreise" name="anreise" autocomplete="off" required class="s-anreise datepicker form-control" value="{{ anreise }}" readonly>
+         <input type="text" id="ctrl_anreise" name="anreise" autocomplete="off" required class="s-anreise datepicker form-control" value="{{ anreise }}">
     </div>
     <div class="buchung_abreise col-6 col-md-4 col-lg-2 p-0 float-left mr-2">
         <div class="label label_abreise">{{ labels.abreise }}</div>
-        <input type="text" id="ctrl_abreise" name="abreise" autocomplete="off" required class="s-abreise datepicker form-control" value="{{ abreise }}" readonly>
+        <input type="text" id="ctrl_abreise" name="abreise" autocomplete="off" required class="s-abreise datepicker form-control" value="{{ abreise }}">
     </div>
  </div>
 <div id="error-anreise"></div>
@@ -70,8 +70,8 @@
             saisons: {{ saisons|raw }},
             blocked: {{ blockeddates|raw }},
             language: '{{ lang }}',
-            wechselleiste: '{{ wechselleiste }}',
-            wechselleisteStart: {{ wechselleisteStart }},
+            //wechselleiste: '{{ wechselleiste }}',
+            //wechselleisteStart: {{ wechselleisteStart }},
             // showTopbar:false,
             beforeShowDay: function(t) {
                 if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)

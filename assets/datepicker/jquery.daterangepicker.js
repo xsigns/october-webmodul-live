@@ -837,8 +837,10 @@
             function gotoNextMonth_stickily(self) {
                 var nextMonth1 = nextMonth(opt.month1);
                 var nextMonth2 = nextMonth(opt.month2);
-                if (isMonthOutOfBounds(nextMonth2)) return;
-                if (!opt.singleDate && compare_month(nextMonth1, nextMonth2) >= 0) return;
+                if (isMonthOutOfBounds(nextMonth2))
+                    return;
+                if (!opt.singleDate && compare_month(nextMonth1, nextMonth2) >= 0)
+                    return;
                 showMonth(nextMonth1, 'month1');
                 showMonth(nextMonth2, 'month2');
                 showSelectedDays();
@@ -1416,40 +1418,51 @@
         }
 
         function isValidTime(time) {
-
             time = parseInt(time, 10);
-            if (opt.startDate && compare_day(time, opt.startDate) < 0) return false;
-            if (opt.endDate && compare_day(time, opt.endDate) > 0) return false;
+            if (opt.startDate && compare_day(time, opt.startDate) < 0)
+                return false;
+            if (opt.endDate && compare_day(time, opt.endDate) > 0)
+                return false;
             if (opt.start && !opt.end && !opt.singleDate) {
                 //check maxDays and minDays setting
-                if (opt.maxDays > 0 && countDays(time, opt.start) > opt.maxDays) return false;
-                if (opt.minDays > 0 && countDays(time, opt.start) < opt.minDays) return false;
+                if (time === opt.start)
+                    return true;
+                if (opt.maxDays > 0 && countDays(time, opt.start) > opt.maxDays)
+                    return false;
+                if (opt.minDays > 0 && countDays(time, opt.start) < opt.minDays)
+                    return false;
 
                 //check selectForward and selectBackward
-                if (opt.selectForward && time < opt.start) return false;
-                if (opt.selectBackward && time > opt.start) return false;
+                if (opt.selectForward && time <= opt.start)
+                    return false;
+
+                if (opt.selectBackward && time > opt.start)
+                    return false;
 
                 //check disabled days
                 if (opt.beforeShowDay && typeof opt.beforeShowDay == 'function') {
-                    var valid = true;
-                    var timeTmp = time;
+                    let valid = true;
+                    let timeTmp = time;
                     while (countDays(timeTmp, opt.start) > 1) {
-                        var arr = opt.beforeShowDay(new Date(timeTmp));
+                        let arr = opt.beforeShowDay(new Date(timeTmp));
                         if (!arr[0]) {
                             valid = false;
                             break;
                         }
-                        if (Math.abs(timeTmp - opt.start) < 86400000) break;
-                        if (timeTmp > opt.start) timeTmp -= 86400000;
-                        if (timeTmp < opt.start) timeTmp += 86400000;
+                        if (Math.abs(timeTmp - opt.start) < 86400000)
+                            break;
+                        if (timeTmp > opt.start)
+                            timeTmp -= 86400000;
+                        if (timeTmp < opt.start)
+                            timeTmp += 86400000;
                     }
-                    if (!valid) return false;
+                    if (!valid)
+                        return false;
                 }
 
             }
             return true;
         }
-
 
         function updateSelectableRange() {
             box.find('.day.invalid.tmp').removeClass('tmp invalid').addClass('valid');
@@ -1498,8 +1511,8 @@
         }
 
         function dayHovering(day) {
-            var hoverTime = parseInt(day.attr('time'));
-            var tooltip = '';
+            let hoverTime = parseInt(day.attr('time'));
+            let tooltip = '';
 
             if (day.hasClass('has-tooltip') && day.attr('data-tooltip')) {
                 tooltip = '<span class="tooltip-content">' + day.attr('data-tooltip') + '</span>';
@@ -1509,9 +1522,7 @@
                     day.addClass('hovering');
                 } else {
                     box.find('.day').each(function() {
-                        var time = parseInt($(this).attr('time')),
-                            start = opt.start,
-                            end = opt.end;
+                        let time = parseInt($(this).attr('time'));
 
                         if (time === hoverTime) {
                             $(this).addClass('hovering');
@@ -1519,13 +1530,7 @@
                             $(this).removeClass('hovering');
                         }
 
-                        if (
-                            (opt.start && !opt.end) &&
-                            (
-                                (opt.start < time && hoverTime >= time) ||
-                                (opt.start > time && hoverTime <= time)
-                            )
-                        ) {
+                        if ((opt.start && !opt.end) && ((opt.start < time && hoverTime >= time) || (opt.start > time && hoverTime <= time))) {
                             $(this).addClass('hovering');
                         } else {
                             $(this).removeClass('hovering');
@@ -1533,8 +1538,8 @@
                     });
 
                     if (opt.start && !opt.end) {
-                        var days = countDays(hoverTime, opt.start);
-                        if (opt.hoveringTooltip) {
+                        let days = countDays(hoverTime, opt.start);
+                        if (opt.hoveringTooltip && !(hoverTime === opt.start)) {
                             if (typeof opt.hoveringTooltip == 'function') {
                                 tooltip = opt.hoveringTooltip(days, opt.start, hoverTime, day);
                             } else if (opt.hoveringTooltip === true && days > 1) {
@@ -1546,20 +1551,19 @@
             }
 
             if (tooltip) {
-                var posDay = day.offset();
-                var posBox = box.offset();
+                let posDay = day.offset();
+                let posBox = box.offset();
 
-                var _left = posDay.left - posBox.left;
-                var _top = posDay.top - posBox.top;
+                let _left = posDay.left - posBox.left;
+                let _top = posDay.top - posBox.top;
                 _left += day.width() / 2;
 
-
-                var $tip = box.find('.date-range-length-tip');
-                var w = $tip.css({
+                let $tip = box.find('.date-range-length-tip');
+                let w = $tip.css({
                     'visibility': 'hidden',
                     'display': 'none'
                 }).html(tooltip).width();
-                var h = $tip.height();
+                let h = $tip.height();
                 _left -= w / 2;
                 _top -= h;
                 setTimeout(function() {
@@ -1673,16 +1677,16 @@
             box.find('.end-day').html('...');
             box.find('.selected-days').hide();
             if (opt.start) {
-                box.find('.start-day').html(getDateString(new Date(parseInt(opt.start))));
+                box.find('.start-day').html(getSelectedDateString(new Date(parseInt(opt.start))) + ' - ');
             }
             if (opt.end) {
-                box.find('.end-day').html(getDateString(new Date(parseInt(opt.end))));
+                box.find('.end-day').html(getSelectedDateString(new Date(parseInt(opt.end))));
             }
-            var dateRange;
+            let dateRange;
             if (opt.start && opt.singleDate) {
                 box.find('.apply-btn').removeClass('disabled');
-                dateRange = getDateString(new Date(opt.start));
-                opt.setValue.call(selfDom, dateRange, getDateString(new Date(opt.start)), getDateString(new Date(opt.end)));
+                dateRange = getSelectedDateString(new Date(opt.start));
+                opt.setValue.call(selfDom, dateRange, getSelectedDateString(new Date(opt.start)), getSelectedDateString(new Date(opt.end)));
 
                 if (initiated && !silent) {
                     $(self).trigger('datepicker-change', {
@@ -1693,8 +1697,8 @@
             } else if (opt.start && opt.end) {
                 box.find('.selected-days').show().find('.selected-days-num').html(countDays(opt.end, opt.start)-1);
                 box.find('.apply-btn').removeClass('disabled');
-                dateRange = getDateString(new Date(opt.start)) + opt.separator + getDateString(new Date(opt.end));
-                opt.setValue.call(selfDom, dateRange, getDateString(new Date(opt.start)), getDateString(new Date(opt.end)));
+                dateRange = getSelectedDateString(new Date(opt.start)) + opt.separator + getSelectedDateString(new Date(opt.end));
+                opt.setValue.call(selfDom, dateRange, getSelectedDateString(new Date(opt.start)), getSelectedDateString(new Date(opt.end)));
                 if (initiated && !silent) {
                     $(self).trigger('datepicker-change', {
                         'value': dateRange,
@@ -1707,6 +1711,10 @@
             } else {
                 box.find('.apply-btn').addClass('disabled');
             }
+        }
+
+        function getSelectedDateString(d) {
+            return moment(d).format('DD.MM.YYYY');
         }
 
         function countDays(start, end) {
@@ -1798,7 +1806,8 @@
         }
 
         function showSelectedDays() {
-            if (!opt.start && !opt.end) return;
+            if (!opt.start && !opt.end)
+                return;
             box.find('.day').each(function() {
                 var time = parseInt($(this).attr('time')),
                     start = opt.start,
@@ -2333,21 +2342,20 @@
         }
 
         function createMonthHTML(d) {
-            var days = [];
+            let days = [];
             d.setDate(1);
-            var lastMonth = new Date(d.getTime() - 86400000);
-            var now = new Date();
-
-            var dayOfWeek = d.getDay();
+            let lastMonth = new Date(d.getTime() - 86400000);
+            let now = new Date();
+            let dayOfWeek = d.getDay();
             if ((dayOfWeek === 0) && (opt.startOfWeek === 'monday')) {
                 // add one week
                 dayOfWeek = 7;
             }
-            var today, valid;
+            let today, valid;
 
             if (dayOfWeek > 0) {
-                for (var i = dayOfWeek; i > 0; i--) {
-                    var day = new Date(d.getTime() - 86400000 * i);
+                for (let i = dayOfWeek; i > 0; i--) {
+                    let day = new Date(d.getTime() - 86400000 * i);
                     valid = isValidTime(day.getTime());
                     if (opt.startDate && compare_day(day, opt.startDate) < 0) valid = false;
                     if (opt.endDate && compare_day(day, opt.endDate) > 0) valid = false;
@@ -2360,36 +2368,37 @@
                     });
                 }
             }
-            var toMonth = d.getMonth();
-            for (var i = 0; i < 40; i++) {
+            let toMonth = d.getMonth();
+            for (let i = 0; i < 40; i++) {
                 today = moment(d).add(i, 'days').toDate();
                 valid = isValidTime(today.getTime());
                 if (opt.startDate && compare_day(today, opt.startDate) < 0) valid = false;
                 if (opt.endDate && compare_day(today, opt.endDate) > 0) valid = false;
                 days.push({
                     date: today,
-                    type: today.getMonth() == toMonth ? 'toMonth' : 'nextMonth',
+                    type: today.getMonth() === toMonth ? 'toMonth' : 'nextMonth',
                     day: today.getDate(),
                     time: today.getTime(),
                     valid: valid
                 });
             }
-            var html = [];
-            var no_arrival = false;
+            let html = [];
+            let no_arrival = false;
 
-            for (var week = 0; week < 6; week++) {
-                if (days[week * 7].type == 'nextMonth') break;
+            for (let week = 0; week < 6; week++) {
+                if (days[week * 7].type === 'nextMonth') break;
 
-                for (var day = 0; day < 7; day++) {
-                    var _day = (opt.startOfWeek == 'monday') ? day + 1 : day;
+                for (let day = 0; day < 7; day++) {
+                    let _day = (opt.startOfWeek === 'monday') ? day + 1 : day;
                     today = days[week * 7 + _day];
-                    var highlightToday = moment(today.time).format('L') == moment(now).format('L');
+                    let highlightToday = moment(today.time).format('L') === moment(now).format('L');
                     today.extraClass = '';
                     today.tooltip = '';
 
+                    let _isday;
                     if (today.valid && opt.beforeShowDay && typeof opt.beforeShowDay == 'function') {
-                        var _isday = moment(today.time).toDate();
-                        var _r = opt.beforeShowDay(moment(today.time).toDate());
+                        _isday = moment(today.time).toDate();
+                        let _r = opt.beforeShowDay(moment(today.time).toDate());
 
                         today.valid = _r[0];
                         today.extraClass = _r[1] || '';
@@ -2399,24 +2408,26 @@
                             today.extraClass += ' has-tooltip ';
                     }
 
-                    var weekday = moment(_isday).weekday();
-                    for (var i = 0; i <= opt.saisons.length - 1; i++) {
-                        var fromDate = moment(opt.saisons[i][0]);
-                        var toDate = moment(opt.saisons[i][1] + " 23:59:59", "YYYY-MM-DD hh:mm:ss");
+                    let weekday = moment(_isday).weekday();
+                    for (let i = 0; i <= opt.saisons.length - 1; i++) {
+                        let fromDate = moment(opt.saisons[i][0]);
+                        let toDate = moment(opt.saisons[i][1] + " 23:59:59", "YYYY-MM-DD hh:mm:ss");
 
                         if (moment(today.time).toDate() >= fromDate && moment(today.time).toDate() <= toDate) //treffer in Saisonzeit
                         {
                             break;
                         }
                     }
-                    var beforeday = days[week * 7 + _day -1];
-                    var afterday = days[week * 7 + _day +1];
+
+                    let beforeday = days[week * 7 + _day -1];
+                    let afterday = days[week * 7 + _day +1];
+
                     if(beforeday.valid === false && afterday.valid === false)
                         today.valid = false;
 
                     let checkArrivalAndDeparture = checkNext(today.time);
 
-                    var todayDivAttr = {
+                    let todayDivAttr = {
                         time: today.time,
                         'data-tooltip': today.tooltip,
                         'class': 'day ' + today.type + (today.extraClass ? today.extraClass : '') + (today.valid ? ' valid' : ' invalid') + (highlightToday ? ' real-today' : '') + (checkArrivalAndDeparture) + (highlightToday && opt.todayInvalid === true ? ' todayInvalid invalid' : '')
@@ -2507,7 +2518,7 @@
 
         function getDefaultTime() {
             let defaultTime = opt.defaultTime ? opt.defaultTime : new Date();
-            defaultTime.setHours(0, 0, 0, 0);
+            //defaultTime.setHours(0, 0, 0, 0);
 
             if (opt.lookBehind) {
                 if (opt.startDate && compare_month(defaultTime, opt.startDate) < 0)

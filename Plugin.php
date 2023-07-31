@@ -100,25 +100,17 @@ class Plugin extends PluginBase
     public function numberToBoolean($number)
     {
         if ($number == 1)
-        {
             return 'true';
-        }
         else
-        {
             return 'false';
-        }
     }
 
     public static function checkFileExists($file_path)
     {
         if (file_exists($file_path))
-        {
             return true;
-        }
         else
-        {
             return false;
-        }
     }
 
     public function pluginDetails()
@@ -369,9 +361,7 @@ class Plugin extends PluginBase
         return $permissions;
     }
 
-    public function registerNavigation()
-    {
-    }
+    public function registerNavigation() {}
 
     public function register()
     {
@@ -441,9 +431,7 @@ class Plugin extends PluginBase
                 return 'n/a';
         }
         else
-        {
             return 'n/a';
-        }
     }
 
     public function evalPropertyDetailsListColumn($value, $column, $record)
@@ -460,9 +448,7 @@ class Plugin extends PluginBase
                 return 'n/a';
         }
         else
-        {
             return 'n/a';
-        }
     }
 
     public function registerSchedule($schedule)
@@ -502,9 +488,7 @@ class Plugin extends PluginBase
     protected function bindNotificationEvents()
     {
         if (!class_exists(Notifier::class))
-        {
             return;
-        }
 
         Notifier::bindEvents([
             'xsigns.fewo.activate' => \xsigns\fewo\NotifyRules\UserActivatedEvent::class,

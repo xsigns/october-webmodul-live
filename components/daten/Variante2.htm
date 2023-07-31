@@ -558,6 +558,7 @@
                                                         row-key="nr"
                                                         no-data-label="{{ noDataFoeund }}"
                                                         hide-pagination
+                                                        v-if="props.row.blockgast == false"
                                                     ></q-table>
                                                 {% endif %}
                                                 {% if showleistung %}
@@ -781,6 +782,14 @@
     var objpers = '{{ labels.objpers }}';
     var objqm = '{{ labels.objqm }}';
     var objint = '{{ labels.objint }}';
+
+    // Show Gastdaten
+    var showGastVorname = '{{ showGastVorname }}';
+    var showGastName = '{{ showGastName }}';
+    var showGastMail = '{{ showGastEmail }}';
+    var showGastTel = '{{ showGastTel }}';
+    var showGastHinweis = '{{ showGastHinweis }}';
+    var showGastEigentuemerhinweis = '{{ showGastEigentuemerhinweis }}';
 
     var sortVor = '{{ labels.sortVor }}';
     var sortBack = '{{ labels.sortBack }}';
