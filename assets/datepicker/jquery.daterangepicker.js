@@ -1499,7 +1499,7 @@
 
                         if (firstBlockedDay) {
                             if (moment(firstBlockedDay).diff(moment(currentDayToCheck), 'days') > 0) {
-                                char === 'O' || char === 'C' ? $(this).addClass('valid tmp').removeClass('invalid noarrival') : $(this).addClass('invalid nodepartureSelect').removeClass('valid')
+                                char === 'O' || char === 'C' || char === '' ? $(this).addClass('valid tmp').removeClass('invalid noarrival') : $(this).addClass('invalid nodepartureSelect').removeClass('valid')
                             } else {
                                 $(this).addClass('invalid').removeClass('valid')
                             }

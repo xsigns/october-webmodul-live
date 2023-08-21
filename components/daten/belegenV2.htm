@@ -215,10 +215,6 @@
     }
 
     $(document).ready(function() {
-        var test = '{{ invalid|raw }}';
-        console.log(test);
-
-
         $('#cleardates').click(function(evt){
             evt.stopPropagation();
             $('#ctrl_anreise').data('dateRangePicker').clear();
@@ -231,7 +227,6 @@
             $('#anreise').data('dateRangePicker').open();
         });
         var picker = $('#period').dateRangePicker({
-            startDate: new Date(),
             separator: '',
             selectForward: true,
             autoClose:true,
