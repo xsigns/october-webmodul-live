@@ -49,12 +49,26 @@ if (showGastMail == 1)
 if (showGastTel == 1)
     columnsGastVisableColumns.push({ name: 'tel', align: 'left', label: telefon, field: 'tel'});
 
+if (showOrt == 1)
+    columnsGastVisableColumns.push({ name: 'ort', align: 'left', label: ort, field: 'ort'});
+
+if (showPlz == 1)
+    columnsGastVisableColumns.push({ name: 'plz', align: 'left', label: plz, field: 'plz'});
+
+if (showStrasse == 1)
+    columnsGastVisableColumns.push({ name: 'strasse', align: 'left', label: strasse, field: 'strasse'});
+
+if (showLand == 1)
+    columnsGastVisableColumns.push({ name: 'land', align: 'left', label: land, field: 'land'});
+
+if (showMobil == 1)
+    columnsGastVisableColumns.push({ name: 'mobil', align: 'left', label: mobil, field: 'mobil'});
+
 if (showGastHinweis == 1)
     columnsGastVisableColumns.push({ name: 'memo', align: 'left', label: memo, field: 'memo'});
 
 if (showGastEigentuemerhinweis == 1)
     columnsGastVisableColumns.push({ name: 'ehinweis', align: 'left', label: ehinweis, field: 'ehinweis'});
-
 
 
 const columnsGast = columnsGastVisableColumns;
@@ -63,7 +77,7 @@ const columnsLeist = [
     { name: 'anz', align: 'left', required: true, label: ltitel, field: 'anz', sortable: true},
     { name: 'text', align: 'left', label: lanz, field: 'text',  sortable: true },
     { name: 'epreis', align: 'right', label: lepreis, field: 'epreis',  sortable: true },
-    { name: 'summe', align: 'right', label: lsumme, field: 'summe', sortable: true }
+    { name: 'summe', align: 'right', label: lsumme, field: 'summe', sortable: true },
 ]
 
 const columnsGesammt = [

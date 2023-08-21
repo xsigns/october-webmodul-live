@@ -829,3 +829,9 @@
 3.8.4:
     - Verbesserungen Preisausgabe
     - Fehlerkorrekturen beim Anzeigen der Zuschläge
+3.8.5:
+    - Verbesserungen für Eigentümerlogin im Bereich Belegen
+    - Verbesserungen für die Ausgabe von Bildern
+    - Verbesserungen für Angebote im Belegungsplan
+    - Erweiterung der Gastdaten im Eigentümerlogin
+    - Fehlerkorrekturen für den Datepicker

@@ -1167,8 +1167,7 @@
         }
 
         function clearSelection() {
-
-            var time = opt.start;
+            let time = opt.start;
 
             opt.start = false;
             opt.end = false;
@@ -1184,7 +1183,7 @@
             showSelectedInfo();
             showSelectedDays();
             clearHovering();
-
+            redrawDatePicker();
         }
 
         function handleStart(time) {
@@ -1240,8 +1239,8 @@
                 return;
             }
 
-            if (day.hasClass('nodeparture') && opt.end !== false)
-                return;
+            /*if (day.hasClass('nodeparture') && opt.end !== false)
+                return;*/
 
             if (day.hasClass('invalid') || day.hasClass('lastMonth')) return;
             var time = day.attr('time');
@@ -1468,7 +1467,7 @@
             box.find('.day.invalid.tmp').removeClass('tmp invalid').addClass('valid');
             if (opt.start && !opt.end) {
                 if(opt.showArrow) {
-                    var offset = $(self).width() +40;
+                    let offset = $(self).width() + 40;
                     box.find('.cal-arrow').css({left: offset});
                 }
 
@@ -1476,10 +1475,19 @@
                 let wechselleisteStart = opt.wechselleisteStart;
                 let selectedDate = moment(moment(opt.start)).unix();
                 let diff = Math.floor((selectedDate - wechselleisteStart) / 86400);
-                let charList = "";
+                let blockedDays = opt.blocked;
 
-                box.find('.day.toMonth.valid').each(function() {
-                    var time = parseInt($(this).attr('time'), 10);
+                let blockedDaysNachAnreise = blockedDays.filter(item => {
+                    return moment(item) >= moment(opt.start)
+                })
+
+                let firstBlockedDay = false;
+
+                if (blockedDaysNachAnreise.length > 0)
+                    firstBlockedDay = moment(blockedDaysNachAnreise[0])
+
+                box.find('.day.toMonth').each(function() {
+                    let time = parseInt($(this).attr('time'), 10);
 
                     if (opt.start < time) {
                         let current = moment(moment(time)).unix();
@@ -1487,12 +1495,16 @@
                         let index = diff + curDiff;
                         let char = wechselleiste.charAt(index);
 
-                        charList += char.toString();
+                        let currentDayToCheck = moment(moment(time).format('YYYY-MM-DD'))
 
-                        if (charList.includes('OX') || charList.includes('OI') || charList.includes('XI')) {
-                            $(this).addClass('invalid tmp').removeClass('valid');
+                        if (firstBlockedDay) {
+                            if (moment(firstBlockedDay).diff(moment(currentDayToCheck), 'days') > 0) {
+                                char === 'O' || char === 'C' ? $(this).addClass('valid tmp').removeClass('invalid noarrival') : $(this).addClass('invalid nodepartureSelect').removeClass('valid')
+                            } else {
+                                $(this).addClass('invalid').removeClass('valid')
+                            }
                         } else {
-                            $(this).addClass('valid tmp').removeClass('invalid');
+                            char === 'X' || char === 'I' ? $(this).addClass('invalid nodepartureSelect').removeClass('valid') : $(this).addClass('valid tmp').removeClass('invalid noarrival')
                         }
                     }
 
@@ -1504,7 +1516,6 @@
 
                     if(!checkDay(time))
                         $(this).addClass('invalid nodeparture tmp').removeClass('valid');
-
                 });
             }
             return true;
@@ -1516,7 +1527,7 @@
 
             if (day.hasClass('has-tooltip') && day.attr('data-tooltip')) {
                 tooltip = '<span class="tooltip-content">' + day.attr('data-tooltip') + '</span>';
-            } else if (!day.hasClass('invalid') && !day.hasClass('lastMonth')) {
+            } else if ((!day.hasClass('invalid') && !day.hasClass('lastMonth')) || day.hasClass('nodepartureSelect')) {
                 if (opt.singleDate) {
                     box.find('.day.hovering').removeClass('hovering');
                     day.addClass('hovering');
@@ -2342,6 +2353,10 @@
         }
 
         function createMonthHTML(d) {
+            let myDate = moment(d).format('YYYY-MM-DD')
+            let myTime = moment().format('H:mm:ss')
+            d = moment(myDate + ' ' + myTime).toDate()
+
             let days = [];
             d.setDate(1);
             let lastMonth = new Date(d.getTime() - 86400000);

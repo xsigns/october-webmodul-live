@@ -439,7 +439,7 @@
                                             </q-card>
                                         </div>
                                         <button class="ban display-none" @click="close([[ props.row.id ]])" :name="[[ props.row.id ]]"></button>
-                                        <q-card class="my-card transform display-none fly gastdaten" style="width: 90%;" :id="[[ props.row.id ]]">
+                                        <q-card class="my-card transform display-none fly gastdaten" style="width: 90%; height: fit-content; max-height: 90%; display: flow; overflow: auto;" :id="[[ props.row.id ]]">
                                             <q-card-section class="bg-primary text-white">
                                                 <div class="text-h4">{{ labels.Gastdaten }}</div>
                                                 <div class="text"><b>{{ labels.VorgangID }}</b>: [[ props.row.id ]]</div>
@@ -466,6 +466,48 @@
                                                     </q-card-actions>
                                                 {% endif %}
 
+                                                {% if showGastTel %}
+                                                    <q-card-actions vertical :class="[[ props.row.tel ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.telefon }}</div>
+                                                        <div class="text3">[[ props.row.tel ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showMobil %}
+                                                    <q-card-actions vertical :class="[[ props.row.mobil ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.mobil }}</div>
+                                                        <div class="text3">[[ props.row.mobil ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showStrasse %}
+                                                    <q-card-actions vertical :class="[[ props.row.strasse ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.strasse }}</div>
+                                                        <div class="text3">[[ props.row.strasse ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showOrt %}
+                                                    <q-card-actions vertical :class="[[ props.row.ort ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.ort }}</div>
+                                                        <div class="text3">[[ props.row.ort ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showPlz %}
+                                                    <q-card-actions vertical :class="[[ props.row.plz ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.plz }}</div>
+                                                        <div class="text3">[[ props.row.plz ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
+                                                {% if showLand %}
+                                                    <q-card-actions vertical :class="[[ props.row.land ]] == '' ? 'display-none' : ''">
+                                                        <div class="text2 text-grey-5">{{ labels.land }}</div>
+                                                        <div class="text3">[[ props.row.land ]]</div>
+                                                    </q-card-actions>
+                                                {% endif %}
+
                                                 {% if showGastHinweis %}
                                                     <q-card-actions vertical :class="[[ props.row.memo ]] == '' ? 'display-none' : ''">
                                                         <div class="text2 text-grey-5">{{ labels.memo }}</div>
@@ -477,13 +519,6 @@
                                                     <q-card-actions vertical :class="[[ props.row.ehinweis ]] == '' ? 'display-none' : ''">
                                                         <div class="text2 text-grey-5">{{ labels.ehinweis }}</div>
                                                         <div class="text3">[[ props.row.ehinweis ]]</div>
-                                                    </q-card-actions>
-                                                {% endif %}
-
-                                                {% if showGastTel %}
-                                                    <q-card-actions vertical :class="[[ props.row.tel ]] == '' ? 'display-none' : ''">
-                                                        <div class="text2 text-grey-5">{{ labels.telefon }}</div>
-                                                        <div class="text3">[[ props.row.tel ]]</div>
                                                     </q-card-actions>
                                                 {% endif %}
 
@@ -550,16 +585,121 @@
                                                 <!-- --------------------- -->
                                                 {% if showgastdaten %}
                                                     <q-table
-                                                        title="Gastdaten"
                                                         :rows="props.row.gastdaten"
                                                         :columns="columnsGast"
+                                                        grid
                                                         color="primary"
-                                                        class="gastdatenTabel"
+                                                        class="gastdatenTabel gridGastGroß shadow-1"
                                                         row-key="nr"
                                                         no-data-label="{{ noDataFoeund }}"
                                                         hide-pagination
                                                         v-if="props.row.blockgast == false"
-                                                    ></q-table>
+                                                    >
+                                                        <template v-slot:item="props">
+                                                            <q-card flat bordered class="my-card">
+                                                                <q-card-section>
+                                                                    <div class="text-h6">Gastdaten</div>
+                                                                </q-card-section>
+                                                                {% if showGastVorname %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.vorname != ''">
+                                                                        <div class="w-40 table-head">{{ labels.vorname }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.vorname ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.name != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showGastName %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.name != ''">
+                                                                        <div class="w-40 table-head">{{ labels.name }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.name ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.mail != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showGastEmail %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.mail != ''">
+                                                                        <div class="w-40 table-head">{{ labels.mail }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.mail ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.tel != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showMobil %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.mobil != ''">
+                                                                        <div class="w-40 table-head">{{ labels.mobil }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.mobil ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.memo != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showGastTel %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.tel != ''">
+                                                                        <div class="w-40 table-head">{{ labels.tel }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.tel ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.ort != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showOrt %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.ort != ''">
+                                                                        <div class="w-40 table-head">{{ labels.ort }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.ort ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.plz != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showPlz %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.plz != ''">
+                                                                        <div class="w-40 table-head">{{ labels.plz }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.plz ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.strasse != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showStrasse %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.strasse != ''">
+                                                                        <div class="w-40 table-head">{{ labels.strasse }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.strasse ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.land != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showLand %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.land != ''">
+                                                                        <div class="w-40 table-head">{{ labels.land }}</div>
+                                                                        <div class="w-60 table-value">[[ props.row.land ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.mobil != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showGastHinweis %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.memo != ''">
+                                                                        <div class="w-100 table-head">Memo</div>
+                                                                        <div class="w-100">[[ props.row.memo ]]</div>
+                                                                    </q-card-section>
+
+                                                                    <q-separator inset v-if="props.row.ehinweis != ''"></q-separator>
+                                                                {% endif %}
+
+                                                                {% if showGastEigentuemerhinweis %}
+                                                                    <q-card-section class="q-pt-none" v-if="props.row.ehinweis != ''">
+                                                                        <div class="w-100 table-head">Hinweise</div>
+                                                                        <div class="w-100">[[ props.row.ehinweis ]]</div>
+                                                                    </q-card-section>
+                                                                {% endif %}
+                                                            </q-card>
+
+                                                        </template>
+                                                    </q-table>
                                                 {% endif %}
                                                 {% if showleistung %}
                                                     <q-table
@@ -768,6 +908,11 @@
     var memo = '{{ labels.memo }}';
     var ehinweis = '{{ labels.ehinweis }}';
     var telefon = '{{ labels.telefon }}';
+    var ort = '{{ labels.ort }}';
+    var plz = '{{ labels.plz }}';
+    var strasse = '{{ labels.strasse }}';
+    var land = '{{ labels.land }}';
+    var mobil = '{{ labels.mobil }}';
 
     // Labels Leistungen
     var lnr = '{{ labels.lnr }}';
@@ -790,6 +935,11 @@
     var showGastTel = '{{ showGastTel }}';
     var showGastHinweis = '{{ showGastHinweis }}';
     var showGastEigentuemerhinweis = '{{ showGastEigentuemerhinweis }}';
+    var showOrt = '{{ showOrt }}';
+    var showPlz = '{{ showPlz }}';
+    var showStrasse = '{{ showStrasse }}';
+    var showLand = '{{ showLand }}';
+    var showMobil = '{{ showMobil }}';
 
     var sortVor = '{{ labels.sortVor }}';
     var sortBack = '{{ labels.sortBack }}';

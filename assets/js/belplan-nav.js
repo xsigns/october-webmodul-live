@@ -369,9 +369,6 @@ Belplan.updateBuchung = function (clickedAnreise, clickedAbreise) {
         $('#period').data('dateRangePicker').setDateRange(clickedAnreise, clickedAbreise, true);
     else if ($('#ctrl_panreise').length !== 0)
         $('#ctrl_panreise').data('dateRangePicker').setDateRange(clickedAnreise, clickedAbreise, true);
-
-    if ($('#period').length !== 0)
-        $('#period').data('dateRangePicker').setDateRange(clickedAnreise, clickedAbreise, true);
     else if ($('#ctrl_anreise').length !== 0)
         $('#ctrl_anreise').data('dateRangePicker').setDateRange(clickedAnreise, clickedAbreise, true);
 
@@ -443,8 +440,9 @@ Belplan.setBelplanOffset = function (calid, offset) {
 };
 
 Belplan.loescheAuswahl = function() {
-    $('.nichtwaehlbar').css('pointer-events', 'none').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
-    $('.gewaehlt').removeClass('gewaehlt');
+    $('.tag').unbind("mouseenter").unbind("mouseleave");
+    Belplan.resetBelplan();
+    $('.waehlbar').css('pointer-events', 'all');
     $('#period').val(' - ');
 
     // Preisrechner
@@ -476,13 +474,15 @@ Belplan.dateDiff = function(anreise, abreise) {
 };
 
 Belplan.hoverEvent = function () {
-    $('.gewaehlt').on('mouseenter', function () {
-        $('.belplan-tooltip').remove();
-        $(this).css('position', 'relative').append(getTooltipContainer(anreiseMinDays, $(this).attr('data-xs-title')));
-    }).on('mouseleave', function() {
-        $('.belplan-tooltip').remove();
-        $(this).css('position', '');
-    });
+    if (waehleAnreise === false) {
+        $('.gewaehlt').mouseenter(function () {
+            $('.belplan-tooltip').remove();
+            $(this).css('position', 'relative').append(getTooltipContainer(anreiseMinDays, $(this).attr('data-xs-title')));
+        }).mouseleave(function() {
+            $('.belplan-tooltip').remove();
+            $(this).css('position', '');
+        });
+    }
 
     $('.nichtwaehlbar').on('click', function() {
         let clickedIndex = $('.tag').index(this);

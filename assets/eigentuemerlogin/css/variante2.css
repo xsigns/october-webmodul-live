@@ -246,7 +246,7 @@ label, .q-field--with-bottom {padding-bottom: 6px!important;}
 .filterbuttonEins {float: left}
 .filterbuttonZwei {float: right}
 .q-table__top.relative-position.row.items-center {margin-left: 0!important; margin-right: 0!important;}
-.gastdaten .q-card__actions.items-stretch.q-card__actions--vert.column {display: block;}
+.gastdaten .q-card__actions.items-stretch.q-card__actions--vert.column {display: flex;}
 .q-field__prepend.q-field__marginal.row.no-wrap.items-center {margin-left: 0!important; margin-right: 0!important;}
 .mobilQCard .q-checkbox.cursor-pointer.no-outline.row.inline.no-wrap.items-center.q-checkbox--dense {margin-left: 0!important; margin-right: 0!important;}
 .fly .q-table__grid-content.row {margin-left: -10px!important; margin-right: -10px!important;}
@@ -314,6 +314,14 @@ label, .q-field--with-bottom {padding-bottom: 6px!important;}
 .q-card.my-card.fly .q-table__grid-content.row {padding-top: 0px!important;}
 #summen {margin-top: 66px!important;}
 #summen .label_buchungsmaske.summen_beschreibung {font-weight: bold;}
+.gridGastGroß .q-card {width: 100%;}
+.gridGastGroß .q-card__section {white-space: normal;}
+.gridGastGroß .table-head {color: #9b9b9b;}
+.gridGastGroß .q-card__section {display: flex; flex-wrap: wrap;}
+.w-40 {width: 35%; float: left}
+.w-60 {width: 65%; float: left}
+.gridGastGroß .q-table__middle {display: none;}
+.gridGastGroß .q-table__grid-content.row {margin-left: 0px!important; margin-right: 0px!important; padding: 0px!important;}
 
 @-moz-document url-prefix() {
     .q-table__separator.col {display: none!important;}

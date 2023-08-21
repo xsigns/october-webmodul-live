@@ -31,7 +31,12 @@
 		box-sizing:initial
 		}
 		.invalid.nodeparture.tmp{
-			background-color:#bcde81;
+			background-color: #c7c0c0;
+			color: #fff !important;
+		}
+		.invalid.nodepartureSelect{
+			background-color: #bcde81;
+			color: #000 !important;
 		}
 		.dp-clearfix{
 			clear:both;
@@ -78,7 +83,7 @@
 		.date-picker-wrapper .month-wrapper .day.toMonth.valid{color:#000;background-color:#88c522 ;cursor:pointer}
 		.date-picker-wrapper .month-wrapper .day.toMonth.valid.noarrival{background-color:#bcde81;cursor: default}
 		.date-picker-wrapper .month-wrapper .day.toMonth.hovering{background-color: #4499ee; color: #fff;}
-		.date-picker-wrapper .month-wrapper .day.toMonth.hovering.noarrival{background-color: #4499ee; color: #fff;}
+		.date-picker-wrapper .month-wrapper .day.toMonth.hovering.noarrival{background-color: #4499ee; color: #fff !important;}
 		.date-picker-wrapper .month-wrapper .day.nextMonth{display:none}
 		/*.date-picker-wrapper .month-wrapper .day.real-today{background-color:#ffe684}*/
 		.date-picker-wrapper .month-wrapper .day.real-today.checked,.date-picker-wrapper .month-wrapper .day.real-today.hovering{background-color:#70ccd5}
