@@ -835,3 +835,5 @@
     - Verbesserungen für Angebote im Belegungsplan
     - Erweiterung der Gastdaten im Eigentümerlogin
     - Fehlerkorrekturen für den Datepicker
+3.8.6:
+    - Fehlerkorrekturen im Eigentümerlogin für Objektlinks
