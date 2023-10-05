@@ -842,3 +842,5 @@
     - Fehlerkorrekturen für Anfrage- und Buchungbuttons für die Mehrsprachigkeit
 3.8.8:
     - Fehlerkorrekturen beim laden der Preise für Angebote und die Ausgabe der Objekt-Url
+3.8.9:
+    - Ausgabe der Mintage in den Preisen für Objektdetails
