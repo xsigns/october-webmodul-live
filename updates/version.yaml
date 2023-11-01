@@ -826,3 +826,26 @@
     - Fehlerkorrekturen im Datepicker für den Preisrechner und der Buchungsmaske
     - Verbesserungen für den Datepicker
     - Verbesserungen für den Eigentümerlogin
+3.8.4:
+    - Verbesserungen Preisausgabe
+    - Fehlerkorrekturen beim Anzeigen der Zuschläge
+3.8.5:
+    - Verbesserungen für Eigentümerlogin im Bereich Belegen
+    - Verbesserungen für die Ausgabe von Bildern
+    - Verbesserungen für Angebote im Belegungsplan
+    - Erweiterung der Gastdaten im Eigentümerlogin
+    - Fehlerkorrekturen für den Datepicker
+3.8.6:
+    - Fehlerkorrekturen im Eigentümerlogin für Objektlinks
+3.8.7:
+    - Verbesserungen für den Eigentümerlogin im Bereich Belegen
+    - Fehlerkorrekturen für Anfrage- und Buchungbuttons für die Mehrsprachigkeit
+3.8.8:
+    - Fehlerkorrekturen beim laden der Preise für Angebote und die Ausgabe der Objekt-Url
+3.8.9:
+    - Ausgabe der Mintage in den Preisen für Objektdetails
+3.8.10:
+    - Fehlerkorrekturen für Angebote
+3.8.11:
+    - "!!! Ausgabe alternative Objekte/Zeiträume und Buchungslücken über die Objektliste möglich. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!"
+    - update79.php

@@ -4,6 +4,28 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.7.11
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Objektliste_** _default.htm_:  
+Der Folgende Code-Block muss **UNTER** den Code-Block ``{% if objekt.Adresse %} . . . {% endif %}`` eingefügt werden:
+````
+{% if objekt.alternativeZeitraeume %}
+    <div class="fewo-alternative">
+        {% for alternative in objekt.alternativeZeitraeume %}
+            <div class="fewo-alternative-item"><a href="{{ alternative.href }}">{{ alternative.label|raw }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if objekt.buchungsluecken %}
+    <div class="fewo-buchungsluecken">
+        {% for luecke in objekt.buchungsluecken %}
+            <div class="fewo-buchungsluecken-item"><a href="{{ luecke.href }}">{{ luecke.label|raw }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+````
+- - -
+
 ## Upgrade 3.7.6
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente **_Belegungsplan_** _default.htm_:  

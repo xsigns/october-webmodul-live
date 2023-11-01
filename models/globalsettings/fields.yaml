@@ -102,6 +102,35 @@ tabs:
       tab: xsigns.fewo::lang.globalsettings.tab1
       hidden: true
       default: false
+    alternativeSearch_section:
+      label: xsigns.fewo::lang.globalsettings.alternativeSearch_section
+      type: section
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    alternativeSearch:
+      label: xsigns.fewo::lang.globalsettings.alternativeSearch
+      type: switch
+      cssClass: col-sm-4
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    alternativeSearchAnzahl:
+      label: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahl
+      type: number
+      cssClass: col-sm-4
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    alternativeSearchAnzahlNaechteVor:
+      label: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahlNaechteVor
+      type: number
+      cssClass: col-sm-4
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    alternativeSearchAnzahlNaechteNach:
+      label: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahlNaechteNach
+      type: number
+      cssClass: col-sm-4
+      span: right
+      tab: xsigns.fewo::lang.globalsettings.tab1
     allgemein_section:
       label: xsigns.fewo::lang.globalsettings.allgemein_section
       type: section
@@ -109,6 +138,11 @@ tabs:
       tab: xsigns.fewo::lang.globalsettings.tab1
     reloadPricelevelForm:
       type: reloadPricelevel
+      cssClass: col-sm-4
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab1
+    reloadObjSuchindexForm:
+      type: reloadObjSuchindex
       cssClass: col-sm-4
       span: left
       tab: xsigns.fewo::lang.globalsettings.tab1
@@ -338,6 +372,12 @@ tabs:
       type: switch
       span: right
       comment: xsigns.fewo::lang.globalsettings.blockieren_desc
+      tab: xsigns.fewo::lang.globalsettings.tab4
+    buchungsvorlauf:
+      label: xsigns.fewo::lang.globalsettings.buchungsvorlauf
+      comment: xsigns.fewo::lang.globalsettings.buchungsvorlauf_desc
+      type: number
+      span: left
       tab: xsigns.fewo::lang.globalsettings.tab4
     calcsssection:
       type: section

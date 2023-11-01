@@ -89,6 +89,20 @@
                                 {{ objekt.Strasse|raw }}, {{ objekt.Land|raw }} {{ objekt.PLZ|raw }} {{ objekt.Ort|raw }}
                             </div>
                         {% endif %}
+                        {% if objekt.alternativeZeitraeume %}
+                            <div class="fewo-alternative">
+                                {% for alternative in objekt.alternativeZeitraeume %}
+                                    <div class="fewo-alternative-item"><a href="{{ alternative.href }}">{{ alternative.label|raw }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% if objekt.buchungsluecken %}
+                            <div class="fewo-buchungsluecken">
+                                {% for luecke in objekt.buchungsluecken %}
+                                    <div class="fewo-buchungsluecken-item"><a href="{{ luecke.href }}">{{ luecke.label|raw }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                         {% if modul == 2 %}
                         <div class="merkerdelete">
                             <button id="btnmerken{{ objekt.id }}" class="btn btn-success btn-sm fewo-btnmerken" data-request-data="merkerid: {{ objekt.id }}" data-request="{{ __SELF__ }}::onBtnDelete">{{ btndelete }} </button>

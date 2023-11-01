@@ -66,7 +66,8 @@
             format: 'DD.MM.YYYY',
             startOfWeek: 'monday',
             startDate: '{{ mindate|raw}}',
-            minDays: 2,
+            minDays: 1,
+            invalid: '{{ invalid|raw }}',
             saisons: {{ saisons|raw }},
             blocked: {{ blockeddates|raw }},
             language: '{{ lang }}',
@@ -74,14 +75,17 @@
             //wechselleisteStart: {{ wechselleisteStart }},
             // showTopbar:false,
             beforeShowDay: function(t) {
-                if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
-                    valid=false;
-                else
-                    valid = true;
-                var _class = '';
-                var _tooltip = valid ? '' : 'belegt';
-                return [valid,_class,_tooltip];
+                let valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
+                let _class = '';
+
+                if (this.invalid.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
+                    _class = ' noarrival';
+
+                let _tooltip = valid ? '' : 'belegt';
+
+                return [valid, _class, _tooltip];
             },
+
             setValue: function(s,from,to) {
                 $('#ctrl_anreise').val(from);
                 $('#ctrl_abreise').val(to);
@@ -92,6 +96,12 @@
         picker.bind('datepicker-first-date-selected', function(event, obj) {
             $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
             $('#ctrl_anreise').request('onAnreiseChange');
+        });
+        picker.bind('datepicker-first-date-selected', function(event, obj) {
+            /*$('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+            $('#ctrl_anreise').request('onAnreiseChange');*/
+            $('.cal-header .caption .next').click();
+            $('.cal-header .caption .prev').click();
         });
         picker.bind('datepicker-change', function(event, obj) {
             $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));

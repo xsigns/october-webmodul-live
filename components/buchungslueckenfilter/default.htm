@@ -1,0 +1,34 @@
+{% if hatListe %}
+    <div id="listenfilter-buchungsluecken" class="listenfilter-buchungsluecken">
+        {% if monat %}
+            <div class="filter-monatelement">
+                <div class="label">{{ labels.monat }}</div>
+                <select id="monate" name="monate" class="filter-monate" data-request="{{ __SELF__ }}::onDataChange">
+                    <option {% if defaultMonat == 0 %}selected{% endif %} value="0">Auswählen</option>
+                    {% for monat in monate %}
+                        <option {% if monat.number == defaultMonat %}selected{% endif %} value="{{ monat.number }}">{{ monat.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+        {% if jahr %}
+            <div class="filter-jahrelement">
+                <div class="label">{{ labels.jahr }}</div>
+                <select id="jahre" name="jahre" class="filter-jahre" data-request="{{ __SELF__ }}::onDataChange">
+                    {% for jahr in jahre %}
+                        <option {% if jahr.number == defaultJahr %}selected{% endif %} value="{{ jahr.number }}">{{ jahr.number }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+        <button id="filter-clear-btn" data-request="{{ __SELF__ }}::onDataReset">{{ labels.resetButton }}</button>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#filter-clear-btn').click(function (){
+                $('#monate').val(0)
+                $('#jahre').val($("#jahre option:first").val());
+            })
+        })
+    </script>
+{% endif %}

@@ -5,9 +5,9 @@ const { ref } = Vue
 /* Columns */
 const columnsRechnung = [
     { name: 'rechnungsnr', align: 'left', label: rechnungsnr, field: 'rechnr', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
-    { name: 'von', align: 'left', label: von, field: 'von', sortable: true},
-    { name: 'to', align: 'left', label: bis, field: 'to', sortable: true},
-    { name: 'datum', align: 'left', label: abrZeitraum, field: 'datum', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
+    { name: 'von', align: 'left', label: von, field: 'von', sortable: true, sort: (a, b) => sortDatum(a, b)},
+    { name: 'to', align: 'left', label: bis, field: 'to', sortable: true, sort: (a, b) => sortDatum(a, b)},
+    { name: 'datum', align: 'left', label: abrZeitraum, field: 'datum', sortable: true, sort: (a, b) => sortDatum(a, b)},
     { name: 'betrag', align: 'right', label: betrag, field: 'betrag', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
     { name: 'art', label: 'Downloads', align: 'center',field: 'art'},
 ]
@@ -23,10 +23,10 @@ const columnsRechnung2 = [
 
 const columns = [
     { name: 'id', align: 'left', label: id, field: 'id', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
-    { name: 'datum', align: 'left', label: buchungsdatum, field: 'datum', sortable: true,  sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
+    { name: 'datum', align: 'left', label: buchungsdatum, field: 'datum', sortable: true, sort: (a, b) => sortDatum(a, b)},
     { name: 'art', align: 'left', label: art, field: 'art', sortable: true},
-    { name: 'anreise', align: 'left', label: anreise, field: 'anreise', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
-    { name: 'abreise', align: 'left', label: abreise, field: 'abreise', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
+    { name: 'anreise', align: 'left', label: anreise, field: 'anreise', sortable: true, sort: (a, b) => sortDatum(a, b)},
+    { name: 'abreise', align: 'left', label: abreise, field: 'abreise', sortable: true, sort: (a, b) => sortDatum(a, b)},
     { name: 'tage', align: 'left', label: tage, field: 'tage', sortable: true},
     { name: 'objekt', align: 'left', label: objekt, field: 'objekt', sortable: true,},
     { name: 'objid', align: 'left', label: objid, field: 'objid', sortable: true},
@@ -35,6 +35,19 @@ const columns = [
     { name: 'objpreis', align: 'right', label: 'Summe', field: 'objpreis', sortable: true,  sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
 ]
 
+function sortDatum(a, b) {
+    const datePartsA = moment(a, 'DD.MM.YYYY').toDate();
+    const datePartsB = moment(b, 'DD.MM.YYYY').toDate();
+
+    if (datePartsA && datePartsB) {
+        const dateA = new Date(datePartsA);
+        const dateB = new Date(datePartsB);
+
+        return dateA - dateB;
+    } else {
+        return 0;
+    }
+}
 const columnsGastVisableColumns = []
 
 if (showGastVorname == 1)
@@ -49,12 +62,26 @@ if (showGastMail == 1)
 if (showGastTel == 1)
     columnsGastVisableColumns.push({ name: 'tel', align: 'left', label: telefon, field: 'tel'});
 
+if (showOrt == 1)
+    columnsGastVisableColumns.push({ name: 'ort', align: 'left', label: ort, field: 'ort'});
+
+if (showPlz == 1)
+    columnsGastVisableColumns.push({ name: 'plz', align: 'left', label: plz, field: 'plz'});
+
+if (showStrasse == 1)
+    columnsGastVisableColumns.push({ name: 'strasse', align: 'left', label: strasse, field: 'strasse'});
+
+if (showLand == 1)
+    columnsGastVisableColumns.push({ name: 'land', align: 'left', label: land, field: 'land'});
+
+if (showMobil == 1)
+    columnsGastVisableColumns.push({ name: 'mobil', align: 'left', label: mobil, field: 'mobil'});
+
 if (showGastHinweis == 1)
     columnsGastVisableColumns.push({ name: 'memo', align: 'left', label: memo, field: 'memo'});
 
 if (showGastEigentuemerhinweis == 1)
     columnsGastVisableColumns.push({ name: 'ehinweis', align: 'left', label: ehinweis, field: 'ehinweis'});
-
 
 
 const columnsGast = columnsGastVisableColumns;
@@ -63,7 +90,7 @@ const columnsLeist = [
     { name: 'anz', align: 'left', required: true, label: ltitel, field: 'anz', sortable: true},
     { name: 'text', align: 'left', label: lanz, field: 'text',  sortable: true },
     { name: 'epreis', align: 'right', label: lepreis, field: 'epreis',  sortable: true },
-    { name: 'summe', align: 'right', label: lsumme, field: 'summe', sortable: true }
+    { name: 'summe', align: 'right', label: lsumme, field: 'summe', sortable: true },
 ]
 
 const columnsGesammt = [
@@ -316,6 +343,7 @@ const app = Vue.createApp({
             {
                 dialog = true
             },
+
             Label_ID: 'ID',
             Label_Jahr: 'Jahr',
             Label_Datum: 'Datum',

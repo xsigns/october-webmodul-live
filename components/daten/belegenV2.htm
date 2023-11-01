@@ -82,7 +82,6 @@
 
 <script>
     var banDate = [];
-    var test = {{ blockeddates|raw }};
     function formatDate(date)
     {
         var d = new Date(date),
@@ -228,7 +227,6 @@
             $('#anreise').data('dateRangePicker').open();
         });
         var picker = $('#period').dateRangePicker({
-            startDate: new Date(),
             separator: '',
             selectForward: true,
             autoClose:true,
@@ -241,18 +239,22 @@
             startDate: '{{ mindate|raw}}',
             customArrowPrevSymbol: ' ',
             customArrowNextSymbol: ' ',
-            minDays: 2,
+            minDays: 1,
+            todayInvalid: false,
+            invalid: '{{ invalid|raw }}',
             saisons: {{ saisons|raw }},
             blocked: {{ blockeddates|raw }},
             language: '{{ lang }}',
             beforeShowDay: function(t) {
-                if(this.blocked.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
-                    valid=false;
-                else
-                    valid = true;
-                var _class = '';
-                var _tooltip = valid ? '' : 'belegt';
-                return [valid,_class,_tooltip];
+                let valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
+                let _class = '';
+
+                if (this.invalid.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)
+                    _class = ' noarrival';
+
+                let _tooltip = valid ? '' : 'belegt';
+
+                return [valid, _class, _tooltip];
             },
             setValue: function(s,from,to) {
                 $('#ctrl_anreise').val(from);
@@ -261,10 +263,12 @@
                     $('#ctrl_abreise').request('onAbreiseChange');
             }
         });
-        /*picker.bind('datepicker-first-date-selected', function(event, obj) {
-            $('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
-            $('#ctrl_anreise').request('onAnreiseChange');
-        });*/
+        picker.bind('datepicker-first-date-selected', function(event, obj) {
+            /*$('#ctrl_anreise').val(moment(obj.date1).format('DD.MM.YYYY'));
+            $('#ctrl_anreise').request('onAnreiseChange');*/
+            $('.cal-header .caption .next').click();
+            $('.cal-header .caption .prev').click();
+        });
         picker.bind('datepicker-clear', function() {
             $('#period').val('');
             $('#ctrl_anreise').val('');
@@ -285,6 +289,8 @@
         picker.bind('datepicker-open', function(event, obj) {
             $('#label-select-date').addClass('nachOben');
             $('#label-select-date').addClass('farbe');
+
+
         });
 
         picker.bind('datepicker-close', function(event, obj) {

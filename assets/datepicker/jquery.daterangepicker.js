@@ -1167,8 +1167,7 @@
         }
 
         function clearSelection() {
-
-            var time = opt.start;
+            let time = opt.start;
 
             opt.start = false;
             opt.end = false;
@@ -1184,7 +1183,7 @@
             showSelectedInfo();
             showSelectedDays();
             clearHovering();
-
+            redrawDatePicker();
         }
 
         function handleStart(time) {
@@ -1240,8 +1239,8 @@
                 return;
             }
 
-            if (day.hasClass('nodeparture') && opt.end !== false)
-                return;
+            /*if (day.hasClass('nodeparture') && opt.end !== false)
+                return;*/
 
             if (day.hasClass('invalid') || day.hasClass('lastMonth')) return;
             var time = day.attr('time');
@@ -1321,15 +1320,15 @@
                 opt.startWeek = thisTime;
                 weekNumberDom.addClass('week-number-selected');
                 date1 = new Date(thisTime);
-                opt.start = moment(date1).day(opt.startOfWeek == 'monday' ? 1 : 0).valueOf();
-                opt.end = moment(date1).day(opt.startOfWeek == 'monday' ? 7 : 6).valueOf();
+                opt.start = moment(date1).day(opt.startOfWeek === 'monday' ? 1 : 0).valueOf();
+                opt.end = moment(date1).day(opt.startOfWeek === 'monday' ? 7 : 6).valueOf();
             } else {
                 box.find('.week-number-selected').removeClass('week-number-selected');
                 date1 = new Date(thisTime < opt.startWeek ? thisTime : opt.startWeek);
                 date2 = new Date(thisTime < opt.startWeek ? opt.startWeek : thisTime);
                 opt.startWeek = false;
-                opt.start = moment(date1).day(opt.startOfWeek == 'monday' ? 1 : 0).valueOf();
-                opt.end = moment(date2).day(opt.startOfWeek == 'monday' ? 7 : 6).valueOf();
+                opt.start = moment(date1).day(opt.startOfWeek === 'monday' ? 1 : 0).valueOf();
+                opt.end = moment(date2).day(opt.startOfWeek === 'monday' ? 7 : 6).valueOf();
             }
             updateSelectableRange();
             checkSelectionValid();
@@ -1355,7 +1354,7 @@
             if(opt.start && !opt.end && !opt.singleDate && opt.saisons.length > 0)
             {
                 var valid = true;
-                var luecke = false;
+                var luecke = 0;
                 var lueckemintage =0;
                 var treffer = false;
                 var minDays = 0;
@@ -1383,13 +1382,13 @@
                 for(var u = 0; u <= opt.blocked.length -1; u++){
                     var blocked = moment(opt.blocked[u]);
                     var lastFree = null;
-                    if(moment(blocked).add(-1,'day').format("DD-MM-YYYY") == moment(time).format("DD-MM-YYYY"))
+                    if(moment(blocked).add(-1,'day').format("DD-MM-YYYY") === moment(time).format("DD-MM-YYYY"))
                         lastFree = moment(blocked).add(-1,'day');
                     if(blocked > opt.start && lastFree <= blocked)
                     {
                         var a = moment(opt.start);
                         var mindays2 =0;
-                        if (luecke == true)
+                        if (luecke)
                             mindays2 = blocked.diff(a,'days') ;
                         else
                             mindays2 = minDays;
@@ -1468,7 +1467,7 @@
             box.find('.day.invalid.tmp').removeClass('tmp invalid').addClass('valid');
             if (opt.start && !opt.end) {
                 if(opt.showArrow) {
-                    var offset = $(self).width() +40;
+                    let offset = $(self).width() + 40;
                     box.find('.cal-arrow').css({left: offset});
                 }
 
@@ -1476,10 +1475,19 @@
                 let wechselleisteStart = opt.wechselleisteStart;
                 let selectedDate = moment(moment(opt.start)).unix();
                 let diff = Math.floor((selectedDate - wechselleisteStart) / 86400);
-                let charList = "";
+                let blockedDays = opt.blocked;
 
-                box.find('.day.toMonth.valid').each(function() {
-                    var time = parseInt($(this).attr('time'), 10);
+                let blockedDaysNachAnreise = blockedDays.filter(item => {
+                    return moment(item) >= moment(opt.start)
+                })
+
+                let firstBlockedDay = false;
+
+                if (blockedDaysNachAnreise.length > 0)
+                    firstBlockedDay = moment(blockedDaysNachAnreise[0])
+
+                box.find('.day.toMonth').each(function() {
+                    let time = parseInt($(this).attr('time'), 10);
 
                     if (opt.start < time) {
                         let current = moment(moment(time)).unix();
@@ -1487,12 +1495,16 @@
                         let index = diff + curDiff;
                         let char = wechselleiste.charAt(index);
 
-                        charList += char.toString();
+                        let currentDayToCheck = moment(moment(time).format('YYYY-MM-DD'))
 
-                        if (charList.includes('OX') || charList.includes('OI') || charList.includes('XI')) {
-                            $(this).addClass('invalid tmp').removeClass('valid');
+                        if (firstBlockedDay) {
+                            if (moment(firstBlockedDay).diff(moment(currentDayToCheck), 'days') > 0) {
+                                char === 'O' || char === 'C' || char === '' ? $(this).addClass('valid tmp').removeClass('invalid noarrival') : $(this).addClass('invalid nodepartureSelect').removeClass('valid')
+                            } else {
+                                $(this).addClass('invalid').removeClass('valid')
+                            }
                         } else {
-                            $(this).addClass('valid tmp').removeClass('invalid');
+                            char === 'X' || char === 'I' ? $(this).addClass('invalid nodepartureSelect').removeClass('valid') : $(this).addClass('valid tmp').removeClass('invalid noarrival')
                         }
                     }
 
@@ -1504,7 +1516,6 @@
 
                     if(!checkDay(time))
                         $(this).addClass('invalid nodeparture tmp').removeClass('valid');
-
                 });
             }
             return true;
@@ -1516,7 +1527,7 @@
 
             if (day.hasClass('has-tooltip') && day.attr('data-tooltip')) {
                 tooltip = '<span class="tooltip-content">' + day.attr('data-tooltip') + '</span>';
-            } else if (!day.hasClass('invalid') && !day.hasClass('lastMonth')) {
+            } else if ((!day.hasClass('invalid') && !day.hasClass('lastMonth')) || day.hasClass('nodepartureSelect')) {
                 if (opt.singleDate) {
                     box.find('.day.hovering').removeClass('hovering');
                     day.addClass('hovering');
@@ -1819,7 +1830,7 @@
                 }
                 if (
                     (opt.start && opt.end && end >= time && start <= time) ||
-                    (opt.start && !opt.end && moment(start).format('YYYY-MM-DD') == moment(time).format('YYYY-MM-DD'))
+                    (opt.start && !opt.end && moment(start).format('YYYY-MM-DD') === moment(time).format('YYYY-MM-DD'))
                 ) {
                     $(this).addClass('checked');
                 } else {
@@ -1827,13 +1838,13 @@
                 }
 
                 //add first-date-selected class name to the first date selected
-                if (opt.start && moment(start).format('YYYY-MM-DD') == moment(time).format('YYYY-MM-DD')) {
+                if (opt.start && moment(start).format('YYYY-MM-DD') === moment(time).format('YYYY-MM-DD')) {
                     $(this).addClass('first-date-selected');
                 } else {
                     $(this).removeClass('first-date-selected');
                 }
                 //add last-date-selected
-                if (opt.end && moment(end).format('YYYY-MM-DD') == moment(time).format('YYYY-MM-DD')) {
+                if (opt.end && moment(end).format('YYYY-MM-DD') === moment(time).format('YYYY-MM-DD')) {
                     $(this).addClass('last-date-selected');
                 } else {
                     $(this).removeClass('last-date-selected');
@@ -1841,7 +1852,7 @@
             });
 
             box.find('.week-number').each(function() {
-                if ($(this).attr('data-start-time') == opt.startWeek) {
+                if ($(this).attr('data-start-time') === opt.startWeek) {
                     $(this).addClass('week-number-selected');
                 }
             });
@@ -1892,11 +1903,11 @@
 
         function generateYearElement(date, month) {
             date = moment(date);
-            var startDate = opt.startDate ? moment(opt.startDate).add(!opt.singleMonth && month === 'month2' ? 1 : 0, 'month') : false;
-            var endDate = opt.endDate ? moment(opt.endDate).add(!opt.singleMonth && month === 'month1' ? -1 : 0, 'month') : false;
-            var fullYear = date.get('year');
-            var isYearFunction = opt.yearSelect && typeof opt.yearSelect === 'function';
-            var range;
+            let startDate = opt.startDate ? moment(opt.startDate).add(!opt.singleMonth && month === 'month2' ? 1 : 0, 'month') : false;
+            let endDate = opt.endDate ? moment(opt.endDate).add(!opt.singleMonth && month === 'month1' ? -1 : 0, 'month') : false;
+            let fullYear = date.get('year');
+            let isYearFunction = opt.yearSelect && typeof opt.yearSelect === 'function';
+            let range;
 
             if (!opt.yearSelect ||
                 startDate && endDate && startDate.isSame(moment(endDate), 'year')) {
@@ -2342,6 +2353,10 @@
         }
 
         function createMonthHTML(d) {
+            let myDate = moment(d, opt.format).format('YYYY-MM-DD')
+            let myTime = moment().format('H:mm:ss')
+            d = moment(myDate + ' ' + myTime, 'YYYY-MM-DD H:mm:ss').toDate()
+
             let days = [];
             d.setDate(1);
             let lastMonth = new Date(d.getTime() - 86400000);
@@ -2370,7 +2385,7 @@
             }
             let toMonth = d.getMonth();
             for (let i = 0; i < 40; i++) {
-                today = moment(d).add(i, 'days').toDate();
+                today = moment(d, opt.format).add(i, 'days').toDate();
                 valid = isValidTime(today.getTime());
                 if (opt.startDate && compare_day(today, opt.startDate) < 0) valid = false;
                 if (opt.endDate && compare_day(today, opt.endDate) > 0) valid = false;
@@ -2391,7 +2406,7 @@
                 for (let day = 0; day < 7; day++) {
                     let _day = (opt.startOfWeek === 'monday') ? day + 1 : day;
                     today = days[week * 7 + _day];
-                    let highlightToday = moment(today.time).format('L') === moment(now).format('L');
+                    let highlightToday = moment(today.time).format('L') === moment(now, opt.format).format('L');
                     today.extraClass = '';
                     today.tooltip = '';
 
@@ -2529,9 +2544,9 @@
                 if (opt.startDate && compare_month(defaultTime, opt.startDate) < 0) {
                     defaultTime = moment(opt.startDate).toDate();
                 }
-                if (opt.endDate && compare_month(nextMonth(defaultTime), opt.endDate) > 0) {
+                /*if (opt.endDate && compare_month(nextMonth(defaultTime), opt.endDate) > 0) {
                     defaultTime = prevMonth(moment(opt.endDate).toDate());
-                }
+                }*/
             }
 
             if (opt.singleDate) {

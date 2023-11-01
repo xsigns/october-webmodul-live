@@ -1,0 +1,19 @@
+<div id="reloadobjsuchindex">
+    <p>Cache-Speicher für die Objektsuche zurücksetzen</p>
+    <a class="btn btn-success" id="reloadobjsuchindexBtn">Cache zurücksetzen</a>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#reloadobjsuchindexBtn').click(function () {
+            $(this).css('pointer-events', 'none')
+            $('#reloadobjsuchindexBtn').after('<div class="loader_reloadsuchindex"></div>')
+            $.request('onReloadObjSuchindex', {
+                success: function () {
+                    $('#reloadobjsuchindexBtn').css('pointer-events', 'all')
+                    $('div.loader_reloadsuchindex').remove()
+                    $.oc.flashMsg({text: 'Cache erfolgreich zurückgesetzt.', class: 'success'})
+                }
+            })
+        })
+    })
+</script>
