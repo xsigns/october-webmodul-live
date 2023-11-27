@@ -10,14 +10,16 @@ Komponente **_Objektliste_** _default.htm_:
 Der Folgende Code-Block muss **UNTER** den Code-Block ``{% if objekt.Adresse %} . . . {% endif %}`` eingefügt werden:
 ````
 {% if objekt.alternativeZeitraeume %}
-    <div class="fewo-alternative">
+    <div class="fewo-alternative d-inline-block">
+        {{ alternativeLabel|raw }}
         {% for alternative in objekt.alternativeZeitraeume %}
             <div class="fewo-alternative-item"><a href="{{ alternative.href }}">{{ alternative.label|raw }}</div>
         {% endfor %}
     </div>
 {% endif %}
 {% if objekt.buchungsluecken %}
-    <div class="fewo-buchungsluecken">
+    <div class="fewo-buchungsluecken d-inline-block">
+        {{ buchungslueckenLabel|raw }}
         {% for luecke in objekt.buchungsluecken %}
             <div class="fewo-buchungsluecken-item"><a href="{{ luecke.href }}">{{ luecke.label|raw }}</div>
         {% endfor %}

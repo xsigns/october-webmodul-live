@@ -117,18 +117,21 @@ tabs:
       label: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahl
       type: number
       cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahl_desc
       span: left
       tab: xsigns.fewo::lang.globalsettings.tab1
     alternativeSearchAnzahlNaechteVor:
       label: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahlNaechteVor
       type: number
       cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahlNaechteVor_desc
       span: left
       tab: xsigns.fewo::lang.globalsettings.tab1
     alternativeSearchAnzahlNaechteNach:
       label: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahlNaechteNach
       type: number
       cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.alternativeSearchAnzahlNaechteNach_desc
       span: right
       tab: xsigns.fewo::lang.globalsettings.tab1
     allgemein_section:
