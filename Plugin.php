@@ -159,6 +159,7 @@ class Plugin extends PluginBase
             '\xsigns\fewo\Components\multisuche' => 'Multisuche',
             '\xsigns\fewo\Components\anzahlobjekte' => 'AnzahlObjekte',
             '\xsigns\fewo\Components\OpenGraphMetaTags' => 'OpenGraphMetaTags',
+            '\Xsigns\fewo\Components\buchungslueckenfilter' => 'Buchungslueckenfilter'
         ];
 
         $owner = OwnerHelper::getOwnerComponents();
@@ -312,6 +313,10 @@ class Plugin extends PluginBase
             'Xsigns\Fewo\FormWidgets\ReloadPricelevel' => [
                 'label' => 'Preislevel neu berechnen',
                 'code' => 'reloadPricelevel',
+            ],
+            'Xsigns\Fewo\FormWidgets\ReloadObjSuchindex' => [
+                'label' => 'Cache leeren fuer die Objektsuche',
+                'code' => 'reloadObjSuchindex',
             ]
         ];
     }

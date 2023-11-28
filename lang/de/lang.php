@@ -78,10 +78,6 @@ return [
         'delete' => 'Bewertungen löschen',
         'import' => 'Bewertungen importieren'
     ],
-    'ausstattungset' => [
-        'name' => 'Ausstattungen',
-        'description' => 'Ausstattungen einstellen',
-    ],
     'booking' => [
         'manage_booking' => 'Buchungen bearbeiten',
         'name' => 'Buchungen und Anfragen',
@@ -125,7 +121,7 @@ return [
         'selectSVGcommand' => 'Geben sie die Class <b>SVG</b> mit an um alle Styels zu übernehmen  <br>Beispiel: <div style="color: #c3c3c3; border: 1.5px solid #18191a; box-shadow: 0px 0px 3px -1px rgba(0,0,0,0.79); padding: 8px; background-color: #303136; width: min-content;"><pre style="margin-bottom: 0px!important;">&lt;svg class="svg"&gt;&lt;path d="M32,10c12.1"/&gt;&lt;/svg&gt;</pre></div>',
         'svgSection' => 'Bewertungs Sterne als SVG',
         'selectSVG' => 'Geben sie ihre SVG an die für die Bewertungssterne verwendet wird.',
-        'SvgColorLabel' => 'Fare der SVG Sterne',
+        'SvgColorLabel' => 'Farbe der SVG Sterne',
         'SVGColorComment' => 'Legen sie eine Farbe für ihre SVG Sterne fest',
         'seoSection' => 'Einstellungen für SEO Links',
         'detaillink_desc' => 'Öffnet Objekt- und Haus-Detailseiten in neuem Fenster',
@@ -161,6 +157,8 @@ return [
         'calstart_desc' => 'Stellt den Belegungsplan auf den Monat der Suche ein.',
         'calclick' => 'Belegungsplan klickbar machen',
         'calclick_desc' => 'Die Datumsauswahl für An- und Abreise erfolgt über den Belegungsplan',
+        'buchungsvorlauf' => 'Buchungsvorlauf (Nächte)',
+        'buchungsvorlauf_desc' => 'Stellt einen Buchungsvorlauf in Nächten ein und gilt immer ab dem aktuellen Datum.',
         'titleheader' => 'META-Titel',
         'titleheader_desc' =>'Platzhalter : [ART], [ART_X_TITEL], [TITEL], [ORT], [ORT_X_TITEL], [REGION], [REGION_X_TITEL], [TYP], |KÜRZEN (wenn leer dann Objekt-Titel)',
         'paysection' => 'Zahlungseinstellungen',
@@ -205,6 +203,14 @@ return [
         'logHobex_desc' => 'Schaltet den Log-Modus für temporäre Buchungen bei der Nutzung von Hobex an. Dies muss im Normalfall für bessere Performance deaktiviert sein.',
         'logFeondiSync' => 'Protokolliere Synchronisation zwischen Webmodul und Feondi',
         'logFeondiSync_desc' => 'Protokolliert alle Daten, die zwischen dem Webmodul und Feondi gesendet und empfangen werden. Dies sollte im Normalfall für bessere Perfomance deaktiviert sein.',
+        'alternativeSearch_section' => 'Alternative Zeiträume für Objektlisten',
+        'alternativeSearch' => 'Zeige Objekte mit alternativen Zeiträumen für Objektlisten an',
+        'alternativeSearchAnzahl' => 'Maximale Anzahl Objekte mit alternativen Zeiträumen',
+        'alternativeSearchAnzahlNaechteVor' => 'Maximale Anzahl Nächte rückwärts suchen',
+        'alternativeSearchAnzahlNaechteNach' => 'Maximale Anzahl Nächte vorwärts suchen',
+        'alternativeSearchAnzahl_desc' => 'Stellt ein, wie viele Objekte mit alternativen Zeiträumen maximal zurückgegeben werden sollen.',
+        'alternativeSearchAnzahlNaechteVor_desc' => 'Stellt ein, wie viele Nächte der Suchzeitraum für die alternative Suche nach hinten (x Nächte vor gesuchter Anreise) erweitert werden soll.',
+        'alternativeSearchAnzahlNaechteNach_desc' => 'Stellt ein, wie viele Nächte der Suchzeitraum für die alternative Suche nach vorne (x Nächte nach gesuchter Abreise) erweitert werden soll.',
         'devmodus'   =>'Developer-Modus',
         'devmodus_desc' => 'Schaltet den Zugriff auf die Seite komplett ab (Fehler 403: Zugriff verweigert)',
         'debugmodus' => 'Protokolliere Ereignisse (Debug-Modus)',
@@ -334,7 +340,9 @@ return [
         'angebotdetail' => 'Angebot-Detail',
         'angebotdetail_desc' => 'Detailansicht eines Angebotes',
         'paid' => 'Zahlung abgeschlossen',
-        'paid_desc' => 'Komponente für Zahlung abgeschlossen'
+        'paid_desc' => 'Komponente für Zahlung abgeschlossen',
+        'buchungslueckenfilter' => 'Buchungslueckenfilter',
+        'buchungslueckenfilter_desc' => 'Stellt einen Filter für Buchungslücken dar',
     ],
     'permissions' => [
         'tab' => 'FewoVerwalter Stammdaten',
@@ -342,7 +350,8 @@ return [
         'languages' => 'Sprachen',
         'settings' => 'Einstellungen',
         'stamm' => 'Stammdaten',
-        'globalsettings' => 'Globale Einstellungen'
+        'globalsettings' => 'Globale Einstellungen',
+        'manage_galleries' => 'Verwalten der Galerien',
     ],
     'objektsuche' => [
         'name' => 'Objektsuche',
@@ -569,9 +578,6 @@ return [
     'preferences' => [
         'show_gallery_in_nav_label' => 'Zeige Galerie in der Navigation',
         'show_gallery_in_nav_comment' => 'Enabling this makes the gallery appear in the navigation menu instead of the settings page.',
-    ],
-    'permissions' => [
-        'manage_galleries' => 'Verwalten der Galerien',
     ],
     'reloadPricelevel' => [
         'preislevel_success' => 'Preislevel für Objekte erfolgreich neu berechnet.',

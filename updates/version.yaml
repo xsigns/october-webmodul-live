@@ -846,3 +846,9 @@
     - Ausgabe der Mintage in den Preisen für Objektdetails
 3.8.10:
     - Fehlerkorrekturen für Angebote
+3.8.11:
+    - "!!! Ausgabe alternative Objekte/Zeiträume und Buchungslücken über die Objektliste möglich. Partial Objektliste muss angepasst werden, bitte Upgrade-Guide lesen!"
+    - Filterkomponente für Buchungslücken wurde hinzugefügt
+    - Buchungsvorlauf (in Nächte) kann im Backened eingestellt werden werden
+    - Allgemeine Verbesserungen und Fehlerbehebungen
+    - update79.php
