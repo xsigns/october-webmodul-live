@@ -77,35 +77,35 @@ class Update79 extends Migration
             // Search and store booking gaps
             preg_match_all('/XIX*OX/', $wechselleiste, $matches, PREG_OFFSET_CAPTURE);
 
-            if (count($matches[0]) == 0)
-                return;
-
-            $mintageArr = explode(';', $mintageleiste);
-
-            foreach ($matches[0] as $match)
+            if (count($matches[0]))
             {
-                $matchPosition = $match[1];
-                $mintage = $mintageArr[$matchPosition + 1];
-                $lbok = substr($lueckbuchungleiste, $match[1] + 1, 1);
-                $luecke = substr($match[0], 1, -1);
-                $lueckeLength = strlen($luecke) - 1;
+                $mintageArr = explode(';', $mintageleiste);
 
-                if ($lbok && $lueckeLength < $mintage)
+                foreach ($matches[0] as $match)
                 {
-                    $startDateLeiste = new FewoDatum($dateErsterMonat->format('Y-m-d'));
+                    $matchPosition = $match[1];
+                    $mintage = $mintageArr[$matchPosition + 1];
+                    $lbok = substr($lueckbuchungleiste, $match[1] + 1, 1);
+                    $luecke = substr($match[0], 1, -1);
+                    $lueckeLength = strlen($luecke) - 1;
 
-                    $von = (new FewoDatum($startDateLeiste))->addDays($match[1] + 1);
-                    $bis = (new FewoDatum($von))->addDays($lueckeLength);
-                    $month = date('n', $von->getTimestamp());
-                    $year = date('Y', $von->getTimestamp());
+                    if ($lbok && $lueckeLength < $mintage)
+                    {
+                        $startDateLeiste = new FewoDatum($dateErsterMonat->format('Y-m-d'));
 
-                    Database::execute(null, $this->modulename, "insert into xsigns_fewo_buchungsluecken (bl_objid, bl_von, bl_bis, bl_monat, bl_jahr) values (:bl_objid, :bl_von, :bl_bis, :bl_monat, :bl_jahr)", [
-                        'bl_objid' => $objekt->id,
-                        'bl_von' => $von->getDatumUS(),
-                        'bl_bis' => $bis->getDatumUS(),
-                        'bl_monat' => $month,
-                        'bl_jahr' => $year,
-                    ]);
+                        $von = (new FewoDatum($startDateLeiste))->addDays($match[1] + 1);
+                        $bis = (new FewoDatum($von))->addDays($lueckeLength);
+                        $month = date('n', $von->getTimestamp());
+                        $year = date('Y', $von->getTimestamp());
+
+                        Database::execute(null, $this->modulename, "insert into xsigns_fewo_buchungsluecken (bl_objid, bl_von, bl_bis, bl_monat, bl_jahr) values (:bl_objid, :bl_von, :bl_bis, :bl_monat, :bl_jahr)", [
+                            'bl_objid' => $objekt->id,
+                            'bl_von' => $von->getDatumUS(),
+                            'bl_bis' => $bis->getDatumUS(),
+                            'bl_monat' => $month,
+                            'bl_jahr' => $year,
+                        ]);
+                    }
                 }
             }
         }
