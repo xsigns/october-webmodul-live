@@ -852,3 +852,5 @@
     - Buchungsvorlauf (in Nächte) kann im Backened eingestellt werden werden
     - Allgemeine Verbesserungen und Fehlerbehebungen
     - update79.php
+3.8.12:
+    - Allgemeine Fehlerkorrekturen im Backend
