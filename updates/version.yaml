@@ -854,3 +854,5 @@
     - update79.php
 3.8.12:
     - Allgemeine Fehlerkorrekturen im Backend
+3.8.13:
+    - Fehlerkorrekturen für die Objektsuche
