@@ -856,3 +856,5 @@
     - Allgemeine Fehlerkorrekturen im Backend
 3.8.13:
     - Fehlerkorrekturen für die Objektsuche
+3.8.14:
+    - Fehlerkorrekturen für den Buchungslückenfilter
