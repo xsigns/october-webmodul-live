@@ -4,7 +4,7 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
-## Upgrade 3.7.11
+## Upgrade 3.8.11
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente **_Objektliste_** _default.htm_:  
 Der Folgende Code-Block muss **UNTER** den Code-Block ``{% if objekt.Adresse %} . . . {% endif %}`` eingefügt werden:

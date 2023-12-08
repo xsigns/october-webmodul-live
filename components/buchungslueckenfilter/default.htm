@@ -16,6 +16,7 @@
                 <div class="filter-jahrelement form-inputs">
                     <div class="label">{{ labels.jahr }}</div>
                     <select id="jahre" name="jahre" class="filter-jahre form-control" data-request="{{ __SELF__ }}::onDataChange">
+                        <option {% if defaultMonat == 0 %}selected{% endif %} value="0">Auswählen</option>
                         {% for jahr in jahre %}
                             <option {% if jahr.number == defaultJahr %}selected{% endif %} value="{{ jahr.number }}">{{ jahr.number }}</option>
                         {% endfor %}
