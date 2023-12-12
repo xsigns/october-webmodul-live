@@ -858,3 +858,5 @@
     - Fehlerkorrekturen für die Objektsuche
 3.8.14:
     - Fehlerkorrekturen für den Buchungslückenfilter
+3.8.15:
+    - Verbesserung Objektbuttons Reisezeitraumübergabe an Buchungsmaske
