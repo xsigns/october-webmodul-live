@@ -462,7 +462,9 @@ Belplan.loescheAuswahl = function() {
 
 Belplan.resetBelplan = function() {
     $('.nichtwaehlbar').css('pointer-events', 'none').removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
+    $('.frei.waehlbar').css('pointer-events', 'auto');
     $('.gewaehlt').removeClass('gewaehlt');
+    Belplan.clickEvent();
 };
 
 Belplan.dateDiff = function(anreise, abreise) {
