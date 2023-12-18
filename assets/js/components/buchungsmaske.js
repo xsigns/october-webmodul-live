@@ -45,7 +45,7 @@ $(function() {
         legendHtml: (typeof legendHtml === 'undefined' ? '' : legendHtml),
         beforeShowDay: function(t)
         {
-            valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
+            valid = this.blocked[0].indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
             var _class = '';
             var _tooltip = valid ? '' : 'belegt';
             return [valid, _class, _tooltip];

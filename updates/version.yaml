@@ -862,4 +862,6 @@
     - Verbesserung Objektbuttons Reisezeitraumübergabe an Buchungsmaske
 3.8.16:
     - Fehlerkorrekturen für den Buchungsvorlauf bei der Reisezeitraumübergabe von alternativen Objekten/Zeiträumen
-    - Verbesserungen für min. Nächte in Angbote
+    - Verbesserungen für min. Nächte in Angebote
+3.8.17:
+    - update80.php

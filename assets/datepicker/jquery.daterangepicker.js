@@ -1380,7 +1380,7 @@
                 if(minDays < 0)
                     minDays = 0;
                 for(var u = 0; u <= opt.blocked.length -1; u++){
-                    var blocked = moment(opt.blocked[u]);
+                    var blocked = moment(opt.blocked[0][u]);
                     var lastFree = null;
                     if(moment(blocked).add(-1,'day').format("DD-MM-YYYY") === moment(time).format("DD-MM-YYYY"))
                         lastFree = moment(blocked).add(-1,'day');
@@ -1475,16 +1475,20 @@
                 let wechselleisteStart = opt.wechselleisteStart;
                 let selectedDate = moment(moment(opt.start)).unix();
                 let diff = Math.floor((selectedDate - wechselleisteStart) / 86400);
-                let blockedDays = opt.blocked;
+                let blockedDays = opt.blocked[1];
 
-                let blockedDaysNachAnreise = blockedDays.filter(item => {
-                    return moment(item) >= moment(opt.start)
-                })
+                let blockedDaysNachAnreise = [];
+
+                if (blockedDays !== undefined) {
+                    blockedDaysNachAnreise = blockedDays.filter(item => {
+                        return moment(item) >= moment(opt.start)
+                    })
+                }
 
                 let firstBlockedDay = false;
 
                 if (blockedDaysNachAnreise.length > 0)
-                    firstBlockedDay = moment(blockedDaysNachAnreise[0])
+                    firstBlockedDay = moment(blockedDaysNachAnreise[0]).add(1, 'day')
 
                 box.find('.day.toMonth').each(function() {
                     let time = parseInt($(this).attr('time'), 10);
@@ -2353,9 +2357,8 @@
         }
 
         function createMonthHTML(d) {
-            let myDate = moment(d, opt.format).format('YYYY-MM-DD')
-            let myTime = moment().format('H:mm:ss')
-            d = moment(myDate + ' ' + myTime, 'YYYY-MM-DD H:mm:ss').toDate()
+            let myDate = moment(d, opt.format).format('YYYY-MM-DD H:mm:ss')
+            d = moment(myDate, 'YYYY-MM-DD H:mm:ss').toDate()
 
             let days = [];
             d.setDate(1);
@@ -2482,6 +2485,7 @@
 
             if (diff >= 0) {
                 let state = wechselleiste.charAt(diff);
+
                 if (state === 'I')
                     returns = ' nodeparture ';
                 else if (state === 'O')
@@ -2490,6 +2494,11 @@
                     returns = ' noarrival nodeparture ';
                 else
                     returns = ''
+
+                if (diff === wechselleiste.length - 1 && (state === 'I' || state === 'X'))
+                    returns = ' noarrival nodeparture '
+                else if (diff === wechselleiste.length - 1 && (state === 'C' || state === 'O'))
+                    returns  = ' noarrival '
             }
 
             return returns;

@@ -366,7 +366,9 @@ return [
         'deselected' => 'Re-enable marked for transfer',
         'delete' => 'Delete selected bookings',
         'change_selected_confirm' => 'Release selected entries again?',
-        'delete_selected_confirm' => 'Really delete selected entries?'
+        'delete_selected_confirm' => 'Really delete selected entries?',
+        'sendMail' => 'Send marked booking confirmation mail',
+        'sendMail_confirm' => 'Do you really want to send the booking confirmation email to the guest of the selected entries?'
     ],
     'voting' => [
         'delete' => 'Delete selected ratings',

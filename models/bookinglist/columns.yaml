@@ -42,6 +42,16 @@ columns:
         type: text
         searchable: true
         sortable: true
+    email:
+        label: Email
+        type: text
+        searchable: true
+        sortable: true
+    gastmail_gesendet:
+        label: Mail gesendet
+        type: switch
+        searchable: true
+        sortable: true
     anreise:
         label: Anreise
         type: date

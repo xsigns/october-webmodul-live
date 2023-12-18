@@ -85,7 +85,9 @@ return [
         'deselected' => 'Markierte für Übertragung neu freigeben',
         'delete' => 'Markierte Buchungen löschen',
         'change_selected_confirm' => 'Markierte Einträge wieder freigeben?',
-        'delete_selected_confirm' => 'Markierte Einträge wirklich löschen?'
+        'delete_selected_confirm' => 'Markierte Einträge wirklich löschen?',
+        'sendMail' => 'Markierte Buchungsbestätigungsmail senden',
+        'sendMail_confirm' => 'Die Buchungsbestätigungsmail an den Gast der markierten Einträge wirkich senden?'
     ],
     'voting' => [
         'delete' => 'Markierte Bewertungen löschen',
