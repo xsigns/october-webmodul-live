@@ -2353,9 +2353,8 @@
         }
 
         function createMonthHTML(d) {
-            let myDate = moment(d, opt.format).format('YYYY-MM-DD')
-            let myTime = moment().format('H:mm:ss')
-            d = moment(myDate + ' ' + myTime, 'YYYY-MM-DD H:mm:ss').toDate()
+            let myDate = moment(d, opt.format).format('YYYY-MM-DD H:mm:ss')
+            d = moment(myDate, 'YYYY-MM-DD H:mm:ss').toDate()
 
             let days = [];
             d.setDate(1);
