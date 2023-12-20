@@ -863,3 +863,6 @@
 3.8.16:
     - Fehlerkorrekturen für den Buchungsvorlauf bei der Reisezeitraumübergabe von alternativen Objekten/Zeiträumen
     - Verbesserungen für min. Nächte in Angebote
+3.8.17:
+    - Fehlerkorrekturen Zuschläge berechnen in der Buchungsmaske
+    - Fehlerkorrekturen Listenfilter Anzahl Objekte berechnen
