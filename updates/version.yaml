@@ -863,6 +863,8 @@
 3.8.16:
     - Fehlerkorrekturen für den Buchungsvorlauf bei der Reisezeitraumübergabe von alternativen Objekten/Zeiträumen
     - Verbesserungen für min. Nächte in Angebote
+3.8.17:
+    - Fehlerkorrekturen beim berechnen von Zuschlägen in der Buchungsmaske
 3.9.0:
     - Rabatte aus Fewo-Verwalter werden nun unterstützt und in der Buchungsmaske entsprechend geladen und berechnet
     - Erweiterung Angebote einstellbarer Buchungszeitraum für Angebote aus Fewo-Verwalter werden beachtet
