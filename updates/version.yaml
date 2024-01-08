@@ -866,3 +866,6 @@
 3.8.17:
     - Fehlerkorrekturen Zuschläge berechnen in der Buchungsmaske
     - Fehlerkorrekturen Listenfilter Anzahl Objekte berechnen
+3.8.18:
+    - Verbesserung der Objektsuche
+    - update80.php

@@ -12,6 +12,7 @@ use Xsigns\Fewo\Classes\DatabaseCache;
 use Xsigns\Fewo\Classes\Language;
 use Xsigns\Fewo\Classes\Logger;
 use Xsigns\Fewo\classes\Objektbewertung;
+use Xsigns\Fewo\Classes\ObjektSuchindex;
 use Xsigns\Fewo\Classes\OwnerHelper;
 use Xsigns\Fewo\Classes\Preislevel;
 use Xsigns\Fewo\classes\SendCron;
@@ -61,6 +62,8 @@ class Plugin extends PluginBase
             date_default_timezone_set('Europe/Berlin');
         else
             date_default_timezone_set(ini_get('date.timezone'));
+
+        ObjektSuchindex::updateZeitleistenAlleObjekteYearly($this->controller, $this->modulename);
     }
 
     private function beforeDisplay($controller, $url, $page)
