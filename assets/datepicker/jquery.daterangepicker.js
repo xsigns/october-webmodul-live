@@ -1468,9 +1468,9 @@
                 }
 
                 let wechselleiste = opt.wechselleiste;
-                let wechselleisteStart = opt.wechselleisteStart;
-                let selectedDate = moment(moment(opt.start)).unix();
-                let diff = Math.floor((selectedDate - wechselleisteStart) / 86400);
+                let wechselleisteStart = moment(moment.unix(opt.wechselleisteStart));
+                let selectedDate = moment(opt.start);
+                let diff = selectedDate.diff(wechselleisteStart, 'days');
                 let blockedDays = opt.blocked;
 
                 let blockedDaysNachAnreise = blockedDays.filter(item => {
@@ -1486,8 +1486,9 @@
                     let time = parseInt($(this).attr('time'), 10);
 
                     if (opt.start < time) {
-                        let current = moment(moment(time)).unix();
-                        let curDiff = Math.floor((current - selectedDate) / 86400);
+                        let selectedArrivalDate = moment(opt.start)
+                        let currentDateToCheck = moment(time)
+                        let curDiff = currentDateToCheck.diff(selectedArrivalDate, 'days')
                         let index = diff + curDiff;
                         let char = wechselleiste.charAt(index);
 
@@ -2471,9 +2472,9 @@
         {
             let returns = '';
             let wechselleiste = opt.wechselleiste;
-            let wlStart = opt.wechselleisteStart;
-            let timeMoment = moment(time).unix();
-            let diff = Math.floor((timeMoment - wlStart) / 86400);
+            let wlStart = moment(moment.unix(opt.wechselleisteStart));
+            let timeMoment = moment(time);
+            let diff = timeMoment.diff(wlStart, 'days')
 
             if (diff >= 0) {
                 let state = wechselleiste.charAt(diff);
