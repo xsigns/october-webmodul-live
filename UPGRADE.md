@@ -4,6 +4,29 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.8.19
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Eigentümerdaten_** _default.htm_:  
+Innerhalb des Code-Blocks ``var abrTable = $('#abrechnungen').DataTable({...})`` muss folgender Code für das ``columnDefs``-Objekt hinzugefügt werden:
+````
+{
+    targets: 4,
+    sortable: true,
+    type: 'de_date',
+},
+````
+Innerhalb des Code-Blocks ``var table = $('#vorgaenge').DataTable({...})`` muss folgender Code für das ``columnDefs``-Objekt hinzugefügt werden:
+````
+{
+    targets: 2,
+    visible: true,
+    searchable: true,
+    sortable: true,
+    type: 'de_date',
+},
+````
+- - -
+
 ## Upgrade 3.8.11
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente **_Objektliste_** _default.htm_:  

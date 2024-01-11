@@ -1392,14 +1392,10 @@
                             mindays2 = blocked.diff(a,'days') ;
                         else
                             mindays2 = minDays;
-                        if(lueckemintage > 1)
-                        {
-                            if(lueckemintage < mindays2)
-                                minDays =lueckemintage;
-                        }else {
-                            if (mindays2 < minDays)
-                                minDays = mindays2;
-                        }
+
+                        if (mindays2 < minDays)
+                            minDays = mindays2;
+
                         bistag = moment(opt.start).add(minDays-1 , 'day'); // Mach minus 1 da der letzte Tag nicht geblockt ist
                         break;
                     }

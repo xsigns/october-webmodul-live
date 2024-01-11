@@ -869,3 +869,8 @@
 3.8.18:
     - Verbesserung der Objektsuche
     - update80.php
+3.8.19:
+    - "!!! Verbesserung der Datumsausgabe für den Eigentümerlogin. Partial Eigentümerdaten muss angepasst werden, bitte Upgrade-Guide lesen!"
+    - Fehlerkorrekturen für Mindestlänge Lücke im Datepicker
+    - Verbesserungen für die Anzeige des letzten verfügbaren Monats im Belegungsplan
+    - Verbesserungen für die Bildtitelausgabe in der Image-Komponente
