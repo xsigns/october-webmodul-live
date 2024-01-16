@@ -246,7 +246,7 @@
             blocked: {{ blockeddates|raw }},
             language: '{{ lang }}',
             beforeShowDay: function(t) {
-                let valid = this.blocked.indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
+                let valid = this.blocked[0].indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;
                 let _class = '';
 
                 if (this.invalid.indexOf(moment(t).format('YYYY-MM-DD'),0) > -1)

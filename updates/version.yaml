@@ -874,3 +874,8 @@
     - Fehlerkorrekturen für Mindestlänge Lücke im Datepicker
     - Verbesserungen für die Anzeige des letzten verfügbaren Monats im Belegungsplan
     - Verbesserungen für die Bildtitelausgabe in der Image-Komponente
+3.9.0:
+    - Rabatte aus Fewo-Verwalter werden nun unterstützt und in der Buchungsmaske entsprechend geladen und berechnet
+    - Erweiterung Angebote einstellbarer Buchungszeitraum für Angebote aus Fewo-Verwalter wird beachtet
+    - Allgemeine Verbesserungen
+    - update81.php
