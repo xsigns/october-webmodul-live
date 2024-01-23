@@ -24,38 +24,35 @@ class FewoSitemaps
     {
         $seoobjekte = GlobalSettings::get('seoobjekte');
 
-        $appUrl = Config::get('app.url');
-        $appUrl = substr($appUrl, -1) == '/' ? substr_replace($appUrl, '', -1) : $appUrl;
-        $currentUrl = $appUrl . Language::checkLangPath($this->lang);
+        $theme = Theme::getEditTheme();
+        $pagesInTheme = Page::listInTheme($theme, true);
+        $page = array_filter($pagesInTheme->all(), function ($page) use ($seoobjekte) {
+            return $page->url == $seoobjekte;
+        });
+        $page = array_values($page);
+        $page = $page[0];
 
-        $resObjekte = DB::select("select id, obj_alias, obj_ort, obj_regionid from xsigns_fewo_obj left join xsigns_fewo_objlang on (objid = id) where obj_aktiv = 1 and lang = " . Database::escape($this->lang));
+        $resObjekte = DB::select("select id, obj_alias, obj_ort, obj_regionid from xsigns_fewo_obj where obj_aktiv = 1");
 
-        if (count($resObjekte) > 0)
+        if (count($resObjekte) == 0)
+            return $dom;
+
+        foreach ($resObjekte as $item)
         {
-            foreach ($resObjekte as $item)
+            $strUrl = $this->buildObjstringUrl($item, $this->getAppUrl()->defaultLangUrl, $seoobjekte, $this->lang);
+            $this->buildDom($dom, $xml, $strUrl);
+
+            if (is_null($page->localeUrl))
+                continue;
+
+            foreach ($page->localeUrl as $lang => $localeUrl)
             {
-                // add url container node
-                $url = $xml->appendChild($dom->createElement('url'));
+                if ($localeUrl == '')
+                    continue;
 
-                // add loc
-                $loc = $url->appendChild($dom->createElement('loc'));
-                $strUrl = str_replace(':alias', '', $currentUrl . $seoobjekte . $item->obj_alias);
-                $strUrl = str_replace(':ort', Fewo::standardize($item->obj_ort), $strUrl);
-                $region = Region::bildeRegionstext(null, $this->modulename, $item->obj_regionid, strtoupper($this->lang), '');
-                $strUrl = str_replace(':region', Fewo::standardize($region), $strUrl);
-                $loc->appendChild($dom->createTextNode($strUrl));
-
-                // add lastmod
-                $lastmod = $url->appendChild($dom->createElement('lastmod'));
-                $lastmod->appendChild($dom->createTextNode(date('Y-m-d')));
-
-                // add changefreq
-                $changefreq = $url->appendChild($dom->createElement('changefreq'));
-                $changefreq->appendChild($dom->createTextNode('daily'));
-
-                // add priority
-                $priority = $url->appendChild($dom->createElement('priority'));
-                $priority->appendChild($dom->createTextNode('0.5'));
+                $localeUrl = '/' . strtolower($lang) . $this->checkStringUrl($localeUrl);
+                $strUrl = $this->buildObjstringUrl($item, $this->getAppUrl()->url, $localeUrl, $lang);
+                $this->buildDom($dom, $xml, $strUrl);
             }
         }
 
@@ -63,87 +60,161 @@ class FewoSitemaps
     }
 
     /**
+     * @param $item
+     * @param $appUrl
+     * @param $localeUrl
+     * @param $lang
+     * @return array|string|string[]
+     */
+    private function buildObjstringUrl($item, $appUrl, $localeUrl, $lang)
+    {
+        $strUrl = str_replace(':alias', '', $appUrl . $localeUrl . $item->obj_alias);
+        $strUrl = str_replace(':ort', Fewo::standardize($item->obj_ort), $strUrl);
+        $region = Region::bildeRegionstext(null, $this->modulename, $item->obj_regionid, strtoupper($lang), '');
+
+        return str_replace(':region', Fewo::standardize($region), $strUrl);
+    }
+
+    /**
+     * @param $dom
+     * @param $xml
      * @return false|string|void
-     * @throws DOMException
      */
     private function getHausSitemap($dom, $xml)
     {
         $seohaus = GlobalSettings::get('seohaus');
 
-        $appUrl = Config::get('app.url');
-        $appUrl = substr($appUrl, -1) == '/' ? substr_replace($appUrl, '', -1) : $appUrl;
-        $currentUrl = $appUrl . Language::checkLangPath($this->lang);
+        $theme = Theme::getEditTheme();
+        $pagesInTheme = Page::listInTheme($theme, true);
+        $page = array_filter($pagesInTheme->all(), function ($page) use ($seohaus) {
+            return $page->url == $seohaus;
+        });
+        $page = array_values($page);
+        $page = $page[0];
 
         $resHaus = DB::select("select id, haus_alias from xsigns_fewo_ha left join xsigns_fewo_halang on (hausid = id) where lang = " . Database::escape($this->lang));
 
-        if (count($resHaus) > 0)
+        if (count($resHaus) == 0)
+            return $dom;
+
+        foreach ($resHaus as $item)
         {
-            foreach ($resHaus as $item)
+            $strUrl = str_replace(':alias', '', $this->getAppUrl()->defaultLangUrl . $this->checkStringUrl($seohaus) . $item->haus_alias);
+            $this->buildDom($dom, $xml, $strUrl);
+
+            if (is_null($page->localeUrl))
+                continue;
+
+            foreach ($page->localeUrl as $lang => $localeUrl)
             {
-                // add url container node
-                $url = $xml->appendChild($dom->createElement('url'));
+                if ($localeUrl == '')
+                    continue;
 
-                // add loc
-                $loc = $url->appendChild($dom->createElement('loc'));
-                $strUrl = str_replace(':alias', '', $currentUrl . $seohaus . $item->haus_alias);
-                $loc->appendChild($dom->createTextNode($strUrl));
-
-                // add lastmod
-                $lastmod = $url->appendChild($dom->createElement('lastmod'));
-                $lastmod->appendChild($dom->createTextNode(date('Y-m-d')));
-
-                // add changefreq
-                $changefreq = $url->appendChild($dom->createElement('changefreq'));
-                $changefreq->appendChild($dom->createTextNode('daily'));
-
-                // add priority
-                $priority = $url->appendChild($dom->createElement('priority'));
-                $priority->appendChild($dom->createTextNode('0.5'));
+                $localeUrl = '/' . strtolower($lang) . $this->checkStringUrl($localeUrl);
+                $strUrl = str_replace(':alias', '', $this->getAppUrl()->url . $localeUrl . $item->haus_alias);
+                $this->buildDom($dom, $xml, $strUrl);
             }
         }
 
         return $dom;
     }
 
+    /**
+     * @param $dom
+     * @param $xml
+     * @return mixed
+     */
     private function getPagesSitemap($dom, $xml)
     {
         $pagesForSitemap = GlobalSettings::get('pagessitemap');
 
-        if (!empty($pagesForSitemap))
+        if (empty($pagesForSitemap))
+            return $dom;
+
+        $theme = Theme::getEditTheme();
+        $pages = Page::listInTheme($theme, true);
+
+        foreach ($pages as $page)
         {
-            $theme = Theme::getEditTheme();
-            $pages = Page::listInTheme($theme, true);
+            $filename = substr($page['fileName'], 0, -4);
 
-            foreach ($pages as $page)
+            if (!in_array($filename, $pagesForSitemap) && $page['is_hidden'] != 0)
+                continue;
+
+            $strUrl = $this->getAppUrl()->defaultLangUrl . $page['url'];
+            if ($page['url'] == '/')
+                $strUrl = $this->getAppUrl()->defaultLangUrl;
+
+            $this->buildDom($dom, $xml, $strUrl);
+
+            if (is_null($page['localeUrl']))
+                continue;
+
+            foreach ($page['localeUrl'] as $lang => $localePage)
             {
-                $filename = substr($page['fileName'], 0, -4);
+                if ($localePage == '')
+                    continue;
 
-                if (in_array($filename, $pagesForSitemap) && $page['is_hidden'] == 0)
-                {
-                    // add url container node
-                    $url = $xml->appendChild($dom->createElement('url'));
+                $strUrl = $this->getAppUrl()->url . '/' . $lang . $this->checkStringUrl($localePage);
+                if ($localePage == '/')
+                    $strUrl = $this->getAppUrl()->url . '/' . $lang;
 
-                    // add loc
-                    $loc = $url->appendChild($dom->createElement('loc'));
-                    $currentUrl = substr_replace(Config::get('app.url'), '', -1) . Language::checkLangPath($this->lang);
-                    $loc->appendChild($dom->createTextNode($currentUrl . $page['url']));
-
-                    // add lastmod
-                    $lastmod = $url->appendChild($dom->createElement('lastmod'));
-                    $lastmod->appendChild($dom->createTextNode(date('Y-m-d')));
-
-                    // add changefreq
-                    $changefreq = $url->appendChild($dom->createElement('changefreq'));
-                    $changefreq->appendChild($dom->createTextNode('daily'));
-
-                    // add priority
-                    $priority = $url->appendChild($dom->createElement('priority'));
-                    $priority->appendChild($dom->createTextNode('0.5'));
-                }
+                $this->buildDom($dom, $xml, $strUrl);
             }
         }
 
         return $dom;
+    }
+
+    /**
+     * @param $url
+     * @return mixed|string
+     */
+    private function checkStringUrl($url)
+    {
+        return substr($url, 0, 1) != '/' ? '/' . $url : $url;
+    }
+
+    /**
+     * @return object
+     */
+    private function getAppUrl(): object
+    {
+        $appUrl = Config::get('app.url');
+        $appUrl = substr($appUrl, -1) == '/' ? substr_replace($appUrl, '', -1) : $appUrl;
+        $defaultLangUrl = $appUrl . Language::checkLangPath($this->lang);
+
+        return (object) [
+            'url' => $appUrl,
+            'defaultLangUrl' => $defaultLangUrl
+        ];
+    }
+
+    /**
+     * @param $dom
+     * @param $xml
+     * @param $strUrl
+     * @return void
+     */
+    private function buildDom($dom, $xml, $strUrl)
+    {
+        $url = $xml->appendChild($dom->createElement('url'));
+
+        // add loc
+        $loc = $url->appendChild($dom->createElement('loc'));
+        $loc->appendChild($dom->createTextNode($strUrl));
+
+        // add lastmod
+        $lastmod = $url->appendChild($dom->createElement('lastmod'));
+        $lastmod->appendChild($dom->createTextNode(date('Y-m-d')));
+
+        // add changefreq
+        $changefreq = $url->appendChild($dom->createElement('changefreq'));
+        $changefreq->appendChild($dom->createTextNode('daily'));
+
+        // add priority
+        $priority = $url->appendChild($dom->createElement('priority'));
+        $priority->appendChild($dom->createTextNode('0.5'));
     }
 
     /**
@@ -158,8 +229,6 @@ class FewoSitemaps
 
         $uriRequest = $request->getRequestUri();
         $uri = $uriRequest[0] == '/' ? substr($uriRequest, 1) : $uriRequest;
-
-        // Logger::quickLog($this->modulename, 'Url', $uriRequest);
 
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
