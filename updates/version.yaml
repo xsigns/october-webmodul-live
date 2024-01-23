@@ -879,3 +879,8 @@
     - Erweiterung Angebote einstellbarer Buchungszeitraum für Angebote aus Fewo-Verwalter wird beachtet
     - Allgemeine Verbesserungen
     - update81.php
+3.9.1:
+    - Verbesserungen Objektbilder speichern
+    - Verbesserungen für die Objektsuche
+    - Verbesserungen für Sitemaps und Mehrsprachigkeit
+    - update82.php

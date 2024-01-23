@@ -1,29 +1,47 @@
 <table>
     <tr style="height: 30px;"><td></td></tr>
-    <tr><td>Sehr geehrte(r) {{ ANREDE }} {{ VORNAME }} {{ NAME }},
-            <br>
+    <tr>
+        <td>
+            Sehr geehrte(r) {{ ANREDE }} {{ VORNAME }} {{ NAME }},<br>
             wir danken für Ihre Buchung, die wir am {{ DATUM }} von Ihnen für die Zeit vom {{ ANREISE }} bis zum {{ ABREISE }} im Objekt {{ OBJEKT }} erhalten haben.
-        </td></tr>
+        </td>
+    </tr>
 </table>
-
 <table>
     <tr style="height: 30px;"><td></td></tr>
-    <tr class="t_bold"><td> Anschrift </td></tr>
-    {% if FIRMA %}<tr><td>{{ FIRMA }}</td></tr>{% endif %}
+    <tr class="t_bold"><td>Anschrift</td></tr>
+    {% if FIRMA %}
+        <tr><td>{{ FIRMA }}</td></tr>
+    {% endif %}
     <tr><td>{{ ANREDE }} {{ VORNAME }} {{ NAME }}</td></tr>
     <tr><td>{{ STRASSE }}</td></tr>
     <tr><td>{{ PLZ }} {{ ORT }} / {{ LAND }}</td></tr>
 </table>
-
 <table>
     <tr style="height: 30px;"><td></td></tr>
-    <tr class="t_bold"><td> Ihre Daten </td></tr>
-    {% if TEL %}<tr><td style="width: 150px;">Telefonnummer</td><td>{{ TEL }}</td></tr> {% endif %}
-    {% if MOBIL %}<tr><td style="width: 150px;">Mobilnummer</td><td>{{ MOBIL }}</td></tr> {% endif %}
-    <tr><td>Mail</td><td style="width: 150px;">{{ MAIL }}</td></tr>
-    {% if GEB %}<tr><td style="width: 150px;">Geburtsdatum</td><td>{{ GEB }}</td></tr>{% endif %}
+    <tr class="t_bold"><td>Ihre Daten</td></tr>
+    {% if TEL %}
+        <tr>
+            <td style="width: 150px;">Telefonnummer</td>
+            <td>{{ TEL }}</td>
+        </tr>
+    {% endif %}
+    {% if MOBIL %}
+        <tr>
+            <td style="width: 150px;">Mobilnummer</td>
+            <td>{{ MOBIL }}</td></tr>
+    {% endif %}
+    <tr>
+        <td>Mail</td>
+        <td style="width: 150px;">{{ MAIL }}</td>
+    </tr>
+    {% if GEB %}
+        <tr>
+            <td style="width: 150px;">Geburtsdatum</td>
+            <td>{{ GEB }}</td>
+        </tr>
+    {% endif %}
 </table>
-
 {% if MITREISENDE %}
     <table>
         <tr style="height: 30px;"><td></td></tr>
@@ -42,23 +60,44 @@
         {% endfor %}
     </table>
 {% endif %}
-
 <table>
     <tr style="height: 30px;"><td></td></tr>
     <tr class="t_bold"><td>Buchungsdaten</td></tr>
     <table>
-        <tr><td style="width: 150px;">Ferienwohnung</td><td>{{OBJEKT}}</td></tr>
-        <tr><td style="width: 150px;">Erwachsene</td><td>{{ERWACHSENE}}</td></tr>
-        <tr><td style="width: 150px;">Kinder/Kleinkinder</td><td>{{KINDER}}/{{KLEINKINDER}}</td></tr>
-        <tr><td style="width: 150px;">Zeitraum</td><td>{{ANREISE}} - {{ABREISE}} ( {{TAGE}} Nacht/Nächte )</td></tr>
+        <tr>
+            <td style="width: 150px;">Ferienwohnung</td>
+            <td>{{OBJEKT}}</td>
+        </tr>
+        <tr>
+            <td style="width: 150px;">Erwachsene</td>
+            <td>{{ERWACHSENE}}</td>
+        </tr>
+        <tr>
+            <td style="width: 150px;">Kinder/Kleinkinder</td>
+            <td>{{KINDER}}/{{KLEINKINDER}}</td>
+        </tr>
+        <tr>
+            <td style="width: 150px;">Zeitraum</td>
+            <td>{{ANREISE}} - {{ABREISE}} ( {{TAGE}} Nacht/Nächte )</td>
+        </tr>
     </table>
-
-
     <table>
         <tr style="height: 30px;"><td></td></tr>
         <tr class="t_bold"><td>Buchungspreis</td></tr>
-        <tr><td>Objektpreis</td><td style="text-align: right;">{{OBJEKTPREIS}}</td></tr>
-        <tr><td>einmalige Nebenkosten</td><td style="text-align: right;">{{NEBENKOSTEN}}</td></tr>
+        <tr>
+            <td>Objektpreis</td>
+            <td style="text-align: right;">{{OBJEKTPREIS}}</td>
+        </tr>
+        <tr>
+            <td>einmalige Nebenkosten</td>
+            <td style="text-align: right;">{{NEBENKOSTEN}}</td>
+        </tr>
+        {% if HAT_RABATT %}
+            <tr>
+                <td>Rabatt</td>
+                <td style="text-align: right;">{{RABATT}}</td>
+            </tr>
+        {% endif %}
         {% if ZUSCHLAEGE %}
             {% for zu in ZUSCHLAEGE %}
                 <tr>
@@ -67,8 +106,12 @@
                 </tr>
             {% endfor %}
         {% endif %}
-        <tr><td>gebuchte Leistungen</td><td style="text-align: right;">{{LEISTPREIS}}</td></tr>
-        <tr><td>
+        <tr>
+            <td>gebuchte Leistungen</td>
+            <td style="text-align: right;">{{LEISTPREIS}}</td>
+        </tr>
+        <tr>
+            <td>
                 {% if LEISTUNGEN %}
                     <table class="t_leistungen">
                         {% for leist in LEISTUNGEN %}
@@ -83,26 +126,34 @@
                         {% endfor %}
                     </table>
                 {% endif %}
-
-            </td><td></td></tr>
-        <tr><td>Kaution</td><td style="text-align: right;">{{ KAUTION }}</td></tr>
-        <tr><td class="summe">Summe</td><td class="summe" style="text-align: right;">{{SUMME}}</td></tr>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Kaution</td>
+            <td style="text-align: right;">{{ KAUTION }}</td>
+        </tr>
+        <tr>
+            <td class="summe">Summe</td>
+            <td class="summe" style="text-align: right;">{{SUMME}}</td>
+        </tr>
+        {% if ANGEBOT_ID > 0 %}
+            <tr style="height: 30px;"><td></td></tr>
+            <tr><td>Das Angebot "{{ ANGEBOT_NAME }}" (ID {{ ANGEBOT_ID }}) wurde gebucht.</td></tr>
+        {% endif %}
     </table>
-
-
     {% if NACHRICHT %}
         <table>
             <tr style="height: 30px;"><td></td></tr>
-            <tr class="t_bold"><td> Ihre Nachricht </td></tr>
+            <tr class="t_bold"><td>Ihre Nachricht</td></tr>
             <tr><td>{{NACHRICHT|raw}}</td></tr>
         </table>
     {% endif %}
-
-
     <table>
         <tr style="height: 30px;"><td></td></tr>
         <tr><td>Sollten Sie unsere Antwort nicht innerhalb von 24 Stunden erhalten haben bitten wir um Ihren Anruf.</td></tr>
-        <tr><td>Mit freundlichen Grüßen,Ihr Vermietungsbüro </td></tr>
+        <tr><td>Mit freundlichen Grüßen, Ihr Vermietungsbüro</td></tr>
         <tr><td></td></tr>
         <tr><td>Inh.: {{ VERWLATER_VORNAME }} {{ VERWALTER_NACHNAME }} | {{ VERWALTER_STRASSE }} {{ VERWALTER_HAUSNUMMER }} | {{ VERWLATER_PLZ }} {{ VERWALTER_ORT }} | Tel. {{ VERWALTER_TELEFON }} | Mail: {{ VERWALTER_MAIL }} | {{ VERWALTER_WEBSITE }}</td></tr>
     </table>
+</table>
