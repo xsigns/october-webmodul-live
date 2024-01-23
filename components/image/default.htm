@@ -29,14 +29,10 @@
         </header>
     {% else %}
         <div class="{{ imgcss }} fewo-image-{{ type }} {{ type }}">
-            {% if imagecrop %}
-                <img src="{{ image|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
+            {% if type == 'objektslider' %}
+                <img src="{{ image|raw }}" alt="{{ title|raw }}">
             {% else %}
-                {% if type == 'panorama' %}
-                    <img src="{{ image|raw }}" alt="{{ title|raw }}">
-                {% else %}
-                    <img src="{{ image|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
-                {% endif %}
+                <img src="{{ image|raw }}" alt="{{ title|raw }}" title="{{ title|raw }}">
             {% endif %}
         </div>
     {% endif %}

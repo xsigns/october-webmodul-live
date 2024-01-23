@@ -23,7 +23,10 @@ class FewoSitemaps
     private function getObjektSitemap($dom, $xml)
     {
         $seoobjekte = GlobalSettings::get('seoobjekte');
-        $currentUrl = substr_replace(Config::get('app.url'), '', -1) . Language::checkLangPath($this->lang);
+
+        $appUrl = Config::get('app.url');
+        $appUrl = substr($appUrl, -1) == '/' ? substr_replace($appUrl, '', -1) : $appUrl;
+        $currentUrl = $appUrl . Language::checkLangPath($this->lang);
 
         $resObjekte = DB::select("select id, obj_alias, obj_ort, obj_regionid from xsigns_fewo_obj left join xsigns_fewo_objlang on (objid = id) where obj_aktiv = 1 and lang = " . Database::escape($this->lang));
 
@@ -66,7 +69,10 @@ class FewoSitemaps
     private function getHausSitemap($dom, $xml)
     {
         $seohaus = GlobalSettings::get('seohaus');
-        $currentUrl = substr_replace(Config::get('app.url'), '', -1) . Language::checkLangPath($this->lang);
+
+        $appUrl = Config::get('app.url');
+        $appUrl = substr($appUrl, -1) == '/' ? substr_replace($appUrl, '', -1) : $appUrl;
+        $currentUrl = $appUrl . Language::checkLangPath($this->lang);
 
         $resHaus = DB::select("select id, haus_alias from xsigns_fewo_ha left join xsigns_fewo_halang on (hausid = id) where lang = " . Database::escape($this->lang));
 

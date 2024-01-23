@@ -210,7 +210,7 @@
 	$(document).ready(function() {
         //$('#ctrl_objekt').select2({});
 
-        {% if showabrechnung ==1 %}
+        {% if showabrechnung == 1 %}
             var abrData = {{ abrechnungen|raw }};
 
             var abrTable = $('#abrechnungen').DataTable({
@@ -241,6 +241,11 @@
                     {
                         targets: 1,
                         width: "10px",
+                    },
+                    {
+                        targets: 4,
+                        sortable: true,
+                        type: 'de_date',
                     },
                 ],
                 drawCallback: function(settings) {
@@ -322,6 +327,13 @@
                         visible: true,
                         searchable: true,
                         sortable: true,
+                    },
+                    {
+                        targets: 2,
+                        visible: true,
+                        searchable: true,
+                        sortable: true,
+                        type: 'de_date',
                     },
                     {
                         targets: 3,

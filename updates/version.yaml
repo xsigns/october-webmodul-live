@@ -866,8 +866,20 @@
 3.8.17:
     - Fehlerkorrekturen Zuschläge berechnen in der Buchungsmaske
     - Fehlerkorrekturen Listenfilter Anzahl Objekte berechnen
+3.8.18:
+    - Verbesserung der Objektsuche
+    - update80.php
+3.8.19:
+    - "!!! Verbesserung der Datumsausgabe für den Eigentümerlogin. Partial Eigentümerdaten muss angepasst werden, bitte Upgrade-Guide lesen!"
+    - Fehlerkorrekturen für Mindestlänge Lücke im Datepicker
+    - Verbesserungen für die Anzeige des letzten verfügbaren Monats im Belegungsplan
+    - Verbesserungen für die Bildtitelausgabe in der Image-Komponente
 3.9.0:
     - Rabatte aus Fewo-Verwalter werden nun unterstützt und in der Buchungsmaske entsprechend geladen und berechnet
-    - Erweiterung Angebote einstellbarer Buchungszeitraum für Angebote aus Fewo-Verwalter werden beachtet
+    - Erweiterung Angebote einstellbarer Buchungszeitraum für Angebote aus Fewo-Verwalter wird beachtet
     - Allgemeine Verbesserungen
-    - update80.php
+    - update81.php
+3.9.1:
+    - Verbesserungen Objektbilder speichern
+    - Verbesserungen für die Objektsuche
+    - update82.php

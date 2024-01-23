@@ -12,6 +12,7 @@ use Xsigns\Fewo\Classes\DatabaseCache;
 use Xsigns\Fewo\Classes\Language;
 use Xsigns\Fewo\Classes\Logger;
 use Xsigns\Fewo\classes\Objektbewertung;
+use Xsigns\Fewo\Classes\ObjektSuchindex;
 use Xsigns\Fewo\Classes\OwnerHelper;
 use Xsigns\Fewo\Classes\Preislevel;
 use Xsigns\Fewo\classes\SendCron;
@@ -32,6 +33,9 @@ class Plugin extends PluginBase
 
     protected $modulename = "boot plugin";
 
+    /**
+     * @throws \Exception
+     */
     public function boot()
     {
         ini_set('session.cookie_lifetime', 3600 * 24 * 3);
@@ -61,6 +65,8 @@ class Plugin extends PluginBase
             date_default_timezone_set('Europe/Berlin');
         else
             date_default_timezone_set(ini_get('date.timezone'));
+
+        ObjektSuchindex::updateZeitleistenAlleObjekteYearly($this->controller, $this->modulename);
     }
 
     private function beforeDisplay($controller, $url, $page)
@@ -225,7 +231,7 @@ class Plugin extends PluginBase
                 'icon' => 'oc-icon-check-circle-o',
                 'url' => Backend::url('xsigns/fewo/ausstattungset'),
                 'permissions' => ['xsigns.fewo.*'],
-                'order' => 11,
+                'order' => 13,
             ],
             'bookingask' => [
                 'label' => 'xsigns.fewo::lang.bookingask.name',
@@ -234,7 +240,7 @@ class Plugin extends PluginBase
                 'icon' => 'oc-icon-times-circle-o',
                 'url' => Backend::url('xsigns/fewo/bookingask'),
                 'permissions' => ['xsigns.fewo.*'],
-                'order' => 12,
+                'order' => 14,
             ],
             'bookinglist' => [
                 'label' => 'xsigns.fewo::lang.bookings.name',
@@ -243,7 +249,7 @@ class Plugin extends PluginBase
                 'icon' => 'oc-icon-calendar-o',
                 'url' => Backend::url('xsigns/fewo/bookinglist'),
                 'permissions' => ['xsigns.fewo.*'],
-                'order' => 12,
+                'order' => 15,
             ],
             'restzahlungenlist' => [
                 'label' => 'xsigns.fewo::lang.globalsettings.restzahlliste_label',
@@ -251,7 +257,7 @@ class Plugin extends PluginBase
                 'category' => 'xsigns.fewo::lang.globalsettings.category',
                 'icon' => 'icon-credit-card',
                 'url' => Backend::url('xsigns/fewo/restzahlungenlist'),
-                'order' => 13
+                'order' => 16,
             ],
             'votings' => [
                 'label' => 'xsigns.fewo::lang.votings.name',
@@ -260,7 +266,7 @@ class Plugin extends PluginBase
                 'icon' => 'oc-icon-star-o',
                 'url' => Backend::url('xsigns/fewo/votings'),
                 'permissions' => ['xsigns.fewo.*'],
-                'order' => 14,
+                'order' => 17,
             ],
             'settings' => [
                 'label' => 'xsigns.fewo::lang.slickslider.name',
@@ -268,10 +274,10 @@ class Plugin extends PluginBase
                 'category' => 'xsigns.fewo::lang.globalsettings.category',
                 'icon' => 'icon-cog',
                 'class' => 'xsigns\fewo\Models\Settings',
-                'order' => 500,
                 'keywords' => 'slide show settings',
                 'permissions' => ['xsigns.fewo.*'],
-                'size' => 'adaptive'
+                'size' => 'adaptive',
+                'order' => 18,
             ],
             'slideshows' => [
                 'label' => 'xsigns.fewo::lang.slideshows.name',
@@ -279,9 +285,9 @@ class Plugin extends PluginBase
                 'category' => 'xsigns.fewo::lang.globalsettings.category',
                 'icon' => 'oc-icon-smile-o',
                 'url' => Backend::url('xsigns/fewo/slideshows'),
-                'order' => 500,
                 'keywords' => 'slideshows',
                 'permissions' => ['xsigns.fewo.*'],
+                'order' => 19,
             ],
             'galleries' => [
                 'label' => 'xsigns.fewo::lang.galerie.name',
@@ -291,7 +297,7 @@ class Plugin extends PluginBase
                 'icon' => 'icon-film',
                 'keywords' => 'galleries',
                 'permissions' => ['xsigns.fewo.*'],
-                'order' => 500,
+                'order' => 20,
             ],
         ];
 
