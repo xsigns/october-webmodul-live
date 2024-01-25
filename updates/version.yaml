@@ -884,3 +884,6 @@
     - Verbesserungen für die Objektsuche
     - Verbesserungen für Sitemaps und Mehrsprachigkeit
     - update82.php
+3.9.2:
+    - Verbesserungen Url Aliasse mit Sonderzeichen
+    - Verbesserungen Google Maps für Objektliste

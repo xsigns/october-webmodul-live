@@ -61,7 +61,10 @@ Maps.createMap = function() {
 
                 $('.mapObjekt').removeClass('on-map-selected');
                 $('#obj' + marker.objektId).addClass('on-map-selected');
-                $('#fewo-map-liste').scrollTop($('#fewo-map-liste').scrollTop() + $('#obj' + marker.objektId).offset().top - ($('#obj' + marker.objektId).height() * 2));
+
+                if ($('#obj' + marker.objektId).length > 0) {
+                    $('#fewo-map-liste').scrollTop($('#fewo-map-liste').scrollTop() + $('#obj' + marker.objektId).offset().top - ($('#obj' + marker.objektId).height() * 2));
+                }
             });
         })(marker);
 
@@ -75,7 +78,7 @@ Maps.createMap = function() {
 
     map.fitBounds(bounds);
 
-    let markerCluster = new MarkerClusterer(map, markers, {maxZoom: 12, imagePath: 'plugins/xsigns/fewo/assets/images/kreis'});
+    let markerCluster = new MarkerClusterer(map, markers, {maxZoom: 12, imagePath: '/plugins/xsigns/fewo/assets/images/kreis'});
 
     const styles = markerCluster.getStyles();
     for (let i = 0; i < styles.length; i++) {
