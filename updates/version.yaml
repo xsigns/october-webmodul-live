@@ -887,3 +887,5 @@
 3.9.2:
     - Verbesserungen Url Aliasse mit Sonderzeichen
     - Verbesserungen Google Maps für Objektliste
+3.9.3:
+    - Fehlerkorrekturen Rabatt berechnen mit Angebot
