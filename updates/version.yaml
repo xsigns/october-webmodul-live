@@ -875,7 +875,7 @@
     - Verbesserungen für die Anzeige des letzten verfügbaren Monats im Belegungsplan
     - Verbesserungen für die Bildtitelausgabe in der Image-Komponente
 3.9.0:
-    - Rabatte aus Fewo-Verwalter werden nun unterstützt und in der Buchungsmaske entsprechend geladen und berechnet
+    - Verbesserung der Preiskalkulation
     - Erweiterung Angebote einstellbarer Buchungszeitraum für Angebote aus Fewo-Verwalter wird beachtet
     - Allgemeine Verbesserungen
     - update81.php
@@ -888,4 +888,6 @@
     - Verbesserungen Url Aliasse mit Sonderzeichen
     - Verbesserungen Google Maps für Objektliste
 3.9.3:
-    - Fehlerkorrekturen Rabatt berechnen mit Angebot
+    - Fehlerkorrekturen Preiskalkulation mit Angebot
+3.9.4:
+    - Verbesserungen der Zeitleiste für den Abreisetag bei Zeitraumsauswahl
