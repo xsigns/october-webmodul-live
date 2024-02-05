@@ -891,3 +891,6 @@
     - Fehlerkorrekturen Preiskalkulation mit Angebot
 3.9.4:
     - Verbesserungen der Zeitleiste für den Abreisetag bei Zeitraumsauswahl
+3.9.5:
+    - Verbesserungen Angebote Objekte mit definierten Anreise- Abreisetagen laden
+    - Verbesserungen der Zeitleiste
