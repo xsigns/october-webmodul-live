@@ -189,7 +189,8 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             jahr = dateId.substr(4, 4);
             dayId = dayEleme.index(elem);
             anreiseIndex = dayId;
-            mintage = mintageTimeline.charAt(dayId);
+            let mintageArr = mintageTimeline.split(';');
+            mintage = mintageArr[dayId];
             anreisedatum = new Date(jahr + '-' + monat + '-' + tag);
             anreiseId = dayId;
             dayEleme.removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
@@ -262,7 +263,8 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
 
             $(elem).addClass('gewaehlt');
             dayId2 = dayEleme2.index(elem);
-            mintage2 = mintageTimeline.charAt(dayId2);
+            let mintage2Arr = mintageTimeline.split(';');
+            mintage2 = mintage2Arr[dayId2];
             verfuegbarZeitraum2 = verfuegbarTimeline.substring(dayId2);
             dayEleme2.slice(0, dayId2).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
 
@@ -292,8 +294,8 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             preMonthOffset = verfuegbarleistePrevMonth.length - verfuegbarTimeline.length;
             preMonthTimeline = verfuegbarleistePrevMonth.substring(anreiseId, preMonthOffset);
             firstBelId = verfuegbarTimeline.indexOf('N') + 1;
-            mintageFromAnreise = minTageTimelinePrevMonth.substr(anreiseId, 1);
-
+            let mintagePrevMonthArr = minTageTimelinePrevMonth.split(';');
+            mintageFromAnreise = mintagePrevMonthArr[anreiseId];
             dayEleme2.slice(firstBelId).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar');
 
             if ((preMonthOffset - anreiseId) < mintageFromAnreise)
