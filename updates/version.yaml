@@ -894,3 +894,5 @@
 3.9.5:
     - Verbesserungen Angebote Objekte mit definierten Anreise- Abreisetagen laden
     - Verbesserungen der Zeitleiste
+3.9.6:
+    - Verbesserung der Performance beim Laden von Angeboten
