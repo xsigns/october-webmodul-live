@@ -43,6 +43,7 @@ $(function() {
         wechselleiste: wechselleiste,
         wechselleisteStart: wechselleisteStart,
         legendHtml: (typeof legendHtml === 'undefined' ? '' : legendHtml),
+        tooltipMobile: (typeof tooltipMobile === 'undefined' ? false : tooltipMobile),
         beforeShowDay: function(t)
         {
             valid = this.blocked[0].indexOf(moment(t).format('YYYY-MM-DD'), 0) <= -1;

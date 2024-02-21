@@ -242,6 +242,8 @@
 .date-picker-wrapper .footer .shortcuts {
 	float: left;
 }
+.date-range-length-tip.tooltip-mobile-container {all: unset; text-align: left; padding: 0 10px; margin: 10px 0; color: red;}
+.date-range-length-tip.tooltip-mobile-container::after {all: unset}
 @media (max-width: 600px) {
 	.date-picker-wrapper {font-family: 'Open Sans'; padding: 0px !important; left: 0px !important; top: 0px !important; position: fixed; width: 100% !important; height: 100%; margin-top: 0px !important; border: 0px; border-radius: 0px; overflow-y: scroll; z-index: 9999;}
 	.date-picker-wrapper .month-wrapper {width: 100% !important; border: 0px; padding: 10px;}

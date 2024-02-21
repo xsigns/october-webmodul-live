@@ -626,6 +626,7 @@
             todayInvalid: false,
             wechselleiste: '',
             wechselleisteStart: null,
+            tooltipMobile: false,
         }, opt);
         opt.start = false;
         opt.end = false;
@@ -635,7 +636,7 @@
         opt.isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints;
 
         //if it is a touch device, hide hovering tooltip
-        if (opt.isTouchDevice) opt.hoveringTooltip = false;
+        //if (opt.isTouchDevice) opt.hoveringTooltip = false;
 
         //show one month on mobile devices
         if (opt.singleMonth == 'auto') opt.singleMonth = $(window).width() < 480;
@@ -1579,14 +1580,22 @@
                 _left -= w / 2;
                 _top -= h;
                 setTimeout(function() {
-                    $tip.css({
-                        left: _left,
-                        top: _top,
-                        width:200,
-                        textalign: 'center',
-                        display: 'block',
-                        'visibility': 'visible'
-                    });
+                    if (!opt.isTouchDevice) {
+                        $tip.css({
+                            left: _left,
+                            top: _top,
+                            width: 200,
+                            textalign: 'center',
+                            display: 'block',
+                            visibility: 'visible'
+                        });
+                    } else if (opt.tooltipMobile) {
+                        $tip.css({
+                            display: 'inline-block',
+                            visibility: 'visible'
+                        });
+                        $tip.addClass('tooltip-mobile-container')
+                    }
                 }, 10);
             } else {
                 box.find('.date-range-length-tip').hide();
