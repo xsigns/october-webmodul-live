@@ -894,3 +894,10 @@
 3.9.5:
     - Verbesserungen Angebote Objekte mit definierten Anreise- Abreisetagen laden
     - Verbesserungen der Zeitleiste
+3.9.6:
+    - Verbesserung der Performance beim Laden von Angeboten
+3.9.7:
+    - Verbesserungen für Panoramabilder
+3.9.8:
+    - Verbesserungen der Preiskalkulation und Preisausgabe in der Buchungsmaske
+    - Verbesserungen für die Anezige eines Tooltips im Datepicker für Mobile-Geräte
