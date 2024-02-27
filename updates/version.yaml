@@ -901,3 +901,5 @@
 3.9.8:
     - Verbesserungen der Preiskalkulation und Preisausgabe in der Buchungsmaske
     - Verbesserungen für die Anezige eines Tooltips im Datepicker für Mobile-Geräte
+3.9.9:
+    - Verbesserungen für die Objektliste und den Listenfilter
