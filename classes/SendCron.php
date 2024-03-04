@@ -19,8 +19,6 @@ define ('MAILART_ABREISE', 1);
  */
 class SendCron
 {
-    public static $gastmail;
-
     protected static $modulename = 'sendcron';
 
     /**
@@ -317,16 +315,15 @@ class SendCron
                             else
                                 $mailviewSend = $mailview . 'de';
 
-                            self::$gastmail = $vorgang->gast_mail;
+                            $gastmail = $vorgang->gast_mail;
 
-                            Mail::send($mailviewSend, $vars, function ($message)
-                            {
+                            Mail::send($mailviewSend, $vars, function ($message) use ($gastmail) {
                                 $message->from(GlobalSettings::get('mailaddress'), GlobalSettings::get('mailuser'));
 
                                 if (GlobalSettings::get('mailcccron'))
-                                    $message->to(self::$gastmail)->cc(explode(';', GlobalSettings::get('mailcc')));
+                                    $message->to($gastmail)->cc(explode(';', GlobalSettings::get('mailcc')));
                                 else
-                                    $message->to(self::$gastmail);
+                                    $message->to($gastmail);
                             });
 
                             $hinweis = 'E-Mail erfolgreich gesendet';
