@@ -52,7 +52,7 @@ class Update79 extends Migration
 
         $diffMonths = ((int)date('n', time())) - 1;
 
-        $objekte = Database::select(null, $this->modulename, "select id, obj_name, coalesce(group_concat(objaus_ausid separator ';'), '') as obj_ausst from xsigns_fewo_obj left join xsigns_fewo_objaus on id = objaus_objid group by id");
+        $objekte = Database::select(null, $this->modulename, "select id, obj_name, coalesce(group_concat(objaus_ausid separator ';'), '') as obj_ausst from xsigns_fewo_obj left join xsigns_fewo_objaus on id = objaus_objid group by id, obj_name");
 
         foreach ($objekte as $objekt)
         {
