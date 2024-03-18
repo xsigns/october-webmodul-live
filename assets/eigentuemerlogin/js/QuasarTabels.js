@@ -4,7 +4,7 @@ const { ref } = Vue
 /*---------------------------------------------------*/
 /* Columns */
 const columnsRechnung = [
-    { name: 'rechnungsnr', align: 'left', label: rechnungsnr, field: 'rechnr', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
+    { name: 'rechnungsnr', sortOrder: 'ad', align: 'left', label: rechnungsnr, field: 'rechnr', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
     { name: 'von', align: 'left', label: von, field: 'von', sortable: true, sort: (a, b) => sortDatum(a, b)},
     { name: 'to', align: 'left', label: bis, field: 'to', sortable: true, sort: (a, b) => sortDatum(a, b)},
     { name: 'datum', align: 'left', label: abrZeitraum, field: 'datum', sortable: true, sort: (a, b) => sortDatum(a, b)},
@@ -32,7 +32,7 @@ const columns = [
     { name: 'objid', align: 'left', label: objid, field: 'objid', sortable: true},
     { name: 'erwachsene', align: 'left', label: erwachsene, field: 'erwachsene', sortable: true},
     { name: 'kinder', align: 'left', label: kinder, field: 'kinder', sortable: true},
-    { name: 'objpreis', align: 'right', label: 'Summe', field: 'objpreis', sortable: true,  sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
+    { name: 'objpreis', align: 'right', label: summe, field: 'objpreis', sortable: true,  sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)},
 ]
 
 function sortDatum(a, b) {
@@ -376,12 +376,20 @@ const app = Vue.createApp({
             {
                 page: 1,
                 rowsPerPage: anzahl,
-                label: 'teees'
+                sortBy: 'datum',
+                descending: true,
             },
             initialPaginationLeist:
             {
                 page: 1,
                 rowsPerPage: 1000
+            },
+            initialPaginationAbrechnungen:
+            {
+                page: 1,
+                rowsPerPage: anzahl,
+                sortBy: 'rechnungsnr',
+                descending: true,
             },
             /*------------------------------------------*/
             /*------------------------------------------*/
@@ -493,12 +501,6 @@ const app = Vue.createApp({
             mailSendInputBesch,
             mailSendInputCC,
             mailSendBTNCheck: true,
-
-            initialPagination:
-            {
-                page: 1,
-                rowsPerPage: anzahl
-            },
 
             rechSortData: [sortVor, sortBack],
 
@@ -824,7 +826,8 @@ const app = Vue.createApp({
                                 'xx': event['view']['abrechnungen'][i]['xx']
                             }
                             selected.value.push(setArray)
-                        } else
+                        }
+                        else
                         {
                             let wartungCheckMark = true;
                             for (let b = 0; b < event['view']['abrechnungen'][i]['wartung'].length; b++)
