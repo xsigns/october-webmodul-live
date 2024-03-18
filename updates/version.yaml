@@ -900,7 +900,7 @@
     - Verbesserungen für Panoramabilder
 3.9.8:
     - Verbesserungen der Preiskalkulation und Preisausgabe in der Buchungsmaske
-    - Verbesserungen für die Anezige eines Tooltips im Datepicker für Mobile-Geräte
+    - Verbesserungen für die Anzeige eines Tooltips im Datepicker für Mobile-Geräte
 3.9.9:
     - Verbesserungen für die Objektliste und den Listenfilter
 3.9.10:
@@ -909,3 +909,10 @@
     - Verbesserungen der Preiskalkulation und Angebote
 3.9.12:
     - Verbesserungen für Reihenfolge der Bewertungen
+3.9.13:
+    - Korrekturen für Belegungsplan und Datepicker
+3.9.14:
+    - Verbesserungen für Kalkulation der Kurtaxe
+    - Verbesserungen für den Listenfilter
+    - Erweiterung der Preisausgabe auf der Detailseite
+    - update83.php

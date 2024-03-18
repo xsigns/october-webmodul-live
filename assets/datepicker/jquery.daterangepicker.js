@@ -1516,8 +1516,10 @@
                     else
                         $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');*/
 
-                    if(!checkDay(time))
-                        $(this).addClass('invalid nodeparture tmp').removeClass('valid');
+                    if (time < opt.start) {
+                        if(!checkDay(time))
+                            $(this).addClass('invalid nodeparture tmp').removeClass('valid');
+                    }
                 });
             }
             return true;
