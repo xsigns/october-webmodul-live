@@ -1340,76 +1340,91 @@
 
 
         function checkDeparture(time) {
-
             return false;
         }
 
         function checkArrival(time){
             return false;
         }
+
         function checkDay(time){
             time = parseInt(time, 10);
-            if (opt.startDate && compare_day(time, opt.startDate) < 0) return false;
-            if (opt.endDate && compare_day(time, opt.endDate) > 0) return false;
+
+            if (opt.startDate && compare_day(time, opt.startDate) < 0)
+                return false;
+
+            if (opt.endDate && compare_day(time, opt.endDate) > 0)
+                return false;
+
             // hier mach die MinTage
-            if(opt.start && !opt.end && !opt.singleDate && opt.saisons.length > 0)
+            if (opt.start && !opt.end && !opt.singleDate && opt.saisons.length > 0)
             {
-                var valid = true;
-                var luecke = 0;
-                var lueckemintage =0;
-                var treffer = false;
-                var minDays = 0;
-                var bistag;
-                var preis = 0;
-                //var lastFree = 0;
-                var gagga = false;
-                for (var i = 0; i <= opt.saisons.length -1; i++) {
-                    var fromDate = moment(opt.saisons[i][0]);
-                    var toDate = moment(opt.saisons[i][1] + " 23:59:59", "YYYY-MM-DD hh:mm:ss");
+                let valid = true;
+                let luecke = 0;
+                let lueckemintage = 0;
+                let treffer = false;
+                let minDays = 0;
+                let bistag;
+                let preis = 0;
+
+                for (let i = 0; i <= opt.saisons.length -1; i++) {
+                    let fromDate = moment(opt.saisons[i][0]);
+                    let toDate = moment(opt.saisons[i][1] + " 23:59:59", "YYYY-MM-DD hh:mm:ss");
                     minDays = opt.saisons[i][2];
                     luecke = opt.saisons[i][3];
                     lueckemintage = opt.saisons[i][6];
                     preis = opt.saisons[i][5];
-                    if(opt.start >= fromDate && opt.start <= toDate) //treffer in Saisonzeit
+
+                    if (opt.start >= fromDate && opt.start <= toDate) //treffer in Saisonzeit
                     {
                         treffer = true;
                         break;
                     }
                 }
-                if(treffer == false) // Keine Saisonzeit gefunden
+
+                if (treffer === false) // Keine Saisonzeit gefunden
                     return false;
-                if(minDays < 0)
+
+                if (minDays < 0)
                     minDays = 0;
-                for(var u = 0; u <= opt.blocked.length -1; u++){
-                    var blocked = moment(opt.blocked[0][u]);
-                    var lastFree = null;
-                    if(moment(blocked).add(-1,'day').format("DD-MM-YYYY") === moment(time).format("DD-MM-YYYY"))
-                        lastFree = moment(blocked).add(-1,'day');
-                    if(blocked > opt.start && lastFree <= blocked)
+
+                for (let u = 0; u <= opt.blocked[0].length - 1; u++){
+                    let blocked = moment(opt.blocked[0][u]);
+                    let lastFree = null;
+
+                    if (moment(blocked).add(-1,'day').format("DD-MM-YYYY") === moment(time).format("DD-MM-YYYY"))
+                        lastFree = moment(blocked).add(-1, 'day');
+
+                    if (blocked > opt.start && lastFree <= blocked)
                     {
-                        var a = moment(opt.start);
-                        var mindays2 =0;
+                        let a = moment(opt.start);
+                        let mindays2 = 0;
+
                         if (luecke)
-                            mindays2 = blocked.diff(a,'days') ;
+                            mindays2 = blocked.diff(a, 'days') ;
                         else
                             mindays2 = minDays;
 
                         if (mindays2 < minDays)
                             minDays = mindays2;
 
-                        bistag = moment(opt.start).add(minDays-1 , 'day'); // Mach minus 1 da der letzte Tag nicht geblockt ist
+                        bistag = moment(opt.start).add(minDays - 1, 'day'); // Mach minus 1 da der letzte Tag nicht geblockt ist
                         break;
                     }
                 }
-                if(minDays > 0)
+
+                if (minDays > 0)
                 {
                     bistag = moment(opt.start).add(minDays -1, 'day');
                     bistag = moment(opt.start).add(minDays,'day');
                     if(time < bistag && opt.start < bistag)
                         valid = false;
                 }
-                if (!valid) return false;
+
+                if (!valid)
+                    return false;
             }
+
             return true;
         }
 
@@ -1516,10 +1531,8 @@
                     else
                         $(this).addClass('valid tmp').removeClass('invalid').removeClass('nodeparture');*/
 
-                    if (time < opt.start) {
-                        if(!checkDay(time))
-                            $(this).addClass('invalid nodeparture tmp').removeClass('valid');
-                    }
+                    if(!checkDay(time))
+                        $(this).addClass('invalid nodeparture tmp').removeClass('valid');
                 });
             }
             return true;

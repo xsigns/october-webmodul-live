@@ -919,3 +919,6 @@
 3.9.15:
     - Verbesserungen für den Eigentümerlogin
     - Verbesserungen für die Kalkulation der Kurtaxe
+3.9.16:
+    - Verbesserungen für den Buchungslückenfilter
+    - Verbesserungen für den Datepicker im Preisrechner und der Buchungsmaske
