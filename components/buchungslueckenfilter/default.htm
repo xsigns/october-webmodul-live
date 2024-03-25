@@ -5,7 +5,7 @@
                 <div class="filter-monatelement form-inputs">
                     <div class="label">{{ labels.monat }}</div>
                     <select id="monate" name="monate" class="filter-monate form-control" data-request="{{ __SELF__ }}::onDataChange">
-                        <option {% if defaultMonat == 0 %}selected{% endif %} value="0">Auswählen</option>
+                        <option {% if defaultMonat == 0 %}selected{% endif %} value="0">{{ labels.auswahl }}</option>
                         {% for monat in monate %}
                             <option {% if monat.number == defaultMonat %}selected{% endif %} value="{{ monat.number }}">{{ monat.name }}</option>
                         {% endfor %}
@@ -16,7 +16,7 @@
                 <div class="filter-jahrelement form-inputs">
                     <div class="label">{{ labels.jahr }}</div>
                     <select id="jahre" name="jahre" class="filter-jahre form-control" data-request="{{ __SELF__ }}::onDataChange">
-                        <option {% if defaultMonat == 0 %}selected{% endif %} value="0">Auswählen</option>
+                        <option {% if defaultMonat == 0 %}selected{% endif %} value="0">{{ labels.auswahl }}</option>
                         {% for jahr in jahre %}
                             <option {% if jahr.number == defaultJahr %}selected{% endif %} value="{{ jahr.number }}">{{ jahr.number }}</option>
                         {% endfor %}

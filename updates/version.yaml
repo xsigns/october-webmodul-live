@@ -922,3 +922,6 @@
 3.9.16:
     - Verbesserungen für den Buchungslückenfilter
     - Verbesserungen für den Datepicker im Preisrechner und der Buchungsmaske
+3.9.17:
+    - Erweiterung des Buchungslückenfilter um einen Label-Platzhalter für die Standardauswahl
+    - Verbesserungen für die Mehrsprachigkeit
