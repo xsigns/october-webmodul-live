@@ -36,7 +36,7 @@ Der Folgende Code-Block muss **UNTER** den Code-Block ``{% if objekt.Adresse %} 
     <div class="fewo-alternative d-inline-block">
         {{ alternativeLabel|raw }}
         {% for alternative in objekt.alternativeZeitraeume %}
-            <div class="fewo-alternative-item"><a href="{{ alternative.href }}">{{ alternative.label|raw }}</div>
+            <div class="fewo-alternative-item"><a href="{{ alternative.href }}">{{ alternative.label|raw }}</a></div>
         {% endfor %}
     </div>
 {% endif %}
@@ -44,7 +44,7 @@ Der Folgende Code-Block muss **UNTER** den Code-Block ``{% if objekt.Adresse %} 
     <div class="fewo-buchungsluecken d-inline-block">
         {{ buchungslueckenLabel|raw }}
         {% for luecke in objekt.buchungsluecken %}
-            <div class="fewo-buchungsluecken-item"><a href="{{ luecke.href }}">{{ luecke.label|raw }}</div>
+            <div class="fewo-buchungsluecken-item"><a href="{{ luecke.href }}">{{ luecke.label|raw }}</a></div>
         {% endfor %}
     </div>
 {% endif %}

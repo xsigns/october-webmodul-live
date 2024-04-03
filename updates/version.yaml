@@ -912,7 +912,20 @@
 3.9.13:
     - Korrekturen für Belegungsplan und Datepicker
 3.9.14:
-    - Verbesserungen für Kalkulation der Kurtaxe
+    - Verbesserungen für die Kalkulation der Kurtaxe
     - Verbesserungen für den Listenfilter
     - Erweiterung der Preisausgabe auf der Detailseite
     - update83.php
+3.9.15:
+    - Verbesserungen für den Eigentümerlogin
+    - Verbesserungen für die Kalkulation der Kurtaxe
+3.9.16:
+    - Verbesserungen für den Buchungslückenfilter
+    - Verbesserungen für den Datepicker im Preisrechner und der Buchungsmaske
+3.9.17:
+    - Erweiterung des Buchungslückenfilter um einen Label-Platzhalter für die Standardauswahl
+    - Verbesserungen für die Mehrsprachigkeit
+3.9.18:
+    - Verbesserungen für den Eigentümerlogin
+3.9.19:
+    - Verbesserungen Angebote anzeigen

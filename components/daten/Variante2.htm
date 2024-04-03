@@ -51,7 +51,7 @@
                                     color="primary"
                                     row-key="rechnr"
                                     :visible-columns="visibleColumns"
-                                    :pagination="initialPagination"
+                                    :pagination="initialPaginationAbrechnungen"
                                     no-data-label="{{ noDataFoeund }}"
                                     :filter="filter"
                                     :loading="loadingRech"
@@ -82,7 +82,7 @@
                                         <q-dialog v-model="dialog" class="filterDialog ">
                                             <q-card>
                                                 <div class="filterheader">
-                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">Filter</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
+                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">{{ labels.filter }}</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
                                                 </div>
                                                 <div id="asd">
                                                     <q-card-section class="row items-center q-gutter-sm">
@@ -292,7 +292,7 @@
                                         <q-dialog v-model="dialog" class="filterDialog filterVorgang">
                                             <q-card>
                                                 <div class="filterheader">
-                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">Filter</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
+                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">{{ labels.filter }}</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
                                                 </div>
 
                                                 <q-card-section class="row items-center q-gutter-sm">
@@ -432,6 +432,7 @@
                                                 </q-card-actions>
 
                                                 <q-card-actions vertical style="padding-bottom: 0px;">
+
                                                     {%if showgastdaten == 1 %}<q-btn @click="gastdatebShow([[ props.row.id ]])" class="w-100">{{ labels.btngast }}</q-btn>{% endif %}
                                                     {% if showleistung == 1 %}<q-btn flat @click="leistung([[ props.row.id ]])" :disabled="props.row.leistung.length === 0" class="shadow-2 w-100" id="leistungBTN">{{ labels.btnleist }}</q-btn>{% endif %}
                                                 </q-card-actions>
@@ -598,7 +599,7 @@
                                                         <template v-slot:item="props">
                                                             <q-card flat bordered class="my-card">
                                                                 <q-card-section>
-                                                                    <div class="text-h6">Gastdaten</div>
+                                                                    <div class="text-h6">{{ labels.Gastdaten }}</div>
                                                                 </q-card-section>
                                                                 {% if showGastVorname %}
                                                                     <q-card-section class="q-pt-none" v-if="props.row.vorname != ''">
@@ -703,7 +704,7 @@
                                                 {% endif %}
                                                 {% if showleistung %}
                                                     <q-table
-                                                        title="Leistungen"
+                                                        title="{{ labels.leistungen }}"
                                                         :rows="props.row.leistung"
                                                         :columns="columnsLeist"
                                                         color="primary"
@@ -771,7 +772,7 @@
                                         <q-dialog v-model="dialog" class="filterDialog filterObjkte">
                                             <q-card>
                                                 <div class="filterheader">
-                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">Filter</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
+                                                    <h4 style="margin-bottom: 0px!important; width: max-content; float: left; color: white;">{{ labels.filter }}</h4><span class="float-right"><q-btn flat style="background: #00000000!important; color: white!important;" round icon="close" v-close-popup></q-btn></span>
                                                 </div>
                                                 <q-card-section class="row items-center q-gutter-sm">
                                                     <div class="objNr gesammteDivs">
@@ -900,6 +901,7 @@
     var erwachsene = '{{ labels.vorgerwachsene }}';
     var kinder = '{{ labels.vorgkinder }}';
     var buchungsdatum = '{{ labels.buchungsdatum|raw }}';
+    var summe = '{{ labels.summe|raw }}';
 
     // Labels Gastdaten
     var vorname = '{{ labels.vorgvorname }}';
