@@ -933,3 +933,6 @@
     - Verbesserungen für die Objektsuche
     - Verbesserungen Buchungslücken speichern
     - Verbesserungen für den Buchungslückenfilter
+3.9.21:
+    - Verbesserungen für An- und Abreisemails
+    - Verbesserungen für die Preisberechnung im Zahlungsmodul

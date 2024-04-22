@@ -251,7 +251,7 @@ class SendCron
                 $href = str_replace(':region', SendCron::standardize($region), $href);
             }
 
-            if (count($isTranslate) > 0)
+            if (count($isTranslate) > 0 && $gastLand != 'DE' && $gastLand != 'de')
             {
                 $settings = GlobalSettings::first();
                 $linkText = $settings->getAttributeTranslated('linktext', strtolower($gastLand));
