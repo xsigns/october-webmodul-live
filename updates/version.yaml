@@ -936,3 +936,6 @@
 3.9.21:
     - Verbesserungen für An- und Abreisemails
     - Verbesserungen für die Preisberechnung im Zahlungsmodul
+3.9.22:
+    - Verbesserungen Angebote in die Buchungsmaske laden
+    - Verbesserungen Überprüfung der Buchungsart
