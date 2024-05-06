@@ -943,3 +943,5 @@
     - Verbesserungen Ausstattungen für die Objektsuche hinzufügen
 3.9.24:
     - Verbesserungen im Belegungsplan Anfragen als Angebot (gelb) blockieren
+    - Verbesserungen für die Validierung des Preisrechners und der Buchungsmaske
+    - Verbesserungen Objektbilder speichern und Thumb-Image generieren
