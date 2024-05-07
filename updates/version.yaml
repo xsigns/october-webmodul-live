@@ -945,3 +945,5 @@
     - Verbesserungen im Belegungsplan Anfragen als Angebot (gelb) blockieren
     - Verbesserungen für die Validierung des Preisrechners und der Buchungsmaske
     - Verbesserungen Objektbilder speichern und Thumb-Image generieren
+3.9.25:
+    - Verbesserungen für die Validierung des Listenfilters
