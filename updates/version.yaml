@@ -947,3 +947,5 @@
     - Verbesserungen Objektbilder speichern und Thumb-Image generieren
 3.9.25:
     - Verbesserungen für die Validierung des Listenfilters
+3.9.26:
+    - Verbesserungen für das Hobex-Zahlungsmodul. Berechnung der Kurtaxe bei Zahlungen kann nun aktiviert und deaktiviert werden

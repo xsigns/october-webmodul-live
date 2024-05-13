@@ -170,6 +170,8 @@ return [
         'invoice' => 'Auf Rechnung',
         'hobex_anz_rest' => 'An- und Restzahlung',
         'hobex_anz_rest_desc' => '<b>WICHTIG:</b> Bitte stellen Sie im Fewo-Verwalter unter <i>Stammdaten</i> > <i>Objekte</i> > <i>Finanzen</i> > Bereich <i>Anzahlung und 1. Zahlung</i> den Zeitpunkt für die Anzahlung auf <i><b>sofort</b></i>.<br><br> Die An- und Restzahlung funktioniert nur, wenn auf Ihrem Server ein Cron-Job angelegt ist. Der Cron-Job muss folgende Domain aufrufen und muss täglich ausgeführt werden: https://www.ihreDomain.de/restzahlung<br>Bei weiteren Fragen und Details zu Cron-Jobs, wenden Sie sich bitte an Ihren Anbieter oder Administrator.',
+        'hobex_kurtaxe' => 'Kurtaxe berechnen',
+        'hobex_kurtaxe_desc' => 'Bei aktivierter An- und Restzahlung wir die Kurtaxe mit der Anzahlung berechnet.',
         'hobexsection' => 'HOBEX',
         'hobexsection_desc' => 'Einstellungen für HOBEX<br><b>Diese Schnittstelle funktioniert nur mit HOBEX COPYandPAY.</b>',
         'hobexuserid' => 'Hobex user ID (Nur Version 1)',

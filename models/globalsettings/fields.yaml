@@ -556,6 +556,14 @@ tabs:
       span: right
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab3
+    hobex_kurtaxe:
+      label: xsigns.fewo::lang.globalsettings.hobex_kurtaxe
+      commentHtml: true
+      comment: xsigns.fewo::lang.globalsettings.hobex_kurtaxe_desc
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab3
     hobex_sectionn:
       label: xsigns.fewo::lang.globalsettings.hobexsection
       type: section
