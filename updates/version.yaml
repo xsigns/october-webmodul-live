@@ -951,3 +951,5 @@
     - Verbesserungen für das Hobex-Zahlungsmodul. Berechnung der Kurtaxe bei Zahlungen kann nun aktiviert und deaktiviert werden
 3.9.27:
     - Verbesserungen für die Mehrsprachigkeit
+3.9.28:
+    - Verbesserungen für den Listenfilter und vorgefilterte Objektlisten
