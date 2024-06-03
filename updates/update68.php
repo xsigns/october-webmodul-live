@@ -53,7 +53,8 @@ class Update68 extends Migration
             $table->integer('za_restz_gezahlt')->default(0)->change();
         });
 
-        Db::update("update xsigns_fewo_zahlungen set za_restz_am = now() + interval 1 day where za_restz_am < now() and (za_restz_gezahlt = 1 or za_restz_gezahlt = 0) and (za_restz_gezahlt_am = '1001-01-01' or za_restz_gezahlt_am = '0000-00-00')");
+        //Db::update("update xsigns_fewo_zahlungen set za_restz_am = now() + interval 1 day where za_restz_am < now() and (za_restz_gezahlt = 1 or za_restz_gezahlt = 0) and (za_restz_gezahlt_am = '1001-01-01' or za_restz_gezahlt_am = '0000-00-00')");
+        Db::update("update xsigns_fewo_zahlungen set za_restz_am = now() + interval 1 day where za_restz_am < now() and (za_restz_gezahlt = 1 or za_restz_gezahlt = 0) and (za_restz_gezahlt_am = '1001-01-01')");
     }
 
     public function down()
