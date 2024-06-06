@@ -262,7 +262,7 @@ class SendCron
             $appUrl = Config::get('app.url');
 
             if (substr($appUrl, -1) == '/')
-                $appUrl = rtrim(Config::get('app.url', '/'));
+                $appUrl = rtrim($appUrl, '/');
 
             $bewLink = '<a href="' . $appUrl . $href . '">' . $linkText . '</a>';
 
