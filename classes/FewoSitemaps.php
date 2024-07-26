@@ -23,9 +23,7 @@ class FewoSitemaps
     private function getObjektSitemap($dom, $xml)
     {
         $seoobjekte = GlobalSettings::get('seoobjekte');
-
-        $theme = Theme::getEditTheme();
-        $pagesInTheme = Page::listInTheme($theme, true);
+        $pagesInTheme = $this->getThemePages();
         $page = array_filter($pagesInTheme->all(), function ($page) use ($seoobjekte) {
             return $page->url == $seoobjekte;
         });
@@ -83,9 +81,7 @@ class FewoSitemaps
     private function getHausSitemap($dom, $xml)
     {
         $seohaus = GlobalSettings::get('seohaus');
-
-        $theme = Theme::getEditTheme();
-        $pagesInTheme = Page::listInTheme($theme, true);
+        $pagesInTheme = $this->getThemePages();
         $page = array_filter($pagesInTheme->all(), function ($page) use ($seohaus) {
             return $page->url == $seohaus;
         });
@@ -131,8 +127,7 @@ class FewoSitemaps
         if (empty($pagesForSitemap))
             return $dom;
 
-        $theme = Theme::getEditTheme();
-        $pages = Page::listInTheme($theme, true);
+        $pages = $this->getThemePages();
 
         foreach ($pages as $page)
         {
@@ -299,7 +294,20 @@ class FewoSitemaps
             'sitemap3.xml' => 'page',
             'objekte/sitemap.xml' => 'object',
             'haeuser/sitemap.xml' => 'house',
-            'seiten/sitemap.xml' => 'page'
+            'seiten/sitemap.xml' => 'page',
         );
+    }
+
+    /**
+     * @return \Cms\Classes\Collection
+     */
+    private function getThemePages()
+    {
+        $theme = Theme::getEditTheme();
+
+        if ($theme == '')
+            $theme = Theme::load('fewo');
+
+        return Page::listInTheme($theme, true);
     }
 }
