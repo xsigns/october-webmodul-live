@@ -278,6 +278,8 @@ class SendCron
                 'OBEKT_BESCHREIBUNG' => $vorgang->beschreibung,
                 'OBJEKT_LAND' => $vorgang->obj_land,
                 'BEWLINK' => $bewLink,
+                'HREF' => $appUrl . $href,
+                'LINKTEXT' => $linkText,
                 'ANREISE' => date("d.m.Y", strtotime($vorgang->vorg_anreise)),
                 'ABREISE' => date("d.m.Y", strtotime($vorgang->vorg_abreise)),
                 'TITEL' => $vorgang->gast_titel,
