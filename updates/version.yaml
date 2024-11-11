@@ -982,3 +982,5 @@
     - Erweiterung für die Berechnung der Tarifzonenpreise
 3.9.41:
     - Verbesserungen für Buchungen und Anfragen
+3.9.42:
+    - Verbesserungen für den Buchungslückenfilter
