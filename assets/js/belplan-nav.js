@@ -319,7 +319,7 @@ Belplan.waehleDatum = function (elem) {
     verfuegbarStatus = verfuegbarTimeline.charAt(day);
 
     if (waehleAnreise) {
-        Belplan.loescheAuswahl();
+        Belplan.loescheAuswahl(false);
         anreiseClicked(elem, wechselStatus, verfuegbarStatus);
     } else {
         if (wechselStatus === 'C' || wechselStatus === 'O' && wechselStatus !== 'I' && wechselStatus !== 'X' || ($(elem).hasClass('waehlbar') && !$(elem).hasClass('nichtwaehlbar') && !$(elem).hasClass('gewaehlt'))) {
@@ -348,8 +348,11 @@ Belplan.waehleDatum = function (elem) {
                 $('#ctrl_abreise').val(tag + '.' + monat + '.' + jahr);
             }
 
+            let anreise = ("0" + anreisedatum.getDate()).slice(-2) + '.' + ("0" + (anreisedatum.getMonth() + 1)).slice(-2) + '.' + anreisedatum.getFullYear()
+            let abreise = ("0" + abreisedatum.getDate()).slice(-2) + '.' + ("0" + (abreisedatum.getMonth() + 1)).slice(-2) + '.' + abreisedatum.getFullYear()
+
             Belplan.selectAbreise(elem, tag, monat, jahr);
-            Belplan.updateBuchung(("0" + anreisedatum.getDate()).slice(-2) + '.' + ("0" + (anreisedatum.getMonth() + 1)).slice(-2) + '.' + anreisedatum.getFullYear(), ("0" + abreisedatum.getDate()).slice(-2) + '.' + ("0" + (abreisedatum.getMonth() + 1)).slice(-2) + '.' + abreisedatum.getFullYear());
+            Belplan.updateBuchung(anreise, abreise);
 
             waehleAnreise = !0;
         }
@@ -441,7 +444,7 @@ Belplan.setBelplanOffset = function (calid, offset) {
     });
 };
 
-Belplan.loescheAuswahl = function() {
+Belplan.loescheAuswahl = function(deleteAll = true) {
     $('.tag').unbind("mouseenter").unbind("mouseleave");
     Belplan.resetBelplan();
     $('.waehlbar').css('pointer-events', 'all');
@@ -454,6 +457,18 @@ Belplan.loescheAuswahl = function() {
     // Buchungsmaske
     $('#ctrl_anreise').val('');
     $('#ctrl_abreise').val('');
+
+    if (deleteAll) {
+        // Preisrechner
+        $('#ctrl_ppersonen').val(1);
+        $('#pbuchung').prop('disabled', true);
+        $('#panfrage').prop('disabled', true);
+
+        // Buchungsmaske
+        $('#ctrl_erwachsene').val(1);
+        $('#ctrl_kinder').val(0);
+        $('#ctrl_kleinkinder').val(0);
+    }
 
     $('.shortcuts .delete a').trigger('click');
     anreisedatum = '';

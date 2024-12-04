@@ -9,7 +9,7 @@ const columnsRechnung = [
     { name: 'to', align: 'left', label: bis, field: 'to', sortable: true, sort: (a, b) => sortDatum(a, b)},
     { name: 'datum', align: 'left', label: abrZeitraum, field: 'datum', sortable: true, sort: (a, b) => sortDatum(a, b)},
     { name: 'betrag', align: 'right', label: betrag, field: 'betrag', sortable: true, sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
-    { name: 'art', label: 'Downloads', align: 'center',field: 'art'},
+    { name: 'art', label: downloads, align: 'center',field: 'art'},
 ]
 
 const columnsRechnung2 = [
