@@ -348,8 +348,11 @@ Belplan.waehleDatum = function (elem) {
                 $('#ctrl_abreise').val(tag + '.' + monat + '.' + jahr);
             }
 
+            let anreise = ("0" + anreisedatum.getDate()).slice(-2) + '.' + ("0" + (anreisedatum.getMonth() + 1)).slice(-2) + '.' + anreisedatum.getFullYear()
+            let abreise = ("0" + abreisedatum.getDate()).slice(-2) + '.' + ("0" + (abreisedatum.getMonth() + 1)).slice(-2) + '.' + abreisedatum.getFullYear()
+
             Belplan.selectAbreise(elem, tag, monat, jahr);
-            Belplan.updateBuchung(("0" + anreisedatum.getDate()).slice(-2) + '.' + ("0" + (anreisedatum.getMonth() + 1)).slice(-2) + '.' + anreisedatum.getFullYear(), ("0" + abreisedatum.getDate()).slice(-2) + '.' + ("0" + (abreisedatum.getMonth() + 1)).slice(-2) + '.' + abreisedatum.getFullYear());
+            Belplan.updateBuchung(anreise, abreise);
 
             waehleAnreise = !0;
         }
