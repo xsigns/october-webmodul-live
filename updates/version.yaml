@@ -991,3 +991,5 @@
     - Verbesserung der Übersetzung im Eigentümerlogin
 3.9.45:
     - Verbesserungen für Sprachen im Eigentümerlogin
+3.10.0:
+    - Ausgabe der regionalen Registrierungsnummer und der nationalen Registrierungsnummer für Objekte wurden hinzugefügt
