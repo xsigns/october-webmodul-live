@@ -95,6 +95,8 @@ $(function() {
 
         $('#ctrl_panreise').val('');
         $('#ctrl_pabreise').val('');
+        $('#pbuchung').prop('disabled', true);
+        $('#panfrage').prop('disabled', true);
 
         if (calClick === 1)
             Belplan.resetBelplan();
