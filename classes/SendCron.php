@@ -223,7 +223,7 @@ class SendCron
             $gastLand = 'de';
             $gast =  Database::select(null, self::$modulename, "select * from xsigns_fewo_gast where gast_id = " . $vorgang->vorg_gastid);
 
-            if (count($gast) > 0)
+            if (count($gast) > 0 && $gast[0]->gast_land != '')
                 $gastLand = $gast[0]->gast_land;
 
             if ($gastLand == 'GB' || $gastLand == 'gb')
@@ -238,7 +238,7 @@ class SendCron
 
             if (count($isTranslate) > 0 && $gastLand != 'DE' && $gastLand != 'de')
             {
-                if(in_array(strtolower($gastLand), $arrLocales) && array_key_exists($mailview . strtolower($gastLand), $mailTemps))
+                if (in_array(strtolower($gastLand), $arrLocales) && array_key_exists($mailview . strtolower($gastLand), $mailTemps))
                     $url = Fewo::getTranslate(strtolower($gastLand), $url);
             }
 

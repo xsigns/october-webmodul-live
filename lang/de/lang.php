@@ -187,7 +187,7 @@ return [
         'hobexmaster' => 'Master',
         'hobexmaestro' => 'Maestro',
         'hobexvpay' => 'V-Pay',
-        'hobexsofort' => 'Sofortüberweisung',
+        'hobexsofort' => 'Pay by Bank',
         'hobexgiropay' => 'GiroPay',
         'hobexamex' => 'American Express',
         'hobexpaypal' => 'PAYPAL',

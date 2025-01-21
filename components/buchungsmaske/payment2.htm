@@ -17,5 +17,13 @@
     var wpwlOptions = {
         style: "plain",
         locale:"de",
+        onReady: function()
+        {
+            const imageUrl ='https://online.hobex.at/public/paybybank_hobex.png';
+            $('.wpwl-brand-ACI_INSTANTPAY').css('background-image', 'url(' + imageUrl + ')');
+            $('.wpwl-brand-ACI_INSTANTPAY').css('background-size', 'contain');
+            $('.wpwl-brand-ACI_INSTANTPAY').css('width', '129px');
+            $('.wpwl-brand-ACI_INSTANTPAY').css('height', '40px');
+        }
     };
 </script>

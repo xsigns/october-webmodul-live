@@ -7,57 +7,63 @@
 }
 .payment_master {
     background-image: url("images/master.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
 }
 .payment_maestro {
     background-image: url("images/maestro.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
 }
 .payment_vpay {
     background-image: url("images/vpay.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
 }
 .payment_sofortueberweisung {
     background-image: url("images/sofortueberweisung.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width:90px;
+    height:64px;
+}
+.payment_paybybank {
+    background-image: url("images/paybybank.png");
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
 }
 .payment_amex {
     background-image: url("images/amex.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
 }
-
 .payment_giropay {
     background-image: url("images/giropay.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
 }
 .payment_paypal {
     background-image: url("images/paypal.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
 }
 .payment_invoice {
     background-image: url("images/invoice-alternate.png");
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: 100%;
     width:90px;
     height:64px;
@@ -67,13 +73,11 @@
     display: inline-block;
     cursor: pointer;
 }
-
 .payment_container input {
     margin: 0 auto;
     position: relative;
     display: inline-block;
 }
-
 .paymant_expireyear{
     float:left;
 }
