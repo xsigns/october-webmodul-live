@@ -995,3 +995,6 @@
     - Verbesserungen und Anpassungen für Hobex Zahlungen
     - Allgemeine Verbesserungen
     - update86.php
+3.10.0:
+    - Restzahlungen über Hobex werden jetzt auch an Fewo-Verwalter gesendet und verbucht
+    - update87.php
