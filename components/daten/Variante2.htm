@@ -723,8 +723,21 @@
                                     <!-- Ende Ausfahr Menü -->
                                     <template v-slot:bottom-row>
                                         <q-tr>
-                                            <q-td colspan="100%">
-                                                <div class="float-right" id="gesammt1">[[ getTotal(this) ]] €</div>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td>
+                                                <div id="gesammt2">[[ getTotalPersons(this) ]]</div>
+                                            </q-td>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td></q-td>
+                                            <q-td>
+                                                <div class="float-right" id="gesammt1" style="position: absolute; right: 7px; top: 15px;">[[ getTotal(this) ]] €</div>
                                             </q-td>
                                         </q-tr>
                                     </template>
