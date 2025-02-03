@@ -453,6 +453,22 @@ const app = Vue.createApp({
                 }, 1);
             },
 
+            getTotalPersons()
+            {
+                setTimeout(function()
+                {
+                    let sum = 0
+                    if ($('.q-td.text-right').length !== 0) {
+                        let rows = $('td#tage')
+
+                        for (let i = 0; i < rows.length; i++)
+                            sum += parseFloat(rows[i]['innerHTML']);
+                    }
+
+                    $('#gesammt2').html(sum.toFixed(0))
+                }, 1);
+            },
+
             getTotalVorg()
             {
                 setTimeout(function()

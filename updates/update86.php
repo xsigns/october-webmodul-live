@@ -36,7 +36,7 @@ class Update86 extends Migration
                 if (Schema::hasColumn('xsigns_fewo_obj', 'obj_regionaleregistrierungsnr'))
                     $table->dropColumn('obj_regionaleregistrierungsnr');
 
-                if (!Schema::hasColumn('xsigns_fewo_obj', 'obj_nationaleregistrierungsnr'))
+                if (Schema::hasColumn('xsigns_fewo_obj', 'obj_nationaleregistrierungsnr'))
                     $table->dropColumn('obj_nationaleregistrierungsnr');
             });
         }

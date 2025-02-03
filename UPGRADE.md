@@ -4,6 +4,21 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.9.46
+Die Ausgabe der regionalen Registrierungsnummer und der nationalen Registrierungsnummer auf der Objektdetailseite ist nun möglich. Dazu einfach folgende Code-Snippets an der gewünschten Stelle im Code der Objektdetailseite einfügen:
+
+Regionale Registrierungsnummer
+````
+{{ Objektdetail.RegionaleRegistrierungsnr|raw }}
+````
+Nationale Registrierungsnummer
+````
+{{ Objektdetail.NationaleRegistrierungsnr|raw }}
+````
+
+Die dazugehörigen Labels können in der Komponente **_Obj-Details_** unter _Detail-Labels_ angepasst werden.
+- - -
+
 ## Upgrade 3.8.19
 ### Folgende Partialanpassungen sind für dieses Update notwendig
 Komponente **_Eigentümerdaten_** _default.htm_:  
@@ -2534,4 +2549,3 @@ if partials of the components have been changed under Partials
     $('#period').attr("placeholder", '{{dateplaceholder}}');
 {% endif %}
 `````
-
