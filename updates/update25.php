@@ -10,7 +10,7 @@ class Update25 extends Migration
     {
         Schema::create('xsigns_fewo_images',function($table){
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('fewoid')->unsigned()->index();
             $table->string('typ',1)->index(); // O = Objekt, H= Haus, A = Ausstattung, G = Grundrisse
             $table->integer('no')->unsigned()->index();

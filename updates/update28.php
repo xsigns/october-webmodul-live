@@ -11,7 +11,7 @@ class Update28 extends Migration
         if (!Schema::hasColumn('xsigns_fewo_buchung', 'created')) {
             Schema::table('xsigns_fewo_buchung', function($table)
             {
-                $table->timestamp('created');
+                $table->timestamp('created')->useCurrent();
             });
         }
     }

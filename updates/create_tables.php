@@ -10,7 +10,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_ang',function($table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('ang_id')->unsigned()->index();
             $table->string('ang_art', 100)->index();
             $table->date('ang_von');
@@ -30,7 +30,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_anglang',function($table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('angid')->unsigned()->index();
             $table->string('lang', 3)->index();
             $table->string('titel', 200)->index();
@@ -41,7 +41,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_angobj',function($table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('ango_angid')->unsigned()->index();
             $table->integer('ango_objid')->unsigned()->index();
             $table->date('ango_von');
@@ -90,7 +90,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_bewpunkte', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('bewertung_id')->unsigned()->index();
             $table->decimal('punkte', 5, 2)->default(0.00);;
             $table->integer('option_id')->unsigned()->index();
@@ -99,7 +99,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_bew', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('obj_id')->unsigned()->index();
             $table->integer('aktiv')->unsigned()->index();
             $table->string('betreff', 250)->index();
@@ -222,7 +222,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_gast', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('gast_id')->unsigned()->index();
             $table->string('gast_titel', 60)->nullable();
             $table->string('gast_anrede', 60)->nullable();
@@ -276,7 +276,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_kunde', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->string('firma', 160);
             $table->string('vorname', 120);
             $table->string('name', 120);
@@ -574,7 +574,7 @@ class CreateTables extends Migration
         Schema::create('xsigns_fewo_vorgleist', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('vorgid')->unsigned()->index();
             $table->integer('leistid')->unsigned()->index();
             $table->integer('objid')->unsigned()->index();
@@ -609,7 +609,7 @@ class CreateTables extends Migration
          Schema::create('xsigns_fewo_zulang',function($table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('zulng_zuid')->unsigned()->index();
             $table->string('zulng_lang', 3)->index();
             $table->string('zulng_name', 200)->index();

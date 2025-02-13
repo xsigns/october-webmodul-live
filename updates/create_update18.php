@@ -10,7 +10,7 @@ class CreateUpdate18 extends Migration
         Schema::create('xsigns_fewo_vorgzahl', function ($table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('vorgid')->unsigned()->index();
             $table->string('art',100);
             $table->string('text',220);
