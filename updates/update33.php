@@ -17,7 +17,7 @@ class Update33 extends Migration
 
         Schema::create('xsigns_fewo_imagelang', function($table) {
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->string('objid', 4)->index();
             $table->string('lang', 3)->index();
             $table->string('titel', 160);

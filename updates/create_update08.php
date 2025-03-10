@@ -12,7 +12,7 @@ class CreateUpdate8 extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->string('title',200);
             $table->string('lang',3)->index();
             $table->date('fromdate');

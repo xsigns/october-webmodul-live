@@ -999,3 +999,11 @@
     - Restzahlungen über Hobex werden jetzt auch an Fewo-Verwalter gesendet und verbucht
     - Im Eigentümerlogin wird unter Vorgänge jetzt auch die Anzahl der Tage ausgegeben
     - update87.php
+3.10.1:
+    - Update Korrekturen
+3.10.2:
+    - Datenbank Korrekturen
+3.10.3:
+    - Verbesserungen für den Eigentümerlogin
+3.10.4:
+    - Verbesserungen für Hobex-Testzahlungen

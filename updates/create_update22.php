@@ -10,7 +10,7 @@ class CreateUpdate22 extends Migration
         Schema::create('xsigns_fewo_raum',function($table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('objid')->unsigned()->index();
             $table->string('raumid',4)->index();
             $table->string('art', 1)->index(); // S=Schlafzimmer, B=Bad
@@ -20,7 +20,7 @@ class CreateUpdate22 extends Migration
         Schema::create('xsigns_fewo_ralang',function($table){
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->timestamp('tstamp');
+            $table->timestamp('tstamp')->useCurrent();
             $table->integer('objid')->unsigned()->index();
             $table->string('raumid',4)->index();
             $table->string('lang', 3)->index();

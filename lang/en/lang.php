@@ -225,7 +225,7 @@ return [
         'hobexamex' => 'American Express',
         'hobexpaypal' => 'PAYPAL',
         'hobex_kurtaxe' => 'Kurtaxe berechnen',
-        'hobex_kurtaxe_desc' => 'Bei aktivierter An- und Restzahlung wir die Kurtaxe mit der Anzahlung berechnet.',
+        'hobex_kurtaxe_desc' => 'Bei aktivierter An- und Restzahlung wird die Kurtaxe mit der Anzahlung berechnet. <br />Bei Zahlung der Gesamtsumme wird die Kurtaxe mit der Gesamtsumme berechnet.',
     ],
     'components' => [
         'listfilter' => 'List filter',
