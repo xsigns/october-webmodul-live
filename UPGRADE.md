@@ -13,9 +13,9 @@ Komponente **_Buchungsmaske_** _default.htm_ und _variant2.htm_:
 Unterhalb des Div-Containers ``<div class="fewo_buchung_personen"> ... </div>`` muss folgender Code eingefügt werden.
 ````
 {% if useIsBusinessTrip %}
-    <div>
+    <div class="businessTrip">
         <div class="label">{{ labels.geschaeftsreise }}</div>
-        <input type="checkbox" id="ctrl_isBussinessTrip" name="isBussinessTrip" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
+        <input type="checkbox" id="ctrl_isBusinessTrip" name="isBusinessTrip" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
     </div>
 {% endif %}
 ````
