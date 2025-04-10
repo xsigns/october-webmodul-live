@@ -156,7 +156,6 @@ class Plugin extends PluginBase
             '\Xsigns\Fewo\Components\objektbewslider' => 'ObjektBewertungen',
             '\Xsigns\Fewo\Components\objekttextsearch' => 'ObjektTextfeldsuche',
             '\Xsigns\Fewo\Components\preisrechner' => 'Preisrechner',
-            '\Xsigns\Fewo\Components\gastlogin' => 'Gastlogin',
             '\Xsigns\Fewo\Components\Slider' => 'slider',
             '\Xsigns\Fewo\Components\galerie' => 'galerie',
             '\Xsigns\Fewo\Components\angebotdetail' => 'AngebotDetail',

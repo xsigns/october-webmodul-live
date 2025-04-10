@@ -4,6 +4,23 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.10.6
+In der Buchungsmaske kann der Gast jetzt angeben, ob es sich bei der Buchung um eine Geschäftsreise handelt. Wird diese Option ausgewählt, entfallen die Anzeige und Berechnung der Kurtaxe im Buchungs- und Zahlungsprozess.  
+Die Option kann in der Buchungsmaske-Komponente über das Feld _Buchungsdaten > Auswahl für Geschäftsreise anzeigen_ aktiviert oder deaktiviert werden.
+
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Buchungsmaske_** _default.htm_ und _variant2.htm_:  
+Unterhalb des Div-Containers ``<div class="fewo_buchung_personen"> ... </div>`` muss folgender Code eingefügt werden.
+````
+{% if useIsBusinessTrip %}
+    <div class="businessTrip">
+        <div class="label">{{ labels.geschaeftsreise }}</div>
+        <input type="checkbox" id="ctrl_isBusinessTrip" name="isBusinessTrip" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
+    </div>
+{% endif %}
+````
+- - -
+
 ## Upgrade 3.9.46
 Die Ausgabe der regionalen Registrierungsnummer und der nationalen Registrierungsnummer auf der Objektdetailseite ist nun möglich. Dazu einfach folgende Code-Snippets an der gewünschten Stelle im Code der Objektdetailseite einfügen:
 
