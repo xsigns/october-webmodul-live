@@ -280,8 +280,6 @@ return [
         'schemaorg_desc' => 'Represents schemaorg in the header',
         'preisrechner' => 'Price calculator',
         'preisrechner_desc' => 'calculate the prices of an object',
-        'gastlogin' => 'Guest login',
-        'gastlogin_desc' => 'Guest login for change booking',
         'angebote' => 'Offers',
         'angebote_desc' => 'Represents a list of offers',
         'map' => 'Map',

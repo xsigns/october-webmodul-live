@@ -333,8 +333,6 @@ return [
         'schemaorg_desc' => 'Stellt schema.org Daten im Header dar',
         'preisrechner' => 'Obj-Preisrechner',
         'preisrechner_desc' => 'Preisrechner',
-        'gastlogin' => 'Gastlogin',
-        'gastlogin_desc' => 'Gastlogin für Buchungsänderungen',
         'angebote' => 'Angebote',
         'angebote_desc' => 'Stellt eine Angebotsliste dar',
         'googlemap' => 'Google-Map-Objektliste',

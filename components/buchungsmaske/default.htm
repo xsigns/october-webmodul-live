@@ -96,6 +96,12 @@
 							{% endif %}
 							<div id="error-personen"></div>
 						</div>
+						{% if useIsBusinessTrip %}
+							<div>
+								<div class="label">{{ labels.geschaeftsreise }}</div>
+								<input type="checkbox" id="ctrl_isBussinessTrip" name="isBussinessTrip" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
+							</div>
+						{% endif %}
 						<div id="preisliste" class="fewo-preisliste"></div>
 						<button id="btnweiter1" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnGoAdresse">{{ labels.btnweiter }}</button>
 						<div id="#adresse" class="fewo_buchung_adresse"></div>

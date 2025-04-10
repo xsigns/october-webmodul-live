@@ -85,6 +85,12 @@
                             {% endif %}
                             <div id="error-personen"></div>
                         </div>
+                        {% if useIsBusinessTrip %}
+                            <div>
+                                <div class="label">{{ labels.geschaeftsreise }}</div>
+                                <input type="checkbox" id="ctrl_isBussinessTrip" name="isBussinessTrip" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
+                            </div>
+                        {% endif %}
                         {% if showleistungen %}
                             {% if optleistungen != null %}
                                 {% if infotexte.leistungen %}{{ infotexte.leistungen|raw }}{% endif %}
