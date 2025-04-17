@@ -19,6 +19,8 @@ Unterhalb des Div-Containers ``<div class="fewo_buchung_personen"> ... </div>`` 
     </div>
 {% endif %}
 ````
+
+Das dazugehörige Label kann in der Komponente **_Buchungsmaske_** unter _Beschriftungen > Label Geschäftreise_ angepasst werden.
 - - -
 
 ## Upgrade 3.9.46

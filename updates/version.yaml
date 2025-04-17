@@ -1013,3 +1013,6 @@
     - "!!! Aktivierung von Geschäftsreisen in der Buchungsmaske möglich. Partial für Buchungsmaske muss angepasst werden, bitte Upgrade-Guide lesen!"
 3.10.7:
     - Verbesserungen für Bestätigungsmails
+3.10.8:
+    - Verbesserungen für Vorgänge Import
+    - Verbesserungen für feste Leistungen in Objektstammdaten
