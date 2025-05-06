@@ -7,7 +7,7 @@
                     <li data-target="#carouselIndicators" data-slide-to="{{ image.id }}" class="{{ image.active }}"></li>
                 {% endfor %}
             </ol>
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner">
                 {% for image in images %}
                 <!-- Slide One - Set the background image for this slide in the line below -->
                 <div class="carousel-item {{ image.active }}" style="background-image: url('{{ image.image }}'); height: 300px;">
@@ -17,11 +17,11 @@
 
                 {% endfor %}
             </div>
-            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselIndicators" aria-label="prev" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ prev }}</span>
             </a>
-            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselIndicators" aria-label="next" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ next }}</span>
             </a>

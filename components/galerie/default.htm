@@ -12,7 +12,7 @@
         <div class="carousel-inner">
             {% set i = 0 %}
             {% for image in images %}
-                <div class="carousel-item {% if i == 0 %}active {% endif %}">
+                <div class="carousel-item {% if i == 0 %}active {% endif %}" role="listitem">
                     <img src="{{ image.path }}" alt="{{ image.title }}">
                 </div>
                 {% set i=i+1 %}

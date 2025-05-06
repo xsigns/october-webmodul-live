@@ -13,7 +13,7 @@
             <div class="fewo_list_count">{{ pages }} Seiten</div>
             {% if sorting %}
                 <div class="fewo_sort">
-                    <select id="listsort" name="listsort" data-request="{{ __SELF__ }}::onSorting">
+                    <select id="listsort" name="listsort" data-request="{{ __SELF__ }}::onSorting" aria-label="listsort">
                         {% for sort in sorting %}
                             <option value="{{ sort.value }}" {{ sort.selected }}>{{ sort.name }}</option>
                         {% endfor %}

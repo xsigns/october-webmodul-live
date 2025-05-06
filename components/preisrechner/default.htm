@@ -8,7 +8,7 @@
         <input type="hidden" name="lang" value="{{ lang }}">
         {% if datecompact == 1 %}
             <div class="form-inputs">
-                <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ ppzeitraum }}" readonly value="{{ pperiod }}"/>
+                <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ ppzeitraum }}" readonly value="{{ pperiod }}" aria-label="{{ ppzeitraum }}"/>
                 <input id="ctrl_panreise" name="panreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ ppanreise }}"/>
                 <input id="ctrl_pabreise" name="pabreise" class="search-abreise" autocomplete="off" type="hidden" readonly value="{{ ppabreise }}"/>
             </div>
@@ -16,20 +16,20 @@
             <div class="fewo_anreise">
                 <div class="label_anreise">{{ panreiselabel }}</div>
                 <div class="ctrl_anreisecontainer" style="position: relative; float: left;">
-                    <input type="text" id="ctrl_panreise" name="panreise" autocomplete="off" class="text frm_anreise" required readonly="readonly" value="{{ ppanreise }}">
+                    <input type="text" id="ctrl_panreise" name="panreise" autocomplete="off" class="text frm_anreise" required readonly="readonly" value="{{ ppanreise }}" aria-label="{{ ppanreise }}">
                 </div>
             </div>
             <div class="fewo_abreise">
                 <div class="label_abreise">{{ pabreiselabel }}</div>
                 <div class="ctrl_abreisecontainer" style="position: relative; float: left;">
-                    <input type="text" id="ctrl_pabreise" name="pabreise" autocomplete="off" class="text frm_abreise" required readonly="readonly" value="{{ ppabreise }}">
+                    <input type="text" id="ctrl_pabreise" name="pabreise" autocomplete="off" class="text frm_abreise" required readonly="readonly" value="{{ ppabreise }}" aria-label="{{ ppabreise }}">
                 </div>
             </div>
         {% endif %}
         <div id="error-anreise"></div>
         <div class="anz_personen select_anzahl">
             <div class="label_personen">{{ ppersonenlabel }}</div>
-            <select name="ppersonen" id="ctrl_ppersonen" class="select frm_personen" required data-request="{{ __SELF__ }}::onCalPersonChange">
+            <select name="ppersonen" id="ctrl_ppersonen" class="select frm_personen" required aria-label="{{ ppersonenlabel }}" data-request="{{ __SELF__ }}::onCalPersonChange">
                 {% for i in 1..objpers %}
                     <option value="{{ i }}" {% if i == ppersonen %} selected {% endif %}>{{ i }}</option>
                 {% endfor %}

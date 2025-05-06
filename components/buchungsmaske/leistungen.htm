@@ -18,7 +18,7 @@
     {% if leist.max > 1 %}
     <div class="leistung_anzahl">
         <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
-        <select class="select" name="fewo_leistung[{{ leist.lid }}]" data-request="{{ __SELF__ }}::onLeistungChange">
+        <select class="select" name="fewo_leistung[{{ leist.lid }}]" aria-label="{{ leist.titel }}" data-request="{{ __SELF__ }}::onLeistungChange">
             {% for i in 0..leist.max %}
             <option value="{{ i }}" {% if leist.selected == i %} selected {% endif %}>{{ i }}x</option>
             {% endfor %}
@@ -31,9 +31,9 @@
     <div class="leistung_anzahl">
         <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
         <input type="hidden" name="fewo_leistung[{{ leist.lid }}]" value="off">
-        <input class="select" value="on" data-request="{{ __SELF__ }}::onLeistungChange" type="checkbox"{% if leist.selected %} checked {% endif %} name="fewo_leistung[{{ leist.lid }}]"/>
+        <input class="select" value="on" aria-label="{{ leist.titel }}" data-request="{{ __SELF__ }}::onLeistungChange" type="checkbox"{% if leist.selected %} checked {% endif %} name="fewo_leistung[{{ leist.lid }}]"/>
         {% if leist.countval > 1 %}
-        <span class="countval">(x{{ leist.countval }})</span>
+            <span class="countval">(x{{ leist.countval }})</span>
         {% endif %}
     </div>
 

@@ -4,24 +4,24 @@
     <form id="listfilter" name="listfilter">
         {% if datecompact == 1 %}
             <div class="form-inputs">
-                <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly/>
-                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ anreise }}" />
-                <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="hidden" readonly value="{{ abreise }}" />
+                <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" aria-label="{{ labels.zeitraum }}" readonly/>
+                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="hidden" readonly value="{{ anreise }}" aria-label="{{ labels.anreise }}" />
+                <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="hidden" readonly value="{{ abreise }}" aria-label="{{ labels.abreise }}" />
             </div>
         {% else %}
             <div class="form-inputs">
                 <div class="label">{{ labels.anreise }}</div>
-                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
+                <input id="anreise" name="anreise" class="search-anreise" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" aria-label="{{ labels.anreise }}" readonly value="{{ anreise }}" />
             </div>
             <div class="form-inputs">
                 <div class="label">{{ labels.abreise }}</div>
-                <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
+                <input id="abreise" name="abreise" class="search-abreise" autocomplete="off" type="text" placeholder="{{ labels.abreise }}" aria-label="{{ labels.abreise }}" readonly value="{{ abreise }}" />
             </div>
         {% endif %}
         {% if showtage %}
             <div class="form-inputs">
                 <div class="label">{{ labels.tagein }}</div>
-                <select id="tagein" name="tagein" class="search-tagein" data-request="{{ __SELF__ }}::onDataChange" placeholder="{{ labels.tagein }}" >
+                <select id="tagein" name="tagein" class="search-tagein" data-request="{{ __SELF__ }}::onDataChange" aria-label="{{ labels.tagein }}">
                     {% for sday in countdays %}
                         <option value="{{sday.id}}" {% if sday.selected %}{{ sday.selected }}{% endif %}>{{sday.name}}</option>
                     {% endfor %}
@@ -31,14 +31,14 @@
         {% if felder.preis %}
             <div class="form-inputs">
                 <div class="label">{{ labels.preis }}</div>
-                <div class="preis-slider"><input id="preis" type="slider" data-request="{{ __SELF__ }}::onDataChange" name="preis" value="{{ preis }}" /></div>
+                <div class="preis-slider"><input id="preis" type="slider" data-request="{{ __SELF__ }}::onDataChange" name="preis" value="{{ preis }}" aria-label="{{ labels.preis }}"/></div>
             </div>
             <div class="clearfix"></div>
         {% endif %}
         {% if felder.ort %}
             <div class="form-inputs">
                 <div class="label">{{ labels.ort }}</div>
-                <select id="ort" name="ort" class="search-ort" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.ort }}">
+                <select id="ort" name="ort" class="search-ort" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.ort }}">
                     <option value="0">{{ labels.keineangabe }}</option>
                     {% for ort in orte %}
                         <option value="{{ort.id}}">{{ort.name}}</option>
@@ -50,7 +50,7 @@
         {% if felder.land %}
             <div class="form-inputs">
                 <div class="label">{{ labels.land }}</div>
-                <select id="land" name="land" class="search-land" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.land }}">
+                <select id="land" name="land" class="search-land" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.land }}">
                     <option value="-">{{ labels.keineangabe }}</option>
                     {% for land in laender %}
                         <option value="{{land.id}}">{{land.name}}</option>
@@ -62,7 +62,7 @@
         {% if felder.region %}
             <div class="form-inputs">
                 <div class="label">{{ labels.region }}</div>
-                <select id="region" name="region" class="search-region" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.region }}">
+                <select id="region" name="region" class="search-region" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.region }}">
                     <option value="0">{{ labels.keineangabe }}</option>
                     {% for region in regionen %}
                         <option value="{{region.id}}" {{region.disbled}}>{{region.name}}</option>
@@ -74,7 +74,7 @@
         {% if felder.objart %}
             <div class="form-inputs">
                 <div class="label">{{ labels.objart }}</div>
-                <select id="objart" name="objart" class="search-objart" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.objart }}">
+                <select id="objart" name="objart" class="search-objart" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.objart }}">
                     <option value="0">{{ labels.keineangabe }}</option>
                     {% for objart in objarten %}
                         <option value="{{objart.id}}">{{objart.name}}</option>
@@ -86,7 +86,7 @@
         {% if felder.sterne %}
             <div class="form-inputs">
                 <div class="label">{{ labels.sterne }}</div>
-                <select id="sterne" name="sterne" class="search-sterne" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.sterne }}">
+                <select id="sterne" name="sterne" class="search-sterne" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.sterne }}">
                     <option value="-1">{{ labels.keineangabe }}</option>
                     {% for stern in objsterne %}
                         <option value="{{stern.id}}">{{stern.name}}</option>
@@ -98,7 +98,7 @@
         {% if felder.objtyp %}
             <div class="form-inputs">
                 <div class="label">{{ labels.objtyp }}</div>
-                <select id="objtyp" name="objtyp" class="search-objtyp" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" placeholder="{{ labels.objtyp }}">
+                <select id="objtyp" name="objtyp" class="search-objtyp" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.objtyp }}">
                     <option value="0">{{ labels.keineangabe }}</option>
                     {% for objtyp in objtypen %}
                         <option value="{{objtyp.id}}">{{objtyp.name}}</option>
@@ -111,7 +111,7 @@
             {% if felder.personen %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.personen }}</div>
-                    <select id="personen" name="personen" class="search-personen" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                    <select id="personen" name="personen" class="search-personen" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.personen }}">
                         <option value="0">{{ labels.keineangabe }}</option>
                         {% for i in 1..maxpersonen %}
                             <option value="{{ i }}" {% if personen == i %} selected {% endif %}>{{ i }} {% if i > 1 %} {{ labels.personen }} {% else %} {{ labels.person }}{% endif %}</option>
@@ -123,7 +123,7 @@
             {% if felder.zimmer %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.zimmer }}</div>
-                    <select id="zimmer" name="zimmer" class="search-zimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                    <select id="zimmer" name="zimmer" class="search-zimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.zimmer }}">
                         <option value="0">{{ labels.keineangabe }}</option>
                         {% for i in 1..maxzimmer %}
                             <option value="{{ i }}" {% if zimmer == i %} selected {% endif %}>{{ i }} {{ labels.zimmer }}</option>
@@ -135,7 +135,7 @@
             {% if felder.schlafzimmer %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.schlafzimmer }}</div>
-                    <select id="schlafzimmer" name="schlafzimmer" class="schlafzimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                    <select id="schlafzimmer" name="schlafzimmer" class="schlafzimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.schlafzimmer }}">
                         <option value="0">{{ labels.keineangabe }}</option>
                         {% for i in 1..maxschlafzimmer %}
                             <option value="{{ i }}" {% if schlafzimmer == i %} selected {% endif %}>{{ i }} {{ labels.schlafzimmer }}</option>
@@ -147,7 +147,7 @@
             {% if felder.badezimmer %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.badezimmer }}</div>
-                    <select id="badezimmer" name="badezimmer" class="badezimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto">
+                    <select id="badezimmer" name="badezimmer" class="badezimmer" data-request="{{ __SELF__ }}::onDataChange" data-width="auto" aria-label="{{ labels.badezimmer }}">
                         <option value="0">{{ labels.keineangabe }}</option>
                         {% for i in 1..maxbadezimmer %}
                             <option value="{{ i }}" {% if badezimmer == i %} selected {% endif %}>{{ i }} {{labels.badezimmer }}</option>
@@ -160,7 +160,7 @@
             {% if felder.personen %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.personen }}</div>
-                    <input id="personen" name="personen" type="hidden" readonly value="{{ personen }}">
+                    <input id="personen" name="personen" type="hidden" readonly value="{{ personen }}" aria-label="{{ labels.personen }}">
                     <div class="intselector" onClick="aenderewert('#personen', '#perswert', false, 'onDataChange');">-</div>
                     <div id="perswert" class="listwert">1+</div>
                     <div class="intselector" onclick="aenderewert('#personen', '#perswert', true, 'onDataChange');">+</div>
@@ -170,7 +170,7 @@
             {% if felder.zimmer %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.zimmer }}</div>
-                    <input id="zimmer" name="zimmer" type="hidden" readonly value="{{ zimmer }}">
+                    <input id="zimmer" name="zimmer" type="hidden" readonly value="{{ zimmer }}" aria-label="{{ labels.zimmer }}">
                     <div class="intselector" onClick="aenderewert('#zimmer', '#zimmerwert', false, 'onDataChange');">-</div>
                     <div id="zimmerwert" class="listwert">0+</div>
                     <div class="intselector" onclick="aenderewert('#zimmer', '#zimmerwert', true, 'onDataChange');">+</div>
@@ -180,7 +180,7 @@
             {% if felder.schlafzimmer %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.schlafzimmer }}</div>
-                    <input id="schlafzimmer" name="schlafzimmer" type="hidden" readonly value="{{ schlafzimmer }}">
+                    <input id="schlafzimmer" name="schlafzimmer" type="hidden" readonly value="{{ schlafzimmer }}" aria-label="{{ labels.schlafzimmer }}">
                     <div class="intselector" onClick="aenderewert('#schlafzimmer', '#schlafzimmerwert', false, 'onDataChange');">-</div>
                     <div id="schlafzimmerwert" class="listwert">0+</div>
                     <div class="intselector" onclick="aenderewert('#schlafzimmer', '#schlafzimmerwert', true, 'onDataChange');">+</div>
@@ -190,7 +190,7 @@
             {% if felder.badezimmer %}
                 <div class="form-inputs">
                     <div class="label">{{ labels.badezimmer }}</div>
-                    <input id="badezimmer" name="badezimmer" type="hidden" readonly value="{{ badezimmer }}">
+                    <input id="badezimmer" name="badezimmer" type="hidden" readonly value="{{ badezimmer }}" aria-label="{{ labels.badezimmer }}">
                     <div class="intselector" onClick="aenderewert('#badezimmer', '#badezimmerwert', false, 'onDataChange');">-</div>
                     <div id="badezimmerwert" class="listwert">0+</div>
                     <div class="intselector" onclick="aenderewert('#badezimmer', '#badezimmerwert', true, 'onDataChange');">+</div>

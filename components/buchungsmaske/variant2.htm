@@ -39,18 +39,18 @@
                         <div class="book-22">
                             {% if datecompact == 1 %}
                                 <div class="fewo-buchung-date">
-                                    <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly />
+                                    <input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" aria-label="{{ labels.zeitraum }}" readonly />
                                     <input type="hidden" id="ctrl_anreise" name="anreise" required class="s-anreise datepicker" value="{{ anreise }}" />
                                     <input type="hidden" id="ctrl_abreise" name="abreise" required class="s-abreise datepicker" value="{{ abreise }}" />
                                 </div>
                             {% else %}
                                 <div class="form-inputs">
                                     <div class="label">{{ labels.anreise }}</div>
-                                    <input id="ctrl_anreise" name="anreise" required class="s-anreise datepicker" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
+                                    <input id="ctrl_anreise" name="anreise" required class="s-anreise datepicker" autocomplete="off" type="text" aria-label="{{ labels.anreise }}" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
                                 </div>
                                 <div class="form-inputs">
                                     <div class="label">{{ labels.abreise }}</div>
-                                    <input id="ctrl_abreise" name="abreise" required class="s-abreise datepicker"  autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
+                                    <input id="ctrl_abreise" name="abreise" required class="s-abreise datepicker"  autocomplete="off" type="text" aria-label="{{ labels.abreise }}" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
                                 </div>
                             {% endif %}
                             <div id="error-anreise"></div>
@@ -59,7 +59,7 @@
                         <div class="fewo_buchung_personen">
                             <div class="anz_erwachsene">
                                 <div class="label label_erwachsene">{{ labels.erwachsene }}</div>
-                                <select name="erwachsene" id="ctrl_erwachsene" class="select frm_erwachsene" data-request="{{ __SELF__ }}::onErwachseneChange">
+                                <select name="erwachsene" id="ctrl_erwachsene" class="select frm_erwachsene" aria-label="{{ labels.erwachsene }}" data-request="{{ __SELF__ }}::onErwachseneChange">
                                     {% for i in 1..erwachsene %}
                                         <option value="{{ i }}">{{ i }}</option>
                                     {% endfor %}
@@ -67,7 +67,7 @@
                             </div>
                             <div class="anz_kinder">
                                 <div class="label label_kinder">{{ labels.kinder }}</div>
-                                <select name="kinder" id="ctrl_kinder" class="select frm_kinder" data-request="{{ __SELF__ }}::onKinderChange">
+                                <select name="kinder" id="ctrl_kinder" class="select frm_kinder" aria-label="{{ labels.kinder }}" data-request="{{ __SELF__ }}::onKinderChange">
                                     {% for i in 0..kinder %}
                                         <option value="{{ i }}" >{{ i }}</option>
                                     {% endfor %}
@@ -76,7 +76,7 @@
                             {% if showkleinkinder %}
                                 <div class="anz_kleinkinder">
                                     <div class="label label_kleinkinder">{{ labels.kleinkinder }}</div>
-                                    <select name="kleinkinder" id="ctrl_kleinkinder" class="select frm_kleinkinder">
+                                    <select name="kleinkinder" id="ctrl_kleinkinder" class="select frm_kleinkinder" aria-label="{{ labels.kleinkinder }}">
                                         {% for i in 0..kleinkinder %}
                                             <option value="{{ i }}">{{ i }}</option>
                                         {% endfor %}
@@ -88,7 +88,7 @@
                         {% if useIsBusinessTrip %}
                             <div class="businessTrip">
                                 <div class="label">{{ labels.geschaeftsreise }}</div>
-                                <input type="checkbox" id="ctrl_isBusinessTrip" name="isBusinessTrip" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
+                                <input type="checkbox" id="ctrl_isBusinessTrip" name="isBusinessTrip" aria-label="{{ labels.geschaeftsreise }}" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
                             </div>
                         {% endif %}
                         {% if showleistungen %}
@@ -116,7 +116,7 @@
                                             {% if leist.max > 1 %}
                                                 <div class="leistung_anzahl float-left">
                                                     <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
-                                                    <select class="select" name="fewo_leistung[{{ leist.lid }}]" data-request="{{ __SELF__ }}::onLeistungChange">
+                                                    <select class="select" name="fewo_leistung[{{ leist.lid }}]" aria-label="{{ leist.titel }}" data-request="{{ __SELF__ }}::onLeistungChange">
                                                         {% for i in 0..leist.max %}
                                                             <option value="{{ i }}" {% if leist.selected == i %} selected {% endif %}>{{ i }}x</option>
                                                         {% endfor %}
@@ -129,7 +129,7 @@
                                                 <div class="leistung_anzahl float-left">
                                                     <span class="leistung_header_mobile"></span><span class="leistung_type">{{ leist.type }}</span>
                                                     <input type="hidden" name="fewo_leistung[{{ leist.lid }}]" value="off">
-                                                    <input class="select" value="on" data-request="{{ __SELF__ }}::onLeistungChange" type="checkbox"{% if leist.selected %} checked {% endif %} name="fewo_leistung[{{ leist.lid }}]"/>
+                                                    <input class="select" value="on" aria-label="{{ leist.titel }}" data-request="{{ __SELF__ }}::onLeistungChange" type="checkbox"{% if leist.selected %} checked {% endif %} name="fewo_leistung[{{ leist.lid }}]"/>
                                                     {% if leist.countval > 1 %}
                                                         <span class="countval">(x{{ leist.countval }})</span>
                                                     {% endif %}

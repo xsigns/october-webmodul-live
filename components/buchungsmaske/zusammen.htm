@@ -84,19 +84,19 @@
     <div class="agbdata">
         <span id="error-check" class="validate"></span>
         {% if agbcheck %}
-            <input type="checkbox" name="agb">
+            <input type="checkbox" name="agb" aria-label="agb">
             <div class="label agb">{{ agbcheck|raw }}</div>
         {% endif %}
         {% if datacheck %}
-            <input type="checkbox" name="data">
+            <input type="checkbox" name="data" aria-label="data">
             <div class="label data">{{ datacheck|raw }}</div>
         {% endif %}
         {% if sonstigescheck %}
-            <input type="checkbox" name="sonstiges">
+            <input type="checkbox" name="sonstiges" aria-label="sonstiges">
             <div class="label data">{{ sonstigescheck|raw }}</div>
         {% endif %}
         {% if werbemail %}
-            <input type="checkbox" name="werbemail">
+            <input type="checkbox" name="werbemail" aria-label="werbemail">
             <div class="label data">{{ werbemail|raw }}</div>
         {% endif %}
     </div>
