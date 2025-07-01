@@ -1020,3 +1020,5 @@
     - Verbesserungen für Barrierefreie Webseiten
 3.10.10:
     - Verbesserungen für die Validierung URL-basierter Listenfilter
+3.10.11:
+    - Verbesserungen für die Berechnung der ausgewählten Tage in der Buchungsmaske und im Preisrechner
