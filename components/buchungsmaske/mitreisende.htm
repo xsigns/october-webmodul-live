@@ -1,8 +1,8 @@
 <div class="mit_header">
-    <div class="mitreisende_vorname is-required">{{ labels.vorname }}</div>
-    <div class="mitreisende_nachname is-required">{{ labels.name }}</div>
+    <div class="mitreisende_vorname {% if required.mitreisendevorname %}is-required{% endif %}">{{ labels.vorname }}</div>
+    <div class="mitreisende_nachname {% if required.mitreisendename %}is-required{% endif %}">{{ labels.name }}</div>
     {% if showmitreisendegeb %}
-    <div class="mitreisende_gebdatum is-required">{{ labels.geb }}</div>
+    <div class="mitreisende_gebdatum {% if required.mitreisendegeb %}is-required{% endif %}">{{ labels.geb }}</div>
     {% endif %}
     </div>
     {% for mitreisender in mitreisende %}

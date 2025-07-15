@@ -1022,3 +1022,7 @@
     - Verbesserungen für die Validierung URL-basierter Listenfilter
 3.10.11:
     - Verbesserungen für die Berechnung der ausgewählten Tage in der Buchungsmaske und im Preisrechner
+3.10.12:
+    - Verbesserungen für die Validierung in der Buchungsmaske
+    - Verbesserungen für Mitreisende in der Buchungsmaske. In den Einstellungen der Komponente Buchungsmaske können nun Pflichtfelder für Mitreisende aktiviert oder deaktiviert werden.
+    - Verbesserungen für die Hobex Zahlungsmaske
