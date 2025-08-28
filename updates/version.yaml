@@ -1026,3 +1026,6 @@
     - Verbesserungen für die Validierung in der Buchungsmaske
     - Verbesserungen für Mitreisende in der Buchungsmaske. In den Einstellungen der Komponente Buchungsmaske können nun Pflichtfelder für Mitreisende aktiviert oder deaktiviert werden.
     - Verbesserungen für die Hobex Zahlungsmaske
+3.10.13:
+    - Geschäftsreisen-Option aus der Buchungsmaske wird nun auch an Fewo-Verwalter übergeben aus ausgewertet
+    - update88.php
