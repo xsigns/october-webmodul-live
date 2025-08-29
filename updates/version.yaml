@@ -1029,3 +1029,5 @@
 3.10.13:
     - Geschäftsreisen-Option aus der Buchungsmaske wird nun auch an Fewo-Verwalter übergeben aus ausgewertet
     - update88.php
+3.10.14:
+    - Verbesserung für Geschäftsreisen-Option
