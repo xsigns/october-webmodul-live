@@ -269,7 +269,7 @@ return [
         'googlemapsapi' => 'Google Maps Api Key',
         'googlemapsapi_desc' => 'Google Maps Api Key ist notwendig, sobald Google Maps Karten zum Einsatz kommen sollen',
         'restzahlliste_label' => 'Restzahlungen',
-        'restzahlliste_desc' => 'Übersicht aller An- und Restzahlungen',
+        'restzahlliste_desc' => 'Übersicht aller Restzahlungen',
         'tabVerwalter' => 'Verwalterdaten',
         'vorname' => 'Vorname',
         'nachname' => 'Nachname',
