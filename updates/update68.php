@@ -6,6 +6,7 @@ use DB;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
+use Xsigns\Fewo\Classes\DoctrineSchemaManager;
 
 class Update68 extends Migration
 {
@@ -22,7 +23,7 @@ class Update68 extends Migration
         {
             $table->integer('reglang_regionid')->default(0)->change();
 
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('regionid_lang_name', $indexes))
@@ -31,7 +32,7 @@ class Update68 extends Migration
 
         Schema::table('xsigns_fewo_vorg', function ($table)
         {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('objid_anreise_abreise', $indexes))
@@ -40,7 +41,7 @@ class Update68 extends Migration
 
         Schema::table('xsigns_fewo_preise', function ($table)
         {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('objid_von_bis_mintage_lueckenbok_anreise_abreise', $indexes))

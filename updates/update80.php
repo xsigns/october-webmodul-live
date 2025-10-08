@@ -8,6 +8,7 @@ use October\Rain\Database\Schema\Blueprint;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
+use Xsigns\Fewo\Classes\DoctrineSchemaManager;
 use Xsigns\Fewo\Classes\FewoDatum;
 use Xsigns\Fewo\Classes\Objekt;
 
@@ -21,7 +22,7 @@ class Update80 extends Migration
         {
             Schema::table('xsigns_fewo_objsuchindex', function (Blueprint $table)
             {
-                $sm = Schema::getConnection()->getDoctrineSchemaManager();
+                $sm = DoctrineSchemaManager::getSchemaManager();
                 $indexes = $sm->listTableIndexes($table->getTable());
 
                 if (!array_key_exists('leisteab', $indexes))
@@ -36,7 +37,7 @@ class Update80 extends Migration
         {
             Schema::table('xsigns_fewo_objsuchindex', function (Blueprint $table)
             {
-                $sm = Schema::getConnection()->getDoctrineSchemaManager();
+                $sm = DoctrineSchemaManager::getSchemaManager();
                 $indexes = $sm->listTableIndexes($table->getTable());
 
                 if (array_key_exists('leisteab', $indexes))

@@ -5,6 +5,7 @@ namespace Xsigns\Fewo\Updates;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
+use Xsigns\Fewo\Classes\DoctrineSchemaManager;
 
 class Update66 extends Migration
 {
@@ -16,7 +17,7 @@ class Update66 extends Migration
         {
             $table->integer('preislng_preisid')->default(0)->change();
 
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('preislng_preisid_preislng_lang', $indexes))
@@ -25,7 +26,7 @@ class Update66 extends Migration
 
         Schema::table('xsigns_fewo_ang', function ($table)
         {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('ang_id_ang_aktiv_ang_bis', $indexes))
@@ -34,7 +35,7 @@ class Update66 extends Migration
 
         Schema::table('xsigns_fewo_aus', function ($table)
         {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('ausid', $indexes))
@@ -43,7 +44,7 @@ class Update66 extends Migration
 
         Schema::table('xsigns_fewo_zu', function ($table)
         {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('zu_zeitraumaktiv_zu_bis_zu_tage_zu_kurzbucher_zu_objartid', $indexes))
@@ -54,7 +55,7 @@ class Update66 extends Migration
         {
             $table->integer('bewertung_id')->default(0)->change();
 
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('bewertung_id_option_id', $indexes))
