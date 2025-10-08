@@ -4,6 +4,7 @@ namespace Xsigns\Fewo\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
+use Xsigns\Fewo\Classes\DoctrineSchemaManager;
 
 class Update36 extends Migration
 {
@@ -43,7 +44,7 @@ class Update36 extends Migration
         try
         {
             Schema::table('xsigns_fewo_obj', function($table) {
-                $sm = Schema::getConnection()->getDoctrineSchemaManager();
+                $sm = DoctrineSchemaManager::getSchemaManager();
                 $doctrineTable = $sm->listTableDetails('xsigns_fewo_obj');
 
                 if ($doctrineTable->hasIndex('land'))
@@ -53,7 +54,7 @@ class Update36 extends Migration
         catch (\Illuminate\Database\QueryException $e){}
 
         Schema::table('xsigns_fewo_preise', function($table) {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $doctrineTable = $sm->listTableDetails('xsigns_fewo_preise');
 
             if ($doctrineTable->hasIndex('objid_bis'))
@@ -62,14 +63,14 @@ class Update36 extends Migration
                 $table->dropIndex('bis');
         });
         Schema::table('xsigns_fewo_bewopt', function($table) {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $doctrineTable = $sm->listTableDetails('xsigns_fewo_bewopt');
 
             if ($doctrineTable->hasIndex('id_lang'))
                 $table->dropIndex('id_lang');
         });
         Schema::table('xsigns_fewo_bew', function($table) {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $doctrineTable = $sm->listTableDetails('xsigns_fewo_bew');
 
             if ($doctrineTable->hasIndex('objid_aktiv'))
@@ -78,7 +79,7 @@ class Update36 extends Migration
                 $table->dropIndex('aktiv_datum');
         });
         Schema::table('xsigns_fewo_vorg', function($table) {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $doctrineTable = $sm->listTableDetails('xsigns_fewo_vorg');
 
             if ($doctrineTable->hasIndex('vorg_is_a_b_bl_e_o'))

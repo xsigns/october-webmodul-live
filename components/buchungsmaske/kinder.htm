@@ -1,4 +1,4 @@
-<select name="kinder" id="ctrl_kinder" class="select frm_kinder" data-request="{{ __SELF__ }}::onKinderChange">
+<select name="kinder" id="ctrl_kinder" class="select frm_kinder" aria-label="kinder" data-request="{{ __SELF__ }}::onKinderChange">
     {% for i in 0..kinder %}
     <option value="{{ i }}" {% if selected == i %}selected{% endif %}>{{ i }}</option>
     {% endfor %}

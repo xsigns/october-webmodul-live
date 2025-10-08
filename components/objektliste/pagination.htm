@@ -7,7 +7,7 @@
                 <a href="#" class="page-back" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'prev'" data-request="{{ __SELF__ }}::onPageChange"> </a>
             {% endif %}
             <select name="pageselect" id="pageselect" data-request-data="aktpage: {{ page }},max: {{ pages }}, stype: 'select'" data-request="{{ __SELF__ }}::onPageChange"
-                    class="form-control">
+                    class="form-control" aria-label="pageselect">
             {% for i in 1..pages %}
                 <option value="{{ i }}" {% if i == page %} selected {% endif %}>{{ i }}</option>
             {% endfor %}

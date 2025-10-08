@@ -29,18 +29,18 @@
 			<input type="hidden" name = "language" value="{{ language }}">
 			<div id="exTab2" class="container ">
 				<ul class="nav nav-tabs d-xl-flex flex-xl-row" role="tablist" id="buchungTab">
-					<li class="nav-item active " id="tab1"><a class="nav-link" href="#1"  data-tab="tab1" data-toggle="tab" role="tab">{{ labels.tab1 }}</a></li>
-					<li class="nav-item disabled" id="tab2"><a class="nav-link" href="#2"  data-tab="tab2" data-toggle="tab" role="tab">{{ labels.tab2 }}</a></li>
+					<li class="nav-item active " id="tab1" role="tab"><a class="nav-link" href="#1"  data-tab="tab1" data-toggle="tab">{{ labels.tab1 }}</a></li>
+					<li class="nav-item disabled" id="tab2" role="tab"><a class="nav-link" href="#2"  data-tab="tab2" data-toggle="tab">{{ labels.tab2 }}</a></li>
 					{% if showmitreisende %}
-						<li class="nav-item disabled" id="tab3"><a class="nav-link" href="#3"  data-tab="tab3" data-toggle="tab" role="tab">{{ labels.tab3 }}</a></li>
+						<li class="nav-item disabled" id="tab3" role="tab"><a class="nav-link" href="#3"  data-tab="tab3" data-toggle="tab">{{ labels.tab3 }}</a></li>
 					{% endif %}
 					{% if showleistungen %}
-						<li class="nav-item disabled" id="tab4"><a class="nav-link" href="#4"  data-tab="tab4" data-toggle="tab" role="tab">{{ labels.tab4 }}</a></li>
+						<li class="nav-item disabled" id="tab4" role="tab"><a class="nav-link" href="#4"  data-tab="tab4" data-toggle="tab">{{ labels.tab4 }}</a></li>
 					{% endif %}
-					<li class="nav-item disabled" id="tab5"><a class="nav-link" href="#5"  data-tab="tab5" data-toggle="tab" role="tab">{{ labels.tab5 }}</a></li>
-					<li class="nav-item disabled" id="tab6"><a class="nav-link" href="#6"  data-tab="tab6" data-toggle="tab" role="tab">{{ labels.tab6 }}</a></li>
+					<li class="nav-item disabled" id="tab5" role="tab"><a class="nav-link" href="#5"  data-tab="tab5" data-toggle="tab">{{ labels.tab5 }}</a></li>
+					<li class="nav-item disabled" id="tab6" role="tab"><a class="nav-link" href="#6"  data-tab="tab6" data-toggle="tab">{{ labels.tab6 }}</a></li>
 					{% if payment == true %}
-						<li class="nav-item disabled" id="tab7"><a class="nav-link" href="#7"  data-tab="tab7" data-toggle="tab" role="tab">{{ labels.tab7 }}</a></li>
+						<li class="nav-item disabled" id="tab7" role="tab"><a class="nav-link" href="#7"  data-tab="tab7" data-toggle="tab">{{ labels.tab7 }}</a></li>
 					{% endif %}
 				</ul>
 
@@ -50,18 +50,18 @@
 						<div class="book-22">
 							{% if datecompact == 1 %}
 								<div class="fewo-buchung-date">
-									<input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" readonly/>
+									<input type="text" id="period" name="period" class="search-anreise" autocomplete="off" placeholder="{{ labels.zeitraum }}" aria-label="{{ labels.zeitraum }}" readonly/>
 									<input type="hidden" id="ctrl_anreise" name="anreise"  required class="s-anreise datepicker" value="{{ anreise }}">
 									<input type="hidden" id="ctrl_abreise" name="abreise" required class="s-abreise datepicker" value="{{ abreise }}">
 								</div>
 							{% else %}
 								<div class="form-inputs">
 									<div class="label">{{ labels.anreise }}</div>
-									<input id="ctrl_anreise" name="anreise" required class="s-anreise datepicker" autocomplete="off" type="text" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
+									<input id="ctrl_anreise" name="anreise" required class="s-anreise datepicker" autocomplete="off" type="text" aria-label="{{ labels.anreise }}" placeholder="{{ labels.anreise }}" readonly value="{{ anreise }}" />
 								</div>
 								<div class="form-inputs">
 									<div class="label">{{ labels.abreise }}</div>
-									<input id="ctrl_abreise" name="abreise" required class="s-abreise datepicker"  autocomplete="off" type="text" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
+									<input id="ctrl_abreise" name="abreise" required class="s-abreise datepicker"  autocomplete="off" type="text" aria-label="{{ labels.abreise }}" placeholder="{{ labels.abreise }}" readonly value="{{ abreise }}" />
 								</div>
 							{% endif %}
 							<div id="error-anreise"></div>
@@ -70,7 +70,7 @@
 						<div class="fewo_buchung_personen">
 							<div class="anz_erwachsene">
 								<div class="label label_erwachsene">{{ labels.erwachsene }}</div>
-								<select name="erwachsene" id="ctrl_erwachsene" class="select frm_erwachsene" data-request="{{ __SELF__ }}::onErwachseneChange">
+								<select name="erwachsene" id="ctrl_erwachsene" class="select frm_erwachsene" aria-label="{{ labels.erwachsene }}" data-request="{{ __SELF__ }}::onErwachseneChange">
 									{% for i in 1..erwachsene %}
 										<option value="{{ i }}">{{ i }}</option>
 									{% endfor %}
@@ -78,7 +78,7 @@
 							</div>
 							<div class="anz_kinder">
 								<div class="label label_kinder">{{ labels.kinder }}</div>
-								<select name="kinder" id="ctrl_kinder" class="select frm_kinder" data-request="{{ __SELF__ }}::onKinderChange">
+								<select name="kinder" id="ctrl_kinder" class="select frm_kinder" aria-label="{{ labels.kinder }}" data-request="{{ __SELF__ }}::onKinderChange">
 									{% for i in 0..kinder %}
 										<option value="{{ i }}" >{{ i }}</option>
 									{% endfor %}
@@ -87,7 +87,7 @@
 							{% if showkleinkinder %}
 							<div class="anz_kleinkinder">
 								<div class="label label_kleinkinder">{{ labels.kleinkinder }}</div>
-								<select name="kleinkinder" id="ctrl_kleinkinder" class="select frm_kleinkinder">
+								<select name="kleinkinder" id="ctrl_kleinkinder" class="select frm_kleinkinder" aria-label="{{ labels.kleinkinder }}">
 									{% for i in 0..kleinkinder %}
 										<option value="{{ i }}">{{ i }}</option>
 									{% endfor %}
@@ -99,7 +99,7 @@
 						{% if useIsBusinessTrip %}
 							<div class="businessTrip">
 								<div class="label">{{ labels.geschaeftsreise }}</div>
-								<input type="checkbox" id="ctrl_isBusinessTrip" name="isBusinessTrip" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
+								<input type="checkbox" id="ctrl_isBusinessTrip" name="isBusinessTrip" aria-label="{{ labels.geschaeftsreise }}" data-request="{{ __SELF__ }}::onChangeBusinessTrip" />
 							</div>
 						{% endif %}
 						<div id="preisliste" class="fewo-preisliste"></div>

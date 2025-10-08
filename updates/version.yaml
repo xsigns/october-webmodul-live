@@ -1011,3 +1011,29 @@
     - Allgemeine Verbesserungen
 3.10.6:
     - "!!! Aktivierung von Geschäftsreisen in der Buchungsmaske möglich. Partial für Buchungsmaske muss angepasst werden, bitte Upgrade-Guide lesen!"
+3.10.7:
+    - Verbesserungen für Bestätigungsmails
+3.10.8:
+    - Verbesserungen für Vorgänge Import
+    - Verbesserungen für feste Leistungen in Objektstammdaten
+3.10.9:
+    - Verbesserungen für Barrierefreie Webseiten
+3.10.10:
+    - Verbesserungen für die Validierung URL-basierter Listenfilter
+3.10.11:
+    - Verbesserungen für die Berechnung der ausgewählten Tage in der Buchungsmaske und im Preisrechner
+3.10.12:
+    - Verbesserungen für die Validierung in der Buchungsmaske
+    - Verbesserungen für Mitreisende in der Buchungsmaske. In den Einstellungen der Komponente Buchungsmaske können nun Pflichtfelder für Mitreisende aktiviert oder deaktiviert werden.
+    - Verbesserungen für die Hobex Zahlungsmaske
+3.10.13:
+    - Geschäftsreisen-Option aus der Buchungsmaske wird nun auch an Fewo-Verwalter übergeben aus ausgewertet
+    - update88.php
+3.10.14:
+    - Verbesserung für Geschäftsreisen-Option
+3.10.15:
+    - Verbesserungen für An- und Restzahlungen bei Stornierungen
+3.10.16:
+    - Verbesserungen für Zuschlagsberechnung
+3.10.17:
+    - Optimierung für October 4

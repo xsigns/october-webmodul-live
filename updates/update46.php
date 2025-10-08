@@ -5,6 +5,7 @@ namespace Xsigns\Fewo\Updates;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
+use Xsigns\Fewo\Classes\DoctrineSchemaManager;
 
 class Update46 extends Migration
 {
@@ -32,7 +33,7 @@ class Update46 extends Migration
             $table->dropColumn('obj_preisbis');
             $table->dropColumn('obj_preisanzahl');
 
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $doctrineTable = $sm->listTableDetails('xsigns_fewo_obj');
 
             if ($doctrineTable->hasIndex('obj_preisbis'))

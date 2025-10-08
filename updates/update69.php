@@ -6,6 +6,7 @@ use DB;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
+use Xsigns\Fewo\Classes\DoctrineSchemaManager;
 
 class Update69 extends Migration
 {
@@ -15,7 +16,7 @@ class Update69 extends Migration
     {
         Schema::table('xsigns_fewo_obj', function ($table)
         {
-            $sm = Schema::getConnection()->getDoctrineSchemaManager();
+            $sm = DoctrineSchemaManager::getSchemaManager();
             $indexes = $sm->listTableIndexes($table->getTable());
 
             if (!array_key_exists('aktiv_preisanzahl', $indexes))

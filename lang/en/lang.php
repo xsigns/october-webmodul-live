@@ -145,7 +145,7 @@ return [
         'cronlog' => 'Log for sending arrival and departure emails',
         'cronlog_desc' => 'If enabled, detailed status messages are written to the event log when the cron job is processed',
         'restzahlliste_label' => 'Residual payments',
-        'restzahlliste_desc' => 'Overview of all payments on account and balance',
+        'restzahlliste_desc' => 'Overview of all remaining payments',
         'map_set_section' => 'Privacy settings',
         'map_activation' => 'Privacy request for maps',
         'map_activation_desc' => '<b>Hint: </b> Activation is <b>strongly recommended</b> for data protection reasons.',

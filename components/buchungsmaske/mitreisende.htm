@@ -1,21 +1,21 @@
 <div class="mit_header">
-    <div class="mitreisende_vorname is-required">{{ labels.vorname }}</div>
-    <div class="mitreisende_nachname is-required">{{ labels.name }}</div>
+    <div class="mitreisende_vorname {% if required.mitreisendevorname %}is-required{% endif %}">{{ labels.vorname }}</div>
+    <div class="mitreisende_nachname {% if required.mitreisendename %}is-required{% endif %}">{{ labels.name }}</div>
     {% if showmitreisendegeb %}
-    <div class="mitreisende_gebdatum is-required">{{ labels.geb }}</div>
+    <div class="mitreisende_gebdatum {% if required.mitreisendegeb %}is-required{% endif %}">{{ labels.geb }}</div>
     {% endif %}
     </div>
     {% for mitreisender in mitreisende %}
     <div class="mitreisender">
-        <input type="text" name="mitvorname[]" id="ctrl_mitvorname_{{ mitreisender.id }}" class="text form-control frm_mitreisende" value="{{ mitreisender.mitvorname }}">
+        <input type="text" name="mitvorname[]" id="ctrl_mitvorname_{{ mitreisender.id }}" class="text form-control frm_mitreisende" value="{{ mitreisender.mitvorname }}" aria-label="{{ labels.vorname }}">
         <span id="error-vorname" class="validate"></span>
-        <input type="text" name="mitname[]" id="ctrl_mitname_{{ mitreisender.id }}" class="text form-control frm_mitreisende" value="{{ mitreisender.mitname }}">
+        <input type="text" name="mitname[]" id="ctrl_mitname_{{ mitreisender.id }}" class="text form-control frm_mitreisende" value="{{ mitreisender.mitname }}" aria-label="{{ labels.name }}">
         {% if showmitreisendegeb %}
-            <input type="text" name="mitgeb[]" class="text form-control frm_gebdatum" id="ctrl_mitgeb_{{ mitreisender.id }}" value="{{ mitreisender.mitgeb }}">
+            <input type="text" name="mitgeb[]" class="text form-control frm_gebdatum" id="ctrl_mitgeb_{{ mitreisender.id }}" value="{{ mitreisender.mitgeb }}" aria-label="{{ labels.geb }}">
         {% endif %}
     </div>
     {% endfor %}
-<span id="error-mitreisende" class="validate"></span>
+    <span id="error-mitreisende" class="validate"></span>
     {% if showmitreisendegeb %}
         <script>
             jQuery(document).ready(function() {
