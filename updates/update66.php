@@ -24,7 +24,7 @@ class Update66 extends Migration
         Schema::table('xsigns_fewo_ang', function ($table)
         {
             if (!DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_ang', 'ang_id_ang_aktiv_ang_bis'))
-                $table->index(['preislng_preisid', 'preislng_lang'], 'preislng_preisid_preislng_lang');
+                $table->index(['ang_id', 'ang_aktiv', 'ang_bis'], 'ang_id_ang_aktiv_ang_bis');
         });
 
         Schema::table('xsigns_fewo_aus', function ($table)
