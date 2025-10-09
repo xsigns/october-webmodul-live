@@ -5,7 +5,7 @@ namespace Xsigns\Fewo\Updates;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
-use Xsigns\Fewo\Classes\DoctrineSchemaManager;
+use Xsigns\Fewo\Classes\DatabaseIndexHelper;
 
 class Update67 extends Migration
 {
@@ -23,10 +23,7 @@ class Update67 extends Migration
 
         Schema::table('xsigns_fewo_buchung', function ($table)
         {
-            $sm = DoctrineSchemaManager::getSchemaManager();
-            $indexes = $sm->listTableIndexes($table->getTable());
-
-            if (!array_key_exists('buchung_sync_vtyp_synctofeondi_sync_timestamp', $indexes))
+            if (!DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_buchung', 'buchung_sync_vtyp_synctofeondi_sync_timestamp'))
                 $table->index(['sync', 'vtyp', 'synctofeondi', 'sync_timestamp'], 'buchung_sync_vtyp_synctofeondi_sync_timestamp');
         });
     }

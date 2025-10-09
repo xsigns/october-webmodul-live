@@ -5,7 +5,7 @@ namespace Xsigns\Fewo\Updates;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
-use Xsigns\Fewo\Classes\DoctrineSchemaManager;
+use Xsigns\Fewo\Classes\DatabaseIndexHelper;
 
 class Update65 extends Migration
 {
@@ -15,19 +15,13 @@ class Update65 extends Migration
     {
         Schema::table('xsigns_fewo_bew', function ($table)
         {
-            $sm = DoctrineSchemaManager::getSchemaManager();
-            $indexes = $sm->listTableIndexes($table->getTable());
-
-            if (array_key_exists('objid_aktiv', $indexes))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_bew', 'objid_aktiv'))
                 $table->dropIndex('objid_aktiv');
         });
 
         Schema::table('xsigns_fewo_obj', function ($table)
         {
-            $sm = DoctrineSchemaManager::getSchemaManager();
-            $indexes = $sm->listTableIndexes($table->getTable());
-
-            if (!array_key_exists('aktiv_preisbis_id', $indexes))
+            if (!DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_bew', 'objid_aktiv'))
                 $table->index(['obj_aktiv', 'obj_preisbis', 'id'], 'aktiv_preisbis_id');
         });
     }

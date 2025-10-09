@@ -4,7 +4,7 @@ namespace Xsigns\Fewo\Updates;
 
 use Schema;
 use October\Rain\Database\Updates\Migration;
-use Xsigns\Fewo\Classes\DoctrineSchemaManager;
+use Xsigns\Fewo\Classes\DatabaseIndexHelper;
 
 class Update36 extends Migration
 {
@@ -44,51 +44,36 @@ class Update36 extends Migration
         try
         {
             Schema::table('xsigns_fewo_obj', function($table) {
-                $sm = DoctrineSchemaManager::getSchemaManager();
-                $doctrineTable = $sm->listTableDetails('xsigns_fewo_obj');
-
-                if ($doctrineTable->hasIndex('land'))
+                if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_obj', 'land'))
                     $table->dropIndex('land');
             });
         }
         catch (\Illuminate\Database\QueryException $e){}
 
         Schema::table('xsigns_fewo_preise', function($table) {
-            $sm = DoctrineSchemaManager::getSchemaManager();
-            $doctrineTable = $sm->listTableDetails('xsigns_fewo_preise');
-
-            if ($doctrineTable->hasIndex('objid_bis'))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_preise', 'objid_bis'))
                 $table->dropIndex('objid_bis');
-            if ($doctrineTable->hasIndex('bis'))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_preise', 'bis'))
                 $table->dropIndex('bis');
         });
         Schema::table('xsigns_fewo_bewopt', function($table) {
-            $sm = DoctrineSchemaManager::getSchemaManager();
-            $doctrineTable = $sm->listTableDetails('xsigns_fewo_bewopt');
-
-            if ($doctrineTable->hasIndex('id_lang'))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_bewopt', 'id_lang'))
                 $table->dropIndex('id_lang');
         });
         Schema::table('xsigns_fewo_bew', function($table) {
-            $sm = DoctrineSchemaManager::getSchemaManager();
-            $doctrineTable = $sm->listTableDetails('xsigns_fewo_bew');
-
-            if ($doctrineTable->hasIndex('objid_aktiv'))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_bew', 'objid_aktiv'))
                 $table->dropIndex('objid_aktiv');
-            if ($doctrineTable->hasIndex('aktiv_datum'))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_bew', 'aktiv_datum'))
                 $table->dropIndex('aktiv_datum');
         });
         Schema::table('xsigns_fewo_vorg', function($table) {
-            $sm = DoctrineSchemaManager::getSchemaManager();
-            $doctrineTable = $sm->listTableDetails('xsigns_fewo_vorg');
-
-            if ($doctrineTable->hasIndex('vorg_is_a_b_bl_e_o'))
-                $table->dropColumn('vorg_is_a_b_bl_e_o');
-            if ($doctrineTable->hasIndex('vorg_is_b_bl_e'))
-                $table->dropColumn('vorg_is_b_bl_e');
-            if ($doctrineTable->hasIndex('objid_abbleo'))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_vorg', 'vorg_is_a_b_bl_e_o'))
+                $table->dropIndex('vorg_is_a_b_bl_e_o');
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_vorg', 'vorg_is_b_bl_e'))
+                $table->dropIndex('vorg_is_b_bl_e');
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_vorg', 'objid_abbleo'))
                 $table->dropIndex('objid_abbleo');
-            if ($doctrineTable->hasIndex('objid_bble'))
+            if (DatabaseIndexHelper::checkIfIndexExists('xsigns_fewo_vorg', 'objid_bble'))
                 $table->dropIndex('objid_bble');
         });
     }
