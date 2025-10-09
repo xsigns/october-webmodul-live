@@ -7,7 +7,8 @@ use October\Rain\Database\Schema\Blueprint;
 use Schema;
 use October\Rain\Database\Updates\Migration;
 use Xsigns\Fewo\Classes\Database;
-use Xsigns\Fewo\Classes\DoctrineSchemaManager;
+use Xsigns\Fewo\Classes\DatabaseIndexHelper;
+
 
 class Update82 extends Migration
 {
@@ -19,10 +20,7 @@ class Update82 extends Migration
         {
             Schema::table('system_files', function (Blueprint $table)
             {
-                $sm = DoctrineSchemaManager::getSchemaManager();
-                $indexes = $sm->listTableIndexes($table->getTable());
-
-                if (!array_key_exists('system_files_disk_name_index', $indexes))
+                if (!DatabaseIndexHelper::checkIfIndexExists('system_files', 'system_files_disk_name_index'))
                     $table->index('disk_name', 'system_files_disk_name_index');
             });
         }
@@ -34,10 +32,7 @@ class Update82 extends Migration
         {
             Schema::table('system_files', function (Blueprint $table)
             {
-                $sm = DoctrineSchemaManager::getSchemaManager();
-                $indexes = $sm->listTableIndexes($table->getTable());
-
-                if (array_key_exists('system_files_disk_name_index', $indexes))
+                if (DatabaseIndexHelper::checkIfIndexExists('system_files', 'system_files_disk_name_index'))
                     $table->dropIndex('system_files_disk_name_index');
             });
         }
