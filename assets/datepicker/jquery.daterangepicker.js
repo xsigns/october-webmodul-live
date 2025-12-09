@@ -2500,9 +2500,9 @@
         {
             let returns = '';
             let wechselleiste = opt.wechselleiste;
-            let wlStart = moment(moment.unix(opt.wechselleisteStart));
-            let timeMoment = moment(time);
-            let diff = timeMoment.diff(wlStart, 'days')
+            let wlStart = moment(toLocalMidnight(moment.unix(opt.wechselleisteStart)));
+            let timeMoment = moment(toLocalMidnight(time));
+            let diff = timeMoment.diff(wlStart, 'days');
 
             if (diff >= 0) {
                 let state = wechselleiste.charAt(diff);
@@ -2523,6 +2523,15 @@
             }
 
             return returns;
+        }
+
+        function toLocalMidnight(timestamp) {
+            const d = new Date(timestamp)
+
+            // lokale Mitternacht dieses Datums
+            d.setHours(0, 0, 0, 0)
+
+            return d.getTime()
         }
 
         function showDayHTML(time, date) {
