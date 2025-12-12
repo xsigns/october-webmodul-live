@@ -131,6 +131,9 @@ class FewoSitemaps
 
         foreach ($pages as $page)
         {
+            if (str_contains($page['url'], ':'))
+                continue;
+
             $filename = substr($page['fileName'], 0, -4);
 
             if (!in_array($filename, $pagesForSitemap) && $page['is_hidden'] != 0)

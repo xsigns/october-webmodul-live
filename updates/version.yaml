@@ -1044,3 +1044,7 @@
 3.10.20:
     - Verbesserung der Preisausgabe für Kartensuche
     - Verbesserungen für den Datepicker bei Angeboten
+3.10.21:
+    - Verbesserungen für den Datepicker bei Angeboten
+    - Verbesserungen für Sitemaps
+    - Im Eigentümerlogin kann nun ein Button für eine Preisseite der Objekte aktiviert und verlinkt werden (gilt nur für Eigentümerlogin Version 2)
