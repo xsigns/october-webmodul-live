@@ -116,6 +116,15 @@ const columnsObjekte = [
     { name: 'intern', align: 'left', label: objint, field: 'intern', sortable: true,  sort: (a, b) => parseInt(a, 10) - parseInt(b, 10) },
 ]
 
+if (window.priceCheck === 1) {
+    columnsObjekte.push({
+        name: 'price',
+        align: 'left',
+        label: objprice,
+        field: 'price'
+    })
+}
+
 const rowsRechnung2 = abrechnungen
 const rows2 =  vorgaenge
 const rowsObjekte2 = objekte

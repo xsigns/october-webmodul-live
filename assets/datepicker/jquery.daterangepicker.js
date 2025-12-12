@@ -1484,8 +1484,8 @@
                 }
 
                 let wechselleiste = opt.wechselleiste;
-                let wechselleisteStart = moment(moment.unix(opt.wechselleisteStart));
-                let selectedDate = moment(opt.start);
+                let wechselleisteStart = moment(toLocalMidnight(moment.unix(opt.wechselleisteStart)));
+                let selectedDate = moment(toLocalMidnight(opt.start));
                 let diff = selectedDate.diff(wechselleisteStart, 'days');
                 let blockedDays = opt.blocked[1];
 

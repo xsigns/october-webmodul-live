@@ -772,6 +772,19 @@
                                         </q-td>
                                     </template>
 
+                                    {% if priceCheck == 1 %}
+                                        <template v-slot:body-cell-price="props">
+                                            <q-td :props="props">
+                                                <div>
+                                                    <q-btn :href="[[ props.row.price ]]" target="_blank" label="{{ labels.show }}" style="text-decoration: none;" color="primary"></q-btn>
+                                                </div>
+                                                <div class="my-table-details">
+                                                    {{ props.row.details }}
+                                                </div>
+                                            </q-td>
+                                        </template>
+                                    {% endif %}
+
                                     {% if showButtons == 1 %}
                                         <template v-slot:top-left="props">
                                             <button @click="exportTable(rowsObjekte, columnsObjekte, 'Objekte')" class="downBTN shadow-2"><i class="fa fa-download" aria-hidden="true"></i><span>{{ labels.CsvDownloaden }}</span></button>
@@ -943,6 +956,7 @@
     var objpers = '{{ labels.objpers }}';
     var objqm = '{{ labels.objqm }}';
     var objint = '{{ labels.objint }}';
+    var objprice = '{{ labels.objprice }}';
 
     // Show Gastdaten
     var showGastVorname = '{{ showGastVorname }}';
@@ -979,6 +993,11 @@
     }
     myFunction_set();
 </script>
+
+<script>
+    window.priceCheck = {{ priceCheck }};
+</script>
+
 
 <script>
     objekte2 = [];
