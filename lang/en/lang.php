@@ -91,6 +91,9 @@ return [
         'logHobex_desc' => 'Activates logging for temporary bookings if hobex is used. Must be deactivated in production mode.',
         'logFeondiSync' => 'Log sync to Feondi',
         'logFeondiSync_desc' => 'Turn on the log mode for sync to Feondi',
+        'feondiSyncDomain' => 'Domain for sync (optional)',
+        'feondiSyncDomain_desc' => 'Specifies the domain through which synchronization with Feondi should run (important for multi-domain setups).',
+        'feondiSyncDomain_placeholder' => 'https://www.mydomain.com/',
         'alternativeSearch_section' => 'Alternative search for object lists',
         'alternativeSearch' => 'Show alternative objects for object lists',
         'alternativeSearchAnzahl' => 'Maximum number of alternative objects to be displayed',
@@ -316,7 +319,7 @@ return [
          <b>Objekt</b><br> {{ OBJEKT }},  {{ OBJEKT-NR }},  {{ OBJEKT-STRASSE }},  {{ OBJEKT-PLZ }},  {{ OBJEKT-ORT }}, {{ OBJEKT-BESCHREIBUNG }},  {{ OBJEKT-HTMLPREIS1 }},  {{ OBJEKT-HTMLPREIS2 }}<br>
          <b>Vorgang</b><br> {{ NR }},  {{ ANREISE }},  {{ ABREISE }},  {{ TAGE }}, {{ ERWACHSENE }},  {{ KINDER }},  {{ KLEINKINDER }}, {{ OBJEKTPREIS }},  {{ FLEISTPREIS }},  {{ GLEISTPREIS }},  {{ ZUSCHLAGPREIS }},  {{ ANZAHLUNG }},  {{ RESTBETRAG }},  {{ GEBUEHR }},  {{ SUMME }}, {{ SUMMEGESAMT }},  {{ NACHRICHT }},  {{ DATUM }},   {{ ZAHLUNGSWUNSCH }},  {{ KAUTION }},  {{ ANGEBOT }} = Angebotstitel<br>
          <b>Zahlungsangaben</b><br> {{ ZAHLART }},  {{ ZAHLTXID }} = Vorgangsnummer,  {{ ZAHLCARD }} = Zahlungsart/Kreditkarte<br>
-         <b>Zuschläge</b><br> {{ ZUSCHLAEGE }}<br> 
+         <b>Zuschläge</b><br> {{ ZUSCHLAEGE }}<br>
          <b>Leistungen</b><br> {{ LEISTUNGEN }}<br>
          <b>Mitreisende</b><br> {{ MITREISENDE }}<br><br>
          <b>Betreff-Zeile</b><br>

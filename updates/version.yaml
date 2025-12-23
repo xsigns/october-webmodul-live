@@ -1048,3 +1048,5 @@
     - Verbesserungen für den Datepicker bei Angeboten
     - Verbesserungen für Sitemaps
     - Im Eigentümerlogin kann nun ein Button für eine Preisseite der Objekte aktiviert und verlinkt werden (gilt nur für Eigentümerlogin Version 2)
+3.10.22:
+    - Verbesserungen für die Sync Feondi Domain

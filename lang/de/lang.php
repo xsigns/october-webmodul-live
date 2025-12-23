@@ -207,6 +207,9 @@ return [
         'logHobex_desc' => 'Schaltet den Log-Modus für temporäre Buchungen bei der Nutzung von Hobex an. Dies muss im Normalfall für bessere Performance deaktiviert sein.',
         'logFeondiSync' => 'Protokolliere Synchronisation zwischen Webmodul und Feondi',
         'logFeondiSync_desc' => 'Protokolliert alle Daten, die zwischen dem Webmodul und Feondi gesendet und empfangen werden. Dies sollte im Normalfall für bessere Perfomance deaktiviert sein.',
+        'feondiSyncDomain' => 'Domain für Sync (optional)',
+        'feondiSyncDomain_desc' => 'Legt fest, über welche Domain der Sync zu Feondi laufen soll (wichtig für Multi-Domain-Setups).',
+        'feondiSyncDomain_placeholder' => 'https://www.meinedomain.de/',
         'alternativeSearch_section' => 'Alternative Zeiträume für Objektlisten',
         'alternativeSearch' => 'Zeige Objekte mit alternativen Zeiträumen für Objektlisten an',
         'alternativeSearchAnzahl' => 'Maximale Anzahl Objekte mit alternativen Zeiträumen',
@@ -394,7 +397,7 @@ return [
          <b>Objekt</b><br> {{ OBJEKT }},  {{ OBJEKT-NR }},  {{ OBJEKT-STRASSE }},  {{ OBJEKT-PLZ }},  {{ OBJEKT-ORT }}, {{ OBJEKT-BESCHREIBUNG }},  {{ OBJEKT-HTMLPREIS1 }},  {{ OBJEKT-HTMLPREIS2 }}<br>
          <b>Vorgang</b><br> {{ NR }},  {{ ANREISE }},  {{ ABREISE }},  {{ TAGE }}, {{ ERWACHSENE }},  {{ KINDER }},  {{ KLEINKINDER }}, {{ OBJEKTPREIS }},  {{ FLEISTPREIS }},  {{ GLEISTPREIS }},  {{ ZUSCHLAGPREIS }},  {{ ANZAHLUNG }},  {{ RESTBETRAG }},  {{ GEBUEHR }},  {{ SUMME }}, {{ SUMMEGESAMT }},  {{ NACHRICHT }},  {{ DATUM }},   {{ ZAHLUNGSWUNSCH }},  {{ KAUTION }},  {{ ANGEBOT }} = Angebotstitel<br>
          <b>Zahlungsangaben</b><br> {{ ZAHLART }},  {{ ZAHLTXID }} = Vorgangsnummer,  {{ ZAHLCARD }} = Zahlungsart/Kreditkarte<br>
-         <b>Zuschläge</b><br> {{ ZUSCHLAEGE }}<br> 
+         <b>Zuschläge</b><br> {{ ZUSCHLAEGE }}<br>
          <b>Leistungen</b><br> {{ LEISTUNGEN }}<br>
          <b>Mitreisende</b><br> {{ MITREISENDE }}<br><br>
          <b>Betreff-Zeile</b><br>
