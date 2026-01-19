@@ -1,7 +1,12 @@
 $(function() {
-    $(".wpwl-button").click(function() {
-        alert("hallo");
-    });
+
+    window.addEventListener('popstate', function(event) {
+        if (event.state != null && event.state.page !== 1) {
+            $.request('onTabChange', { method: 'post', data: { tabid: event.state.page } });
+        } else {
+            $.request('onTabChange', { method: 'post', data: { tabid: 1 } });
+        }
+    })
 
     if (calClick === 1 && typeof Belplan === 'function')
     {

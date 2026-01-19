@@ -819,11 +819,43 @@
                 }
             });
 
+            $("#ctrl_anreise,#ctrl_panreise,#anreise,#period").keypress(function(evt) {
+                if (evt.which === 13) {
+                    evt.preventDefault();
+                    $('#ctrl_anreise,#ctrl_panreise,#anreise,#period').data('dateRangePicker').open();
+                    $('span.prev').focus();
+                }
+            });
+
+            $("#ctrl_abreise,#ctrl_pabreise,#abreise").click(function(evt) {
+                evt.stopPropagation();
+                $('#ctrl_anreise,#ctrl_panreise,#anreise').data('dateRangePicker').open();
+            }).keypress(function(evt) {
+                if (evt.which === 13) {
+                    evt.preventDefault();
+                    $('#ctrl_anreise,#ctrl_panreise,#anreise').data('dateRangePicker').open();
+                    $('span.prev').focus();
+                }
+            });
+
             box.find('.next').click(function() {
                 if (!opt.stickyMonths)
                     gotoNextMonth(this);
                 else
                     gotoNextMonth_stickily(this);
+            }).keypress(function(evt) {
+                if(evt.which === 13) {
+                    if (!opt.stickyMonths)
+                        gotoNextMonth(this);
+                    else
+                        gotoNextMonth_stickily(this);
+                }
+            });
+
+            $(document).on('keyup',function(evt) {
+                if (evt.keyCode === 27) {
+                    closeDatePicker();
+                }
             });
 
             function gotoNextMonth(self) {
@@ -853,7 +885,14 @@
                     gotoPrevMonth(this);
                 else
                     gotoPrevMonth_stickily(this);
-            });
+            }).keypress(function(evt) {
+                if(evt.which === 13) {
+                    if (!opt.stickyMonths)
+                        gotoPrevMonth(this);
+                    else
+                        gotoPrevMonth_stickily(this);
+                }
+            });;
 
             function gotoPrevMonth(self) {
                 var isMonth2 = $(self).parents('div').hasClass('month2');
@@ -1988,6 +2027,10 @@
 
             box.find('.day').unbind("click").click(function(evt) {
                 dayClicked($(this));
+            }).unbind("keypress").keypress(function(evt) {
+                if(evt.which === 13) {
+                    dayClicked($(this));
+                }
             });
 
             box.find('.day').unbind("mouseenter").mouseenter(function (evt) {
@@ -2148,13 +2191,13 @@
                 '   <div class="month1">' +
                 '       <div class="cal-header">' +
                 '           <div class="caption">' +
-                '                   <span class="prev">' + arrowPrev +
+                '                   <span tabindex="0" class="prev">' + arrowPrev +
                 '                   </span>' +
                 '               <div class="month-name">' +
                 '               </div>' +
                 '<div class="dp-clearfix"></div>' +
                 '               <div>' +
-                (opt.singleDate || !opt.stickyMonths ? '<span class="next">' + arrowNext + '</span>' : '') +
+                (opt.singleDate || !opt.stickyMonths ? '<span tabindex="0" class="next">' + arrowNext + '</span>' : '') +
                 '               </div>' +
                 '           </div>' +
                 '           <div class="week-name">' + getWeekHead() +
@@ -2170,8 +2213,8 @@
                     '<div class="month2">' +
                     '   <div class="cal-header">' +
                     '   <div class="caption">' +
-                    '           <span class="next">' + arrowNext + '</span>' +
-                    (!opt.stickyMonths ? '<span class="prev">' + arrowPrev + '</span>' : '') +
+                    '           <span tabindex="0" class="next">' + arrowNext + '</span>' +
+                    (!opt.stickyMonths ? '<span tabindex="0" class="prev">' + arrowPrev + '</span>' : '') +
                     '       <div class="month-name">' +
                     '       </div>' +
 
@@ -2203,7 +2246,7 @@
                     var name;
                     if(data['delete']){
                         html += '<span class="delete">';
-                        html += '<a href="javascript:;" shortcut="delete">' + translate('delete') + '</a></span>';
+                        html += '<a tabindex="0" href="javascript:;" shortcut="delete">' + translate('delete') + '</a></span>';
                     }
                     if (data['prev-days'] && data['prev-days'].length > 0) {
                         html += '&nbsp;<span class="prev-days">' + translate('past');
@@ -2475,7 +2518,8 @@
                     if (day === 0 && opt.showWeekNumbers) {
                         html.push('<td><div class="week-number" data-start-time="' + today.time + '">' + opt.getWeekNumber(today.date) + '</div></td>');
                     }
-                    html.push('<div ' + attributesCallbacks(todayDivAttr, opt.dayDivAttrs, today) + '>' + showDayHTML(today.time, today.day) + '</div>');
+                    let tabIndex = today.valid ? '0' : '-1'
+                    html.push('<div tabindex="' + tabIndex + '"' + attributesCallbacks(todayDivAttr, opt.dayDivAttrs, today) + '>' + showDayHTML(today.time, today.day) + '</div>');
                     //html.push('<div ' + attributesCallbacks({}, opt.dayTdAttrs, today) + '><div ' + attributesCallbacks(todayDivAttr, opt.dayDivAttrs, today) + '>' + showDayHTML(today.time, today.day) + '</div></div>');
                 }
             }

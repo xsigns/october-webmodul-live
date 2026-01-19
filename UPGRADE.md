@@ -4,6 +4,33 @@
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
 
+## Upgrade 3.10.24
+Der Zahlungsbereich in der Buchungsmaske wurde verbessert. 
+
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Buchungsmaske_** _default.htm_ UND _variant2.htm_:  
+Folgender Code-Block...
+````
+<div class="container">
+    <div id="payment"></div>
+</div>
+````
+...muss durch folgenden Code ersetzt werden:
+````
+<div role="tabpanel" class="tab-pane" id="7">
+    <div class="container">
+        <div id="payment"></div>
+    </div>
+</div>
+````
+
+Komponente **_Buchungsmaske_** _payment2.htm_:  
+Unterhalb des Div-Containers ``<div id="payh"></div>`` muss folgender Code eingefügt werden:
+````
+<button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:6">{{ labels.btnzurueck }}</button>
+````
+- - -
+
 ## Upgrade 3.10.6
 In der Buchungsmaske kann der Gast jetzt angeben, ob es sich bei der Buchung um eine Geschäftsreise handelt. Wird diese Option ausgewählt, entfallen die Anzeige und Berechnung der Kurtaxe im Buchungs- und Zahlungsprozess.  
 Die Option kann in der Buchungsmaske-Komponente über das Feld _Buchungsdaten > Auswahl für Geschäftsreise anzeigen_ aktiviert oder deaktiviert werden.

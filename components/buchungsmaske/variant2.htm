@@ -20,7 +20,7 @@
 <div class="clearfix"></div>
 <div class="col-md-8 float-left">
     <div id="form1" class="bg-white">
-        <form name="fewo-buchung"  data-request-validate data-request-flash>
+        <form name="fewo-buchung" data-request-validate data-request-flash>
             <input type="hidden" name="objid" value="{{ objid }}">
             <input type="hidden" name="objartid" value="{{ objartid }}">
             <input type="hidden" name="maxpersonen" value="{{ maxpersonen }}">
@@ -172,8 +172,10 @@
             </div>
         </form>
     </div>
-    <div class="container">
-        <div id="payment"></div>
+    <div role="tabpanel" class="tab-pane" id="7">
+        <div class="container">
+            <div id="payment"></div>
+        </div>
     </div>
 </div>
 <div class="col-md-4 float-left bg-white p-3 rounded-3 preis_uebersicht">
