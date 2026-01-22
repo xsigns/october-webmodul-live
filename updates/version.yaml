@@ -1056,3 +1056,5 @@
     - "!!! Verbesserungen der Buchungs- und Zahlungsmaske. Partials für Buchungsmaske müssen angepasst werden, bitte Upgrade-Guide lesen!"
     - Verbesserungen der Buchungs- und Zahlungsmaske
     - Verbesserungen für barrierefreie Webseiten
+3.10.25:
+    - Verbesserung Button-Darstellung im Eigentümerlogin

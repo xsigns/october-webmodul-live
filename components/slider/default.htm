@@ -1,192 +1,188 @@
 {% if slideShows != 'no_slider' %}
-{% put scripts %}
-    <script>
-		$(document).ready(function(){
-		    {% if fancybox %}
-		    $('[data-fancybox="gallery"]').fancybox({
-				thumbs: { showOnStart:true
-				},
-				hash : true
-			});
-			{% endif %}
-		    {% if slideShows.show_asimages %}
-			var args = {
-                dots: false,
-                infinite: true,
-                speed: {{slideShows.speed ?: 300}},
-                slidesToShow: 1,
-                centerMode: true,
-                variableWidth: true,
-				autoplay: {{numberToBoolean(slideShows.autoplay)}},
-				autoplaySpeed: {{ slideShows.autoplay_speed ?: 3000 }},
-				//responsive: {{slideShows.breakpointJson|raw}},
-				{% if slideShows.include_thumb %}
-					asNavFor: '.slick-slider-nav-{{slideShows.id}}'
-			    {% endif %}
-            };
-			{% else %}
-			var args = {
-             	accessibility: {{numberToBoolean(slideShows.accessibility)}},
-				autoplay: {{numberToBoolean(slideShows.autoplay)}},
-				autoplaySpeed: {{ slideShows.autoplay_speed ?: 3000 }},
-				arrows: {{numberToBoolean(slideShows.arrows)}},
-				prevArrow: '{{ slideShows.prev_arrow ? slideShows.prev_arrow|raw : '<button type="button" class="slick-prev">Previous</button>' }}',
-				nextArrow: '{{ slideShows.next_arrow ? slideShows.next_arrow|raw : '<button type="button" class="slick-next">Next</button>' }}',
-				centerMode: {{numberToBoolean(slideShows.center_mode)}},
-				centerPadding: '{{slideShows.center_padding ?: '50px' }}',
-				cssEase: '{{slideShows.css_ease ?: 'ease'}}',
-				dots: {{numberToBoolean(slideShows.dots)}},
-				draggable: {{numberToBoolean(slideShows.draggable)}},
-				fade: {{numberToBoolean(slideShows.fade)}},
-				focusOnSelect: {{numberToBoolean(lideShows.focus_on_select)}},
-				easing: '{{slideShows.easing ?: 'linear'}}',
-				edgeFriction: {{slideShows.edge_friction ?: 0.15}},
-				infinite: {{numberToBoolean(slideShows.infinite)}},
-				initialSlide: {{slideShows.initial_slide ?: 0}},
-				mobileFirst: {{numberToBoolean(slideShows.mobile_first)}},
-				pauseOnFocus: {{numberToBoolean(slideShows.pause_on_focus)}},
-				pauseOnHover: {{numberToBoolean(slideShows.pause_on_hover)}},
-				pauseOnDotsHover: {{numberToBoolean(slideShows.pause_on_dots_hover)}},
-				rows: {{slideShows.rows ?: 1}},
-				slidesPerRow: {{slideShows.slides_per_row ?: 1}},
-				slidesToShow: {{slideShows.slides_to_show ?: 1}},
-				slidesToScroll: {{slideShows.slides_to_scroll ?: 1}},
-				speed: {{slideShows.speed ?: 300}},
-				swipe: {{numberToBoolean(slideShows.swipe)}},
-				touchMove: {{numberToBoolean(slideShows.touch_move)}},
-				touchThreshold: {{slideShows.touch_threshold ?: 5}},
-				//useCSS: {{numberToBoolean(slideShows.use_css)}},
-				useTransform: {{numberToBoolean(slideShows.use_transform)}},
-				vertical: {{numberToBoolean(slideShows.vertical)}},
-				verticalSwiping: {{numberToBoolean(slideShows.vertical_swiping)}},
-				rtl: {{numberToBoolean(slideShows.rtl)}},
-				waitForAnimate: {{numberToBoolean(slideShows.wait_for_animate)}},
-				zIndex: {{slideShows.z_index ?: 1000}},
-				//responsive: {{slideShows.breakpointJson|raw}},
-				{% if slideShows.include_thumb %}
-				 asNavFor: '.slick-slider-nav-{{slideShows.id}}'
-			    {% endif %}
-			};
-			{% endif %}
-			$('.slick-slider-{{slideShows.id}}').slick(args);
-			{% if slideShows.include_thumb %}
-            $('.slick-slider-nav-{{slideShows.id}}').slick({
-                slidesToShow: {{ slideShows.thumb_images }},
-                slidesToScroll: 1,
-                asNavFor: '.slick-slider-{{slideShows.id}}',
-                dots: {{numberToBoolean(slideShows.dots)}},
-                centerMode: true,
-                focusOnSelect: true,
-				variableWidth: true
-            });
-			{% endif %}
-			// $(window).resize(function() {
-			// 	$('.slick-slider-{{slider.slideShows.id}}').slick('unslick');
-			// 	$('.slick-slider-{{slider.slideShows.id}}').slick(args);
-			// });
-		});
-
-    </script>
-{% endput %}
-{% put styles %}
-    <style>
-    	.slick-slider-{{slideShows.id}} .slick-slide > div > div {
-    		float: left!important;
-    	}
-    	.slick-slider-{{slideShows.id}} .slick-slide > div > a {
-    		float: left!important;
-    	}
-    	.slick-slider-{{slideShows.id}} .slick-slide .slide-image {
-    		min-height: {{slideShows.slide_show_height ?: '500px'}};
-    		position: relative;
-    		background-size: cover;
-		    display: -webkit-box;
-		    display: -ms-flexbox;
-		    display: flex;
-		    -webkit-box-pack: center;
-	        -ms-flex-pack: center;
-            justify-content: center;
-		    -webkit-box-align: center;
-	        -ms-flex-align: center;
-            align-items: center;
-    	}
-    	.slick-slider-{{slideShows.id}} .slick-slide .slide-image .slide-content {
-    		color: #ffffff;
-    		text-align: center;
-    	}
-    	{% for breakpoint in slideShows.responsive %}
-			@media (max-width: {{breakpoint.breakpoint}}px) {.slick-slider-{{slideShows.id}} .slick-slide .slide-images img {height: {{breakpoint.responsive_slide_show_height ?: '500px'}} !important;} }
-		{% endfor %}
-    </style>
-{% endput %}
-{% set gesamthoehe = slideShows.asimages_height|replace({'px': ''}) + slideShows.thumb_height|replace({'px': ''}) + slideShows.thumb_top|replace({'px': ''}) + 30%}
-<div class="slick-slideshow" style="height:{{ gesamthoehe }}px; overflow: hidden;">
-<div class="slick-slider-{{slideShows.id}}">
-	{% for slide in slider %}
-		{% if slide.slide_link != '' %}
-		        {% if slideShows.show_asimages %}
-					<div class="slide-images" >
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
-						<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;" title="{{ slide.slide_title|raw }}" alt="{{ slide.slide_title|raw }}" src="{{slide.slide_image}}">
-						{% if fancybox %}</a>{% endif %}
-						{% else %}
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
-		        		<div class="slide-image" style="background-image: url( '{{slide.slide_image}}' ); background-position: {{slide.image_horizontal_position}}% {{slide.image_position}}%;">
+	{% put scripts %}
+		<script>
+			$(document).ready(function(){
+				{% if fancybox %}
+					$('[data-fancybox="gallery"]').fancybox({
+						thumbs: { showOnStart:true
+						},
+						hash : true
+					});
 				{% endif %}
-						{% if (slideShows.show_title or slideShows.show_desc) %}
-						{% if (slide.slide_title or slide.slide_description) %}
-						<div class="slide-content">
-							{% if slideShows.show_title %}
-								<h3>{{slide.slide_title}}</h3>
-							{% endif %}
-							{% if slideShows.show_desc %}
-								<p>{{slide.slide_description}}</p>
-							{% endif %}
-						</div>
-						{% endif %}
-					{% endif %}
-
-		        </div>
-							{% if fancybox and slideShows.show_asimages == 0 %}</a>{% endif %}
-        {% else %}
-        	<div class="slide">
-
 				{% if slideShows.show_asimages %}
-					<div class="slide-images" >
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
-							<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;" src="{{slide.slide_image}}" title="{{ slide.slide_title|raw }}" alt="{{slide.slide_title|raw}}">
-						{% if fancybox %}</a>{% endif %}
+					var args = {
+						dots: false,
+						infinite: true,
+						speed: {{slideShows.speed ?: 300}},
+						slidesToShow: 1,
+						centerMode: true,
+						variableWidth: true,
+						autoplay: {{numberToBoolean(slideShows.autoplay)}},
+						autoplaySpeed: {{ slideShows.autoplay_speed ?: 3000 }},
+						//responsive: {{slideShows.breakpointJson|raw}},
+						{% if slideShows.include_thumb %}
+							asNavFor: '.slick-slider-nav-{{slideShows.id}}'
+						{% endif %}
+					};
 				{% else %}
-						{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
-		        	<div class="slide-image lazyload" data-bg="{{slide.slide_image}}" style="background-position: {{slide.image_horizontal_position}}% {{slide.image_position}}%;">
+					var args = {
+						accessibility: {{numberToBoolean(slideShows.accessibility)}},
+						autoplay: {{numberToBoolean(slideShows.autoplay)}},
+						autoplaySpeed: {{ slideShows.autoplay_speed ?: 3000 }},
+						arrows: {{numberToBoolean(slideShows.arrows)}},
+						prevArrow: '{{ slideShows.prev_arrow ? slideShows.prev_arrow|raw : '<button type="button" class="slick-prev">Previous</button>' }}',
+						nextArrow: '{{ slideShows.next_arrow ? slideShows.next_arrow|raw : '<button type="button" class="slick-next">Next</button>' }}',
+						centerMode: {{numberToBoolean(slideShows.center_mode)}},
+						centerPadding: '{{slideShows.center_padding ?: '50px' }}',
+						cssEase: '{{slideShows.css_ease ?: 'ease'}}',
+						dots: {{numberToBoolean(slideShows.dots)}},
+						draggable: {{numberToBoolean(slideShows.draggable)}},
+						fade: {{numberToBoolean(slideShows.fade)}},
+						focusOnSelect: {{numberToBoolean(lideShows.focus_on_select)}},
+						easing: '{{slideShows.easing ?: 'linear'}}',
+						edgeFriction: {{slideShows.edge_friction ?: 0.15}},
+						infinite: {{numberToBoolean(slideShows.infinite)}},
+						initialSlide: {{slideShows.initial_slide ?: 0}},
+						mobileFirst: {{numberToBoolean(slideShows.mobile_first)}},
+						pauseOnFocus: {{numberToBoolean(slideShows.pause_on_focus)}},
+						pauseOnHover: {{numberToBoolean(slideShows.pause_on_hover)}},
+						pauseOnDotsHover: {{numberToBoolean(slideShows.pause_on_dots_hover)}},
+						rows: {{slideShows.rows ?: 1}},
+						slidesPerRow: {{slideShows.slides_per_row ?: 1}},
+						slidesToShow: {{slideShows.slides_to_show ?: 1}},
+						slidesToScroll: {{slideShows.slides_to_scroll ?: 1}},
+						speed: {{slideShows.speed ?: 300}},
+						swipe: {{numberToBoolean(slideShows.swipe)}},
+						touchMove: {{numberToBoolean(slideShows.touch_move)}},
+						touchThreshold: {{slideShows.touch_threshold ?: 5}},
+						//useCSS: {{numberToBoolean(slideShows.use_css)}},
+						useTransform: {{numberToBoolean(slideShows.use_transform)}},
+						vertical: {{numberToBoolean(slideShows.vertical)}},
+						verticalSwiping: {{numberToBoolean(slideShows.vertical_swiping)}},
+						rtl: {{numberToBoolean(slideShows.rtl)}},
+						waitForAnimate: {{numberToBoolean(slideShows.wait_for_animate)}},
+						zIndex: {{slideShows.z_index ?: 1000}},
+						//responsive: {{slideShows.breakpointJson|raw}},
+						{% if slideShows.include_thumb %}
+							asNavFor: '.slick-slider-nav-{{slideShows.id}}'
+						{% endif %}
+					};
 				{% endif %}
-					{% if (slideShows.show_title or slideShows.show_desc) %}
-						{% if (slide.slide_title or slide.slide_description) %}
-						<div class="slide-content">
-							{% if slideShows.show_title %}
-								<h3>{{slide.slide_title}}</h3>
-							{% endif %}
-							{% if slideShows.show_desc %}
-								<p>{{slide.slide_description}}</p>
+				$('.slick-slider-{{slideShows.id}}').slick(args);
+				{% if slideShows.include_thumb %}
+					$('.slick-slider-nav-{{slideShows.id}}').slick({
+						slidesToShow: {{ slideShows.thumb_images }},
+						slidesToScroll: 1,
+						asNavFor: '.slick-slider-{{slideShows.id}}',
+						dots: {{numberToBoolean(slideShows.dots)}},
+						centerMode: true,
+						focusOnSelect: true,
+						variableWidth: true
+					});
+				{% endif %}
+				// $(window).resize(function() {
+				// 	$('.slick-slider-{{slider.slideShows.id}}').slick('unslick');
+				// 	$('.slick-slider-{{slider.slideShows.id}}').slick(args);
+				// });
+			});
+		</script>
+	{% endput %}
+	{% put styles %}
+		<style>
+			.slick-slider-{{slideShows.id}} .slick-slide > div > div {
+				float: left!important;
+			}
+			.slick-slider-{{slideShows.id}} .slick-slide > div > a {
+				float: left!important;
+			}
+			.slick-slider-{{slideShows.id}} .slick-slide .slide-image {
+				min-height: {{slideShows.slide_show_height ?: '500px'}};
+				position: relative;
+				background-size: cover;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+			}
+			.slick-slider-{{slideShows.id}} .slick-slide .slide-image .slide-content {
+				color: #ffffff;
+				text-align: center;
+			}
+			{% for breakpoint in slideShows.responsive %}
+				@media (max-width: {{breakpoint.breakpoint}}px) {.slick-slider-{{slideShows.id}} .slick-slide .slide-images img {height: {{breakpoint.responsive_slide_show_height ?: '500px'}} !important;} }
+			{% endfor %}
+		</style>
+	{% endput %}
+	{% set gesamthoehe = slideShows.asimages_height|replace({'px': ''}) + slideShows.thumb_height|replace({'px': ''}) + slideShows.thumb_top|replace({'px': ''}) + 30%}
+	<div class="slick-slideshow" style="height:{{ gesamthoehe }}px; overflow: hidden;">
+		<div class="slick-slider-{{slideShows.id}}">
+			{% for slide in slider %}
+				{% if slide.slide_link != '' %}
+					{% if slideShows.show_asimages %}
+						<div class="slide-images" >
+							{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+							<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;" title="{{ slide.slide_title|raw }}" alt="{{ slide.slide_title|raw }}" src="{{slide.slide_image}}">
+							{% if fancybox %}</a>{% endif %}
+					{% else %}
+							{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+							<div class="slide-image" style="background-image: url( '{{slide.slide_image}}' ); background-position: {{slide.image_horizontal_position}}% {{slide.image_position}}%;">
+					{% endif %}
+							{% if (slideShows.show_title or slideShows.show_desc) %}
+								{% if (slide.slide_title or slide.slide_description) %}
+									<div class="slide-content">
+										{% if slideShows.show_title %}
+											<h3>{{slide.slide_title}}</h3>
+										{% endif %}
+										{% if slideShows.show_desc %}
+											<p>{{slide.slide_description}}</p>
+										{% endif %}
+									</div>
+								{% endif %}
 							{% endif %}
 						</div>
+						{% if fancybox and slideShows.show_asimages == 0 %}</a>{% endif %}
+				{% else %}
+					<div class="slide">
+						{% if slideShows.show_asimages %}
+							<div class="slide-images" >
+								{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+									<img style="height:{{ slideShows.asimages_height }};margin-left:10px;margin-right:10px;" src="{{slide.slide_image}}" title="{{ slide.slide_title|raw }}" alt="{{slide.slide_title|raw}}">
+								{% if fancybox %}</a>{% endif %}
+						{% else %}
+								{% if fancybox %}<a data-fancybox="gallery" href="{{ slide.slide_image_fb }}" title="{{ slide.slide_title|raw }}" data-caption="{{ slide.slide_title|raw }}">{% endif %}
+							<div class="slide-image lazyload" data-bg="{{slide.slide_image}}" style="background-position: {{slide.image_horizontal_position}}% {{slide.image_position}}%;">
 						{% endif %}
-					{% endif %}
-
-		        </div>
-			{% if fancybox and slideShows.show_asimages == 0 %}</a>{% endif %}
-	        </div>
-        {% endif %}
-    {% endfor %}
-</div>
-{% if slideShows.include_thumb %}
-	<div class="slick-slider-nav-{{slideShows.id}}" role="toolbar" style="margin-top:{{ slideShows.thumb_top }}px ;">
-		{% for slide in slider %}
-		<div class="slide">
-			<div class="slide-thumb" ><img style="height:{{ slideShows.thumb_height }}; width: auto; margin-left:10px;margin-right:10px;" src="{{ slide.slide_thumb }}" alt="{{slide.slide_title|raw}}"></div>
+							{% if (slideShows.show_title or slideShows.show_desc) %}
+								{% if (slide.slide_title or slide.slide_description) %}
+								<div class="slide-content">
+									{% if slideShows.show_title %}
+										<h3>{{slide.slide_title}}</h3>
+									{% endif %}
+									{% if slideShows.show_desc %}
+										<p>{{slide.slide_description}}</p>
+									{% endif %}
+								</div>
+								{% endif %}
+							{% endif %}
+						</div>
+					{% if fancybox and slideShows.show_asimages == 0 %}</a>{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
 		</div>
-		{% endfor %}
+		{% if slideShows.include_thumb %}
+		<div class="slick-slider-nav-{{slideShows.id}}" role="toolbar" style="margin-top:{{ slideShows.thumb_top }}px ;">
+			{% for slide in slider %}
+				<div class="slide">
+					<div class="slide-thumb" ><img style="height:{{ slideShows.thumb_height }}; width: auto; margin-left:10px;margin-right:10px;" src="{{ slide.slide_thumb }}" alt="{{slide.slide_title|raw}}"></div>
+				</div>
+			{% endfor %}
+		</div>
+		{% endif %}
 	</div>
-{% endif %}
-</div>
 {% endif %}

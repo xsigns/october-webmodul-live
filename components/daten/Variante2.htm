@@ -761,6 +761,61 @@
                                     :filter="filter"
                                     :loading="loadingObjekte"
                                 >
+                                    <template v-slot:item="props">
+                                        <div class="q-pa-md row items-start q-gutter-md">
+                                            <q-card class="my-card mobilQCard" id="myMainCard" style="width: 100%; margin-left: 0px!important;">
+                                                <q-card-section class="bg-primary text-white">
+                                                    <div class="text-h6"><b>{{ labels.objnr }}: [[ props.row.id ]]</b></div>
+                                                </q-card-section>
+
+                                                <q-card-actions vertical v-if="props.row.titel">
+                                                    <div class="mobilRows">
+                                                        <div class="text-grey-5 eins">{{ labels.objtitel }}: </div>
+                                                        <div class="zwei">
+                                                            <a :href="[[ props.row.link ]]" target="_blank" style="text-decoration: none; color: inherit;">[[ props.row.titel ]]</a>
+                                                        </div>
+                                                    </div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical style="padding-top: 0px!important;" v-if="props.row.intern">
+                                                    <div class="mobilRows">
+                                                        <div class="text-grey-5 eins">{{ labels.objint }}: </div>
+                                                        <div class="zwei">[[ props.row.intern ]]</div>
+                                                    </div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical v-if="props.row.art">
+                                                    <div class="mobilRows">
+                                                        <div class="text-grey-5 eins">{{ labels.objart }}: </div>
+                                                        <div class="zwei">[[ props.row.art ]]</div>
+                                                    </div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical v-if="props.row.pers">
+                                                    <div class="mobilRows">
+                                                        <div class="text-grey-5 eins">{{ labels.objpers }}: </div>
+                                                        <div class="zwei">[[ props.row.pers ]]</div>
+                                                    </div>
+                                                </q-card-actions>
+
+                                                <q-card-actions vertical v-if="props.row.qm">
+                                                    <div class="mobilRows">
+                                                        <div class="text-grey-5 eins">{{ labels.objqm }}: </div>
+                                                        <div class="zwei">[[ props.row.qm ]] m²</div>
+                                                    </div>
+                                                </q-card-actions>
+
+                                                {% if priceCheck == 1 %}
+                                                <q-card-actions vertical style="padding-bottom: 16px!important; padding-top: 0px!important;" v-if="props.row.price">
+                                                    <div class="mobilRows">
+                                                        <q-btn :href="[[ props.row.price ]]" target="_blank" label="{{ labels.show }}" color="primary" icon="attach_money" class="w-100"></q-btn>
+                                                    </div>
+                                                </q-card-actions>
+                                                {% endif %}
+                                            </q-card>
+                                        </div>
+                                    </template>
+
                                     <template v-slot:body-cell-objekt="props">
                                         <q-td :props="props">
                                             <div>
