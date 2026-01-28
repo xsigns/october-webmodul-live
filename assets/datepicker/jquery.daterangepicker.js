@@ -819,7 +819,9 @@
                 }
             });
 
-            $("#ctrl_anreise,#ctrl_panreise,#anreise,#period").keypress(function(evt) {
+            $("#ctrl_anreise,#ctrl_panreise,#anreise,#period").click(function () {
+                $('span.prev').focus();
+            }).keypress(function(evt) {
                 if (evt.which === 13) {
                     evt.preventDefault();
                     $('#ctrl_anreise,#ctrl_panreise,#anreise,#period').data('dateRangePicker').open();
@@ -830,6 +832,7 @@
             $("#ctrl_abreise,#ctrl_pabreise,#abreise").click(function(evt) {
                 evt.stopPropagation();
                 $('#ctrl_anreise,#ctrl_panreise,#anreise').data('dateRangePicker').open();
+                $('span.prev').focus();
             }).keypress(function(evt) {
                 if (evt.which === 13) {
                     evt.preventDefault();
@@ -2028,7 +2031,7 @@
             box.find('.day').unbind("click").click(function(evt) {
                 dayClicked($(this));
             }).unbind("keypress").keypress(function(evt) {
-                if(evt.which === 13) {
+                if (evt.which === 13) {
                     dayClicked($(this));
                 }
             });
@@ -2518,9 +2521,10 @@
                     if (day === 0 && opt.showWeekNumbers) {
                         html.push('<td><div class="week-number" data-start-time="' + today.time + '">' + opt.getWeekNumber(today.date) + '</div></td>');
                     }
-                    let tabIndex = today.valid ? '0' : '-1'
+
+                    let tabIndex = today.valid && today.type !== 'lastMonth' && today.type !== 'nextMonth' ? '0' : '-1'
+
                     html.push('<div tabindex="' + tabIndex + '"' + attributesCallbacks(todayDivAttr, opt.dayDivAttrs, today) + '>' + showDayHTML(today.time, today.day) + '</div>');
-                    //html.push('<div ' + attributesCallbacks({}, opt.dayTdAttrs, today) + '><div ' + attributesCallbacks(todayDivAttr, opt.dayDivAttrs, today) + '>' + showDayHTML(today.time, today.day) + '</div></div>');
                 }
             }
             return html.join('');

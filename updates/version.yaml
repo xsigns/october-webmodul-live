@@ -1058,3 +1058,6 @@
     - Verbesserungen für barrierefreie Webseiten
 3.10.25:
     - Verbesserung Button-Darstellung im Eigentümerlogin
+3.10.26:
+    - Cookie-Consent-Box hinzugefügt
+    - Verbesserung für barrierefreie Navigation im Listenfilter und im Kalender

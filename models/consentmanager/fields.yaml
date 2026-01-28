@@ -1,0 +1,138 @@
+fields:
+  activate_cookieconsent:
+    label: 'CookieConsent aktivieren'
+    type: switch
+  cookie_code:
+    label: 'CookieConsent Konfiguration (JS)'
+    description: 'Füge hier den JavaScript Code für die CookieConsent.run() Konfiguration ein.'
+    type: codeeditor
+    language: javascript
+    size: giant
+    commentHtml: true
+    comment: |
+      <p><strong>Design Anpassung (CSS):</strong> Du kannst diese Variablen in deinem CSS überschreiben:</p>
+      <pre style="background: #f0f0f0; padding: 10px; border-radius: 4px; font-size: 12px; color: #333;">:root {
+        --cc-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --cc-bg: ###;
+        --cc-primary-color: ###;
+        --cc-secondary-color: ###;
+        --cc-link-color: var(--cc-btn-primary-bg);
+        --cc-btn-primary-bg: ###;
+        --cc-btn-primary-color: ###;
+        --cc-btn-primary-hover-bg: ###;
+        --cc-btn-secondary-bg: ###;
+        --cc-btn-secondary-color: var(--cc-primary-color);
+        --cc-toggle-on-bg: var(--cc-btn-primary-bg);
+        --cc-modal-border-radius: .5rem;
+        --cc-btn-border-radius: ###;
+      }</pre>
+      <a href="https://cookieconsent.orestbida.com/">Documentation</a>
+      <p style="margin-top:
+        10px; font-size:
+          12px; color: #666;">
+            Special thanks to Orest Bida, developer of the CookieConsent library. Powered by <a href="https://github.com/orestbida/cookieconsent" target="_blank" style="text-decoration: underline;">CookieConsent</a>
+      </p>
+    default: |
+      CookieConsent.run({
+          revision: 0,
+          hideFromBots: true,
+          disablePageInteraction: true,
+          guiOptions: {
+            consentModal: {
+              layout: 'cloud',
+              position: 'bottom right',
+              equalWeightButtons: false,
+              flipButtons: false
+            },
+            preferencesModal: {
+              layout: 'box',
+              position: 'right',
+              equalWeightButtons: false,
+              flipButtons: true
+            }
+          },
+      
+          onFirstConsent: ({cookie}) => {
+            changeMapLoading(cookie);
+        },
+      
+          onChange: ({cookie}) => {
+            changeMapLoading(cookie);
+        },
+      
+          categories: {
+            necessary: {
+              readOnly: true
+            },
+            leaflet_map: {
+              enabled: false,
+              readOnly: false,
+              services: {
+                load: {
+                  label: 'Leaflet'
+                }
+              }
+            },
+            analytics_core: {
+              enabled: true,
+              readOnly: false,
+              services: {
+                matomo: {
+                  label: 'Matomo Analytics'
+                }
+              }
+            },
+            analytics_google: {
+              enabled: false,
+              readOnly: false,
+              services: {
+                gtm: {
+                  label: 'Google Tag Manager'
+                }
+              }
+            }
+          },
+      
+          language: {
+            default: 'de',
+            translations: {
+              de: {
+                consentModal: {
+                  title: 'Cookies für ein optimiertes, datensicheres Erlebnis',
+                  description: 'Erlebe ein schnelleres, zuverlässigeres und vollständig an dich angepasstes Nutzererlebnis. Unsere Cookies arbeiten DSGVO-konform und helfen dir, das volle Potenzial der Website zu nutzen.',
+                  acceptAllBtn: 'Alle akzeptieren',
+                  acceptNecessaryBtn: 'Nur notwendige',
+                  showPreferencesBtn: 'Einstellungen'
+                },
+                preferencesModal: {
+                  title: 'Individuelle Cookie-Einstellungen',
+                  acceptAllBtn: 'Alle akzeptieren',
+                  acceptNecessaryBtn: 'Nur notwendige',
+                  savePreferencesBtn: 'Speichern',
+                  sections: [
+                    {
+                      title: 'Notwendige Cookies',
+                      description: 'Diese Cookies bilden das Fundament für ein stabiles und geschütztes Nutzererlebnis. Sie halten Sitzungen sicher, ermöglichen eine fehlerfreie Navigation und bewahren deine grundlegenden Einstellungen. Dadurch kannst du dich jederzeit darauf verlassen, dass die Seite zuverlässig funktioniert und dir ohne Unterbrechungen die Inhalte liefert, die du brauchst.',
+                      linkedCategory: 'necessary'
+                    },
+                    {
+                      title: 'Leaflet Kartenfunktionen',
+                      description: 'Mit deiner Zustimmung können wir dir unsere optimierten, interaktiven Karten bereitstellen. Diese Funktionen ermöglichen dir ein intuitives, dynamisches Erkunden von Orten – inklusive Zoom, Marker, Navigation und visuellen Details, die dein Nutzererlebnis spürbar aufwerten. Externe Kartendaten werden nur nach deiner Freigabe geladen, sodass du jederzeit volle Kontrolle behältst und gleichzeitig von einer reichhaltigen, modernen Kartenansicht profitierst.',
+                      linkedCategory: 'leaflet_map'
+                    },
+                    {
+                      title: 'Analyse (Basis)',
+                      description: 'Durch diese datenschutzfreundlichen Analyse-Cookies helfen wir dir, ein stetig verbessertes Nutzererlebnis zu erhalten. Matomo ermöglicht es uns, anonym und DSGVO-konform zu erkennen, welche Inhalte besonders gut ankommen, wo Optimierungen sinnvoll sind und wie wir die Gesamtperformance für dich steigern können. Das Ergebnis: Eine schnellere, klarere und insgesamt effizientere Website, die kontinuierlich für dich weiterentwickelt wird – ohne jemals persönliche Daten offenzulegen.',
+                      linkedCategory: 'analytics_core'
+                    },
+                    {
+                      title: 'Marketing & Google',
+                      description: 'Wenn du zustimmst, können wir für dich optimierte Angebote, relevante Inhalte und besser abgestimmte Kampagnen bereitstellen. Mit dem Google Tag Manager lassen sich Interaktionen genauer verstehen, sodass dir Inhalte gezeigt werden können, die wirklich zu deinen Interessen passen. Diese Cookies sind vollständig optional und werden nur aktiviert, wenn du möchtest. Ohne deine Zustimmung erfolgt keinerlei Datenaustausch mit Google, wodurch deine Privatsphäre jederzeit geschützt bleibt.',
+                      linkedCategory: 'analytics_google'
+                    }
+                  ]
+                }
+              }
+            }
+          }
+      });

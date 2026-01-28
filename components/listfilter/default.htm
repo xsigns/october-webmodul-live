@@ -161,9 +161,9 @@
                 <div class="form-inputs">
                     <div class="label">{{ labels.personen }}</div>
                     <input id="personen" name="personen" type="hidden" readonly value="{{ personen }}" aria-label="{{ labels.personen }}">
-                    <div class="intselector" onClick="aenderewert('#personen', '#perswert', false, 'onDataChange');">-</div>
+                    <div class="intselector" tabindex="0" id="subtractPerson">-</div>
                     <div id="perswert" class="listwert">1+</div>
-                    <div class="intselector" onclick="aenderewert('#personen', '#perswert', true, 'onDataChange');">+</div>
+                    <div class="intselector" tabindex="0" id="addPerson">+</div>
                 </div>
                 <div class="clearfix"></div>
             {% endif %}
@@ -171,9 +171,9 @@
                 <div class="form-inputs">
                     <div class="label">{{ labels.zimmer }}</div>
                     <input id="zimmer" name="zimmer" type="hidden" readonly value="{{ zimmer }}" aria-label="{{ labels.zimmer }}">
-                    <div class="intselector" onClick="aenderewert('#zimmer', '#zimmerwert', false, 'onDataChange');">-</div>
+                    <div class="intselector" tabindex="0" id="subtractZimmer">-</div>
                     <div id="zimmerwert" class="listwert">0+</div>
-                    <div class="intselector" onclick="aenderewert('#zimmer', '#zimmerwert', true, 'onDataChange');">+</div>
+                    <div class="intselector" tabindex="0" id="addZimmer">+</div>
                 </div>
                 <div class="clearfix"></div>
             {% endif %}
@@ -181,9 +181,9 @@
                 <div class="form-inputs">
                     <div class="label">{{ labels.schlafzimmer }}</div>
                     <input id="schlafzimmer" name="schlafzimmer" type="hidden" readonly value="{{ schlafzimmer }}" aria-label="{{ labels.schlafzimmer }}">
-                    <div class="intselector" onClick="aenderewert('#schlafzimmer', '#schlafzimmerwert', false, 'onDataChange');">-</div>
+                    <div class="intselector" tabindex="0" id="subtractSchlafzimmer">-</div>
                     <div id="schlafzimmerwert" class="listwert">0+</div>
-                    <div class="intselector" onclick="aenderewert('#schlafzimmer', '#schlafzimmerwert', true, 'onDataChange');">+</div>
+                    <div class="intselector" tabindex="0" id="addSchlafzimmer">+</div>
                 </div>
                 <div class="clearfix"></div>
             {% endif %}
@@ -191,9 +191,9 @@
                 <div class="form-inputs">
                     <div class="label">{{ labels.badezimmer }}</div>
                     <input id="badezimmer" name="badezimmer" type="hidden" readonly value="{{ badezimmer }}" aria-label="{{ labels.badezimmer }}">
-                    <div class="intselector" onClick="aenderewert('#badezimmer', '#badezimmerwert', false, 'onDataChange');">-</div>
+                    <div class="intselector" tabindex="0" id="subtractBadezimmer">-</div>
                     <div id="badezimmerwert" class="listwert">0+</div>
-                    <div class="intselector" onclick="aenderewert('#badezimmer', '#badezimmerwert', true, 'onDataChange');">+</div>
+                    <div class="intselector" tabindex="0" id="addBadezimmer">+</div>
                 </div>
                 <div class="clearfix"></div>
             {% endif %}

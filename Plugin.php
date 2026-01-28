@@ -7,8 +7,10 @@ use Backend\Facades\BackendMenu;
 use DateTime;
 use Event;
 use System\Classes\PluginBase;
+use System\Classes\PluginManager;
 use Xsigns\Fewo\Classes\Database;
 use Xsigns\Fewo\Classes\DatabaseCache;
+use Xsigns\Fewo\Classes\Fewo;
 use Xsigns\Fewo\Classes\Language;
 use Xsigns\Fewo\Classes\Logger;
 use Xsigns\Fewo\classes\Objektbewertung;
@@ -18,12 +20,15 @@ use Xsigns\Fewo\Classes\Preislevel;
 use Xsigns\Fewo\classes\SendCron;
 use System\Models;
 use Xsigns\Fewo\Models\GlobalSettings;
+use Xsigns\Fewo\Models\ConsentManager;
 use App;
 use Auth;
 use Illuminate\Foundation\AliasLoader;
 use RainLab\Notify\Classes\Notifier;
 use System\Behaviours\SettingsModel;
 use Illuminate\Support\Facades\DB;
+use Block;
+use Request;
 
 class Plugin extends PluginBase
 {
@@ -51,9 +56,13 @@ class Plugin extends PluginBase
                 unlink('plugins/xsigns/fewo/fewo.lic');
         }
 
+        if (is_dir('plugins/xsigns/consentmanager'))
+            $this->deleteOldConsentManagerDirectory('plugins/xsigns/consentmanager');
+
         Event::listen('cms.page.beforeDisplay', function ($controller, $url, $page)
         {
             $this->beforeDisplay($controller, $url, $page);
+            $this->injectCookieAssets($controller);
         });
 
         Event::listen('backend.page.beforeDisplay', function ($controller, $url, $page)
@@ -298,6 +307,15 @@ class Plugin extends PluginBase
                 'permissions' => ['xsigns.fewo.*'],
                 'order' => 20,
             ],
+            'consentmanager' => [
+                'label'       => 'Consent Manager',
+                'description' => 'Konfiguration für das Consent Script.',
+                'category'    => 'Consent Manager',
+                'icon'        => 'icon-check-square',
+                'class'       => 'xsigns\fewo\Models\ConsentManager',
+                'order'       => 21,
+                'permissions' => ['xsigns.fewo.*']
+            ]
         ];
 
         $owner = OwnerHelper::getOwnerSettings();
@@ -510,5 +528,55 @@ class Plugin extends PluginBase
                 'user' => Auth::getUser(),
             ]);
         });
+    }
+
+    protected function injectCookieAssets($controller)
+    {
+        $controller->addCss('/plugins/xsigns/fewo/assets/consentmanager/css/cookie.css');
+        $controller->addJs('/plugins/xsigns/fewo/assets/consentmanager/js/cookieconsent.js');
+        $controller->addJs('/plugins/xsigns/fewo/assets/consentmanager/js/changeMapLoading.js');
+
+        if (ConsentManager::get('activate_cookieconsent')) {
+            if ($customJs = ConsentManager::get('cookie_code'))
+                Block::append('scripts', '<script>' . $customJs . '</script>');
+
+            if ($lang = $this->getLanguageFromUrl()) {
+                $controller->addJs('/plugins/xsigns/fewo/assets/consentmanager/js/setCookieManagerLanguage.js');
+                Block::append('scripts', '<script>setCookieManagerLanguage("' . $lang . '");</script>');
+            }
+        }
+    }
+
+    protected function getLanguageFromUrl()
+    {
+        $segments = explode('/', Request::path());
+        $firstSegment = isset($segments[0]) ? $segments[0] : null;
+
+        if ($firstSegment && strlen($firstSegment) === 2 && ctype_alpha($firstSegment))
+            return $firstSegment;
+
+        return null;
+    }
+
+    protected function deleteOldConsentManagerDirectory($dir): bool
+    {
+        if (strpos($dir, '/xsigns') === false)
+            return false;
+
+        if (!file_exists($dir))
+            return true;
+
+        if (!is_dir($dir))
+            return unlink($dir);
+
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..')
+                continue;
+
+            if ($this->deleteOldConsentManagerDirectory($dir . DIRECTORY_SEPARATOR . $item))
+                return false;
+        }
+
+        return rmdir($dir);
     }
 }
