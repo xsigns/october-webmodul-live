@@ -89,6 +89,10 @@ return [
         'sendMail' => 'Markierte Buchungsbestätigungsmail senden',
         'sendMail_confirm' => 'Die Buchungsbestätigungsmail an den Gast der markierten Einträge wirkich senden?'
     ],
+    'restZahlung' => [
+        'handle_payment_selected' => 'Ausgewählte Restzahlungen verarbeiten',
+        'handle_payment_selected_confirm' => 'Die ausgewählten Restzahlungen wirklich verarbeiten?'
+    ],
     'voting' => [
         'delete' => 'Markierte Bewertungen löschen',
         'delete_selected_confirm' => 'Markierte Bewertung(en) witklich löschen?'

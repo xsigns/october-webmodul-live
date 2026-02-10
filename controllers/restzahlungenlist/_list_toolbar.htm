@@ -6,30 +6,14 @@
         onclick="$(this).data('request-data', {
             checked: $('.control-list').listWidget('getChecked')
         })"
-        data-request="onSelected"
-        data-request-confirm="<?= e(trans('xsigns.fewo::lang.booking.change_selected_confirm')) ?>"
+        data-request="onPaymentHandle"
+        data-request-confirm="<?= e(trans('xsigns.fewo::lang.restZahlung.handle_payment_selected_confirm')) ?>"
         data-trigger-action="enable"
         data-trigger=".control-list input[type=checkbox]"
         data-trigger-condition="checked"
         data-request-success="$(this).prop('disabled', true)"
         data-stripe-load-indicator>
-        <?= e(trans('xsigns.fewo::lang.booking.deselected')) ?>
-    </button>
-
-    <button
-        class="btn btn-default oc-icon-check-square-o"
-        disabled="disabled"
-        onclick="$(this).data('request-data', {
-            checked: $('.control-list').listWidget('getChecked')
-        })"
-        data-request="onDelete"
-        data-request-confirm="<?= e(trans('xsigns.fewo::lang.booking.delete_selected_confirm')) ?>"
-        data-trigger-action="enable"
-        data-trigger=".control-list input[type=checkbox]"
-        data-trigger-condition="checked"
-        data-request-success="$(this).prop('disabled', true)"
-        data-stripe-load-indicator>
-        <?= e(trans('xsigns.fewo::lang.booking.delete')) ?>
+        <?= e(trans('xsigns.fewo::lang.restZahlung.handle_payment_selected')) ?>
     </button>
     <?php endif ?>
 </div>

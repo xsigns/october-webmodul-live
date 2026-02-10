@@ -1061,3 +1061,7 @@
 3.10.26:
     - Cookie-Consent-Box hinzugefügt
     - Verbesserung für barrierefreie Navigation im Listenfilter und im Kalender
+3.10.27:
+    - Verbesserungen für Restzahlungsverarbeitung
+    - Verbesserungen für die Anzeige von Angeboten
+    - Verbesserungen für die barrierefreie Navigation in der Bewertungsmaske

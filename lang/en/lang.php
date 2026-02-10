@@ -373,6 +373,10 @@ return [
         'sendMail' => 'Send marked booking confirmation mail',
         'sendMail_confirm' => 'Do you really want to send the booking confirmation email to the guest of the selected entries?'
     ],
+    'restZahlung' => [
+        'handle_payment_selected' => 'Ausgewählte Restzahlungen verarbeiten',
+        'handle_payment_selected_confirm' => 'Die ausgewählten Restzahlungen wirklich verarbeiten?'
+    ],
     'voting' => [
         'delete' => 'Delete selected ratings',
         'delete_selected_confirm' => 'Delete the marked rating(s)?'

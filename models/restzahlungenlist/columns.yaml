@@ -19,6 +19,6 @@ columns:
         sortable: true
         searchable: true
     za_status:
-        label: Status
+        label: Statusmeldung
         type: text
         searchable: true

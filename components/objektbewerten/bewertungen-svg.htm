@@ -65,6 +65,8 @@
     }
 
     $(document).ready(function() {
+        $('#rating_data svg').attr('tabindex', '0');
+
         {% if hasNoOptions %}
         $('#inlinebewertung').on('click', function(e) {
             alert('Keine Bewertungsoptonen gefunden!\n\nBitte legen Sie mindestens eine Bewertungsoption im Fewo-Verwalter an.');
@@ -97,7 +99,7 @@
         {% endif %}
 
 
-        $(".getSterne svg").mouseenter(function()
+        $(".getSterne svg").on("mouseenter focusin", (function()
         {
             let starsContainer = $(this).parent().attr('id');
             let stars = $(this).index();
@@ -106,9 +108,9 @@
             $('#' + starsContainer + ' svg').slice(0, stars + 1).removeClass('color-svg-no-star');
             $('#' + starsContainer + ' svg').slice(stars + 1).addClass('color-svg-no-star');
             $('#' + starsContainer + ' svg').slice(0, stars + 1).removeClass('color-svg');
-        })
+        }))
 
-            .mouseleave(function()
+            .on("mouseleave focusout", (function()
             {
                 let starsContainer = $(this).parent().attr('id');
                 let stars = parseInt($('#Input' + starsContainer).val()) - 1;
@@ -119,14 +121,20 @@
                 $('#' + starsContainer + ' svg').slice(0, stars + 1).removeClass('color-svg-no-star');
                 $('#' + starsContainer + ' svg').slice(stars + 1).addClass('color-svg-no-star');
                 $('#' + starsContainer + ' svg').slice(stars + 1).removeClass('color-svg');
-            })
+            }))
 
-            .click(function ()
+            .on("click keydown", (function (e)
             {
+                if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ")
+                    return;
+
+                if (e.type === "keydown")
+                    e.preventDefault;
+
                 let starsContainer = $(this).parent().attr('id');
                 let stars = $(this).index();
 
                 $('#Input' + starsContainer).val(stars + 1);
-            });
+            }));
     });
 </script>
