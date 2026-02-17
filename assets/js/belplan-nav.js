@@ -31,9 +31,9 @@ Belplan.initForm = function (callback) {
 Belplan.calRight = function () {
     $.request('onBtnRight', {
         method: 'post',
-        data: {'caloffset' : caloffset, 'calid' : calid},
+        data: {'caloffset' : caloffset, 'calid' : calid, 'isClickable' : true},
         success: function(resp) {
-            let belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             caloffset++;
             $('.ctrlSaisonSelect').val(caloffset);
@@ -58,9 +58,9 @@ Belplan.calRight = function () {
 Belplan.calLeft = function () {
     $.request('onBtnLeft', {
         method: 'post',
-        data: {'caloffset' : caloffset, 'calid' : calid},
+        data: {'caloffset' : caloffset, 'calid' : calid, 'isClickable' : true},
         success: function(resp) {
-            let belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             if (caloffset > 0) {
                 caloffset--;
@@ -88,9 +88,9 @@ Belplan.calSelect = function () {
     gewaehlterMonatID = this[this.selectedIndex].value;
     $.request('onSelectorChange', {
         method: 'post',
-        data: {'calSelector' : gewaehlterMonatID, 'calid' : calid},
+        data: {'calSelector' : gewaehlterMonatID, 'calid' : calid, 'isClickable' : true},
         success: function(resp) {
-            let belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             caloffset = gewaehlterMonatID;
 
@@ -434,9 +434,9 @@ Belplan.selectDatesFromDatepicker = function(anreise, abreise) {
 Belplan.setBelplanOffset = function (calid, offset) {
     $.request('onSelectorChange', {
         method: 'post',
-        data: {'calSelector' : offset, 'calid' : calid},
+        data: {'calSelector' : offset, 'calid' : calid, 'isClickable' : true},
         success: function(resp) {
-            let belPlan = resp['#ctrlBookingPlans_' + calid];
+            let belPlan = resp['ctrlBookingPlans_' + calid];
             $('.fewo_buchungsplan').html(belPlan);
             caloffset = offset;
 
