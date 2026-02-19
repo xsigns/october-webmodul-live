@@ -1068,3 +1068,7 @@
 3.10.28:
     - Verbesserungen beim speichern von Rabatte
     - Verbesserungen für den klickbaren Belegungsplan
+3.10.29:
+    - Neues Feature - Eine Abreiseerinnerung per Email für x Tage vor Abreise kann nun an den Gast gesendet werden. Siehe Einstellungen > FEWO-Einstellungen
+    - Verbesserungen für Platzhalterbilder in der Objektliste
+    - update89.php

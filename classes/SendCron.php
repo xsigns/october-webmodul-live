@@ -12,6 +12,7 @@ use Schema;
 
 define ('MAILART_ANREISE', 0);
 define ('MAILART_ABREISE', 1);
+define ('MAILART_VORABREISE', 2);
 
 /**
  * Class SendCron
@@ -132,6 +133,16 @@ class SendCron
             ];
         }
 
+        if (GlobalSettings::get('cronbeforedeparture') && GlobalSettings::get('beforedeparturedays') > 0)
+        {
+            $abreisemails = self::BearbeiteBereich(MAILART_VORABREISE);
+            $status[] = [
+                'BEREICH' => 'vor Abreise-E-Mails',
+                'STATUS' => $abreisemails->message,
+                'VORGAENGE' => $abreisemails->ergebnisse
+            ];
+        }
+
         $statusberichte = [
             'STATUSBERICHTE' => $status
         ];
@@ -186,6 +197,15 @@ class SendCron
             $wherepart = " and vorg_abreise = '" . $datumberechnet . "'";
             $mailview = 'xsigns.fewo::mail.voting_';
         }
+        elseif ($mailart == MAILART_VORABREISE)
+        {
+            $bereich = 'Cron vor Abreise-E-Mail';
+            $dayvariable = 'beforedeparturedays';
+            $activevariable = 'cronbeforedeparture';
+            $datumberechnet = date('Y-m-d', strtotime($datum . ' + ' . GlobalSettings::get($dayvariable) . ' days'));
+            $wherepart = " and vorg_abreise = '" . $datumberechnet . "'";
+            $mailview = 'xsigns.fewo::mail.vorabreise_';
+        }
         else
             return new BearbeiteBereichReturn('keine gültige Mailart', []);
 
@@ -193,7 +213,7 @@ class SendCron
 
         self::debug($bereich, $message);
 
-        $sql = "select vorg_id, vorg_objid, vorg_gastid, vorg_anreise, vorg_abreise, vorg_kinder, vorg_erw, vorg_kleinkind, xsigns_fewo_vorggesendet.id as vorgges_id, anschreiben, bewertung, xsigns_fewo_obj.id as obj_id, obj_alias, obj_strasse, obj_plz, obj_ort, obj_land, obj_regionid, titel, beschreibung, gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_werbemail, gast_mail from xsigns_fewo_vorg left join xsigns_fewo_vorggesendet on vorg_id = vorgid right join xsigns_fewo_obj on xsigns_fewo_obj.id = vorg_objid left join xsigns_fewo_objlang on xsigns_fewo_objlang.objid = xsigns_fewo_obj.id and lang = 'DE' left join xsigns_fewo_gast on gast_id = vorg_gastid where vorg_art = 'B'" . $wherepart;
+        $sql = "select vorg_id, vorg_objid, vorg_gastid, vorg_anreise, vorg_abreise, vorg_kinder, vorg_erw, vorg_kleinkind, xsigns_fewo_vorggesendet.id as vorgges_id, anschreiben, bewertung, vorabreise, xsigns_fewo_obj.id as obj_id, obj_alias, obj_strasse, obj_plz, obj_ort, obj_land, obj_regionid, titel, beschreibung, gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_werbemail, gast_mail from xsigns_fewo_vorg left join xsigns_fewo_vorggesendet on vorg_id = vorgid right join xsigns_fewo_obj on xsigns_fewo_obj.id = vorg_objid left join xsigns_fewo_objlang on xsigns_fewo_objlang.objid = xsigns_fewo_obj.id and lang = 'DE' left join xsigns_fewo_gast on gast_id = vorg_gastid where vorg_art = 'B'" . $wherepart;
 
         $vorgaenge = Database::select(null, self::$modulename, $sql);
 
@@ -218,7 +238,7 @@ class SendCron
         foreach ($vorgaenge as $vorgang)
         {
             if ($vorgang->vorgges_id === null)
-                Database::insert(null, self::$modulename,"xsigns_fewo_vorggesendet", ['vorgid' => $vorgang->vorg_id, 'anschreiben' => 0, 'bewertung' => 0]);
+                Database::insert(null, self::$modulename,"xsigns_fewo_vorggesendet", ['vorgid' => $vorgang->vorg_id, 'anschreiben' => 0, 'bewertung' => 0, 'vorabreise' => 0]);
 
             $gastLand = 'de';
             $gast =  Database::select(null, self::$modulename, "select * from xsigns_fewo_gast where gast_id = " . $vorgang->vorg_gastid);
@@ -233,6 +253,9 @@ class SendCron
 
             if ($mailart == MAILART_ANREISE)
                 $mailBereitsGesendet = $vorgang->anschreiben == 1;
+
+            if ($mailart == MAILART_VORABREISE)
+                $mailBereitsGesendet = $vorgang->vorabreise == 1;
 
             $url = GlobalSettings::get('objektpath');
 
@@ -332,8 +355,10 @@ class SendCron
 
                             if ($mailart == MAILART_ANREISE)
                                 $values['anschreiben'] = 1;
-                            else
+                            else if ($mailart == MAILART_ABREISE)
                                 $values['bewertung'] = 1;
+                            else if ($mailart == MAILART_VORABREISE)
+                                $values['vorabreise'] = 1;
                         }
                         catch (\Exception $exception)
                         {
@@ -346,8 +371,10 @@ class SendCron
 
                 if ($mailart == MAILART_ANREISE)
                     $values['vorgges_grundanschr'] = $hinweis;
-                else
+                else if ($mailart == MAILART_ABREISE)
                     $values['vorgges_grundbew'] = $hinweis;
+                else if ($mailart == MAILART_VORABREISE)
+                    $values['vorgges_grundvorabreise'] = $hinweis;
 
                 Database::update(null, self::$modulename, "xsigns_fewo_vorggesendet", $values, "where vorgid = '" . $vorgang->vorg_id . "'");
 

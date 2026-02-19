@@ -268,6 +268,9 @@ return [
         'cronBeforeDefault_desc' => 'Wenn aktiviert, wird für jede Buchung eine Anreise-E-Mail an den Gast gesendet, unabhängig der Werbemailzustimmung.',
         'cronAfterDefault' => 'Abreisemail bei jeder Buchung unabhängig von Werbemailzustimmung',
         'cronAfterDefault_desc' => 'Wenn aktiviert, wird für jede Buchung eine Abreise-E-Mail an den Gast gesendet, unabhängig der Werbemailzustimmung.',
+        'cronBeforeDepartureSection' => 'Abreise-E-Mail x Tage vor Abreise',
+        'cronbeforedeparture' => 'Abreise-E-Mail x Tage vor Abreise senden',
+        'beforedeparturedays' => 'Anzahl Tage vor Abreise',
         'objektpath' => 'Detailseite für Bewertungslink',
         'linktext' => 'Text des Bewertungslinks',
         'croninfo' =>'<h5>Informationen für An- und Abreise-E-Mail</h5><p class="help-block">Die An- und Abreise-E-Mail funktionieren nur, wenn auf Ihrem Server ein sogenannter Cron-Job angelegt ist (Infos siehe u. a. <a href="https://de.wikipedia.org/wiki/Cron" target="_blank">Wikipedia</a>)<br>' .

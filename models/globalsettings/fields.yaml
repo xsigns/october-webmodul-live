@@ -347,6 +347,33 @@ tabs:
       cssClass: col-sm-4
       comment: xsigns.fewo::lang.globalsettings.cronAfterDefault_desc
       tab: xsigns.fewo::lang.globalsettings.tab2
+    cronBeforeDepartureSection:
+      type: section
+      label: xsigns.fewo::lang.globalsettings.cronBeforeDepartureSection
+      cssClass: col-sm-4
+      span: left
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    cronbeforedeparture:
+      label: xsigns.fewo::lang.globalsettings.cronbeforedeparture
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      commentHtml: true
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    beforedeparturedays:
+      label: xsigns.fewo::lang.globalsettings.beforedeparturedays
+      type: number
+      span: left
+      default: 5
+      cssClass: col-sm-4
+      tab: xsigns.fewo::lang.globalsettings.tab2
+    cronBeforeDepartureDefaultOn:
+      label: xsigns.fewo::lang.globalsettings.cronAfterDefault
+      type: switch
+      span: left
+      cssClass: col-sm-4
+      comment: xsigns.fewo::lang.globalsettings.cronAfterDefault_desc
+      tab: xsigns.fewo::lang.globalsettings.tab2
     datecompact:
       label: xsigns.fewo::lang.globalsettings.datecompact
       type: switch

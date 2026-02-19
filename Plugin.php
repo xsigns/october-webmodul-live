@@ -203,6 +203,7 @@ class Plugin extends PluginBase
             'xsigns.fewo::mail.invoice_de',
             'xsigns.fewo::mail.before_de',
             'xsigns.fewo::mail.voting_de',
+            'xsigns.fewo::mail.vorabreise_de',
         ];
 
         $owner = OwnerHelper::getMailTemplate();
