@@ -1072,3 +1072,5 @@
     - Neues Feature - Eine Abreiseerinnerung per Email für x Tage vor Abreise kann nun an den Gast gesendet werden. Siehe Einstellungen > FEWO-Einstellungen
     - Verbesserungen für Platzhalterbilder in der Objektliste
     - update89.php
+3.10.30:
+    - Verbesserungen für die Buchungsmaske
