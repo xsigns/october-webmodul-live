@@ -136,7 +136,7 @@ class FewoSitemaps
 
             $filename = substr($page['fileName'], 0, -4);
 
-            if (!in_array($filename, $pagesForSitemap) && $page['is_hidden'] != 0)
+            if (!in_array($filename, $pagesForSitemap) || $page['is_hidden'] == '1')
                 continue;
 
             $strUrl = $this->getAppUrl()->defaultLangUrl . $page['url'];
