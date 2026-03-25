@@ -3,6 +3,31 @@
 > Die Bearbeitung eines Partials ist nur dann notwendig, wenn das entsprechende Partial einer Komponente im Backend angepasst wurde.  
 > Die angepassten Partials finden Sie im Backend unter _CMS > Partials_. Schauen Sie hier, ob das entsprechende Partial zu finden ist.
 - - -
+## Upgrade 3.10.35
+Die Barrierefreiheit für die Buchungsmaske wurde wurde verbessert. 
+
+### Folgende Partialanpassungen sind für dieses Update notwendig
+Komponente **_Buchungsmaske_** _default.htm_:   
+Fügen Sie für die Nav-Tabs jeweils für die Tabs **2** bis **7** innerhalb des ``<a>``-Tags das Attribut ``tabeindex="-1"`` hinzu. Der Code-Block muss dann in etwa wie folgt aussehen:
+
+````
+<ul class="nav nav-tabs d-xl-flex flex-xl-row" role="tablist" id="buchungTab">
+    <li class="nav-item active" id="tab1" role="tab"><a class="nav-link" href="#1" data-tab="tab1" data-toggle="tab">{{ labels.tab1 }}</a></li>
+    <li class="nav-item disabled" id="tab2" role="tab"><a class="nav-link" href="#2" data-tab="tab2" data-toggle="tab" tabindex="-1">{{ labels.tab2 }}</a></li>
+    {% if showmitreisende %}
+        <li class="nav-item disabled" id="tab3" role="tab"><a class="nav-link" href="#3" data-tab="tab3" data-toggle="tab" tabindex="-1">{{ labels.tab3 }}</a></li>
+    {% endif %}
+    {% if showleistungen %}
+        <li class="nav-item disabled" id="tab4" role="tab"><a class="nav-link" href="#4" data-tab="tab4" data-toggle="tab" tabindex="-1">{{ labels.tab4 }}</a></li>
+    {% endif %}
+    <li class="nav-item disabled" id="tab5" role="tab"><a class="nav-link" href="#5" data-tab="tab5" data-toggle="tab" tabindex="-1">{{ labels.tab5 }}</a></li>
+    <li class="nav-item disabled" id="tab6" role="tab"><a class="nav-link" href="#6" data-tab="tab6" data-toggle="tab" tabindex="-1">{{ labels.tab6 }}</a></li>
+    {% if payment == true %}
+        <li class="nav-item disabled" id="tab7" role="tab"><a class="nav-link" href="#7" data-tab="tab7" data-toggle="tab" tabindex="-1">{{ labels.tab7 }}</a></li>
+    {% endif %}
+</ul>
+````
+- - -
 
 ## Upgrade 3.10.24
 Der Zahlungsbereich in der Buchungsmaske wurde verbessert. 

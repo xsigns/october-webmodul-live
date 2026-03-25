@@ -1083,3 +1083,5 @@
 3.10.34:
     - Verbesserungen für Sitemaps
     - Verbesserungen für Objektbilder
+2.10.35:
+    - "!!! Verbesserungen für die Barrierefreiheit der Buchungsmaske. Partials für Buchungsmaske müssen angepasst werden, bitte Upgrade-Guide lesen!"
