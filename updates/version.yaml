@@ -1087,3 +1087,5 @@
     - "!!! Verbesserungen für die Barrierefreiheit der Buchungsmaske. Partials für Buchungsmaske müssen angepasst werden, bitte Upgrade-Guide lesen!"
 3.10.36:
     - Verbesserungen für Objektliste Link Weiterleitung
+3.10.37:
+    - Verbesserung der Zahlungsverarbeitung
