@@ -10,11 +10,19 @@ let minTageTimelinePrevMonth = null;
 let anreiseIndex = 0;
 let anreiseMinDays = 1;
 
+let belIdWasFoundBefore;
+let minTageGewaehlteAnreise;
+let initVerfuegbarTimeline;
+
 $(document).ready(function() {
     InitialisiereKalender();
 });
 
 function InitialisiereKalender() {
+    belIdWasFoundBefore = false;
+    minTageGewaehlteAnreise = 0;
+    initVerfuegbarTimeline = verfuegbarleisteBelplan;
+
     $('.ctrlSaisonSelect').on('change', Belplan.calSelect);
     $('.ctrlCalNext').on('click', Belplan.calRight);
     $('.ctrlCalPrev').on('click', Belplan.calLeft);
@@ -50,6 +58,7 @@ Belplan.calRight = function () {
             verfuegbarTimeline = resp['verfuegbarleiste'];
             mintageTimeline = resp['mintageleiste'];
             caloffset = resp['caloffset'];
+
             Belplan.updateCal();
         }
     });
@@ -195,6 +204,7 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
             anreiseIndex = dayId;
             let mintageArr = mintageTimeline.split(';');
             mintage = mintageArr[dayId];
+            minTageGewaehlteAnreise = mintage;
             anreisedatum = new Date(jahr + '-' + monat + '-' + tag);
             anreiseId = dayId;
             dayEleme.removeClass('nichtwaehlbar').removeClass('nichtselektierbar');
@@ -294,26 +304,51 @@ function anreiseClicked(elem, wechselStatus, verfuegbarStatus, hasClicked = fals
                 }
             }
         } else {
-            let preMonthOffset, preMonthTimeline, firstBelId, mintageFromAnreise;
-            preMonthOffset = verfuegbarleistePrevMonth.length - verfuegbarTimeline.length;
-            preMonthTimeline = verfuegbarleistePrevMonth.substring(anreiseId, preMonthOffset);
-            firstBelId = verfuegbarTimeline.indexOf('N') + 1;
-            let mintagePrevMonthArr = minTageTimelinePrevMonth.split(';');
-            mintageFromAnreise = mintagePrevMonthArr[anreiseId];
-            dayEleme2.slice(firstBelId).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar').attr('tabindex', '-1');
+            let belIdWasFoundBeforeOnBehindLeiste = false;
+            let leisteBehind = initVerfuegbarTimeline.substring(0, initVerfuegbarTimeline.length - verfuegbarTimeline.length);
+            let firstBelIdOfBehind = leisteBehind.indexOf('N') + 1;
+            if (firstBelIdOfBehind > 0 && firstBelIdOfBehind > anreiseId)
+                belIdWasFoundBeforeOnBehindLeiste = true;
 
-            if ((preMonthOffset - anreiseId) < mintageFromAnreise)
-                dayEleme2.slice(0, mintageFromAnreise - (preMonthOffset - anreiseId)).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar').attr('tabindex', '-1');
+            let firstBelId = verfuegbarTimeline.indexOf('N') + 1;
+            if (firstBelId > 0)
+                belIdWasFoundBefore = true
 
-            if (preMonthTimeline.includes('N'))
-                dayEleme2.slice().css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar').attr('tabindex', '-1');
+            if (firstBelId > 0 || belIdWasFoundBefore || belIdWasFoundBeforeOnBehindLeiste)
+                dayEleme2.slice(firstBelId).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar').attr('tabindex', '-1');
+
+            let dateId = $(dayEleme2.first()).attr('id')
+
+            let ersterTagNeuerMonat = dateIdToDate(dateId, '2');
+
+            let tageBisNeuerMonat = getDaysBetween(anreisedatum, ersterTagNeuerMonat);
+            let mintageRestFuerAktuellenMonat = minTageGewaehlteAnreise - tageBisNeuerMonat;
+
+            if (mintageRestFuerAktuellenMonat > 0 && mintageRestFuerAktuellenMonat < minTageGewaehlteAnreise)
+                dayEleme2.slice(0, mintageRestFuerAktuellenMonat).css('pointer-events', 'none').addClass('nichtwaehlbar').addClass('nichtselektierbar').attr('tabindex', '-1');
         }
 
         waehleAnreise = !1;
         Belplan.clickEvent();
         Belplan.hoverEvent();
     }
-};
+}
+
+function getDaysBetween(date1, date2){
+    const msPerDay = 1000 * 60 * 60 * 24
+
+    const utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())
+    const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
+
+    return Math.floor((utc2 - utc1) / msPerDay)
+}
+
+function dateIdToDate(dateId) {
+    let tag = dateId.substr(10, 2);
+    let monat = dateId.substr(8, 2);
+    let jahr = dateId.substr(4, 4);
+    return new Date(jahr + '-' + monat + '-' + tag);
+}
 
 function abreiseClicked(elem, wechselStatus) {
     if (wechselStatus === 'C' || wechselStatus === 'O' && wechselStatus !== 'I' && wechselStatus !== 'X' || ($(elem).hasClass('waehlbar') && !$(elem).hasClass('nichtwaehlbar') && !$(elem).hasClass('gewaehlt'))) {
@@ -482,6 +517,9 @@ Belplan.loescheAuswahl = function(deleteAll = true) {
     anreisedatum = '';
     abreisedatum = '';
     waehleAnreise = !0;
+    belIdWasFoundBefore = false;
+    minTageGewaehlteAnreise = 0;
+
     Belplan.clickEvent();
 };
 
