@@ -195,6 +195,8 @@ return [
         'hobexgiropay' => 'GiroPay',
         'hobexamex' => 'American Express',
         'hobexpaypal' => 'PAYPAL',
+        'hobexapplepay' => 'Apple Pay',
+        'hobexapplepayhint' => '<b>Wichtig für Apple Pay!</b><br><br>Für die Nutzung von Apple Pay muss die Domain <b>:url</b> an Hobex übermittelt werden.<br>Bitte übermitteln Sie diese Domain an Hobex, damit Hobex die Domain bei Apple registrieren kann. Nach erfolgreicher Registrierung kann Apple Pay für diese Domain verwendet werden.',
         'bookingfeesection' => 'Buchungsgebühr',
         'bookingfeesection_desc' => 'Buchungsgebühr für Zahlungen von Online-Vorgänge',
         'bookingfeeon' => 'Buchungsgebühr an',

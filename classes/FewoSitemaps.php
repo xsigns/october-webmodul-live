@@ -301,6 +301,13 @@ class FewoSitemaps
         );
     }
 
+    public static function sitemapRoutesAsString(): string
+    {
+        $sitemapRoutes = FewoSitemaps::defineRoutes();
+        array_walk($sitemapRoutes, function (&$value, $key) {$value = $key;});
+        return implode('|', $sitemapRoutes);
+    }
+
     /**
      * @return \Cms\Classes\Collection
      */

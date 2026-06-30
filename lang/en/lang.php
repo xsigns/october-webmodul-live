@@ -230,6 +230,8 @@ return [
         'hobexgiropay' => 'GiroPay',
         'hobexamex' => 'American Express',
         'hobexpaypal' => 'PAYPAL',
+        'hobexapplepay' => 'Apple Pay',
+        'hobexapplepayhint' => '<b>Important for Apple Pay!</b><br><br>To use Apple Pay, the domain <b>:url</b> must be submitted to Hobex.<br>Please submit this domain to Hobex so that Hobex can register the domain with Apple. Once registration has been successfully completed, Apple Pay can be used for this domain.',
         'hobex_kurtaxe' => 'Kurtaxe berechnen',
         'hobex_kurtaxe_desc' => 'Bei aktivierter An- und Restzahlung wird die Kurtaxe mit der Anzahlung berechnet. <br />Bei Zahlung der Gesamtsumme wird die Kurtaxe mit der Gesamtsumme berechnet.',
     ],

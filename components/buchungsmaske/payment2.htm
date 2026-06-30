@@ -2,29 +2,82 @@
 <div id="payh"></div>
 <button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:6">{{ labels.btnzurueck }}</button>
 <script>
-    var host = '{{ host }}';
-    var checkoutId = '{{ checkoutId }}';
+    (() => {
+        var host = '{{ host }}'
+        var checkoutId = '{{ checkoutId }}'
+        var brand = '{{ brands }}'
+        var resultUrl = "{{ ResultUrl|raw }}" + checkoutId
+        var payContainer = $('#payh')
 
-    var script = document.createElement('script');
-    script.src = host + '/v1/paymentWidgets.js?checkoutId=' + checkoutId;
-    script.defer = true;
+        var loadCopyAndPayScript = function () {
+            var script = document.createElement('script')
+            script.src = host + '/v1/paymentWidgets.js?checkoutId=' + checkoutId
+            script.defer = true
 
-    document.head.appendChild(script);
-
-    var Respi = "{{ ResultUrl|raw }}" + checkoutId;
-
-    $("#payh").append('<div class="container" style="display: block"><form class="paymentWidgets" action="' + Respi + '">' + '{{ brands }}' + '</form></div>');
-
-    var wpwlOptions = {
-        style: "plain",
-        locale:"de",
-        onReady: function()
-        {
-            const imageUrl ='https://online.hobex.at/public/paybybank_hobex.png';
-            $('.wpwl-brand-ACI_INSTANTPAY').css('background-image', 'url(' + imageUrl + ')');
-            $('.wpwl-brand-ACI_INSTANTPAY').css('background-size', 'contain');
-            $('.wpwl-brand-ACI_INSTANTPAY').css('width', '129px');
-            $('.wpwl-brand-ACI_INSTANTPAY').css('height', '40px');
+            document.body.appendChild(script)
         }
-    };
+
+        var renderPayForm = function () {
+            payContainer.empty()
+            payContainer.append(
+                '<div class="container" style="display: block">' +
+                '<form class="paymentWidgets" action="' + resultUrl + '">' + brand + '</form>' +
+                '</div>'
+            )
+        }
+
+        var canUseApplePay = function () {
+            if (!window.ApplePaySession)
+                return false
+
+            return window.ApplePaySession.canMakePayments()
+        }
+
+        var showApplePayErrorHint = function () {
+            payContainer.empty()
+            payContainer.append(
+                '<div class="container" style="display: block">' +
+                'Apple Pay wird auf diesem Gerät oder in diesem Browser nicht unterstützt. ' +
+                'Bitte verwende eine andere Zahlungsmethode.' +
+                '</div>'
+            )
+        }
+
+        var configureWidget = function () {
+            window.wpwlOptions = {
+                style: 'plain',
+                locale: 'de',
+                onReady: function () {
+                    var imageUrl = 'https://online.hobex.at/public/paybybank_hobex.png'
+                    $('.wpwl-brand-ACI_INSTANTPAY')
+                        .css('background-image', 'url(' + imageUrl + ')')
+                        .css('background-position', 'center')
+                        .css('background-size', 'contain')
+                        .css('width', '129px')
+                        .css('height', '40px')
+                    $('.wpwl-apple-pay-button').css('-webkit-appearance', '-apple-pay-button !important')
+                }
+            }
+
+            if (brand !== 'APPLEPAY')
+                return
+
+            window.wpwlOptions.applePay = {
+                checkAvailability: 'canMakePayments'
+            }
+        }
+
+        var initPayment = function () {
+            if (brand === 'APPLEPAY' && !canUseApplePay()) {
+                showApplePayErrorHint()
+                return
+            }
+
+            configureWidget()
+            renderPayForm()
+            loadCopyAndPayScript()
+        }
+
+        initPayment()
+    })()
 </script>

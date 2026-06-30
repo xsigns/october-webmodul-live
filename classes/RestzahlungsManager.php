@@ -25,6 +25,8 @@ class RestzahlungsManager
             $message->to(explode(';', GlobalSettings::get('mailcc')));
         });
 
+        self::debug('Überprüfung Restzahlungen für ' . date('Y-m-d', time()) . ' abgeschlossen.');
+
         self::debug('Status ' . Fewo::var_dump_ret($status));
     }
 

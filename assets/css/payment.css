@@ -61,6 +61,13 @@
     width:90px;
     height:64px;
 }
+.payment_applepay {
+    background-image: url("images/apple.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width:84px;
+    height:58px;
+}
 .payment_invoice {
     background-image: url("images/invoice-alternate.png");
     background-repeat: no-repeat;

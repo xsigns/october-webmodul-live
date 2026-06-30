@@ -707,6 +707,18 @@ tabs:
       span: right
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab3
+    #hobexapplepay:
+    #  label: xsigns.fewo::lang.globalsettings.hobexapplepay
+    #  type: switch
+    #  span: left
+    #  cssClass: col-sm-4
+    #  tab: xsigns.fewo::lang.globalsettings.tab3
+    #hobexapplepayhint:
+    #  commentHtml: true
+    #  type: hint
+    #  cssClass: col-sm-4
+    #  span: left
+    #  tab: xsigns.fewo::lang.globalsettings.tab3
     verwalter_vorname:
       label: xsigns.fewo::lang.globalsettings.vorname
       type: text
