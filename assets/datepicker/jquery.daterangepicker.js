@@ -751,6 +751,7 @@
                 return;
             }
             $(this).data('date-picker-opened', true);
+            opt.triggerElement = self;
 
             box = createDom().hide();
             box.append('<div class="date-range-length-tip"></div>');
@@ -2097,6 +2098,9 @@
                 $(self).trigger('datepicker-closed', {
                     relatedTarget: box
                 });
+                if (opt.triggerElement) {
+                    $(opt.triggerElement).focus();
+                }
             };
             if (opt.customCloseAnimation) {
                 opt.customCloseAnimation.call(box.get(0), afterAnim);

@@ -86,7 +86,7 @@ return [
         'delete' => 'Markierte Buchungen löschen',
         'change_selected_confirm' => 'Markierte Einträge wieder freigeben?',
         'delete_selected_confirm' => 'Markierte Einträge wirklich löschen?',
-        'sendMail' => 'Markierte Buchungsbestätigungsmail senden',
+        'sendMail' => 'Markierte Buchungsbestätigungsmails neu senden',
         'sendMail_confirm' => 'Die Buchungsbestätigungsmail an den Gast der markierten Einträge wirkich senden?'
     ],
     'restZahlung' => [
