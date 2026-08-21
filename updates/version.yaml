@@ -1103,3 +1103,5 @@
     - Verbesserungen im Zahlungsmodul
 3.10.44:
     - Erweiterung der Mail-Platzhalter für Buchungs- und Anfragebestätigung. Einmalige Nebenkosten können über NEBENKOSTEN_ITEMS aufgelistet werden.
+3.10.45:
+    - Verbesserungen im Zahlungsmodul
