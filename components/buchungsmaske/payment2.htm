@@ -8,6 +8,8 @@
         var brand = '{{ brands }}'
         var resultUrl = "{{ ResultUrl|raw }}" + checkoutId
         var payContainer = $('#payh')
+        var transactionId = '{{ transactionId }}'
+        var bookingId = '{{ bookingId }}'
 
         var loadCopyAndPayScript = function () {
             var script = document.createElement('script')
@@ -56,6 +58,16 @@
                         .css('width', '129px')
                         .css('height', '40px')
                     $('.wpwl-apple-pay-button').css('-webkit-appearance', '-apple-pay-button !important')
+                },
+                onBeforeSubmitCardPromise : function () {
+                    return $.request('onCheckBooking', {
+                        data: { transactionId: transactionId, bookingId: bookingId }
+                    }).then(function (resp) {
+                        if (resp.status === true)
+                            return
+                        window.location.href = resp.url
+                        throw new Error('Booking no longer exists');
+                    });
                 }
             }
 
