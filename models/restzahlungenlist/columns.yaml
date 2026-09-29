@@ -8,6 +8,7 @@ columns:
     za_gast_name:
         label: Gastname
         type: text
+        searchable: true
     za_restz_am:
         label: Fällig am
         type: date
@@ -16,6 +17,11 @@ columns:
     za_restz_gezahlt_am:
         label: Gezahlt am
         type: date
+        sortable: true
+        searchable: true
+    za_restz_betrag:
+        label: Betrag
+        type: text
         sortable: true
         searchable: true
     za_status:
