@@ -1,0 +1,34 @@
+<?php
+$attempts = \DB::table('xsigns_fewo_rest_attempts')->where('payment_id', $formModel->id)
+    ->orderBy('id', 'desc')->get();
+?>
+<?php if ($attempts->isEmpty()): ?>
+<p>Für diese Restzahlung wurde noch kein Zahlungsversuch protokolliert.</p>
+<?php else: ?>
+<table class="table table-striped">
+    <thead><tr><th>Versuch</th><th>Hobex-ID</th><th>Status</th><th>Ergebniscode</th><th>Geprüft</th><th>Auslöser</th></tr></thead>
+    <tbody>
+    <?php foreach ($attempts as $attempt): ?>
+        <tr>
+            <td><?= e($attempt->merchant_transaction_id) ?></td>
+            <td><?= e($attempt->provider_payment_id) ?></td>
+            <td><?= e($attempt->message) ?></td>
+            <td><?= e($attempt->result_code) ?></td>
+            <td><?= e($attempt->checked_at ?: '-') ?></td>
+            <td><?= e($attempt->actor) ?></td>
+        </tr>
+        <?php $checks = \DB::table('xsigns_fewo_rest_checks')->where('attempt_id', $attempt->id)->orderBy('id', 'desc')->get(); ?>
+        <?php foreach ($checks as $check): ?>
+        <tr>
+            <td>Abgleich <?= e($check->created_at) ?></td>
+            <td>-</td>
+            <td><?= e($check->message) ?></td>
+            <td><?= e($check->result_code) ?></td>
+            <td><?= e($check->created_at) ?></td>
+            <td><?= e($check->actor) ?></td>
+        </tr>
+        <?php endforeach ?>
+    <?php endforeach ?>
+    </tbody>
+</table>
+<?php endif ?>

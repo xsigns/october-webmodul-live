@@ -28,3 +28,6 @@ columns:
         label: Statusmeldung
         type: text
         searchable: true
+    za_restz_receiptnumber:
+        label: Versuchsreferenz
+        type: text

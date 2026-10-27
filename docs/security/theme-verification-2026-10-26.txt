@@ -1,0 +1,12 @@
+Theme audit 2026-10-26
+REPRODUCED: Object title becomes HTML despite Twig autoescape
+REPRODUCED: Object title breaks out of link title attribute
+REPRODUCED: Image title escapes JSON data-images attribute
+REPRODUCED: Slider title breaks out of image alt attribute
+REPRODUCED: Tooltip attribute injection when showToolTip is enabled
+REPRODUCED: Text coordinate becomes executable JavaScript expression
+REPRODUCED: Control: ordinary guest field remains escaped
+No browser code executed; no network, email or database access.
+REPRODUCED: Actual search template inserts unescaped object title as HTML.
+No browser, network or application bootstrap.
+Theme unchanged: all 375 inventory hashes match.

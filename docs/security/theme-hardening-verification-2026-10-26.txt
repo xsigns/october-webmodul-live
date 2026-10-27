@@ -1,0 +1,29 @@
+PASS: 102 templates parsed with actual October CMS token parsers.
+PASS: Object title HTML escaped
+PASS: Object title attribute escaped
+PASS: Image JSON attribute escaped
+PASS: Slider attributes escaped
+PASS: Enabled tooltip escaped
+PASS: Coordinate remains serialized data.
+PASS: CMS HTML cleaner retains formatting and removes tested active content.
+No CMS boot, network, mail or application database.
+PASS: Representative object card screenshot unchanged at 1280px
+PASS: Representative object card unchanged at 390px
+PASS: Representative object card unchanged at 768px
+PASS: Updated active library versions
+PASS: Executable coordinate rejected without side effect
+PASS: Valid coordinate retained
+PASS: Legacy blocked dates parsed as data
+PASS: Legacy season data retains values
+PASS: Google map data cannot execute expressions
+PASS: October 4 request adapter preserves handler, target and arguments
+PASS: Booking-style Bootstrap tab switching
+PASS: Bootstrap tooltip with bundled Popper
+PASS: Navbar-style collapse interaction
+PASS: Existing Slick initializes on jQuery 3.7.1
+PASS: Existing date-range picker initializes
+PASS: Existing date-entry initializes
+PASS: Existing star-rating initializes
+PASS: Real search renderer escapes titles and rejects script URLs
+PASS: No JS runtime errors during tested widget initialization: 
+PASS: 19 browser checks; all requests blocked, no live application or customer data.

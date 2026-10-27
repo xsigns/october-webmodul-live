@@ -6,6 +6,7 @@ recordsPerPage: '20'
 showSetup: true
 showSorting: 1
 showCheckboxes: true
+recordUrl: xsigns/fewo/restzahlungenlist/preview/:id
 defaultSort:
     column: za_restz_am
     direction: desc

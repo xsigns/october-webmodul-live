@@ -1,0 +1,15 @@
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+const plugin = path.resolve(__dirname, '../..');
+const $ = {fn: {}, each(values, callback) { Object.entries(values).forEach(([key, value]) => callback(key, value)); }};
+const context = {jQuery: $, window: {Math}, document: {}, Math};
+vm.runInNewContext(fs.readFileSync(path.join(plugin, 'assets/js/search.js'), 'utf8'), context);
+const settings = $.fn.search.settings;
+const fields = settings.fields;
+const result = {title: '<b data-theme-audit="search">AUDIT</b>', url: '/detail'};
+const response = {[fields.categoryResults]: [{[fields.categoryName]: 'Test', [fields.results]: [result]}]};
+const html = settings.templates.category(response, fields);
+if (!html.includes(result.title)) throw new Error('Search sink not reproduced');
+console.log('REPRODUCED: Actual search template inserts unescaped object title as HTML.');
+console.log('No browser, network or application bootstrap.');

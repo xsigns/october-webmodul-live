@@ -394,6 +394,7 @@ class Plugin extends PluginBase
 
     public function register()
     {
+        $this->registerConsoleCommand('fewo.billing-release', \Xsigns\Fewo\Console\BillingRelease::class);
         /*
          * Register the image tag processing callback
          */
@@ -452,7 +453,7 @@ class Plugin extends PluginBase
     {
         if ($record->obj_id > 0)
         {
-            $resObjekt = Database::select($this->controller, $this->modulename, "select titel from xsigns_fewo_objlang where objid = " . $record->obj_id);
+            $resObjekt = Database::select($this->controller, $this->modulename, "select titel from xsigns_fewo_objlang where objid = :objid", false, ['objid' => $record->obj_id]);
 
             if (count($resObjekt) > 0)
                 return $resObjekt[0]->titel;
@@ -482,6 +483,9 @@ class Plugin extends PluginBase
 
     public function registerSchedule($schedule)
     {
+        $schedule->call(function () {
+            (new \Xsigns\Fewo\Classes\RestPaymentReconciliation())->checkOpen();
+        })->everyFiveMinutes();
         $schedule->call(function ()
         {
             SendCron::Mails();

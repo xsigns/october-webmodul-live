@@ -1,0 +1,15 @@
+Security verification 2026-10-26
+Plugin commit: 7d531528b8bf00e742e86a9a9478ae66594f9066
+Mode: isolated CLI; no CMS bootstrap, real database, HTTP, email or payments.
+Command: php docs/security/verify-isolated.php
+CONFIRMED: SEC-01: untrusted relative path reaches download unchanged
+CONFIRMED: SQL sink intercepted without database
+CONFIRMED: SEC-02/07: request input becomes SQL syntax without authentication in onDownload
+CONFIRMED: SEC-10: tax formula executes arbitrary PHP function strlen
+No application bootstrap, real SQL, HTTP, email, payment or filesystem download executed.
+Exit code: 0
+No syntax errors detected in docs/security/verify-isolated.php
+Composer command: composer --no-plugins --no-scripts audit --locked --format=json
+Composer audit completed; exit code 1 (advisories found). No install/update executed.
+Application lockfile SHA-256: 3D5CF9EAA25C08CDEB9FD5CA19A49BC21F11F7300DF05501514E8F2966184797
+Advisory output SHA-256: 181DA5C8E1DDA39165D31CB2691EA3338E8528E451FD5939796EBF56EFB2F0BD

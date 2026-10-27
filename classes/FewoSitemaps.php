@@ -88,7 +88,7 @@ class FewoSitemaps
         $page = array_values($page);
         $page = $page[0];
 
-        $resHaus = DB::select("select id, haus_alias from xsigns_fewo_ha left join xsigns_fewo_halang on (hausid = id) where lang = " . Database::escape($this->lang));
+        $resHaus = DB::select("select id, haus_alias from xsigns_fewo_ha left join xsigns_fewo_halang on (hausid = id) where lang = :lang", ['lang' => $this->lang]);
 
         if (count($resHaus) == 0)
             return $dom;

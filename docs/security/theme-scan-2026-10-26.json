@@ -1,0 +1,1095 @@
+{
+  "date": "2026-10-26",
+  "root": "D:/Entwicklung/fewoverwalter/themes/fewo",
+  "textFiles": 289,
+  "lines": 65060,
+  "rawOccurrences": 224,
+  "literalPhpTags": 0,
+  "hits": [
+    {
+      "path": "assets/bootstrap/js/html5shiv.js",
+      "line": 5,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/bootstrap/js/html5shiv.js",
+      "line": 6,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/bootstrap/js/respond.min.js",
+      "line": 6,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/javascript/jquery.min.js",
+      "line": 2,
+      "kind": "dangerous"
+    },
+    {
+      "path": "assets/javascript/jquery.min.js",
+      "line": 2,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/javascript/jquery.min.js",
+      "line": 3,
+      "kind": "dangerous"
+    },
+    {
+      "path": "assets/javascript/jquery.min.js",
+      "line": 3,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/javascript/jquery.min.js",
+      "line": 4,
+      "kind": "dangerous"
+    },
+    {
+      "path": "assets/javascript/jquery.min.js",
+      "line": 4,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/vendor/bootstrap/js/popover.js",
+      "line": 57,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/vendor/bootstrap.js",
+      "line": 6,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/vendor/font-awesome/less/font-awesome-ie7.less",
+      "line": 78,
+      "kind": "dom"
+    },
+    {
+      "path": "assets/vendor/jquery.js",
+      "line": 2,
+      "kind": "dangerous"
+    },
+    {
+      "path": "assets/vendor/jquery.js",
+      "line": 2,
+      "kind": "dom"
+    },
+    {
+      "path": "pages/detailseite.htm",
+      "line": 610,
+      "kind": "raw"
+    },
+    {
+      "path": "pages/detailseite.htm",
+      "line": 671,
+      "kind": "raw"
+    },
+    {
+      "path": "pages/detailseite.htm",
+      "line": 676,
+      "kind": "raw"
+    },
+    {
+      "path": "pages/masken/anfragemaske.htm",
+      "line": 238,
+      "kind": "raw"
+    },
+    {
+      "path": "pages/masken/buchungsmaske.htm",
+      "line": 237,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/default.htm",
+      "line": 4,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/default.htm",
+      "line": 8,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/default.htm",
+      "line": 15,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 2,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 9,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 14,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 19,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 22,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 38,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 39,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 40,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 41,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 42,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 44,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 45,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 46,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 50,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 59,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 67,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 75,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 86,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 90,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 91,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 92,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 93,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 94,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 98,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 102,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/AngebotDetail/objlist.htm",
+      "line": 118,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Angebote/default.htm",
+      "line": 3,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Angebote/default.htm",
+      "line": 8,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Angebote/default.htm",
+      "line": 11,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Angebote/default.htm",
+      "line": 20,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/belegungsplan/default.htm",
+      "line": 43,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/belegungsplan/default.htm",
+      "line": 47,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/belegungsplan/default.htm",
+      "line": 52,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 8,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 52,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 118,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 127,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 139,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 158,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 178,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 254,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 255,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 257,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/default.htm",
+      "line": 258,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/leistungen.htm",
+      "line": 25,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/zusammen.htm",
+      "line": 136,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/zusammen.htm",
+      "line": 172,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/zusammen.htm",
+      "line": 181,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/zusammen.htm",
+      "line": 187,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/zusammen.htm",
+      "line": 192,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Buchungsmaske/zusammen.htm",
+      "line": 196,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/galerie/default.htm",
+      "line": 4,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/galerie_4er/default.htm",
+      "line": 4,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 200,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 202,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 207,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 216,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 218,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 223,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 234,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ListenFilter/default.htm",
+      "line": 419,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjAusstattung/ausstattung.htm",
+      "line": 6,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjAusstattung/ausstattung.htm",
+      "line": 10,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjAusstattung/ausstattung.htm",
+      "line": 15,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/Objektbewertung/default.htm",
+      "line": 15,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektBewertungen/default.htm",
+      "line": 19,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektdetail/angebote.htm",
+      "line": 10,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektdetail/angebote.htm",
+      "line": 11,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 8,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 30,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 35,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 42,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 51,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 57,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 67,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 77,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 87,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 98,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 100,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 106,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 116,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 130,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 131,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 137,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 140,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 144,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/default.htm",
+      "line": 146,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/marker.htm",
+      "line": 2,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/objgesmap.htm",
+      "line": 32,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektlisteLage/objgesmap.htm",
+      "line": 84,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 8,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 29,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 31,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 35,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 52,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 54,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 63,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 64,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 65,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 67,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 68,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 70,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 72,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 74,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 76,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 83,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 89,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 95,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 104,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 107,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 108,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 109,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 110,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 111,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 112,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 115,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 119,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 131,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 134,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gemerkt/default.htm",
+      "line": 136,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 8,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 27,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 28,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 30,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 33,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 52,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 54,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 62,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 63,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 64,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 65,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 66,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 68,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 69,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 70,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 72,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 78,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 83,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 88,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 96,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 99,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 100,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 101,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 102,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 103,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 104,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 107,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 112,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 114,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 120,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 122,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 126,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 132,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 135,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/objektliste_gesamt/default.htm",
+      "line": 137,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektSuche/default.htm",
+      "line": 100,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektSuche/default.htm",
+      "line": 108,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektSuche/default.htm",
+      "line": 137,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjektTextfeldsuche/default.htm",
+      "line": 12,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 3,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 60,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 61,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 63,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 66,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 69,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 71,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 74,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 76,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 78,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 81,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 85,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 99,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 100,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 102,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 105,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 107,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 109,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 112,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 114,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 116,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 119,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/ObjSaisonzeit/saisonzeit.htm",
+      "line": 123,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/preisrechner/default.htm",
+      "line": 91,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/preisrechner/default.htm",
+      "line": 97,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/preisrechner/default.htm",
+      "line": 98,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 25,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 36,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 37,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 69,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 135,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 139,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 162,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 163,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 166,
+      "kind": "raw"
+    },
+    {
+      "path": "partials/slider/default.htm",
+      "line": 201,
+      "kind": "raw"
+    }
+  ]
+}

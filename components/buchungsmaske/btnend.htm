@@ -19,5 +19,5 @@
     {% endfor %}
 
     <button id="btnback" class="fewo-btnzurueck" data-request="{{ __SELF__ }}::onTabChange" data-request-data="tabid:5">{{ labels.btnzurueck }}</button>
-    <button id="btnweiter7" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnZahlen">{{ btnbuchen }}</button>
+    <button id="btnweiter7" class="fewo-btnweiter" data-request="{{ __SELF__ }}::onBtnZahlen" data-request-success="window.fewoShowPaymentStep(data)">{{ btnbuchen }}</button>
 {% endif %}

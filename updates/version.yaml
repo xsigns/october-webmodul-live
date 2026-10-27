@@ -1115,3 +1115,10 @@
     - Verbesserung der Restzahlungsliste
 3.10.50:
     - Verbesserung der Restzahlungsberechnung
+3.11.0:
+    - Sicherheitskorrekturen für Zugriffe, Import und Zahlungszuordnung
+    - Hobex-Abgleich und Versuchshistorie für Restzahlungen
+    - Geschützte Abrechnungen und wiederaufnehmbarer Dateiumzug
+    - update90.php
+    - update91.php
+    - update92.php

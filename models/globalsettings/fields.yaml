@@ -645,6 +645,18 @@ tabs:
       span: right
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexTestEntityId:
+      label: Hobex Test-Entity-ID (optional)
+      type: text
+      span: left
+      comment: Leer lassen, um den bisherigen Sandbox-Zugang zu verwenden.
+      tab: xsigns.fewo::lang.globalsettings.tab3
+    hobexTestAccessToken:
+      label: Hobex Test-Access-Token (optional)
+      type: text
+      span: right
+      comment: Nur zusammen mit der Test-Entity-ID ausfüllen.
+      tab: xsigns.fewo::lang.globalsettings.tab3
     hobexrequest:
       label: xsigns.fewo::lang.globalsettings.hobexrequest
       type: dropdown

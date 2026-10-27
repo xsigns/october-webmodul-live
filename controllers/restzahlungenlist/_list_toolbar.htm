@@ -1,4 +1,12 @@
 <div data-control="toolbar">
+    <button class="btn btn-default oc-icon-refresh" disabled="disabled"
+        onclick="$(this).data('request-data', {checked: $('.control-list').listWidget('getChecked')})"
+        data-request="onCheckStatus" data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]" data-trigger-condition="checked"
+        data-stripe-load-indicator>Status jetzt prüfen</button>
+    <button class="btn btn-default oc-icon-history" type="button"
+        onclick="var ids = $('.control-list').listWidget('getChecked'); if (ids.length !== 1) { alert('Genau eine Restzahlung auswählen.'); return; } window.location.href = '<?= Backend::url('xsigns/fewo/restzahlungenlist/preview') ?>/' + encodeURIComponent(ids[0]);">
+        Verlauf anzeigen</button>
     <?php  if($this->user->is_superuser == 1): ?>
     <button
         class="btn btn-default oc-icon-check-square-o"
@@ -13,7 +21,15 @@
         data-trigger-condition="checked"
         data-request-success="$(this).prop('disabled', true)"
         data-stripe-load-indicator>
-        <?= e(trans('xsigns.fewo::lang.restZahlung.handle_payment_selected')) ?>
+        Erste Restzahlung starten
+    </button>
+    <button class="btn btn-default oc-icon-repeat" disabled="disabled"
+        onclick="$(this).data('request-data', {checked: $('.control-list').listWidget('getChecked')})"
+        data-request="onRetryPayment"
+        data-request-confirm="Restzahlung nach erneutem Hobex-Abgleich starten?"
+        data-trigger-action="enable" data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked" data-stripe-load-indicator>
+        Restzahlung erneut starten
     </button>
     <?php endif ?>
 </div>

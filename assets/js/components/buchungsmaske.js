@@ -1,3 +1,9 @@
+window.fewoShowPaymentStep = function (data) {
+    if (data && Object.prototype.hasOwnProperty.call(data, '#payment')) {
+        $('#buchungTab a[href="#7"]').tab('show');
+    }
+};
+
 $(function() {
 
     window.addEventListener('popstate', function(event) {

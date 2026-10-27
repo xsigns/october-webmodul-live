@@ -15,6 +15,9 @@
             var script = document.createElement('script')
             script.src = host + '/v1/paymentWidgets.js?checkoutId=' + checkoutId
             script.defer = true
+            script.onerror = function () {
+                payContainer.find('.payment-loading').text('Das Zahlungsformular konnte nicht geladen werden. Bitte versuchen Sie es später erneut.')
+            }
 
             document.body.appendChild(script)
         }
@@ -23,6 +26,7 @@
             payContainer.empty()
             payContainer.append(
                 '<div class="container" style="display: block">' +
+                '<div class="payment-loading" role="status">Zahlungsformular wird geladen …</div>' +
                 '<form class="paymentWidgets" action="' + resultUrl + '">' + brand + '</form>' +
                 '</div>'
             )
@@ -50,6 +54,7 @@
                 style: 'plain',
                 locale: 'de',
                 onReady: function () {
+                    payContainer.find('.payment-loading').remove()
                     var imageUrl = 'https://online.hobex.at/public/paybybank_hobex.png'
                     $('.wpwl-brand-ACI_INSTANTPAY')
                         .css('background-image', 'url(' + imageUrl + ')')

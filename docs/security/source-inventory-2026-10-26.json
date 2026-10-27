@@ -1,0 +1,6089 @@
+[
+  {
+    "path": "_ide_helper_rainlab.php",
+    "lines": 32,
+    "sha256": "2F226A7FE89A37B8F005EDF8C809B84F7B52A54F6DCA852F8F3BA4DA08515D71",
+    "signals": []
+  },
+  {
+    "path": "_ide_helper.php",
+    "lines": 682,
+    "sha256": "194B4C76C18F742E57E08EB8F6F09444CE521B9D8FEC38CC75AFF3A77BDC8B0A",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "views\\mail\\zahlung_se.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_ru.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_pl.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_it.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_fr.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_fi.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_es.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_en.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlung_de.htm",
+    "lines": 109,
+    "sha256": "160C9DF5C0E7A0C54467B4BA2F605EAC725FD37EB95938E0AAEACB5FEB7D8B2D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "views\\mail\\zahlung_cs.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\zahlungsStatus.htm",
+    "lines": 39,
+    "sha256": "7C8FDE73F18829350C336D913AAFA204D8374EB36149CB7B239CA82B62C2E3FB",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_se.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_ru.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_pl.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_it.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_fr.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_fi.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_es.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_en.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\voting_de.htm",
+    "lines": 18,
+    "sha256": "D4E13D7D15977E1D0DA7E5235D5D49E58874D3771D79140AA41F1D7928967571",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "views\\mail\\voting_cs.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\vorabreise_de.htm",
+    "lines": 21,
+    "sha256": "B705378EBFE302D9E9383ED88C8C7112C1C32371FD81EB5F87C5D1583B229E97",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\rating.htm",
+    "lines": 16,
+    "sha256": "11B1997E630F5D5F4EE9137614A22E267DA2B93E2ED734A359583C050A59139D",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\mail_Eigentuemerdaten.htm",
+    "lines": 16,
+    "sha256": "FEB8CAF5CD1A95FB6C83611D7126F6F1296802684F7F881710689B649C6391C9",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\mailerror.htm",
+    "lines": 14,
+    "sha256": "90F04D19A9FEE9350AC29B0C8C58BD8E64730E3B096BA8325566E7090BCFA3C2",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_se.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_ru.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_pl.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_it.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_fr.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_fi.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_es.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_en.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\invoice_de.htm",
+    "lines": 108,
+    "sha256": "0F7290A07EB65BB76C71AD34861B7F1A51D43F5BDDCE6C46B0C9C6118AC9F828",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "views\\mail\\invoice_cs.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\feondiError.htm",
+    "lines": 11,
+    "sha256": "7B53149BA3AAD5293E51A2457C522BE23AEC26943A81E9DCC673F6A207A641D6",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\eigentuemerNeu_de.htm",
+    "lines": 11,
+    "sha256": "94F336CEB6862C9CB80A44D469B0DC7A29635E1424FF31C8123D2194F3046CCD",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\eigentuemerGeaendert_de.htm",
+    "lines": 10,
+    "sha256": "916D41EDD188A0F23622CF66AB9CA10062D74A20D8446AC5F3A2F7D9ACFB27AB",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\egbuchung_de.htm",
+    "lines": 17,
+    "sha256": "AA63326669BD77CF003F66355D1938FF2393446C9E411C253C0C5CD82321D754",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\cronstatus.htm",
+    "lines": 35,
+    "sha256": "65A0F0D838FDD6D772B63721ECDDE10959740B32837396772470D1138B8532DA",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_se.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_ru.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_pl.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_it.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_fr.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_fi.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_es.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_en.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\buchung_de.htm",
+    "lines": 159,
+    "sha256": "AFB48239D285BCB75DC6D9A64AC64F5B6F554C5992513003E5661E7C954FE5A0",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "views\\mail\\buchung_cs.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_se.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_ru.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_pl.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_it.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_fr.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_fi.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_es.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_en.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_de.htm",
+    "lines": 21,
+    "sha256": "6A7F17CA4F8D929E7F4669FEA315792F4385BFB56DD0B202C1E6B42BCF02DA31",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\before_cs.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_se.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_ru.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_pl.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_it.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_fr.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_fi.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_es.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_en.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\mail\\anfrage_de.htm",
+    "lines": 111,
+    "sha256": "467AF18B691AD403FC3A50A643286DFE21E13D02A0F36A56D34B552E16C21D38",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "views\\mail\\anfrage_cs.htm",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "views\\layouts\\statusbericht.htm",
+    "lines": 40,
+    "sha256": "5927B38023AD57EB83E920AB4ADE46C312F3D9A1A425FE1BE41EE01A2F2F579A",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "UPGRADE.md",
+    "lines": 2623,
+    "sha256": "3DA32AB700D23832A8EE62E1BC545E8F6DA30FF7422E23601ED6C71C00643125",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "updates\\create_update02.php",
+    "lines": 18,
+    "sha256": "CC4EDAFC4D20105880AB3CCE0C424263916F0AA90C50E1C4B3B006E49F0CDEA3",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update01.php",
+    "lines": 37,
+    "sha256": "5888EFBD26A6AEFD5AB845010F065DCAB278254765D2938CFC4F5C8FC1B62002",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_tables.php",
+    "lines": 751,
+    "sha256": "FE94205F38E656F0D037451B5ACC01FE448A3999F340452A02F64E4523CA38EF",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_slider.php",
+    "lines": 19,
+    "sha256": "0CF457BA30122E67F96E27CD62CE8784CF095BC55938C873DF854429E35879EF",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\create_group.php",
+    "lines": 28,
+    "sha256": "B49A79ECBCFD2F2A08801AC9BC354B40EC1FEE0D396FADC5F3DF5DA21F1E4696",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\create_galleries_table.php",
+    "lines": 28,
+    "sha256": "F997B7A88C79F0557B8A8AA6138C7F84A97A9B14738D677FE2E3064F388FE2C2",
+    "signals": []
+  },
+  {
+    "path": "tests\\PricesTest.php",
+    "lines": 1613,
+    "sha256": "82A8420288F6CBBCAD35B8531B82DD13E0F9AC334C6564F0CD5D074259E67336",
+    "signals": []
+  },
+  {
+    "path": "tests\\FewoZeitleiste2Test.php",
+    "lines": 87,
+    "sha256": "08C52B2266B131A50CFDA4F154FDF345497B11FC17CFB00BD6AD6479363FD902",
+    "signals": []
+  },
+  {
+    "path": "routes.php",
+    "lines": 20,
+    "sha256": "C4CC07AE2AF75C3ED28C7FCFDDD1843D3EAF5011F728159D8BB58D92DFFB8631",
+    "signals": []
+  },
+  {
+    "path": "README.md",
+    "lines": 32,
+    "sha256": "7260170CE7B864CDF7DA51D352F7A33681D989076BE6B98EE42C4A934B0D6BDC",
+    "signals": []
+  },
+  {
+    "path": "Plugin.php",
+    "lines": 584,
+    "sha256": "5561E601CC5E5AA15DEC5B4B38C491DE351D7E326E87C1E80985B517F5BAB9CE",
+    "signals": [
+      "DB::|Database::",
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "updates\\version.yaml",
+    "lines": 1118,
+    "sha256": "9965F67DDF33D86080451B62BDEC86182974C66BDB8BDA9E661D89A583BF5186",
+    "signals": []
+  },
+  {
+    "path": "updates\\update89.php",
+    "lines": 43,
+    "sha256": "C7AB39F3CA9BCE45D588E8F39A0F832D088EAF721AF15877D70EB0D3E92EF635",
+    "signals": []
+  },
+  {
+    "path": "updates\\update88.php",
+    "lines": 37,
+    "sha256": "27B69A198ED27B41C406B66DD85539C2E3958595BA499FAAA2B15CE08A0C544A",
+    "signals": []
+  },
+  {
+    "path": "updates\\update87.php",
+    "lines": 50,
+    "sha256": "27152FF3D505C65B0FB61AA7F635448A6546F0E916A0E904210A105C769C995B",
+    "signals": []
+  },
+  {
+    "path": "updates\\update86.php",
+    "lines": 44,
+    "sha256": "59DC36B5F5AA94CD44BA3874F3BD2E11E18EBF2B451037E6EBF3B8B2A69D4CCA",
+    "signals": []
+  },
+  {
+    "path": "updates\\update85.php",
+    "lines": 36,
+    "sha256": "278B429A5FCC7DFF252420AA230B8E10D8E195222BA040FB44EAE44AE7F6C624",
+    "signals": []
+  },
+  {
+    "path": "updates\\update84.php",
+    "lines": 36,
+    "sha256": "F867AEA8E60B8EC22A5BC9ADAD5AE5D496F406D596D56DD8FC36E476C3B8C5E8",
+    "signals": []
+  },
+  {
+    "path": "updates\\update83.php",
+    "lines": 36,
+    "sha256": "7DFBB4E6C14D461D2F414123FE0BDCE3D4ADA82E23919292637AC5A2C9B47507",
+    "signals": []
+  },
+  {
+    "path": "partials\\__sidebar.htm",
+    "lines": 18,
+    "sha256": "58AA0235DD17B448515104940276E104077EFE486D8A0861815CA87E1B47CD10",
+    "signals": []
+  },
+  {
+    "path": "updates\\update82.php",
+    "lines": 40,
+    "sha256": "D0BB5DA9046E7FB51A91554842355FF7A1CF7FCBE7689B6D38D34F6036EEC3AB",
+    "signals": []
+  },
+  {
+    "path": "partials\\_sidenav_menu_toolbar.htm",
+    "lines": 14,
+    "sha256": "25EC1C7D4AD9AA4424E3E7C9C3EDDAF4EF070FADA32E95E5977B18A37874F774",
+    "signals": []
+  },
+  {
+    "path": "updates\\update81.php",
+    "lines": 89,
+    "sha256": "14483450AB5583984A03D2ACA5DF5FB1EA4F3C3D52DBEDA05E2A3AE2E9F5BD33",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "partials\\_sidenav_menu.htm",
+    "lines": 40,
+    "sha256": "E476417F5E2A8736FD32A562ABCA20B885DEFE0F13FE21A1D21ADDED8095F052",
+    "signals": []
+  },
+  {
+    "path": "updates\\update80.php",
+    "lines": 42,
+    "sha256": "A9DC227884277390950870494090C2EABDCBC4FAF5FD6781A6B282E1D997A00A",
+    "signals": []
+  },
+  {
+    "path": "partials\\_sidenav.htm",
+    "lines": 18,
+    "sha256": "8A74FE172F0A8BB3D464DA1E4BC9BB788FFC3904423160C687E445A035762E0A",
+    "signals": []
+  },
+  {
+    "path": "updates\\update79.php",
+    "lines": 119,
+    "sha256": "715279147787533A6AC4218DDB10C4180EF6F4EFB1036424317849A8B1A0DB22",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "partials\\_sidebar_menu_toolbar.htm",
+    "lines": 14,
+    "sha256": "25EC1C7D4AD9AA4424E3E7C9C3EDDAF4EF070FADA32E95E5977B18A37874F774",
+    "signals": []
+  },
+  {
+    "path": "updates\\update78.php",
+    "lines": 56,
+    "sha256": "31A4286D38A2EDB1818D9FE987043B29D06AEA3ECB225EBE3581F9615157AF5C",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "partials\\_sidebar_menu.htm",
+    "lines": 40,
+    "sha256": "70824509BB06F0345CC7D7A0EAC3C7937B081899AE7778FA916AD0BE9C028FED",
+    "signals": []
+  },
+  {
+    "path": "updates\\update77.php",
+    "lines": 36,
+    "sha256": "3C76DED6D42CCB9AFA7FBDEBF583A5E54C0570EC10711E99DECBAD6DAFAD3A5B",
+    "signals": []
+  },
+  {
+    "path": "partials\\_sidebar.htm",
+    "lines": 18,
+    "sha256": "58AA0235DD17B448515104940276E104077EFE486D8A0861815CA87E1B47CD10",
+    "signals": []
+  },
+  {
+    "path": "updates\\update76.php",
+    "lines": 56,
+    "sha256": "16A239874FA923B13A87C44180A2568E252307ABD0BF0677CFCCEC6E5BB31638",
+    "signals": []
+  },
+  {
+    "path": "updates\\update75.php",
+    "lines": 76,
+    "sha256": "F129DCB8C9281EF2F90191A370C6701AEECFB1FC8FCE802003A254857675137D",
+    "signals": []
+  },
+  {
+    "path": "updates\\update74.php",
+    "lines": 36,
+    "sha256": "4158AC295FAEFD9881021A65E2B53551674D897443C3B0A2A61D4C045A5957F8",
+    "signals": []
+  },
+  {
+    "path": "updates\\update73.php",
+    "lines": 183,
+    "sha256": "68F4E824635F502A26BDAFC21D417DFE4C34CFB9D100FF9251AF17CDBAABE297",
+    "signals": []
+  },
+  {
+    "path": "updates\\update72.php",
+    "lines": 64,
+    "sha256": "39CC969F962554D7FB6B15AD0BFACC492EF4F92DF4E269C0A08C7BF9EA9C8B72",
+    "signals": []
+  },
+  {
+    "path": "updates\\update71.php",
+    "lines": 50,
+    "sha256": "9B254A460C0B6878B0AAEF1A8E34E64EE608F69E849BE22D4875337F36847302",
+    "signals": []
+  },
+  {
+    "path": "updates\\update70.php",
+    "lines": 32,
+    "sha256": "8870CCD9E41FB9024787AC4A3171E505AFFD8D5EC0B8DD27A730D84375C2388D",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update69.php",
+    "lines": 28,
+    "sha256": "623C838E5A9EE5FB4155F383D1F5D2669DECE5F0D12E8036F931E9ED42B20CAD",
+    "signals": []
+  },
+  {
+    "path": "updates\\update68.php",
+    "lines": 57,
+    "sha256": "17A8A073CD453B1CEF90A8DF5DA8F4A0EF862E754D9C9079C53FDCCB6EE7DC17",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update67.php",
+    "lines": 35,
+    "sha256": "A199B3AC70B641068E40A55AAE8BE8AB0097EC8927DB67B181BB0105F5E9C79C",
+    "signals": []
+  },
+  {
+    "path": "updates\\update66.php",
+    "lines": 63,
+    "sha256": "2EAAFFDB6BB30633D0F0EE50AAC01CFCAD5B750D3A5FF69898FC590C934D23C3",
+    "signals": []
+  },
+  {
+    "path": "updates\\update65.php",
+    "lines": 33,
+    "sha256": "86E2F5CB4AE380FF24146794E9D9C095C45D031B68217353C2A92479D8AE1F41",
+    "signals": []
+  },
+  {
+    "path": "updates\\update64.php",
+    "lines": 36,
+    "sha256": "5D55F6D8CD6BDA4E7D3BC0163F496FDEF70D13A04ABB6763F90014917272B2FD",
+    "signals": []
+  },
+  {
+    "path": "updates\\update63.php",
+    "lines": 160,
+    "sha256": "A60506AC3A45EF81DFAC9729D315E4D0F5C95F699186EED3B73E51B1319EDCFB",
+    "signals": []
+  },
+  {
+    "path": "updates\\update62.php",
+    "lines": 425,
+    "sha256": "A47409C896A9E33D563615C5D2F87297F4F7511C00D554D07B3C46C4364E60DC",
+    "signals": []
+  },
+  {
+    "path": "updates\\update61.php",
+    "lines": 38,
+    "sha256": "F4F2A8A45D686A9C6902AEA53966D7657EA8512006E33E15D80F17F947DF6142",
+    "signals": []
+  },
+  {
+    "path": "updates\\update60.php",
+    "lines": 173,
+    "sha256": "4915A218B2911AF1BFA03F78CCCA9CF6DAEF3A3CD03223804C3F0DA656353369",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update59.php",
+    "lines": 155,
+    "sha256": "2E867B8A7B14E3CE8E1AFD42705066BB55857F7A83F3C90DE6E8B12E7AE882B4",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update58.php",
+    "lines": 813,
+    "sha256": "5EF299827BA24A44FA27758FB631B0401567E31CD7FE8AC247F290D4FD8F1B32",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "updates\\update57.php",
+    "lines": 33,
+    "sha256": "87C6E7E017D688DFEFBB4A668E15AA5B54DF9B49FF40AF15FB55F1E6A8A27FDD",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update56.php",
+    "lines": 811,
+    "sha256": "CBF8C54DB60569EE8AAAF099172CDA4769F02780CA5F402C80A5C17D8F9A2429",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "updates\\update55.php",
+    "lines": 35,
+    "sha256": "A5F06F5BE3BD9E2FF53A0AEEEDFD06A265F307B6DA169A07D41A143BBF0D83DC",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "updates\\update54.php",
+    "lines": 23,
+    "sha256": "DBD4EF67ABD83A6017EE1BF794A254F8A2E4181999B799F38CFCC6D4482B25D5",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update53.php",
+    "lines": 28,
+    "sha256": "F27BCB097DF2E0048F08E4187E5D7B1F8E261C48017D2DE32F88272EEFD5D05C",
+    "signals": []
+  },
+  {
+    "path": "updates\\update52.php",
+    "lines": 33,
+    "sha256": "29060F43EAEC60D9AC6014F99565647B0F4FE678DEFD79E8CB49FBF9DBA01891",
+    "signals": []
+  },
+  {
+    "path": "updates\\update51.php",
+    "lines": 17,
+    "sha256": "1A07BA99358F4D105E79530A54645A7FE283CB93965603D76F2BB7FE524F60BA",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update50.php",
+    "lines": 17,
+    "sha256": "8D914ECDF9D83A7E7F56CA12DD071C3449BF0E7F0212E63F21481AB577FF26AF",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update49.php",
+    "lines": 35,
+    "sha256": "F564C382E33B7268E80D34AE022BC694B062069FB4274A5A4458B4B3E9F0AE64",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update48.php",
+    "lines": 35,
+    "sha256": "0F86EA3E6A0A9BF199F8A34EA7AD327A38CDBD5AB2DCEA5775960081ED3ACE0C",
+    "signals": []
+  },
+  {
+    "path": "updates\\update47.php",
+    "lines": 43,
+    "sha256": "357F8A35ADD9359EAB1A32F1DF84C14F8ADE946495CEE3F54163D3B1ACE04128",
+    "signals": []
+  },
+  {
+    "path": "updates\\update46.php",
+    "lines": 42,
+    "sha256": "5C591EB934D71661910799511777564EDD9A291EB7AAF02665662E4DF1D7F079",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update44.php",
+    "lines": 56,
+    "sha256": "3804D21C569C3D164D413478BC409179C7FC6BB8FE27A5E4490DC12C380047CD",
+    "signals": []
+  },
+  {
+    "path": "updates\\update43.php",
+    "lines": 35,
+    "sha256": "22934992F7E1059A40CA040EFD1B000D4CDD09ACFC9A1889F32960643CFA83DC",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update42.php",
+    "lines": 27,
+    "sha256": "1DA7A504DAD07E0491B7285E16BBB659F0A6C2C2E0374A8C08D6DF2A8F259C4F",
+    "signals": []
+  },
+  {
+    "path": "updates\\update41.php",
+    "lines": 31,
+    "sha256": "052134FC3D0F2FED6871C21515FF49197D04BCC8D3C515893A27B04D45F948C4",
+    "signals": []
+  },
+  {
+    "path": "updates\\update40.php",
+    "lines": 31,
+    "sha256": "76E73C15D3D638E7ACCFEA43BCBA1443F21D2C400B59D620B2A3AF715088BB0A",
+    "signals": []
+  },
+  {
+    "path": "updates\\update39.php",
+    "lines": 31,
+    "sha256": "3B4B5AF2A48FC47F9C8B38133BCB96D3FF2EB4F649DBEB7CD434CA3812712BA6",
+    "signals": []
+  },
+  {
+    "path": "updates\\update38.php",
+    "lines": 38,
+    "sha256": "3B154CAE750BD402742E60666A6FADB177631BBF3F6B19921B8E6B00FF33DAD7",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update36.php",
+    "lines": 80,
+    "sha256": "9F012D72069261C926176DC494E7C381E55E9BA412EF045C8AC93C87A08AA9EE",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update35.php",
+    "lines": 25,
+    "sha256": "8C773973F7FD2470B6CCA3F414147B7DE8504144DBF3574B1D626116CEE68EB2",
+    "signals": []
+  },
+  {
+    "path": "updates\\update34.php",
+    "lines": 25,
+    "sha256": "DD54389E6819FF948771C6B4A6C5F309CC9CA1BFD22074AA859AB2A54B50DDF0",
+    "signals": []
+  },
+  {
+    "path": "updates\\update33.php",
+    "lines": 104,
+    "sha256": "AA06C0AD71D079D709652783B28248682E36BDD732903148DBD9B4E89A26387F",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "updates\\update32.php",
+    "lines": 37,
+    "sha256": "A90CC794906019A4AC3FF6335F25DC0D750DA55F962612B8D835472D31F1EA11",
+    "signals": []
+  },
+  {
+    "path": "updates\\update31.php",
+    "lines": 25,
+    "sha256": "275A64003768D0527E0F0D7CF0879B24CF00816EC46DE4000D3E9777552576A2",
+    "signals": []
+  },
+  {
+    "path": "updates\\update30.php",
+    "lines": 24,
+    "sha256": "601428EC93863C5334236D526C87D7A8B1A250FD6C74438A72FF0AA96B36A62B",
+    "signals": []
+  },
+  {
+    "path": "updates\\update29.php",
+    "lines": 26,
+    "sha256": "96ADB2A906BE8E7B71A58C108F42FDA0F0B2A21195375274C02F13057A9F4144",
+    "signals": []
+  },
+  {
+    "path": "updates\\update28.php",
+    "lines": 26,
+    "sha256": "03CDF679516B71F16D5C5A9601A23FA4F63445665CBB66D63EA78E47C9370238",
+    "signals": []
+  },
+  {
+    "path": "updates\\update27.php",
+    "lines": 26,
+    "sha256": "35080C71A627C395E9EF737B2D2CF017EBF50534C81695D428F6186A3FE074EC",
+    "signals": []
+  },
+  {
+    "path": "updates\\update26.php",
+    "lines": 21,
+    "sha256": "F9FC4E12A2057B900D5099AD979BEF481A3A8125137705B5F5C7C9D73893EA7D",
+    "signals": []
+  },
+  {
+    "path": "updates\\update25.php",
+    "lines": 29,
+    "sha256": "811DE83FCC9A990FCF1E451AC3D1E02C3F7F4D52308802D0A8CF3027F752EDFF",
+    "signals": []
+  },
+  {
+    "path": "updates\\update24.php",
+    "lines": 123,
+    "sha256": "2612456A290EC7D4342531A538AAEE601335AEE744E1F03B866A2B0508C2214E",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "updates\\update23.php",
+    "lines": 40,
+    "sha256": "51BE9FE482A1EA0337A19668193774E76E7FE4536C83366E38D7A40E1EFC1F96",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update22.php",
+    "lines": 38,
+    "sha256": "223F18915F12DB4C0899081857555331AE68D64EEDE3D16427210C7F18881425",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update21.php",
+    "lines": 20,
+    "sha256": "0DD3D0E523A60EEF74544B99256EBB57A24B10D8B976CC02651F9FD25661B179",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update20.php",
+    "lines": 25,
+    "sha256": "5F10053790E4D89B7E8D3509A1A73E564D5774F8DA90E04E29BA94729619DB80",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update19.php",
+    "lines": 24,
+    "sha256": "B52A4A2AC025048D6FB8819B1AF90BCA1436D5A83177E3E390C7EFE2154362C2",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update18.php",
+    "lines": 28,
+    "sha256": "00B658BAFCB0724DF4849EE3BC648FC9A0B365C50021F4B65B62785163948EB1",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update17.php",
+    "lines": 30,
+    "sha256": "9B2952FB47D964227F920CFD7201E13A1981D0F2CDEBC71DBA76FCDEE0371572",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update16.php",
+    "lines": 23,
+    "sha256": "D966E9DCC918D256E6D6AF5B7FEC17A67E6EA5D55AB8040092108566AAE165D3",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update15.php",
+    "lines": 22,
+    "sha256": "DAF46295CF6256E581861C46ECB3F6785017D8D2F963BC53C247BE76797A8245",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update14.php",
+    "lines": 24,
+    "sha256": "C034EBAD527EAAD6187C4959E1E612ECDB55095DAAF3334FA640A6A5E09B942C",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update13.php",
+    "lines": 30,
+    "sha256": "3C704C6A6A3B17378B96DF949180C2FA49C2A9F1576725AD3F9FEAD84D4504A9",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update12.php",
+    "lines": 26,
+    "sha256": "D271D055638788F38B169ED3AA4709EA52EBBD1E97BBDE825E81C6328DB425D5",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update11.php",
+    "lines": 35,
+    "sha256": "F3C1200B259170E582F512522EE8A7E7D2701BF16EC5B165F3AFD7D7A1CE1D5D",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update10.php",
+    "lines": 21,
+    "sha256": "497CF00C1A280A98CF6C2417F1AB5EC7E3D3E50B6E510FE8F834FF1BBB6E6A7F",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update09.php",
+    "lines": 21,
+    "sha256": "6486015A84B26ED2E0C9B4E20F3180D7F5401277267583CF5A6411D5E6E37E2F",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update08.php",
+    "lines": 29,
+    "sha256": "24E5988F746862E39021B42AD0FA999CD46E44D8F9EAE41FAC921D016E2A3D23",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update07.php",
+    "lines": 20,
+    "sha256": "9C482E1CD5F77304FF31236C7654EF7DFB41A09E4572E5B0755AACA58DBF2D9B",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update06.php",
+    "lines": 38,
+    "sha256": "F308E7C0341D16AC4FE146D6F3EDF9580A5C5ADA10B5FBCBB5FBAB6078CE21CA",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update05.php",
+    "lines": 23,
+    "sha256": "ADF51049FEE1E4357E214B8DA15EA34AE0A8FB8C93EA564283135880E1648D4F",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update04.php",
+    "lines": 20,
+    "sha256": "C1302D33B82F4A06AF5B7B908AB3764D448054847CE64EC950C4752A02C5AD76",
+    "signals": []
+  },
+  {
+    "path": "updates\\create_update03.php",
+    "lines": 20,
+    "sha256": "2A5C5D55A3DD378F9BAE67798B92BD3167235847ED3D24A83D933E50BBC4CF3F",
+    "signals": []
+  },
+  {
+    "path": "models\\Votings.php",
+    "lines": 28,
+    "sha256": "88DDD8405AD67DCD4125B84ECC2C963BD6819F383DFCFE8A1251F1125BFE0220",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "controllers\\Votings.php",
+    "lines": 25,
+    "sha256": "7589445B3D5E690F0B05DF90CDE73E7537C9273E16A83A1C2593C165BFE7035E",
+    "signals": []
+  },
+  {
+    "path": "models\\votings\\fields.yaml",
+    "lines": 18,
+    "sha256": "184489FD6698938D08C9E4289321B1FC163A447A2DEB17DA07642B8923A4F311",
+    "signals": []
+  },
+  {
+    "path": "models\\votings\\columns.yaml",
+    "lines": 44,
+    "sha256": "2E508E21D4D46960518A43DAAB843884A16D562F8693A55ADBDE9984C9712937",
+    "signals": []
+  },
+  {
+    "path": "models\\UserGroup.php",
+    "lines": 61,
+    "sha256": "D9CB4A6F10046C12158A4853DA02EDEF4CFD649644D6FA234F162BE0604E45CE",
+    "signals": []
+  },
+  {
+    "path": "controllers\\votings\\_list_toolbar.htm",
+    "lines": 20,
+    "sha256": "A270095CE53C2C36B8BD12951E5424B46489A80C9DD18EA66F50F7E2ECC809A0",
+    "signals": []
+  },
+  {
+    "path": "controllers\\votings\\index.htm",
+    "lines": 2,
+    "sha256": "2D1BDADE9CA0F211D71737ED116B3F7309981DCAF4A343E855165AACB246261C",
+    "signals": []
+  },
+  {
+    "path": "controllers\\votings\\config_list.yaml",
+    "lines": 17,
+    "sha256": "CF41C875CCE2D344C7407657B934792D0155A234ABCD2219390A2DAAC337AA39",
+    "signals": []
+  },
+  {
+    "path": "controllers\\votings\\config_form.yaml",
+    "lines": 23,
+    "sha256": "70EAE56CDCCA7811DCAB0FD82F846E7A0D226F4D367FE8353CA661B5EC286D79",
+    "signals": []
+  },
+  {
+    "path": "controllers\\Users.php",
+    "lines": 254,
+    "sha256": "81FCFBC3AAD4BB76F4FB338187768F0287C20A8E0F452990F60A8649A102C285",
+    "signals": [
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "models\\usergroup\\fields.yaml",
+    "lines": 20,
+    "sha256": "C8C01A21CB14BFBCF29409B9F48548D696B4F94086F0713A8A58D81C1E84A9D6",
+    "signals": []
+  },
+  {
+    "path": "models\\usergroup\\columns.yaml",
+    "lines": 27,
+    "sha256": "950250ADD22D3E2AAF912367A5AE3059267CD257AC48F34901073825571B59E5",
+    "signals": []
+  },
+  {
+    "path": "models\\User.php",
+    "lines": 376,
+    "sha256": "E1AA732FDE76A297C63D3FBCD192A7EC550A689031F0773B4279E7AA1CB8A664",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "models\\user\\fields.yaml",
+    "lines": 82,
+    "sha256": "BA2AF9A47AE88C2CC58E1A506932E70C9F98CE8344DE631521FF771711300B9A",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "models\\user\\columns.yaml",
+    "lines": 37,
+    "sha256": "7644D1B9660437877F46436A65C3DD51D045D79D8FC14E356AC0CF3055A0B69F",
+    "signals": []
+  },
+  {
+    "path": "models\\Throttle.php",
+    "lines": 19,
+    "sha256": "2EC874911F71B07788C8CF65F441A2C462C915891FA4FEEB1CFB86ABAE6EE671",
+    "signals": []
+  },
+  {
+    "path": "models\\SlideShows.php",
+    "lines": 165,
+    "sha256": "2F066350EDC2DB402ED93D6E729E42E34F7FCE27F5696C61078E4D236EE85900",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "controllers\\users\\_preview_toolbar.htm",
+    "lines": 27,
+    "sha256": "0106A99F4CF44C3CCE7B1E7CE72483996206963787C78FDFA0BC8F3080CE9866",
+    "signals": []
+  },
+  {
+    "path": "controllers\\users\\preview.htm",
+    "lines": 46,
+    "sha256": "F668EB1B8C942DCBD45ADF929F97A888D6DB4C3EF6281D70C2D0AA91EC6E8F57",
+    "signals": []
+  },
+  {
+    "path": "controllers\\users\\index.htm",
+    "lines": 3,
+    "sha256": "DAEDD5007A2A5C89BB477EE5C330F05BA006125EAFA754C38B82054278157792",
+    "signals": []
+  },
+  {
+    "path": "controllers\\users\\config_list.yaml",
+    "lines": 38,
+    "sha256": "F6EBA7F6E6EACD4FC1FBAA026D25A5D9319A182DC9BD866BFB8DCF51AB58C1D5",
+    "signals": []
+  },
+  {
+    "path": "controllers\\users\\config_form.yaml",
+    "lines": 26,
+    "sha256": "564C05DBD1A11B9167749A1A21A88D96394D8055ED4139C683D3944ADF65E992",
+    "signals": []
+  },
+  {
+    "path": "controllers\\UserGroups.php",
+    "lines": 51,
+    "sha256": "DB8A789ACAAAF09BE56A942B3A0683F93DF7303359561C055451C397C9AD8761",
+    "signals": [
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "models\\slideshows\\fields.yaml",
+    "lines": 472,
+    "sha256": "B758659BD741C7C8052B366AC98B19BC159B49486F4E90B6963EB07230C9FDDE",
+    "signals": []
+  },
+  {
+    "path": "models\\slideshows\\columns.yaml",
+    "lines": 12,
+    "sha256": "DC03FDED715E51B3589380C878450C16550D8865BAFAD983FD379FBD1EDC26E5",
+    "signals": []
+  },
+  {
+    "path": "models\\Settings.php",
+    "lines": 15,
+    "sha256": "200B842632E8F172CBAFE7B3E6E258FB67130682950FFBA50E716890CA55B4B7",
+    "signals": []
+  },
+  {
+    "path": "controllers\\usergroups\\_list_toolbar.htm",
+    "lines": 13,
+    "sha256": "C92D0AA3232B3B00D33E19AB14EE2C71BDD8C89338A783DE492E9579DA9577AF",
+    "signals": []
+  },
+  {
+    "path": "controllers\\usergroups\\update.htm",
+    "lines": 57,
+    "sha256": "6B5B45A08E7811865A5CAA46B0D314B214196B2A893211A153C75FDED7AB60D5",
+    "signals": []
+  },
+  {
+    "path": "controllers\\usergroups\\preview.htm",
+    "lines": 19,
+    "sha256": "F9A6A7FCDA4DDA990545269C2958F38539EB88F66625BDDF2B668FDDAA54ED71",
+    "signals": []
+  },
+  {
+    "path": "controllers\\usergroups\\index.htm",
+    "lines": 3,
+    "sha256": "DAEDD5007A2A5C89BB477EE5C330F05BA006125EAFA754C38B82054278157792",
+    "signals": []
+  },
+  {
+    "path": "controllers\\usergroups\\create.htm",
+    "lines": 49,
+    "sha256": "F1FAD72953E3B5631508D61F9F9A2AA91F20C37EFD6C5937F6B2D326193D893E",
+    "signals": []
+  },
+  {
+    "path": "controllers\\usergroups\\config_list.yaml",
+    "lines": 45,
+    "sha256": "C6013662809D9012EFD0B08F2C40BF5517489E4B2F5BB8DC2AD35AACB146536F",
+    "signals": []
+  },
+  {
+    "path": "controllers\\usergroups\\config_form.yaml",
+    "lines": 31,
+    "sha256": "73B730368255A6E6AE7695C6F086107A7DBDE656981CC1DBD4217E58C682D2DC",
+    "signals": []
+  },
+  {
+    "path": "controllers\\SlideShows.php",
+    "lines": 52,
+    "sha256": "A25C14EEAF64F21A43F6E98D106555B7F24BDB0D75C9CAB037DE154AFA021CB6",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "models\\settings\\fields.yaml",
+    "lines": 369,
+    "sha256": "9E34E6C22135ED680212C018B92AB1D4ED9E4D3039485ACB84A9EC1E620CCEE1",
+    "signals": []
+  },
+  {
+    "path": "models\\RestzahlungenList.php",
+    "lines": 17,
+    "sha256": "B80B195C4770D10C61D1536A2D11A98DE6D3113017AE90F92F19EADB64EFBBB2",
+    "signals": []
+  },
+  {
+    "path": "models\\restzahlungenlist\\fields.yaml",
+    "lines": 4,
+    "sha256": "1404F63DB1D73CB894AFAD4C9B823AD9A2256004125788F1CFD28E71ED60E885",
+    "signals": []
+  },
+  {
+    "path": "models\\restzahlungenlist\\columns.yaml",
+    "lines": 30,
+    "sha256": "3B07AF1454B3E00C62A229102AE65F9C29D09415D3DE8475BB60403B0D457B15",
+    "signals": []
+  },
+  {
+    "path": "models\\GlobalSettings.php",
+    "lines": 117,
+    "sha256": "C815774F915741824C8D436E42F56FE1BAB033797ADB551B075683FA4250B3D7",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "controllers\\slideshows\\_list_toolbar.htm",
+    "lines": 20,
+    "sha256": "40520D749E9EA7FB5E8A43B0085B13DF8158046BA3276B5C34A52706A966CFAE",
+    "signals": [
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "controllers\\slideshows\\update.htm",
+    "lines": 54,
+    "sha256": "67DBDB56216910C1FF3990741F14CCA9B0E164F8C5B968CAF5A54BDE95F45D57",
+    "signals": []
+  },
+  {
+    "path": "controllers\\slideshows\\preview.htm",
+    "lines": 22,
+    "sha256": "B40964FA08CA7776358EA383CFE5ED8899E055E6AF749C87C366390C497B445E",
+    "signals": []
+  },
+  {
+    "path": "controllers\\slideshows\\index.htm",
+    "lines": 2,
+    "sha256": "2D1BDADE9CA0F211D71737ED116B3F7309981DCAF4A343E855165AACB246261C",
+    "signals": []
+  },
+  {
+    "path": "controllers\\slideshows\\create.htm",
+    "lines": 46,
+    "sha256": "E3BB238B6570EDDCF856FD18D26A2A67154F60E07AD12BF71BC06A932E37E780",
+    "signals": []
+  },
+  {
+    "path": "controllers\\slideshows\\config_list.yaml",
+    "lines": 37,
+    "sha256": "5C799C778A408ABBE2558136E7EF26B179307C763A82516828A47F41F941DBAE",
+    "signals": []
+  },
+  {
+    "path": "controllers\\slideshows\\config_form.yaml",
+    "lines": 11,
+    "sha256": "77AAF3335F554B9260C8891B9D3BC94FB5C4B476E2B06153276BE66248E8581C",
+    "signals": []
+  },
+  {
+    "path": "controllers\\RestzahlungenList.php",
+    "lines": 88,
+    "sha256": "BAB43A374E7172599DADC7FB2DE1B4946DD873B1D0CD637ECFB84537BCE14E64",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "models\\globalsettings\\_content_field.htm",
+    "lines": 2,
+    "sha256": "8E1AC3C0606183B8148BC8C88317D6C13206B149AF14AD28E07F4901C66F6A5F",
+    "signals": []
+  },
+  {
+    "path": "models\\globalsettings\\fields.yaml",
+    "lines": 782,
+    "sha256": "97AFBDF3590681A7A0A5C9BA0D26E7AB58D7AB40C252DA4301E13C2D61BECF7A",
+    "signals": [
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "models\\globalsettings\\columns.yaml",
+    "lines": 4,
+    "sha256": "0BAC22C23EC7AB42C498D80883612AA47813108F8A7DF95E09D566A8E6DDF953",
+    "signals": []
+  },
+  {
+    "path": "models\\Gallery.php",
+    "lines": 24,
+    "sha256": "053E63F7A81EDDA8A1E89BDE7FBF2FB726F08C923811F9DD6D79F5B1EA2DDFAC",
+    "signals": []
+  },
+  {
+    "path": "controllers\\restzahlungenlist\\_list_toolbar.htm",
+    "lines": 20,
+    "sha256": "BE777732B5ACA45ECDE22DA9B1657EE7BA3178C62FE611913A806921F4F8ED19",
+    "signals": []
+  },
+  {
+    "path": "controllers\\restzahlungenlist\\index.htm",
+    "lines": 2,
+    "sha256": "2D1BDADE9CA0F211D71737ED116B3F7309981DCAF4A343E855165AACB246261C",
+    "signals": []
+  },
+  {
+    "path": "controllers\\restzahlungenlist\\config_list.yaml",
+    "lines": 15,
+    "sha256": "2509380F4A875FAAD3091354F1985EF7C3447FB863B400001F3362702C97BECC",
+    "signals": []
+  },
+  {
+    "path": "controllers\\restzahlungenlist\\config_form.yaml",
+    "lines": 18,
+    "sha256": "C9A5042FADAD330D0904F934A3AF18F47FE02F808977DFC3FE368FBF3996B986",
+    "signals": []
+  },
+  {
+    "path": "controllers\\Galleries.php",
+    "lines": 31,
+    "sha256": "5848AA39CA09F5425692965760A1795E2188F076D1B838B93FD0CAF146283487",
+    "signals": [
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "models\\gallery\\fields.yaml",
+    "lines": 14,
+    "sha256": "AC467FA08942D65979577B9EFBA23C035C2278653DA2B753D140A422B56FF9C5",
+    "signals": []
+  },
+  {
+    "path": "models\\gallery\\columns.yaml",
+    "lines": 15,
+    "sha256": "84F8069919CE0F2213092E98FA59E9232252E7E8C6211CF04B8476C134AF7617",
+    "signals": []
+  },
+  {
+    "path": "models\\EgSettings.php",
+    "lines": 71,
+    "sha256": "4FA25291E085411B9F69191C7FB5E5A82C9BF98437D25951754AFC798B531F61",
+    "signals": []
+  },
+  {
+    "path": "models\\egsettings\\_template_hint.htm",
+    "lines": 2,
+    "sha256": "0ED9CCBB67053B9492AC11CBE14D741CF92348F87768F82E41D61D5403C8229B",
+    "signals": []
+  },
+  {
+    "path": "models\\egsettings\\fields.yaml",
+    "lines": 81,
+    "sha256": "969AF6B6D490E807C601CD397BD966934AF298064CE231A25E0131908F0F948D",
+    "signals": []
+  },
+  {
+    "path": "models\\ConsentManager.php",
+    "lines": 15,
+    "sha256": "CB311E43175C1FFF8EDFE11C02382B0D0E673C8EA6831E15D13225AC47560876",
+    "signals": []
+  },
+  {
+    "path": "controllers\\galleries\\_list_toolbar.htm",
+    "lines": 21,
+    "sha256": "62FA6CAC4438C411FA1C928BC2BC706B7E17C68CAFA2AFBE2AD4DE0396439DC0",
+    "signals": []
+  },
+  {
+    "path": "controllers\\galleries\\update.htm",
+    "lines": 61,
+    "sha256": "A8439E232370381180A0D4629B17426D0C8E1BB52FBC0BBDFF6C1B4F94AD02AA",
+    "signals": []
+  },
+  {
+    "path": "controllers\\galleries\\preview.htm",
+    "lines": 19,
+    "sha256": "F351EB5C906B2E9C88C8B81CB837C5912F7AB8090835814DECAF09594E8F62BE",
+    "signals": []
+  },
+  {
+    "path": "controllers\\galleries\\index.htm",
+    "lines": 2,
+    "sha256": "2D1BDADE9CA0F211D71737ED116B3F7309981DCAF4A343E855165AACB246261C",
+    "signals": []
+  },
+  {
+    "path": "controllers\\galleries\\create.htm",
+    "lines": 53,
+    "sha256": "5411142B711DB1B94C57D7493D6828535E6361EC572EE19E864020F637F77CF3",
+    "signals": []
+  },
+  {
+    "path": "controllers\\galleries\\config_list.yaml",
+    "lines": 40,
+    "sha256": "7172285817EC5F6CF41DE5B320B82834D34A5F8F8B16E39511F5963AA6350762",
+    "signals": []
+  },
+  {
+    "path": "controllers\\galleries\\config_form.yaml",
+    "lines": 28,
+    "sha256": "929E5B291510FCFF0E559013CFD34F460CFF9CC8FF689A88D30773BF5AE89054",
+    "signals": []
+  },
+  {
+    "path": "controllers\\BookingList.php",
+    "lines": 184,
+    "sha256": "449075B6D378988A86934805CA22B33F7707AD3B6A52AADF49CF0D28F9A1DB77",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "models\\consentmanager\\fields.yaml",
+    "lines": 139,
+    "sha256": "2D57E3579D48ED65F9D816CE69FC492DE5867F1ADBB328847CA6D12EB878499E",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "models\\BookingList.php",
+    "lines": 17,
+    "sha256": "A947EF49E692DEA1ED133DC44C7C9974EE631E019E5880B32CBE59A76A85FCC5",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookinglist\\_list_toolbar.htm",
+    "lines": 50,
+    "sha256": "59EA122FB18EA910CD2451EEDBE96EEF3F858F680AFC98B30006E74780116E7A",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookinglist\\index.htm",
+    "lines": 15,
+    "sha256": "3751FD0123731CF1614254D16DA0C6404B45F3C8BEB2E421B469EC4745331CD6",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookinglist\\config_list.yaml",
+    "lines": 17,
+    "sha256": "98820DC609F2249390F461233EC7C4F160D40EA2A856A3225F08E4F8028210FA",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookinglist\\config_form.yaml",
+    "lines": 23,
+    "sha256": "B64E1613A09819F308E01846500C51A0C2B2F3DC5E3375D38332D59985C4BF91",
+    "signals": []
+  },
+  {
+    "path": "controllers\\BookingAsk.php",
+    "lines": 24,
+    "sha256": "B3CAD9B02F3B63FAB405F16307F20033DA3B3B2603B0541EC9FF93EF1B9E0302",
+    "signals": []
+  },
+  {
+    "path": "models\\bookinglist\\fields.yaml",
+    "lines": 18,
+    "sha256": "06ACF5F30B8A57B2E161B8E8509F5104522908F46D60509BFEC50E7235BB3BF9",
+    "signals": []
+  },
+  {
+    "path": "models\\bookinglist\\columns.yaml",
+    "lines": 72,
+    "sha256": "1D05CC00094135E32704B4133E25B0DDAD80185D7F5EE1625B3B263F554E41ED",
+    "signals": []
+  },
+  {
+    "path": "models\\BookingAsk.php",
+    "lines": 57,
+    "sha256": "0E07407A4811360A9C8668E4D91AAA8FFED5ACDAE9073C4558979480D038F632",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\("
+    ]
+  },
+  {
+    "path": "controllers\\bookingask\\_list_toolbar.htm",
+    "lines": 21,
+    "sha256": "EDB2D59B403674215D3423411FF51027024E55CF01FF83710618968148928D7B",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookingask\\update.htm",
+    "lines": 54,
+    "sha256": "91569F12F2286E9AA6C94447CF6024652577ADDF721C654723026427C00480AA",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookingask\\preview.htm",
+    "lines": 19,
+    "sha256": "D22A0765B4F62EB9A1B88375A250269EC9C126EE015813042F5891A83D6C9725",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookingask\\index.htm",
+    "lines": 2,
+    "sha256": "2D1BDADE9CA0F211D71737ED116B3F7309981DCAF4A343E855165AACB246261C",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookingask\\create.htm",
+    "lines": 53,
+    "sha256": "75B1D033D0389FE3DF5941A5D82D0205B9B6A64CDF5E3D6C4F4E6F21256D20C0",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookingask\\config_list.yaml",
+    "lines": 17,
+    "sha256": "DBC368D132E804DF3D2F58B7C3A9AE2AA32EB9787076247B3F00252EB002C2C1",
+    "signals": []
+  },
+  {
+    "path": "controllers\\bookingask\\config_form.yaml",
+    "lines": 24,
+    "sha256": "035B36F68BC05E5F4D56CB0CC796E34CFE4A9AD12F4968DAD6F82AFADB2B70A7",
+    "signals": []
+  },
+  {
+    "path": "controllers\\AusstattungSet.php",
+    "lines": 24,
+    "sha256": "60B1BDA1E70CE1D62412F94ADB2A35F4CA1A1EEFF2FDC5E966C4DF47B1873069",
+    "signals": []
+  },
+  {
+    "path": "models\\bookingask\\fields.yaml",
+    "lines": 20,
+    "sha256": "E91AFB80A368BF633D2523AF16DD4E9F1FBA4F6169BA8E06E7A49F83D3A9F6F5",
+    "signals": []
+  },
+  {
+    "path": "models\\bookingask\\columns.yaml",
+    "lines": 16,
+    "sha256": "4349BB17B1B32A04E621277D30B27FBE3DF1544D5DA3789B5B73B251810F3685",
+    "signals": []
+  },
+  {
+    "path": "models\\AusstattungSet.php",
+    "lines": 45,
+    "sha256": "D69783EE577443689C82ADEBA7435CCFB01F70C59EB18F083CDCD62F2206E0FD",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\("
+    ]
+  },
+  {
+    "path": "controllers\\ausstattungset\\_list_toolbar.htm",
+    "lines": 20,
+    "sha256": "20160227CEFCA76E7D8883B1A195EE1595D1969BB21E690F482B386D2344E835",
+    "signals": []
+  },
+  {
+    "path": "controllers\\ausstattungset\\update.htm",
+    "lines": 54,
+    "sha256": "82AC65242B04D4BE0B304D76882083EF74C55A48409CF03E00766FA58C83D22F",
+    "signals": []
+  },
+  {
+    "path": "controllers\\ausstattungset\\preview.htm",
+    "lines": 22,
+    "sha256": "377CB6477F9870BC22F6C1C0CE07060916808D60DBEF58980F7B051D1BA88D60",
+    "signals": []
+  },
+  {
+    "path": "controllers\\ausstattungset\\index.htm",
+    "lines": 2,
+    "sha256": "2D1BDADE9CA0F211D71737ED116B3F7309981DCAF4A343E855165AACB246261C",
+    "signals": []
+  },
+  {
+    "path": "controllers\\ausstattungset\\create.htm",
+    "lines": 46,
+    "sha256": "F22AD838DE8B96CB85EB6FF5C76A864241C6DABF79985D9A8DFBF59A4F32C7E1",
+    "signals": []
+  },
+  {
+    "path": "controllers\\ausstattungset\\config_list.yaml",
+    "lines": 17,
+    "sha256": "B47EFB9A1EB7C96BC129BB6ECBBC65D6F6F646C91E9E87C8206912268A3ACEE3",
+    "signals": []
+  },
+  {
+    "path": "controllers\\ausstattungset\\config_form.yaml",
+    "lines": 21,
+    "sha256": "7945B55D5BDB2B47A92F1AAA9D103CA5CEC894D2EE14B398B0327DC92BFA3006",
+    "signals": []
+  },
+  {
+    "path": "controllers\\ausstattungset\\ausstattung.htm",
+    "lines": 30,
+    "sha256": "3E121F53C9021EAE7E6EE204741165F03227D273BA9ADDD965C52E1B9FC87E9F",
+    "signals": []
+  },
+  {
+    "path": "composer.json",
+    "lines": 10,
+    "sha256": "32D764B2A03137314E0CC2D3C6CDD3418B35389049CD94EF51C2C2D324A82A29",
+    "signals": []
+  },
+  {
+    "path": "LICENCE.md",
+    "lines": 131,
+    "sha256": "3BBFC495F1B52A40A07D9EC00F4852D495FD32AE5340DEA07E6381FF0231A503",
+    "signals": []
+  },
+  {
+    "path": "models\\ausstattungset\\fields.yaml",
+    "lines": 13,
+    "sha256": "0D8293D24DCDFC80EB253DAADA465CDFA013F38B41371417A99332C3A7EB3D8C",
+    "signals": []
+  },
+  {
+    "path": "models\\ausstattungset\\columns.yaml",
+    "lines": 12,
+    "sha256": "0F8E25EF8523A0CE6C59B65BAD89608D07A93FB300082CFD4E06DC8A7330A4C3",
+    "signals": []
+  },
+  {
+    "path": "formwidgets\\SyncFeondiActivation.php",
+    "lines": 243,
+    "sha256": "CACC78FC68D51CF7248D78C19545A699D4298E5BC63BE0829CF2A4106D441225",
+    "signals": [
+      "DB::|Database::",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "formwidgets\\ReloadObjSuchindex.php",
+    "lines": 50,
+    "sha256": "EA755D8748277264C5FB509DA534FD35EE5694F0B2A1EACB2277007732A26A56",
+    "signals": []
+  },
+  {
+    "path": "lang\\en\\messages.php",
+    "lines": 6,
+    "sha256": "91C19C4C7E79404707363A51798BB4E5CE6490908D55886984004C646D1355A3",
+    "signals": []
+  },
+  {
+    "path": "lang\\en\\lang.php",
+    "lines": 712,
+    "sha256": "A037ADF1D3A81DD55CF7D8D24DBB184BE8E6DF4CDCB8A6C6F634B0F4EF587E3B",
+    "signals": [
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\AuthManager.php",
+    "lines": 42,
+    "sha256": "6F806D79A33676C86B8C6D0D7BC8036196DCEA0D2BBB21B84C0C5501BADB7022",
+    "signals": []
+  },
+  {
+    "path": "classes\\Api.php",
+    "lines": 3811,
+    "sha256": "91B33DF63233EEEF4D25BD48CA1AB3E886164250D1CB5ABA67BB84CBDBC17089",
+    "signals": [
+      "DB::|Database::",
+      "file_put_contents|Response::download|saveFile\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "lang\\de\\messages.php",
+    "lines": 6,
+    "sha256": "91C19C4C7E79404707363A51798BB4E5CE6490908D55886984004C646D1355A3",
+    "signals": []
+  },
+  {
+    "path": "lang\\de\\lang.php",
+    "lines": 795,
+    "sha256": "127950F1C06696EB71B17633687FBDF18C7595C9BDBF372D07CBB36F27D90845",
+    "signals": [
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\Booking.php",
+    "lines": 996,
+    "sha256": "01D31EE47CAE56634DCEF3E5D543DFE9CB24D3F5DCF218AA0C0586086AEDAE16",
+    "signals": [
+      "DB::|Database::",
+      "eval\\(|unserialize\\("
+    ]
+  },
+  {
+    "path": "classes\\Bild.php",
+    "lines": 137,
+    "sha256": "D57DE2C9CBB365F3D657673AEDA0FB5FA3BCD2E071A10F591EED1A53D8190D3F",
+    "signals": []
+  },
+  {
+    "path": "classes\\BelPlan.php",
+    "lines": 313,
+    "sha256": "AEE2B4ED7A77F0CF34F757229DEAF7076AF9DFC903B239AC338655B162697AB0",
+    "signals": []
+  },
+  {
+    "path": "classes\\Buchungsluecken.php",
+    "lines": 201,
+    "sha256": "119C87DA631AA29CED45AF2C6C76C462E201009F4C6E56CE957EC3528EE134A3",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\BookingValidierung.php",
+    "lines": 325,
+    "sha256": "A205BCA34D48968FAAF875F4991924BC57CAC548C51B838500E9480E5E248E46",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\("
+    ]
+  },
+  {
+    "path": "classes\\Database.php",
+    "lines": 188,
+    "sha256": "BF6C8EA8AF8E4A260E57B7EC2A5F74C5E699AA862AEA17208F01D74257B53468",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "formwidgets\\syncfeondiactivation\\partials\\_is_deactivated.htm",
+    "lines": 47,
+    "sha256": "76CD7E76E803B6EA07A9A2AA5B7F0B31C9791E6C241CB39437C39CC2C1D496C5",
+    "signals": []
+  },
+  {
+    "path": "formwidgets\\syncfeondiactivation\\partials\\_is_activated.htm",
+    "lines": 23,
+    "sha256": "3D2674043894C4CE06DB074EE2F0C2707692C28502DB8D6CBB5086D9B91DB3C6",
+    "signals": []
+  },
+  {
+    "path": "formwidgets\\ReloadPricelevel.php",
+    "lines": 76,
+    "sha256": "A657A73BE04F5A152F779B1A0EBA79DB635210271641EADB81C7A888D3218E2D",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "facades\\Auth.php",
+    "lines": 13,
+    "sha256": "68F4C9084C0C9BD0192588094DC2A1C1B889C57616A8C16951AF8BA9F0A2F7E7",
+    "signals": []
+  },
+  {
+    "path": "classes\\DatabaseCache.php",
+    "lines": 17,
+    "sha256": "52A1A9B542E81C294B27F07439AE679497AD5D64CA7D36F157613255472FE0B8",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\FewoZeitleiste2.php",
+    "lines": 882,
+    "sha256": "664E608A8201E05757078FB2DC999558CF26DD592275D0DBCBBCF2C927C52257",
+    "signals": []
+  },
+  {
+    "path": "classes\\FewoZeitleiste.php",
+    "lines": 560,
+    "sha256": "D6A7B7D3C249E962D8D8DDB1B1C57A94798E016C663E7CB4318486821F86221A",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\FewoSitemaps.php",
+    "lines": 324,
+    "sha256": "E7B0304ADF6685ADA95A54DB679E3091AAC2454089D2C2B3A110057C977D7250",
+    "signals": [
+      "DB::|Database::",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "classes\\FewoDatum.php",
+    "lines": 172,
+    "sha256": "4BD847E9AF93EFCC8472CBE5A03E44679F16A26AE94ECF043CBAE5823F98E9D4",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "classes\\Fewo.php",
+    "lines": 2288,
+    "sha256": "FB7CB93430BB14A05C1BEB3C0D1EC5BD5A1968EAE6F01E0ACE0F7CA6AC0000B3",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "eval\\(|unserialize\\(",
+      "file_put_contents|Response::download|saveFile\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\FeondiBookingEngine.php",
+    "lines": 19,
+    "sha256": "449C9C4AFF7D26A3500F816113AC6555740ABFC016E27B69493C468F14E02E7E",
+    "signals": []
+  },
+  {
+    "path": "classes\\Feondi.php",
+    "lines": 151,
+    "sha256": "49DE70131DC51AF621A48E11C4997F29C22825A061E7BC65219AA646B4E07685",
+    "signals": [
+      "DB::|Database::",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\Datei.php",
+    "lines": 97,
+    "sha256": "E9A1F1390A16FD3BCE37813F0F4ACBF6A604213D5A4DE502BEE584B924CEC530",
+    "signals": [
+      "file_put_contents|Response::download|saveFile\\("
+    ]
+  },
+  {
+    "path": "classes\\DatabaseIndexHelper.php",
+    "lines": 21,
+    "sha256": "8C5898253A85D2054FBD7EDB040F3C87966A631F1FB08DF0ED1CD8EF30C0E11A",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\LaenderListe.php",
+    "lines": 793,
+    "sha256": "2F6E06925B95239B71F19E0222F6CCC399140631F5098FD22487C3D3464DB93E",
+    "signals": []
+  },
+  {
+    "path": "classes\\Images.php",
+    "lines": 83,
+    "sha256": "892BD231F8A099E24525C479938FDF03B0E84237C93A376B83ABD9FDFB9F874C",
+    "signals": []
+  },
+  {
+    "path": "classes\\ICal.php",
+    "lines": 282,
+    "sha256": "D5ECD2D8DD9D6420AE6F63CA9772B25DC09F2FD9DCF085253CF379546E731FEC",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "classes\\HobexRequest.php",
+    "lines": 209,
+    "sha256": "CD5FEEDC709F6AF642527F99E033579636F132EF300185C390C2DB94F67F3F8B",
+    "signals": [
+      "DB::|Database::",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\Hobex.php",
+    "lines": 178,
+    "sha256": "41128E138A11F51B1CB30D2E062F2F5A51F0D9311ED62248FC16CB0DB951B139",
+    "signals": [
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\Language.php",
+    "lines": 98,
+    "sha256": "8234BB9A4FFC248A675DB4A15753C94CAFDE8D62B47ED1478781108AB91DFBAF",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\LangLabels.php",
+    "lines": 1344,
+    "sha256": "BBA6CB634AB032474DC9B50AAED7A8E221CB5D3CDECF5645CA4F27EFCADA9F43",
+    "signals": []
+  },
+  {
+    "path": "classes\\LanguageInterface.php",
+    "lines": 13,
+    "sha256": "E2EF2A0047B1F1A4AF390647584900EC48DC54B0840AF6C97E6715934364B6F3",
+    "signals": []
+  },
+  {
+    "path": "classes\\Logger.php",
+    "lines": 88,
+    "sha256": "6D2829F8D940B5E296E1C11A1DE27FDA80A64FE906C31C026A91809E0745C704",
+    "signals": []
+  },
+  {
+    "path": "components\\belegungsplan.php",
+    "lines": 454,
+    "sha256": "06D2D49F9204DA04ED61E157F3DA6465FACDB4F5EAE3ADFB9D2EC3003C6BB323",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "formwidgets\\syncfeondiactivation\\assets\\css\\syncfeondi.css",
+    "lines": 24,
+    "sha256": "B84CDA1C26D624701A7809418896BE4026922D22BD97E6621369104EF447068F",
+    "signals": []
+  },
+  {
+    "path": "components\\angebotdetail.php",
+    "lines": 769,
+    "sha256": "5BB45FCD489E9D7C1619399A1C6542E7E31DD37EE44E8BFF446BEE8497772C38",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\angebote.php",
+    "lines": 287,
+    "sha256": "25E4141BD308BAF9C9120CED32F858BED961794E90980C44000C3713BE0234E3",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\belegungsplan\\default.htm",
+    "lines": 55,
+    "sha256": "8EC2D7A99E33586D6BAE7E8F125D829C754D0E81AB5ED221856CDC1D6DC5A0F5",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\anzahlobjekte.php",
+    "lines": 98,
+    "sha256": "CDB6BCA423A95C42D7FC299723DED10AD3E656E5FDFA7E0272FAECDC74AD9441",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\angebotdetail\\pagination.htm",
+    "lines": 67,
+    "sha256": "C212AFB9719A36E04281821C3BD9CDD9C61130F8F27693BFF4FB97CFCED89BE6",
+    "signals": []
+  },
+  {
+    "path": "components\\angebotdetail\\objlist.htm",
+    "lines": 64,
+    "sha256": "1AFD5632CBB35F5692519F00BB3463547DF3E76FFCDE6C718616745973DA8AE5",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\angebotdetail\\default.htm",
+    "lines": 14,
+    "sha256": "DC0A6CBE5E9896A202330E52F3BB3680B7207601958880B29208EF88C0154DA5",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\Account.php",
+    "lines": 342,
+    "sha256": "18AD79F266C0540856A14B88ACBF26EB3F497EF2E06C714F5310867D771D0F91",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://",
+      "Auth::|requiredPermissions|hasAccess",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\Validierung.php",
+    "lines": 251,
+    "sha256": "B4F81B1B1537351BC2E5C45E18418291AB979E9F674E3BC7A98709D43370172A",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\UserEventBase.php",
+    "lines": 41,
+    "sha256": "B4B1A5EC1036B44C2039D8E475AD910364020164D52E352FA1A0D548C35199E5",
+    "signals": []
+  },
+  {
+    "path": "classes\\TimelinesObject.php",
+    "lines": 51,
+    "sha256": "2319BEFD84094DFDE2AE3BD5E4E8CC60DDA82AD00628B3AC825CE84A5D799987",
+    "signals": []
+  },
+  {
+    "path": "classes\\SessionManager.php",
+    "lines": 134,
+    "sha256": "B5BE65D2F1A6930893C8025058E73A84D801795F351D4AAC1F3F72EC50D3DF81",
+    "signals": []
+  },
+  {
+    "path": "classes\\SendCron.php",
+    "lines": 424,
+    "sha256": "AFA5F0FC330DA487DE5C3CC2729D9B88707503842AA5863FC049BE06ED54B5F2",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\RestzahlungsManager.php",
+    "lines": 151,
+    "sha256": "BD2B46D719F42D2C98DE288632E532E0BA2BD26DE6CB5B9AB3780666F679B9CD",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "classes\\Region.php",
+    "lines": 23,
+    "sha256": "A69438BAD5627B2F410E4F898C0A1785758889DB1F2071923DC3BF9EECF5C387",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\Prices.php",
+    "lines": 570,
+    "sha256": "0C62C7B80FC304B5D7C176340B02D0106AE333CC7C600059F972B99157E7474A",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\Preislevel.php",
+    "lines": 120,
+    "sha256": "F22FC986A875F5425883BBA2FFA20232918D53A0E07A80061D32E736EBD6F518",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\PreiseMwst.php",
+    "lines": 40,
+    "sha256": "11A28BDF2C5CA2831C1BDCD3F5B9D7F0B9705D0D2825328585B5B359F981B858",
+    "signals": []
+  },
+  {
+    "path": "classes\\OwnerHelper.php",
+    "lines": 136,
+    "sha256": "1C86E75F81B7F2B8500AFF75F1EA984C0C25C81E1C821AB184BF8591D74506B5",
+    "signals": []
+  },
+  {
+    "path": "classes\\ObjektSuchindex.php",
+    "lines": 650,
+    "sha256": "CB3906942AF1BD6097CCA23A5857EAB4A4821D572881DDE23E67B715BA7BD423",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\ObjektSucheParams.php",
+    "lines": 30,
+    "sha256": "70F89D576019B51525B825EAB69A3EB9A325D90EB5A02B41AAA1EF3B5DE921E6",
+    "signals": []
+  },
+  {
+    "path": "classes\\Objektstatistik.php",
+    "lines": 60,
+    "sha256": "9B30D4E6CB4839D64A2BB31F4130F1905D77D12BF07943D3ACBC98451643C540",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\ObjektRanking.php",
+    "lines": 15,
+    "sha256": "165CCE66FFB8B1EF23279C7CFFA7A9F074822DD26A6DA424DAE7B35B3A4DEC9D",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\Objektbewertung.php",
+    "lines": 151,
+    "sha256": "FA96C1EAC1327541D32F57F17A6A577A5E66C076A869AC99BEEC80F02762DD6A",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\Objektausstattungen.php",
+    "lines": 108,
+    "sha256": "F1EE92CB374971FB337CBADBAD03FB2732CE4E8B7081389FD06D28A233411F34",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "classes\\Objekt.php",
+    "lines": 249,
+    "sha256": "98D876733F95CC5B11E286B5A484326424FC9644FD701976E979D17646BC9454",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\anzahlobjekte\\default.htm",
+    "lines": 30,
+    "sha256": "ED4E9251C7B2B7708697AA186873C97FE4311CC3A60CCC2280A3DC6A08E5628E",
+    "signals": []
+  },
+  {
+    "path": "formwidgets\\reloadobjsuchindex\\partials\\_reloadobjsuchindex.htm",
+    "lines": 19,
+    "sha256": "7C2FBA633E7A68BCE0984655AD2209C94658A96645DFB30B7510A1C2B2DB7005",
+    "signals": []
+  },
+  {
+    "path": "components\\account\\Variante2.htm",
+    "lines": 95,
+    "sha256": "F4C36CDBC5898A614138700C015DC335C1D8257BF4548928E9F733C68FFE295D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "components\\account\\signin.htm",
+    "lines": 11,
+    "sha256": "3B03CAF59B79C45DA1B9D18DC392E0407B16D77BC3E8351AF1F2E13A246D97FE",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "components\\account\\logout.htm",
+    "lines": 7,
+    "sha256": "19DD4F5854D1D361797722F997B67F2866B54FC925CFACF8142129634619BDE4",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\account\\default.htm",
+    "lines": 15,
+    "sha256": "6D9B7A6A88CB4581C619F8762AF4A51B5578A5D118ED060848714821F148F672",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\abschluss.php",
+    "lines": 442,
+    "sha256": "0694839BFEE61C3B7AB2F17CD4CC6D9E6D8AE1196920B6BC01D138AC0DDF5A5B",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\image\\default.htm",
+    "lines": 40,
+    "sha256": "6F977E722946C646B74554E12338A1515226215F97CCBEEB1F698E450DCF9629",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\hausliste.php",
+    "lines": 432,
+    "sha256": "9DDC2D74EB6B925637EFEC0163A895A3ABA3E437E4CD53119264617CDF84AAC0",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\objektbewerten\\default.htm",
+    "lines": 105,
+    "sha256": "24326AC9796DE313B50D100F4215CAEE21DA88AE2523B822AC937ECDEC44CBA6",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektbewerten\\bewertungen-svg.htm",
+    "lines": 140,
+    "sha256": "452702E0CFC6358D37B2BE6649F6F4F00421B87F978A7444577A18AC4A500752",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\multisuche.php",
+    "lines": 230,
+    "sha256": "51BFD451224EFAC42D89F9FDB1535982160C45AF2CA136F6FB0F19543E78195E",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "formwidgets\\reloadobjsuchindex\\assets\\css\\reloadsuchindex.css",
+    "lines": 38,
+    "sha256": "572B357D3523578741D340F1FCC61B8F8E9B85112DBDD8544DCCFBBB1EB1EB4C",
+    "signals": []
+  },
+  {
+    "path": "components\\hausliste\\pagination.htm",
+    "lines": 66,
+    "sha256": "3AEDC46B44ED3738BE3E8A643F1D96A59763AD297890266FB249787378A1F097",
+    "signals": []
+  },
+  {
+    "path": "components\\hausliste\\map_activation.htm",
+    "lines": 13,
+    "sha256": "6545C2C79D64D3CB44E811B0C0FEAA810454C7572949B85DCEB084200F67937A",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\hausliste\\hausmap.htm",
+    "lines": 30,
+    "sha256": "C7D57E3275B2C00C0911736DBCE8A3DA544FE8766634E8BB0A15DA9045C8BBBD",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\hausliste\\default.htm",
+    "lines": 49,
+    "sha256": "8751F58E5351FA07766B28DAFD6BE75CD6A706FB19CD46BD5B19146281AE2338",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\hausdetail.php",
+    "lines": 299,
+    "sha256": "FE9FD083E9D1E8FAB7EBBA21BBE0CCC0EE07E6C303B49A1FABC83A1DCB4F55A2",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\Slider.php",
+    "lines": 304,
+    "sha256": "31939B2AA93B25DF67DF6914D27A0B4876AFAB9F331CEDB775062B9E84E44941",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\multisuche\\default.htm",
+    "lines": 36,
+    "sha256": "D9CEC1A41CA2D689D530A4E5135E3BCD990985281869C623EDFB99674BC1A8F4",
+    "signals": []
+  },
+  {
+    "path": "components\\merkeranzeige.php",
+    "lines": 119,
+    "sha256": "E8D393FEDCF9C5E4B174D9C62FC6BF57CA286C7014C1549C29CEF7DB4C4F6270",
+    "signals": []
+  },
+  {
+    "path": "components\\angebote\\default.htm",
+    "lines": 20,
+    "sha256": "85203BD2E8FD01F77EAF03CB3A88016BFC5521620357DA161432D42F16E9EA9D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske.php",
+    "lines": 2748,
+    "sha256": "BA3DC461E678DA6ECA9FF5302AD12A437F4552186AD9BD844207272E36CC6861",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "components\\hausdetail\\default.htm",
+    "lines": 65,
+    "sha256": "A51A4C8E8754FE7DE3CE69B94CCA5900695B342AF669DC271F4CFDB5E23B829D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\googlemap.php",
+    "lines": 1324,
+    "sha256": "BB0935627E588CB8F57385F7DEF74865890F78BE2574843378133C201AB73E02",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\merkeranzeige\\default.htm",
+    "lines": 3,
+    "sha256": "C9D7931CA0E132B70AB5126D4DACC2F19CD5D4D5E04441DE3A36ABCDD657F7E5",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\slider\\default.htm",
+    "lines": 188,
+    "sha256": "7E868435AF4028728EF974A199FB9C1F283F9E9ABCD4579B2B03DF5905785A35",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\map.php",
+    "lines": 291,
+    "sha256": "33A5A7AA7A4D2010AA139DCA529C044BD7BB434C3C7530034903830BD1BE6B54",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\map\\map_activation.htm",
+    "lines": 13,
+    "sha256": "FEF80E75CFEA63FFC012AFEC7800C7E426B82D7AA023F1C1532D1EB7CBB38E5D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\map\\default.htm",
+    "lines": 36,
+    "sha256": "9F1D351F563684BFD2EA8257A6BA6E8F95B13FD450B5AA687AFCD36064AE8B14",
+    "signals": []
+  },
+  {
+    "path": "components\\objektmap.php",
+    "lines": 362,
+    "sha256": "26A941EF5A5BDF10DF7FE9525BD92F41CF35DD29DD95813946B1EF2E58DB3CAF",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\Session.php",
+    "lines": 214,
+    "sha256": "DA2DC4C2234FC6A60FB78996437F03893F99210B76DDAA8331604BB8DC6C35DC",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "components\\listfilter.php",
+    "lines": 1231,
+    "sha256": "0C76172FE00F4E4439BD4EA0DE3883BF84C86BE41E6724F24C0F0BB7D0268F64",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\schemaorg.php",
+    "lines": 220,
+    "sha256": "54A6B3E37538EFCE46471D18EA18B06AC010EB0A48F26CBB19D9B8E962FEF606",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "assets\\css\\tooltipster.bundle.min.css",
+    "lines": 1,
+    "sha256": "41CE2509FA9959868717986010E16B6334885FD46BC64D0D3C745A73ED3C41E4",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\stars.css",
+    "lines": 9,
+    "sha256": "03669EEC6EDBE21C1AD1E5589E381777E41A0A23B8F9CBE5370F04C2B73B7558",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\select2.min.css",
+    "lines": 2,
+    "sha256": "AD8D018AF2638E0A390D6976A17B689B1238621B46300701A9A671CA79B532DF",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\search.min.css",
+    "lines": 9,
+    "sha256": "48981B0CAC06DA43B9A228FB0830ABB539CCB393E2C4EDCAE42B0BCE587EE1B1",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\css\\search.css",
+    "lines": 443,
+    "sha256": "8C67786DE4272FACD660906D96CA678FF2BF67748E82FBE28C85771E0ACD1080",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\css\\payment.css",
+    "lines": 93,
+    "sha256": "5623AE11610B8DB010620134AAE226B686CFDA7C1FB54FC21C09594ECBB11266",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\multiSearch.css",
+    "lines": 4,
+    "sha256": "C1E26F11E63E8F7D8E11EC46D09EBC30774D31AD888F1FE6659AA6955E439842",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\maps.css",
+    "lines": 1,
+    "sha256": "1802D19C47857B9D946D6FF65E21F7D0261837998F95CD98D459C4BCD176C9CC",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\mapHint.css",
+    "lines": 25,
+    "sha256": "8FD43CA19BB797FA713AA130FE3946F18AC0391ACD6C9CC4E0F324CCF0842A0D",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\jquery.fancybox.min.css",
+    "lines": 1,
+    "sha256": "5736E3EEC0C34BFC288854B7B8D2A8F1E22E9E2E7DAE3C8D1AD5DFB2D4734AD0",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\jquery.fancybox.css",
+    "lines": 895,
+    "sha256": "35B1E1EC829F238C3730FA443BCA270B9E725A78FEF1FC896ED0BF8A76E23DF2",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\jquery-ui.css",
+    "lines": 1312,
+    "sha256": "80AB862EB6F2CC9C4E8A755015B5405EE218569F85F6A187424E3FFCE88F6B2E",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\googlemap\\pagination.htm",
+    "lines": 71,
+    "sha256": "2AA35A4FF57E7C12C6DEB0CDA0CAE98E2F927F9379AD56A2CA439B13E2A0D0AD",
+    "signals": []
+  },
+  {
+    "path": "components\\googlemap\\marker.htm",
+    "lines": 1,
+    "sha256": "6CBD288D225120AEA4F7330AE2DDFB53713E9C9E08869D6CDF96E05F4C31CF75",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\googlemap\\default.htm",
+    "lines": 244,
+    "sha256": "9590D4BB550D50012B9CF68D6D5D61C4B5008157714F1BC4056364B0EF873534",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\galerie.php",
+    "lines": 201,
+    "sha256": "34DE494DFF6CEF83252ED59ABCDF18853FC2E8643A08E0B28D1932C6BB3BD0A3",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\listfilter\\default.htm",
+    "lines": 469,
+    "sha256": "4140CED65B6921CD57C5219FFBD9E50BDFDA1D275B3AE45ED830D3857F411765",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\image.php",
+    "lines": 316,
+    "sha256": "958522B532D5C782714A65FD66DFCA5794451886F4D7E3B64DC2A2E1D472F7C7",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\objektmap\\map_activation.htm",
+    "lines": 13,
+    "sha256": "FEF80E75CFEA63FFC012AFEC7800C7E426B82D7AA023F1C1532D1EB7CBB38E5D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\schemaorg\\default.htm",
+    "lines": 82,
+    "sha256": "7C0CB9E488A59510E168E56CE8FAFA55705D81534AAB3A6C37B3313F9E0D09D4",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\preisrechner.php",
+    "lines": 625,
+    "sha256": "FA7A15E87E59FB16CC4CC040FADC1497B83ADC624E8E9A520B6753F7E3C5569E",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\objektmap\\map.htm",
+    "lines": 47,
+    "sha256": "29F24AE8C1702139206C0EF2AEC9D5572D55D4A2F9797291C5C6D97E580F0231",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\objektmap\\default.htm",
+    "lines": 9,
+    "sha256": "E9BB6455B1E18660B5A165A57FEEC5C7181DB319596D09145AC48EDDFCC95F33",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektlisteteilen.php",
+    "lines": 156,
+    "sha256": "23D05C9E900D798D1069BA403A04A6F7DCD047906FEBBE51E600DB66104099D1",
+    "signals": []
+  },
+  {
+    "path": "components\\objektdetail\\__aa__default.htm",
+    "lines": 40,
+    "sha256": "1CF39674ABC6F32BF93B2993928215B7BE8D68B111C81041B7F1BD2F1F5F398D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektdetail\\angebote.htm",
+    "lines": 15,
+    "sha256": "FB14C0E078796F7EAD3FE045AD16FB87407400BF90DB79C3C4CE0BCE3C65D696",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektbuttons.php",
+    "lines": 374,
+    "sha256": "5EEDDB12EF5ADC7AE4AE10E7BB5D5233F23E35510DA4E51545B8027EDC6D6863",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\preisrechner\\default.htm",
+    "lines": 111,
+    "sha256": "08D3468FC9E30CE1BA2B9567897A0AFF6532C6839DA6ED56596063798F7FC700",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\preisrechner\\btn.htm",
+    "lines": 8,
+    "sha256": "B6BB4F0F364F0A92E219AC8627A28DBC65BA27C7DDA11A021D7D82435A4682F5",
+    "signals": []
+  },
+  {
+    "path": "components\\paid.php",
+    "lines": 142,
+    "sha256": "192504BB9E184C07605E790404D53C07296D3D1007C728F7CD0919B32AD50B79",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\galerie\\default.htm",
+    "lines": 42,
+    "sha256": "00335BF9CBA9F6DC95418D0704C8B1CF41FF208AC38F5E547D962C43612D347B",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\Daten.php",
+    "lines": 3335,
+    "sha256": "1E1D8DF433EDDF120DE6214B6CCEBAE8573F9FF72B5E80E524BBC993A6B89C36",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "file_put_contents|Response::download|saveFile\\(",
+      "curl_|https?://",
+      "Auth::|requiredPermissions|hasAccess"
+    ]
+  },
+  {
+    "path": "components\\objektlisteteilen\\default.htm",
+    "lines": 4,
+    "sha256": "B2886B9C8B1FE05F1BA6382A17CF9D5D7EAEED7732E7236D68C1AD91FC874CBF",
+    "signals": []
+  },
+  {
+    "path": "components\\objektliste.php",
+    "lines": 2329,
+    "sha256": "E787582BE589A0E92D85D3BD8283DC2FA98694032B1701B577F12B47549B6CFB",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\zusammen.htm",
+    "lines": 103,
+    "sha256": "135A068FE98A994EC43F6F447EB7B4300B0AD44257C634E5795D30D92846787B",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\variant2.htm",
+    "lines": 268,
+    "sha256": "F49D374EC7601B6A43294EDD3745741363D565A3AFDEE612B7F7AF45B86ADE2F",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\preise.htm",
+    "lines": 65,
+    "sha256": "8503DE7BAA1BAB79BE7F16C6187F6A212B7C31FAD7AC0323AFDEB82C68C0361B",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\pay_error.htm",
+    "lines": 3,
+    "sha256": "F7ED0FBD6A5058828EBFF45DAFB6650BAFAE9FBC1ACDFE80585F70902E95EAED",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\payment2.htm",
+    "lines": 95,
+    "sha256": "959F94652D578FFC618926AFA03A4D7A2EB0F7B1A6A71E305FE75617006D8854",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\payment.htm",
+    "lines": 37,
+    "sha256": "F8BF3CFE89C8BB93225D0D6A476A33AF9E0F912052FC15F6C170C0726F9E607C",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\mitreisende.htm",
+    "lines": 29,
+    "sha256": "F757F04D6D3C1CED4CD532F3454B976AA4EA8F4E46BBBFE8C8B845A3DBCF553F",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungsmaske\\mitreisende-variant2.htm",
+    "lines": 30,
+    "sha256": "852331019DD9FAD4E6C024DC9F1915F062524813A0F48E4582F190D5A48100A9",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\menuetab.htm",
+    "lines": 14,
+    "sha256": "579B2A3440EA39FF546D6E0AC7AF07F4AC6D7DFE8117B4D92ED2AE49FB9283BF",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungsmaske\\menuetab-variant2.htm",
+    "lines": 4,
+    "sha256": "05B771E138F85B812DB30424F7FF9872C00E935463B3A6529841022A655C604C",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungsmaske\\leistungen.htm",
+    "lines": 44,
+    "sha256": "DA4FEB79AB00A4F27EF2B8057A94EBF069ECB004904F60329C21C752B5DD38F3",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\kinder.htm",
+    "lines": 5,
+    "sha256": "E1BDF8E7B594646A0D12BB7D4F7C774442362905C70B8C77FE7FFBFC86115229",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungsmaske\\hinweis.htm",
+    "lines": 1,
+    "sha256": "B7A74A84E612612D991A77612DF568DDE44908D7FBC4AFE592E467EBDC866C39",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungsmaske\\default.htm",
+    "lines": 248,
+    "sha256": "61393AAB21F4ABC05A9D6E77EFC8ABAD649691A36EC078736818752BB8D45F2D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\buchungsmaske\\btnend.htm",
+    "lines": 24,
+    "sha256": "37BF033B70370F54D1E3CC1D4CFDB92DA451562D19AAF427C4B62A1F7714473D",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungsmaske\\btnend-variant2.htm",
+    "lines": 23,
+    "sha256": "E6ED28674EB3E1977D32BB9CCD5F72D4908A36514352EDF57244BC14E73943A0",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungsmaske\\adresse.htm",
+    "lines": 132,
+    "sha256": "AFFF710C775BC06AD3C7DFDEAA7B3AEE7BFA040BA2F910DEAB431107A936FC87",
+    "signals": []
+  },
+  {
+    "path": "components\\buchungslueckenfilter.php",
+    "lines": 178,
+    "sha256": "8D3BA92AB8B019DCFAB96D36A9B99E6E711BF0A3FAB87FA5ADEBD271EC49648D",
+    "signals": []
+  },
+  {
+    "path": "components\\paid\\default.htm",
+    "lines": 2,
+    "sha256": "815064C0AAF6987609C679B07060983A616D933D6ABD390E70C42CA5AC5AF43A",
+    "signals": []
+  },
+  {
+    "path": "components\\OpenGraphMetaTags.php",
+    "lines": 233,
+    "sha256": "DA09CAC3BC9D72BA3C14C8079B4A6D8088F8D3E1DEA41380411CA03EA631DF76",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\objektbuttons\\default.htm",
+    "lines": 16,
+    "sha256": "39F864AA816114FF3D4E592A2012B076AF3B618EA4AFB4FA452CE33568E42C24",
+    "signals": []
+  },
+  {
+    "path": "components\\objektbuttons\\btnmerken.htm",
+    "lines": 2,
+    "sha256": "6235F8D773B2E53EE1919EE3ED293E652E83B202DBBAB967DCCD0BB775300009",
+    "signals": []
+  },
+  {
+    "path": "components\\objektbewslider.php",
+    "lines": 545,
+    "sha256": "BBCB64DD41AD2FE1D5F9D038AD7EAFCBF78A07CAA8DCF3131100E480153478A0",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\opengraphmetatags\\default.htm",
+    "lines": 16,
+    "sha256": "BB00F3180BDBCD9E729D507D676C69D045C4D817CC3C3F914D3E8FEB81689580",
+    "signals": []
+  },
+  {
+    "path": "components\\objekttextsearch.php",
+    "lines": 185,
+    "sha256": "EC38A4FF740A3CD2F74F0DDEB3222640A627CEC4CCA53CFB3E4DC20B0D0A85CD",
+    "signals": [
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\objektbewslider\\item.htm",
+    "lines": 33,
+    "sha256": "42DA303D236A44E4D410C142F6CB09DFB0A35797B582684E7FDB6DD5B6158327",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektbewslider\\item-svg.htm",
+    "lines": 36,
+    "sha256": "B60CB5A14E5749172E888EC247BCA58F7FC2804F6B66224BE97B2A0D12F44CFE",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektbewslider\\default.htm",
+    "lines": 21,
+    "sha256": "2016E9D80626B2940A0E4970BF32E0DA5CE0CBCC1266C1ECA6FF17F5F073E2C0",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektbewertung.php",
+    "lines": 215,
+    "sha256": "084EC14DB765BE590393AC54B005FFC42CC59B717F612B68A15D55B24B88A128",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\buchungslueckenfilter\\default.htm",
+    "lines": 37,
+    "sha256": "0BD1422E480ACB601D4F07F38820428969458FEEA453B04D21B490955E1D8E1D",
+    "signals": []
+  },
+  {
+    "path": "components\\bewertungen.php",
+    "lines": 400,
+    "sha256": "142BFC29E03DA78E1FAF82DC00C6DD8B9D72167D7E838CED8F3FB68B9A8D46E4",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "assets\\css\\gastlogin.css",
+    "lines": 1,
+    "sha256": "5F7F14EF6F3604B63A7994A61DE6933B2368BB4A0A256D26F3ADABD0E0C3F6CF",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\fontawesome-stars.css",
+    "lines": 39,
+    "sha256": "3EAD2C352B92A6F54D15B62B496F16E229779935A3A89AEFA37506303CD381ED",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\fontawesome-stars-o.min.css",
+    "lines": 1,
+    "sha256": "B4DE8AB53F555511C82768C66818328344937901F41D37FDC6F0A8B52F3598F0",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\fontawesome-stars-o.css",
+    "lines": 57,
+    "sha256": "5409E19BC8A0FF8433915B34CBE258827D0E158D720AD147BD54EDD15BE9F7AA",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\ellips.css",
+    "lines": 49,
+    "sha256": "31A1D9A56814DD8B770FD772B6770144F47F8525B9232EE173B54EB08DEBF505",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\carouseller.css",
+    "lines": 79,
+    "sha256": "B867AC4E0CABFCDF79A33EE3CD5224FED8D1002C5D1F7BAE701CDA46018700F4",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\css\\bs-slider.css",
+    "lines": 9,
+    "sha256": "84A8B355162AAA64702D23E582C2FE68F659C0A0AF3EC6EF0193A5FAE07CB6AB",
+    "signals": []
+  },
+  {
+    "path": "assets\\css\\bootstrap.min.css",
+    "lines": 7,
+    "sha256": "AE576713BC196098F7438DEDE6FF1F835A23291C32B745AD7E6FB6DB809A719B",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\css\\bootstrap-select.min.css",
+    "lines": 6,
+    "sha256": "6A7E2EA8B9D52767E5AFBC3453BE31885E0F2633B63790DFF754760949822C20",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\css\\bootstrap-select.css",
+    "lines": 300,
+    "sha256": "0DE636947D1ED2D98D9CEF5767E80654E1A4EBF6285A5678F72EC29C3DD24F4D",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\css\\belegungsplan.css",
+    "lines": 165,
+    "sha256": "4F3C6BE5268786E7199EAE37EB3E106D17E4938B225D7083271EB0479C44EF5E",
+    "signals": []
+  },
+  {
+    "path": "components\\objektliste\\pagination.htm",
+    "lines": 71,
+    "sha256": "C83C5A67C35ED15E02A8465B66F2CE8367375B5A4F5C47297829B67B4E0D77E6",
+    "signals": []
+  },
+  {
+    "path": "components\\objektliste\\objmap.htm",
+    "lines": 59,
+    "sha256": "6EE7DAC376D1DB234D12B3CA9E78F9905F6B94208EDF606208176EEA32D27991",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\objektliste\\objgesmap.htm",
+    "lines": 112,
+    "sha256": "42760205C2F4AA6AC3F70D97245DCA27B7D3BF60A018531FFE701B8ADF738D9A",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\objektliste\\marker.htm",
+    "lines": 1,
+    "sha256": "870DFE1A820F5B8CE9600AEC111C3A5541B5C01D8092FD6DB9DF96638A92CCA4",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektliste\\map_activation.htm",
+    "lines": 13,
+    "sha256": "11515D070FBF5F4DFCA668EBD94C9BC54B9C54CE81E1C070E2E67A26FA853462",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektliste\\gesmap_activation.htm",
+    "lines": 13,
+    "sha256": "070CD33E429713B1204A46275B14A068D63A17A493928232DE640662A349CFB5",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektliste\\gesMapListe.htm",
+    "lines": 139,
+    "sha256": "F2355415BE1A80CD199EE2C6043CEBEB1C3C9A74E9FDEB51641E431E7BC73843",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "components\\objektliste\\default.htm",
+    "lines": 135,
+    "sha256": "DF7AEEECBF20C8EC60BD56A681500568662EC7CFD10E8A586C053A18CF1A8E10",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektliste\\btnmerken.htm",
+    "lines": 2,
+    "sha256": "66E834B49C136618FD53548DFF43B9DA7B3030E135AC10D1F059977948B1FEA6",
+    "signals": []
+  },
+  {
+    "path": "components\\objektliste\\bewertung-svg.htm",
+    "lines": 8,
+    "sha256": "88B5DC2006AB33EB69D9DCD1C14CA3A13492377B52F93F7066C048FC32C9E49D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektliste\\ausstattung.htm",
+    "lines": 15,
+    "sha256": "4F48A9922DA13119CF04392C9748D61D0DD522EEF15EFD89EA84D62520B4EEA2",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektliste\\angebote.htm",
+    "lines": 18,
+    "sha256": "FA089B6BE7D45B8F9A76A05C527BDE80F82676C3199EA9CF686DE607642BE5C0",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektdetail.php",
+    "lines": 1130,
+    "sha256": "E383A9C4697AC264C77996E437919903E2C58D6EC78FFDCB4B081D45291277EF",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten.php",
+    "lines": 823,
+    "sha256": "75231AACBD1E1C245396D4F63B613EC1CBC1F4A9FA8FF401C03AD9A78AA98B79",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::",
+      "eval\\(|unserialize\\("
+    ]
+  },
+  {
+    "path": "components\\objekttextsearch\\default.htm",
+    "lines": 26,
+    "sha256": "DBD6DD6E45F71AEC671F25FC87788AE1DA591CC62FE9E69D60B2A75F8E99D096",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektsuche.php",
+    "lines": 474,
+    "sha256": "74B71D79A67A30AE5C6E25FA371A7098799FF5B11E85CE1DCF844333E2FADC05",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\daten\\vorgaenge.htm",
+    "lines": 1,
+    "sha256": "46EDFDA98697F49B4DCEDE5A81FE107F74679D52B8C73F8F40FE7EA3496B8D26",
+    "signals": []
+  },
+  {
+    "path": "components\\daten\\Variante2.htm",
+    "lines": 1072,
+    "sha256": "DFFAA627CC79D92F59233AD98C66AF4E3A6503579BF5548E44C1710168CFD233",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\preise.htm",
+    "lines": 38,
+    "sha256": "21F0887B50BAD281C4A38BEA90836F1BD911F46033A5D97FDA1317187DB67194",
+    "signals": []
+  },
+  {
+    "path": "components\\daten\\leistungenV2.htm",
+    "lines": 98,
+    "sha256": "7C9120AB309C48690746AC1EB4CC461144AA1596F7570C09FDF84DC861C5C872",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\leistungen.htm",
+    "lines": 36,
+    "sha256": "4B3ED958280AD8A45FD28AF200EFAFBFAEF6515B96FA2E94E1D34AB3F1B745B8",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\default.htm",
+    "lines": 589,
+    "sha256": "415AD7B8761B743093981FA0A510234C757C7AB704E8F7568DC90DD48FA3DD8E",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\belegt.htm",
+    "lines": 13,
+    "sha256": "D38BF07F0543AC82FF260756A146A8B7F84CEAABD4150908B3879538BCB4CB87",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\belegenV2.htm",
+    "lines": 312,
+    "sha256": "F5AF7B125CA78150E8B14208D6F52802CCD91B13CD61CAD680234C388EF54851",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\belegen.htm",
+    "lines": 112,
+    "sha256": "DB1CF88D70EE570926578AAB796D7F23BA9FE68A7FB1D44D41A5BAF06E356DCE",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\adresseV2.htm",
+    "lines": 93,
+    "sha256": "6E9A9E3D1EA11A70EC180271F8F11E3943EEF818EC65D6E924BF36424D8FBC83",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\daten\\adresse.htm",
+    "lines": 85,
+    "sha256": "3490DC64F4D6D5DF2796BB23F9E1F0F3B08D5000C0D18EF93938803F43FBD9B8",
+    "signals": []
+  },
+  {
+    "path": "components\\daten\\abrechnungerror.htm",
+    "lines": 14,
+    "sha256": "1DB3E826D6C510961FEDB48E211273E529D0EA6055635D3879CB7339640150DF",
+    "signals": []
+  },
+  {
+    "path": "components\\objektbewerten.php",
+    "lines": 280,
+    "sha256": "E1C65988BF117C6AC8B8B7623130203A7599BDE3141BC9B40F3994B8A798AA29",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "DB::|Database::"
+    ]
+  },
+  {
+    "path": "components\\objektbewertung\\default.htm",
+    "lines": 48,
+    "sha256": "4C06A50AEF48B4EE47495DE44E7F864847F1C60CC6107295475364DB309DA1FB",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektbewertung\\bewer-svg.htm",
+    "lines": 11,
+    "sha256": "2F389225E6695E00EBD331A333605304DDA047C8FDFB2AFCDC11881981DB921E",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\bewertungen\\svg.htm",
+    "lines": 41,
+    "sha256": "3A38DDCA5DBCA5C217F837B1F2C09CED8AB1712327843C537FDE6C52AB8C586B",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\bewertungen\\pagination.htm",
+    "lines": 71,
+    "sha256": "77A140F593D3AA2DF0B6213D95DF8C2DDE77B2513A948EB548FE9D6B9A76952C",
+    "signals": []
+  },
+  {
+    "path": "components\\bewertungen\\default.htm",
+    "lines": 40,
+    "sha256": "100030D19D14F2FA36A067A716EA10E7EA93BFF9D404465B2F566718477834AE",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektsuche\\default.htm",
+    "lines": 223,
+    "sha256": "EDB7D529BFAA0A2EA28B1246E47AD25BBA740F174F85148BEA8D340D84BF51D0",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\version-commit.js",
+    "lines": 24,
+    "sha256": "6DF59CA2B884509B92EEF6DB83FA80C9D81F6C258525A6B9BE191973A148B6EF",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\version-bump.js",
+    "lines": 78,
+    "sha256": "8DA3ABDFBA544979649E147067BAAC4F32DB5D0F4A2775170A51C1AF17250D46",
+    "signals": []
+  },
+  {
+    "path": "components\\objektstammdaten\\statistik.htm",
+    "lines": 25,
+    "sha256": "909A0211CFEDC84358424988D26E08DA2B436F0B7B3BC005417E20C0E81ADC39",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten\\sperranfrage.htm",
+    "lines": 10,
+    "sha256": "12952F67B897DF030AAFBA62AC935649F4A7B506EE30B61C629842CF93A72E72",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten\\schlafzimmer.htm",
+    "lines": 19,
+    "sha256": "2A5127133BFB8BCD2FE34D7603D40175113D0A18AB1C21535A68995E4B93F8F2",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten\\saisonzeit.htm",
+    "lines": 189,
+    "sha256": "FD1A62EC5438E841894460CEFC4EEEA974FB5A0BFEDB6B384DF1E0D65E72DB1E",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten\\leistung.htm",
+    "lines": 37,
+    "sha256": "AFD338ABD03EDD13DBAF107A263F889014ADCC47FE711A628A7018C716266DCD",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten\\entfernung.htm",
+    "lines": 14,
+    "sha256": "72CDD613A62794D2DCE87614B76E39F8B3E435DF9EE2F6F1E45A38506C4A8FFC",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten\\default.htm",
+    "lines": 1,
+    "sha256": "34283CDDA5A14D6F6C945FFD28C9218625DCCDB82866629E3D76BE19B81E3F1D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "formwidgets\\reloadpricelevel\\partials\\_reloadpricelevel.htm",
+    "lines": 20,
+    "sha256": "89CBF0CD1190941B2B7A97AB8C6322860A86A4A1AE40B8F51862254A943E5072",
+    "signals": []
+  },
+  {
+    "path": "components\\objektstammdaten\\badezimmer.htm",
+    "lines": 19,
+    "sha256": "B31992913FD770E9EC8D7B941E1B503A4A810ADEEBAC8F504C49CCCFA1332494",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "components\\objektstammdaten\\ausstattung.htm",
+    "lines": 20,
+    "sha256": "6EC22AE4FAB7AB6B4B0AD59643642CA928B89399FCD159A76F16BFCF84A7D546",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\bower.json",
+    "lines": 52,
+    "sha256": "8B332AF766B1F6C3CAFDB3CACB0F7EFBF843F41B3E51A8B968D28BEBDFCACEBF",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\consentmanager\\css\\cookie.css",
+    "lines": 1,
+    "sha256": "CA046B8B1B1094107205988E7096A687B241C8EF5F3FEFE5E543ED28D26646C1",
+    "signals": []
+  },
+  {
+    "path": "assets\\consentmanager\\js\\changeMapLoading.js",
+    "lines": 15,
+    "sha256": "1B06896C356F9C2C52661F7D68C4B087C8EA8AE5CCE296C6FB60B7AD8059E4DC",
+    "signals": []
+  },
+  {
+    "path": "assets\\datepicker\\jquery.daterangepicker.js",
+    "lines": 2674,
+    "sha256": "53181561FE1B48ACD889AE47DE109DBF8555F39511ACADE77F98B76CA22A4579",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\datepicker\\daterangepicker.css",
+    "lines": 271,
+    "sha256": "FF7B35F6EEF67C1E4E817B9A8E781055B05F6768BF22874C734E1A4E3B677169",
+    "signals": []
+  },
+  {
+    "path": "assets\\consentmanager\\js\\setCookieManagerLanguage.js",
+    "lines": 11,
+    "sha256": "3C3C78FF771780187F95738E01E74B3D1AAEB9987F1F6B62A00F59270E39BC9E",
+    "signals": []
+  },
+  {
+    "path": "assets\\consentmanager\\js\\cookieconsent.js",
+    "lines": 7,
+    "sha256": "3CCB7AB9B7013D1DBF2AC406FC903BC5B091CA64B6E27477DDB85D57DCA995D7",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\package.json",
+    "lines": 58,
+    "sha256": "11EB43DA87C5A555203888923E54AED0F59A1326563FD3404AC9E77B86B16D32",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\dateline\\style.css",
+    "lines": 1,
+    "sha256": "CE8DFEFA66E4CA840F83012938C15B774BCD276603A81CC0944CBF45B1CEC66E",
+    "signals": []
+  },
+  {
+    "path": "assets\\dateline\\dateline.js",
+    "lines": 2250,
+    "sha256": "40A8A08125FE2EFFA564AF3AD199FE1FC145E5E60342F5F87F343359D2492F26",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\dateline\\dateline.css",
+    "lines": 623,
+    "sha256": "738915D337EE8F02BF8E5B4008965CD59F201DF84D1AD4778543B7ED59D1CC86",
+    "signals": []
+  },
+  {
+    "path": "assets\\leaflet\\MarkerOpacity.js",
+    "lines": 23,
+    "sha256": "1389D4D4FAA6DF2DE4792B9C729DA8998806E9179B3DAB9D5667D4ACAF91EB27",
+    "signals": []
+  },
+  {
+    "path": "assets\\leaflet\\MarkerClusterGroup.Refresh.js",
+    "lines": 111,
+    "sha256": "D81091B6533DAE56FD2D8314EF22FAE550DA679DFE90DE3F3D8038FC41C93748",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\MarkerClusterGroup.js",
+    "lines": 1388,
+    "sha256": "97146147369939B35AD6AA88863B4726EEAC199003A76AFC208DBA6616E1DB44",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\MarkerCluster.Spiderfier.js",
+    "lines": 478,
+    "sha256": "6EFA9F6918E57D07E614EC0F8701F6A2797C93EEFD1E3DCDE82ABEC425456363",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\MarkerCluster.QuickHull.js",
+    "lines": 166,
+    "sha256": "4982974E0E391854BB326AE121B4CAFE347091E51FA44A614F10DCCAB02130A7",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\MarkerCluster.js",
+    "lines": 407,
+    "sha256": "D289566C032008BB3EA40DD295CE8F3E9590F37861B315D9FDC55DE97852E37E",
+    "signals": []
+  },
+  {
+    "path": "assets\\leaflet\\MarkerCluster.Default.css",
+    "lines": 60,
+    "sha256": "616F230136FD003E81F834E210EDC5F6D1051D6B4D191BC06E267E1ADFF089F5",
+    "signals": []
+  },
+  {
+    "path": "assets\\leaflet\\MarkerCluster.css",
+    "lines": 14,
+    "sha256": "E42206C7CBC1D252A6A4E64E9FC29D4073B5E61D8B5A7EADAE8F958D865BF540",
+    "signals": []
+  },
+  {
+    "path": "assets\\leaflet\\MarkerCluster-src.js",
+    "lines": 2677,
+    "sha256": "0E74446AB6CC38156F4B7DEEA312611582271C35EC746C5D9FA9FCB3AAADF974",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\leaflet.js",
+    "lines": 6,
+    "sha256": "423807C09829EF02A9BBF63E4234FFD4845A1DE83A4F60C050A4C54AB695DD4C",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\leaflet.css",
+    "lines": 641,
+    "sha256": "04F7CAF4CE6FDF87365CFEA9D1CC55CF599440BB2DD204CB9349A573B92EA1D0",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\leaflet-src.js",
+    "lines": 14063,
+    "sha256": "CE07DA4608628037617F1820F8485BF1620D1D2032F3C7B07F07ED9260181368",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\leaflet-src.esm.js",
+    "lines": 13969,
+    "sha256": "4F65F32C7A62B77D2B423FE58917AE2AC54ED70D616520768365A4D5DCC51BE9",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\index.js",
+    "lines": 9,
+    "sha256": "F810D022C91FAE55056419FBE271567C24531D8D49DD78CE287D077804962D54",
+    "signals": []
+  },
+  {
+    "path": "assets\\galerie\\js\\magnific.js",
+    "lines": 23,
+    "sha256": "63757EF0ACB7807FE5A4C3FAB2625C60161E8F6EF7E76BE4FF464AD4C2E6B503",
+    "signals": []
+  },
+  {
+    "path": "assets\\galerie\\js\\jquery.magnific-popup.min.js",
+    "lines": 9,
+    "sha256": "E3E9D2F6F58750AE8CDB307F1A72E9125B372F9747B4EF09ED4D239405579745",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\galerie\\js\\jquery.magnific-popup.js",
+    "lines": 1858,
+    "sha256": "32B54D35406E7DE689BF3E71FC91C2C3703B6DD8656C09269E6F39314671C82F",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\galerie\\js\\carousel-swipe.js",
+    "lines": 172,
+    "sha256": "A469929B08667676A436B981EB7A32FFCF6B7496701D3B311993833A5A06705C",
+    "signals": []
+  },
+  {
+    "path": "assets\\galerie\\css\\magnific-popup.css",
+    "lines": 364,
+    "sha256": "DB0033AF324E56B9408E2F85F65AE4AF5A197AE80A3127E94CE10705F5F3101A",
+    "signals": []
+  },
+  {
+    "path": "assets\\leaflet\\DistanceGrid.js",
+    "lines": 119,
+    "sha256": "7E0AA72A393D2C422829E7B76BE846F4E9744B6FA6D177A1CE63AFBE5AB0A23B",
+    "signals": []
+  },
+  {
+    "path": "assets\\leaflet\\Control.FullScreen.js",
+    "lines": 203,
+    "sha256": "189762338C976B711AB9439E77BC2107A68AD9152BFAF476D6B4381D779E9AB7",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\leaflet\\Control.FullScreen.css",
+    "lines": 8,
+    "sha256": "4B0A76774E3B177BDDD3A585051353EEF33BB5AA01425A07C17F419BA4BA51E0",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\units\\time.js",
+    "lines": 1211,
+    "sha256": "8456B073C29A76643329FF888F067214D2B11399ACC50FFF5A7409400B1B9133",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\units\\date.js",
+    "lines": 1530,
+    "sha256": "7ACF9BA6FBF47DF4B68B93F669B91AEC96711049429F988A1D68B14916845222",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\units\\base.js",
+    "lines": 515,
+    "sha256": "BBFA68B699D09AE3167318C2DD03EACCBEC0517D943E52B72A88C659421AB3CA",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\qunit.js",
+    "lines": 2152,
+    "sha256": "06BF9D22BF9235F7332F9FC9A1A1D735C9B9C0C2DCDF0F544A98BC1C3CA43962",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\qunit.css",
+    "lines": 244,
+    "sha256": "30DA6FB62C0BD8907E55095588C7A74995B82E9086C9849501B967F44D389C34",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\jquery.2.0.0.js",
+    "lines": 8755,
+    "sha256": "CA7B8854AF386C8A40B383F9BF0E465E2959A4F8D637908FB4E839DC2D46B056",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\jquery.1.9.1.js",
+    "lines": 9597,
+    "sha256": "A3B0B587C036D6B053CE9E9B9B4822307CE4C8D0D7A0BE7ECD56D0EBFA37DA66",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\tests\\jquery.1.7.0.js",
+    "lines": 9300,
+    "sha256": "17001718AB616EDE325204D35F21C8C4224BF8D8451A4D3B1EBDD02007FDC595",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "formwidgets\\reloadpricelevel\\assets\\css\\reloadPricelevel.css",
+    "lines": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "signals": []
+  },
+  {
+    "path": "assets\\fotorama\\fotorama.js",
+    "lines": 3706,
+    "sha256": "478B296DFBD47BC6A3B917D3327DD0805AFC88A44CC3E7FFF2D9F4B889B89EAF",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\fotorama\\fotorama.css",
+    "lines": 566,
+    "sha256": "E6A4758F5F233A0C9436561A738A232CEF7C24968568ADA76CB9B9376DAC7AE4",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\dateentry\\jquery.plugin.min.js",
+    "lines": 4,
+    "sha256": "15F4604785DDBE6FCFC5BB6002B4690EF5CAEE319B2739F107D0A97C0ED5E0BA",
+    "signals": [
+      "eval\\(|unserialize\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\dateentry\\jquery.dateentry.min.js",
+    "lines": 6,
+    "sha256": "9B1246CF130132D7A4268AD2A9EE166AB3EAE867D2F40A0D63DDAD43D7FBDC32",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\dateentry\\jquery.dateentry-de.js",
+    "lines": 15,
+    "sha256": "201D708F41F9CD52C691E8FC36B694918954452CBD87CB76F05BA01F90D23BB4",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\lazysizes\\lazysizes.min.js",
+    "lines": 538,
+    "sha256": "69EAC5412E0D464C44A65DAF3030C9059CDEF8C769377ABFB5546DA019C7CB59",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\wrap.js",
+    "lines": 78,
+    "sha256": "42C53ECD704A8D5CD41B7C6C502A73A1EFAE7EF41B22B6AE94DBC7D1134EED45",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\vfs_fonts.js",
+    "lines": 7,
+    "sha256": "4F66E78901AC90041B13191866A0098AC513A5A4180F1F96FF21317B1030DB9D",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\select2.full.js",
+    "lines": 6560,
+    "sha256": "064EC5EEB90CFC9CCEF238B4C163A6FEDFE5C56B9BC6FF04AD945F60FEB64844",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\QuasarTabelsFunctionen.js",
+    "lines": 113,
+    "sha256": "95175EA3B82294932280703259BFD1D52C4440B2E89DC5DCF29013297849D69D",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\QuasarTabels.js",
+    "lines": 1468,
+    "sha256": "1F99C80ABAE70D8D9F00146D658730C6EE0BDD12552A4CD4C8FE8284D43FB5CD",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\pdfmake.min.js",
+    "lines": 33,
+    "sha256": "1B5847F68B90C7989CF8E99A5F0B4613111AA3EEE03BEDE6E5413EA7DD08EFB1",
+    "signals": [
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\jquery.dataTables.min.js",
+    "lines": 165,
+    "sha256": "C9FFCA389C62EB07A086392044AC140B2941D39C7653541C209D4B671E9786D4",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\date-de.js",
+    "lines": 110,
+    "sha256": "575AFCE13458F7F00EE5A40F8DCA104CD0A9E485C66E9D641FB239484EA3379A",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\dataTables.rowGroup.min.js",
+    "lines": 12,
+    "sha256": "BE146EAAC2ECFE452B548E024486CB1DE5CE5C2C44CAC2AE267700314F7C58CB",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\dataTables.buttons.min.js",
+    "lines": 40,
+    "sha256": "FD277378E2AF4586364AB19B668CE909AABC41CF90E60C2FC9EEC3323A919FD2",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\dataTables.bootstrap4.min.js",
+    "lines": 9,
+    "sha256": "D68C007A1F5B75670A6B4F7F29F922240682DCF147D4D0530C7395F01A3BC59C",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\buttons.print.min.js",
+    "lines": 5,
+    "sha256": "97B4AD03EB03264E1AF95D4EB9F8C275D4652781AEF06B95156CD71D73B9F038",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\buttons.html5.min.js",
+    "lines": 29,
+    "sha256": "10D032E44BC4B83193F5308D6FFD4279BA4ADAFF8A667C11B0F0919FB45C497D",
+    "signals": [
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\buttons.flash.min.js",
+    "lines": 33,
+    "sha256": "A726F64573F9412108708BEBAB8B751A1C396816031AB5B061C7AB66588FD6E3",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\js\\bulk-actions.js",
+    "lines": 100,
+    "sha256": "8806BD2767EF776C88462FD82BB1999B3D1F968AA36033C90BB9726F15C3CC33",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\variante2.css",
+    "lines": 480,
+    "sha256": "4DCA45A7CA662A1ED474FF46BE0DDD85BE05CF577AE6763EBBAEEA68D5ABF385",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\select2.css",
+    "lines": 485,
+    "sha256": "C693C6E5AC34D344B94F7A68A83365D44D6CD1B130518CB449820261C1234A27",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\rowGroup.bootstrap4.min.css",
+    "lines": 4,
+    "sha256": "0C97F6B4B8282B02E72914E97DDF5DD5789D1B7FF94404672C510BE5B041B01C",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\quasar.prod.css",
+    "lines": 13087,
+    "sha256": "D699909E2D4F4CA3E6E10F31F0117B30E23DD043A77F292C8AF9C118C1942023",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\("
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\jquery.dataTables.min.css",
+    "lines": 9,
+    "sha256": "7B9D3F84CE9C48C83ABCB1594B861D85CD0AFDA7CFBA00423E8A84FFFDEC590B",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\edaten.css",
+    "lines": 4,
+    "sha256": "164A1A0C150AE0A4F6F1E266D43CB96763ACDF2DB0B98D560E584BC803360D79",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\datatables.css",
+    "lines": 477,
+    "sha256": "BA5604416DB8B801E6A223A4627DC06EEC78A0C3F27A4A90479DAE7095DFCAB9",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\dataTables.bootstrap4.min.css",
+    "lines": 2,
+    "sha256": "EE8812828760B03EF4AFA39C309FB647CEB5A4133B032B850C26FA2567D2F7E9",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\buttons.dataTables.min.css",
+    "lines": 2,
+    "sha256": "8E284940D485E71A69B66981BAA33BD2998BDE97328528C25CA38DCC80962B5A",
+    "signals": []
+  },
+  {
+    "path": "assets\\eigentuemerlogin\\css\\belegung.css",
+    "lines": 14,
+    "sha256": "33155AC5F95DE764827A406C831C6473E4070CEE98DC10E2FF5F2FA827D1EF93",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\bower.json",
+    "lines": 14,
+    "sha256": "AB5197827946D0B36C7707C60BEDDEDC8C14446138E0E79F548BE5001C87AB73",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\xhr.js",
+    "lines": 170,
+    "sha256": "93878287B22F23E022D6D847B1B019E6564C47EAA7D896B3A75076C240DA94BE",
+    "signals": [
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\var\\swap.js",
+    "lines": 27,
+    "sha256": "D98C4446DF33EAF84108E2434E202F4920153787167C587A8058D604884F278F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\var\\rnumnonpx.js",
+    "lines": 8,
+    "sha256": "2AAF564C91C737D4B4ED8813D6E7AFC12AB27B1C47D176462EC8D553BC589C03",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\var\\rmargin.js",
+    "lines": 6,
+    "sha256": "45EF3B314ADA8A2C2AE0037C55BC6AC6B86CC8CA37986F4CCDBAB91B00B22820",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\var\\isHiddenWithinTree.js",
+    "lines": 35,
+    "sha256": "4B01075BCEA824ECDA0FAEEDBD6300F1E003D6844246F0E773C84E55C03BCE5D",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\var\\getStyles.js",
+    "lines": 18,
+    "sha256": "A96EB3C10F4459E36BD8DCC9C7AD9AB2B3FA30741DA0C082AA3EF251660B5CE1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\var\\cssExpand.js",
+    "lines": 6,
+    "sha256": "A25629559D13AA99036D110B9744B1A8389FB503D2639B263F586398039B4021",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\support.js",
+    "lines": 90,
+    "sha256": "3DBE3CDDE4142925645606383CE0D868CDB6D21B74CEE6E9020850CBDA8FE753",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\showHide.js",
+    "lines": 106,
+    "sha256": "1ECF3BE84129D6B3B520CD9F2EFB071D5225D1158EAEEB4EC71A54A68914D5B9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\hiddenVisibleSelectors.js",
+    "lines": 16,
+    "sha256": "E01D2AE3832DB4FCB917E81DF915B0A2D8CC0CA2A725EBFB63D75725E3DB42DD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\curCSS.js",
+    "lines": 60,
+    "sha256": "71CB112B78E8E884B0BDBC56170CF400ABC4C247E8A09BDAD29C2BC9AF65A946",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\adjustCSS.js",
+    "lines": 72,
+    "sha256": "F8FE13A7852C759B55E6AB70E7B44F24C7DE13371D504576C563CC0E248129C3",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css\\addGetHookIf.js",
+    "lines": 27,
+    "sha256": "5FC500F4E97EABE5A3CBFA954C0F48C9DCBAE43579B055DE6D0148E1F73EA5BD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core.js",
+    "lines": 482,
+    "sha256": "8ECD25D3343DE539DF40331203A6D23BB64B55EE4A3B05730CFC691D60F423CD",
+    "signals": [
+      "eval\\(|unserialize\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\zh_TW.js",
+    "lines": 19,
+    "sha256": "2584EC190059ED0969BE8AFD777F1D12DF16E0D80C7B422466219C601645D841",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\zh_CN.js",
+    "lines": 19,
+    "sha256": "E5C895DB0C3D6836B16004F07B1DB6774CDF127D82720A3BA726FC6710EEEEE2",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\vi_VN.js",
+    "lines": 16,
+    "sha256": "617C06960A9CA2321C5B03F97685144ECC97C653EADB1C41550BB218CC0688BA",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\uk_UA.js",
+    "lines": 18,
+    "sha256": "346E0B08BAA0F725A330FFC7CF7B7A457879AEC7B3CE1E555F2EDB50900DF7F9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\tr_TR.js",
+    "lines": 19,
+    "sha256": "2CD67658D6729CB101975440F58B4F0ECA5FEF5812DEE8639AFE98EF950B7FC7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\th_TH.js",
+    "lines": 17,
+    "sha256": "41FCB5571BE98D9351B81440C1935CA373B2CB0EB6AD0ECDE7207D2C037167B4",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\sv_SE.js",
+    "lines": 23,
+    "sha256": "AED264D5529C8F03A5D871AE9A8A632DE6BBFF675CE0B714BE0BE04158FC5E49",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\sl_SI.js",
+    "lines": 19,
+    "sha256": "FE62A6ED38D38BAD6824317FF8D707AE00BF85597288667E27D8A2A981725B4F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\sk_SK.js",
+    "lines": 19,
+    "sha256": "0616BAF7897AA188A30A14E48409621533555C60E510AE51257A14AFBB2ED6C0",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\ru_RU.js",
+    "lines": 19,
+    "sha256": "0CE60682A29C9F89FACB55F6A3D63030F82A90069E10E3BF38B6D90C210DF82F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\ro_RO.js",
+    "lines": 18,
+    "sha256": "F0158EDDFFA5D227201BAB6BAD41E384E68BB57305EA1A493AF9F9359079361F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\pt_PT.js",
+    "lines": 18,
+    "sha256": "0CA04716B6B1D418923C3C5E0644474059CBF4D4F0BF1FE932059A4510055732",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\pt_BR.js",
+    "lines": 18,
+    "sha256": "CA80A5FEADD6EDA0ECFF2165569D37142751A713B409F7AA50566D2181D9F18E",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\pl_PL.js",
+    "lines": 19,
+    "sha256": "BA591C1C3CD846F02DB837340557B34AC982840A37A98D32A215E49ECB7416D9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\nl_NL.js",
+    "lines": 19,
+    "sha256": "49848F43FABE6C595B7377A4A3BD330D110BA66A49E77525951EC733B83D15DA",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\ne_NP.js",
+    "lines": 18,
+    "sha256": "C7B51CAF61BE39B4B7426AA2D361653E263C10D99B6326E67C672746BA75577A",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\nb_NO.js",
+    "lines": 19,
+    "sha256": "39702AF9DA8AF47A603BDB49747FA86DA6062E9EED813A887F63C91495E350F9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\lv_LV.js",
+    "lines": 14,
+    "sha256": "3F7053A0CE5C47A7FBC429695E4455BC458EAE96422D8C8FE696A11511133772",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\lt_LT.js",
+    "lines": 25,
+    "sha256": "7797672E89E458167EF84ECA11D2C3B59D5EA64C3FA43B70088200A4B4D68ECC",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\ko_KR.js",
+    "lines": 18,
+    "sha256": "DAC52BECE4B5A803DF11813A8D837F40838F723833E559D3D5D53F3191C5E8B4",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\ja_JP.js",
+    "lines": 18,
+    "sha256": "48131117589A1E96837A920E1860890B8D6DCF2419B5189D30F1033C9423EE47",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\it_IT.js",
+    "lines": 25,
+    "sha256": "7CF215A327EAE85226EC7CB2828D9B536F74B35B738A25B9C06188C99E5609F7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\is_IS.js",
+    "lines": 18,
+    "sha256": "C073AA068F70D5DFAA5421DC658DDD2BCC516C1B711ED80AC6903DA44F5B33D8",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\id_ID.js",
+    "lines": 18,
+    "sha256": "179AA287B6349439E447D5240FC159F7CAE9378EEA2B6D338026523376977A89",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\hu_HU.js",
+    "lines": 18,
+    "sha256": "11C874597D5DA60C5EAA1866DB8670E531C894474240EF30F651257720C41346",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\hr_HR.js",
+    "lines": 18,
+    "sha256": "3BC15AA6FD9AACD8CAAA67A45507CB8FB052826065455FAB7301A3A14220756B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\hi_IN.js",
+    "lines": 21,
+    "sha256": "27FDC2058370F5A97FDB1BE520C614949096CD64F2BD34B4B10848251EA4410A",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\he_IL.js",
+    "lines": 17,
+    "sha256": "C488B45E5291DFAA0D90E026673012202B91B9CE4410BCDF598AE159F394EA1F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\toString.js",
+    "lines": 8,
+    "sha256": "BF72154E29CD3A3342245F9F3B509F424B9B2BA9CA943FD19007A59E86D7E2BC",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\gl_ES.js",
+    "lines": 18,
+    "sha256": "F9B72EA6C711ED9F0E5CAB2F109CF6015C3531C0F39A19CAA1FAA78C4DE81B8B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\support.js",
+    "lines": 7,
+    "sha256": "8203726232EFA5BFF4783C6259BE6D16F3AC7895E7F97B7E387EF293490A3A03",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\fr_FR.js",
+    "lines": 23,
+    "sha256": "68AAA6DC8D018BCBAE043A94F8CB51B9B3553E5BEC49640C03241AC4626CD240",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\slice.js",
+    "lines": 8,
+    "sha256": "6CFF4F01509945CE3A27FC5D6F942805FE9D20663C6B8E8A5967CC8F0BA710BE",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\fi_FI.js",
+    "lines": 18,
+    "sha256": "B247C8496A2927C7C8C1116D4C40CC0C4350DA54D1CF80DA92E8951A0D84EA17",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\rnotwhite.js",
+    "lines": 6,
+    "sha256": "C5AAA8C8F0856505E70A1A1E8C83D86AD36B3E44732A9E5E2BCB84B922D09D1A",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\fa_ir.js",
+    "lines": 20,
+    "sha256": "BE0786AED53914781F49781BAF9045D53793312D4E23891CF66FC16C12CC2767",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\rcssNum.js",
+    "lines": 10,
+    "sha256": "C49BC307BA32FA5CA408A87204D744072835FC40A1F845172E37CF376B8F1405",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\eu_ES.js",
+    "lines": 18,
+    "sha256": "73B615F0BE39C4180DAC9565583377456DA195BDCF333D656805C1E98FB9E531",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\push.js",
+    "lines": 8,
+    "sha256": "354CFD5AF7E8EE883497CA5EBA20BCC5EE670F22CBAE92788F858BBDFCF0BBD3",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\et_EE.js",
+    "lines": 18,
+    "sha256": "ED236F615C987BC0E2C463541B92571CED4937B02A07DD194057A285813B410E",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\pnum.js",
+    "lines": 6,
+    "sha256": "FF0BFA3C624F29D2CC083BFC33A9AC23B2819C2EC03633AB03F87A570224FE55",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\es_ES.js",
+    "lines": 19,
+    "sha256": "2BA2F11C8B5F9687DC12117534699E3B5A375E9D0EC0C0918D493CC94C64CF09",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\ObjectFunctionString.js",
+    "lines": 8,
+    "sha256": "7028B1E4E8D432A6B14B875D87EE01BB5373E9951B3CFB3388375944ED25FF00",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\el_GR.js",
+    "lines": 18,
+    "sha256": "41E8B6FB10CC5FFCAE9D4F32B80886E56F9FD1F21AAECB11D4F06318A44AB3D7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\indexOf.js",
+    "lines": 8,
+    "sha256": "8AE4EBA3C10CBEDDEA7106916ACCA038F7FA58CE570428BAE648A8359D0DAA2F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\de_DE.js",
+    "lines": 16,
+    "sha256": "5A45D899854B202901B670EF5EC500919E90E1D289CD95D80360E81AF1EE97C7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\hasOwn.js",
+    "lines": 8,
+    "sha256": "3CC815DB05BEC2FCFDCB5A49F48A99961B7A089ADD9C8DC6D67B92B1C15F9AB6",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\da_DK.js",
+    "lines": 19,
+    "sha256": "FCDACE66E91FE09C741054E3D772F4B506C270D7FA9BB580514C923D2F835B49",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\getProto.js",
+    "lines": 6,
+    "sha256": "18461781BD00B17BF0E2AA1682A7761EAC04A81DB99C6EB00DCC19636E6E285D",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\cs_CZ.js",
+    "lines": 18,
+    "sha256": "89CE8EB75672764DFC6C8B75A6BE498804A10E5460EA9C91EEF80D8DF5872D7C",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\fnToString.js",
+    "lines": 8,
+    "sha256": "702BC0C75C6006509D02036A7D4A51AFE2245383E2D5FC01D2C9EE2541ED1414",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\documentElement.js",
+    "lines": 8,
+    "sha256": "C4A4AC0F6C4AB4D354529F16BFFEF4F2A32621DA90487194AD2CDFE929370E05",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\document.js",
+    "lines": 6,
+    "sha256": "3A3A8B6058505BD0AC7004D8EF42E3398ACC0DE5A36B8AFF61692F56FB2B711F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\concat.js",
+    "lines": 8,
+    "sha256": "F9D40CD1460115C519AFAC02B0483705EB2AFB565FD8FA2F98E8CB056EDF62CA",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\class2type.js",
+    "lines": 7,
+    "sha256": "9A71D1C60EF04BB5F6D09AA19FC76B5DED887779FA95E47E4116F263839319BC",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\var\\arr.js",
+    "lines": 6,
+    "sha256": "8EFC8113945A303172A3327A3E3E740B0397917972B603E97A4A6048CA921B2C",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\ca_ES.js",
+    "lines": 19,
+    "sha256": "60500B4B6CE37ECA1EEB982112AB7098F047D5E8B8861BCE59BA98D5874CCA8B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\traversing.js",
+    "lines": 179,
+    "sha256": "08291651B34CA8AACFC2EB7EB3B8E27A1D06612E5E9E433B9AF7ABBC7C13EED7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\bs_BA.js",
+    "lines": 18,
+    "sha256": "812FACE75A7E47A9E26484CBAEF438ED2DCB5ED5F51DD0374D127E19CB44A49F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\bg_BG.js",
+    "lines": 18,
+    "sha256": "FA2150D22802895D584573116C0EEFF2F43BE85DD10B0BE3EDA7FEB6C03FEA51",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\translations\\ar.js",
+    "lines": 17,
+    "sha256": "D9681E400DADD7669DFF2EC00A7083279E03716AD7A88D0D30E822F3C09E1F48",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\var\\rquery.js",
+    "lines": 6,
+    "sha256": "08A9CF6FAA25442431AF523C8CB3B58F2EE247A5E7DC7F2892837EEABB391E76",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\var\\nonce.js",
+    "lines": 8,
+    "sha256": "6E6A1AC869ABA443BA2C6858131D9BB3AAF2EBAE0E9107CA904F95A787C538A8",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\search.min.js",
+    "lines": 1,
+    "sha256": "824AA7863E53BCCFEFC2F1CA01BE33042EEE2FA9A775C0252BA084BF98845308",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\var\\location.js",
+    "lines": 6,
+    "sha256": "FA23B0013726A74046EBA6571AF883842E559FBA8F5C504916596E9C473B3BC9",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\search.js",
+    "lines": 1505,
+    "sha256": "7DEB7D3A2DCE4E5CC0472CCE2CE7131F3B31204FA46CDDE45AA853FB597ECEBA",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\popper.min.js",
+    "lines": 5,
+    "sha256": "D1550D30E03F777FB25A2761E42FD8640FC2891FE3F8319524E5A0F17EDE803D",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\script.js",
+    "lines": 78,
+    "sha256": "8E81148F88507E471EEBEF941517833A1E35E8A4500F9D93091CB96BD43BC6A6",
+    "signals": [
+      "eval\\(|unserialize\\("
+    ]
+  },
+  {
+    "path": "assets\\js\\objektsuche.js",
+    "lines": 46,
+    "sha256": "97EBCBF6037DB355074EE8ED84809C27FA19E514E94410E7B9A7BE99FD1D2376",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\multisearch.js",
+    "lines": 215,
+    "sha256": "3D9AF9866CB3B8A2ACAD107E14C402E1044BFF8AA7126E6C30D77F0BAF032F06",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\parseXML.js",
+    "lines": 31,
+    "sha256": "70101C6ECC0B7ABA22FB14CB990DB4DE08031C9020A2F8DED27029869CD51753",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\moment.min.js",
+    "lines": 2,
+    "sha256": "602EB5C4C25C5A06B0FA60CBE793AE493F132F8D82304505365CD008CC55D77B",
+    "signals": [
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\load.js",
+    "lines": 76,
+    "sha256": "31395FDF9E465EBC8220BBB45C4F2A2A6B5250AB5941ADC233F6CE73E8DB2374",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\js\\masonry.min.js",
+    "lines": 9,
+    "sha256": "64DB658A0915623B5543881E676160F4CB1EC9722BA8F7CAD005823169FC6274",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax\\jsonp.js",
+    "lines": 103,
+    "sha256": "7B9BF08B420E70004AF5156E68E8FF986FD62BDEF853C14D2C29BF4572CEFAF0",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\liste.js",
+    "lines": 43,
+    "sha256": "68E95A78B300ACA4C9FCC7E146E0280A78C7038214BDF7DB1A4A508DD3BC3DAB",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\leafletMapsDetail.js",
+    "lines": 85,
+    "sha256": "806B7D5C7189EFDB0299C2EB352828F2ADE615731529CB9EBCF2E10338C67E7D",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\leaflet-src-xsigns.js",
+    "lines": 14065,
+    "sha256": "0FCE10C1FC0EC1512DE0ED54250FC34EE79D1CF397931233D9EAD29A45CED7AA",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\kalendernav.js",
+    "lines": 169,
+    "sha256": "06B05B51A889403FBEFA00B07D3386B2A7DC5C0E62246D9F4991C30CF40E8CA5",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\README.md",
+    "lines": 66,
+    "sha256": "2DDBF09E757F82A026AEED68715AA37B055D00B16A4E06B87A7885D1ABB08FC6",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\jquery.touchSwipe.min.js",
+    "lines": 1,
+    "sha256": "0DC21C237AB8C5872C67F552D2B30F0E8EB4BE3D016C0C95E94E57496A743E5E",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\jquery.slim.min.js",
+    "lines": 3,
+    "sha256": "EED802246A12563BF6D20270F40809B5618CC77AEFC22C92819B8A6048E7A88C",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\js\\jquery.fancybox.min.js",
+    "lines": 13,
+    "sha256": "1C02CAF2A0F16318965676FD4B265265728D64FBA2794A20B07151A4E891FCA6",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\jquery.fancybox.js",
+    "lines": 5632,
+    "sha256": "A82CF39FE7B4CFE8106F955F988C1F227294006AA84E6D1B57F540E8C62A4F46",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\jquery.easing.compatibility.js",
+    "lines": 58,
+    "sha256": "9EBA21D288CD1EBECBC4E171FC811FD6DB313EF9348CE23C5D1514015F18C3E8",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\jquery.easing.1.3.js",
+    "lines": 205,
+    "sha256": "E4273399CC0BC22E58B35F9F79FDF2705A39DDF4AD918CE852F2624E271D8248",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\jquery.barrating.min.js",
+    "lines": 2,
+    "sha256": "068BCC3CB3F613D0EBB3103CC8FF2DF74DC2159B9F19FC1433D529AD9A3EA5D1",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\jquery-ui.min.js",
+    "lines": 13,
+    "sha256": "2AD4F5D82E27B67E902B6E50CDAC99E7F7FFDA9CCAD7F950DC4526EA41FB4776",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\jquery-ui.js",
+    "lines": 18706,
+    "sha256": "0BAD7E3A8031272F74E25E91D73F50A3E90F9726DF30B38823B94F956EA82C67",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\googleMapsDetail.js",
+    "lines": 16,
+    "sha256": "45730C32EA39769F8C8CB4A82260CF254D2AB1F34C3B68E2817835508492BD3B",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\slick.scss",
+    "lines": 99,
+    "sha256": "1EA8BC662E37617408E7799112980F43803A1BAD69F458CA50A23FA5CCF45FA0",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\slick.min.js",
+    "lines": 18,
+    "sha256": "60B383AA72BD00169342375421EAE685AB95F2DA769C5695FCF121D8884D801D",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\slick\\slick.less",
+    "lines": 99,
+    "sha256": "1EA8BC662E37617408E7799112980F43803A1BAD69F458CA50A23FA5CCF45FA0",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\slick.js",
+    "lines": 2893,
+    "sha256": "F5118C2117300DCD406002417F201608DC046EE26B0680D4C1C93ECD01D7CC2D",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\slick\\slick.css",
+    "lines": 118,
+    "sha256": "7BFB4CC906D6C916081C5D9D2D8D6521170C630A702186C536F82DD44952AAFF",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\slick-theme.scss",
+    "lines": 196,
+    "sha256": "8992C3913D0CBCAA494AA45F051A16F8FCEC65FA66A30E748F4893123520CC30",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\slick-theme.less",
+    "lines": 169,
+    "sha256": "5573265DA186D9BD39DE5693998687C078412C7D959E9BA3FA5B486ABE787469",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\slick-theme.css",
+    "lines": 3,
+    "sha256": "E18734C789EEA700919C187AC4321C4BA7C60BED95EFB1D7D4EC2BA86E92C03C",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\jquery.fancybox.min.js",
+    "lines": 12,
+    "sha256": "5678DB2E96281DC4ECEE8AB66A1162D50A090278001F88A6DB5CE33C1945140C",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\slick\\fotorama.js",
+    "lines": 5,
+    "sha256": "7510EBC7386ED041131D4C56C4E4BD2EABF461FAC507CF7164BD570381E7373E",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\slick\\fotorama.css",
+    "lines": 4,
+    "sha256": "3E275292D958F60B0509448E22870378FC1E3D0C6528850EB2980EFCC20F530F",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\components\\preisrechner.js",
+    "lines": 111,
+    "sha256": "D6E68DB48A025F8DE277046A7EE2501501CF7CF9556170A8CA7962210FD6E234",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\components\\objektlisteteilen.js",
+    "lines": 17,
+    "sha256": "B7EE934840D8BB0091784F66988E0BBC7229E8A89A561CCDB1D1F314BC34CD8C",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\components\\listfilter.js",
+    "lines": 99,
+    "sha256": "C2C6D709055257A6BD47C02548CAF54DE5D4DBF4DD966E2DF67B2225CB716A93",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\components\\googleGesmap.js",
+    "lines": 177,
+    "sha256": "E7F049FA485545FFD2E92DBE149C816878EE5B952109C98A46ED720FE7779E85",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\js\\components\\buchungsmaske.js",
+    "lines": 106,
+    "sha256": "3200F7ACB9327C2981986AF9DBB3796513A44A34E25B267F69BAFB62A1906350",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\carouseller.min.js",
+    "lines": 2,
+    "sha256": "8287C2EA29DEF7021EDD2A4FCF7E76E0354FB31D007C0BFAFB5C651F16C25BA2",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\carouseller.js",
+    "lines": 165,
+    "sha256": "79129225291D7C4D0253BB5560358BCE2880586C7486CFDEC48F8D2047DADEE1",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\bootstrap.bundle.min.js",
+    "lines": 7,
+    "sha256": "5D97E438677A16E845F3C8791A0126448A576E6FA1064168EF8C980CF639ADBC",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\js\\bootstrap-select.min.js",
+    "lines": 9,
+    "sha256": "F401855B47DCD40DD3D30127B4D039400A258C3D7698923B60FBD71B19441109",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\js\\bootstrap-select.js",
+    "lines": 1870,
+    "sha256": "F39BDF199E1A0164481BCA74EDA557743615552D3DEFDEB424662EBFFDCADE52",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\js\\belplan.js",
+    "lines": 5,
+    "sha256": "2DD1C7684E9A79D3F00F308D0B10895DDA8691817AEFC3B5C088AC032F6BF2FD",
+    "signals": []
+  },
+  {
+    "path": "assets\\js\\belplan-nav.js",
+    "lines": 575,
+    "sha256": "7B9B737ED88BB2408BEB79EB028ED878541EAE510A525ADD89A39B34B054E487",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\js\\angular.min.js",
+    "lines": 351,
+    "sha256": "FEA7B3E605064BD192BE3FA431828F1E5CCF6CF8C41601DBD6BF2C121724FCBF",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\js\\angular-leaflet-directive.min.js",
+    "lines": 40,
+    "sha256": "7081987F7385ACF0F5CFAC637B16F3D2F665EAACAE024C827C2D0A5635663EDE",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\DOMEval.js",
+    "lines": 17,
+    "sha256": "89B8A295203FB04AFB92BB1FABECF21BDE08DB7C4BC0D9BF5998D9C4B970FC96",
+    "signals": [
+      "eval\\(|unserialize\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\access.js",
+    "lines": 68,
+    "sha256": "AB7D4AEDECD6969249281FECF849DB81E952F29614D0FC900F9BE3968823C243",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\callbacks.js",
+    "lines": 235,
+    "sha256": "EBFEB72127D31118144BE8130C1FCE11258CD43D333A765A3BAFFF6F50C058D9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\attributes.js",
+    "lines": 14,
+    "sha256": "7054CF2613BC5D112B2951C3BDF96E1F74B438B6AE7752341CA3D794F0748A62",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\js\\tmpl.min.js",
+    "lines": 4,
+    "sha256": "A7C69C6B2446C1FDFC8523C1B97924FF469272DA8F8FC93EEAE6CE7ABA7355EF",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\jslider\\js\\tmpl.js",
+    "lines": 35,
+    "sha256": "3B5C760C8D3BD0310F5454384A79C3A6E0335BD2EE8280F2EB91EC4C2DDB0080",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\jslider\\js\\jshashtable-2.1_src.min.js",
+    "lines": 23,
+    "sha256": "7E7A699D2E7B806DDA6CF4362A1EEDB9270C5CE3F753F3A04ED479A432E059B0",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\js\\jshashtable-2.1_src.js",
+    "lines": 370,
+    "sha256": "47DB10F4ECB250C52E41D0F15F537ED6725CCDE361CB7EF85164FA4CC627088F",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\jslider\\js\\jquery.slider.min.js",
+    "lines": 43,
+    "sha256": "B03757428E40DC4C209218397EE891801FD33A82D20AB1311A6068E68F53D560",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\jslider\\js\\jquery.slider.js",
+    "lines": 701,
+    "sha256": "8FA3A4B3453B46385480BC86C7D01D053F3A94D1D8D9F9CB26D590887CB85C8C",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\jslider\\js\\jquery.numberformatter-1.2.3.min.js",
+    "lines": 59,
+    "sha256": "6A3A9808190A002EDC8AF9A45C57F4B97CEEE0EAFD9E5C58A80C09621E57E8AA",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\js\\jquery.numberformatter-1.2.3.js",
+    "lines": 510,
+    "sha256": "0D894F4D73CC85C2281218235A64B3357E9BAFF45C3D241718D3D1381A8CF6C7",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\jslider\\js\\jquery.dependClass-0.1.min.js",
+    "lines": 10,
+    "sha256": "7D84EAEBF1F00EC4680902996993333C7D811D60C1EAEEA2764A419542E2EF2A",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\js\\jquery.dependClass-0.1.js",
+    "lines": 56,
+    "sha256": "4B4FBAEF0A992C3B40EBAF8E928E07DF0AD0B074FBB63D99623784597D68CD10",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\js\\jquery-1.7.1.js",
+    "lines": 9267,
+    "sha256": "5D31A23AE16E6E7E41EDCE35797438F6705C78ABCCEC0B083647A1D15396867B",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\jslider\\js\\draggable-0.1.min.js",
+    "lines": 8,
+    "sha256": "F1A5081739AA6BDCD1FE540DA5C09309A072D96A38D642097CD32477FAAFA47B",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\js\\draggable-0.1.js",
+    "lines": 197,
+    "sha256": "A69A11DCBE7D7B0817D141E063C962B24C8CAB6B98F47D72C13C2DCC2C8E4D3F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\traversing\\var\\siblings.js",
+    "lines": 18,
+    "sha256": "9F9DB1F0C507EB31EA62BAA2A6CB7CACF12D303B3B139C788C83AC7F70B3E406",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\traversing\\var\\rneedsContext.js",
+    "lines": 9,
+    "sha256": "671AE90324F35F5A969FEA5B63905A1297FFD0BDCFAB102E0D7F13C9324BFD02",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\traversing\\var\\dir.js",
+    "lines": 23,
+    "sha256": "8383009F955536415BD02FC9E85C24C565F225A5AF79F0F5E9F97E5E36E3D9B2",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\traversing\\findFilter.js",
+    "lines": 100,
+    "sha256": "117CDE374A1D9E5ED0E1474E3643992EBFF7ADEA10C474BD131E2C355204C8CF",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\serialize.js",
+    "lines": 127,
+    "sha256": "9EC187DE94FF83C063E3ECE3ADB9CC165BE73FC20C8C14DE7C24BC3771E63D00",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\selector.js",
+    "lines": 4,
+    "sha256": "8D3BE701C619D434FCF923E62A4AABFF1E9AE3BC550D0FCBB6DCB332A7FFD7F6",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\selector-sizzle.js",
+    "lines": 20,
+    "sha256": "298B2D0F5E49C4B8E161B44973681353B0C993828B7E6128ED2EB40CFFA1442C",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\selector-native.js",
+    "lines": 238,
+    "sha256": "3E3D39C504F5616245B41E8613D50D420E82F01AE350675F6872464FC1399EDC",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\queue.js",
+    "lines": 146,
+    "sha256": "642AC43AB26A97243A4E4755EEF84A33CE916C88ECBFB49FD4950DE1BC2E8822",
+    "signals": []
+  },
+  {
+    "path": "assets\\slick\\config.rb",
+    "lines": 10,
+    "sha256": "7A38551C927B2B0176EA605E6ABA339C64D494A79E4F392ED52F54C84C1B7759",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\dist\\jquery.slim.min.js",
+    "lines": 5,
+    "sha256": "24E3F4569AB3D391A84FB21AC9BEA6BC5B3C76DD5A87AD4DE05EE0FA2F5C3437",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\dist\\jquery.slim.js",
+    "lines": 7967,
+    "sha256": "5CBC1ACFD52FFBD9A8F7A9FA245DE3439050AF8270B508A38C529B845EFC091D",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\dist\\jquery.min.js",
+    "lines": 5,
+    "sha256": "7CCACAEBCE8C19B48E03C0660F10CF72D126197093422D01EF9CE6C81DBA2F41",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\dist\\jquery.js",
+    "lines": 10075,
+    "sha256": "91E2D9C2A3E81915E6A427184EAF3C15882C7241CCA4F6AB397BC1910909B7AE",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\dist\\core.js",
+    "lines": 482,
+    "sha256": "8ECD25D3343DE539DF40331203A6D23BB64B55EE4A3B05730CFC691D60F423CD",
+    "signals": [
+      "eval\\(|unserialize\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\var\\rsingleTag.js",
+    "lines": 7,
+    "sha256": "71AAFA595A5CCC8D4931DC760C4CC87F97FF5B743E5EB0D47C43A3AAADF6D3E1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\support.js",
+    "lines": 21,
+    "sha256": "7D781B56DB378F725BB59555878CB4D7A3C522175BDF6290A0198BC45300FB51",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\readyException.js",
+    "lines": 14,
+    "sha256": "432C375A8CD4DA75BAC5167D69BF1F0B9EC98CB66279BC2001992ED052B11523",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\ready.js",
+    "lines": 96,
+    "sha256": "4E09B996A99AE33E23F47C5137C5C756CD6FBB9AA884A5DE76EEAAFE51A21385",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\ajax.js",
+    "lines": 856,
+    "sha256": "8BB30856D41A93336129FBC7D3F0DE70FC00D1AC83C6E7E27489655BDF1E43BE",
+    "signals": [
+      "Input::|\\$_GET|\\$_POST|param\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\ready-no-deferred.js",
+    "lines": 112,
+    "sha256": "D0EDE440F0727CA3C010A8BBE39958375999462E2F5DBA2076592A5D2A24033D",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\init.js",
+    "lines": 128,
+    "sha256": "89EA877F63B2644CE5521C68016543AEE8A8ABF73F6B636813A6E54B754776FC",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\core\\parseHTML.js",
+    "lines": 66,
+    "sha256": "7BA735BD59BDF6D6CA8F109DC7BCD23F0CECB194823A6543BD10609CB86630AD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\picker.date.js",
+    "lines": 1355,
+    "sha256": "CA6492A9039F8C83813E6CAE1FBFEA22B79525914F425E558789FEC01E842359",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\legacy.js",
+    "lines": 134,
+    "sha256": "645A9572D1C503A55F3459449A3B91B53C286E316070A7332E1D0A4F7075A146",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\queue\\delay.js",
+    "lines": 25,
+    "sha256": "891EE5A9488AE928D1837BEF1082C22B23964631E61AE7DA2C2348AD452630A7",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\offset.js",
+    "lines": 233,
+    "sha256": "C1267F09089210B17F51BAD3D8DC3A357B62CA863E436C3A10479F159EFFE8D6",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation.js",
+    "lines": 487,
+    "sha256": "3D1E646668859F33200C30336A9C9BB5283AEFC6327E52C0B8F2D45EB9D097BC",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\attributes\\val.js",
+    "lines": 185,
+    "sha256": "808D18B9628E0898D5CC00354FA140CC968ABE43CD263815D3A4227A4035454D",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\attributes\\support.js",
+    "lines": 34,
+    "sha256": "8EE1499EE6105481B0F2ADD7B7E0516FC173DF9C7F60634D2BC60FA521828AFA",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\attributes\\prop.js",
+    "lines": 129,
+    "sha256": "97C0E7C0286DB863A2F4F39FFA8668CEA1BD4B05F54F950A7D6CBAE596EE3E19",
+    "signals": [
+      "eval\\(|unserialize\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\attributes\\classes.js",
+    "lines": 180,
+    "sha256": "D959838F2AEF3DE00B2EBF983D57CB98935F816D95CC80EB218B13ABEE80B6D9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\attributes\\attr.js",
+    "lines": 138,
+    "sha256": "F069ECC693573C657A584DB5FAF4154E3B9C273EA4A210400E0B6EBDBC75F532",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\Gruntfile.js",
+    "lines": 159,
+    "sha256": "0AE11E69BC4D58D1B7FC3B4E70E14E285995266D002D1A12A0C418DC542B210B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\event.js",
+    "lines": 727,
+    "sha256": "2D2327823DF677786DE286356B5E930827C39BE5C93C6429D46323205CD8C123",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\external\\sizzle\\dist\\sizzle.min.js",
+    "lines": 3,
+    "sha256": "EBDF22C86482FFE1B3D9B369D98A60CC2B79D7921352A20B89777F357788740F",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\external\\sizzle\\dist\\sizzle.js",
+    "lines": 2218,
+    "sha256": "A6BBA7B7926F5F80D1901F761500CCF5044102EEEF1E5476140130C2F09FA995",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\effects\\Tween.js",
+    "lines": 124,
+    "sha256": "DC09727F81363D6CFD20A805B66F452F6E9D76BFD875CB09BB469E738B7DC408",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\effects\\animatedSelector.js",
+    "lines": 16,
+    "sha256": "BEB2AADE5BBF05BB3C2BC3D99B9DC49C2C2100144F356459CC24C28280EE635A",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\dimensions.js",
+    "lines": 57,
+    "sha256": "2E6A673420BA85C001F7EC6F156B63B38FABD3340C2739839BE63BD58634809B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\deprecated.js",
+    "lines": 31,
+    "sha256": "203A4BF7771E044F9AA4C5A0050FA93A64FC7E2124F219A2C1504876CA30CD0B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\deferred.js",
+    "lines": 390,
+    "sha256": "6EA7D05BEBD63DDEDCCF28361E5183BE239908303049523051FD590078476895",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\effects.js",
+    "lines": 689,
+    "sha256": "3A7F88534F742D118563F0FC53974DDFEE883FE801EDB8F1A139DF7F2D4FAC03",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\legacy.js",
+    "lines": 10,
+    "sha256": "2F306230F9B1C1619E0F4827D761CD23B8D3A6D94AB99021D07EAE0A2BC3DBC2",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\picker.date.js",
+    "lines": 5,
+    "sha256": "202786F9431B359A0FFDD47AE4096CD4E3934476BEB43C1844620E8389C42210",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\event\\trigger.js",
+    "lines": 186,
+    "sha256": "3523BD9B12299DED8A6C999E22A9F4EC2321861625130D8EF8E5E257C4C7494C",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\exports\\global.js",
+    "lines": 35,
+    "sha256": "CBEE2A34FE10B94142B1ED78A5C16D1E7A6CC809FA8BA0B65034388E4D9F31BB",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\event\\support.js",
+    "lines": 12,
+    "sha256": "676E47BB539D7966C52B5C6BD61F9E9FA369EB5438CA7FE4D7F399A5B089FE6D",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\exports\\amd.js",
+    "lines": 27,
+    "sha256": "32D740CB16E7EFAD3BFBAAD3D975820825EA15B4FA18F239B16F0172A51EAFAB",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\event\\focusin.js",
+    "lines": 56,
+    "sha256": "05B8E74C047CC78B355D4871B37BA92C93BA1239FA22EE54D99063A86A90622E",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\event\\alias.js",
+    "lines": 30,
+    "sha256": "C557915E8B2601F3705EFE70D84503AB55069B49159E4EB5449B5F5F9C162DB2",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\picker.time.js",
+    "lines": 5,
+    "sha256": "01BC35C873DB1DFBBD2E9840805EC7589BBDF905595FC6E798223BF39C19BC7B",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\picker.js",
+    "lines": 7,
+    "sha256": "E4F44A19BA4A3F26F78D377A7771EA743E05C37CC3F0D34C558F71073549754F",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\event\\ajax.js",
+    "lines": 23,
+    "sha256": "FE1480E7AB77608FC1CAC7C9F6EAD959522390C3294CD4B2F56CB501995B4FF9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\getAll.js",
+    "lines": 24,
+    "sha256": "EFC7252FC3FFA1CFA0132751C80B37A34209D3DA22567F2B97EB4847D5270DE4",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\buildFragment.js",
+    "lines": 105,
+    "sha256": "752A927B92311AEF20B0F84CF3AEBBE3F9B4778D5362B51D355958949685CFF9",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "eval\\(|unserialize\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\jquery.js",
+    "lines": 41,
+    "sha256": "007B3D1666723C251605C656F4A440E9AF44829155AC6F17962DC52D32E9B0CB",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\support.js",
+    "lines": 36,
+    "sha256": "BDC3A747F8E32F69CAB627BB9C5A1ED938E84278CF264BAFDC7D6824AC122C0B",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\setGlobalEval.js",
+    "lines": 23,
+    "sha256": "2904CB2164C40E4EE9771249B3BFEA89598C269DF173A36DF32A67DE5F6A4363",
+    "signals": [
+      "eval\\(|unserialize\\("
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\_evalUrl.js",
+    "lines": 24,
+    "sha256": "D7B628FEFFD65F06466BD32A96A4BDC9AD45E4FA2AB25F3AFCF1970CD52C350E",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\wrapMap.js",
+    "lines": 30,
+    "sha256": "0F74BBA443DE06A0C7749A782E41007873E75CA9922924ACD922F80F84DE30D6",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\base.time.less",
+    "lines": 120,
+    "sha256": "045074D4A8EAE53705341B97349B374C97FD1E861F1BE124C2D86EE7435AE367",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\base.less",
+    "lines": 56,
+    "sha256": "3181DBF0A610F1C7020EFE6C77BEC7AF4F8C7B1D1A4A37A07D73027654A555E7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\base.date.less",
+    "lines": 334,
+    "sha256": "3B4DF244E745A28135332D86367F379AE32ECFEA64AA9E92A9972FF57141FD9E",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\css\\jslider.round.plastic.min.css",
+    "lines": 1,
+    "sha256": "4D36CD6A4CB2E76484069F61E696713333350C9ECE56C3819A5A4C81811A1FE8",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\css\\jslider.round.plastic.css",
+    "lines": 6,
+    "sha256": "B27828C7932B80AD9EBC0C8EE027BDC7F3D9B565C89AAB59E1484A41EF2152D5",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\css\\jslider.round.css",
+    "lines": 6,
+    "sha256": "1E2CFA24CD10C43EAF80B07BE34FB8A41E92036D2CF2F4672A8B46C6DCF315C2",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\css\\jslider.plastic.css",
+    "lines": 4,
+    "sha256": "CCCBC2075E9AC31449D79EEA97E54DEF5708F6A04E741A59DCCA50FE51535060",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\css\\jslider.min.css",
+    "lines": 1,
+    "sha256": "F23DE03A04DEE37A7681C9AC55595E454E76FEE71ACDC10550895D1ABCE671FE",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\css\\jslider.css",
+    "lines": 41,
+    "sha256": "E2FBF0E105C3A0C797052E5BBE7D68B1ACF5095F998F8C35F07620DB6F535DD8",
+    "signals": []
+  },
+  {
+    "path": "assets\\jslider\\css\\jslider.blue.css",
+    "lines": 4,
+    "sha256": "FB0C3E6D5FA2A131C214EF83775F7BE319A894877828BB344A31E7008AC75840",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\_variables.less",
+    "lines": 172,
+    "sha256": "BF83746AD5C54870B7C7285EB6E0503D807606119052F4809A2E5A4ACFB298A4",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\rtl.less",
+    "lines": 39,
+    "sha256": "AA60C40D1B4E6ED39FC1902D7B7127EE21947A0E7514FFEFBCC23F3C695950A0",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\default.time.less",
+    "lines": 42,
+    "sha256": "29FA98942E89E2F363271DAECDCABB8FB73E06912909CA9207A4EC96ECF2ECC1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\default.less",
+    "lines": 193,
+    "sha256": "91364AD959CCF4730AD6AF989216584D247264F216F228216C4AD26A87C76ACB",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\select\\bootstrap-select.min.css",
+    "lines": 1,
+    "sha256": "02FA9DCA68066173409E5E8165E53A6D4ECFE6BA17D1CBC3E4CC370EAFDEB725",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\default.date.less",
+    "lines": 10,
+    "sha256": "B6B9E03252E50C5658C2585F5E9D96401D1A47CFB1FC746A03138FE6A7C21DD2",
+    "signals": []
+  },
+  {
+    "path": "assets\\select\\bootstrap-select.js",
+    "lines": 1847,
+    "sha256": "C7CB547F0D77156FC092A33E69942AC60BC391A15763ED4568D20980D500A784",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\classic.time.less",
+    "lines": 50,
+    "sha256": "D9ACC35836B45FF0F79E6014AB268123C44DD30BE405CCAB92C9D9D34859684B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\classic.less",
+    "lines": 104,
+    "sha256": "C643FBDDF7C3B4FCEE7278EB38D2F26BC80726F9ADF8BDA446F05F67818907A4",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\select\\bootstrap-select.css",
+    "lines": 300,
+    "sha256": "804A772611B25D31E2BEDFFC943D2F0398C9B728AF104900C9462C32F905D8DA",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes-source\\classic.date.less",
+    "lines": 10,
+    "sha256": "FB861B77F1D5A9089E773759E8B562C6CE10709F382FB159EB417ACA43BB17BF",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\css.js",
+    "lines": 425,
+    "sha256": "C844861DD54F53AED4948414C1770FB97923351FC30BB9D33C3F8E9D2CED6AE2",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\data.js",
+    "lines": 162,
+    "sha256": "547BB21E8AD49808EBBA18D1FA535FB444DA8D803BB87C9F228EAC9AE3C5D051",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\ar.js",
+    "lines": 1,
+    "sha256": "3840B085FCB7BF8737E1F5D671BB04EF7B368D3FD4D824DF53D8A3A117236DED",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\picker.js",
+    "lines": 1164,
+    "sha256": "13301F35FC3E4CE44008D5DAC0B79E8195D623711D232755BBE353B43D6035A9",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\picker.time.js",
+    "lines": 1014,
+    "sha256": "9E015E6AEF55943DE91CCB8E6AA12EEE5E2442AE64069F9F5D8D6C8CF7174CD4",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\select\\bootstrap-select.min.js",
+    "lines": 111,
+    "sha256": "D0FFB07B185E282D45EFD090BF1FFC41E6FC7E2DE3B88242152E38D8B03AB80E",
+    "signals": [
+      "\\|raw|innerHTML|\\.html\\(",
+      "password|token|secret"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\bg_BG.js",
+    "lines": 1,
+    "sha256": "A49C4ADC658B047115A8E113317FAC1E6DBC7B76EEFE06D18B828CB36B75A3EA",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\bs_BA.js",
+    "lines": 1,
+    "sha256": "9405EA260AD193DDC5C8332403BBE989B3CB7DDB93A895DC0C06EA9B0625BAAF",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\ca_ES.js",
+    "lines": 1,
+    "sha256": "5A0B78815DC607D4591535F7692A97B1B7D84ACFC968378C5AF7053C95A45395",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\var\\rtagName.js",
+    "lines": 6,
+    "sha256": "FB71D1EF5EFD51BD998320A0D34728F01313287546813F9918A0FD64BBF667D9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\var\\rscriptType.js",
+    "lines": 6,
+    "sha256": "544270247B6D5AEA18BF95296EDD57AE11B6E1D9AE38AE876EC3C8FF8AF6520B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\manipulation\\var\\rcheckableType.js",
+    "lines": 6,
+    "sha256": "1F77BF1C4F45E949FE021A1ED7534D78A74149B4FCE141781D0D0D15595AA29C",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\themes\\classic.date.css",
+    "lines": 1,
+    "sha256": "131F0C0866C33F9F9F1304E02EDF086C66880C9BB6BA3F3C643260649AF10386",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\themes\\classic.css",
+    "lines": 4,
+    "sha256": "780C7BA773BB81B3CC2282FB90CA94D366973520FB52BCD0716E63CAC87A204E",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\themes\\classic.time.css",
+    "lines": 1,
+    "sha256": "60C760680D3A345CD5B604789073D24ADDE73D78E5BD5A6BA1662C384DB08719",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\de_DE.js",
+    "lines": 1,
+    "sha256": "28C46CC1C33BE3C6FFD3171FD65BD345CC789F7B83AA8F3390F868C5FA0D0596",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\da_DK.js",
+    "lines": 1,
+    "sha256": "2585D48CA6AC04CEF1FFB7D80A3E6316B30DCE8C33A65F9E26A185B5F283F161",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\cs_CZ.js",
+    "lines": 1,
+    "sha256": "BE1396116E445DAC75E3C754CA134A4C3286E45D70FA17E580820BB797AA1AEE",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\el_GR.js",
+    "lines": 1,
+    "sha256": "8E50B0A26017FFBF299EA5C2A489DCE9F4D584225FF9B41A5537BF003BDB50E9",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\themes\\default.css",
+    "lines": 4,
+    "sha256": "0C5079001EEC641DB7F81CB4DD499CF80B33B904883762CA04D8ADFADC49380A",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\es_ES.js",
+    "lines": 1,
+    "sha256": "7153C6016CCA6E67E0A67B43E44CDA4224AB6AC69EE34181524D1149EE547FA3",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes\\classic.css",
+    "lines": 100,
+    "sha256": "7B0ED7ADFC8CA845491BAA8AB98E23B9BB8EB8C7DF74B09EB18F59C82867FFA6",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes\\classic.date.css",
+    "lines": 302,
+    "sha256": "87337FE02BD43843B11FD9859778D396DC311157F9C8092517EAA58865ABD53B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\et_EE.js",
+    "lines": 1,
+    "sha256": "C3BC2B385F052A2CBD036E816D6A8CB29036A2C7F0663E8AF2EB04D6EA38BADF",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes\\classic.time.css",
+    "lines": 133,
+    "sha256": "B9E1507B2ACFED6F2D6765536D8AA3CCCEBCF255F2B506C67FBC9D84AA826042",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\themes\\rtl.css",
+    "lines": 3,
+    "sha256": "1E5FFAA94B00C747518E2128C640FEF6DEAD165FBE682D2E42EEB673EE240265",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\themes\\default.time.css",
+    "lines": 1,
+    "sha256": "D06C161F5CC954D8AEE2EF9B2F6EC51C4A48D308D5D216789D24913361E6A4AF",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\themes\\default.date.css",
+    "lines": 1,
+    "sha256": "131F0C0866C33F9F9F1304E02EDF086C66880C9BB6BA3F3C643260649AF10386",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\fr_FR.js",
+    "lines": 1,
+    "sha256": "25809451CEBFFE4F432B9C4FA5AE397FB14E2D7614802BD75C1F5DF7F80191CD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\fi_FI.js",
+    "lines": 1,
+    "sha256": "8728E1ADB4DECE79E48DBE6D2650860D7A3CA364FDE76AA7D8A3408BD8285C9B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\fa_IR.js",
+    "lines": 1,
+    "sha256": "7AAEC328AF4F87AFCB1ACEF3EED26F72CFC1719664FEC1505217A3C59E752E64",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\eu_ES.js",
+    "lines": 1,
+    "sha256": "02E703D0553709AEC89F3E8B70C516D91441165A933D1A3C4E3D97DDE95674DE",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\hi_IN.js",
+    "lines": 1,
+    "sha256": "200BE586338A0C67A0077D2F351E04013D17F35E9617A4983A788F9706287F07",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\he_IL.js",
+    "lines": 1,
+    "sha256": "3A2DB9B48D633E1F974B978846E1A325E60C944587B457F52C68EAA6398E4CB1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\gl_ES.js",
+    "lines": 1,
+    "sha256": "A00383E855BC5CC8BDEFE4D1C20B90BAE34CA44963E5B7E65568B4211CE60EFD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\hr_HR.js",
+    "lines": 1,
+    "sha256": "C4F8144ECC9A0C72F81280130C2BA428FDAA9C4784723DCD5026F89BF04F1713",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\hu_HU.js",
+    "lines": 1,
+    "sha256": "E891253C885C8B209D390169CD439911D12094BFDAC5DCE3D61B8C2EAADCAE42",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes\\default.date.css",
+    "lines": 302,
+    "sha256": "5784D1E7DF979E7873C7127801967ACF3F6F1E044E341A16408BEE8883B8A5ED",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes\\default.css",
+    "lines": 169,
+    "sha256": "1FD6A1EE5ED9ECBCECA22C46F84BFDC9F75CF42D46C509378F6433408CD695FF",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes\\default.time.css",
+    "lines": 127,
+    "sha256": "4A66CEE2645B1A53E86C0394FA75BC22596161A3E72BCA757BFFC5A3044961E0",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\data\\Data.js",
+    "lines": 162,
+    "sha256": "CD2D81FFE2534F4C263A742FD9D9054436B4403D142266B5661B285C8651EB50",
+    "signals": [
+      "curl_|https?://"
+    ]
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\themes\\rtl.css",
+    "lines": 30,
+    "sha256": "3354E967493A83154A1BCDA756E015467676E417FF6F6608F9495F229BAD06E1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\id_ID.js",
+    "lines": 1,
+    "sha256": "B82B2C52DFE5A736CDDD7F4E43E81392FF4F12A310F4B64E029FB038446B47C7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\is_IS.js",
+    "lines": 1,
+    "sha256": "2DBA080FB3CC42A54335278CF63CE1159341937B7D431066DD8FC2947CA60BCD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\data\\var\\dataUser.js",
+    "lines": 8,
+    "sha256": "88303AA776DD8F716E766C4B276C936E6FC7377F813D4B58AB943F6F0EC3F3D1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\data\\var\\dataPriv.js",
+    "lines": 8,
+    "sha256": "88303AA776DD8F716E766C4B276C936E6FC7377F813D4B58AB943F6F0EC3F3D1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\data\\var\\acceptData.js",
+    "lines": 20,
+    "sha256": "190A1BF63F44AF857639E7E333538E4D7AB0F04B508214CDEF45A0888D357962",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\ko_KR.js",
+    "lines": 1,
+    "sha256": "4E3A576D96F59210F5651EE27257465E4E273DA69F78C3C071025FEAD599BF23",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\ja_JP.js",
+    "lines": 1,
+    "sha256": "1C1E81A58C07F9058348D279F3EDFAF2580FED961BFABAD9BC9C94EB6FCB80E7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\it_IT.js",
+    "lines": 1,
+    "sha256": "9604C4A75E8EDD71FD2EFA7908EFA2CCDE76B13E6455B5C5BCF7E41CB235E6B7",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\lv_LV.js",
+    "lines": 1,
+    "sha256": "604068A512C281EC855DB49D37AD913750A18F7B8D07A98B1F6AE8C151F1B7DD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\lt_LT.js",
+    "lines": 1,
+    "sha256": "B8A1AAEE8076128167048EB41DB1484D68E8964520412F856CEA3DE290D6E7D8",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\nb_NO.js",
+    "lines": 1,
+    "sha256": "AAF2C51E4AE8043C238F8AE80664ECC856908B6761219A007204E0673D1AA2CA",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\jquery\\src\\deferred\\exceptionHook.js",
+    "lines": 22,
+    "sha256": "E25B67ED4DFEBD6C9D4AA8DD6D76ED7A53E18129A41CCEC4444A5326616F192A",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\ne_NP.js",
+    "lines": 1,
+    "sha256": "A96352BF171888BD09002B6EAC6AF904EA8ECAEAFBBAAEF842D2DD0C43184733",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\nl_NL.js",
+    "lines": 1,
+    "sha256": "C4AC30E89D984A41F0F6782247296D4061227FCDEE7F538EE1D1BF1DD0F2217F",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\no_NO.js",
+    "lines": 1,
+    "sha256": "6B7CD5AB1066987E1C02F6BE3DA8A4C244B75B96CF1E70A2765B5ED3D1FE934A",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\pt_BR.js",
+    "lines": 1,
+    "sha256": "1F8D2E638450964AB705E79C5008FF714CC273D93366CACE1DB63DABE59CBF13",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\pl_PL.js",
+    "lines": 1,
+    "sha256": "A3E5719D2E04F4B9792D410B5068A5C8E98EE231696021AF0A8F11BE54CD7D95",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\pt_PT.js",
+    "lines": 1,
+    "sha256": "907AEEF4B06EF0AA2BAB28D3B2634E00B74A0CED4AAFAF0C14324A2F0C522B84",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\ro_RO.js",
+    "lines": 1,
+    "sha256": "32C5933FF9547C134F579D3022B6FD6E5ADD05DE108860F30488ACB8EFD05925",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\zh_TW.js",
+    "lines": 1,
+    "sha256": "ACF355A859068EF71D82E067B546FD247E43630FCE01313D3760152707CA03C1",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\zh_CN.js",
+    "lines": 1,
+    "sha256": "FD6707F9D54A6FEC8F1909312CD04768146E688A5A46D7E3DB4632659F7DA950",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\vi_VN.js",
+    "lines": 1,
+    "sha256": "E6AD5F8291C9CDA4EDF5E1FDE3FEC7D805C88140627208DFAC4BC4E43D857B8C",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\uk_UA.js",
+    "lines": 1,
+    "sha256": "F327352E96463DAAB4FBEC8F6C8865BFA8959A9A751CBB66DFD766E7711BEC3B",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\tr_TR.js",
+    "lines": 1,
+    "sha256": "57328549374CC7D1E71FF34903A56B1D9F35D1144F4E8C98D6E3C4317082E464",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\th_TH.js",
+    "lines": 1,
+    "sha256": "C35A91D83C8CABBA98ED2696F56DFA8B501216D89993BB494E395219399491FD",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\sv_SE.js",
+    "lines": 1,
+    "sha256": "B6AB9E5262B1572B0E65BE412256D0674DB7EF5EED91806FFCD4DB406504A67E",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\sl_SI.js",
+    "lines": 1,
+    "sha256": "20A0E4AA627D88EA4F8D30D6EDF99B2CE9F788792355FF9C2A8677915EAF3936",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\sk_SK.js",
+    "lines": 1,
+    "sha256": "B05DCC4AA1D04F2F24EBB3784D1ACB85FA98C3C243EFC405009288AC4035E5B0",
+    "signals": []
+  },
+  {
+    "path": "assets\\vendor\\pickadate\\lib\\compressed\\translations\\ru_RU.js",
+    "lines": 1,
+    "sha256": "4ABE18D1291ECB1448B491FA09ADA7DC13CF9B6AA35DB9266A2DD18D52857DA8",
+    "signals": []
+  }
+]

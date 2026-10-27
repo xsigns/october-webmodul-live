@@ -185,7 +185,7 @@ class SendCron
             else
                 $datumberechnet = date('Y-m-d', strtotime($datum . ' ' . GlobalSettings::get($dayvariable) . ' days'));
 
-            $wherepart = " and vorg_anreise = '" . $datumberechnet . "'";
+            $wherepart = " and vorg_anreise = :date";
             $mailview = 'xsigns.fewo::mail.before_';
         }
         elseif ($mailart == MAILART_ABREISE)
@@ -194,7 +194,7 @@ class SendCron
             $dayvariable = 'afterdays';
             $activevariable = 'cronafter';
             $datumberechnet = date('Y-m-d', strtotime($datum . ' - ' . GlobalSettings::get($dayvariable) . ' days'));
-            $wherepart = " and vorg_abreise = '" . $datumberechnet . "'";
+            $wherepart = " and vorg_abreise = :date";
             $mailview = 'xsigns.fewo::mail.voting_';
         }
         elseif ($mailart == MAILART_VORABREISE)
@@ -203,7 +203,7 @@ class SendCron
             $dayvariable = 'beforedeparturedays';
             $activevariable = 'cronbeforedeparture';
             $datumberechnet = date('Y-m-d', strtotime($datum . ' + ' . GlobalSettings::get($dayvariable) . ' days'));
-            $wherepart = " and vorg_abreise = '" . $datumberechnet . "'";
+            $wherepart = " and vorg_abreise = :date";
             $mailview = 'xsigns.fewo::mail.vorabreise_';
         }
         else
@@ -215,7 +215,7 @@ class SendCron
 
         $sql = "select vorg_id, vorg_objid, vorg_gastid, vorg_anreise, vorg_abreise, vorg_kinder, vorg_erw, vorg_kleinkind, xsigns_fewo_vorggesendet.id as vorgges_id, anschreiben, bewertung, vorabreise, xsigns_fewo_obj.id as obj_id, obj_alias, obj_strasse, obj_plz, obj_ort, obj_land, obj_regionid, titel, beschreibung, gast_titel, gast_anrede, gast_name, gast_vorname, gast_gesperrt, gast_werbemail, gast_mail from xsigns_fewo_vorg left join xsigns_fewo_vorggesendet on vorg_id = vorgid right join xsigns_fewo_obj on xsigns_fewo_obj.id = vorg_objid left join xsigns_fewo_objlang on xsigns_fewo_objlang.objid = xsigns_fewo_obj.id and lang = 'DE' left join xsigns_fewo_gast on gast_id = vorg_gastid where vorg_art = 'B'" . $wherepart;
 
-        $vorgaenge = Database::select(null, self::$modulename, $sql);
+        $vorgaenge = Database::select(null, self::$modulename, $sql, false, ['date' => $datumberechnet]);
 
         self::debug($bereich, 'SQL: ' . $sql);
         self::debug($bereich, 'Anzahl: ' . count($vorgaenge));
@@ -241,7 +241,7 @@ class SendCron
                 Database::insert(null, self::$modulename,"xsigns_fewo_vorggesendet", ['vorgid' => $vorgang->vorg_id, 'anschreiben' => 0, 'bewertung' => 0, 'vorabreise' => 0]);
 
             $gastLand = 'de';
-            $gast =  Database::select(null, self::$modulename, "select * from xsigns_fewo_gast where gast_id = " . $vorgang->vorg_gastid);
+            $gast = Database::select(null, self::$modulename, "select * from xsigns_fewo_gast where gast_id = :gastid", false, ['gastid' => $vorgang->vorg_gastid]);
 
             if (count($gast) > 0 && $gast[0]->gast_land != '')
                 $gastLand = $gast[0]->gast_land;
@@ -376,7 +376,7 @@ class SendCron
                 else if ($mailart == MAILART_VORABREISE)
                     $values['vorgges_grundvorabreise'] = $hinweis;
 
-                Database::update(null, self::$modulename, "xsigns_fewo_vorggesendet", $values, "where vorgid = '" . $vorgang->vorg_id . "'");
+                Database::update(null, self::$modulename, "xsigns_fewo_vorggesendet", $values, "where vorgid = :vorgid", ['vorgid' => $vorgang->vorg_id]);
 
                 $vars['HINWEIS'] = $hinweis;
             }
@@ -391,8 +391,6 @@ class SendCron
 
     private static function debug($bereich, $message, $brAtEnd = true)
     {
-        if (isset($_GET['debug']) && $_GET['debug'] === 'Xsigns27356R0W')
-            echo $bereich . ': ' . $message . ($brAtEnd ? '<br><br>' : '');
 
         if (GlobalSettings::get('cronlog'))
             Models\EventLog::add($bereich . ': ' . $message);

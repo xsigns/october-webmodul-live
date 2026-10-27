@@ -13,7 +13,8 @@ Route::any('hobex/{transactionid}/{bookingid}/{id}','xsigns\fewo\classes\HobexRe
 Route::any('guestbooking/{id}','xsigns\fewo\classes\Guest@Login');
 Route::any('restzahlung', 'xsigns\fewo\classes\RestzahlungsManager@checkRestzahlungen');
 Route::any('objectranking', 'xsigns\fewo\classes\ObjektRanking@setObjRanking');
-Route::any('filedownload', 'xsigns\fewo\classes\Fewo@downloadFile');
+Route::get('filedownload', 'xsigns\fewo\classes\Fewo@downloadFile')
+    ->middleware(Config::get('cms.middleware_group', 'web'));
 Route::get('updatepricelevel', 'xsigns\fewo\classes\Preislevel@updatepricelevelRequest');
 Route::get('/{url}', 'xsigns\fewo\classes\FewoSitemaps@buildSitemap')->where(['url' => FewoSitemaps::sitemapRoutesAsString()]);
 Route::get('.well-known/apple-developer-merchantid-domain-association', 'xsigns\fewo\classes\Fewo@loadAppleAssociationFile');

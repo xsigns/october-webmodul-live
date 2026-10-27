@@ -3,7 +3,7 @@
     <div id="fewo-bewliste" class="fewo-container {{ listcss }}">
         {% for bewertung in bewertungen %}
             <div id="bew-item" class="bew-item">
-                <div class="bew_titel"><p>{{ bewertung.titel|raw }}</p></div>
+                <div class="bew_titel"><p>{{ bewertung.titel|e }}</p></div>
                 <div class="{{ cssslider }} fewo-rating" style="padding: 0px!important;">
                     <div class="sterne">
                         {{ svg|raw }}
@@ -22,9 +22,9 @@
                         <a href="{{ bewertung.objhref }}" {% if bewertung.targetblank %}target="_blank" {% endif %}><img src="{{ bewertung.image.path }}" alt="{{ bewertung.image.title }}" title="{{ bewertung.image.title }}"></a>
                     </div>
                 {% endif %}
-                <div class="bew_nachricht">{{ bewertung.nachricht|raw }}</div>
+                <div class="bew_nachricht">{{ bewertung.nachricht|e|nl2br }}</div>
                 <div class="bew_datum">{{ bewertung.date }}</div>
-                <div class="bew_gastname">{{ bewertung.author|raw }}</div>
+                <div class="bew_gastname">{{ bewertung.author|e }}</div>
                 {% if bewertung.catshow == 1 %}
                     <div class="{{ csscat }} fewo-cat">
                         {% set i=0 %}

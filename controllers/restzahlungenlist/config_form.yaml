@@ -15,4 +15,4 @@ modelClass: xsigns\fewo\Models\RestzahlungenList
 defaultRedirect: xsigns/fewo/restzahlungen
 
 preview:
-    title
+    title: Restzahlungsverlauf

@@ -1,3 +1,17 @@
 # ===================================
 #  Form Field Definitions
 # ===================================
+fields:
+    za_buid:
+        label: Buchungs-ID
+        type: text
+    za_status:
+        label: Ergebnis
+        type: text
+    za_restz_receiptnumber:
+        label: Aktuelle Versuchsreferenz
+        type: text
+    attempts:
+        label: Versuchsverlauf
+        type: partial
+        path: $/xsigns/fewo/controllers/restzahlungenlist/_attempts.htm
