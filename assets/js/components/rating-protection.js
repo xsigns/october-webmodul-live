@@ -10,6 +10,61 @@
         }
     }
 
+    function installProof(form, challenge) {
+        var previous = form.querySelector('altcha-widget[data-rating-proof]');
+        if (previous) {
+            previous.remove();
+        }
+
+        form.elements.rating_altcha.value = '';
+        form.dataset.ratingProofState = 'verifying';
+        var widget = document.createElement('altcha-widget');
+        widget.setAttribute('data-rating-proof', '');
+        widget.setAttribute('auto', 'onload');
+        widget.setAttribute('display', 'invisible');
+        widget.setAttribute('name', 'rating_altcha_widget');
+        widget.setAttribute('challenge', JSON.stringify(challenge));
+        widget.setAttribute('configuration', JSON.stringify({
+            humanInteractionSignature: false, minDuration: 0, workers: 1, timeout: 60000
+        }));
+        widget.addEventListener('verified', function (event) {
+            if (!form.contains(widget) || !event.detail || !event.detail.payload) {
+                return;
+            }
+            form.elements.rating_altcha.value = event.detail.payload;
+            form.dataset.ratingProofState = 'verified';
+            if (!form.dataset.ratingErrorMessage) {
+                showMessage(form, '');
+            }
+            if (form.dataset.ratingSubmitWaiting === '1') {
+                form.dataset.ratingSubmitWaiting = '0';
+                form.requestSubmit ? form.requestSubmit() : form.querySelector('[type="submit"]').click();
+            }
+        });
+        widget.addEventListener('statechange', function (event) {
+            if (form.contains(widget) && event.detail.state === 'error') {
+                form.dataset.ratingProofState = 'error';
+                form.dataset.ratingSubmitWaiting = '0';
+                showMessage(form, 'Die Rechenprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut.');
+            }
+        });
+        widget.addEventListener('expired', function () {
+            if (!form.contains(widget)) {
+                return;
+            }
+            form.elements.rating_altcha.value = '';
+            requestChallenge(form);
+        });
+        form.appendChild(widget);
+        window.setTimeout(function () {
+            if (form.contains(widget) && form.dataset.ratingProofState === 'verifying') {
+                form.dataset.ratingProofState = 'error';
+                form.dataset.ratingSubmitWaiting = '0';
+                showMessage(form, 'Die Rechenprüfung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.');
+            }
+        }, 65000);
+    }
+
     function requestChallenge(form) {
         if (form.dataset.ratingChallengePending === '1' || !window.jQuery || !jQuery.fn.request) {
             return;
@@ -20,15 +75,22 @@
         jQuery.request(handler, { data: { objid: form.elements.objid.value } })
             .done(function (data) {
                 form.dataset.ratingChallengePending = '0';
-                if (data.ratingChallenge) {
+                if (data.ratingChallenge && data.altchaChallenge) {
                     form.elements.rating_challenge.value = data.ratingChallenge;
-                    showMessage(form, '');
+                    installProof(form, data.altchaChallenge);
+                    if (!form.dataset.ratingErrorMessage) {
+                        showMessage(form, '');
+                    }
                 } else {
+                    form.dataset.ratingProofState = 'error';
+                    form.dataset.ratingSubmitWaiting = '0';
                     showMessage(form, data.ratingProtectionError || 'Der Bewertungsschutz ist derzeit nicht verfügbar.');
                 }
             })
             .fail(function () {
                 form.dataset.ratingChallengePending = '0';
+                form.dataset.ratingProofState = 'error';
+                form.dataset.ratingSubmitWaiting = '0';
                 showMessage(form, 'Der Bewertungsschutz ist derzeit nicht verfügbar. Bitte versuchen Sie es später erneut.');
             });
     }
@@ -53,6 +115,11 @@
         challenge.type = 'hidden';
         form.appendChild(challenge);
 
+        var proof = document.createElement('input');
+        proof.name = 'rating_altcha';
+        proof.type = 'hidden';
+        form.appendChild(proof);
+
         var status = document.createElement('div');
         status.setAttribute('data-rating-protection-status', '');
         status.setAttribute('role', 'status');
@@ -73,14 +140,20 @@
         }
 
         prepare(form);
-        if (form.elements.rating_challenge.value) {
+        if (form.elements.rating_challenge.value && form.elements.rating_altcha.value) {
+            form.dataset.ratingErrorMessage = '';
+            showMessage(form, '');
             return;
         }
 
         event.preventDefault();
         event.stopImmediatePropagation();
-        showMessage(form, 'Der Bewertungsschutz wird vorbereitet. Bitte versuchen Sie es gleich erneut.');
-        requestChallenge(form);
+        form.dataset.ratingSubmitWaiting = '1';
+        form.dataset.ratingErrorMessage = '';
+        showMessage(form, 'Die unsichtbare Rechenprüfung läuft. Ihre Eingaben bleiben erhalten.');
+        if (form.dataset.ratingProofState !== 'verifying') {
+            requestChallenge(form);
+        }
     }, true);
 
     function handleRatingResponse(target, data) {
@@ -95,6 +168,9 @@
 
         if (data.ratingProtectionError && form.dataset.ratingChallengePending !== '1') {
             form.elements.rating_challenge.value = '';
+            form.elements.rating_altcha.value = '';
+            form.dataset.ratingSubmitWaiting = '0';
+            form.dataset.ratingErrorMessage = data.ratingProtectionError;
             showMessage(form, data.ratingProtectionError);
             requestChallenge(form);
         }
