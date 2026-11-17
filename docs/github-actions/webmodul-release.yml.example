@@ -1,0 +1,86 @@
+name: Webmodul veroeffentlichen
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_version:
+        description: 'Neue Version aus updates/version.yaml, z. B. 3.11.1'
+        required: true
+        type: string
+      publish:
+        description: 'Nach dem Build auf master committen, taggen und pushen'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: webmodul-production-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: [self-hosted, Windows, X64, ioncube]
+    environment: webmodul-release
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Quellcode des gestarteten Commits laden
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+          path: source
+          persist-credentials: false
+
+      - name: Zugang zum Live-Repository erstellen
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          owner: xsigns
+          repositories: october-webmodul-live
+          permission-contents: write
+
+      - name: Live-Repository laden
+        uses: actions/checkout@v6
+        with:
+          repository: xsigns/october-webmodul-live
+          ref: master
+          path: live
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+          persist-credentials: true
+
+      - name: Version pruefen, bauen und optional veroeffentlichen
+        id: build
+        env:
+          EXPECTED_VERSION: ${{ inputs.expected_version }}
+          PUBLISH: ${{ inputs.publish }}
+          IONCUBE_ENCODER_DIR: ${{ vars.IONCUBE_ENCODER_DIR }}
+          IONCUBE_PASSPHRASE: ${{ secrets.IONCUBE_PASSPHRASE }}
+          IONCUBE_OBFUSCATION_KEY: ${{ secrets.IONCUBE_OBFUSCATION_KEY }}
+          RELEASE_GIT_NAME: ${{ vars.RELEASE_GIT_NAME }}
+          RELEASE_GIT_EMAIL: ${{ vars.RELEASE_GIT_EMAIL }}
+        run: |
+          $publish = [bool]::Parse($env:PUBLISH)
+          & ./source/ci/Invoke-WebmodulRelease.ps1 `
+            -SourcePath "$env:GITHUB_WORKSPACE/source" `
+            -LivePath "$env:GITHUB_WORKSPACE/live" `
+            -EncoderBatchPath "$env:GITHUB_WORKSPACE/source/ci/fewo-ci.bat" `
+            -ExpectedVersion $env:EXPECTED_VERSION `
+            -WorkRoot $env:RUNNER_TEMP `
+            -Publish:$publish
+
+      - name: Encoder-Ergebnis zum Download bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: webmodul-${{ steps.build.outputs.version }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ steps.build.outputs.artifact_path }}
+          if-no-files-found: error
+          retention-days: 14

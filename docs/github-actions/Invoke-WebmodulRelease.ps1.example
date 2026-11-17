@@ -1,0 +1,177 @@
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory)][string]$SourcePath,
+    [Parameter(Mandatory)][string]$LivePath,
+    [Parameter(Mandatory)][string]$EncoderBatchPath,
+    [Parameter(Mandatory)][string]$ExpectedVersion,
+    [Parameter(Mandatory)][string]$WorkRoot,
+    [switch]$Publish
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+
+function Invoke-Git {
+    param([string]$Repository, [string[]]$Arguments)
+
+    $result = & git -C $Repository @Arguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "Git fehlgeschlagen: $($Arguments -join ' ')"
+    }
+    return $result
+}
+
+function Get-ModuleVersion {
+    param([string]$Directory)
+
+    $content = Get-Content -LiteralPath (Join-Path $Directory 'updates/version.yaml') -Raw
+    $matches = [regex]::Matches($content, '(?m)^[''"]?(\d+\.\d+\.\d+)[''"]?\s*:')
+    $versions = @($matches | ForEach-Object { [version]$_.Groups[1].Value })
+    if ($versions.Count -eq 0) {
+        throw 'Keine Version in updates/version.yaml gefunden.'
+    }
+    return ($versions | Sort-Object -Descending | Select-Object -First 1).ToString()
+}
+
+function Get-TagVersion {
+    param([string]$Tag)
+
+    if ($Tag -match '^(?i:v\.?)?(\d+\.\d+\.\d+)$') {
+        return [version]$Matches[1]
+    }
+}
+
+function Assert-NewVersion {
+    param([string]$Version)
+
+    $localTags = @(Invoke-Git $LivePath @('tag', '--list'))
+    $remoteRefs = @(Invoke-Git $LivePath @('ls-remote', '--tags', '--refs', 'origin'))
+    $remoteTags = @($remoteRefs | ForEach-Object { ($_ -split 'refs/tags/', 2)[1] })
+    $versions = @(($localTags + $remoteTags) | ForEach-Object { Get-TagVersion $_ })
+    $latest = $versions | Sort-Object -Descending | Select-Object -First 1
+    if ($null -ne $latest -and [version]$Version -le $latest) {
+        throw "Version $Version ist nicht neuer als der vorhandene Tag-Stand $latest."
+    }
+}
+
+function Assert-LiveCheckout {
+    $branch = Invoke-Git $LivePath @('branch', '--show-current')
+    if ($branch -ne 'master') {
+        throw 'Das Live-Repository muss auf master stehen.'
+    }
+    $changes = @(Invoke-Git $LivePath @('status', '--porcelain'))
+    if ($changes.Count -gt 0) {
+        throw 'Das Live-Repository muss vor dem Build unveraendert sein.'
+    }
+}
+
+function Remove-PackageEntry {
+    param([string]$Root, [string]$RelativePath)
+
+    $resolvedRoot = [IO.Path]::GetFullPath($Root).TrimEnd('\', '/') + [IO.Path]::DirectorySeparatorChar
+    $entry = [IO.Path]::GetFullPath((Join-Path $Root $RelativePath))
+    if (-not $entry.StartsWith($resolvedRoot, [StringComparison]::OrdinalIgnoreCase)) {
+        throw 'Paketbereinigung ausserhalb des Arbeitsverzeichnisses abgebrochen.'
+    }
+    if (Test-Path -LiteralPath $entry) {
+        Remove-Item -LiteralPath $entry -Recurse -Force
+    }
+}
+
+function New-PackageSource {
+    param([string]$BuildRoot)
+
+    $inputPath = Join-Path $BuildRoot 'input'
+    $archive = Join-Path $BuildRoot 'source.zip'
+    Invoke-Git $SourcePath @('archive', '--format=zip', "--output=$archive", 'HEAD')
+    Expand-Archive -LiteralPath $archive -DestinationPath $inputPath
+    $excluded = @('.github', 'ci', 'docs/github-actions', '.idea', 'dev', 'tests',
+        '.gitignore', '_ide_helper.php', '_ide_helper_rainlab.php', 'fewo.lic')
+    foreach ($entry in $excluded) {
+        Remove-PackageEntry $inputPath $entry
+    }
+    return $inputPath
+}
+
+function Invoke-Encoder {
+    param([string]$InputPath, [string]$OutputPath)
+
+    $env:WEBMODUL_SOURCE = $InputPath
+    $env:WEBMODUL_OUTPUT = $OutputPath
+    & $EncoderBatchPath
+    if ($LASTEXITCODE -ne 0) {
+        throw "ionCube fehlgeschlagen, Rueckgabecode $LASTEXITCODE."
+    }
+    if (-not (Test-Path -LiteralPath (Join-Path $OutputPath 'Plugin.php'))) {
+        throw 'Encoder-Ausgabe fehlt oder ist unvollstaendig: Plugin.php nicht vorhanden.'
+    }
+}
+
+function Copy-EncodedFiles {
+    param([string]$OutputPath)
+
+    & robocopy $OutputPath $LivePath /E /IS /IT /R:2 /W:1 /NP /NFL /NDL /XD .git .github
+    if ($LASTEXITCODE -ge 8) {
+        throw "Kopieren ins Live-Repository fehlgeschlagen: $LASTEXITCODE."
+    }
+}
+
+function Publish-Module {
+    param([string]$Version)
+
+    Assert-NewVersion $Version
+    Invoke-Git $LivePath @('config', 'user.name', $env:RELEASE_GIT_NAME)
+    Invoke-Git $LivePath @('config', 'user.email', $env:RELEASE_GIT_EMAIL)
+    Invoke-Git $LivePath @('add', '--all')
+    Invoke-Git $LivePath @('commit', '-m', "update $Version")
+    $commit = Invoke-Git $LivePath @('rev-parse', 'HEAD')
+    Invoke-Git $LivePath @('tag', "v$Version", $commit)
+    $tagRefspec = 'refs/tags/v{0}:refs/tags/v{0}' -f $Version
+    Invoke-Git $LivePath @('push', '--atomic', 'origin', 'refs/heads/master:refs/heads/master', $tagRefspec)
+    Write-Host "Veroeffentlicht: $commit, Tag v$Version"
+}
+
+function Write-BuildResult {
+    param([string]$OutputPath, [string]$Version, [string]$SourceCommit)
+
+    Write-Host "Quellcommit: $SourceCommit; Version: $Version; Ausgabe: $OutputPath"
+    if ($env:GITHUB_OUTPUT) {
+        @("artifact_path=$OutputPath", "version=$Version") | Add-Content -LiteralPath $env:GITHUB_OUTPUT
+    }
+    if ($env:GITHUB_STEP_SUMMARY) {
+        @("Quellcommit: $SourceCommit", "Version: $Version", "Veroeffentlichen: $Publish") |
+            Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY
+    }
+}
+
+function Start-ModuleBuild {
+    Assert-LiveCheckout
+    $version = Get-ModuleVersion $SourcePath
+    if ($version -ne $ExpectedVersion) {
+        throw "Angeforderte Version $ExpectedVersion stimmt nicht mit Quellversion $version ueberein."
+    }
+    Assert-NewVersion $version
+    $sourceCommit = Invoke-Git $SourcePath @('rev-parse', 'HEAD')
+    $buildRoot = Join-Path $WorkRoot ('webmodul-' + [guid]::NewGuid().ToString('N'))
+    New-Item -ItemType Directory -Path $buildRoot | Out-Null
+    $inputPath = New-PackageSource $buildRoot
+    $outputPath = Join-Path $buildRoot 'encoded'
+    Invoke-Encoder $inputPath $outputPath
+    if ((Get-ModuleVersion $outputPath) -ne $version) {
+        throw 'Die Version der Encoder-Ausgabe stimmt nicht mit der Quellversion ueberein.'
+    }
+    Write-BuildResult $outputPath $version $sourceCommit
+    if ($Publish) {
+        Copy-EncodedFiles $outputPath
+        Publish-Module $version
+    }
+}
+
+try {
+    Start-ModuleBuild
+    exit 0
+}
+catch {
+    Write-Error $_ -ErrorAction Continue
+    exit 1
+}

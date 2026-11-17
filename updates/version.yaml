@@ -1126,3 +1126,7 @@
 
 3.11.1:
     - Unsichtbarer lokaler ALTCHA-Spamschutz für Bewertungen
+
+3.11.2:
+    - Verbesserungen für die Angebotszuordnung in der Buchungsmaske
+    - Prüfung des Angebotszeitraums bei der Preisberechnung

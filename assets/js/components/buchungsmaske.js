@@ -1,3 +1,10 @@
+window.fewoBookingHistory = function (page, replace) {
+    var url = new URL(window.location.href);
+    url.searchParams.set('page', page);
+    var method = replace ? 'replaceState' : 'pushState';
+    window.history[method]({ page: page }, 'Page ' + page, url.href);
+};
+
 window.fewoShowPaymentStep = function (data) {
     if (data && Object.prototype.hasOwnProperty.call(data, '#payment')) {
         $('#buchungTab a[href="#7"]').tab('show');
