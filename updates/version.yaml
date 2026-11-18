@@ -1130,3 +1130,7 @@
 3.11.2:
     - Verbesserungen für die Angebotszuordnung in der Buchungsmaske
     - Prüfung des Angebotszeitraums bei der Preisberechnung
+
+3.11.3:
+    - Normale Importe legen keinen temporären Migrationsordner mehr an
+    - Temporäre Abrechnungssicherungen werden nach erfolgreicher Migration automatisch entfernt

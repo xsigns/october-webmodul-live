@@ -14,6 +14,6 @@ class Update92 extends Migration
 
     public function down()
     {
-        throw new \RuntimeException('Restore billing documents from the verified private backup.');
+        throw new \RuntimeException('Restore billing documents and database from a verified hosting backup.');
     }
 }
