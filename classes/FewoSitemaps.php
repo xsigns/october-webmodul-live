@@ -249,10 +249,10 @@ class FewoSitemaps
                 default:
                     $dom = $this->getPagesSitemap($dom, $xml);
 
-                    if (GlobalSettings::get('seoobjekte'))
+                    if (GlobalSettings::get('seoobjekte') && GlobalSettings::get('sitemapobjects', true))
                         $dom = $this->getObjektSitemap($dom, $xml);
 
-                    if (GlobalSettings::get('seohaus'))
+                    if (GlobalSettings::get('seohaus') && GlobalSettings::get('sitemaphouses', true))
                         $dom = $this->getHausSitemap($dom, $xml);
 
                     break;

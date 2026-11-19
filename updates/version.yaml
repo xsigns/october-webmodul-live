@@ -1134,3 +1134,8 @@
 3.11.3:
     - Normale Importe legen keinen temporären Migrationsordner mehr an
     - Temporäre Abrechnungssicherungen werden nach erfolgreicher Migration automatisch entfernt
+
+3.11.4:
+    - Wartungsmodus der Abrechnungsmigration mit October 1 kompatibel gemacht
+    - Objekt- und Hausdetails für die gemeinsame Sitemap separat schaltbar
+    - Übersicht der verfügbaren Sitemap-Adressen in den Einstellungen ergänzt

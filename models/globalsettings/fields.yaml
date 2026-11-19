@@ -460,6 +460,20 @@ tabs:
       span: right
       cssClass: col-sm-4
       tab: xsigns.fewo::lang.globalsettings.tab5
+    sitemapobjects:
+      label: Objektdetails in sitemap.xml aufnehmen
+      type: checkbox
+      default: true
+      span: left
+      comment: Gilt für die gemeinsame sitemap.xml. Die separate Objekt-Sitemap bleibt unverändert.
+      tab: xsigns.fewo::lang.globalsettings.tab5
+    sitemaphouses:
+      label: Hausdetails in sitemap.xml aufnehmen
+      type: checkbox
+      default: true
+      span: right
+      comment: Gilt für die gemeinsame sitemap.xml. Die separate Haus-Sitemap bleibt unverändert.
+      tab: xsigns.fewo::lang.globalsettings.tab5
     pagessitemap:
       label: Seiten für sitemap.xml hinzufügen
       type: checkboxlist
@@ -468,6 +482,20 @@ tabs:
       span: left
       cssClass: col-sm-6
       options: listLinks
+      tab: xsigns.fewo::lang.globalsettings.tab5
+    sitemapInfo:
+      label: Verfügbare Sitemaps
+      type: section
+      span: full
+      commentHtml: true
+      comment: >-
+        Die folgenden Adressen können unter Ihrer Website-Domain aufgerufen werden:<br>
+        <strong>/sitemap.xml</strong> – Ausgewählte Seiten sowie die oben aktivierten Objekt- und Hausdetails.<br>
+        <strong>/sitemap1.xml</strong> oder <strong>/objekte/sitemap.xml</strong> – Nur Objektdetails.<br>
+        <strong>/sitemap2.xml</strong> oder <strong>/haeuser/sitemap.xml</strong> – Nur Hausdetails.<br>
+        <strong>/sitemap3.xml</strong> oder <strong>/seiten/sitemap.xml</strong> – Nur die oben ausgewählten Seiten.<br>
+        Die separaten Objekt- und Haus-Sitemaps sind unabhängig von den beiden Checkboxen;
+        der jeweilige Pfad zur Detailseite muss hinterlegt sein.
       tab: xsigns.fewo::lang.globalsettings.tab5
     svgSection:
       label: xsigns.fewo::lang.globalsettings.svgSection
