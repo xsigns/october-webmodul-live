@@ -1139,3 +1139,6 @@
     - Wartungsmodus der Abrechnungsmigration mit October 1 kompatibel gemacht
     - Objekt- und Hausdetails für die gemeinsame Sitemap separat schaltbar
     - Übersicht der verfügbaren Sitemap-Adressen in den Einstellungen ergänzt
+
+3.11.5:
+    - Erlaubte Lückenbuchungen werden auch bei als Text gelieferten Datenbankwerten im Kalender freigegeben
