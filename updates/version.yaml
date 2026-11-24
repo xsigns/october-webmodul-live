@@ -1142,3 +1142,7 @@
 
 3.11.5:
     - Erlaubte Lückenbuchungen werden auch bei als Text gelieferten Datenbankwerten im Kalender freigegeben
+
+3.11.6:
+    - Nicht vorhandene Häuser sowie nicht vorhandene oder deaktivierte Objekte zeigen die 404-Seite direkt mit HTTP-Status 404
+    - Überflüssigen Protokolleintrag zur Anzahl bezahlter Restzahlungen entfernt
