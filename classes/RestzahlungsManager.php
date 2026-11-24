@@ -55,7 +55,7 @@ class RestzahlungsManager
                 if (GlobalSettings::get('hobextest') == 1)
                     $hobexUrl = 'https://eu-test.oppwa.com';
 
-                $transactionId = RestPaymentAttempt::newTransactionId();
+                $transactionId = RestPaymentAttempt::newTransactionId((int) $zahlung->za_buid);
                 $requestResult = self::payRequest($zahlung->za_restz_betrag, 'EUR', $transactionId, $hobexUrl, $zahlung->za_buid, 2, $zahlung->za_token, $zahlung->id, $actor);
 
                 $vars = [
@@ -123,7 +123,7 @@ class RestzahlungsManager
         $payment = DB::table('xsigns_fewo_zahlungen')->where('id', $paymentId)->first();
         $previous = DB::table('xsigns_fewo_rest_attempts')
             ->where('merchant_transaction_id', $payment->za_restz_receiptnumber)->first();
-        $transactionId = RestPaymentAttempt::newTransactionId();
+        $transactionId = RestPaymentAttempt::newTransactionId((int) $payment->za_buid);
         if (!RestPaymentAttempt::retry($paymentId, $transactionId, $previous->checked_at, $actor)) {
             return false;
         }
